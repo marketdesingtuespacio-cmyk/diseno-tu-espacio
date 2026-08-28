@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-brand-white text-brand-black font-sans text-sm leading-relaxed antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium tracking-tight text-brand-black;
+  }
+}
+
+/* Custom Scrollbar for Luxury Aesthetics */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F9F9F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4D4D4;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A3A3A3;
+}
+
+/* Glassmorphism & Micro-animations */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+}
+
+.transition-luxury {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
