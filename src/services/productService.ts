@@ -178,12 +178,12 @@ export const productService = {
       original_price: productData.original_price ? Number(productData.original_price) : undefined
     };
 
-    // 1. Always update local storage first so state is 100% saved immediately
+    // 1. Always update local storage first so state is saved immediately on current device
     const currentLocal = getStoredProducts();
     const updatedLocal = [createdProduct, ...currentLocal.filter(p => p.slug !== createdProduct.slug)];
     saveStoredProducts(updatedLocal);
 
-    // 2. Try inserting into Supabase
+    // 2. Insert into central Supabase Cloud Database (for global sync across all devices/browsers)
     if (isSupabaseConfigured()) {
       try {
         const { data, error } = await supabase
@@ -194,11 +194,16 @@ export const productService = {
 
         if (!error && data) {
           createdProduct = data as Product;
-          // Update local cache with Supabase returned object & UUID
+          // Sync local cache with official Supabase database record
           const syncLocal = [createdProduct, ...currentLocal.filter(p => p.slug !== createdProduct.slug)];
           saveStoredProducts(syncLocal);
+          console.log('✅ Producto guardado exitosamente en la nube Supabase:', createdProduct.name);
         } else if (error) {
-          console.warn('Supabase insert error, saved locally:', error.message);
+          console.warn('⚠️ Supabase no permitió guardar en la nube (se guardó en este navegador local):', error.message);
+          // If RLS or missing schema error, raise notice
+          if (error.message.includes('row-level security') || error.message.includes('policy')) {
+            console.error('🔒 Ejecutar políticas de seguridad RLS en el editor SQL de Supabase.');
+          }
         }
       } catch (err) {
         console.error('Supabase exception, saved locally:', err);
