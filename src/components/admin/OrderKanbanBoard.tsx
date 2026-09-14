@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import { 
   Truck, 
-  ArrowRight, 
-  ArrowLeft, 
   Edit, 
-  Check, 
-  X,
-  AlertTriangle,
   Clock,
   Package,
   CheckCircle2,
@@ -15,11 +10,13 @@ import {
   Ruler,
   Home,
   Building2,
-  Edit3
+  Eye,
+  GripVertical
 } from 'lucide-react';
 import { Order } from '../../types';
 import { useCurrency } from '../../context/CurrencyContext';
 import { orderService } from '../../services/orderService';
+import { OrderDetailModal } from './OrderDetailModal';
 
 // Official WhatsApp Brand Icon Component
 const WhatsAppIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" }) => (
@@ -34,7 +31,7 @@ interface OrderKanbanBoardProps {
   onEditOrder: (order: Order) => void;
 }
 
-// Columns definition with Vibrant Header Ticket Colors matching Image 2
+// Columns definition with Vibrant Header Ticket Colors
 const KANBAN_COLUMNS: { 
   id: Order['status']; 
   title: string; 
@@ -47,7 +44,7 @@ const KANBAN_COLUMNS: {
     id: 'pending', 
     title: 'Pendientes por Verificar', 
     icon: Clock, 
-    headerBg: 'bg-[#E5FF53]', // Lime Yellow from Image 2
+    headerBg: 'bg-[#E5FF53]', 
     headerTextColor: 'text-neutral-950',
     pillBg: 'bg-yellow-100 text-yellow-900 border-yellow-300' 
   },
@@ -55,7 +52,7 @@ const KANBAN_COLUMNS: {
     id: 'processing', 
     title: 'En Preparación / Taller', 
     icon: Package, 
-    headerBg: 'bg-[#5B75FF]', // Indigo Blue from Image 2
+    headerBg: 'bg-[#5B75FF]', 
     headerTextColor: 'text-white',
     pillBg: 'bg-blue-100 text-blue-900 border-blue-300' 
   },
@@ -63,7 +60,7 @@ const KANBAN_COLUMNS: {
     id: 'shipped', 
     title: 'Despachados / En Tránsito', 
     icon: Truck, 
-    headerBg: 'bg-[#6EE7B7]', // Mint Emerald from Image 2
+    headerBg: 'bg-[#6EE7B7]', 
     headerTextColor: 'text-neutral-950',
     pillBg: 'bg-emerald-100 text-emerald-900 border-emerald-300' 
   },
@@ -71,7 +68,7 @@ const KANBAN_COLUMNS: {
     id: 'delivered', 
     title: 'Entregados / Posventa', 
     icon: CheckCircle2, 
-    headerBg: 'bg-[#F472B6]', // Pink Magenta from Image 2
+    headerBg: 'bg-[#F472B6]', 
     headerTextColor: 'text-white',
     pillBg: 'bg-pink-100 text-pink-900 border-pink-300' 
   },
@@ -79,7 +76,7 @@ const KANBAN_COLUMNS: {
     id: 'cancelled', 
     title: 'Cancelados', 
     icon: XCircle, 
-    headerBg: 'bg-[#9CA3AF]', // Neutral Grey
+    headerBg: 'bg-[#9CA3AF]', 
     headerTextColor: 'text-white',
     pillBg: 'bg-neutral-200 text-neutral-800 border-neutral-300' 
   }
@@ -88,34 +85,49 @@ const KANBAN_COLUMNS: {
 export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOrderUpdated, onEditOrder }) => {
   const { formatPrice } = useCurrency();
 
-  // State for Editing Carrier/Tracking
-  const [editingOrder, setEditingOrder] = useState<Order | null>(null);
-  const [editCarrier, setEditCarrier] = useState('');
-  const [editTrackingNumber, setEditTrackingNumber] = useState('');
+  // Detail Modal State (View Only)
+  const [selectedDetailOrder, setSelectedDetailOrder] = useState<Order | null>(null);
 
-  // Handle status step move
-  const handleMoveStatus = async (orderId: string, newStatus: Order['status']) => {
-    await orderService.updateOrderStatus(orderId, newStatus);
-    onOrderUpdated();
+  // Drag and Drop States
+  const [draggedOrderId, setDraggedOrderId] = useState<string | null>(null);
+  const [activeDropColumn, setActiveDropColumn] = useState<Order['status'] | null>(null);
+
+  // Drag Handlers
+  const handleDragStart = (e: React.DragEvent, orderId: string) => {
+    e.dataTransfer.setData('text/plain', orderId);
+    e.dataTransfer.effectAllowed = 'move';
+    setDraggedOrderId(orderId);
   };
 
-  // Open Edit Logistics Modal
-  const openEditLogistics = (order: Order) => {
-    setEditingOrder(order);
-    setEditCarrier(order.carrier || 'Servientrega');
-    setEditTrackingNumber(order.tracking_number || '');
-  };
-
-  // Save Logistics Edit
-  const handleSaveLogistics = async (e: React.FormEvent) => {
+  const handleDragOver = (e: React.DragEvent, columnId: Order['status']) => {
     e.preventDefault();
-    if (!editingOrder) return;
-    await orderService.updateOrder(editingOrder.id, {
-      carrier: editCarrier,
-      tracking_number: editTrackingNumber
-    });
-    setEditingOrder(null);
-    onOrderUpdated();
+    e.dataTransfer.dropEffect = 'move';
+    if (activeDropColumn !== columnId) {
+      setActiveDropColumn(columnId);
+    }
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = async (e: React.DragEvent, targetStatus: Order['status']) => {
+    e.preventDefault();
+    setActiveDropColumn(null);
+    const orderId = e.dataTransfer.getData('text/plain') || draggedOrderId;
+    if (!orderId) return;
+
+    const targetOrder = orders.find(o => o.id === orderId);
+    if (targetOrder && targetOrder.status !== targetStatus) {
+      await orderService.updateOrderStatus(orderId, targetStatus);
+      onOrderUpdated();
+    }
+    setDraggedOrderId(null);
+  };
+
+  const handleDragEnd = () => {
+    setDraggedOrderId(null);
+    setActiveDropColumn(null);
   };
 
   // Generate WhatsApp Message Link
@@ -134,270 +146,172 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
     return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(text)}`;
   };
 
-  // Next status helper
-  const getNextStatus = (current: Order['status']): Order['status'] | null => {
-    if (current === 'pending') return 'processing';
-    if (current === 'processing') return 'shipped';
-    if (current === 'shipped') return 'delivered';
-    return null;
-  };
-
-  // Previous status helper
-  const getPrevStatus = (current: Order['status']): Order['status'] | null => {
-    if (current === 'delivered') return 'shipped';
-    if (current === 'shipped') return 'processing';
-    if (current === 'processing') return 'pending';
-    return null;
-  };
-
-  // Helper for Stepper Stage Index
-  const getStageIndex = (status: Order['status']): number => {
-    if (status === 'pending') return 0;
-    if (status === 'processing') return 1;
-    if (status === 'shipped') return 2;
-    if (status === 'delivered') return 3;
-    return 0;
-  };
-
   return (
     <div className="space-y-4 font-sans text-xs">
       
       {/* Kanban Grid Columns */}
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 overflow-x-auto pb-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3.5 overflow-x-auto pb-6">
         {KANBAN_COLUMNS.map(col => {
           const colOrders = orders.filter(o => o.status === col.id);
           const colTotalCOP = colOrders.reduce((acc, o) => acc + o.total, 0);
 
           const ColIcon = col.icon;
+          const isDropActive = activeDropColumn === col.id;
 
           return (
             <div 
               key={col.id} 
-              className="bg-[#F3F3F5] border border-white/80 rounded-[28px] flex flex-col min-h-[550px] shadow-xs overflow-hidden p-2"
+              onDragOver={(e) => handleDragOver(e, col.id)}
+              onDragLeave={handleDragLeave}
+              onDrop={(e) => handleDrop(e, col.id)}
+              className={`bg-[#F3F3F5] rounded-[24px] flex flex-col min-h-[500px] shadow-2xs overflow-hidden p-2 transition-all duration-200 ${
+                isDropActive ? 'border-2 border-neutral-900 bg-neutral-200/90 ring-4 ring-black/5 scale-[1.01]' : 'border border-white/80'
+              }`}
             >
               
               {/* Column Header Card */}
-              <div className="bg-white rounded-2xl p-3.5 border border-neutral-200/60 shadow-2xs flex justify-between items-center mb-3">
+              <div className="bg-white rounded-2xl p-3 border border-neutral-200/60 shadow-2xs flex justify-between items-center mb-2.5">
                 <div>
-                  <h4 className="font-bold uppercase tracking-wider text-neutral-900 text-[11px] flex items-center gap-1.5">
+                  <h4 className="font-bold uppercase tracking-wider text-neutral-900 text-[10.5px] flex items-center gap-1.5">
                     <ColIcon className="w-3.5 h-3.5 shrink-0 text-neutral-700" /> {col.title}
                   </h4>
                   <p className="text-[10px] text-neutral-500 font-mono mt-0.5 font-medium">
                     {formatPrice(colTotalCOP)}
                   </p>
                 </div>
-                <span className="w-6 h-6 flex items-center justify-center rounded-full bg-neutral-900 text-white font-mono text-[10px] font-bold shadow-xs">
+                <span className="w-5 h-5 flex items-center justify-center rounded-full bg-neutral-900 text-white font-mono text-[9.5px] font-bold shadow-xs">
                   {colOrders.length}
                 </span>
               </div>
 
-              {/* Column Body: Ticket Cards Container */}
-              <div className="space-y-3.5 flex-1 overflow-y-auto max-h-[780px] px-0.5">
+              {/* Column Body: Compact Drag & Drop Cards Container */}
+              <div className="space-y-2.5 flex-1 overflow-y-auto max-h-[780px] px-0.5">
                 {colOrders.length === 0 ? (
-                  <div className="text-center py-14 text-neutral-400 text-[11px] border border-dashed border-neutral-300/80 rounded-2xl bg-white/40">
-                    Sin pedidos en esta etapa
+                  <div className="text-center py-12 text-neutral-400 text-[10.5px] border border-dashed border-neutral-300/80 rounded-2xl bg-white/40 font-medium">
+                    Arrastra un pedido aquí
                   </div>
                 ) : (
                   colOrders.map(order => {
-                    const stageIdx = getStageIndex(order.status);
+                    const isDragged = draggedOrderId === order.id;
 
                     return (
                       <div 
                         key={order.id}
-                        className="rounded-2xl overflow-hidden shadow-[0_6px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_12px_36px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all duration-300 group border border-neutral-200/60"
+                        draggable={true}
+                        onDragStart={(e) => handleDragStart(e, order.id)}
+                        onDragEnd={handleDragEnd}
+                        className={`rounded-2xl overflow-hidden shadow-2xs hover:shadow-md transition-all duration-200 border border-neutral-200/80 bg-white cursor-grab active:cursor-grabbing select-none ${
+                          isDragged ? 'opacity-30 scale-95 border-dashed border-black' : ''
+                        }`}
                       >
-                        {/* VIBRANT COLORED TICKET HEADER */}
-                        <div className={`${col.headerBg} ${col.headerTextColor} px-4 py-2.5 flex justify-between items-center font-semibold text-xs`}>
-                          <div className="flex items-center gap-2">
-                            <span className="font-mono font-extrabold tracking-wider text-xs">
+                        {/* COMPACT COLORED TICKET HEADER */}
+                        <div className={`${col.headerBg} ${col.headerTextColor} px-3.5 py-1.5 flex justify-between items-center font-semibold text-xs`}>
+                          <div className="flex items-center gap-1.5">
+                            <GripVertical className="w-3 h-3 opacity-60" />
+                            <span className="font-mono font-extrabold tracking-wider text-[11px]">
                               {order.order_ref}
                             </span>
-                            <button 
-                              onClick={() => onEditOrder(order)}
-                              className="p-1 hover:bg-black/10 rounded-full transition-colors"
-                              title="Editar Pedido completo"
-                            >
-                              <Edit className="w-3 h-3" />
-                            </button>
                           </div>
 
-                          <span className="text-[10px] font-mono opacity-90 font-medium">
-                            {order.created_at}
-                          </span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-[9.5px] font-mono opacity-90 font-medium">
+                              {order.created_at}
+                            </span>
+                            
+                            <div className="flex items-center gap-0.5">
+                              {/* View Details Eye Icon Button */}
+                              <button 
+                                onClick={(e) => { e.stopPropagation(); setSelectedDetailOrder(order); }}
+                                className="p-1 hover:bg-black/10 rounded-full transition-colors"
+                                title="Ver detalle completo"
+                              >
+                                <Eye className="w-3 h-3" />
+                              </button>
+
+                              {/* Edit Order Pencil Icon Button */}
+                              <button 
+                                onClick={(e) => { e.stopPropagation(); onEditOrder(order); }}
+                                className="p-1 hover:bg-black/10 rounded-full transition-colors"
+                                title="Editar pedido completo"
+                              >
+                                <Edit className="w-3 h-3" />
+                              </button>
+                            </div>
+                          </div>
                         </div>
 
-                        {/* PURE WHITE TICKET BODY */}
-                        <div className="bg-white p-4 space-y-3.5">
+                        {/* COMPACT CARD BODY - Clickable to open Detail Modal */}
+                        <div 
+                          onClick={() => setSelectedDetailOrder(order)}
+                          className="p-3 space-y-2.5 hover:bg-neutral-50/50 transition-colors cursor-pointer"
+                        >
                           
-                          {/* Subtitle & Customer Tag */}
-                          <div className="flex justify-between items-start">
-                            <div>
-                              <p className="text-[10px] uppercase font-bold text-neutral-400 tracking-wider">Cliente Registrado</p>
-                              <p className="font-extrabold text-neutral-900 text-xs">{order.customer_name}</p>
+                          {/* Customer Name & CRM Tag */}
+                          <div className="flex justify-between items-center gap-1.5">
+                            <div className="truncate">
+                              <p className="text-[9px] uppercase font-bold text-neutral-400 tracking-wider">Cliente</p>
+                              <p className="font-extrabold text-neutral-900 text-xs truncate max-w-[125px]">
+                                {order.customer_name}
+                              </p>
                             </div>
 
                             {order.customer_tag && (
-                              <span className={`px-2.5 py-0.5 text-[9px] font-extrabold rounded-full uppercase tracking-wider border shadow-2xs flex items-center gap-1 ${
+                              <span className={`px-2 py-0.5 text-[8.5px] font-extrabold rounded-full uppercase tracking-wider border shrink-0 flex items-center gap-1 ${
                                 order.customer_tag === 'VIP' ? 'bg-amber-100 text-amber-950 border-amber-300' :
                                 order.customer_tag === 'Arquitecto' ? 'bg-indigo-100 text-indigo-950 border-indigo-300' :
                                 order.customer_tag === 'Residencial' ? 'bg-emerald-100 text-emerald-950 border-emerald-300' :
                                 'bg-purple-100 text-purple-950 border-purple-300'
                               }`}>
-                                {order.customer_tag === 'VIP' && <><Crown className="w-2.5 h-2.5 text-amber-600" /> VIP</>}
-                                {order.customer_tag === 'Arquitecto' && <><Ruler className="w-2.5 h-2.5 text-indigo-600" /> Arq</>}
-                                {order.customer_tag === 'Residencial' && <><Home className="w-2.5 h-2.5 text-emerald-600" /> Res</>}
-                                {order.customer_tag === 'Proyecto Especial' && <><Building2 className="w-2.5 h-2.5 text-purple-600" /> Contract</>}
+                                {order.customer_tag === 'VIP' && <Crown className="w-2 h-2 text-amber-600" />}
+                                {order.customer_tag === 'Arquitecto' && <Ruler className="w-2 h-2 text-indigo-600" />}
+                                {order.customer_tag === 'Residencial' && <Home className="w-2 h-2 text-emerald-600" />}
+                                {order.customer_tag === 'Proyecto Especial' && <Building2 className="w-2 h-2 text-purple-600" />}
+                                {order.customer_tag === 'VIP' ? 'VIP' : order.customer_tag === 'Arquitecto' ? 'Arq' : order.customer_tag === 'Residencial' ? 'Res' : 'Contract'}
                               </span>
                             )}
                           </div>
 
-                          {/* Ordered Products Thumbnails */}
+                          {/* Minimum 1 product purchased info card */}
                           {order.items && order.items.length > 0 && (
-                            <div className="space-y-1.5 bg-neutral-50/90 p-2.5 rounded-2xl border border-neutral-100">
-                              {order.items.map((item, i) => (
-                                <div key={i} className="flex items-center gap-2 text-[10px]">
-                                  <img src={item.image} alt={item.name} className="w-8 h-9 object-cover rounded-xl border bg-white shrink-0 shadow-2xs" />
-                                  <div className="truncate">
-                                    <p className="font-bold text-neutral-900 truncate">{item.name}</p>
-                                    <p className="text-neutral-500 font-mono text-[9.5px]">
-                                      {item.quantity} u. • {formatPrice(item.price)} {item.color ? `(${item.color})` : ''}
-                                    </p>
-                                  </div>
-                                </div>
-                              ))}
+                            <div className="bg-neutral-50/90 p-2 rounded-xl border border-neutral-100 flex items-center gap-2 text-[10px]">
+                              <img 
+                                src={order.items[0].image} 
+                                alt={order.items[0].name} 
+                                className="w-8 h-9 object-cover rounded-lg border bg-white shrink-0 shadow-2xs" 
+                              />
+                              <div className="truncate flex-1">
+                                <p className="font-bold text-neutral-900 truncate">{order.items[0].name}</p>
+                                <p className="text-neutral-500 font-mono text-[9px]">
+                                  {order.items[0].quantity} u. • {formatPrice(order.items[0].price)}
+                                </p>
+                              </div>
+                              {order.items.length > 1 && (
+                                <span className="text-[8.5px] font-extrabold bg-neutral-200 text-neutral-700 px-1.5 py-0.5 rounded-full shrink-0">
+                                  +{order.items.length - 1} más
+                                </span>
+                              )}
                             </div>
                           )}
 
-                          {/* HORIZONTAL LOGISTICS TIMELINE STEPPER */}
-                          <div className="bg-neutral-50/80 p-3 rounded-2xl border border-neutral-100 space-y-2">
-                            <span className="text-[9.5px] uppercase font-bold text-neutral-400 tracking-wider block">Estado de Seguimiento</span>
-                            
-                            {/* Stepper Bar */}
-                            <div className="relative flex items-center justify-between px-2 pt-1 pb-2">
-                              {/* Connector Line */}
-                              <div className="absolute top-3 left-4 right-4 h-0.5 bg-neutral-200 -z-0"></div>
-                              <div 
-                                className="absolute top-3 left-4 h-0.5 bg-neutral-900 transition-all duration-500 -z-0"
-                                style={{ width: `${(stageIdx / 3) * 100}%` }}
-                              ></div>
-
-                              {/* Stepper Node 1: Recibido */}
-                              <div className="relative z-10 flex flex-col items-center">
-                                <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-bold ${
-                                  stageIdx >= 0 ? 'bg-neutral-900 text-white' : 'bg-neutral-200 text-neutral-500'
-                                }`}>
-                                  <Check className="w-3 h-3" />
-                                </div>
-                                <span className="text-[8.5px] font-semibold text-neutral-600 mt-1">Recibido</span>
-                              </div>
-
-                              {/* Stepper Node 2: En Taller */}
-                              <div className="relative z-10 flex flex-col items-center">
-                                <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-bold ${
-                                  stageIdx >= 1 ? 'bg-neutral-900 text-white' : 'bg-neutral-200 text-neutral-500'
-                                }`}>
-                                  {stageIdx >= 1 ? <Check className="w-3 h-3" /> : '2'}
-                                </div>
-                                <span className="text-[8.5px] font-semibold text-neutral-600 mt-1">Taller</span>
-                              </div>
-
-                              {/* Stepper Node 3: En Tránsito */}
-                              <div className="relative z-10 flex flex-col items-center">
-                                <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-bold ${
-                                  stageIdx >= 2 ? 'bg-neutral-900 text-white' : 'bg-neutral-200 text-neutral-500'
-                                }`}>
-                                  {stageIdx >= 2 ? <Check className="w-3 h-3" /> : '3'}
-                                </div>
-                                <span className="text-[8.5px] font-semibold text-neutral-600 mt-1">Tránsito</span>
-                              </div>
-
-                              {/* Stepper Node 4: Entregado */}
-                              <div className="relative z-10 flex flex-col items-center">
-                                <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-bold ${
-                                  stageIdx >= 3 ? 'bg-emerald-600 text-white' : 'bg-neutral-200 text-neutral-500'
-                                }`}>
-                                  {stageIdx >= 3 ? <Check className="w-3 h-3" /> : '4'}
-                                </div>
-                                <span className="text-[8.5px] font-semibold text-neutral-600 mt-1">Entregado</span>
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* DELIVERY DETAILS BOX */}
-                          <div className="bg-neutral-50 p-3 rounded-2xl border border-neutral-200/70 space-y-1.5 text-[10px]">
-                            <div className="flex justify-between items-center border-b border-neutral-200/50 pb-1">
-                              <span className="text-neutral-400 font-bold uppercase text-[9px] flex items-center gap-1">
-                                <Truck className="w-3 h-3 text-neutral-700" /> Logística & Despacho
+                          {/* Price & Lowercase WhatsApp Tracking Pill Button */}
+                          <div className="flex justify-between items-center pt-1.5 border-t border-neutral-100">
+                            <div>
+                              <span className="text-[8.5px] uppercase font-bold text-neutral-400 block tracking-wider">Total</span>
+                              <span className="font-mono font-extrabold text-xs text-neutral-900">
+                                {formatPrice(order.total)}
                               </span>
-                              <button 
-                                onClick={() => openEditLogistics(order)}
-                                className="text-[9px] font-bold text-neutral-700 underline hover:text-black flex items-center gap-1"
-                              >
-                                Asignar Guía <Edit3 className="w-2.5 h-2.5" />
-                              </button>
                             </div>
 
-                            <div className="space-y-1 text-neutral-800">
-                              <div className="flex justify-between">
-                                <span className="text-neutral-400">Teléfono:</span>
-                                <span className="font-mono font-bold">{order.customer_phone}</span>
-                              </div>
-                              <div className="flex justify-between">
-                                <span className="text-neutral-400">Dirección:</span>
-                                <span className="font-semibold text-right max-w-[140px] truncate">{order.shipping_address || 'Showroom'}, {order.city || 'Colombia'}</span>
-                              </div>
-                              <div className="flex justify-between">
-                                <span className="text-neutral-400">Transportadora:</span>
-                                <span className="font-bold text-neutral-900">{order.carrier || 'No asignada'} {order.tracking_number ? `(#${order.tracking_number})` : ''}</span>
-                              </div>
-                              {order.notes && (
-                                <div className="mt-1.5 p-1.5 bg-amber-50 border border-amber-200 text-amber-900 rounded-xl text-[9px] flex items-center gap-1 font-semibold">
-                                  <AlertTriangle className="w-3 h-3 text-amber-600 shrink-0" />
-                                  <span className="truncate">{order.notes}</span>
-                                </div>
-                              )}
-                            </div>
-                          </div>
-
-                          {/* CARD FOOTER: LARGE PRICE & PILL ACTION BUTTONS (IMAGE 2 DESIGN) */}
-                          <div className="space-y-2.5 pt-2 border-t border-neutral-100">
-                            <div className="flex justify-between items-end">
-                              <div>
-                                <span className="text-[9px] uppercase font-bold text-neutral-400 block tracking-wider">Total Pagado</span>
-                                <span className="font-mono font-extrabold text-sm text-neutral-900">{formatPrice(order.total)}</span>
-                              </div>
-
-                              <div className="flex items-center gap-1.5">
-                                {getPrevStatus(order.status) && (
-                                  <button
-                                    onClick={() => handleMoveStatus(order.id, getPrevStatus(order.status)!)}
-                                    className="p-2 border border-neutral-300 text-neutral-700 hover:bg-neutral-100 rounded-full transition-all"
-                                    title="Regresar etapa anterior"
-                                  >
-                                    <ArrowLeft className="w-3 h-3" />
-                                  </button>
-                                )}
-
-                                {getNextStatus(order.status) && (
-                                  <button
-                                    onClick={() => handleMoveStatus(order.id, getNextStatus(order.status)!)}
-                                    className="py-1.5 px-3.5 bg-neutral-900 hover:bg-black text-white text-[10px] font-bold rounded-full transition-all flex items-center gap-1 shadow-xs"
-                                  >
-                                    Avanzar <ArrowRight className="w-3 h-3" />
-                                  </button>
-                                )}
-                              </div>
-                            </div>
-
-                            {/* OFFICIAL WHATSAPP TRACKING PILL BUTTON */}
                             <a 
                               href={getWhatsAppLink(order)}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="w-full py-2 bg-[#25D366] hover:bg-[#1EBE57] active:scale-98 text-white font-extrabold text-[10px] uppercase tracking-wider flex items-center justify-center gap-2 rounded-full shadow-md shadow-emerald-500/20 transition-all cursor-pointer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="py-1 px-2.5 bg-[#25D366] hover:bg-[#1EBE57] active:scale-95 text-white font-extrabold text-[9.5px] lowercase tracking-wide flex items-center gap-1.5 rounded-full shadow-2xs transition-all cursor-pointer"
+                              title="Enviar actualización por WhatsApp"
                             >
-                              <WhatsAppIcon className="w-4 h-4 fill-white" />
-                              <span>Enviar Tracking por WhatsApp</span>
+                              <WhatsAppIcon className="w-3 h-3 fill-white shrink-0" />
+                              <span>enviar tracking por whatsapp</span>
                             </a>
                           </div>
 
@@ -413,65 +327,14 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
         })}
       </div>
 
-      {/* EDIT LOGISTICS MODAL */}
-      {editingOrder && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-md flex items-center justify-center p-4 z-50">
-          <div className="bg-white/95 backdrop-blur-2xl max-w-md w-full p-6 border border-white/80 rounded-[28px] shadow-2xl space-y-4">
-            <div className="flex justify-between items-center border-b border-neutral-200 pb-3">
-              <h3 className="font-bold uppercase tracking-wider text-neutral-900 text-xs flex items-center gap-2">
-                <Truck className="w-4 h-4 text-neutral-900" /> Logística — {editingOrder.order_ref}
-              </h3>
-              <button onClick={() => setEditingOrder(null)} className="text-neutral-400 hover:text-black">
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-
-            <form onSubmit={handleSaveLogistics} className="space-y-3">
-              <div>
-                <label className="block uppercase font-bold text-neutral-500 text-[10px] mb-1">Empresa Transportadora</label>
-                <select 
-                  value={editCarrier}
-                  onChange={(e) => setEditCarrier(e.target.value)}
-                  className="w-full bg-neutral-50 border border-neutral-200 rounded-2xl p-2.5 font-bold focus:outline-none focus:border-neutral-900 text-xs"
-                >
-                  <option value="Servientrega">Servientrega</option>
-                  <option value="Interrapidísimo">Interrapidísimo</option>
-                  <option value="Deprisa / Avianca">Deprisa / Avianca</option>
-                  <option value="Flete Privado Luxe">Flete Privado Luxe</option>
-                  <option value="Retiro en Showroom">Retiro en Showroom</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block uppercase font-bold text-neutral-500 text-[10px] mb-1">Número de Guía de Rastreo</label>
-                <input 
-                  type="text"
-                  required
-                  placeholder="Ej. 9812739182"
-                  value={editTrackingNumber}
-                  onChange={(e) => setEditTrackingNumber(e.target.value)}
-                  className="w-full bg-neutral-50 border border-neutral-200 rounded-2xl p-2.5 font-mono font-bold text-xs"
-                />
-              </div>
-
-              <div className="flex justify-end gap-2 pt-4 border-t border-neutral-200">
-                <button 
-                  type="button"
-                  onClick={() => setEditingOrder(null)}
-                  className="px-4 py-2 border border-neutral-300 rounded-full text-xs uppercase font-bold"
-                >
-                  Cancelar
-                </button>
-                <button 
-                  type="submit"
-                  className="px-6 py-2 bg-neutral-900 text-white rounded-full text-xs uppercase font-bold hover:bg-black flex items-center gap-1.5 shadow-sm"
-                >
-                  <Check className="w-4 h-4 text-amber-300" /> Guardar Guía
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+      {/* FULL DETAIL VIEW MODAL */}
+      {selectedDetailOrder && (
+        <OrderDetailModal
+          isOpen={!!selectedDetailOrder}
+          onClose={() => setSelectedDetailOrder(null)}
+          order={selectedDetailOrder}
+          onEditOrder={(ord) => onEditOrder(ord)}
+        />
       )}
 
     </div>
