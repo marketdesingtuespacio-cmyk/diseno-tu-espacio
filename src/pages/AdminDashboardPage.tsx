@@ -182,7 +182,7 @@ export const AdminDashboardPage: React.FC = () => {
   const totalAppointmentsCOP = appointments.reduce((acc, a) => acc + a.price, 0);
 
   return (
-    <div className="flex h-screen bg-gradient-to-br from-[#FAF9F6] via-[#F4F3EE] to-[#EBE9E4] overflow-hidden font-sans">
+    <div className="flex h-screen bg-[#ECECED] overflow-hidden font-sans">
       
       {/* LEFT SIDEBAR NAVIGATION */}
       <AdminSidebar 
@@ -198,13 +198,13 @@ export const AdminDashboardPage: React.FC = () => {
       />
 
       {/* RIGHT MAIN WORKSPACE AREA */}
-      <main className="flex-1 overflow-y-auto p-8 space-y-6">
+      <main className="my-4 mr-4 flex-1 overflow-y-auto space-y-5 pr-1">
         
-        {/* Top Action Bar (Glassmorphic Header) */}
-        <div className="flex justify-between items-center bg-white/70 backdrop-blur-xl border border-white/80 p-4 rounded-2xl shadow-xs">
+        {/* Top Action Bar (Reference Style Header) */}
+        <div className="flex justify-between items-center bg-white/90 backdrop-blur-2xl border border-white/90 p-4 rounded-[24px] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
           <div className="flex items-center gap-3">
-            <span className="text-[10px] uppercase font-bold tracking-widest text-neutral-400 bg-black/5 px-2.5 py-1 rounded-md">Panel Activo:</span>
-            <span className="text-xs font-bold uppercase tracking-wider text-brand-black">
+            <span className="text-[10px] uppercase font-bold tracking-widest text-neutral-500 bg-neutral-100 px-3 py-1 rounded-full">Panel Activo:</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-neutral-900">
               {activeTab === 'overview' && '📊 Resumen General & Analíticas'}
               {activeTab === 'products' && '📦 Inventario & Catálogo Oficial'}
               {activeTab === 'add-product' && '➕ Alta & Registro de Producto'}
@@ -219,53 +219,53 @@ export const AdminDashboardPage: React.FC = () => {
 
           <button 
             onClick={loadData}
-            className="text-xs font-bold uppercase tracking-wider border border-neutral-300/80 bg-white/80 hover:bg-white rounded-xl px-4 py-2 flex items-center gap-2 text-neutral-700 shadow-2xs transition-all"
+            className="text-xs font-bold uppercase tracking-wider border border-neutral-200 bg-white hover:bg-neutral-50 rounded-full px-4.5 py-2 flex items-center gap-2 text-neutral-800 shadow-2xs transition-all"
           >
-            <RefreshCw className="w-3.5 h-3.5 text-brand-black" /> Actualizar Datos
+            <RefreshCw className="w-3.5 h-3.5 text-neutral-900" /> Actualizar Datos
           </button>
         </div>
 
         {/* TAB 1: OVERVIEW ANALYTICS */}
         {activeTab === 'overview' && (
-          <div className="space-y-6">
+          <div className="space-y-5">
             
-            {/* KPI Cards Grid (Glassmorphism) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              <div className="bg-white/80 backdrop-blur-md border border-white/90 p-6 rounded-2xl space-y-2 shadow-xs hover:shadow-md transition-all duration-300">
+            {/* KPI Cards Grid (Floating Rounded-3xl Cards) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="bg-white border border-neutral-200/60 p-6 rounded-[28px] space-y-2 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 block">Ventas de Productos</span>
-                <div className="text-2xl font-bold font-mono text-brand-black flex items-center justify-between">
+                <div className="text-2xl font-bold font-mono text-neutral-900 flex items-center justify-between">
                   {formatPrice(totalSalesCOP)}
-                  <div className="p-2 bg-emerald-50 rounded-xl">
+                  <div className="p-2.5 bg-emerald-50 rounded-2xl">
                     <TrendingUp className="w-5 h-5 text-emerald-600 stroke-[2]" />
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white/80 backdrop-blur-md border border-white/90 p-6 rounded-2xl space-y-2 shadow-xs hover:shadow-md transition-all duration-300">
+              <div className="bg-white border border-neutral-200/60 p-6 rounded-[28px] space-y-2 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 block">Total Pedidos</span>
-                <div className="text-2xl font-bold font-mono text-brand-black flex items-center justify-between">
+                <div className="text-2xl font-bold font-mono text-neutral-900 flex items-center justify-between">
                   {orders.length}
-                  <div className="p-2 bg-neutral-100 rounded-xl">
+                  <div className="p-2.5 bg-neutral-100 rounded-2xl">
                     <ShoppingBag className="w-5 h-5 text-neutral-700 stroke-[2]" />
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white/80 backdrop-blur-md border border-white/90 p-6 rounded-2xl space-y-2 shadow-xs hover:shadow-md transition-all duration-300">
+              <div className="bg-white border border-neutral-200/60 p-6 rounded-[28px] space-y-2 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 block">Productos en Stock</span>
-                <div className="text-2xl font-bold font-mono text-brand-black flex items-center justify-between">
+                <div className="text-2xl font-bold font-mono text-neutral-900 flex items-center justify-between">
                   {totalProductStock} u.
-                  <div className="p-2 bg-neutral-100 rounded-xl">
+                  <div className="p-2.5 bg-neutral-100 rounded-2xl">
                     <Package className="w-5 h-5 text-neutral-700 stroke-[2]" />
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white/80 backdrop-blur-md border border-white/90 p-6 rounded-2xl space-y-2 shadow-xs hover:shadow-md transition-all duration-300">
+              <div className="bg-white border border-neutral-200/60 p-6 rounded-[28px] space-y-2 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 block">Ingresos Asesorías</span>
-                <div className="text-2xl font-bold font-mono text-brand-black flex items-center justify-between">
+                <div className="text-2xl font-bold font-mono text-neutral-900 flex items-center justify-between">
                   {formatPrice(totalAppointmentsCOP)}
-                  <div className="p-2 bg-amber-50 rounded-xl">
+                  <div className="p-2.5 bg-amber-50 rounded-2xl">
                     <Calendar className="w-5 h-5 text-amber-600 stroke-[2]" />
                   </div>
                 </div>
@@ -273,34 +273,34 @@ export const AdminDashboardPage: React.FC = () => {
             </div>
 
             {/* Recent Orders Section */}
-            <div className="bg-white p-6 border border-brand-border space-y-4">
-              <div className="flex justify-between items-center border-b border-brand-border pb-3">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-brand-black">Últimos Pedidos Recibidos</h3>
-                <button onClick={() => setActiveTab('orders')} className="text-xs font-bold text-neutral-500 hover:text-black uppercase">
+            <div className="bg-white p-6 border border-neutral-200/60 rounded-[28px] space-y-4 shadow-[0_4px_24px_rgba(0,0,0,0.03)] overflow-hidden">
+              <div className="flex justify-between items-center border-b border-neutral-100 pb-3">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-neutral-900">Últimos Pedidos Recibidos</h3>
+                <button onClick={() => setActiveTab('orders')} className="text-xs font-bold text-neutral-500 hover:text-black uppercase tracking-wider">
                   Ver Todos →
                 </button>
               </div>
 
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-brand-surface uppercase text-[10px] tracking-widest text-neutral-500 border-b">
+                  <thead className="bg-neutral-50 uppercase text-[10px] tracking-widest text-neutral-500 border-b border-neutral-100">
                     <tr>
-                      <th className="p-3">Ref. Pedido</th>
-                      <th className="p-3">Cliente</th>
-                      <th className="p-3">Pasarela</th>
-                      <th className="p-3">Total</th>
-                      <th className="p-3">Estado</th>
+                      <th className="p-3.5">Ref. Pedido</th>
+                      <th className="p-3.5">Cliente</th>
+                      <th className="p-3.5">Pasarela</th>
+                      <th className="p-3.5">Total</th>
+                      <th className="p-3.5">Estado</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y">
+                  <tbody className="divide-y divide-neutral-100">
                     {orders.map(o => (
-                      <tr key={o.id} className="hover:bg-brand-surface/50">
-                        <td className="p-3 font-mono font-bold text-brand-black">{o.order_ref}</td>
-                        <td className="p-3">{o.customer_name}</td>
-                        <td className="p-3 text-neutral-500">{o.payment_gateway}</td>
-                        <td className="p-3 font-bold">{formatPrice(o.total)}</td>
-                        <td className="p-3">
-                          <span className="px-2 py-0.5 text-[9px] uppercase font-bold bg-neutral-900 text-white">
+                      <tr key={o.id} className="hover:bg-neutral-50/70 transition-colors">
+                        <td className="p-3.5 font-mono font-bold text-neutral-900">{o.order_ref}</td>
+                        <td className="p-3.5 font-semibold text-neutral-800">{o.customer_name}</td>
+                        <td className="p-3.5 text-neutral-500">{o.payment_gateway}</td>
+                        <td className="p-3.5 font-bold font-mono text-neutral-900">{formatPrice(o.total)}</td>
+                        <td className="p-3.5">
+                          <span className="px-2.5 py-1 text-[9px] uppercase font-bold bg-neutral-900 text-white rounded-full">
                             {o.status}
                           </span>
                         </td>
