@@ -22,6 +22,7 @@ const WhatsAppIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" 
 interface OrderKanbanBoardProps {
   orders: Order[];
   onOrderUpdated: () => void;
+  onEditOrder: (order: Order) => void;
 }
 
 const KANBAN_COLUMNS: { id: Order['status']; title: string; icon: string; badgeColor: string; accentColor: string }[] = [
@@ -32,7 +33,7 @@ const KANBAN_COLUMNS: { id: Order['status']; title: string; icon: string; badgeC
   { id: 'cancelled', title: 'Cancelados', icon: '❌', badgeColor: 'bg-neutral-100 text-neutral-600 border-neutral-300', accentColor: 'from-neutral-300 to-neutral-400' }
 ];
 
-export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOrderUpdated }) => {
+export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOrderUpdated, onEditOrder }) => {
   const { formatPrice } = useCurrency();
 
   // State for Editing Carrier/Tracking
@@ -142,12 +143,21 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
                       key={order.id}
                       className="bg-white/90 backdrop-blur-md border border-neutral-200/70 rounded-xl p-3.5 space-y-3 shadow-xs hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 group"
                     >
-                      {/* Card Header: Order Ref & Tag */}
+                      {/* Card Header: Order Ref, Edit Button & Tag */}
                       <div className="flex justify-between items-start border-b border-neutral-100 pb-2.5">
                         <div>
-                          <span className="font-mono font-bold text-brand-black text-xs block tracking-tight">
-                            {order.order_ref}
-                          </span>
+                          <div className="flex items-center gap-1.5">
+                            <span className="font-mono font-bold text-brand-black text-xs block tracking-tight">
+                              {order.order_ref}
+                            </span>
+                            <button
+                              onClick={() => onEditOrder(order)}
+                              className="p-1 hover:bg-neutral-100 rounded text-neutral-500 hover:text-black transition-colors"
+                              title="Editar Pedido completo (dirección, cliente, ítems)"
+                            >
+                              <Edit className="w-3 h-3" />
+                            </button>
+                          </div>
                           <span className="text-[9px] text-neutral-400 font-mono flex items-center gap-1 mt-0.5">
                             <Calendar className="w-2.5 h-2.5 text-neutral-400" /> {order.created_at}
                           </span>

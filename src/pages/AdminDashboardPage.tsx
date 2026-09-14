@@ -21,6 +21,7 @@ import { ProductRegistrationForm } from '../components/admin/ProductRegistration
 import { TeamManagementView } from '../components/admin/TeamManagementView';
 import { OrderRegistrationModal } from '../components/admin/OrderRegistrationModal';
 import { OrderKanbanBoard } from '../components/admin/OrderKanbanBoard';
+import { OrderEditModal } from '../components/admin/OrderEditModal';
 
 export const AdminDashboardPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<AdminTab>('overview');
@@ -36,6 +37,10 @@ export const AdminDashboardPage: React.FC = () => {
 
   // Manual Order Registration Modal State
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
+
+  // Full Order Editing State
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [editingOrderFull, setEditingOrderFull] = useState<Order | null>(null);
 
   // New Coupon Form State
   const [isCouponModalOpen, setIsCouponModalOpen] = useState(false);
@@ -448,9 +453,16 @@ export const AdminDashboardPage: React.FC = () => {
 
             {/* Render Kanban or Table */}
             {orderViewMode === 'kanban' ? (
-              <OrderKanbanBoard orders={filteredOrders} onOrderUpdated={loadData} />
+              <OrderKanbanBoard 
+                orders={filteredOrders} 
+                onOrderUpdated={loadData} 
+                onEditOrder={(order) => {
+                  setEditingOrderFull(order);
+                  setIsEditModalOpen(true);
+                }}
+              />
             ) : (
-              <div className="bg-white border border-brand-border overflow-x-auto">
+              <div className="bg-white border border-brand-border overflow-x-auto rounded-2xl shadow-xs">
                 <table className="w-full text-left text-xs">
                   <thead className="bg-brand-surface uppercase text-[10px] tracking-widest text-neutral-500 border-b">
                     <tr>
@@ -460,7 +472,7 @@ export const AdminDashboardPage: React.FC = () => {
                       <th className="p-3.5">Pasarela</th>
                       <th className="p-3.5">Total Pagado</th>
                       <th className="p-3.5">Estado Pedido</th>
-                      <th className="p-3.5 text-right">Actualizar Estado</th>
+                      <th className="p-3.5 text-right">Acciones & Estado</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y">
@@ -471,7 +483,7 @@ export const AdminDashboardPage: React.FC = () => {
                           <div className="font-bold">{o.customer_name}</div>
                           <div className="text-[10px] text-neutral-400">{o.customer_email} • {o.customer_phone}</div>
                           {o.customer_tag && (
-                            <span className="inline-block mt-1 px-1.5 py-0.5 text-[9px] font-bold bg-neutral-100 border text-neutral-800">
+                            <span className="inline-block mt-1 px-1.5 py-0.5 text-[9px] font-bold bg-neutral-100 border text-neutral-800 rounded">
                               {o.customer_tag}
                             </span>
                           )}
@@ -483,7 +495,7 @@ export const AdminDashboardPage: React.FC = () => {
                         <td className="p-3.5 font-medium text-neutral-600">{o.payment_gateway}</td>
                         <td className="p-3.5 font-bold text-brand-black">{formatPrice(o.total)}</td>
                         <td className="p-3.5">
-                          <span className={`px-2 py-0.5 text-[9px] uppercase font-bold tracking-wider ${
+                          <span className={`px-2 py-0.5 text-[9px] uppercase font-bold tracking-wider rounded-full ${
                             o.status === 'delivered' ? 'bg-emerald-900 text-white' :
                             o.status === 'shipped' ? 'bg-purple-900 text-white' : 
                             o.status === 'processing' ? 'bg-blue-900 text-white' : 'bg-neutral-200 text-black'
@@ -491,11 +503,20 @@ export const AdminDashboardPage: React.FC = () => {
                             {o.status}
                           </span>
                         </td>
-                        <td className="p-3.5 text-right space-x-1">
+                        <td className="p-3.5 text-right space-x-2">
+                          <button
+                            onClick={() => {
+                              setEditingOrderFull(o);
+                              setIsEditModalOpen(true);
+                            }}
+                            className="px-2.5 py-1 bg-neutral-100 hover:bg-black hover:text-white text-brand-black font-bold text-[10px] uppercase rounded-lg transition-colors border"
+                          >
+                            Editar ✏️
+                          </button>
                           <select 
                             value={o.status}
                             onChange={(e) => handleUpdateOrderStatus(o.id, e.target.value as any)}
-                            className="bg-brand-surface border border-brand-border py-1 px-2 text-xs font-bold focus:outline-none"
+                            className="bg-brand-surface border border-brand-border py-1 px-2 text-xs font-bold focus:outline-none rounded-lg"
                           >
                             <option value="pending">Pendiente</option>
                             <option value="processing">Procesando</option>
@@ -816,6 +837,18 @@ export const AdminDashboardPage: React.FC = () => {
           isOpen={isOrderModalOpen}
           onClose={() => setIsOrderModalOpen(false)}
           onSuccess={loadData}
+          products={products}
+        />
+
+        {/* MODAL EDITAR PEDIDO COMPLETO */}
+        <OrderEditModal 
+          isOpen={isEditModalOpen}
+          onClose={() => {
+            setIsEditModalOpen(false);
+            setEditingOrderFull(null);
+          }}
+          onSuccess={loadData}
+          order={editingOrderFull}
           products={products}
         />
 
