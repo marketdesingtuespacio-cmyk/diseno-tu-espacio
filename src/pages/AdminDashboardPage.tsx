@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { 
-  Package, 
   Calendar, 
   Trash2, 
   Edit3, 
   Search, 
   RefreshCw, 
-  ShoppingBag, 
-  TrendingUp, 
   PlusCircle,
   LayoutGrid,
   List,
@@ -26,6 +23,7 @@ import { OrderRegistrationModal } from '../components/admin/OrderRegistrationMod
 import { OrderKanbanBoard } from '../components/admin/OrderKanbanBoard';
 import { OrderEditModal } from '../components/admin/OrderEditModal';
 import { OrderFilterBar, OrderFilterState } from '../components/admin/OrderFilterBar';
+import { AnalyticsDashboard } from '../components/admin/AnalyticsDashboard';
 
 export const AdminDashboardPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<AdminTab>('overview');
@@ -257,11 +255,6 @@ export const AdminDashboardPage: React.FC = () => {
 
   const filteredOrdersTotalCOP = filteredOrders.reduce((acc, o) => acc + o.total, 0);
 
-  // Calculations
-  const totalProductStock = products.reduce((acc, p) => acc + p.stock, 0);
-  const totalSalesCOP = orders.reduce((acc, o) => acc + o.total, 0);
-  const totalAppointmentsCOP = appointments.reduce((acc, a) => acc + a.price, 0);
-
   return (
     <div className="flex h-screen bg-[#ECECED] overflow-hidden font-sans">
       
@@ -306,93 +299,13 @@ export const AdminDashboardPage: React.FC = () => {
           </button>
         </div>
 
-        {/* TAB 1: OVERVIEW ANALYTICS */}
+        {/* TAB 1: OVERVIEW ANALYTICS (Multi-Role Analytics & Seller Productivity) */}
         {activeTab === 'overview' && (
-          <div className="space-y-5">
-            
-            {/* KPI Cards Grid (Floating Rounded-3xl Cards) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="bg-white border border-neutral-200/60 p-6 rounded-[28px] space-y-2 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 block">Ventas de Productos</span>
-                <div className="text-2xl font-extrabold text-neutral-900 flex items-center justify-between">
-                  {formatPrice(totalSalesCOP)}
-                  <div className="p-2.5 bg-emerald-50 rounded-2xl">
-                    <TrendingUp className="w-5 h-5 text-emerald-600 stroke-[2]" />
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white border border-neutral-200/60 p-6 rounded-[28px] space-y-2 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 block">Total Pedidos</span>
-                <div className="text-2xl font-extrabold text-neutral-900 flex items-center justify-between">
-                  {orders.length}
-                  <div className="p-2.5 bg-neutral-100 rounded-2xl">
-                    <ShoppingBag className="w-5 h-5 text-neutral-700 stroke-[2]" />
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white border border-neutral-200/60 p-6 rounded-[28px] space-y-2 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 block">Productos en Stock</span>
-                <div className="text-2xl font-extrabold text-neutral-900 flex items-center justify-between">
-                  {totalProductStock} u.
-                  <div className="p-2.5 bg-neutral-100 rounded-2xl">
-                    <Package className="w-5 h-5 text-neutral-700 stroke-[2]" />
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white border border-neutral-200/60 p-6 rounded-[28px] space-y-2 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 block">Ingresos Asesorías</span>
-                <div className="text-2xl font-extrabold text-neutral-900 flex items-center justify-between">
-                  {formatPrice(totalAppointmentsCOP)}
-                  <div className="p-2.5 bg-amber-50 rounded-2xl">
-                    <Calendar className="w-5 h-5 text-amber-600 stroke-[2]" />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Recent Orders Section */}
-            <div className="bg-white p-6 border border-neutral-200/60 rounded-[28px] space-y-4 shadow-[0_4px_24px_rgba(0,0,0,0.03)] overflow-hidden">
-              <div className="flex justify-between items-center border-b border-neutral-100 pb-3">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-neutral-900">Últimos Pedidos Recibidos</h3>
-                <button onClick={() => setActiveTab('orders')} className="text-xs font-bold text-neutral-500 hover:text-black uppercase tracking-wider">
-                  Ver Todos →
-                </button>
-              </div>
-
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs">
-                  <thead className="bg-neutral-50 uppercase text-[10px] tracking-widest text-neutral-500 border-b border-neutral-100">
-                    <tr>
-                      <th className="p-3.5">Ref. Pedido</th>
-                      <th className="p-3.5">Cliente</th>
-                      <th className="p-3.5">Pasarela</th>
-                      <th className="p-3.5">Total</th>
-                      <th className="p-3.5">Estado</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-neutral-100">
-                    {orders.map(o => (
-                      <tr key={o.id} className="hover:bg-neutral-50/70 transition-colors">
-                        <td className="p-3.5 font-mono font-bold text-neutral-900">{o.order_ref}</td>
-                        <td className="p-3.5 font-semibold text-neutral-800">{o.customer_name}</td>
-                        <td className="p-3.5 text-neutral-500">{o.payment_gateway}</td>
-                        <td className="p-3.5 font-bold font-mono text-neutral-900">{formatPrice(o.total)}</td>
-                        <td className="p-3.5">
-                          <span className="px-2.5 py-1 text-[9px] uppercase font-bold bg-neutral-900 text-white rounded-full">
-                            {o.status}
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-          </div>
+          <AnalyticsDashboard 
+            orders={orders} 
+            products={products} 
+            appointments={appointments} 
+          />
         )}
 
         {/* TAB 2: PRODUCTS LIST & INVENTORY */}
