@@ -25,6 +25,7 @@ import { TeamManagementView } from '../components/admin/TeamManagementView';
 import { OrderRegistrationModal } from '../components/admin/OrderRegistrationModal';
 import { OrderKanbanBoard } from '../components/admin/OrderKanbanBoard';
 import { OrderEditModal } from '../components/admin/OrderEditModal';
+import { OrderFilterBar, OrderFilterState } from '../components/admin/OrderFilterBar';
 
 export const AdminDashboardPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<AdminTab>('overview');
@@ -37,6 +38,19 @@ export const AdminDashboardPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [orderViewMode, setOrderViewMode] = useState<'kanban' | 'table'>('kanban');
+
+  // Smart Order Filters State
+  const initialOrderFilters: OrderFilterState = {
+    searchQuery: '',
+    status: 'all',
+    carrier: 'all',
+    paymentGateway: 'all',
+    customerTag: 'all',
+    dateRange: 'all',
+    startDate: '',
+    endDate: ''
+  };
+  const [orderFilters, setOrderFilters] = useState<OrderFilterState>(initialOrderFilters);
 
   // Manual Order Registration Modal State
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
@@ -173,11 +187,75 @@ export const AdminDashboardPage: React.FC = () => {
     p.category.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const filteredOrders = orders.filter(o => 
-    o.order_ref.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    o.customer_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    o.customer_email.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredOrders = orders.filter(o => {
+    // 1. Free text search
+    if (orderFilters.searchQuery.trim()) {
+      const q = orderFilters.searchQuery.toLowerCase().trim();
+      const matchRef = o.order_ref.toLowerCase().includes(q);
+      const matchName = o.customer_name.toLowerCase().includes(q);
+      const matchEmail = (o.customer_email || '').toLowerCase().includes(q);
+      const matchPhone = (o.customer_phone || '').toLowerCase().includes(q);
+      const matchCarrier = (o.carrier || '').toLowerCase().includes(q);
+      const matchTracking = (o.tracking_number || '').toLowerCase().includes(q);
+      if (!matchRef && !matchName && !matchEmail && !matchPhone && !matchCarrier && !matchTracking) {
+        return false;
+      }
+    }
+
+    // 2. Status Filter
+    if (orderFilters.status !== 'all' && o.status !== orderFilters.status) {
+      return false;
+    }
+
+    // 3. Carrier Filter
+    if (orderFilters.carrier !== 'all') {
+      if (orderFilters.carrier === 'Flete Privado Luxe') {
+        if (!o.carrier || (!o.carrier.includes('Flete Privado') && o.carrier !== 'Flete Privado Luxe')) return false;
+      } else if (o.carrier !== orderFilters.carrier) {
+        return false;
+      }
+    }
+
+    // 4. Payment Gateway Filter
+    if (orderFilters.paymentGateway !== 'all') {
+      if (orderFilters.paymentGateway === 'Transferencia Directa Bancaria') {
+        if (!o.payment_gateway?.includes('Transferencia') && !o.payment_gateway?.includes('Bancaria')) return false;
+      } else if (o.payment_gateway !== orderFilters.paymentGateway) {
+        return false;
+      }
+    }
+
+    // 5. Customer Tag Filter
+    if (orderFilters.customerTag !== 'all' && o.customer_tag !== orderFilters.customerTag) {
+      return false;
+    }
+
+    // 6. Date Range Filter
+    if (orderFilters.dateRange !== 'all') {
+      const orderDateStr = o.created_at.split(' ')[0];
+      const now = new Date();
+
+      if (orderFilters.dateRange === 'today') {
+        const todayStr = new Date().toISOString().split('T')[0];
+        if (!orderDateStr.startsWith(todayStr)) return false;
+      } else if (orderFilters.dateRange === '7days') {
+        const past = new Date();
+        past.setDate(now.getDate() - 7);
+        if (new Date(orderDateStr) < past) return false;
+      } else if (orderFilters.dateRange === '30days') {
+        const past = new Date();
+        past.setDate(now.getDate() - 30);
+        if (new Date(orderDateStr) < past) return false;
+      } else if (orderFilters.dateRange === 'custom') {
+        if (orderFilters.startDate && orderDateStr < orderFilters.startDate) return false;
+        if (orderFilters.endDate && orderDateStr > orderFilters.endDate) return false;
+      }
+    }
+
+    return true;
+  });
+
+  const filteredOrdersTotalCOP = filteredOrders.reduce((acc, o) => acc + o.total, 0);
 
   // Calculations
   const totalProductStock = products.reduce((acc, p) => acc + p.stock, 0);
@@ -453,6 +531,16 @@ export const AdminDashboardPage: React.FC = () => {
                 </button>
               </div>
             </div>
+
+            {/* Smart Filters Bar */}
+            <OrderFilterBar
+              filters={orderFilters}
+              onFilterChange={setOrderFilters}
+              onResetFilters={() => setOrderFilters(initialOrderFilters)}
+              filteredCount={filteredOrders.length}
+              totalCount={orders.length}
+              filteredTotalCOP={filteredOrdersTotalCOP}
+            />
 
             {/* Render Kanban or Table */}
             {orderViewMode === 'kanban' ? (
