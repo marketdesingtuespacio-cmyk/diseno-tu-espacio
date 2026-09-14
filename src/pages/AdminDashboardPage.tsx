@@ -177,7 +177,7 @@ export const AdminDashboardPage: React.FC = () => {
   const totalAppointmentsCOP = appointments.reduce((acc, a) => acc + a.price, 0);
 
   return (
-    <div className="flex h-screen bg-brand-surface overflow-hidden font-sans">
+    <div className="flex h-screen bg-gradient-to-br from-[#FAF9F6] via-[#F4F3EE] to-[#EBE9E4] overflow-hidden font-sans">
       
       {/* LEFT SIDEBAR NAVIGATION */}
       <AdminSidebar 
@@ -193,17 +193,17 @@ export const AdminDashboardPage: React.FC = () => {
       />
 
       {/* RIGHT MAIN WORKSPACE AREA */}
-      <main className="flex-1 overflow-y-auto p-8 space-y-8">
+      <main className="flex-1 overflow-y-auto p-8 space-y-6">
         
-        {/* Top Action Bar */}
-        <div className="flex justify-between items-center pb-4 border-b border-brand-border bg-white p-4 shadow-subtle">
+        {/* Top Action Bar (Glassmorphic Header) */}
+        <div className="flex justify-between items-center bg-white/70 backdrop-blur-xl border border-white/80 p-4 rounded-2xl shadow-xs">
           <div className="flex items-center gap-3">
-            <span className="text-xs uppercase font-bold text-neutral-400">Panel Activo:</span>
-            <span className="text-sm font-bold uppercase tracking-wider text-brand-black">
+            <span className="text-[10px] uppercase font-bold tracking-widest text-neutral-400 bg-black/5 px-2.5 py-1 rounded-md">Panel Activo:</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-brand-black">
               {activeTab === 'overview' && '📊 Resumen General & Analíticas'}
               {activeTab === 'products' && '📦 Inventario & Catálogo Oficial'}
               {activeTab === 'add-product' && '➕ Alta & Registro de Producto'}
-              {activeTab === 'orders' && '🛍️ Pedidos & Facturación'}
+              {activeTab === 'orders' && '🛍️ Pedidos, Kanban & Facturación'}
               {activeTab === 'appointments' && '📅 Citas de Interiorismo & Asesoría'}
               {activeTab === 'coupons' && '🏷️ Cupones & Descuentos'}
               {activeTab === 'team' && '👥 Gestión de Equipo & Permisos'}
@@ -214,47 +214,55 @@ export const AdminDashboardPage: React.FC = () => {
 
           <button 
             onClick={loadData}
-            className="text-xs font-bold uppercase tracking-wider border border-brand-border px-3.5 py-1.5 hover:bg-brand-surface flex items-center gap-1.5 text-neutral-700"
+            className="text-xs font-bold uppercase tracking-wider border border-neutral-300/80 bg-white/80 hover:bg-white rounded-xl px-4 py-2 flex items-center gap-2 text-neutral-700 shadow-2xs transition-all"
           >
-            <RefreshCw className="w-3.5 h-3.5" /> Actualizar Datos
+            <RefreshCw className="w-3.5 h-3.5 text-brand-black" /> Actualizar Datos
           </button>
         </div>
 
         {/* TAB 1: OVERVIEW ANALYTICS */}
         {activeTab === 'overview' && (
-          <div className="space-y-8">
+          <div className="space-y-6">
             
-            {/* KPI Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white p-6 border border-brand-border space-y-2 shadow-subtle">
+            {/* KPI Cards Grid (Glassmorphism) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              <div className="bg-white/80 backdrop-blur-md border border-white/90 p-6 rounded-2xl space-y-2 shadow-xs hover:shadow-md transition-all duration-300">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 block">Ventas de Productos</span>
-                <div className="text-2xl font-bold text-brand-black flex items-center justify-between">
+                <div className="text-2xl font-bold font-mono text-brand-black flex items-center justify-between">
                   {formatPrice(totalSalesCOP)}
-                  <TrendingUp className="w-5 h-5 text-emerald-600 stroke-[1.5]" />
+                  <div className="p-2 bg-emerald-50 rounded-xl">
+                    <TrendingUp className="w-5 h-5 text-emerald-600 stroke-[2]" />
+                  </div>
                 </div>
               </div>
 
-              <div className="bg-white p-6 border border-brand-border space-y-2 shadow-subtle">
+              <div className="bg-white/80 backdrop-blur-md border border-white/90 p-6 rounded-2xl space-y-2 shadow-xs hover:shadow-md transition-all duration-300">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 block">Total Pedidos</span>
-                <div className="text-2xl font-bold text-brand-black flex items-center justify-between">
+                <div className="text-2xl font-bold font-mono text-brand-black flex items-center justify-between">
                   {orders.length}
-                  <ShoppingBag className="w-5 h-5 text-neutral-400 stroke-[1.5]" />
+                  <div className="p-2 bg-neutral-100 rounded-xl">
+                    <ShoppingBag className="w-5 h-5 text-neutral-700 stroke-[2]" />
+                  </div>
                 </div>
               </div>
 
-              <div className="bg-white p-6 border border-brand-border space-y-2 shadow-subtle">
+              <div className="bg-white/80 backdrop-blur-md border border-white/90 p-6 rounded-2xl space-y-2 shadow-xs hover:shadow-md transition-all duration-300">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 block">Productos en Stock</span>
-                <div className="text-2xl font-bold text-brand-black flex items-center justify-between">
+                <div className="text-2xl font-bold font-mono text-brand-black flex items-center justify-between">
                   {totalProductStock} u.
-                  <Package className="w-5 h-5 text-neutral-400 stroke-[1.5]" />
+                  <div className="p-2 bg-neutral-100 rounded-xl">
+                    <Package className="w-5 h-5 text-neutral-700 stroke-[2]" />
+                  </div>
                 </div>
               </div>
 
-              <div className="bg-white p-6 border border-brand-border space-y-2 shadow-subtle">
+              <div className="bg-white/80 backdrop-blur-md border border-white/90 p-6 rounded-2xl space-y-2 shadow-xs hover:shadow-md transition-all duration-300">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 block">Ingresos Asesorías</span>
-                <div className="text-2xl font-bold text-brand-black flex items-center justify-between">
+                <div className="text-2xl font-bold font-mono text-brand-black flex items-center justify-between">
                   {formatPrice(totalAppointmentsCOP)}
-                  <Calendar className="w-5 h-5 text-neutral-400 stroke-[1.5]" />
+                  <div className="p-2 bg-amber-50 rounded-xl">
+                    <Calendar className="w-5 h-5 text-amber-600 stroke-[2]" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -398,22 +406,22 @@ export const AdminDashboardPage: React.FC = () => {
         {/* TAB 4: ORDERS & KANBAN MANAGEMENT */}
         {activeTab === 'orders' && (
           <div className="space-y-6">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white p-4 border border-brand-border gap-4">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white/80 backdrop-blur-md border border-white/90 p-5 rounded-2xl shadow-xs gap-4">
               <div>
                 <h3 className="text-xs font-bold uppercase tracking-widest text-brand-black">
                   Gestión Posventa, Kanban & Facturación
                 </h3>
-                <p className="text-[11px] text-neutral-500 font-light">
-                  Administra las etapas de producción, guías de despacho, tags de cliente y envía actualizaciones por WhatsApp.
+                <p className="text-[11px] text-neutral-500 font-light mt-0.5">
+                  Administra las etapas de producción, guías de despacho, tags de cliente y envía actualizaciones posventa por WhatsApp.
                 </p>
               </div>
 
               <div className="flex items-center gap-3 shrink-0">
                 {/* View Switcher Toggle */}
-                <div className="flex border border-brand-border bg-brand-surface p-1">
+                <div className="flex border border-neutral-200 bg-neutral-100/80 p-1 rounded-xl">
                   <button 
                     onClick={() => setOrderViewMode('kanban')}
-                    className={`px-3 py-1 text-[11px] font-bold uppercase transition-all ${
+                    className={`px-3 py-1.5 rounded-lg text-[11px] font-bold uppercase transition-all ${
                       orderViewMode === 'kanban' ? 'bg-brand-black text-white shadow-xs' : 'text-neutral-600 hover:text-black'
                     }`}
                   >
@@ -421,7 +429,7 @@ export const AdminDashboardPage: React.FC = () => {
                   </button>
                   <button 
                     onClick={() => setOrderViewMode('table')}
-                    className={`px-3 py-1 text-[11px] font-bold uppercase transition-all ${
+                    className={`px-3 py-1.5 rounded-lg text-[11px] font-bold uppercase transition-all ${
                       orderViewMode === 'table' ? 'bg-brand-black text-white shadow-xs' : 'text-neutral-600 hover:text-black'
                     }`}
                   >
@@ -431,7 +439,7 @@ export const AdminDashboardPage: React.FC = () => {
 
                 <button 
                   onClick={() => setIsOrderModalOpen(true)}
-                  className="bg-brand-black text-white text-xs font-bold uppercase tracking-widest py-2 px-4 hover:bg-neutral-800 flex items-center gap-2 shadow-subtle"
+                  className="bg-brand-black text-white text-xs font-bold uppercase tracking-widest py-2.5 px-5 rounded-xl hover:bg-neutral-800 flex items-center gap-2 shadow-sm transition-all"
                 >
                   <PlusCircle className="w-4 h-4 text-amber-300" /> Registrar Pedido
                 </button>
