@@ -296,10 +296,10 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
                 href={getWhatsAppLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="py-2.5 px-5 bg-[#25D366] hover:bg-[#1EBE57] text-white font-extrabold text-xs flex items-center gap-2 rounded-full shadow-lg shadow-emerald-500/20 transition-all cursor-pointer"
+                className="py-2.5 px-5 bg-[#25D366] hover:bg-[#1EBE57] text-white font-extrabold text-xs flex items-center gap-2 rounded-full shadow-lg shadow-emerald-500/20 transition-all cursor-pointer whitespace-nowrap"
               >
-                <WhatsAppIcon className="w-4 h-4 fill-white" />
-                <span>Enviar estado del pedido</span>
+                <WhatsAppIcon className="w-4 h-4 fill-white shrink-0" />
+                <span className="whitespace-nowrap">Enviar estado del pedido</span>
               </a>
             </div>
           </div>

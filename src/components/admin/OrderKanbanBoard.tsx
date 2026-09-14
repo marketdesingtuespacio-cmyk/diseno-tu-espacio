@@ -293,10 +293,10 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
                             </div>
                           )}
 
-                          {/* Price & WhatsApp Button */}
-                          <div className="flex justify-between items-center pt-1.5 border-t border-neutral-100">
-                            <div>
-                              <span className="text-[8.5px] uppercase font-bold text-neutral-400 block tracking-wider">Total</span>
+                          {/* Price & Single-Line WhatsApp Button */}
+                          <div className="pt-2 border-t border-neutral-100 space-y-2">
+                            <div className="flex justify-between items-baseline">
+                              <span className="text-[9px] uppercase font-bold text-neutral-400 tracking-wider">Total</span>
                               <span className="font-extrabold text-xs text-neutral-900">
                                 {formatPrice(order.total)}
                               </span>
@@ -307,11 +307,11 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => e.stopPropagation()}
-                              className="py-1.5 px-3 bg-[#25D366] hover:bg-[#1EBE57] active:scale-95 text-white font-extrabold text-[10px] flex items-center gap-1.5 rounded-full shadow-2xs transition-all cursor-pointer"
+                              className="w-full py-1.5 px-3 bg-[#25D366] hover:bg-[#1EBE57] active:scale-95 text-white font-extrabold text-[10px] flex items-center justify-center gap-1.5 rounded-full shadow-2xs transition-all cursor-pointer whitespace-nowrap"
                               title="Enviar estado por WhatsApp"
                             >
                               <WhatsAppIcon className="w-3.5 h-3.5 fill-white shrink-0" />
-                              <span>Enviar estado del pedido</span>
+                              <span className="whitespace-nowrap">Enviar estado del pedido</span>
                             </a>
                           </div>
 
