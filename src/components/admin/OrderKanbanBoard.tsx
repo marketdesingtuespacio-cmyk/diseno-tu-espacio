@@ -175,11 +175,11 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
                   <h4 className="font-bold uppercase tracking-wider text-neutral-900 text-[10.5px] flex items-center gap-1.5">
                     <ColIcon className="w-3.5 h-3.5 shrink-0 text-neutral-700" /> {col.title}
                   </h4>
-                  <p className="text-[10px] text-neutral-500 font-mono mt-0.5 font-medium">
+                  <p className="text-[10px] text-neutral-500 font-bold mt-0.5">
                     {formatPrice(colTotalCOP)}
                   </p>
                 </div>
-                <span className="w-5 h-5 flex items-center justify-center rounded-full bg-neutral-900 text-white font-mono text-[9.5px] font-bold shadow-xs">
+                <span className="w-5 h-5 flex items-center justify-center rounded-full bg-neutral-900 text-white text-[9.5px] font-extrabold shadow-xs">
                   {colOrders.length}
                 </span>
               </div>
@@ -208,13 +208,13 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
                         <div className={`${col.headerBg} ${col.headerTextColor} px-3.5 py-1.5 flex justify-between items-center font-semibold text-xs`}>
                           <div className="flex items-center gap-1.5">
                             <GripVertical className="w-3 h-3 opacity-60" />
-                            <span className="font-mono font-extrabold tracking-wider text-[11px]">
+                            <span className="font-extrabold tracking-wider text-[11px]">
                               {order.order_ref}
                             </span>
                           </div>
 
                           <div className="flex items-center gap-2">
-                            <span className="text-[9.5px] font-mono opacity-90 font-medium">
+                            <span className="text-[9.5px] opacity-90 font-medium">
                               {order.created_at}
                             </span>
                             
@@ -281,7 +281,7 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
                               />
                               <div className="truncate flex-1">
                                 <p className="font-bold text-neutral-900 truncate">{order.items[0].name}</p>
-                                <p className="text-neutral-500 font-mono text-[9px]">
+                                <p className="text-neutral-500 text-[9px] font-medium">
                                   {order.items[0].quantity} u. • {formatPrice(order.items[0].price)}
                                 </p>
                               </div>
@@ -293,11 +293,11 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
                             </div>
                           )}
 
-                          {/* Price & Lowercase WhatsApp Tracking Pill Button */}
+                          {/* Price & WhatsApp Button */}
                           <div className="flex justify-between items-center pt-1.5 border-t border-neutral-100">
                             <div>
                               <span className="text-[8.5px] uppercase font-bold text-neutral-400 block tracking-wider">Total</span>
-                              <span className="font-mono font-extrabold text-xs text-neutral-900">
+                              <span className="font-extrabold text-xs text-neutral-900">
                                 {formatPrice(order.total)}
                               </span>
                             </div>
@@ -307,11 +307,11 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => e.stopPropagation()}
-                              className="py-1 px-2.5 bg-[#25D366] hover:bg-[#1EBE57] active:scale-95 text-white font-extrabold text-[9.5px] lowercase tracking-wide flex items-center gap-1.5 rounded-full shadow-2xs transition-all cursor-pointer"
-                              title="Enviar actualización por WhatsApp"
+                              className="py-1.5 px-3 bg-[#25D366] hover:bg-[#1EBE57] active:scale-95 text-white font-extrabold text-[10px] flex items-center gap-1.5 rounded-full shadow-2xs transition-all cursor-pointer"
+                              title="Enviar estado por WhatsApp"
                             >
-                              <WhatsAppIcon className="w-3 h-3 fill-white shrink-0" />
-                              <span>enviar tracking por whatsapp</span>
+                              <WhatsAppIcon className="w-3.5 h-3.5 fill-white shrink-0" />
+                              <span>Enviar estado del pedido</span>
                             </a>
                           </div>
 

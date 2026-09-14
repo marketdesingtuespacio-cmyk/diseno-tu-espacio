@@ -236,7 +236,7 @@ export const AdminDashboardPage: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="bg-white border border-neutral-200/60 p-6 rounded-[28px] space-y-2 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 block">Ventas de Productos</span>
-                <div className="text-2xl font-bold font-mono text-neutral-900 flex items-center justify-between">
+                <div className="text-2xl font-extrabold text-neutral-900 flex items-center justify-between">
                   {formatPrice(totalSalesCOP)}
                   <div className="p-2.5 bg-emerald-50 rounded-2xl">
                     <TrendingUp className="w-5 h-5 text-emerald-600 stroke-[2]" />
@@ -246,7 +246,7 @@ export const AdminDashboardPage: React.FC = () => {
 
               <div className="bg-white border border-neutral-200/60 p-6 rounded-[28px] space-y-2 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 block">Total Pedidos</span>
-                <div className="text-2xl font-bold font-mono text-neutral-900 flex items-center justify-between">
+                <div className="text-2xl font-extrabold text-neutral-900 flex items-center justify-between">
                   {orders.length}
                   <div className="p-2.5 bg-neutral-100 rounded-2xl">
                     <ShoppingBag className="w-5 h-5 text-neutral-700 stroke-[2]" />
@@ -256,7 +256,7 @@ export const AdminDashboardPage: React.FC = () => {
 
               <div className="bg-white border border-neutral-200/60 p-6 rounded-[28px] space-y-2 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 block">Productos en Stock</span>
-                <div className="text-2xl font-bold font-mono text-neutral-900 flex items-center justify-between">
+                <div className="text-2xl font-extrabold text-neutral-900 flex items-center justify-between">
                   {totalProductStock} u.
                   <div className="p-2.5 bg-neutral-100 rounded-2xl">
                     <Package className="w-5 h-5 text-neutral-700 stroke-[2]" />
@@ -266,7 +266,7 @@ export const AdminDashboardPage: React.FC = () => {
 
               <div className="bg-white border border-neutral-200/60 p-6 rounded-[28px] space-y-2 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 block">Ingresos Asesorías</span>
-                <div className="text-2xl font-bold font-mono text-neutral-900 flex items-center justify-between">
+                <div className="text-2xl font-extrabold text-neutral-900 flex items-center justify-between">
                   {formatPrice(totalAppointmentsCOP)}
                   <div className="p-2.5 bg-amber-50 rounded-2xl">
                     <Calendar className="w-5 h-5 text-amber-600 stroke-[2]" />
@@ -473,7 +473,7 @@ export const AdminDashboardPage: React.FC = () => {
                       <th className="p-3.5">Cliente</th>
                       <th className="p-3.5">Transportadora / Guía</th>
                       <th className="p-3.5">Estado</th>
-                      <th className="p-3.5 font-mono text-right">Total</th>
+                      <th className="p-3.5 font-bold text-right">Total</th>
                       <th className="p-3.5 text-right">Acciones</th>
                     </tr>
                   </thead>
@@ -481,7 +481,7 @@ export const AdminDashboardPage: React.FC = () => {
                     {filteredOrders.map(o => (
                       <tr key={o.id} className="hover:bg-neutral-50/80 transition-colors">
                         <td className="p-3.5 font-bold">
-                          <span className="font-mono text-neutral-900 block">{o.order_ref}</span>
+                          <span className="text-neutral-900 block font-extrabold">{o.order_ref}</span>
                           <span className="text-[10px] text-neutral-400 font-normal">{o.created_at}</span>
                         </td>
                         <td className="p-3.5">
@@ -502,7 +502,7 @@ export const AdminDashboardPage: React.FC = () => {
                             {o.status}
                           </span>
                         </td>
-                        <td className="p-3.5 font-mono font-bold text-right text-neutral-900">
+                        <td className="p-3.5 font-extrabold text-right text-neutral-900">
                           {formatPrice(o.total)}
                         </td>
                         <td className="p-3.5 text-right space-x-2">

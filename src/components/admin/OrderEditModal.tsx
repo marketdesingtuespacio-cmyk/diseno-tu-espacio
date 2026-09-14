@@ -187,16 +187,16 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
             </div>
             <div>
               <h2 className="text-sm font-bold uppercase tracking-widest text-white flex items-center gap-2">
-                Editar Pedido — <span className="font-mono text-amber-300">{order.order_ref}</span>
+                Editar Pedido — <span className="text-amber-300 font-extrabold">{order.order_ref}</span>
               </h2>
-              <p className="text-[10px] text-neutral-400 font-light">
+              <p className="text-[11px] text-neutral-400 font-medium mt-0.5">
                 Modifica dirección de entrega, cliente, guía de despacho, ítems o estado de la orden
               </p>
             </div>
           </div>
           <button 
             onClick={onClose}
-            className="p-2 hover:bg-white/10 transition-colors text-neutral-300 rounded-xl"
+            className="p-2 text-neutral-400 hover:text-white rounded-full transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -208,7 +208,7 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
           <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-5 space-y-4 shadow-xs">
             <div className="flex justify-between items-center border-b border-neutral-100 pb-3">
               <h3 className="font-bold uppercase tracking-wider text-brand-black text-xs flex items-center gap-2">
-                <UserCheck className="w-4 h-4 text-brand-black" /> 1. Datos del Cliente & Etiqueta CRM
+                <UserCheck className="w-4 h-4 text-brand-black" /> 1. Datos del Cliente & Canal CRM
               </h3>
             </div>
 
@@ -220,7 +220,7 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
                   required
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
-                  className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2.5 font-bold text-brand-black text-xs"
+                  className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2.5 text-xs font-bold"
                 />
               </div>
 
@@ -231,7 +231,7 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
                   required
                   value={customerPhone}
                   onChange={(e) => setCustomerPhone(e.target.value)}
-                  className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2.5 font-mono font-bold text-xs"
+                  className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2.5 font-bold text-xs"
                 />
               </div>
 
@@ -326,7 +326,7 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
                   placeholder="Ej. 9812739182"
                   value={trackingNumber}
                   onChange={(e) => setTrackingNumber(e.target.value)}
-                  className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2.5 text-xs font-mono font-bold"
+                  className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2.5 text-xs font-bold"
                 />
               </div>
             </div>
@@ -370,7 +370,7 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
                       <img src={p.images[0]} alt="" className="w-7 h-8 object-cover rounded" />
                       <div className="truncate text-[10px]">
                         <p className="font-bold truncate">{p.name}</p>
-                        <p className="font-mono">{formatPrice(p.price)}</p>
+                        <p className="font-semibold">{formatPrice(p.price)}</p>
                       </div>
                     </div>
                   ))}
@@ -392,7 +392,7 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
                         <img src={item.image} alt={item.name} className="w-10 h-12 object-cover rounded-lg border bg-white shadow-2xs" />
                         <div>
                           <p className="font-bold text-brand-black">{item.name}</p>
-                          <p className="text-[10px] text-neutral-500 font-mono">{formatPrice(item.price)} u.</p>
+                          <p className="text-[10px] text-neutral-500 font-medium">{formatPrice(item.price)} u.</p>
                           {productObj?.colors && productObj.colors.length > 0 && (
                             <div className="flex items-center gap-1.5 mt-1">
                               <span className="text-[10px] text-neutral-400">Acabado:</span>
@@ -419,7 +419,7 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
                           >
                             -
                           </button>
-                          <span className="px-3 font-mono font-bold text-xs">{item.quantity}</span>
+                          <span className="px-3 font-bold text-xs">{item.quantity}</span>
                           <button 
                             type="button"
                             onClick={() => handleUpdateQuantity(idx, 1)}
@@ -429,7 +429,7 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
                           </button>
                         </div>
 
-                        <div className="w-24 text-right font-mono font-bold text-brand-black">
+                        <div className="w-24 text-right font-bold text-brand-black">
                           {formatPrice(item.price * item.quantity)}
                         </div>
 
@@ -457,7 +457,7 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
                   step="5000"
                   value={shippingCost}
                   onChange={(e) => setShippingCost(Number(e.target.value))}
-                  className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2.5 font-mono font-bold text-xs"
+                  className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2.5 font-bold text-xs"
                 />
               </div>
 
@@ -469,13 +469,13 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
                   step="10000"
                   value={discount}
                   onChange={(e) => setDiscount(Number(e.target.value))}
-                  className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2.5 font-mono font-bold text-xs text-red-600"
+                  className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2.5 font-bold text-xs text-red-600"
                 />
               </div>
 
               <div className="bg-neutral-950 text-white p-3.5 rounded-xl flex flex-col justify-between shadow-md">
                 <span className="text-[10px] uppercase tracking-widest text-neutral-400 font-bold">Total Final Actualizado</span>
-                <span className="text-xl font-bold font-mono text-amber-300">{formatPrice(grandTotal)}</span>
+                <span className="text-xl font-extrabold text-amber-300">{formatPrice(grandTotal)}</span>
               </div>
             </div>
           </div>

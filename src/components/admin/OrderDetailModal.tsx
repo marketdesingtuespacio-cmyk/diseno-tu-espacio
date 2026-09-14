@@ -84,7 +84,7 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="text-base font-extrabold font-mono tracking-wider">
+                <h2 className="text-base font-extrabold tracking-wider">
                   {order.order_ref}
                 </h2>
                 <span className={`px-2.5 py-0.5 text-[10px] font-bold rounded-full uppercase border ${
@@ -96,7 +96,7 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
                   {order.status}
                 </span>
               </div>
-              <p className="text-[11px] text-neutral-400 font-mono mt-0.5 flex items-center gap-1">
+              <p className="text-[11px] text-neutral-400 mt-0.5 flex items-center gap-1 font-medium">
                 <Calendar className="w-3 h-3" /> Fecha de Registro: {order.created_at}
               </p>
             </div>
@@ -203,11 +203,11 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
                 <p className="font-extrabold text-sm text-neutral-900">{order.customer_name}</p>
                 <div className="flex items-center gap-2 text-neutral-600">
                   <Phone className="w-3 h-3 text-neutral-400" />
-                  <span className="font-mono font-semibold">{order.customer_phone}</span>
+                  <span className="font-semibold">{order.customer_phone}</span>
                 </div>
                 <div className="flex items-center gap-2 text-neutral-600">
                   <Mail className="w-3 h-3 text-neutral-400" />
-                  <span className="font-mono">{order.customer_email || 'Sin registrar'}</span>
+                  <span>{order.customer_email || 'Sin registrar'}</span>
                 </div>
               </div>
             </div>
@@ -235,7 +235,7 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
                 </div>
                 <div className="flex justify-between">
                   <span className="text-neutral-400 font-medium">Guía de Rastreo:</span>
-                  <span className="font-mono font-bold text-neutral-900">{order.tracking_number || 'En asignación'}</span>
+                  <span className="font-bold text-neutral-900">{order.tracking_number || 'En asignación'}</span>
                 </div>
               </div>
             </div>
@@ -263,12 +263,12 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
                     <img src={item.image} alt={item.name} className="w-11 h-12 object-cover rounded-xl border bg-white shadow-2xs shrink-0" />
                     <div>
                       <p className="font-extrabold text-neutral-900 text-xs">{item.name}</p>
-                      <p className="text-[10px] text-neutral-500 font-mono">
+                      <p className="text-[10px] text-neutral-500 font-medium">
                         {item.quantity} unidad{item.quantity > 1 ? 'es' : ''} • {formatPrice(item.price)} {item.color ? `(${item.color})` : ''}
                       </p>
                     </div>
                   </div>
-                  <span className="font-mono font-bold text-neutral-900 text-xs">
+                  <span className="font-extrabold text-neutral-900 text-xs">
                     {formatPrice(item.price * item.quantity)}
                   </span>
                 </div>
@@ -282,13 +282,13 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
               <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 flex items-center gap-1.5">
                 <CreditCard className="w-3.5 h-3.5 text-amber-300" /> Pasarela: {order.payment_gateway || 'Transferencia Directa'}
               </span>
-              <span className="text-[10px] font-mono text-neutral-400">{order.payment_method || 'Pago Realizado'}</span>
+              <span className="text-[10px] text-neutral-400 font-medium">{order.payment_method || 'Pago Realizado'}</span>
             </div>
 
             <div className="flex justify-between items-end pt-1">
               <div>
                 <span className="text-[10px] uppercase font-bold text-neutral-400 tracking-wider block">Total Liquidación</span>
-                <span className="font-mono font-extrabold text-xl text-white tracking-tight">{formatPrice(order.total)}</span>
+                <span className="font-extrabold text-xl text-white tracking-tight">{formatPrice(order.total)}</span>
               </div>
 
               {/* Direct WhatsApp Action Pill inside Modal */}
@@ -296,10 +296,10 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
                 href={getWhatsAppLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="py-2.5 px-5 bg-[#25D366] hover:bg-[#1EBE57] text-white font-extrabold text-xs tracking-wider flex items-center gap-2 rounded-full shadow-lg shadow-emerald-500/20 transition-all cursor-pointer"
+                className="py-2.5 px-5 bg-[#25D366] hover:bg-[#1EBE57] text-white font-extrabold text-xs flex items-center gap-2 rounded-full shadow-lg shadow-emerald-500/20 transition-all cursor-pointer"
               >
                 <WhatsAppIcon className="w-4 h-4 fill-white" />
-                <span>enviar tracking por whatsapp</span>
+                <span>Enviar estado del pedido</span>
               </a>
             </div>
           </div>
