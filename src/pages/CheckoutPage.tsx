@@ -22,15 +22,15 @@ const PAYMENT_PROVIDERS: PaymentProviderConfig[] = [
     name: 'Wompi Colombia (Bancolombia)',
     subtitle: 'Pago local seguro en Colombia: Tarjetas, PSE, Nequi y Daviplata',
     badge: 'Recomendado Colombia',
-    icons: ['💳', '🏦', '📱'],
+    icons: ['Tarjetas', 'PSE', 'Nequi'],
     methods: ['Tarjeta de Crédito / Débito', 'PSE (Débito Bancario)', 'Nequi / Daviplata', 'Botón Bancolombia']
   },
   {
     id: 'mercadopago',
     name: 'Mercado Pago',
     subtitle: 'Paga con tu cuenta de Mercado Pago o tarjetas en cuotas sin interés',
-    badge: 'Popula América Latina',
-    icons: ['🤝', '💳'],
+    badge: 'Popular América Latina',
+    icons: ['Mercado Pago', 'Cuotas'],
     methods: ['Cuenta Mercado Pago', 'Tarjetas en Cuotas', 'Efecty / Puntos de Pago']
   },
   {
@@ -38,7 +38,7 @@ const PAYMENT_PROVIDERS: PaymentProviderConfig[] = [
     name: 'Stripe International',
     subtitle: 'Pago internacional seguro para tarjetas globales y Apple/Google Pay',
     badge: 'Global (USD/EUR)',
-    icons: ['🌐', '💳', ''],
+    icons: ['Global', 'Apple Pay', 'Google Pay'],
     methods: ['Visa / Mastercard / AMEX Global', 'Apple Pay', 'Google Pay']
   },
   {
@@ -46,7 +46,7 @@ const PAYMENT_PROVIDERS: PaymentProviderConfig[] = [
     name: 'PSE (Pagos Seguros en Línea)',
     subtitle: 'Transferencia directa desde cualquier banco colombiano',
     badge: 'Débito Bancario',
-    icons: ['🏦'],
+    icons: ['PSE Bancos'],
     methods: ['Cualquier Banco de Colombia (Bancolombia, Davivienda, BBVA, etc.)']
   }
 ];
@@ -344,7 +344,7 @@ export const CheckoutPage: React.FC = () => {
                               : 'bg-white border-brand-border text-neutral-700 hover:border-black'
                           }`}
                         >
-                          ✓ {method}
+                          {selectedSubMethod === method ? `• ${method}` : method}
                         </button>
                       ))}
                     </div>

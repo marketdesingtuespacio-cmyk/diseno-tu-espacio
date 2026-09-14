@@ -6,7 +6,16 @@ import {
   Edit, 
   Check, 
   X,
-  AlertTriangle
+  AlertTriangle,
+  Clock,
+  Package,
+  CheckCircle2,
+  XCircle,
+  Crown,
+  Ruler,
+  Home,
+  Building2,
+  Edit3
 } from 'lucide-react';
 import { Order } from '../../types';
 import { useCurrency } from '../../context/CurrencyContext';
@@ -29,7 +38,7 @@ interface OrderKanbanBoardProps {
 const KANBAN_COLUMNS: { 
   id: Order['status']; 
   title: string; 
-  icon: string; 
+  icon: React.ElementType; 
   headerBg: string; 
   headerTextColor: string;
   pillBg: string;
@@ -37,7 +46,7 @@ const KANBAN_COLUMNS: {
   { 
     id: 'pending', 
     title: 'Pendientes por Verificar', 
-    icon: '🕒', 
+    icon: Clock, 
     headerBg: 'bg-[#E5FF53]', // Lime Yellow from Image 2
     headerTextColor: 'text-neutral-950',
     pillBg: 'bg-yellow-100 text-yellow-900 border-yellow-300' 
@@ -45,7 +54,7 @@ const KANBAN_COLUMNS: {
   { 
     id: 'processing', 
     title: 'En Preparación / Taller', 
-    icon: '📦', 
+    icon: Package, 
     headerBg: 'bg-[#5B75FF]', // Indigo Blue from Image 2
     headerTextColor: 'text-white',
     pillBg: 'bg-blue-100 text-blue-900 border-blue-300' 
@@ -53,7 +62,7 @@ const KANBAN_COLUMNS: {
   { 
     id: 'shipped', 
     title: 'Despachados / En Tránsito', 
-    icon: '🚚', 
+    icon: Truck, 
     headerBg: 'bg-[#6EE7B7]', // Mint Emerald from Image 2
     headerTextColor: 'text-neutral-950',
     pillBg: 'bg-emerald-100 text-emerald-900 border-emerald-300' 
@@ -61,7 +70,7 @@ const KANBAN_COLUMNS: {
   { 
     id: 'delivered', 
     title: 'Entregados / Posventa', 
-    icon: '✅', 
+    icon: CheckCircle2, 
     headerBg: 'bg-[#F472B6]', // Pink Magenta from Image 2
     headerTextColor: 'text-white',
     pillBg: 'bg-pink-100 text-pink-900 border-pink-300' 
@@ -69,7 +78,7 @@ const KANBAN_COLUMNS: {
   { 
     id: 'cancelled', 
     title: 'Cancelados', 
-    icon: '❌', 
+    icon: XCircle, 
     headerBg: 'bg-[#9CA3AF]', // Neutral Grey
     headerTextColor: 'text-white',
     pillBg: 'bg-neutral-200 text-neutral-800 border-neutral-300' 
@@ -116,11 +125,11 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
     
     let statusText = 'Pendiente por Verificar';
     if (order.status === 'processing') statusText = 'En Preparación / Taller';
-    if (order.status === 'shipped') statusText = 'Despachado en Tránsito 🚚';
-    if (order.status === 'delivered') statusText = 'Entregado con Éxito ✅';
+    if (order.status === 'shipped') statusText = 'Despachado en Tránsito';
+    if (order.status === 'delivered') statusText = 'Entregado con Éxito';
     if (order.status === 'cancelled') statusText = 'Cancelado';
 
-    const text = `Hola *${order.customer_name}*, te saludamos de *Diseño Tu Espacio - By Alexis Madrigal*. 👋✨\n\nTe informamos que tu pedido *Ref: ${order.order_ref}* se encuentra en el estado: *${statusText}*.\n\n📦 *Detalles de Logística & Envíos:*\n• Transportadora: ${order.carrier || 'Flete Privado'}\n• Número de Guía: ${order.tracking_number || 'En asignación'}\n• Ciudad Destino: ${order.city || 'Colombia'}\n\nPuedes realizar cualquier consulta posventa respondiendo a este mensaje.\n¡Gracias por elegir diseño de autor!`;
+    const text = `Hola *${order.customer_name}*, te saludamos de *Diseño Tu Espacio - By Alexis Madrigal*.\n\nTe informamos que tu pedido *Ref: ${order.order_ref}* se encuentra en el estado: *${statusText}*.\n\n*Detalles de Logística & Envíos:*\n• Transportadora: ${order.carrier || 'Flete Privado'}\n• Número de Guía: ${order.tracking_number || 'En asignación'}\n• Ciudad Destino: ${order.city || 'Colombia'}\n\nPuedes realizar cualquier consulta posventa respondiendo a este mensaje.\n¡Gracias por elegir diseño de autor!`;
 
     return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(text)}`;
   };
@@ -159,6 +168,8 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
           const colOrders = orders.filter(o => o.status === col.id);
           const colTotalCOP = colOrders.reduce((acc, o) => acc + o.total, 0);
 
+          const ColIcon = col.icon;
+
           return (
             <div 
               key={col.id} 
@@ -169,7 +180,7 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
               <div className="bg-white rounded-2xl p-3.5 border border-neutral-200/60 shadow-2xs flex justify-between items-center mb-3">
                 <div>
                   <h4 className="font-bold uppercase tracking-wider text-neutral-900 text-[11px] flex items-center gap-1.5">
-                    <span>{col.icon}</span> {col.title}
+                    <ColIcon className="w-3.5 h-3.5 shrink-0 text-neutral-700" /> {col.title}
                   </h4>
                   <p className="text-[10px] text-neutral-500 font-mono mt-0.5 font-medium">
                     {formatPrice(colTotalCOP)}
@@ -195,7 +206,7 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
                         key={order.id}
                         className="rounded-2xl overflow-hidden shadow-[0_6px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_12px_36px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all duration-300 group border border-neutral-200/60"
                       >
-                        {/* 🎟️ VIBRANT COLORED TICKET HEADER (IMAGE 2 DESIGN) */}
+                        {/* VIBRANT COLORED TICKET HEADER */}
                         <div className={`${col.headerBg} ${col.headerTextColor} px-4 py-2.5 flex justify-between items-center font-semibold text-xs`}>
                           <div className="flex items-center gap-2">
                             <span className="font-mono font-extrabold tracking-wider text-xs">
@@ -226,15 +237,16 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
                             </div>
 
                             {order.customer_tag && (
-                              <span className={`px-2.5 py-0.5 text-[9px] font-extrabold rounded-full uppercase tracking-wider border shadow-2xs ${
+                              <span className={`px-2.5 py-0.5 text-[9px] font-extrabold rounded-full uppercase tracking-wider border shadow-2xs flex items-center gap-1 ${
                                 order.customer_tag === 'VIP' ? 'bg-amber-100 text-amber-950 border-amber-300' :
                                 order.customer_tag === 'Arquitecto' ? 'bg-indigo-100 text-indigo-950 border-indigo-300' :
-                                'bg-emerald-100 text-emerald-950 border-emerald-300'
+                                order.customer_tag === 'Residencial' ? 'bg-emerald-100 text-emerald-950 border-emerald-300' :
+                                'bg-purple-100 text-purple-950 border-purple-300'
                               }`}>
-                                {order.customer_tag === 'VIP' && '👑 VIP'}
-                                {order.customer_tag === 'Arquitecto' && '📐 Arq'}
-                                {order.customer_tag === 'Residencial' && '🏡 Res'}
-                                {order.customer_tag === 'Proyecto Especial' && '🏢 Contract'}
+                                {order.customer_tag === 'VIP' && <><Crown className="w-2.5 h-2.5 text-amber-600" /> VIP</>}
+                                {order.customer_tag === 'Arquitecto' && <><Ruler className="w-2.5 h-2.5 text-indigo-600" /> Arq</>}
+                                {order.customer_tag === 'Residencial' && <><Home className="w-2.5 h-2.5 text-emerald-600" /> Res</>}
+                                {order.customer_tag === 'Proyecto Especial' && <><Building2 className="w-2.5 h-2.5 text-purple-600" /> Contract</>}
                               </span>
                             )}
                           </div>
@@ -256,7 +268,7 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
                             </div>
                           )}
 
-                          {/* 🚚 HORIZONTAL LOGISTICS TIMELINE STEPPER (IMAGE 1 DESIGN) */}
+                          {/* HORIZONTAL LOGISTICS TIMELINE STEPPER */}
                           <div className="bg-neutral-50/80 p-3 rounded-2xl border border-neutral-100 space-y-2">
                             <span className="text-[9.5px] uppercase font-bold text-neutral-400 tracking-wider block">Estado de Seguimiento</span>
                             
@@ -274,7 +286,7 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
                                 <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-bold ${
                                   stageIdx >= 0 ? 'bg-neutral-900 text-white' : 'bg-neutral-200 text-neutral-500'
                                 }`}>
-                                  ✓
+                                  <Check className="w-3 h-3" />
                                 </div>
                                 <span className="text-[8.5px] font-semibold text-neutral-600 mt-1">Recibido</span>
                               </div>
@@ -284,7 +296,7 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
                                 <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-bold ${
                                   stageIdx >= 1 ? 'bg-neutral-900 text-white' : 'bg-neutral-200 text-neutral-500'
                                 }`}>
-                                  {stageIdx >= 1 ? '✓' : '2'}
+                                  {stageIdx >= 1 ? <Check className="w-3 h-3" /> : '2'}
                                 </div>
                                 <span className="text-[8.5px] font-semibold text-neutral-600 mt-1">Taller</span>
                               </div>
@@ -294,7 +306,7 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
                                 <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-bold ${
                                   stageIdx >= 2 ? 'bg-neutral-900 text-white' : 'bg-neutral-200 text-neutral-500'
                                 }`}>
-                                  {stageIdx >= 2 ? '✓' : '3'}
+                                  {stageIdx >= 2 ? <Check className="w-3 h-3" /> : '3'}
                                 </div>
                                 <span className="text-[8.5px] font-semibold text-neutral-600 mt-1">Tránsito</span>
                               </div>
@@ -304,14 +316,14 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
                                 <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-bold ${
                                   stageIdx >= 3 ? 'bg-emerald-600 text-white' : 'bg-neutral-200 text-neutral-500'
                                 }`}>
-                                  {stageIdx >= 3 ? '✓' : '4'}
+                                  {stageIdx >= 3 ? <Check className="w-3 h-3" /> : '4'}
                                 </div>
                                 <span className="text-[8.5px] font-semibold text-neutral-600 mt-1">Entregado</span>
                               </div>
                             </div>
                           </div>
 
-                          {/* 📦 DELIVERY DETAILS BOX (IMAGE 1 DESIGN) */}
+                          {/* DELIVERY DETAILS BOX */}
                           <div className="bg-neutral-50 p-3 rounded-2xl border border-neutral-200/70 space-y-1.5 text-[10px]">
                             <div className="flex justify-between items-center border-b border-neutral-200/50 pb-1">
                               <span className="text-neutral-400 font-bold uppercase text-[9px] flex items-center gap-1">
@@ -319,9 +331,9 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
                               </span>
                               <button 
                                 onClick={() => openEditLogistics(order)}
-                                className="text-[9px] font-bold text-neutral-700 underline hover:text-black"
+                                className="text-[9px] font-bold text-neutral-700 underline hover:text-black flex items-center gap-1"
                               >
-                                Asignar Guía ✏️
+                                Asignar Guía <Edit3 className="w-2.5 h-2.5" />
                               </button>
                             </div>
 

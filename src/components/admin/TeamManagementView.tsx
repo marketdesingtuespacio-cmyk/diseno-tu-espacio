@@ -112,7 +112,7 @@ export const TeamManagementView: React.FC = () => {
                   <span className={`px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider ${
                     member.role === 'admin' ? 'bg-black text-white' : 'bg-neutral-200 text-neutral-800'
                   }`}>
-                    {member.role === 'admin' ? '👑 Administrador' : '🤝 Colaborador'}
+                    {member.role === 'admin' ? 'Administrador' : 'Colaborador'}
                   </span>
                 </div>
                 <p className="text-xs text-neutral-500 mt-0.5">{member.email}</p>

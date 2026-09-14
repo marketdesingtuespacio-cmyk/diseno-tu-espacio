@@ -376,7 +376,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
               {/* Direct File Picker Button (PC / Phone Gallery) */}
               <label className="cursor-pointer bg-brand-black text-white text-xs font-bold uppercase tracking-wider px-5 py-3 hover:bg-neutral-800 transition-colors flex items-center justify-center gap-2 shadow-subtle shrink-0">
                 <Upload className="w-4 h-4 text-amber-300" />
-                <span>📁 Seleccionar Fotos desde Mi Equipo</span>
+                <span>Seleccionar Fotos desde Mi Equipo</span>
                 <input 
                   type="file" 
                   accept="image/*" 

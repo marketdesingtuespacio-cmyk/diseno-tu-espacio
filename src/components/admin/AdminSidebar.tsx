@@ -60,7 +60,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
       badge: productsCount,
       subItems: [
         { id: 'products' as AdminTab, label: 'Lista de Inventario' },
-        { id: 'add-product' as AdminTab, label: 'Alta Nuevo Producto ✨' }
+        { id: 'add-product' as AdminTab, label: 'Alta Nuevo Producto' }
       ]
     },
     {
@@ -130,7 +130,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
             <span className={`px-2 py-0.5 rounded-full font-mono text-[8px] uppercase font-bold tracking-wider ${
               user?.role === 'admin' ? 'bg-neutral-900 text-white' : 'bg-neutral-200 text-neutral-700'
             }`}>
-              {user?.role === 'admin' ? '👑 Admin' : '🤝 Colaborador'}
+              {user?.role === 'admin' ? 'Admin' : 'Colaborador'}
             </span>
           </div>
           <p className="text-[9px] text-neutral-500 font-mono truncate">{user?.email}</p>

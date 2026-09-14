@@ -253,10 +253,10 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
               </label>
               <div className="flex flex-wrap gap-2">
                 {[
-                  { tag: 'VIP', label: '👑 Cliente VIP', color: 'bg-amber-100/90 text-amber-950 border-amber-300' },
-                  { tag: 'Arquitecto', label: '📐 Arquitecto / Diseñador', color: 'bg-indigo-100/90 text-indigo-950 border-indigo-300' },
-                  { tag: 'Residencial', label: '🏡 Cliente Residencial', color: 'bg-emerald-100/90 text-emerald-950 border-emerald-300' },
-                  { tag: 'Proyecto Especial', label: '🏢 Proyecto Contract / Hotelero', color: 'bg-purple-100/90 text-purple-950 border-purple-300' }
+                  { tag: 'VIP', label: 'Cliente VIP', color: 'bg-amber-100/90 text-amber-950 border-amber-300' },
+                  { tag: 'Arquitecto', label: 'Arquitecto / Diseñador', color: 'bg-indigo-100/90 text-indigo-950 border-indigo-300' },
+                  { tag: 'Residencial', label: 'Cliente Residencial', color: 'bg-emerald-100/90 text-emerald-950 border-emerald-300' },
+                  { tag: 'Proyecto Especial', label: 'Proyecto Contract / Hotelero', color: 'bg-purple-100/90 text-purple-950 border-purple-300' }
                 ].map(item => (
                   <button
                     key={item.tag}
@@ -524,11 +524,11 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
                   onChange={(e) => setOrderStatus(e.target.value as any)}
                   className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2.5 text-xs font-bold uppercase"
                 >
-                  <option value="pending">🕒 Pendiente por Verificar</option>
-                  <option value="processing">📦 En Preparación / Taller</option>
-                  <option value="shipped">🚚 Despachado / En Tránsito</option>
-                  <option value="delivered">✅ Entregado / Posventa</option>
-                  <option value="cancelled">❌ Cancelado</option>
+                  <option value="pending">Pendiente por Verificar</option>
+                  <option value="processing">En Preparación / Taller</option>
+                  <option value="shipped">Despachado / En Tránsito</option>
+                  <option value="delivered">Entregado / Posventa</option>
+                  <option value="cancelled">Cancelado</option>
                 </select>
               </div>
             </div>
