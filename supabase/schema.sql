@@ -144,3 +144,56 @@ VALUES
   'active'
 )
 ON CONFLICT (email) DO NOTHING;
+
+-- ==============================================================================
+-- ⚡ AUTOMATIZACIÓN DE PERFILES: TRIGGER PARA AUTOCREAR PERFIL EN REGISTRO
+-- ==============================================================================
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS trigger AS $$
+DECLARE
+  user_role text;
+  user_name text;
+  user_perms jsonb;
+BEGIN
+  user_name := COALESCE(new.raw_user_meta_data->>'full_name', split_part(new.email, '@', 1));
+  user_role := LOWER(COALESCE(new.raw_user_meta_data->>'role', 'customer'));
+
+  -- Validar que el rol sea uno de los valores permitidos en minúsculas
+  IF user_role NOT IN ('admin', 'collaborator', 'customer') THEN
+    user_role := 'customer';
+  END IF;
+
+  IF user_role = 'admin' THEN
+    user_perms := '["manage_products", "manage_orders", "manage_appointments", "manage_coupons", "manage_team", "view_analytics", "edit_settings"]'::jsonb;
+  ELSIF user_role = 'collaborator' THEN
+    user_perms := '["manage_products", "manage_orders", "manage_appointments"]'::jsonb;
+  ELSE
+    user_perms := '[]'::jsonb;
+  END IF;
+
+  INSERT INTO public.profiles (id, full_name, email, role, permissions, status)
+  VALUES (
+    new.id,
+    user_name,
+    new.email,
+    user_role,
+    user_perms,
+    'active'
+  )
+  ON CONFLICT (id) DO UPDATE
+  SET full_name = EXCLUDED.full_name,
+      role = EXCLUDED.role,
+      permissions = EXCLUDED.permissions;
+
+  RETURN new;
+EXCEPTION WHEN OTHERS THEN
+  -- En caso de cualquier conflicto, permitir que la cuenta de usuario se cree limpiamente
+  RETURN new;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
+
+CREATE TRIGGER on_auth_user_created
+  AFTER INSERT ON auth.users
+  FOR EACH ROW EXECUTE PROCEDURE public.handle_new_user();

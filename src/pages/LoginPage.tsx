@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { ShieldCheck, ArrowRight, ArrowLeft, Users, UserPlus, LogIn, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, ArrowLeft, UserPlus, LogIn, CheckCircle2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { UserRole } from '../types';
 
@@ -15,13 +15,14 @@ export const LoginPage: React.FC = () => {
   const [registerFullName, setRegisterFullName] = useState('');
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
-  const [registerRole, setRegisterRole] = useState<UserRole>('collaborator');
+  // Hardcode register role for public facing site
+  const registerRole: UserRole = 'customer';
 
   const [errorMsg, setErrorMsg] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const { loginWithEmail, registerWithEmail, loginAsDemoAdmin, loginAsDemoCollaborator } = useAuth();
+  const { loginWithEmail, registerWithEmail } = useAuth();
   const navigate = useNavigate();
 
   // Login Submission
@@ -58,21 +59,11 @@ export const LoginPage: React.FC = () => {
     if (result.success) {
       setSuccessMsg('¡Cuenta registrada y conectada exitosamente!');
       setTimeout(() => {
-        navigate('/admin');
+        navigate('/');
       }, 1000);
     } else {
       setErrorMsg(result.error || 'Error al registrar la cuenta.');
     }
-  };
-
-  const handleQuickAdmin = () => {
-    loginAsDemoAdmin();
-    navigate('/admin');
-  };
-
-  const handleQuickCollaborator = () => {
-    loginAsDemoCollaborator();
-    navigate('/admin');
   };
 
   return (
@@ -209,18 +200,7 @@ export const LoginPage: React.FC = () => {
               />
             </div>
 
-            <div>
-              <label className="block uppercase font-bold text-neutral-500 mb-1">Seleccione Rol de Cuenta</label>
-              <select 
-                value={registerRole}
-                onChange={(e) => setRegisterRole(e.target.value as UserRole)}
-                className="w-full bg-brand-surface border border-brand-border p-3 font-bold text-brand-black focus:outline-none focus:border-brand-black"
-              >
-                <option value="collaborator">Colaborador (Ventas / Inventario)</option>
-                <option value="admin">Administrador (Acceso Total)</option>
-                <option value="customer">Cliente Registrado</option>
-              </select>
-            </div>
+
 
             <button 
               type="submit"
@@ -232,40 +212,7 @@ export const LoginPage: React.FC = () => {
           </form>
         )}
 
-        {/* Quick Access Demo Buttons (Admin vs Collaborator) */}
-        <div className="pt-6 border-t border-brand-border space-y-3">
-          <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 block text-center">
-            Accesos Rápidos de Prueba (Demostración de Roles)
-          </span>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <button
-              onClick={handleQuickAdmin}
-              className="p-3 border border-brand-black bg-brand-black text-white text-left hover:bg-neutral-800 transition-colors space-y-1"
-            >
-              <div className="flex items-center gap-1.5 font-bold text-[11px] uppercase">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>Administrador</span>
-              </div>
-              <p className="text-[9px] text-neutral-300 font-light leading-tight">
-                Control total, permisos de equipo y configuración.
-              </p>
-            </button>
-
-            <button
-              onClick={handleQuickCollaborator}
-              className="p-3 border border-neutral-300 bg-brand-surface text-brand-black text-left hover:border-black transition-colors space-y-1"
-            >
-              <div className="flex items-center gap-1.5 font-bold text-[11px] uppercase">
-                <Users className="w-4 h-4 text-neutral-600" />
-                <span>Colaborador</span>
-              </div>
-              <p className="text-[9px] text-neutral-500 font-light leading-tight">
-                Gestión de catálogo, productos y pedidos.
-              </p>
-            </button>
-          </div>
-        </div>
 
       </div>
     </div>

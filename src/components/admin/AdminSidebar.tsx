@@ -84,24 +84,24 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
       icon: Tag,
       badge: couponsCount
     },
-    {
+    ...(user?.role === 'admin' ? [{
       id: 'team' as AdminTab,
       label: 'Equipo & Permisos',
       icon: Users,
       badge: null
-    },
+    }] : []),
     {
       id: 'categories' as AdminTab,
       label: 'Categorías & Estilos',
       icon: FolderTree,
       badge: null
     },
-    {
+    ...(user?.role === 'admin' ? [{
       id: 'settings' as AdminTab,
       label: 'Configuración Tienda',
       icon: Settings,
       badge: null
-    }
+    }] : [])
   ];
 
   return (

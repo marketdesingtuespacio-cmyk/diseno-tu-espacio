@@ -65,17 +65,36 @@ export interface Coupon {
   created_at?: string;
 }
 
+export interface OrderItem {
+  product_id: string;
+  name: string;
+  image: string;
+  price: number;
+  quantity: number;
+  color?: string;
+}
+
 export interface Order {
   id: string;
   order_ref: string;
   customer_name: string;
   customer_email: string;
   customer_phone: string;
+  customer_tag?: 'VIP' | 'Arquitecto' | 'Residencial' | 'Proyecto Especial';
+  shipping_address?: string;
+  city?: string;
+  carrier?: string;
+  tracking_number?: string;
+  subtotal?: number;
+  shipping_cost?: number;
+  discount?: number;
   total: number;
   status: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
   payment_method: string;
   payment_gateway: string;
   items_count: number;
+  items?: OrderItem[];
+  notes?: string;
   created_at: string;
 }
 

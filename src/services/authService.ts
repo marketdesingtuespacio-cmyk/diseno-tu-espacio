@@ -74,10 +74,23 @@ export const authService = {
 
     if (isSupabaseConfigured()) {
       try {
-        const { data, error } = await supabase.from('profiles').insert([newProfile]).select().single();
-        if (!error && data) return data as UserProfile;
+        // Use edge function to securely invite user and create profile
+        const { data, error } = await supabase.functions.invoke('invite-collaborator', {
+          body: {
+            email: collaborator.email,
+            full_name: collaborator.full_name,
+            role: collaborator.role,
+            permissions: collaborator.permissions,
+            status: collaborator.status
+          }
+        });
+        
+        if (error) throw error;
+        if (data.error) throw new Error(data.error);
+        if (data.success && data.user) return data.user as UserProfile;
       } catch (err) {
-        console.error('Error adding profile in Supabase:', err);
+        console.error('Error adding profile in Supabase via edge function:', err);
+        throw err; // Propagate the error so the UI can show it
       }
     }
 

@@ -29,7 +29,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         // fallback
       }
     }
-    return DEFAULT_ADMIN; // Default signed-in as Admin for smooth demo experience
+    return null; // Force user to log in manually
   });
 
   useEffect(() => {
@@ -50,7 +50,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setUser(DEFAULT_COLLABORATOR);
   };
 
-  // Live Supabase Login or Demo Authentication
+  // Live Supabase Login
   const loginWithEmail = async (email: string, pass: string): Promise<{ success: boolean; error?: string }> => {
     if (isSupabaseConfigured()) {
       try {
@@ -59,43 +59,55 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           return { success: false, error: error.message };
         }
         if (data.user) {
-          // Fetch profile from Supabase profiles table
-          const { data: profile } = await supabase
+          // Fetch profile from Supabase profiles table by ID or Email
+          let { data: profile } = await supabase
             .from('profiles')
             .select('*')
             .eq('id', data.user.id)
-            .single();
+            .maybeSingle();
+
+          // Fallback: match by email if ID was manually created
+          if (!profile && data.user.email) {
+            const { data: profileByEmail } = await supabase
+              .from('profiles')
+              .select('*')
+              .eq('email', data.user.email)
+              .maybeSingle();
+            
+            if (profileByEmail) {
+              profile = profileByEmail;
+              // Auto-sync ID in profiles table to match auth.users UUID
+              await supabase.from('profiles').update({ id: data.user.id }).eq('email', data.user.email);
+            }
+          }
 
           if (profile) {
             setUser(profile as UserProfile);
             return { success: true };
+          } else {
+            // Auto-create admin profile fallback if missing
+            const fallbackProfile: UserProfile = {
+              id: data.user.id,
+              full_name: data.user.user_metadata?.full_name || 'Administrador',
+              email: data.user.email || email,
+              role: 'admin',
+              permissions: ['manage_products', 'manage_orders', 'manage_appointments', 'manage_coupons', 'manage_team', 'view_analytics', 'edit_settings'],
+              status: 'active'
+            };
+            await supabase.from('profiles').upsert([fallbackProfile]);
+            setUser(fallbackProfile);
+            return { success: true };
           }
         }
       } catch (err: any) {
-        console.warn('Supabase auth failed, trying demo check', err);
+        console.warn('Supabase auth failed', err);
+        return { success: false, error: 'Error de conexión con el servidor.' };
       }
-    }
-
-    // Demo Authentication Check
-    if (email.toLowerCase().includes('admin')) {
-      setUser(DEFAULT_ADMIN);
-      return { success: true };
-    } else if (email.toLowerCase().includes('colaborador') || email.toLowerCase().includes('collab')) {
-      setUser(DEFAULT_COLLABORATOR);
-      return { success: true };
     } else {
-      // Default to new logged-in user profile
-      const newProfile: UserProfile = {
-        id: `usr-${Date.now()}`,
-        full_name: email.split('@')[0],
-        email: email,
-        role: 'collaborator',
-        permissions: ['manage_products', 'manage_orders', 'manage_appointments'],
-        status: 'active'
-      };
-      setUser(newProfile);
-      return { success: true };
+      return { success: false, error: 'El sistema de autenticación (Supabase) no está configurado (variables de entorno faltantes).' };
     }
+    
+    return { success: false, error: 'Error desconocido al intentar iniciar sesión.' };
   };
 
   // Register New User Account
@@ -133,8 +145,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             status: 'active' as const
           };
 
-          // Insert into profiles table
-          await supabase.from('profiles').insert([profilePayload]);
+          // Insert or update profile table cleanly (handles trigger concurrency)
+          await supabase.from('profiles').upsert([profilePayload]);
           setUser(profilePayload);
           return { success: true };
         }

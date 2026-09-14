@@ -35,16 +35,22 @@ export const TeamManagementView: React.FC = () => {
   const handleCreateMember = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newMemberForm.full_name || !newMemberForm.email) return alert('Ingrese nombre y correo.');
-    await authService.addCollaborator(newMemberForm);
-    setIsModalOpen(false);
-    setNewMemberForm({
-      full_name: '',
-      email: '',
-      role: 'collaborator',
-      permissions: ['manage_products', 'manage_orders', 'manage_appointments'],
-      status: 'active'
-    });
-    loadMembers();
+    
+    try {
+      await authService.addCollaborator(newMemberForm);
+      setIsModalOpen(false);
+      setNewMemberForm({
+        full_name: '',
+        email: '',
+        role: 'collaborator',
+        permissions: ['manage_products', 'manage_orders', 'manage_appointments'],
+        status: 'active'
+      });
+      loadMembers();
+      alert('Colaborador invitado exitosamente. Se le ha enviado un correo.');
+    } catch (error: any) {
+      alert(`Error al registrar colaborador: ${error.message || 'Intente nuevamente'}`);
+    }
   };
 
   const handleTogglePermission = async (member: UserProfile, perm: UserPermission) => {

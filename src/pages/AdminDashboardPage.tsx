@@ -19,6 +19,8 @@ import { useCurrency } from '../context/CurrencyContext';
 import { AdminSidebar, AdminTab } from '../components/admin/AdminSidebar';
 import { ProductRegistrationForm } from '../components/admin/ProductRegistrationForm';
 import { TeamManagementView } from '../components/admin/TeamManagementView';
+import { OrderRegistrationModal } from '../components/admin/OrderRegistrationModal';
+import { OrderKanbanBoard } from '../components/admin/OrderKanbanBoard';
 
 export const AdminDashboardPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<AdminTab>('overview');
@@ -27,9 +29,13 @@ export const AdminDashboardPage: React.FC = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [coupons, setCoupons] = useState<Coupon[]>([]);
 
-  // Filters inside Admin
+  // Filters & Views inside Admin
   const [searchQuery, setSearchQuery] = useState('');
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
+  const [orderViewMode, setOrderViewMode] = useState<'kanban' | 'table'>('kanban');
+
+  // Manual Order Registration Modal State
+  const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
 
   // New Coupon Form State
   const [isCouponModalOpen, setIsCouponModalOpen] = useState(false);
@@ -40,6 +46,19 @@ export const AdminDashboardPage: React.FC = () => {
     min_purchase: 500000,
     expiry_date: '2026-12-31',
     is_active: true
+  });
+
+  // Manual Appointment Booking State
+  const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
+  const [appointmentForm, setAppointmentForm] = useState({
+    customer_name: '',
+    customer_email: '',
+    customer_phone: '',
+    service_type: 'Asesoría Lumínica & Geometría de Luz',
+    appointment_date: new Date().toISOString().split('T')[0],
+    appointment_time: '10:00 AM',
+    price: 600000,
+    notes: ''
   });
 
   const { formatPrice } = useCurrency();
@@ -75,9 +94,45 @@ export const AdminDashboardPage: React.FC = () => {
     loadData();
   };
 
+
+
   // Update Appointment Status
   const handleUpdateAppointmentStatus = async (id: string, status: Appointment['status']) => {
     await appointmentService.updateAppointmentStatus(id, status);
+    loadData();
+  };
+
+  // Create Manual Appointment
+  const handleCreateManualAppointment = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!appointmentForm.customer_name.trim()) return alert('Ingrese el nombre del cliente.');
+    if (!appointmentForm.customer_phone.trim()) return alert('Ingrese el teléfono de contacto.');
+
+    await appointmentService.createAppointment({
+      customer_name: appointmentForm.customer_name.trim(),
+      customer_email: appointmentForm.customer_email.trim() || 'cliente@diseñotuespacio.com',
+      customer_phone: appointmentForm.customer_phone.trim(),
+      service_type: appointmentForm.service_type,
+      appointment_date: appointmentForm.appointment_date,
+      appointment_time: appointmentForm.appointment_time,
+      status: 'confirmed',
+      payment_status: 'paid',
+      price: Number(appointmentForm.price),
+      notes: appointmentForm.notes.trim(),
+      created_at: new Date().toISOString()
+    });
+
+    setIsAppointmentModalOpen(false);
+    setAppointmentForm({
+      customer_name: '',
+      customer_email: '',
+      customer_phone: '',
+      service_type: 'Asesoría Lumínica & Geometría de Luz',
+      appointment_date: new Date().toISOString().split('T')[0],
+      appointment_time: '10:00 AM',
+      price: 600000,
+      notes: ''
+    });
     loadData();
   };
 
@@ -340,63 +395,134 @@ export const AdminDashboardPage: React.FC = () => {
           />
         )}
 
-        {/* TAB 4: ORDERS MANAGEMENT */}
+        {/* TAB 4: ORDERS & KANBAN MANAGEMENT */}
         {activeTab === 'orders' && (
           <div className="space-y-6">
-            <div className="bg-white border border-brand-border overflow-x-auto">
-              <table className="w-full text-left text-xs">
-                <thead className="bg-brand-surface uppercase text-[10px] tracking-widest text-neutral-500 border-b">
-                  <tr>
-                    <th className="p-3.5">Ref. Orden</th>
-                    <th className="p-3.5">Cliente & Contacto</th>
-                    <th className="p-3.5">Pasarela</th>
-                    <th className="p-3.5">Total Pagado</th>
-                    <th className="p-3.5">Estado Pedido</th>
-                    <th className="p-3.5 text-right">Actualizar Estado</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y">
-                  {filteredOrders.map(o => (
-                    <tr key={o.id} className="hover:bg-brand-surface/50">
-                      <td className="p-3.5 font-mono font-bold text-brand-black">{o.order_ref}</td>
-                      <td className="p-3.5">
-                        <div className="font-bold">{o.customer_name}</div>
-                        <div className="text-[10px] text-neutral-400">{o.customer_email} • {o.customer_phone}</div>
-                      </td>
-                      <td className="p-3.5 font-medium text-neutral-600">{o.payment_gateway}</td>
-                      <td className="p-3.5 font-bold text-brand-black">{formatPrice(o.total)}</td>
-                      <td className="p-3.5">
-                        <span className={`px-2 py-0.5 text-[9px] uppercase font-bold tracking-wider ${
-                          o.status === 'delivered' ? 'bg-emerald-900 text-white' :
-                          o.status === 'shipped' ? 'bg-black text-white' : 'bg-neutral-200 text-black'
-                        }`}>
-                          {o.status}
-                        </span>
-                      </td>
-                      <td className="p-3.5 text-right space-x-1">
-                        <select 
-                          value={o.status}
-                          onChange={(e) => handleUpdateOrderStatus(o.id, e.target.value as any)}
-                          className="bg-brand-surface border border-brand-border py-1 px-2 text-xs font-bold focus:outline-none"
-                        >
-                          <option value="pending">Pendiente</option>
-                          <option value="processing">Procesando</option>
-                          <option value="shipped">Despachado</option>
-                          <option value="delivered">Entregado</option>
-                          <option value="cancelled">Cancelado</option>
-                        </select>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white p-4 border border-brand-border gap-4">
+              <div>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-brand-black">
+                  Gestión Posventa, Kanban & Facturación
+                </h3>
+                <p className="text-[11px] text-neutral-500 font-light">
+                  Administra las etapas de producción, guías de despacho, tags de cliente y envía actualizaciones por WhatsApp.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3 shrink-0">
+                {/* View Switcher Toggle */}
+                <div className="flex border border-brand-border bg-brand-surface p-1">
+                  <button 
+                    onClick={() => setOrderViewMode('kanban')}
+                    className={`px-3 py-1 text-[11px] font-bold uppercase transition-all ${
+                      orderViewMode === 'kanban' ? 'bg-brand-black text-white shadow-xs' : 'text-neutral-600 hover:text-black'
+                    }`}
+                  >
+                    📊 Pipeline Kanban
+                  </button>
+                  <button 
+                    onClick={() => setOrderViewMode('table')}
+                    className={`px-3 py-1 text-[11px] font-bold uppercase transition-all ${
+                      orderViewMode === 'table' ? 'bg-brand-black text-white shadow-xs' : 'text-neutral-600 hover:text-black'
+                    }`}
+                  >
+                    📋 Tabla Lista
+                  </button>
+                </div>
+
+                <button 
+                  onClick={() => setIsOrderModalOpen(true)}
+                  className="bg-brand-black text-white text-xs font-bold uppercase tracking-widest py-2 px-4 hover:bg-neutral-800 flex items-center gap-2 shadow-subtle"
+                >
+                  <PlusCircle className="w-4 h-4 text-amber-300" /> Registrar Pedido
+                </button>
+              </div>
             </div>
+
+            {/* Render Kanban or Table */}
+            {orderViewMode === 'kanban' ? (
+              <OrderKanbanBoard orders={filteredOrders} onOrderUpdated={loadData} />
+            ) : (
+              <div className="bg-white border border-brand-border overflow-x-auto">
+                <table className="w-full text-left text-xs">
+                  <thead className="bg-brand-surface uppercase text-[10px] tracking-widest text-neutral-500 border-b">
+                    <tr>
+                      <th className="p-3.5">Ref. Orden</th>
+                      <th className="p-3.5">Cliente & Tag CRM</th>
+                      <th className="p-3.5">Transportadora / Guía</th>
+                      <th className="p-3.5">Pasarela</th>
+                      <th className="p-3.5">Total Pagado</th>
+                      <th className="p-3.5">Estado Pedido</th>
+                      <th className="p-3.5 text-right">Actualizar Estado</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y">
+                    {filteredOrders.map(o => (
+                      <tr key={o.id} className="hover:bg-brand-surface/50">
+                        <td className="p-3.5 font-mono font-bold text-brand-black">{o.order_ref}</td>
+                        <td className="p-3.5">
+                          <div className="font-bold">{o.customer_name}</div>
+                          <div className="text-[10px] text-neutral-400">{o.customer_email} • {o.customer_phone}</div>
+                          {o.customer_tag && (
+                            <span className="inline-block mt-1 px-1.5 py-0.5 text-[9px] font-bold bg-neutral-100 border text-neutral-800">
+                              {o.customer_tag}
+                            </span>
+                          )}
+                        </td>
+                        <td className="p-3.5 font-mono text-[11px]">
+                          <div>{o.carrier || 'Flete Privado'}</div>
+                          <div className="text-neutral-400 text-[10px]">{o.tracking_number ? `Guía: ${o.tracking_number}` : 'Sin guía'}</div>
+                        </td>
+                        <td className="p-3.5 font-medium text-neutral-600">{o.payment_gateway}</td>
+                        <td className="p-3.5 font-bold text-brand-black">{formatPrice(o.total)}</td>
+                        <td className="p-3.5">
+                          <span className={`px-2 py-0.5 text-[9px] uppercase font-bold tracking-wider ${
+                            o.status === 'delivered' ? 'bg-emerald-900 text-white' :
+                            o.status === 'shipped' ? 'bg-purple-900 text-white' : 
+                            o.status === 'processing' ? 'bg-blue-900 text-white' : 'bg-neutral-200 text-black'
+                          }`}>
+                            {o.status}
+                          </span>
+                        </td>
+                        <td className="p-3.5 text-right space-x-1">
+                          <select 
+                            value={o.status}
+                            onChange={(e) => handleUpdateOrderStatus(o.id, e.target.value as any)}
+                            className="bg-brand-surface border border-brand-border py-1 px-2 text-xs font-bold focus:outline-none"
+                          >
+                            <option value="pending">Pendiente</option>
+                            <option value="processing">Procesando</option>
+                            <option value="shipped">Despachado</option>
+                            <option value="delivered">Entregado</option>
+                            <option value="cancelled">Cancelado</option>
+                          </select>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </div>
         )}
 
         {/* TAB 5: APPOINTMENTS MANAGEMENT */}
         {activeTab === 'appointments' && (
-          <div className="bg-white border border-brand-border overflow-x-auto">
+          <div className="space-y-6">
+            <div className="flex justify-between items-center bg-white p-4 border border-brand-border">
+              <div>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-brand-black">Citas de Interiorismo & Asesoría Lumínica</h3>
+                <p className="text-[11px] text-neutral-500 font-light">Consulta las solicitudes del sitio web o programa manualmente una cita de asesoría con un cliente.</p>
+              </div>
+
+              <button 
+                onClick={() => setIsAppointmentModalOpen(true)}
+                className="bg-brand-black text-white text-xs font-bold uppercase tracking-widest py-2.5 px-6 hover:bg-neutral-800 flex items-center gap-2 shadow-subtle shrink-0"
+              >
+                <PlusCircle className="w-4 h-4 text-amber-300" /> Agendar Nueva Cita
+              </button>
+            </div>
+
+            <div className="bg-white border border-brand-border overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead className="bg-brand-surface uppercase text-[10px] tracking-widest text-neutral-500 border-b">
                 <tr>
@@ -438,7 +564,8 @@ export const AdminDashboardPage: React.FC = () => {
               </tbody>
             </table>
           </div>
-        )}
+        </div>
+      )}
 
         {/* TAB 6: COUPONS & PROMOTIONS MANAGEMENT */}
         {activeTab === 'coupons' && (
@@ -672,6 +799,149 @@ export const AdminDashboardPage: React.FC = () => {
                   className="w-full bg-brand-surface border border-brand-border p-3 font-mono font-bold text-brand-black"
                 />
               </div>
+            </div>
+          </div>
+        )}
+
+        {/* MODAL 1: REGISTRAR NUEVO PEDIDO INTELIGENTE & CRM */}
+        <OrderRegistrationModal 
+          isOpen={isOrderModalOpen}
+          onClose={() => setIsOrderModalOpen(false)}
+          onSuccess={loadData}
+          products={products}
+        />
+
+        {/* MODAL 2: AGENDAR NUEVA CITA / ASESORÍA MANUAL */}
+        {isAppointmentModalOpen && (
+          <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+            <div className="bg-white max-w-lg w-full p-6 border border-brand-black shadow-elevated space-y-4">
+              <div className="flex justify-between items-center border-b border-brand-border pb-3">
+                <h3 className="text-sm font-bold uppercase tracking-widest text-brand-black flex items-center gap-2">
+                  <Calendar className="w-4 h-4 text-emerald-600" /> Agendar Nueva Cita / Asesoría
+                </h3>
+                <button 
+                  onClick={() => setIsAppointmentModalOpen(false)}
+                  className="text-neutral-400 hover:text-black font-bold text-sm"
+                >
+                  ✕
+                </button>
+              </div>
+
+              <form onSubmit={handleCreateManualAppointment} className="space-y-4 text-xs">
+                <div>
+                  <label className="block uppercase font-bold text-neutral-500 mb-1">Nombre del Cliente *</label>
+                  <input 
+                    type="text" 
+                    required
+                    placeholder="Ej. Arq. Carlos Mendoza"
+                    value={appointmentForm.customer_name}
+                    onChange={(e) => setAppointmentForm({ ...appointmentForm, customer_name: e.target.value })}
+                    className="w-full bg-brand-surface border border-brand-border p-2.5 font-bold"
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block uppercase font-bold text-neutral-500 mb-1">Correo Electrónico</label>
+                    <input 
+                      type="email" 
+                      placeholder="cliente@ejemplo.com"
+                      value={appointmentForm.customer_email}
+                      onChange={(e) => setAppointmentForm({ ...appointmentForm, customer_email: e.target.value })}
+                      className="w-full bg-brand-surface border border-brand-border p-2.5"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block uppercase font-bold text-neutral-500 mb-1">Teléfono de Contacto *</label>
+                    <input 
+                      type="text" 
+                      required
+                      placeholder="+57 310 987 6543"
+                      value={appointmentForm.customer_phone}
+                      onChange={(e) => setAppointmentForm({ ...appointmentForm, customer_phone: e.target.value })}
+                      className="w-full bg-brand-surface border border-brand-border p-2.5 font-bold"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block uppercase font-bold text-neutral-500 mb-1">Tipo de Servicio Solicitado</label>
+                  <select 
+                    value={appointmentForm.service_type}
+                    onChange={(e) => setAppointmentForm({ ...appointmentForm, service_type: e.target.value })}
+                    className="w-full bg-brand-surface border border-brand-border p-2.5 font-bold"
+                  >
+                    <option value="Asesoría Lumínica & Geometría de Luz">Asesoría Lumínica & Geometría de Luz</option>
+                    <option value="Visita de Interiorismo In-Situ">Visita de Interiorismo In-Situ</option>
+                    <option value="Proyecto Residencial & Contract">Proyecto Residencial & Contract</option>
+                  </select>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block uppercase font-bold text-neutral-500 mb-1">Fecha de la Cita</label>
+                    <input 
+                      type="date" 
+                      required
+                      value={appointmentForm.appointment_date}
+                      onChange={(e) => setAppointmentForm({ ...appointmentForm, appointment_date: e.target.value })}
+                      className="w-full bg-brand-surface border border-brand-border p-2.5 font-bold"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block uppercase font-bold text-neutral-500 mb-1">Hora de la Cita</label>
+                    <input 
+                      type="text" 
+                      required
+                      placeholder="10:00 AM"
+                      value={appointmentForm.appointment_time}
+                      onChange={(e) => setAppointmentForm({ ...appointmentForm, appointment_time: e.target.value })}
+                      className="w-full bg-brand-surface border border-brand-border p-2.5 font-bold text-center"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block uppercase font-bold text-neutral-500 mb-1">Valor Asesoría (COP)</label>
+                  <input 
+                    type="number" 
+                    required
+                    step="50000"
+                    value={appointmentForm.price}
+                    onChange={(e) => setAppointmentForm({ ...appointmentForm, price: Number(e.target.value) })}
+                    className="w-full bg-brand-surface border border-brand-border p-2.5 font-bold"
+                  />
+                </div>
+
+                <div>
+                  <label className="block uppercase font-bold text-neutral-500 mb-1">Notas de la Cita / Requerimientos Especiales</label>
+                  <textarea 
+                    rows={2}
+                    placeholder="Ubicación de la residencia, preferencias del cliente..."
+                    value={appointmentForm.notes}
+                    onChange={(e) => setAppointmentForm({ ...appointmentForm, notes: e.target.value })}
+                    className="w-full bg-brand-surface border border-brand-border p-2.5"
+                  />
+                </div>
+
+                <div className="flex justify-end gap-3 pt-4 border-t border-brand-border">
+                  <button 
+                    type="button" 
+                    onClick={() => setIsAppointmentModalOpen(false)}
+                    className="px-4 py-2 border border-brand-border uppercase font-bold text-xs"
+                  >
+                    Cancelar
+                  </button>
+                  <button 
+                    type="submit"
+                    className="px-6 py-2 bg-brand-black text-white uppercase font-bold text-xs hover:bg-neutral-800"
+                  >
+                    Agendar Cita
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         )}
