@@ -66,16 +66,38 @@ export const productService = {
         if (!error && data && data.length > 0) {
           const supabaseProducts = data as Product[];
           
-          // Merge Supabase products with any newly added local products (by slug or id)
+          // Deduplicate products based on normalized key (name/slug) to prevent double listing
+          const getProductKey = (p: Product) => {
+            const slugKey = (p.slug || '').toLowerCase().trim();
+            const nameKey = (p.name || '').toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+            return slugKey || nameKey || p.id;
+          };
+
           const mergedMap = new Map<string, Product>();
           
-          // 1. Add Supabase products
-          supabaseProducts.forEach(p => mergedMap.set(p.id || p.slug, p));
+          // 1. Add Supabase products (cloud state)
+          supabaseProducts.forEach(p => {
+            const key = getProductKey(p);
+            mergedMap.set(key, p);
+          });
           
-          // 2. Add local products if not already in Supabase
+          // 2. Merge local products without introducing duplicates
           localProducts.forEach(p => {
-            const key = p.id || p.slug;
-            if (!mergedMap.has(key)) {
+            const key = getProductKey(p);
+            if (mergedMap.has(key)) {
+              const cloudProd = mergedMap.get(key)!;
+              mergedMap.set(key, {
+                ...p,
+                ...cloudProd,
+                sku: cloudProd.sku || p.sku,
+                warehouse_stock: cloudProd.warehouse_stock !== undefined ? cloudProd.warehouse_stock : p.warehouse_stock,
+                store_stock: cloudProd.store_stock !== undefined ? cloudProd.store_stock : p.store_stock,
+                web_stock: cloudProd.web_stock !== undefined ? cloudProd.web_stock : p.web_stock,
+                boxes_count: cloudProd.boxes_count !== undefined ? cloudProd.boxes_count : p.boxes_count,
+                warranty: cloudProd.warranty || p.warranty,
+                inventory_status: cloudProd.inventory_status || p.inventory_status
+              });
+            } else {
               mergedMap.set(key, p);
             }
           });
