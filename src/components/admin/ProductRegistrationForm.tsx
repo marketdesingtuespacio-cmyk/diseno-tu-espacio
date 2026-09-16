@@ -31,7 +31,6 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
   const [materials, setMaterials] = useState(initialProduct?.materials || 'Aluminio espejado, Acero satinado');
 
   const [sku, setSku] = useState(initialProduct?.sku || '');
-  const [modelCode, setModelCode] = useState(initialProduct?.model_code || '');
   const [warehouseStock, setWarehouseStock] = useState<number>(initialProduct?.warehouse_stock || 0);
   const [storeStock, setStoreStock] = useState<number>(initialProduct?.store_stock || 0);
   const [webStock, setWebStock] = useState<number>(initialProduct?.web_stock || 0);
@@ -186,7 +185,6 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
         images,
         colors,
         sku: sku.trim(),
-        model_code: modelCode.trim(),
         warehouse_stock: Number(warehouseStock),
         store_stock: Number(storeStock),
         web_stock: Number(webStock),
@@ -281,17 +279,6 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
                 placeholder="Ej. A585A-P01M o MD680101"
                 value={sku}
                 onChange={(e) => setSku(e.target.value)}
-                className="w-full bg-brand-surface border border-brand-border p-3 text-brand-black focus:outline-none focus:border-brand-black font-mono"
-              />
-            </div>
-
-            <div>
-              <label className="block uppercase font-bold text-neutral-500 mb-1">Modelo / Código Secundario</label>
-              <input 
-                type="text" 
-                placeholder="Ej. HP 120X90 0947"
-                value={modelCode}
-                onChange={(e) => setModelCode(e.target.value)}
                 className="w-full bg-brand-surface border border-brand-border p-3 text-brand-black focus:outline-none focus:border-brand-black font-mono"
               />
             </div>

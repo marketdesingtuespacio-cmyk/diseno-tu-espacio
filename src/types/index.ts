@@ -36,7 +36,6 @@ export interface Product {
   colors?: { name: string; hex: string }[];
   brand_collection?: string;
   sku?: string;
-  model_code?: string;
   warehouse_stock?: number;
   store_stock?: number;
   web_stock?: number;

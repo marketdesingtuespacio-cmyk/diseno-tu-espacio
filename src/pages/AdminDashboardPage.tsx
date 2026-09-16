@@ -403,9 +403,6 @@ export const AdminDashboardPage: React.FC = () => {
                         {p.sku && (
                           <div className="text-[10px] text-neutral-500 font-mono font-bold">SKU: {p.sku}</div>
                         )}
-                        {p.model_code && (
-                          <div className="text-[9px] text-neutral-400 font-mono">Mod: {p.model_code}</div>
-                        )}
                       </td>
                       <td className="p-3 text-neutral-500 font-medium">{p.category}</td>
                       <td className="p-3 font-bold">
