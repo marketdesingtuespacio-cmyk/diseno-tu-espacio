@@ -227,7 +227,7 @@ export const productService = {
 
   async updateProduct(id: string, updates: Partial<Product>): Promise<Product | null> {
     const currentLocal = getStoredProducts();
-    const index = currentLocal.findIndex(p => p.id === id || p.slug === updates.slug);
+    const index = currentLocal.findIndex(p => p.id === id || (updates.slug && p.slug === updates.slug));
 
     let updatedProduct: Product | null = null;
 
@@ -237,29 +237,67 @@ export const productService = {
       saveStoredProducts([...currentLocal]);
     }
 
-    // Clean payload for Supabase update
-    const cleanUpdates: any = { ...updates };
-    if (cleanUpdates.original_price === undefined) {
-      delete cleanUpdates.original_price;
-    }
+    // Strict clean payload with only supported Supabase columns
+    const cleanPayload: any = {};
+    if (updates.name !== undefined) cleanPayload.name = updates.name;
+    if (updates.slug !== undefined) cleanPayload.slug = updates.slug;
+    if (updates.brand_collection !== undefined) cleanPayload.brand_collection = updates.brand_collection;
+    if (updates.description !== undefined) cleanPayload.description = updates.description;
+    if (updates.price !== undefined) cleanPayload.price = Number(updates.price);
+    if (updates.original_price !== undefined) cleanPayload.original_price = updates.original_price ? Number(updates.original_price) : null;
+    if (updates.category !== undefined) cleanPayload.category = updates.category;
+    if (updates.style !== undefined) cleanPayload.style = updates.style;
+    if (updates.stock !== undefined) cleanPayload.stock = Number(updates.stock);
+    if (updates.images !== undefined) cleanPayload.images = updates.images;
+    if (updates.colors !== undefined) cleanPayload.colors = updates.colors;
+    if (updates.is_featured !== undefined) cleanPayload.is_featured = !!updates.is_featured;
+    if (updates.dimensions !== undefined) cleanPayload.dimensions = updates.dimensions;
+    if (updates.materials !== undefined) cleanPayload.materials = updates.materials;
 
     if (isSupabaseConfigured()) {
       try {
-        const { data, error } = await supabase
-          .from('products')
-          .update(cleanUpdates)
-          .eq('id', id)
-          .select()
-          .single();
+        const targetSlug = updates.slug || (index !== -1 ? currentLocal[index].slug : undefined);
+        const isUUID = id && id.length > 20 && !id.startsWith('prod-') && !id.startsWith('real-') && !id.startsWith('w-');
 
-        if (!error && data) {
-          updatedProduct = data as Product;
+        let query = supabase.from('products').update(cleanPayload);
+        if (isUUID) {
+          query = query.eq('id', id);
+        } else if (targetSlug) {
+          query = query.eq('slug', targetSlug);
+        }
+
+        const { data, error } = await query.select();
+
+        if (!error && data && data.length > 0) {
+          const synced = data[0] as Product;
+          updatedProduct = { ...updatedProduct, ...synced };
           if (index !== -1) {
             currentLocal[index] = updatedProduct;
             saveStoredProducts([...currentLocal]);
           }
-        } else if (error) {
-          console.warn('Supabase update warning, saved locally:', error.message);
+          console.log('✅ Producto actualizado exitosamente en Supabase Nube:', updatedProduct.name);
+        } else {
+          // If record does not exist in Supabase yet, insert it automatically
+          const fullInsertPayload = {
+            name: updates.name || (index !== -1 ? currentLocal[index].name : 'Nuevo Producto'),
+            slug: updates.slug || (index !== -1 ? currentLocal[index].slug : `prod-${Date.now()}`),
+            brand_collection: updates.brand_collection || 'Diseño Tu Espacio Collection',
+            description: updates.description || '',
+            price: Number(updates.price || 0),
+            original_price: updates.original_price ? Number(updates.original_price) : null,
+            category: updates.category || 'Varios',
+            style: updates.style || 'Contemporáneo',
+            stock: Number(updates.stock || 0),
+            images: updates.images || (index !== -1 ? currentLocal[index].images : []),
+            colors: updates.colors || [],
+            is_featured: !!updates.is_featured,
+            dimensions: updates.dimensions || '',
+            materials: updates.materials || ''
+          };
+          const { data: insertedData } = await supabase.from('products').insert([fullInsertPayload]).select();
+          if (insertedData && insertedData.length > 0) {
+            console.log('✅ Producto insertado exitosamente en Supabase Nube:', insertedData[0].name);
+          }
         }
       } catch (err) {
         console.error('Supabase update exception:', err);
