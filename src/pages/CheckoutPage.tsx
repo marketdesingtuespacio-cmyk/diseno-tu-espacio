@@ -4,6 +4,7 @@ import { ShieldCheck, ArrowLeft, CheckCircle2, Info } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { shippingService } from '../services/shippingService';
+import { orderService } from '../services/orderService';
 
 export type PaymentGateway = 'wompi' | 'mercadopago' | 'stripe' | 'pse' | 'nequi';
 
@@ -77,13 +78,42 @@ export const CheckoutPage: React.FC = () => {
   const shippingCost = totalPrice > 1500000 ? 0 : selectedCityRate.cost;
   const grandTotal = totalPrice + shippingCost;
 
-  const handleProcessPayment = (e: React.FormEvent) => {
+  const handleProcessPayment = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsProcessing(true);
 
-    // Simulate multi-gateway API transaction call
-    setTimeout(() => {
+    try {
       const orderRef = `DT-${Math.floor(100000 + Math.random() * 900000)}`;
+
+      await orderService.createOrder({
+        order_ref: orderRef,
+        customer_name: shippingForm.fullName.trim(),
+        customer_email: shippingForm.email.trim(),
+        customer_phone: shippingForm.phone.trim(),
+        customer_tag: 'Residencial',
+        shipping_address: shippingForm.address.trim(),
+        city: selectedCityRate.city,
+        carrier: 'Servientrega',
+        subtotal: totalPrice,
+        shipping_cost: shippingCost,
+        discount: 0,
+        total: grandTotal,
+        status: 'processing',
+        payment_method: selectedSubMethod,
+        payment_gateway: PAYMENT_PROVIDERS.find(p => p.id === selectedGateway)?.name || selectedGateway,
+        items_count: cart.reduce((acc, item) => acc + item.quantity, 0),
+        items: cart.map(item => ({
+          product_id: item.product.id,
+          name: item.product.name,
+          image: item.product.images[0] || '',
+          price: item.product.price,
+          quantity: item.quantity,
+          color: item.product.colors && item.product.colors.length > 0 ? item.product.colors[0].name : undefined
+        })),
+        notes: shippingForm.notes.trim(),
+        created_at: new Date().toISOString().replace('T', ' ').substring(0, 16)
+      });
+
       setOrderCompleted({
         orderRef,
         customer: shippingForm.fullName,
@@ -95,8 +125,11 @@ export const CheckoutPage: React.FC = () => {
         itemsCount: cart.length
       });
       clearCart();
+    } catch (err) {
+      console.error('Error procesando pago:', err);
+    } finally {
       setIsProcessing(false);
-    }, 2000);
+    }
   };
 
   if (orderCompleted) {

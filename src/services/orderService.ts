@@ -1,5 +1,6 @@
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { Order } from '../types';
+import { productService } from './productService';
 
 const LOCAL_STORAGE_ORDERS_KEY = 'luxe_orders_cache_v2';
 
@@ -149,6 +150,15 @@ export const orderService = {
       id: newId,
       created_at: new Date().toISOString().replace('T', ' ').substring(0, 16)
     };
+
+    // Automatically deduct stock for items in this order
+    if (orderData.items && orderData.items.length > 0) {
+      try {
+        await productService.deductStockForItems(orderData.items);
+      } catch (err) {
+        console.warn('Could not deduct product stock automatically:', err);
+      }
+    }
 
     if (isSupabaseConfigured()) {
       try {

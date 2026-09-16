@@ -273,5 +273,57 @@ export const productService = {
     }
 
     return true;
+  },
+
+  async deductStockForItems(items: { product_id: string; quantity: number }[]): Promise<void> {
+    if (!items || items.length === 0) return;
+
+    const products = getStoredProducts();
+    let updatedAny = false;
+
+    for (const item of items) {
+      const idx = products.findIndex(p => p.id === item.product_id || p.slug === item.product_id);
+      if (idx !== -1) {
+        const prod = products[idx];
+        const qty = item.quantity || 1;
+        const newStock = Math.max(0, prod.stock - qty);
+        const currentWebStock = prod.web_stock !== undefined ? prod.web_stock : prod.stock;
+        const newWebStock = Math.max(0, currentWebStock - qty);
+
+        let newStatus = prod.inventory_status || 'Disponible';
+        if (newStock <= 0) {
+          newStatus = 'Agotado';
+        } else if (newStock <= 3) {
+          newStatus = 'Poco Stock';
+        } else {
+          newStatus = 'Disponible';
+        }
+
+        const updatedProd: Product = {
+          ...prod,
+          stock: newStock,
+          web_stock: newWebStock,
+          inventory_status: newStatus
+        };
+
+        products[idx] = updatedProd;
+        updatedAny = true;
+
+        if (isSupabaseConfigured()) {
+          try {
+            await supabase
+              .from('products')
+              .update({ stock: newStock, web_stock: newWebStock, inventory_status: newStatus })
+              .eq('id', prod.id);
+          } catch (err) {
+            console.warn('Supabase stock deduction error:', err);
+          }
+        }
+      }
+    }
+
+    if (updatedAny) {
+      saveStoredProducts(products);
+    }
   }
 };
