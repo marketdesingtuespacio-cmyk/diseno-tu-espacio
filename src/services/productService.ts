@@ -35,12 +35,16 @@ const saveStoredProducts = (products: Product[]) => {
 };
 
 export const productService = {
-  async getProducts(filters?: Partial<ProductFilterState>): Promise<Product[]> {
+  async getProducts(filters?: Partial<ProductFilterState>, includePrivate: boolean = false): Promise<Product[]> {
     let localProducts = getStoredProducts();
 
     if (isSupabaseConfigured()) {
       try {
         let query = supabase.from('products').select('*');
+
+        if (!includePrivate) {
+          query = query.neq('inventory_status', 'Privado');
+        }
 
         if (filters?.category && filters.category !== 'all') {
           query = query.eq('category', filters.category);
@@ -88,6 +92,11 @@ export const productService = {
     // Apply Filters
     let result = [...localProducts];
 
+    // Filter out Private products for public consumers
+    if (!includePrivate) {
+      result = result.filter(p => p.inventory_status !== 'Privado');
+    }
+
     if (filters) {
       if (filters.category && filters.category !== 'all') {
         result = result.filter(p => p.category === filters.category);
@@ -130,21 +139,28 @@ export const productService = {
     return result;
   },
 
-  async getProductBySlug(slug: string): Promise<Product | null> {
+  async getProductBySlug(slug: string, includePrivate: boolean = false): Promise<Product | null> {
     if (isSupabaseConfigured()) {
       try {
-        const { data, error } = await supabase
+        let query = supabase
           .from('products')
           .select('*')
-          .eq('slug', slug)
-          .single();
+          .eq('slug', slug);
+        if (!includePrivate) {
+          query = query.neq('inventory_status', 'Privado');
+        }
+        const { data, error } = await query.single();
         if (!error && data) return data as Product;
       } catch {
         // fallback
       }
     }
     const products = getStoredProducts();
-    return products.find(p => p.slug === slug) || null;
+    const found = products.find(p => p.slug === slug);
+    if (found && !includePrivate && found.inventory_status === 'Privado') {
+      return null;
+    }
+    return found || null;
   },
 
   async createProduct(productData: Omit<Product, 'id'>): Promise<Product> {

@@ -102,7 +102,7 @@ export const AdminDashboardPage: React.FC = () => {
 
   const loadData = async () => {
     const [pList, aList, oList, cList, sHealth] = await Promise.all([
-      productService.getProducts(),
+      productService.getProducts(undefined, true),
       appointmentService.getAppointments(),
       orderService.getOrders(),
       couponService.getCoupons(),

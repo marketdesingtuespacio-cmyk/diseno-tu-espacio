@@ -6,16 +6,27 @@ import { productService } from '../services/productService';
 import { ProductCard } from '../components/ProductCard';
 import { useCurrency } from '../context/CurrencyContext';
 
-const CATEGORIES = ['all', 'Lámparas de Techo', 'Iluminación de Pared', 'Lámparas de Pie', 'Lámparas de Mesa', 'Diseño Mobiliario'];
-const STYLES = ['all', 'Minimalista', 'Contemporáneo', 'Bauhaus', 'Nórdico'];
+const DEFAULT_CATEGORIES = ['all', 'Papel de Colgadura', 'Lavamanos', 'Espejos', 'Cuadros & Espejos', 'Revestimientos', 'Lámparas de Techo', 'Iluminación de Pared', 'Lámparas de Pie', 'Lámparas de Mesa', 'Diseño Mobiliario'];
+const STYLES = ['all', 'Minimalista', 'Contemporáneo', 'Bauhaus', 'Nórdico', 'Orgánico Moderno', 'Galería Contemporánea', 'Arquitectónico'];
 const DEFAULT_MAX_PRICE = 20000000; // $20.000.000 COP default max threshold
 
 export const CatalogPage: React.FC = () => {
   const { formatPrice } = useCurrency();
   const [searchParams, setSearchParams] = useSearchParams();
   const [products, setProducts] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<string[]>(DEFAULT_CATEGORIES);
   const [loading, setLoading] = useState(true);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+
+  // Fetch dynamic categories from active public products
+  useEffect(() => {
+    productService.getProducts().then(publicItems => {
+      const activeCats = Array.from(new Set(publicItems.map(p => p.category).filter(Boolean)));
+      if (activeCats.length > 0) {
+        setCategories(['all', ...activeCats]);
+      }
+    });
+  }, []);
 
   // Filter State
   const [filters, setFilters] = useState<ProductFilterState>({
@@ -149,7 +160,7 @@ export const CatalogPage: React.FC = () => {
           <div className="space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-500">Categoría</h4>
             <div className="space-y-1.5 text-xs">
-              {CATEGORIES.map(cat => (
+              {categories.map(cat => (
                 <label key={cat} className="flex items-center gap-2.5 cursor-pointer text-neutral-700 hover:text-brand-black">
                   <input 
                     type="radio"
