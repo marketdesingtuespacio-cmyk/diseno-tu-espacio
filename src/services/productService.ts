@@ -2,7 +2,7 @@ import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { Product, ProductFilterState } from '../types';
 import { MOCK_PRODUCTS } from './mockData';
 
-const LOCAL_STORAGE_PRODUCTS_KEY = 'luxe_products_v10';
+const LOCAL_STORAGE_PRODUCTS_KEY = 'luxe_products_v12';
 
 const getStoredProducts = (): Product[] => {
   const stored = localStorage.getItem(LOCAL_STORAGE_PRODUCTS_KEY);
@@ -26,7 +26,6 @@ const saveStoredProducts = (products: Product[]) => {
   } catch (err) {
     console.warn('localStorage quota warning:', err);
     try {
-      // Save products preserving all user images
       localStorage.setItem(LOCAL_STORAGE_PRODUCTS_KEY, JSON.stringify(products));
     } catch {
       // Storage safety
@@ -66,45 +65,9 @@ export const productService = {
         if (!error && data && data.length > 0) {
           const supabaseProducts = data as Product[];
           
-          // Deduplicate products based on normalized key (name/slug) to prevent double listing
-          const getProductKey = (p: Product) => {
-            const slugKey = (p.slug || '').toLowerCase().trim();
-            const nameKey = (p.name || '').toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
-            return slugKey || nameKey || p.id;
-          };
-
-          const mergedMap = new Map<string, Product>();
-          
-          // 1. Add Supabase products (cloud state)
-          supabaseProducts.forEach(p => {
-            const key = getProductKey(p);
-            mergedMap.set(key, p);
-          });
-          
-          // 2. Merge local products without introducing duplicates
-          localProducts.forEach(p => {
-            const key = getProductKey(p);
-            if (mergedMap.has(key)) {
-              const cloudProd = mergedMap.get(key)!;
-              mergedMap.set(key, {
-                ...p,
-                ...cloudProd,
-                sku: cloudProd.sku || p.sku,
-                warehouse_stock: cloudProd.warehouse_stock !== undefined ? cloudProd.warehouse_stock : p.warehouse_stock,
-                store_stock: cloudProd.store_stock !== undefined ? cloudProd.store_stock : p.store_stock,
-                web_stock: cloudProd.web_stock !== undefined ? cloudProd.web_stock : p.web_stock,
-                boxes_count: cloudProd.boxes_count !== undefined ? cloudProd.boxes_count : p.boxes_count,
-                warranty: cloudProd.warranty || p.warranty,
-                inventory_status: cloudProd.inventory_status || p.inventory_status
-              });
-            } else {
-              mergedMap.set(key, p);
-            }
-          });
-
-          const mergedProducts = Array.from(mergedMap.values());
-          saveStoredProducts(mergedProducts);
-          localProducts = mergedProducts;
+          // Cloud DB is authoritative source of truth
+          saveStoredProducts(supabaseProducts);
+          localProducts = supabaseProducts;
         }
       } catch (err) {
         console.warn('Supabase fetch failed, using local product dataset', err);
