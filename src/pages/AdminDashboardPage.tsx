@@ -3,7 +3,6 @@ import {
   Calendar, 
   Trash2, 
   Edit3, 
-  Search, 
   RefreshCw, 
   PlusCircle,
   LayoutGrid,
@@ -24,6 +23,7 @@ import { OrderRegistrationModal } from '../components/admin/OrderRegistrationMod
 import { OrderKanbanBoard } from '../components/admin/OrderKanbanBoard';
 import { OrderEditModal } from '../components/admin/OrderEditModal';
 import { OrderFilterBar, OrderFilterState } from '../components/admin/OrderFilterBar';
+import { ProductFilterBar, ProductFilterState } from '../components/admin/ProductFilterBar';
 import { AnalyticsDashboard } from '../components/admin/AnalyticsDashboard';
 
 export const AdminDashboardPage: React.FC = () => {
@@ -34,9 +34,19 @@ export const AdminDashboardPage: React.FC = () => {
   const [coupons, setCoupons] = useState<Coupon[]>([]);
 
   // Filters & Views inside Admin
-  const [searchQuery, setSearchQuery] = useState('');
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [orderViewMode, setOrderViewMode] = useState<'kanban' | 'table'>('kanban');
+
+  // Smart Product Filters State
+  const initialProductFilters: ProductFilterState = {
+    searchQuery: '',
+    category: 'all',
+    inventoryStatus: 'all',
+    dateRange: 'all',
+    startDate: '',
+    endDate: ''
+  };
+  const [productFilters, setProductFilters] = useState<ProductFilterState>(initialProductFilters);
 
   // Smart Order Filters State
   const initialOrderFilters: OrderFilterState = {
@@ -180,11 +190,69 @@ export const AdminDashboardPage: React.FC = () => {
     loadData();
   };
 
-  // Filtered Lists
-  const filteredProducts = products.filter(p => 
-    p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    p.category.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // Filtered Lists & Categories
+  const productCategories = Array.from(new Set(products.map(p => p.category).filter(Boolean)));
+
+  const filteredProducts = products.filter(p => {
+    // 1. Search Query
+    if (productFilters.searchQuery.trim()) {
+      const q = productFilters.searchQuery.toLowerCase().trim();
+      const matchName = p.name.toLowerCase().includes(q);
+      const matchSku = (p.sku || '').toLowerCase().includes(q);
+      const matchCat = p.category.toLowerCase().includes(q);
+      const matchStyle = p.style.toLowerCase().includes(q);
+      const matchDesc = (p.description || '').toLowerCase().includes(q);
+      const matchMat = (p.materials || '').toLowerCase().includes(q);
+      if (!matchName && !matchSku && !matchCat && !matchStyle && !matchDesc && !matchMat) {
+        return false;
+      }
+    }
+
+    // 2. Category Filter
+    if (productFilters.category !== 'all' && p.category !== productFilters.category) {
+      return false;
+    }
+
+    // 3. Inventory Status Filter (Privado, Disponible, Poco Stock, Agotado)
+    if (productFilters.inventoryStatus !== 'all') {
+      const status = p.inventory_status || 'Disponible';
+      if (productFilters.inventoryStatus === 'Privado') {
+        if (status !== 'Privado') return false;
+      } else if (productFilters.inventoryStatus === 'Agotado') {
+        if (p.stock > 0 && status !== 'Agotado') return false;
+      } else if (productFilters.inventoryStatus === 'Poco Stock') {
+        if (p.stock <= 0 || p.stock > 3) return false;
+      } else if (productFilters.inventoryStatus === 'Disponible') {
+        if (p.stock <= 3 || status === 'Agotado' || status === 'Privado') return false;
+      }
+    }
+
+    // 4. Date Range Filter (Fecha de Ingreso)
+    if (productFilters.dateRange !== 'all') {
+      const dateStr = (p.created_at || '').split(' ')[0];
+      if (dateStr) {
+        const now = new Date();
+
+        if (productFilters.dateRange === 'today') {
+          const todayStr = new Date().toISOString().split('T')[0];
+          if (!dateStr.startsWith(todayStr)) return false;
+        } else if (productFilters.dateRange === '7days') {
+          const past = new Date();
+          past.setDate(now.getDate() - 7);
+          if (new Date(dateStr) < past) return false;
+        } else if (productFilters.dateRange === '30days') {
+          const past = new Date();
+          past.setDate(now.getDate() - 30);
+          if (new Date(dateStr) < past) return false;
+        } else if (productFilters.dateRange === 'custom') {
+          if (productFilters.startDate && dateStr < productFilters.startDate) return false;
+          if (productFilters.endDate && dateStr > productFilters.endDate) return false;
+        }
+      }
+    }
+
+    return true;
+  });
 
   const filteredOrders = orders.filter(o => {
     // 1. Free text search
@@ -345,16 +413,16 @@ export const AdminDashboardPage: React.FC = () => {
         {/* TAB 2: PRODUCTS LIST & INVENTORY */}
         {activeTab === 'products' && (
           <div className="space-y-6">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white p-4 border border-brand-border gap-4">
-              <div className="relative w-full sm:w-72">
-                <Search className="w-4 h-4 absolute left-3 top-2.5 text-neutral-400" />
-                <input 
-                  type="text" 
-                  placeholder="Buscar por nombre, SKU o categoría..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-brand-surface border border-brand-border py-1.5 pl-9 pr-3 text-xs focus:outline-none"
-                />
+            
+            {/* Action Bar */}
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white/80 backdrop-blur-md border border-white/90 p-5 rounded-2xl shadow-xs gap-4">
+              <div>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-brand-black">
+                  Gestión de Inventario & Catálogo Oficial
+                </h3>
+                <p className="text-[11px] text-neutral-500 font-light mt-0.5">
+                  Visualiza el desglose de existencias por bodega, tienda y web, filtra por estados y exporta reportes en tiempo real.
+                </p>
               </div>
 
               <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
@@ -374,12 +442,23 @@ export const AdminDashboardPage: React.FC = () => {
                   }}
                   className="bg-brand-black text-white text-xs font-bold uppercase tracking-widest py-2.5 px-5 rounded-xl hover:bg-neutral-800 flex items-center gap-2 shrink-0 shadow-sm"
                 >
-                  <PlusCircle className="w-4 h-4" /> Registrar Producto
+                  <PlusCircle className="w-4 h-4 text-amber-300" /> Registrar Producto
                 </button>
               </div>
             </div>
 
-            <div className="bg-white border border-brand-border overflow-x-auto rounded-xl">
+            {/* Smart Product Filters */}
+            <ProductFilterBar 
+              filters={productFilters}
+              onFilterChange={setProductFilters}
+              onResetFilters={() => setProductFilters(initialProductFilters)}
+              filteredCount={filteredProducts.length}
+              totalCount={products.length}
+              categories={productCategories}
+            />
+
+            {/* Products Table */}
+            <div className="bg-white border border-brand-border overflow-x-auto rounded-xl shadow-xs">
               <table className="w-full text-left text-xs">
                 <thead className="bg-brand-surface uppercase text-[10px] tracking-widest text-neutral-500 border-b">
                   <tr>
@@ -388,63 +467,98 @@ export const AdminDashboardPage: React.FC = () => {
                     <th className="p-3">Categoría</th>
                     <th className="p-3">Precio (COP)</th>
                     <th className="p-3">Stock & Ubicaciones</th>
+                    <th className="p-3">Estado</th>
                     <th className="p-3">Garantía</th>
                     <th className="p-3 text-right">Acciones</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y">
-                  {filteredProducts.map(p => (
-                    <tr key={p.id} className="hover:bg-brand-surface/50">
-                      <td className="p-3">
-                        <img src={p.images[0]} alt="" className="w-10 h-12 object-cover border bg-brand-surface rounded-md" />
-                      </td>
-                      <td className="p-3 font-medium">
-                        <div className="font-bold text-brand-black">{p.name}</div>
-                        {p.sku && (
-                          <div className="text-[10px] text-neutral-500 font-mono font-bold">SKU: {p.sku}</div>
-                        )}
-                      </td>
-                      <td className="p-3 text-neutral-500 font-medium">{p.category}</td>
-                      <td className="p-3 font-bold">
-                        <div>{formatPrice(p.price)}</div>
-                        {p.original_price && (
-                          <div className="text-[10px] text-neutral-400 line-through">{formatPrice(p.original_price)}</div>
-                        )}
-                      </td>
-                      <td className="p-3">
-                        <span className={`px-2 py-0.5 font-bold rounded-md text-[11px] ${p.stock > 5 ? 'bg-neutral-100 text-brand-black' : 'bg-red-100 text-red-800'}`}>
-                          {p.stock} u. total
-                        </span>
-                        {(p.warehouse_stock || p.store_stock || p.web_stock) ? (
-                          <div className="text-[9px] text-neutral-500 mt-1 font-mono">
-                            Bodega: {p.warehouse_stock || 0} | Tienda: {p.store_stock || 0} | Web: {p.web_stock || 0}
-                          </div>
-                        ) : null}
-                      </td>
-                      <td className="p-3 text-neutral-600 font-medium">
-                        {p.warranty || '3 años'}
-                      </td>
-                      <td className="p-3 text-right space-x-2">
-                        <button 
-                          onClick={() => {
-                            setEditingProduct(p);
-                            setActiveTab('add-product');
-                          }}
-                          className="p-1.5 text-neutral-600 hover:text-black"
-                          title="Editar"
-                        >
-                          <Edit3 className="w-4 h-4" />
-                        </button>
-                        <button 
-                          onClick={() => handleDeleteProduct(p.id)}
-                          className="p-1.5 text-neutral-400 hover:text-red-600"
-                          title="Eliminar"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
+                  {filteredProducts.length === 0 ? (
+                    <tr>
+                      <td colSpan={8} className="p-8 text-center text-neutral-400 font-medium">
+                        No se encontraron productos que coincidan con los filtros seleccionados.
                       </td>
                     </tr>
-                  ))}
+                  ) : (
+                    filteredProducts.map(p => {
+                      const isPrivado = p.inventory_status === 'Privado';
+                      const isAgotado = p.stock <= 0 || p.inventory_status === 'Agotado';
+                      const isPocoStock = !isAgotado && !isPrivado && p.stock <= 3;
+
+                      return (
+                        <tr key={p.id} className="hover:bg-brand-surface/50 transition-colors">
+                          <td className="p-3">
+                            <img src={p.images[0]} alt="" className="w-10 h-12 object-cover border bg-brand-surface rounded-md shadow-2xs" />
+                          </td>
+                          <td className="p-3 font-medium">
+                            <div className="font-bold text-brand-black">{p.name}</div>
+                            {p.sku && (
+                              <div className="text-[10px] text-neutral-500 font-mono font-bold">SKU: {p.sku}</div>
+                            )}
+                            {p.created_at && (
+                              <div className="text-[9.5px] text-neutral-400 font-light mt-0.5">Ingreso: {p.created_at.split(' ')[0]}</div>
+                            )}
+                          </td>
+                          <td className="p-3 text-neutral-500 font-medium">{p.category}</td>
+                          <td className="p-3 font-bold">
+                            <div>{formatPrice(p.price)}</div>
+                            {p.original_price && (
+                              <div className="text-[10px] text-neutral-400 line-through">{formatPrice(p.original_price)}</div>
+                            )}
+                          </td>
+                          <td className="p-3">
+                            <span className={`px-2 py-0.5 font-bold rounded-md text-[11px] ${
+                              isAgotado ? 'bg-red-100 text-red-800' :
+                              isPocoStock ? 'bg-amber-100 text-amber-900 font-extrabold' :
+                              'bg-neutral-100 text-brand-black'
+                            }`}>
+                              {p.stock} u. total
+                            </span>
+                            {(p.warehouse_stock || p.store_stock || p.web_stock) ? (
+                              <div className="text-[9px] text-neutral-500 mt-1 font-mono">
+                                Bodega: {p.warehouse_stock || 0} | Tienda: {p.store_stock || 0} | Web: {p.web_stock || 0}
+                              </div>
+                            ) : null}
+                          </td>
+                          <td className="p-3">
+                            <span className={`px-2.5 py-1 text-[10px] font-bold uppercase rounded-full border ${
+                              isPrivado ? 'bg-purple-50 text-purple-800 border-purple-200' :
+                              isAgotado ? 'bg-red-50 text-red-800 border-red-200' :
+                              isPocoStock ? 'bg-amber-50 text-amber-800 border-amber-200 font-extrabold' :
+                              'bg-emerald-50 text-emerald-800 border-emerald-200'
+                            }`}>
+                              {isPrivado ? '🔒 Privado' :
+                               isAgotado ? '❌ Agotado' :
+                               isPocoStock ? '⚠️ Por Agotarse' :
+                               '✅ Disponible'}
+                            </span>
+                          </td>
+                          <td className="p-3 text-neutral-600 font-medium">
+                            {p.warranty || '3 años'}
+                          </td>
+                          <td className="p-3 text-right space-x-2">
+                            <button 
+                              onClick={() => {
+                                setEditingProduct(p);
+                                setActiveTab('add-product');
+                              }}
+                              className="p-1.5 text-neutral-600 hover:text-black hover:bg-neutral-100 rounded-lg transition-colors"
+                              title="Editar"
+                            >
+                              <Edit3 className="w-4 h-4" />
+                            </button>
+                            <button 
+                              onClick={() => handleDeleteProduct(p.id)}
+                              className="p-1.5 text-neutral-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                              title="Eliminar"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })
+                  )}
                 </tbody>
               </table>
             </div>

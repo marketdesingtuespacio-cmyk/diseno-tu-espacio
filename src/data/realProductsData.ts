@@ -39,7 +39,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Papel de colgadura MD680101 referencia SKU MD680101. Acabados de lujo y garantía de 4 años."
+    "description": "Pieza de autor Papel de colgadura MD680101 referencia SKU MD680101. Acabados de lujo y garantía de 4 años.",
+    "created_at": "2026-09-15 10:00"
   },
   {
     "id": "prod-csv-2",
@@ -79,7 +80,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Papel de colgadura MD680209 referencia SKU MD680209. Acabados de lujo y garantía de 5 años."
+    "description": "Pieza de autor Papel de colgadura MD680209 referencia SKU MD680209. Acabados de lujo y garantía de 5 años.",
+    "created_at": "2026-09-14 10:00"
   },
   {
     "id": "prod-csv-3",
@@ -119,7 +121,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Papel de colgadura MD680301 referencia SKU MD680301. Acabados de lujo y garantía de 6 años."
+    "description": "Pieza de autor Papel de colgadura MD680301 referencia SKU MD680301. Acabados de lujo y garantía de 6 años.",
+    "created_at": "2026-09-13 10:00"
   },
   {
     "id": "prod-csv-4",
@@ -159,7 +162,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Papel de colgadura MD680313 referencia SKU MD680313. Acabados de lujo y garantía de 7 años."
+    "description": "Pieza de autor Papel de colgadura MD680313 referencia SKU MD680313. Acabados de lujo y garantía de 7 años.",
+    "created_at": "2026-09-12 10:00"
   },
   {
     "id": "prod-csv-5",
@@ -199,7 +203,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Papel de colgadura MD680312 referencia SKU MD680312. Acabados de lujo y garantía de 8 años."
+    "description": "Pieza de autor Papel de colgadura MD680312 referencia SKU MD680312. Acabados de lujo y garantía de 8 años.",
+    "created_at": "2026-09-11 10:00"
   },
   {
     "id": "prod-csv-6",
@@ -239,7 +244,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Papel de colgadura MD680402B referencia SKU MD680402B. Acabados de lujo y garantía de 9 años."
+    "description": "Pieza de autor Papel de colgadura MD680402B referencia SKU MD680402B. Acabados de lujo y garantía de 9 años.",
+    "created_at": "2026-09-10 10:00"
   },
   {
     "id": "prod-csv-7",
@@ -279,7 +285,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Papel de colgadura MD680510-B referencia SKU MD680510-B. Acabados de lujo y garantía de 10 años."
+    "description": "Pieza de autor Papel de colgadura MD680510-B referencia SKU MD680510-B. Acabados de lujo y garantía de 10 años.",
+    "created_at": "2026-09-09 10:00"
   },
   {
     "id": "prod-csv-8",
@@ -319,7 +326,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Papel de colgadura MD680512-B referencia SKU MD680512-B. Acabados de lujo y garantía de 11 años."
+    "description": "Pieza de autor Papel de colgadura MD680512-B referencia SKU MD680512-B. Acabados de lujo y garantía de 11 años.",
+    "created_at": "2026-09-08 10:00"
   },
   {
     "id": "prod-csv-9",
@@ -359,7 +367,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Papel de colgadura MD680603 referencia SKU MD680603. Acabados de lujo y garantía de 12 años."
+    "description": "Pieza de autor Papel de colgadura MD680603 referencia SKU MD680603. Acabados de lujo y garantía de 12 años.",
+    "created_at": "2026-09-07 10:00"
   },
   {
     "id": "prod-csv-10",
@@ -399,7 +408,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Papel de colgadura MD680704 referencia SKU MD680704. Acabados de lujo y garantía de 13 años."
+    "description": "Pieza de autor Papel de colgadura MD680704 referencia SKU MD680704. Acabados de lujo y garantía de 13 años.",
+    "created_at": "2026-09-06 10:00"
   },
   {
     "id": "prod-csv-11",
@@ -439,7 +449,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Papel de colgadura MD680904 referencia SKU MD680904. Acabados de lujo y garantía de 14 años."
+    "description": "Pieza de autor Papel de colgadura MD680904 referencia SKU MD680904. Acabados de lujo y garantía de 14 años.",
+    "created_at": "2026-09-05 10:00"
   },
   {
     "id": "prod-csv-12",
@@ -479,7 +490,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Papel de colgadura MD681014 referencia SKU MD681014. Acabados de lujo y garantía de 15 años."
+    "description": "Pieza de autor Papel de colgadura MD681014 referencia SKU MD681014. Acabados de lujo y garantía de 15 años.",
+    "created_at": "2026-09-04 10:00"
   },
   {
     "id": "prod-csv-13",
@@ -519,7 +531,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Papel de colgadura MD681113 referencia SKU MD681113. Acabados de lujo y garantía de 16 años."
+    "description": "Pieza de autor Papel de colgadura MD681113 referencia SKU MD681113. Acabados de lujo y garantía de 16 años.",
+    "created_at": "2026-09-03 10:00"
   },
   {
     "id": "prod-csv-14",
@@ -559,7 +572,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Papel de colgadura MD681209 referencia SKU MD681209. Acabados de lujo y garantía de 17 años."
+    "description": "Pieza de autor Papel de colgadura MD681209 referencia SKU MD681209. Acabados de lujo y garantía de 17 años.",
+    "created_at": "2026-09-02 10:00"
   },
   {
     "id": "prod-csv-15",
@@ -599,7 +613,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Papel de colgadura MD681309 referencia SKU MD681309. Acabados de lujo y garantía de 18 años."
+    "description": "Pieza de autor Papel de colgadura MD681309 referencia SKU MD681309. Acabados de lujo y garantía de 18 años.",
+    "created_at": "2026-09-16 10:00"
   },
   {
     "id": "prod-csv-16",
@@ -639,7 +654,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Papel de colgadura MD681412 referencia SKU MD681412. Acabados de lujo y garantía de 19 años."
+    "description": "Pieza de autor Papel de colgadura MD681412 referencia SKU MD681412. Acabados de lujo y garantía de 19 años.",
+    "created_at": "2026-09-15 10:00"
   },
   {
     "id": "prod-csv-17",
@@ -679,7 +695,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Papel de colgadura MD681511 referencia SKU MD681511. Acabados de lujo y garantía de 20 años."
+    "description": "Pieza de autor Papel de colgadura MD681511 referencia SKU MD681511. Acabados de lujo y garantía de 20 años.",
+    "created_at": "2026-09-14 10:00"
   },
   {
     "id": "prod-csv-18",
@@ -719,7 +736,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Papel de colgadura MD681706 referencia SKU MD681706. Acabados de lujo y garantía de 21 años."
+    "description": "Pieza de autor Papel de colgadura MD681706 referencia SKU MD681706. Acabados de lujo y garantía de 21 años.",
+    "created_at": "2026-09-13 10:00"
   },
   {
     "id": "prod-csv-19",
@@ -759,7 +777,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Papel de colgadura MD680103 referencia SKU MD680103. Acabados de lujo y garantía de 22 años."
+    "description": "Pieza de autor Papel de colgadura MD680103 referencia SKU MD680103. Acabados de lujo y garantía de 22 años.",
+    "created_at": "2026-09-12 10:00"
   },
   {
     "id": "prod-csv-20",
@@ -799,7 +818,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Papel de colgadura MD681901 referencia SKU MD681901. Acabados de lujo y garantía de 23 años."
+    "description": "Pieza de autor Papel de colgadura MD681901 referencia SKU MD681901. Acabados de lujo y garantía de 23 años.",
+    "created_at": "2026-09-11 10:00"
   },
   {
     "id": "prod-csv-21",
@@ -839,7 +859,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Lavamanos A725CA42 referencia SKU A725CA42. Acabados de lujo y garantía de 1 años."
+    "description": "Pieza de autor Lavamanos A725CA42 referencia SKU A725CA42. Acabados de lujo y garantía de 1 años.",
+    "created_at": "2026-09-10 10:00"
   },
   {
     "id": "prod-csv-22",
@@ -879,7 +900,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Lavamanos RB033 referencia SKU RB033. Acabados de lujo y garantía de 2 años."
+    "description": "Pieza de autor Lavamanos RB033 referencia SKU RB033. Acabados de lujo y garantía de 2 años.",
+    "created_at": "2026-09-09 10:00"
   },
   {
     "id": "prod-csv-23",
@@ -919,7 +941,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Lavamanos A585AP01M referencia SKU A585AP01M. Acabados de lujo y garantía de 3 años."
+    "description": "Pieza de autor Lavamanos A585AP01M referencia SKU A585AP01M. Acabados de lujo y garantía de 3 años.",
+    "created_at": "2026-09-08 10:00"
   },
   {
     "id": "prod-csv-24",
@@ -959,7 +982,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Lavamanos A524AP01M referencia SKU A524AP01M. Acabados de lujo y garantía de 4 años."
+    "description": "Pieza de autor Lavamanos A524AP01M referencia SKU A524AP01M. Acabados de lujo y garantía de 4 años.",
+    "created_at": "2026-09-07 10:00"
   },
   {
     "id": "prod-csv-25",
@@ -999,7 +1023,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Lavamanos A691CBKUG04M referencia SKU A691CBKUG04M. Acabados de lujo y garantía de 5 años."
+    "description": "Pieza de autor Lavamanos A691CBKUG04M referencia SKU A691CBKUG04M. Acabados de lujo y garantía de 5 años.",
+    "created_at": "2026-09-06 10:00"
   },
   {
     "id": "prod-csv-26",
@@ -1039,7 +1064,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Lavamanos A707CUG20M referencia SKU A707CUG20M. Acabados de lujo y garantía de 6 años."
+    "description": "Pieza de autor Lavamanos A707CUG20M referencia SKU A707CUG20M. Acabados de lujo y garantía de 6 años.",
+    "created_at": "2026-09-05 10:00"
   },
   {
     "id": "prod-csv-27",
@@ -1079,7 +1105,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Lavamanos A709CUG01M referencia SKU A709CUG01M. Acabados de lujo y garantía de 7 años."
+    "description": "Pieza de autor Lavamanos A709CUG01M referencia SKU A709CUG01M. Acabados de lujo y garantía de 7 años.",
+    "created_at": "2026-09-04 10:00"
   },
   {
     "id": "prod-csv-28",
@@ -1119,7 +1146,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Lavamanos A706CUG04M referencia SKU A706CUG04M. Acabados de lujo y garantía de 8 años."
+    "description": "Pieza de autor Lavamanos A706CUG04M referencia SKU A706CUG04M. Acabados de lujo y garantía de 8 años.",
+    "created_at": "2026-09-03 10:00"
   },
   {
     "id": "prod-csv-29",
@@ -1159,7 +1187,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Lavamanos A787P45M referencia SKU A787P45M. Acabados de lujo y garantía de 9 años."
+    "description": "Pieza de autor Lavamanos A787P45M referencia SKU A787P45M. Acabados de lujo y garantía de 9 años.",
+    "created_at": "2026-09-02 10:00"
   },
   {
     "id": "prod-csv-30",
@@ -1199,7 +1228,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Lavamanos A739P429M referencia SKU A739P429M. Acabados de lujo y garantía de 10 años."
+    "description": "Pieza de autor Lavamanos A739P429M referencia SKU A739P429M. Acabados de lujo y garantía de 10 años.",
+    "created_at": "2026-09-16 10:00"
   },
   {
     "id": "prod-csv-31",
@@ -1239,7 +1269,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Lavamanos A723P04M referencia SKU A723P04M. Acabados de lujo y garantía de 11 años."
+    "description": "Pieza de autor Lavamanos A723P04M referencia SKU A723P04M. Acabados de lujo y garantía de 11 años.",
+    "created_at": "2026-09-15 10:00"
   },
   {
     "id": "prod-csv-32",
@@ -1279,7 +1310,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Lavamanos A822P04M referencia SKU A822P04M. Acabados de lujo y garantía de 12 años."
+    "description": "Pieza de autor Lavamanos A822P04M referencia SKU A822P04M. Acabados de lujo y garantía de 12 años.",
+    "created_at": "2026-09-14 10:00"
   },
   {
     "id": "prod-csv-33",
@@ -1319,7 +1351,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Lavamanos A544GGCBK18 referencia SKU A544GGCBK18. Acabados de lujo y garantía de 13 años."
+    "description": "Pieza de autor Lavamanos A544GGCBK18 referencia SKU A544GGCBK18. Acabados de lujo y garantía de 13 años.",
+    "created_at": "2026-09-13 10:00"
   },
   {
     "id": "prod-csv-34",
@@ -1359,7 +1392,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Lavamanos A787GGCBK09 referencia SKU A787GGCBK09. Acabados de lujo y garantía de 14 años."
+    "description": "Pieza de autor Lavamanos A787GGCBK09 referencia SKU A787GGCBK09. Acabados de lujo y garantía de 14 años.",
+    "created_at": "2026-09-12 10:00"
   },
   {
     "id": "prod-csv-35",
@@ -1399,7 +1433,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Lavamanos A787CMCM referencia SKU A787CMCM. Acabados de lujo y garantía de 15 años."
+    "description": "Pieza de autor Lavamanos A787CMCM referencia SKU A787CMCM. Acabados de lujo y garantía de 15 años.",
+    "created_at": "2026-09-11 10:00"
   },
   {
     "id": "prod-csv-36",
@@ -1439,7 +1474,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Lavamanos A734CLKAM1840 referencia SKU A734CLKAM1840. Acabados de lujo y garantía de 16 años."
+    "description": "Pieza de autor Lavamanos A734CLKAM1840 referencia SKU A734CLKAM1840. Acabados de lujo y garantía de 16 años.",
+    "created_at": "2026-09-10 10:00"
   },
   {
     "id": "prod-csv-37",
@@ -1479,7 +1515,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Lavamanos A787CDGRM referencia SKU A787CDGRM. Acabados de lujo y garantía de 17 años."
+    "description": "Pieza de autor Lavamanos A787CDGRM referencia SKU A787CDGRM. Acabados de lujo y garantía de 17 años.",
+    "created_at": "2026-09-09 10:00"
   },
   {
     "id": "prod-csv-38",
@@ -1519,7 +1556,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Lavamanos A712CA52M referencia SKU A712CA52M. Acabados de lujo y garantía de 18 años."
+    "description": "Pieza de autor Lavamanos A712CA52M referencia SKU A712CA52M. Acabados de lujo y garantía de 18 años.",
+    "created_at": "2026-09-08 10:00"
   },
   {
     "id": "prod-csv-39",
@@ -1559,7 +1597,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos modernos 5523 referencia SKU 5523. Acabados de lujo y garantía de 19 años."
+    "description": "Pieza de autor Espejos modernos 5523 referencia SKU 5523. Acabados de lujo y garantía de 19 años.",
+    "created_at": "2026-09-07 10:00"
   },
   {
     "id": "prod-csv-40",
@@ -1599,7 +1638,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos modernos SF021 referencia SKU SF021. Acabados de lujo y garantía de 20 años."
+    "description": "Pieza de autor Espejos modernos SF021 referencia SKU SF021. Acabados de lujo y garantía de 20 años.",
+    "created_at": "2026-09-06 10:00"
   },
   {
     "id": "prod-csv-41",
@@ -1639,7 +1679,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos modernos 5814 referencia SKU 5814. Acabados de lujo y garantía de 21 años."
+    "description": "Pieza de autor Espejos modernos 5814 referencia SKU 5814. Acabados de lujo y garantía de 21 años.",
+    "created_at": "2026-09-05 10:00"
   },
   {
     "id": "prod-csv-42",
@@ -1679,7 +1720,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos modernos 5823 referencia SKU 5823. Acabados de lujo y garantía de 22 años."
+    "description": "Pieza de autor Espejos modernos 5823 referencia SKU 5823. Acabados de lujo y garantía de 22 años.",
+    "created_at": "2026-09-04 10:00"
   },
   {
     "id": "prod-csv-43",
@@ -1719,7 +1761,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos modernos 5822 referencia SKU 5822. Acabados de lujo y garantía de 23 años."
+    "description": "Pieza de autor Espejos modernos 5822 referencia SKU 5822. Acabados de lujo y garantía de 23 años.",
+    "created_at": "2026-09-03 10:00"
   },
   {
     "id": "prod-csv-44",
@@ -1759,7 +1802,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos modernos 5812 referencia SKU 5812. Acabados de lujo y garantía de 24 años."
+    "description": "Pieza de autor Espejos modernos 5812 referencia SKU 5812. Acabados de lujo y garantía de 24 años.",
+    "created_at": "2026-09-02 10:00"
   },
   {
     "id": "prod-csv-45",
@@ -1799,7 +1843,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos modernos SF021 referencia SKU SF021. Acabados de lujo y garantía de 25 años."
+    "description": "Pieza de autor Espejos modernos SF021 referencia SKU SF021. Acabados de lujo y garantía de 25 años.",
+    "created_at": "2026-09-16 10:00"
   },
   {
     "id": "prod-csv-46",
@@ -1839,7 +1884,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos modernos 5343 referencia SKU 5343. Acabados de lujo y garantía de 26 años."
+    "description": "Pieza de autor Espejos modernos 5343 referencia SKU 5343. Acabados de lujo y garantía de 26 años.",
+    "created_at": "2026-09-15 10:00"
   },
   {
     "id": "prod-csv-47",
@@ -1879,7 +1925,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos modernos 5911 referencia SKU 5911. Acabados de lujo y garantía de 27 años."
+    "description": "Pieza de autor Espejos modernos 5911 referencia SKU 5911. Acabados de lujo y garantía de 27 años.",
+    "created_at": "2026-09-14 10:00"
   },
   {
     "id": "prod-csv-48",
@@ -1919,7 +1966,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos modernos 5334 referencia SKU 5334. Acabados de lujo y garantía de 28 años."
+    "description": "Pieza de autor Espejos modernos 5334 referencia SKU 5334. Acabados de lujo y garantía de 28 años.",
+    "created_at": "2026-09-13 10:00"
   },
   {
     "id": "prod-csv-49",
@@ -1959,7 +2007,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos modernos 6411 referencia SKU 6411. Acabados de lujo y garantía de 29 años."
+    "description": "Pieza de autor Espejos modernos 6411 referencia SKU 6411. Acabados de lujo y garantía de 29 años.",
+    "created_at": "2026-09-12 10:00"
   },
   {
     "id": "prod-csv-50",
@@ -1999,7 +2048,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos modernos 5322 referencia SKU 5322. Acabados de lujo y garantía de 30 años."
+    "description": "Pieza de autor Espejos modernos 5322 referencia SKU 5322. Acabados de lujo y garantía de 30 años.",
+    "created_at": "2026-09-11 10:00"
   },
   {
     "id": "prod-csv-51",
@@ -2039,7 +2089,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos modernos 5101 referencia SKU 5101. Acabados de lujo y garantía de 31 años."
+    "description": "Pieza de autor Espejos modernos 5101 referencia SKU 5101. Acabados de lujo y garantía de 31 años.",
+    "created_at": "2026-09-10 10:00"
   },
   {
     "id": "prod-csv-52",
@@ -2079,7 +2130,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos modernos 5512 referencia SKU 5512. Acabados de lujo y garantía de 32 años."
+    "description": "Pieza de autor Espejos modernos 5512 referencia SKU 5512. Acabados de lujo y garantía de 32 años.",
+    "created_at": "2026-09-09 10:00"
   },
   {
     "id": "prod-csv-53",
@@ -2119,7 +2171,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos modernos SF022 referencia SKU SF022. Acabados de lujo y garantía de 33 años."
+    "description": "Pieza de autor Espejos modernos SF022 referencia SKU SF022. Acabados de lujo y garantía de 33 años.",
+    "created_at": "2026-09-08 10:00"
   },
   {
     "id": "prod-csv-54",
@@ -2159,7 +2212,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos modernos 5519 referencia SKU 5519. Acabados de lujo y garantía de 34 años."
+    "description": "Pieza de autor Espejos modernos 5519 referencia SKU 5519. Acabados de lujo y garantía de 34 años.",
+    "created_at": "2026-09-07 10:00"
   },
   {
     "id": "prod-csv-55",
@@ -2199,7 +2253,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos modernos 5520 referencia SKU 5520. Acabados de lujo y garantía de 35 años."
+    "description": "Pieza de autor Espejos modernos 5520 referencia SKU 5520. Acabados de lujo y garantía de 35 años.",
+    "created_at": "2026-09-06 10:00"
   },
   {
     "id": "prod-csv-56",
@@ -2239,7 +2294,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos modernos 6421 referencia SKU 6421. Acabados de lujo y garantía de 36 años."
+    "description": "Pieza de autor Espejos modernos 6421 referencia SKU 6421. Acabados de lujo y garantía de 36 años.",
+    "created_at": "2026-09-05 10:00"
   },
   {
     "id": "prod-csv-57",
@@ -2279,7 +2335,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos modernos 5521 referencia SKU 5521. Acabados de lujo y garantía de 37 años."
+    "description": "Pieza de autor Espejos modernos 5521 referencia SKU 5521. Acabados de lujo y garantía de 37 años.",
+    "created_at": "2026-09-04 10:00"
   },
   {
     "id": "prod-csv-58",
@@ -2319,7 +2376,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos modernos 5351 referencia SKU 5351. Acabados de lujo y garantía de 38 años."
+    "description": "Pieza de autor Espejos modernos 5351 referencia SKU 5351. Acabados de lujo y garantía de 38 años.",
+    "created_at": "2026-09-03 10:00"
   },
   {
     "id": "prod-csv-59",
@@ -2359,7 +2417,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros HP120X900947 referencia SKU HP120X900947. Acabados de lujo y garantía de 38 años."
+    "description": "Pieza de autor Espejos y cuadros HP120X900947 referencia SKU HP120X900947. Acabados de lujo y garantía de 38 años.",
+    "created_at": "2026-09-02 10:00"
   },
   {
     "id": "prod-csv-60",
@@ -2399,7 +2458,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros HP120X900948 referencia SKU HP120X900948. Acabados de lujo y garantía de 39 años."
+    "description": "Pieza de autor Espejos y cuadros HP120X900948 referencia SKU HP120X900948. Acabados de lujo y garantía de 39 años.",
+    "created_at": "2026-09-16 10:00"
   },
   {
     "id": "prod-csv-61",
@@ -2439,7 +2499,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros HP120X900963 referencia SKU HP120X900963. Acabados de lujo y garantía de 40 años."
+    "description": "Pieza de autor Espejos y cuadros HP120X900963 referencia SKU HP120X900963. Acabados de lujo y garantía de 40 años.",
+    "created_at": "2026-09-15 10:00"
   },
   {
     "id": "prod-csv-62",
@@ -2479,7 +2540,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros HP120X900964 referencia SKU HP120X900964. Acabados de lujo y garantía de 41 años."
+    "description": "Pieza de autor Espejos y cuadros HP120X900964 referencia SKU HP120X900964. Acabados de lujo y garantía de 41 años.",
+    "created_at": "2026-09-14 10:00"
   },
   {
     "id": "prod-csv-63",
@@ -2519,7 +2581,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros HP70X1401465 referencia SKU HP70X1401465. Acabados de lujo y garantía de 42 años."
+    "description": "Pieza de autor Espejos y cuadros HP70X1401465 referencia SKU HP70X1401465. Acabados de lujo y garantía de 42 años.",
+    "created_at": "2026-09-13 10:00"
   },
   {
     "id": "prod-csv-64",
@@ -2559,7 +2622,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros HP50X1501546 referencia SKU HP50X1501546. Acabados de lujo y garantía de 43 años."
+    "description": "Pieza de autor Espejos y cuadros HP50X1501546 referencia SKU HP50X1501546. Acabados de lujo y garantía de 43 años.",
+    "created_at": "2026-09-12 10:00"
   },
   {
     "id": "prod-csv-65",
@@ -2599,7 +2663,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros HP80X801097 referencia SKU HP80X801097. Acabados de lujo y garantía de 44 años."
+    "description": "Pieza de autor Espejos y cuadros HP80X801097 referencia SKU HP80X801097. Acabados de lujo y garantía de 44 años.",
+    "created_at": "2026-09-11 10:00"
   },
   {
     "id": "prod-csv-66",
@@ -2639,7 +2704,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros HP80X801098 referencia SKU HP80X801098. Acabados de lujo y garantía de 45 años."
+    "description": "Pieza de autor Espejos y cuadros HP80X801098 referencia SKU HP80X801098. Acabados de lujo y garantía de 45 años.",
+    "created_at": "2026-09-10 10:00"
   },
   {
     "id": "prod-csv-67",
@@ -2679,7 +2745,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros HP80X801103 referencia SKU HP80X801103. Acabados de lujo y garantía de 46 años."
+    "description": "Pieza de autor Espejos y cuadros HP80X801103 referencia SKU HP80X801103. Acabados de lujo y garantía de 46 años.",
+    "created_at": "2026-09-09 10:00"
   },
   {
     "id": "prod-csv-68",
@@ -2719,7 +2786,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros HP80X801104 referencia SKU HP80X801104. Acabados de lujo y garantía de 47 años."
+    "description": "Pieza de autor Espejos y cuadros HP80X801104 referencia SKU HP80X801104. Acabados de lujo y garantía de 47 años.",
+    "created_at": "2026-09-08 10:00"
   },
   {
     "id": "prod-csv-69",
@@ -2759,7 +2827,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros HP100X1400921 referencia SKU HP100X1400921. Acabados de lujo y garantía de 48 años."
+    "description": "Pieza de autor Espejos y cuadros HP100X1400921 referencia SKU HP100X1400921. Acabados de lujo y garantía de 48 años.",
+    "created_at": "2026-09-07 10:00"
   },
   {
     "id": "prod-csv-70",
@@ -2799,7 +2868,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros HP100X1400923 referencia SKU HP100X1400923. Acabados de lujo y garantía de 49 años."
+    "description": "Pieza de autor Espejos y cuadros HP100X1400923 referencia SKU HP100X1400923. Acabados de lujo y garantía de 49 años.",
+    "created_at": "2026-09-06 10:00"
   },
   {
     "id": "prod-csv-71",
@@ -2839,7 +2909,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros GY78X781606 referencia SKU GY78X781606. Acabados de lujo y garantía de 50 años."
+    "description": "Pieza de autor Espejos y cuadros GY78X781606 referencia SKU GY78X781606. Acabados de lujo y garantía de 50 años.",
+    "created_at": "2026-09-05 10:00"
   },
   {
     "id": "prod-csv-72",
@@ -2879,7 +2950,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros GY87X871608 referencia SKU GY87X871608. Acabados de lujo y garantía de 51 años."
+    "description": "Pieza de autor Espejos y cuadros GY87X871608 referencia SKU GY87X871608. Acabados de lujo y garantía de 51 años.",
+    "created_at": "2026-09-04 10:00"
   },
   {
     "id": "prod-csv-73",
@@ -2919,7 +2991,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros GY50X1501601 referencia SKU GY50X1501601. Acabados de lujo y garantía de 52 años."
+    "description": "Pieza de autor Espejos y cuadros GY50X1501601 referencia SKU GY50X1501601. Acabados de lujo y garantía de 52 años.",
+    "created_at": "2026-09-03 10:00"
   },
   {
     "id": "prod-csv-74",
@@ -2959,7 +3032,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros GY50X1501604 referencia SKU GY50X1501604. Acabados de lujo y garantía de 53 años."
+    "description": "Pieza de autor Espejos y cuadros GY50X1501604 referencia SKU GY50X1501604. Acabados de lujo y garantía de 53 años.",
+    "created_at": "2026-09-02 10:00"
   },
   {
     "id": "prod-csv-75",
@@ -2999,7 +3073,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros GY77X1171589 referencia SKU GY77X1171589. Acabados de lujo y garantía de 54 años."
+    "description": "Pieza de autor Espejos y cuadros GY77X1171589 referencia SKU GY77X1171589. Acabados de lujo y garantía de 54 años.",
+    "created_at": "2026-09-16 10:00"
   },
   {
     "id": "prod-csv-76",
@@ -3039,7 +3114,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros GY77X1171593 referencia SKU GY77X1171593. Acabados de lujo y garantía de 55 años."
+    "description": "Pieza de autor Espejos y cuadros GY77X1171593 referencia SKU GY77X1171593. Acabados de lujo y garantía de 55 años.",
+    "created_at": "2026-09-15 10:00"
   },
   {
     "id": "prod-csv-77",
@@ -3079,7 +3155,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros GY77X1171594 referencia SKU GY77X1171594. Acabados de lujo y garantía de 56 años."
+    "description": "Pieza de autor Espejos y cuadros GY77X1171594 referencia SKU GY77X1171594. Acabados de lujo y garantía de 56 años.",
+    "created_at": "2026-09-14 10:00"
   },
   {
     "id": "prod-csv-78",
@@ -3119,7 +3196,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros AH60160045GD referencia SKU AH60160045GD. Acabados de lujo y garantía de 57 años."
+    "description": "Pieza de autor Espejos y cuadros AH60160045GD referencia SKU AH60160045GD. Acabados de lujo y garantía de 57 años.",
+    "created_at": "2026-09-13 10:00"
   },
   {
     "id": "prod-csv-79",
@@ -3159,7 +3237,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros AH60160045BK referencia SKU AH60160045BK. Acabados de lujo y garantía de 58 años."
+    "description": "Pieza de autor Espejos y cuadros AH60160045BK referencia SKU AH60160045BK. Acabados de lujo y garantía de 58 años.",
+    "created_at": "2026-09-12 10:00"
   },
   {
     "id": "prod-csv-80",
@@ -3199,7 +3278,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros SWR80070 referencia SKU SWR80070. Acabados de lujo y garantía de 59 años."
+    "description": "Pieza de autor Espejos y cuadros SWR80070 referencia SKU SWR80070. Acabados de lujo y garantía de 59 años.",
+    "created_at": "2026-09-11 10:00"
   },
   {
     "id": "prod-csv-81",
@@ -3239,7 +3319,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros AH60120040 referencia SKU AH60120040. Acabados de lujo y garantía de 60 años."
+    "description": "Pieza de autor Espejos y cuadros AH60120040 referencia SKU AH60120040. Acabados de lujo y garantía de 60 años.",
+    "created_at": "2026-09-10 10:00"
   },
   {
     "id": "prod-csv-82",
@@ -3279,7 +3360,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros AH60120043 referencia SKU AH60120043. Acabados de lujo y garantía de 61 años."
+    "description": "Pieza de autor Espejos y cuadros AH60120043 referencia SKU AH60120043. Acabados de lujo y garantía de 61 años.",
+    "created_at": "2026-09-09 10:00"
   },
   {
     "id": "prod-csv-83",
@@ -3319,7 +3401,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros AH60120037BK referencia SKU AH60120037BK. Acabados de lujo y garantía de 62 años."
+    "description": "Pieza de autor Espejos y cuadros AH60120037BK referencia SKU AH60120037BK. Acabados de lujo y garantía de 62 años.",
+    "created_at": "2026-09-08 10:00"
   },
   {
     "id": "prod-csv-84",
@@ -3359,7 +3442,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros AH60120037GD referencia SKU AH60120037GD. Acabados de lujo y garantía de 63 años."
+    "description": "Pieza de autor Espejos y cuadros AH60120037GD referencia SKU AH60120037GD. Acabados de lujo y garantía de 63 años.",
+    "created_at": "2026-09-07 10:00"
   },
   {
     "id": "prod-csv-85",
@@ -3399,7 +3483,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros AH60160051BK referencia SKU AH60160051BK. Acabados de lujo y garantía de 64 años."
+    "description": "Pieza de autor Espejos y cuadros AH60160051BK referencia SKU AH60160051BK. Acabados de lujo y garantía de 64 años.",
+    "created_at": "2026-09-06 10:00"
   },
   {
     "id": "prod-csv-86",
@@ -3439,7 +3524,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros AH60160051GD referencia SKU AH60160051GD. Acabados de lujo y garantía de 65 años."
+    "description": "Pieza de autor Espejos y cuadros AH60160051GD referencia SKU AH60160051GD. Acabados de lujo y garantía de 65 años.",
+    "created_at": "2026-09-05 10:00"
   },
   {
     "id": "prod-csv-87",
@@ -3479,7 +3565,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros AH60160050BK referencia SKU AH60160050BK. Acabados de lujo y garantía de 66 años."
+    "description": "Pieza de autor Espejos y cuadros AH60160050BK referencia SKU AH60160050BK. Acabados de lujo y garantía de 66 años.",
+    "created_at": "2026-09-04 10:00"
   },
   {
     "id": "prod-csv-88",
@@ -3519,7 +3606,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros AH60160050GD referencia SKU AH60160050GD. Acabados de lujo y garantía de 67 años."
+    "description": "Pieza de autor Espejos y cuadros AH60160050GD referencia SKU AH60160050GD. Acabados de lujo y garantía de 67 años.",
+    "created_at": "2026-09-03 10:00"
   },
   {
     "id": "prod-csv-89",
@@ -3559,7 +3647,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros AHR80001 referencia SKU AHR80001. Acabados de lujo y garantía de 68 años."
+    "description": "Pieza de autor Espejos y cuadros AHR80001 referencia SKU AHR80001. Acabados de lujo y garantía de 68 años.",
+    "created_at": "2026-09-02 10:00"
   },
   {
     "id": "prod-csv-90",
@@ -3599,7 +3688,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros AHR80006GD referencia SKU AHR80006GD. Acabados de lujo y garantía de 69 años."
+    "description": "Pieza de autor Espejos y cuadros AHR80006GD referencia SKU AHR80006GD. Acabados de lujo y garantía de 69 años.",
+    "created_at": "2026-09-16 10:00"
   },
   {
     "id": "prod-csv-91",
@@ -3639,7 +3729,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros AHR80006BK referencia SKU AHR80006BK. Acabados de lujo y garantía de 70 años."
+    "description": "Pieza de autor Espejos y cuadros AHR80006BK referencia SKU AHR80006BK. Acabados de lujo y garantía de 70 años.",
+    "created_at": "2026-09-15 10:00"
   },
   {
     "id": "prod-csv-92",
@@ -3679,7 +3770,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros AH60160022BK referencia SKU AH60160022BK. Acabados de lujo y garantía de 71 años."
+    "description": "Pieza de autor Espejos y cuadros AH60160022BK referencia SKU AH60160022BK. Acabados de lujo y garantía de 71 años.",
+    "created_at": "2026-09-14 10:00"
   },
   {
     "id": "prod-csv-93",
@@ -3719,7 +3811,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Espejos y cuadros AH60160022GD referencia SKU AH60160022GD. Acabados de lujo y garantía de 72 años."
+    "description": "Pieza de autor Espejos y cuadros AH60160022GD referencia SKU AH60160022GD. Acabados de lujo y garantía de 72 años.",
+    "created_at": "2026-09-13 10:00"
   },
   {
     "id": "prod-csv-94",
@@ -3759,7 +3852,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Flexible Stone Panel (Startmoon stone) referencia SKU Flexible-Stone-Panel -(Startmoon stone). Acabados de lujo y garantía de 70 años."
+    "description": "Pieza de autor Flexible Stone Panel (Startmoon stone) referencia SKU Flexible-Stone-Panel -(Startmoon stone). Acabados de lujo y garantía de 70 años.",
+    "created_at": "2026-09-12 10:00"
   },
   {
     "id": "prod-csv-95",
@@ -3799,7 +3893,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Flexible Stone Panel (Weaving) referencia SKU Flexible-Stone-Panel-(Weaving). Acabados de lujo y garantía de 71 años."
+    "description": "Pieza de autor Flexible Stone Panel (Weaving) referencia SKU Flexible-Stone-Panel-(Weaving). Acabados de lujo y garantía de 71 años.",
+    "created_at": "2026-09-11 10:00"
   },
   {
     "id": "prod-csv-96",
@@ -3839,7 +3934,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Flexible Stone Panel (Line stone board) referencia SKU Flexible-Stone-Panel-(Line stone board). Acabados de lujo y garantía de 72 años."
+    "description": "Pieza de autor Flexible Stone Panel (Line stone board) referencia SKU Flexible-Stone-Panel-(Line stone board). Acabados de lujo y garantía de 72 años.",
+    "created_at": "2026-09-10 10:00"
   },
   {
     "id": "prod-csv-97",
@@ -3879,7 +3975,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Travertine Flexible Stone Panel（Travertine)-3 referencia SKU Travertine-Flexible-Stone-Panel-(Travertine)-3. Acabados de lujo y garantía de 73 años."
+    "description": "Pieza de autor Travertine Flexible Stone Panel（Travertine)-3 referencia SKU Travertine-Flexible-Stone-Panel-(Travertine)-3. Acabados de lujo y garantía de 73 años.",
+    "created_at": "2026-09-09 10:00"
   },
   {
     "id": "prod-csv-98",
@@ -3919,7 +4016,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Flexible Stone Panel（Travertine)-2 referencia SKU Flexible-Stone Panel-(Travertine)-2. Acabados de lujo y garantía de 74 años."
+    "description": "Pieza de autor Flexible Stone Panel（Travertine)-2 referencia SKU Flexible-Stone Panel-(Travertine)-2. Acabados de lujo y garantía de 74 años.",
+    "created_at": "2026-09-08 10:00"
   },
   {
     "id": "prod-csv-99",
@@ -3959,7 +4057,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Flexible Stone Panel（Travertine)-1 referencia SKU Flexible-Stone-Panel-(Travertine)-1. Acabados de lujo y garantía de 75 años."
+    "description": "Pieza de autor Flexible Stone Panel（Travertine)-1 referencia SKU Flexible-Stone-Panel-(Travertine)-1. Acabados de lujo y garantía de 75 años.",
+    "created_at": "2026-09-07 10:00"
   },
   {
     "id": "prod-csv-100",
@@ -3999,7 +4098,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Flexible Stone Panel (Square line stone) referencia SKU Flexible-Stone-Panel-(Square line stone). Acabados de lujo y garantía de 76 años."
+    "description": "Pieza de autor Flexible Stone Panel (Square line stone) referencia SKU Flexible-Stone-Panel-(Square line stone). Acabados de lujo y garantía de 76 años.",
+    "created_at": "2026-09-06 10:00"
   },
   {
     "id": "prod-csv-101",
@@ -4039,7 +4139,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Flexible Stone Panel（Slate) referencia SKU Flexible-Stone-Panel-(Slate). Acabados de lujo y garantía de 77 años."
+    "description": "Pieza de autor Flexible Stone Panel（Slate) referencia SKU Flexible-Stone-Panel-(Slate). Acabados de lujo y garantía de 77 años.",
+    "created_at": "2026-09-05 10:00"
   },
   {
     "id": "prod-csv-102",
@@ -4079,7 +4180,8 @@ export const REAL_PRODUCTS: Product[] = [
     ],
     "dimensions": "Estándar Arquitectónico",
     "materials": "Materiales de Alta Gama",
-    "description": "Pieza de autor Flexible Stone Panel (Rockcut Stone) referencia SKU Flexible-Stone-Panel-(Rockcut Stone). Acabados de lujo y garantía de 78 años."
+    "description": "Pieza de autor Flexible Stone Panel (Rockcut Stone) referencia SKU Flexible-Stone-Panel-(Rockcut Stone). Acabados de lujo y garantía de 78 años.",
+    "created_at": "2026-09-04 10:00"
   }
 ];
 
