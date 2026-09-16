@@ -2,7 +2,7 @@ import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { Product, ProductFilterState } from '../types';
 import { MOCK_PRODUCTS } from './mockData';
 
-const LOCAL_STORAGE_PRODUCTS_KEY = 'luxe_products_v12';
+const LOCAL_STORAGE_PRODUCTS_KEY = 'luxe_products_v13';
 
 const getStoredProducts = (): Product[] => {
   const stored = localStorage.getItem(LOCAL_STORAGE_PRODUCTS_KEY);
@@ -33,9 +33,48 @@ const saveStoredProducts = (products: Product[]) => {
   }
 };
 
+const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Product => {
+  let fallback: Product | undefined;
+
+  if (localLookupMap) {
+    if (p.id) fallback = localLookupMap.get(p.id);
+    if (!fallback && p.slug) fallback = localLookupMap.get(p.slug);
+    if (!fallback && p.sku) fallback = localLookupMap.get(p.sku.toLowerCase());
+    if (!fallback && p.name) fallback = localLookupMap.get(p.name.toLowerCase());
+  }
+
+  if (!fallback) {
+    fallback = MOCK_PRODUCTS.find(m => 
+      (p.id && m.id === p.id) || 
+      (p.slug && m.slug === p.slug) || 
+      (p.sku && m.sku && m.sku.toLowerCase() === p.sku.toLowerCase()) || 
+      (p.name && m.name.toLowerCase() === p.name.toLowerCase())
+    );
+  }
+
+  return {
+    ...p,
+    sku: (p.sku && p.sku.trim().length > 0) ? p.sku : (fallback?.sku || ''),
+    warehouse_stock: p.warehouse_stock !== undefined ? p.warehouse_stock : (fallback?.warehouse_stock ?? 0),
+    store_stock: p.store_stock !== undefined ? p.store_stock : (fallback?.store_stock ?? 0),
+    web_stock: p.web_stock !== undefined ? p.web_stock : (fallback?.web_stock ?? p.stock),
+    boxes_count: p.boxes_count !== undefined ? p.boxes_count : (fallback?.boxes_count ?? 0),
+    warranty: (p.warranty && p.warranty.trim().length > 0) ? p.warranty : (fallback?.warranty || '3 años'),
+    inventory_status: (p.inventory_status && p.inventory_status.trim().length > 0) ? p.inventory_status : (fallback?.inventory_status || (p.stock > 0 ? 'Disponible' : 'Agotado'))
+  };
+};
+
 export const productService = {
   async getProducts(filters?: Partial<ProductFilterState>, includePrivate: boolean = false): Promise<Product[]> {
     let localProducts = getStoredProducts();
+
+    const localLookupMap = new Map<string, Product>();
+    localProducts.forEach(p => {
+      if (p.id) localLookupMap.set(p.id, p);
+      if (p.slug) localLookupMap.set(p.slug, p);
+      if (p.sku) localLookupMap.set(p.sku.toLowerCase(), p);
+      if (p.name) localLookupMap.set(p.name.toLowerCase(), p);
+    });
 
     if (isSupabaseConfigured()) {
       try {
@@ -65,14 +104,17 @@ export const productService = {
         if (!error && data && data.length > 0) {
           const supabaseProducts = data as Product[];
           
-          // Cloud DB is authoritative source of truth
-          saveStoredProducts(supabaseProducts);
-          localProducts = supabaseProducts;
+          // Cloud DB merged with authentic local inventory fields (sku, stock breakdown, warranty)
+          const enrichedSupabaseProducts = supabaseProducts.map(sp => enrichProduct(sp, localLookupMap));
+          saveStoredProducts(enrichedSupabaseProducts);
+          localProducts = enrichedSupabaseProducts;
         }
       } catch (err) {
         console.warn('Supabase fetch failed, using local product dataset', err);
       }
     }
+
+    localProducts = localProducts.map(p => enrichProduct(p, localLookupMap));
 
     // Apply Filters
     let result = [...localProducts];
@@ -172,7 +214,7 @@ export const productService = {
           .single();
 
         if (!error && data) {
-          createdProduct = data as Product;
+          createdProduct = enrichProduct({ ...productData, ...(data as Product) });
           // Sync local cache with official Supabase database record
           const syncLocal = [createdProduct, ...currentLocal.filter(p => p.slug !== createdProduct.slug)];
           saveStoredProducts(syncLocal);
@@ -199,7 +241,7 @@ export const productService = {
     let updatedProduct: Product | null = null;
 
     if (index !== -1) {
-      updatedProduct = { ...currentLocal[index], ...updates };
+      updatedProduct = enrichProduct({ ...currentLocal[index], ...updates });
       currentLocal[index] = updatedProduct;
       saveStoredProducts([...currentLocal]);
     }
@@ -237,8 +279,8 @@ export const productService = {
 
         if (!error && data && data.length > 0) {
           const synced = data[0] as Product;
-          updatedProduct = { ...updatedProduct, ...synced };
-          if (index !== -1) {
+          updatedProduct = enrichProduct({ ...(updatedProduct || {}), ...synced });
+          if (index !== -1 && updatedProduct) {
             currentLocal[index] = updatedProduct;
             saveStoredProducts([...currentLocal]);
           }
