@@ -32,9 +32,17 @@ export interface Product {
   is_featured: boolean;
   dimensions?: string;
   materials?: string;
-  original_price?: number;
+  original_price?: number | null;
   colors?: { name: string; hex: string }[];
   brand_collection?: string;
+  sku?: string;
+  model_code?: string;
+  warehouse_stock?: number;
+  store_stock?: number;
+  web_stock?: number;
+  boxes_count?: number;
+  warranty?: string;
+  inventory_status?: string;
   created_at?: string;
 }
 

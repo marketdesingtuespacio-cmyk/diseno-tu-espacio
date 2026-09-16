@@ -17,10 +17,10 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState(false);
 
-  // Form State
+  // Base & Extended Inventory Form State
   const [name, setName] = useState(initialProduct?.name || '');
   const [brandCollection, setBrandCollection] = useState(initialProduct?.brand_collection || 'Diseño Tu Espacio Collection');
-  const [category, setCategory] = useState(initialProduct?.category || 'Lámparas de Techo');
+  const [category, setCategory] = useState(initialProduct?.category || 'Papel de Colgadura');
   const [style, setStyle] = useState(initialProduct?.style || 'Contemporáneo');
   const [price, setPrice] = useState<number>(initialProduct?.price || 890000);
   const [originalPrice, setOriginalPrice] = useState<number | undefined>(initialProduct?.original_price || undefined);
@@ -29,6 +29,15 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
   const [description, setDescription] = useState(initialProduct?.description || '');
   const [dimensions, setDimensions] = useState(initialProduct?.dimensions || '160cm alto x 38cm diámetro');
   const [materials, setMaterials] = useState(initialProduct?.materials || 'Aluminio espejado, Acero satinado');
+
+  const [sku, setSku] = useState(initialProduct?.sku || '');
+  const [modelCode, setModelCode] = useState(initialProduct?.model_code || '');
+  const [warehouseStock, setWarehouseStock] = useState<number>(initialProduct?.warehouse_stock || 0);
+  const [storeStock, setStoreStock] = useState<number>(initialProduct?.store_stock || 0);
+  const [webStock, setWebStock] = useState<number>(initialProduct?.web_stock || 0);
+  const [boxesCount, setBoxesCount] = useState<number>(initialProduct?.boxes_count || 0);
+  const [warranty, setWarranty] = useState(initialProduct?.warranty || '3 años');
+  const [inventoryStatus, setInventoryStatus] = useState(initialProduct?.inventory_status || 'Disponible');
 
   // Media Gallery (1900 x 2375 px photos)
   const [images, setImages] = useState<string[]>(
@@ -175,7 +184,15 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
         dimensions: dimensions.trim(),
         materials: materials.trim(),
         images,
-        colors
+        colors,
+        sku: sku.trim(),
+        model_code: modelCode.trim(),
+        warehouse_stock: Number(warehouseStock),
+        store_stock: Number(storeStock),
+        web_stock: Number(webStock),
+        boxes_count: Number(boxesCount),
+        warranty: warranty.trim(),
+        inventory_status: inventoryStatus.trim()
       };
 
       if (initialProduct?.id) {
@@ -258,12 +275,39 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
             </div>
 
             <div>
+              <label className="block uppercase font-bold text-neutral-500 mb-1">Referencia / Código SKU</label>
+              <input 
+                type="text" 
+                placeholder="Ej. A585A-P01M o MD680101"
+                value={sku}
+                onChange={(e) => setSku(e.target.value)}
+                className="w-full bg-brand-surface border border-brand-border p-3 text-brand-black focus:outline-none focus:border-brand-black font-mono"
+              />
+            </div>
+
+            <div>
+              <label className="block uppercase font-bold text-neutral-500 mb-1">Modelo / Código Secundario</label>
+              <input 
+                type="text" 
+                placeholder="Ej. HP 120X90 0947"
+                value={modelCode}
+                onChange={(e) => setModelCode(e.target.value)}
+                className="w-full bg-brand-surface border border-brand-border p-3 text-brand-black focus:outline-none focus:border-brand-black font-mono"
+              />
+            </div>
+
+            <div>
               <label className="block uppercase font-bold text-neutral-500 mb-1">Categoría *</label>
               <select 
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
                 className="w-full bg-brand-surface border border-brand-border p-3 font-medium text-brand-black focus:outline-none focus:border-brand-black"
               >
+                <option value="Papel de Colgadura">Papel de Colgadura</option>
+                <option value="Lavamanos">Lavamanos</option>
+                <option value="Espejos">Espejos</option>
+                <option value="Cuadros & Espejos">Cuadros & Espejos</option>
+                <option value="Revestimientos">Revestimientos</option>
                 <option value="Lámparas de Techo">Lámparas de Techo</option>
                 <option value="Iluminación de Pared">Iluminación de Pared</option>
                 <option value="Lámparas de Pie">Lámparas de Pie</option>
@@ -281,8 +325,35 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
               >
                 <option value="Contemporáneo">Contemporáneo</option>
                 <option value="Minimalista">Minimalista</option>
+                <option value="Orgánico Moderno">Orgánico Moderno</option>
+                <option value="Galería Contemporánea">Galería Contemporánea</option>
+                <option value="Arquitectónico">Arquitectónico</option>
                 <option value="Bauhaus">Bauhaus</option>
                 <option value="Nórdico">Nórdico</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block uppercase font-bold text-neutral-500 mb-1">Garantía del Fabricante</label>
+              <input 
+                type="text" 
+                placeholder="Ej. 5 años, 10 años"
+                value={warranty}
+                onChange={(e) => setWarranty(e.target.value)}
+                className="w-full bg-brand-surface border border-brand-border p-3 text-brand-black focus:outline-none focus:border-brand-black"
+              />
+            </div>
+
+            <div>
+              <label className="block uppercase font-bold text-neutral-500 mb-1">Estado de Inventario</label>
+              <select 
+                value={inventoryStatus}
+                onChange={(e) => setInventoryStatus(e.target.value)}
+                className="w-full bg-brand-surface border border-brand-border p-3 font-medium text-brand-black focus:outline-none focus:border-brand-black"
+              >
+                <option value="Disponible">Disponible</option>
+                <option value="Privado">Privado</option>
+                <option value="Agotado">Agotado</option>
               </select>
             </div>
 
@@ -300,13 +371,13 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
           </div>
         </div>
 
-        {/* SECTION 2: Precios & Inventario en COP */}
+        {/* SECTION 2: Precios & Inventario por Ubicación en COP */}
         <div className="bg-white p-6 border border-brand-border space-y-6">
           <h3 className="text-xs font-bold uppercase tracking-widest text-brand-black border-b border-brand-border pb-3">
-            2. Precios en Pesos Colombianos (COP) & Stock
+            2. Precios en Pesos Colombianos (COP) & Desglose de Stock
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
             <div>
               <label className="block uppercase font-bold text-neutral-500 mb-1">Precio Venta (COP) *</label>
               <input 
@@ -322,7 +393,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
             </div>
 
             <div>
-              <label className="block uppercase font-bold text-neutral-500 mb-1">Precio Original / Tachado (COP)</label>
+              <label className="block uppercase font-bold text-neutral-500 mb-1">Precio Oferta / Tachado (COP)</label>
               <input 
                 type="number" 
                 min="0"
@@ -335,7 +406,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
             </div>
 
             <div>
-              <label className="block uppercase font-bold text-neutral-500 mb-1">Unidades en Inventario *</label>
+              <label className="block uppercase font-bold text-neutral-500 mb-1">Stock Total *</label>
               <input 
                 type="number" 
                 required
@@ -343,6 +414,50 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
                 value={stock}
                 onChange={(e) => setStock(Number(e.target.value))}
                 className="w-full bg-brand-surface border border-brand-border p-3 font-bold text-brand-black focus:outline-none focus:border-brand-black"
+              />
+            </div>
+
+            <div>
+              <label className="block uppercase font-bold text-neutral-500 mb-1">Stock en Bodega Principal</label>
+              <input 
+                type="number" 
+                min="0"
+                value={warehouseStock}
+                onChange={(e) => setWarehouseStock(Number(e.target.value))}
+                className="w-full bg-brand-surface border border-brand-border p-3 text-brand-black focus:outline-none focus:border-brand-black"
+              />
+            </div>
+
+            <div>
+              <label className="block uppercase font-bold text-neutral-500 mb-1">Stock en Tienda Física</label>
+              <input 
+                type="number" 
+                min="0"
+                value={storeStock}
+                onChange={(e) => setStoreStock(Number(e.target.value))}
+                className="w-full bg-brand-surface border border-brand-border p-3 text-brand-black focus:outline-none focus:border-brand-black"
+              />
+            </div>
+
+            <div>
+              <label className="block uppercase font-bold text-neutral-500 mb-1">Stock Web Online</label>
+              <input 
+                type="number" 
+                min="0"
+                value={webStock}
+                onChange={(e) => setWebStock(Number(e.target.value))}
+                className="w-full bg-brand-surface border border-brand-border p-3 text-brand-black focus:outline-none focus:border-brand-black"
+              />
+            </div>
+
+            <div>
+              <label className="block uppercase font-bold text-neutral-500 mb-1">Cantidad de Cajas / Lotes</label>
+              <input 
+                type="number" 
+                min="0"
+                value={boxesCount}
+                onChange={(e) => setBoxesCount(Number(e.target.value))}
+                className="w-full bg-brand-surface border border-brand-border p-3 text-brand-black focus:outline-none focus:border-brand-black"
               />
             </div>
           </div>

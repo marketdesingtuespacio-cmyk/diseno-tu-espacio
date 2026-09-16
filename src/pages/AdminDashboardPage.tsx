@@ -8,6 +8,7 @@ import {
   PlusCircle,
   LayoutGrid,
   List,
+  Download,
   X
 } from 'lucide-react';
 import { Product, Appointment, Order, Coupon } from '../types';
@@ -255,6 +256,39 @@ export const AdminDashboardPage: React.FC = () => {
 
   const filteredOrdersTotalCOP = filteredOrders.reduce((acc, o) => acc + o.total, 0);
 
+  const handleExportInventoryCSV = () => {
+    const csvRows = [
+      ['ID', 'SKU', 'Nombre', 'Categoria', 'Estilo', 'Precio Venta (COP)', 'Precio Oferta (COP)', 'Stock Total', 'Stock Bodega', 'Stock Tienda', 'Stock Web', 'Cajas', 'Garantia', 'Estado', 'Dimensiones', 'Materiales'],
+      ...products.map(p => [
+        p.id,
+        `"${p.sku || ''}"`,
+        `"${p.name.replace(/"/g, '""')}"`,
+        `"${p.category}"`,
+        `"${p.style}"`,
+        p.price,
+        p.original_price || '',
+        p.stock,
+        p.warehouse_stock || 0,
+        p.store_stock || 0,
+        p.web_stock || 0,
+        p.boxes_count || 0,
+        `"${p.warranty || ''}"`,
+        `"${p.inventory_status || 'Disponible'}"`,
+        `"${(p.dimensions || '').replace(/"/g, '""')}"`,
+        `"${(p.materials || '').replace(/"/g, '""')}"`
+      ])
+    ];
+
+    const csvContent = 'data:text/csv;charset=utf-8,\uFEFF' + csvRows.map(e => e.join(',')).join('\n');
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', `inventario_completo_disenotuespacio_${new Date().toISOString().slice(0,10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="flex h-screen bg-[#ECECED] overflow-hidden font-sans">
       
@@ -311,38 +345,50 @@ export const AdminDashboardPage: React.FC = () => {
         {/* TAB 2: PRODUCTS LIST & INVENTORY */}
         {activeTab === 'products' && (
           <div className="space-y-6">
-            <div className="flex justify-between items-center bg-white p-4 border border-brand-border">
-              <div className="relative w-72">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white p-4 border border-brand-border gap-4">
+              <div className="relative w-full sm:w-72">
                 <Search className="w-4 h-4 absolute left-3 top-2.5 text-neutral-400" />
                 <input 
                   type="text" 
-                  placeholder="Buscar producto por nombre..."
+                  placeholder="Buscar por nombre, SKU o categoría..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full bg-brand-surface border border-brand-border py-1.5 pl-9 pr-3 text-xs focus:outline-none"
                 />
               </div>
 
-              <button 
-                onClick={() => {
-                  setEditingProduct(null);
-                  setActiveTab('add-product');
-                }}
-                className="bg-brand-black text-white text-xs font-bold uppercase tracking-widest py-2.5 px-6 hover:bg-neutral-800 flex items-center gap-2"
-              >
-                <PlusCircle className="w-4 h-4" /> Registrar Nuevo Producto
-              </button>
+              <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
+                <button
+                  onClick={handleExportInventoryCSV}
+                  className="bg-[#C6F432] text-black font-extrabold text-xs uppercase tracking-wider py-2.5 px-4 rounded-xl hover:bg-[#b5e028] shadow-sm transition-all flex items-center gap-2 shrink-0"
+                  title="Exportar inventario completo con todas las casillas a CSV"
+                >
+                  <Download className="w-4 h-4 stroke-[2.5]" />
+                  <span>Exportar Inventario</span>
+                </button>
+
+                <button 
+                  onClick={() => {
+                    setEditingProduct(null);
+                    setActiveTab('add-product');
+                  }}
+                  className="bg-brand-black text-white text-xs font-bold uppercase tracking-widest py-2.5 px-5 rounded-xl hover:bg-neutral-800 flex items-center gap-2 shrink-0 shadow-sm"
+                >
+                  <PlusCircle className="w-4 h-4" /> Registrar Producto
+                </button>
+              </div>
             </div>
 
-            <div className="bg-white border border-brand-border overflow-x-auto">
+            <div className="bg-white border border-brand-border overflow-x-auto rounded-xl">
               <table className="w-full text-left text-xs">
                 <thead className="bg-brand-surface uppercase text-[10px] tracking-widest text-neutral-500 border-b">
                   <tr>
-                    <th className="p-3">Foto (1900×2375)</th>
-                    <th className="p-3">Nombre</th>
+                    <th className="p-3">Foto</th>
+                    <th className="p-3">Referencia / SKU</th>
                     <th className="p-3">Categoría</th>
                     <th className="p-3">Precio (COP)</th>
-                    <th className="p-3">Stock</th>
+                    <th className="p-3">Stock & Ubicaciones</th>
+                    <th className="p-3">Garantía</th>
                     <th className="p-3 text-right">Acciones</th>
                   </tr>
                 </thead>
@@ -350,18 +396,36 @@ export const AdminDashboardPage: React.FC = () => {
                   {filteredProducts.map(p => (
                     <tr key={p.id} className="hover:bg-brand-surface/50">
                       <td className="p-3">
-                        <img src={p.images[0]} alt="" className="w-10 h-12 object-cover border bg-brand-surface" />
+                        <img src={p.images[0]} alt="" className="w-10 h-12 object-cover border bg-brand-surface rounded-md" />
                       </td>
                       <td className="p-3 font-medium">
                         <div className="font-bold text-brand-black">{p.name}</div>
-                        <div className="text-[10px] text-neutral-400">{p.brand_collection || 'Diseño Tu Espacio Collection'}</div>
+                        {p.sku && (
+                          <div className="text-[10px] text-neutral-500 font-mono font-bold">SKU: {p.sku}</div>
+                        )}
+                        {p.model_code && (
+                          <div className="text-[9px] text-neutral-400 font-mono">Mod: {p.model_code}</div>
+                        )}
                       </td>
-                      <td className="p-3 text-neutral-500">{p.category}</td>
-                      <td className="p-3 font-bold">{formatPrice(p.price)}</td>
+                      <td className="p-3 text-neutral-500 font-medium">{p.category}</td>
+                      <td className="p-3 font-bold">
+                        <div>{formatPrice(p.price)}</div>
+                        {p.original_price && (
+                          <div className="text-[10px] text-neutral-400 line-through">{formatPrice(p.original_price)}</div>
+                        )}
+                      </td>
                       <td className="p-3">
-                        <span className={`px-2 py-0.5 font-bold ${p.stock > 5 ? 'bg-neutral-100 text-brand-black' : 'bg-red-100 text-red-800'}`}>
-                          {p.stock} u.
+                        <span className={`px-2 py-0.5 font-bold rounded-md text-[11px] ${p.stock > 5 ? 'bg-neutral-100 text-brand-black' : 'bg-red-100 text-red-800'}`}>
+                          {p.stock} u. total
                         </span>
+                        {(p.warehouse_stock || p.store_stock || p.web_stock) ? (
+                          <div className="text-[9px] text-neutral-500 mt-1 font-mono">
+                            Bodega: {p.warehouse_stock || 0} | Tienda: {p.store_stock || 0} | Web: {p.web_stock || 0}
+                          </div>
+                        ) : null}
+                      </td>
+                      <td className="p-3 text-neutral-600 font-medium">
+                        {p.warranty || '3 años'}
                       </td>
                       <td className="p-3 text-right space-x-2">
                         <button 

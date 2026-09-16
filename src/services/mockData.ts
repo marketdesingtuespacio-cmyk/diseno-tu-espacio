@@ -1,6 +1,8 @@
 import { Product, Appointment } from '../types';
+import { REAL_INVENTORY_PRODUCTS } from '../data/realProductsData';
 
 export const MOCK_PRODUCTS: Product[] = [
+  ...REAL_INVENTORY_PRODUCTS,
   {
     id: 'w-2',
     name: 'Walter',
