@@ -2,7 +2,7 @@ import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { Product, ProductFilterState } from '../types';
 import { MOCK_PRODUCTS } from './mockData';
 
-const LOCAL_STORAGE_PRODUCTS_KEY = 'luxe_products_v13';
+const LOCAL_STORAGE_PRODUCTS_KEY = 'luxe_products_v14';
 
 const getStoredProducts = (): Product[] => {
   const stored = localStorage.getItem(LOCAL_STORAGE_PRODUCTS_KEY);
@@ -52,6 +52,10 @@ const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Produ
     );
   }
 
+  const resolvedStatus = (p.inventory_status && p.inventory_status.trim().length > 0 && p.inventory_status !== 'Privado')
+    ? p.inventory_status
+    : (fallback?.inventory_status || (p.stock > 0 ? 'Disponible' : 'Agotado'));
+
   return {
     ...p,
     sku: (p.sku && p.sku.trim().length > 0) ? p.sku : (fallback?.sku || ''),
@@ -60,7 +64,7 @@ const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Produ
     web_stock: p.web_stock !== undefined ? p.web_stock : (fallback?.web_stock ?? p.stock),
     boxes_count: p.boxes_count !== undefined ? p.boxes_count : (fallback?.boxes_count ?? 0),
     warranty: (p.warranty && p.warranty.trim().length > 0) ? p.warranty : (fallback?.warranty || '3 años'),
-    inventory_status: (p.inventory_status && p.inventory_status.trim().length > 0) ? p.inventory_status : (fallback?.inventory_status || (p.stock > 0 ? 'Disponible' : 'Agotado'))
+    inventory_status: resolvedStatus
   };
 };
 
@@ -78,29 +82,7 @@ export const productService = {
 
     if (isSupabaseConfigured()) {
       try {
-        let query = supabase.from('products').select('*');
-
-        if (!includePrivate) {
-          query = query.neq('inventory_status', 'Privado');
-        }
-
-        if (filters?.category && filters.category !== 'all') {
-          query = query.eq('category', filters.category);
-        }
-        if (filters?.style && filters.style !== 'all') {
-          query = query.eq('style', filters.style);
-        }
-        if (filters?.inStockOnly) {
-          query = query.gt('stock', 0);
-        }
-        if (filters?.minPrice !== undefined) {
-          query = query.gte('price', filters.minPrice);
-        }
-        if (filters?.maxPrice !== undefined && filters.maxPrice > 0) {
-          query = query.lte('price', filters.maxPrice);
-        }
-
-        const { data, error } = await query;
+        const { data, error } = await supabase.from('products').select('*');
         if (!error && data && data.length > 0) {
           const supabaseProducts = data as Product[];
           
@@ -126,13 +108,14 @@ export const productService = {
 
     if (filters) {
       if (filters.category && filters.category !== 'all') {
-        result = result.filter(p => p.category === filters.category);
+        const catLower = filters.category.toLowerCase().trim();
+        result = result.filter(p => p.category && p.category.toLowerCase().trim() === catLower);
       }
       if (filters.style && filters.style !== 'all') {
         result = result.filter(p => p.style === filters.style);
       }
       if (filters.inStockOnly) {
-        result = result.filter(p => p.stock > 0);
+        result = result.filter(p => p.stock > 0 && p.inventory_status !== 'Agotado');
       }
       if (filters.minPrice !== undefined) {
         const minVal = filters.minPrice;

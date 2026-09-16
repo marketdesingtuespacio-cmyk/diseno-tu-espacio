@@ -20,12 +20,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     { name: 'Negro', hex: '#1C1C1C' }
   ];
 
+  const isAgotado = product.stock <= 0 || product.inventory_status === 'Agotado';
+
   return (
     <div className="group relative flex flex-col font-sans transition-all duration-300">
       
       {/* Product Image Frame Locked Strictly to 1900 × 2375 Ratio (Pristine Clean Minimalist) */}
       <div className="relative aspect-[1900/2375] w-full bg-[#FAF9F6] border border-neutral-200/80 overflow-hidden flex items-center justify-center">
         
+        {/* Agotado / Out of Stock Badge */}
+        {isAgotado && (
+          <span className="absolute top-3 left-3 z-10 bg-neutral-900/90 text-white text-[9.5px] uppercase font-bold tracking-wider px-2.5 py-1 shadow-xs">
+            Agotado
+          </span>
+        )}
+
         {/* Wishlist Heart Button (Top Right) */}
         <button 
           onClick={(e) => {
@@ -48,18 +57,29 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             src={product.images[0]} 
             alt={product.name} 
             loading="lazy"
-            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+            className={`w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out ${
+              isAgotado ? 'opacity-75 grayscale-[20%]' : ''
+            }`}
           />
         </Link>
 
         {/* Floating Quick Action Overlay */}
         <div className="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex gap-2">
-          <button 
-            onClick={() => addToCart(product)}
-            className="flex-1 bg-brand-black text-white text-[10px] font-bold uppercase tracking-widest py-2.5 px-3 hover:bg-neutral-800 transition-colors flex items-center justify-center gap-1.5 shadow-elevated"
-          >
-            <ShoppingBag className="w-3.5 h-3.5" /> Añadir
-          </button>
+          {isAgotado ? (
+            <button 
+              disabled
+              className="flex-1 bg-neutral-300 text-neutral-600 text-[10px] font-bold uppercase tracking-widest py-2.5 px-3 cursor-not-allowed flex items-center justify-center gap-1.5 shadow-subtle"
+            >
+              Sin Existencias
+            </button>
+          ) : (
+            <button 
+              onClick={() => addToCart(product)}
+              className="flex-1 bg-brand-black text-white text-[10px] font-bold uppercase tracking-widest py-2.5 px-3 hover:bg-neutral-800 transition-colors flex items-center justify-center gap-1.5 shadow-elevated"
+            >
+              <ShoppingBag className="w-3.5 h-3.5" /> Añadir
+            </button>
+          )}
           <Link 
             to={`/product/${product.slug}`}
             className="bg-white text-black p-2.5 hover:bg-neutral-100 transition-colors flex items-center justify-center border border-neutral-200 shadow-elevated"
