@@ -65,7 +65,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
     }
   };
 
-  // Helper: Client-side HTML5 Canvas Image Downscaling & Compression (~120KB Web-Ready)
+  // Helper: Client-side HTML5 Canvas Image Downscaling & Compression (~45KB Web-Ready)
   const compressAndResizeImage = (file: File): Promise<string> => {
     return new Promise((resolve) => {
       const reader = new FileReader();
@@ -74,8 +74,8 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
         const img = new Image();
         img.onload = () => {
           const canvas = document.createElement('canvas');
-          const MAX_WIDTH = 1400;
-          const MAX_HEIGHT = 1750;
+          const MAX_WIDTH = 900;
+          const MAX_HEIGHT = 1125;
           let width = img.width;
           let height = img.height;
 
@@ -96,8 +96,8 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
           const ctx = canvas.getContext('2d');
           if (ctx) {
             ctx.drawImage(img, 0, 0, width, height);
-            // Convert to lightweight high-quality Web-Ready JPEG (80% compression)
-            const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.80);
+            // Convert to lightweight high-quality Web-Ready JPEG (72% compression)
+            const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.72);
             resolve(compressedDataUrl);
           } else {
             resolve(rawDataUrl);

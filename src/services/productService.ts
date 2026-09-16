@@ -24,16 +24,12 @@ const saveStoredProducts = (products: Product[]) => {
   try {
     localStorage.setItem(LOCAL_STORAGE_PRODUCTS_KEY, JSON.stringify(products));
   } catch (err) {
-    console.warn('localStorage quota exceeded, optimizing image cache:', err);
+    console.warn('localStorage quota warning:', err);
     try {
-      // Sanitize oversized base64 strings if storage limit is reached
-      const sanitized = products.map(p => ({
-        ...p,
-        images: p.images.map(img => (img.length > 300000 ? '/images/lampara_bowie_1786563431628.jpg' : img))
-      }));
-      localStorage.setItem(LOCAL_STORAGE_PRODUCTS_KEY, JSON.stringify(sanitized));
+      // Save products preserving all user images
+      localStorage.setItem(LOCAL_STORAGE_PRODUCTS_KEY, JSON.stringify(products));
     } catch {
-      // Graceful fallback
+      // Storage safety
     }
   }
 };

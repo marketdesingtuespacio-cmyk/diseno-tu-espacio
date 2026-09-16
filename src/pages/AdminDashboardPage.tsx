@@ -16,6 +16,7 @@ import { appointmentService } from '../services/appointmentService';
 import { orderService } from '../services/orderService';
 import { couponService } from '../services/couponService';
 import { useCurrency } from '../context/CurrencyContext';
+import { checkSupabaseHealth } from '../lib/supabase';
 import { AdminSidebar, AdminTab } from '../components/admin/AdminSidebar';
 import { ProductRegistrationForm } from '../components/admin/ProductRegistrationForm';
 import { TeamManagementView } from '../components/admin/TeamManagementView';
@@ -92,19 +93,26 @@ export const AdminDashboardPage: React.FC = () => {
     notes: ''
   });
 
+  const [supabaseStatus, setSupabaseStatus] = useState<{ isConnected: boolean; message: string }>({
+    isConnected: false,
+    message: 'Comprobando conexión con Supabase...'
+  });
+
   const { formatPrice } = useCurrency();
 
   const loadData = async () => {
-    const [pList, aList, oList, cList] = await Promise.all([
+    const [pList, aList, oList, cList, sHealth] = await Promise.all([
       productService.getProducts(),
       appointmentService.getAppointments(),
       orderService.getOrders(),
-      couponService.getCoupons()
+      couponService.getCoupons(),
+      checkSupabaseHealth()
     ]);
     setProducts(pList);
     setAppointments(aList);
     setOrders(oList);
     setCoupons(cList);
+    setSupabaseStatus(sHealth);
   };
 
   useEffect(() => {
@@ -377,8 +385,8 @@ export const AdminDashboardPage: React.FC = () => {
       <main className="my-4 mr-4 flex-1 overflow-y-auto space-y-5 pr-1">
         
         {/* Top Action Bar (Reference Style Header) */}
-        <div className="flex justify-between items-center bg-white/90 backdrop-blur-2xl border border-white/90 p-4 rounded-[24px] shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-          <div className="flex items-center gap-3">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white/90 backdrop-blur-2xl border border-white/90 p-4 rounded-[24px] shadow-[0_4px_20px_rgba(0,0,0,0.03)] gap-3">
+          <div className="flex items-center gap-3 flex-wrap">
             <span className="text-[10px] uppercase font-bold tracking-widest text-neutral-500 bg-neutral-100 px-3 py-1 rounded-full">Panel Activo:</span>
             <span className="text-xs font-bold uppercase tracking-wider text-neutral-900">
               {activeTab === 'overview' && 'Resumen General & Analíticas'}
@@ -391,11 +399,24 @@ export const AdminDashboardPage: React.FC = () => {
               {activeTab === 'categories' && 'Categorías & Estilos'}
               {activeTab === 'settings' && 'Configuración Global'}
             </span>
+
+            {/* Supabase Realtime Health Pill */}
+            <span 
+              className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 border transition-all ${
+                supabaseStatus.isConnected 
+                  ? 'bg-emerald-50 text-emerald-800 border-emerald-300' 
+                  : 'bg-amber-50 text-amber-900 border-amber-300'
+              }`} 
+              title={supabaseStatus.message}
+            >
+              <span className={`w-2 h-2 rounded-full ${supabaseStatus.isConnected ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'}`} />
+              {supabaseStatus.isConnected ? 'Nube Supabase Activa' : 'Persistencia Local Resguardada'}
+            </span>
           </div>
 
           <button 
             onClick={loadData}
-            className="text-xs font-bold uppercase tracking-wider border border-neutral-200 bg-white hover:bg-neutral-50 rounded-full px-4.5 py-2 flex items-center gap-2 text-neutral-800 shadow-2xs transition-all"
+            className="text-xs font-bold uppercase tracking-wider border border-neutral-200 bg-white hover:bg-neutral-50 rounded-full px-4.5 py-2 flex items-center gap-2 text-neutral-800 shadow-2xs transition-all shrink-0"
           >
             <RefreshCw className="w-3.5 h-3.5 text-neutral-900" /> Actualizar Datos
           </button>
