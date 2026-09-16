@@ -76,10 +76,10 @@ export const ProductDetailPage: React.FC = () => {
   const selectedSwatch = swatches[selectedColorIndex] || swatches[0];
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-8 space-y-12 font-sans">
+    <div className="max-w-[1600px] mx-auto px-0 sm:px-4 lg:px-6 py-4 space-y-6 font-sans">
       
       {/* Top Breadcrumb Navigation */}
-      <nav className="text-[11px] text-neutral-500 font-light flex items-center gap-2 tracking-tight">
+      <nav className="text-[11px] text-neutral-500 font-light flex items-center gap-2 tracking-tight px-4 sm:px-0">
         <Link to="/" className="hover:text-black">{language === 'en' ? 'Home' : 'Página de inicio'}</Link>
         <span>/</span>
         <Link to="/catalog" className="hover:text-black">{product.brand_collection || 'Diseño Tu Espacio Collection'}</Link>
@@ -87,20 +87,20 @@ export const ProductDetailPage: React.FC = () => {
         <span className="text-neutral-900 font-medium">{product.name}</span>
       </nav>
 
-      {/* Main Product Layout: Dual Photo Grid (Left) & Sales Conversion Panel (Right) */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      {/* Main Product Layout: Full-Bleed Editorial Photo Grid (Left) & Checkout Panel (Right) */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-10 items-start">
         
-        {/* LEFT COLUMN: Westwing Editorial Multi-Photo Grid (Desktop) & Swipe Carousel (Mobile) */}
-        <div className="lg:col-span-8 space-y-3">
+        {/* LEFT COLUMN: Westwing Full-Bleed Photo Grid (No Borders/Padding on Images) */}
+        <div className="lg:col-span-8 space-y-1">
           
-          {/* MOBILE VIEW (< md): Touch Swipeable Carousel Slider */}
+          {/* MOBILE VIEW (< md): Full-Width Touch Swipe Carousel */}
           <div className="md:hidden relative">
             <div 
-              className="flex gap-2 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-2"
+              className="flex overflow-x-auto snap-x snap-mandatory scrollbar-none pb-2"
               onScroll={(e) => {
                 const el = e.currentTarget;
                 if (el.clientWidth > 0) {
-                  const idx = Math.round(el.scrollLeft / (el.clientWidth * 0.85));
+                  const idx = Math.round(el.scrollLeft / el.clientWidth);
                   setCurrentSlideIndex(Math.min(Math.max(0, idx), imagesList.length - 1));
                 }
               }}
@@ -110,10 +110,10 @@ export const ProductDetailPage: React.FC = () => {
                 <div 
                   key={idx} 
                   onClick={() => setLightboxIndex(idx)}
-                  className="shrink-0 w-[86vw] aspect-[1900/2375] bg-[#FAF9F6] border border-neutral-200/60 overflow-hidden snap-center relative cursor-pointer"
+                  className="shrink-0 w-full aspect-[1900/2375] bg-[#FAF9F6] overflow-hidden snap-center relative cursor-pointer"
                 >
                   <img src={img} alt={`${product.name} ${idx + 1}`} className="w-full h-full object-cover object-center" />
-                  <div className="absolute bottom-3 right-3 bg-black/75 text-white text-[9px] font-mono px-2 py-0.5">
+                  <div className="absolute bottom-3 right-3 bg-black/80 text-white text-[9px] font-mono px-2 py-0.5">
                     {idx + 1} / {imagesList.length}
                   </div>
                 </div>
@@ -122,12 +122,12 @@ export const ProductDetailPage: React.FC = () => {
 
             {/* Mobile Carousel Pagination Dots */}
             {imagesList.length > 1 && (
-              <div className="flex justify-center items-center gap-1.5 pt-2">
+              <div className="flex justify-center items-center gap-1.5 pt-3 pb-1">
                 {imagesList.map((_, idx) => (
                   <span 
                     key={idx}
                     className={`h-1.5 rounded-full transition-all duration-300 ${
-                      currentSlideIndex === idx ? 'w-5 bg-black' : 'w-1.5 bg-neutral-300'
+                      currentSlideIndex === idx ? 'w-6 bg-black' : 'w-1.5 bg-neutral-300'
                     }`}
                   />
                 ))}
@@ -135,50 +135,50 @@ export const ProductDetailPage: React.FC = () => {
             )}
           </div>
 
-          {/* DESKTOP VIEW (>= md): Westwing High-End Editorial Multi-Photo Grid */}
-          <div className="hidden md:block space-y-3">
+          {/* DESKTOP VIEW (>= md): Full-Bleed Edge-to-Edge Photo Grid */}
+          <div className="hidden md:block space-y-1">
             
-            {/* Top Row: 2 Prominent Side-by-Side Portrait Cards (Studio + Room Lifestyle) */}
-            <div className={`grid ${topTwoImages.length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-3`}>
+            {/* Top Row: 2 Large Side-by-Side Cards (Studio + Room Scene) */}
+            <div className={`grid ${topTwoImages.length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-1`}>
               {topTwoImages.map((img, idx) => (
                 <div 
                   key={idx}
                   onClick={() => setLightboxIndex(idx)}
-                  className="aspect-[1900/2375] bg-[#FAF9F6] border border-neutral-200/60 overflow-hidden cursor-pointer group relative"
+                  className="aspect-[1900/2375] bg-[#FAF9F6] overflow-hidden cursor-pointer group relative"
                 >
                   <img 
                     src={img} 
                     alt={`${product.name} Vista ${idx + 1}`}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-end justify-end p-3">
-                    <span className="bg-black/85 text-white text-[9px] font-mono px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-wider">
-                      Ampliar Foto 🔍
+                    <span className="bg-black/85 text-white text-[9px] font-mono px-2.5 py-1 opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-wider">
+                      AMPLIAR FOTO 🔍
                     </span>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Bottom Row(s): 3-Column / 2-Column Grid for Detail, Angle & Close-Up Photos */}
+            {/* Bottom Row(s): 3-Column / 2-Column Grid for Detail Photos */}
             {remainingImages.length > 0 && (
-              <div className={`grid ${remainingImages.length >= 3 ? 'grid-cols-3' : 'grid-cols-2'} gap-3`}>
+              <div className={`grid ${remainingImages.length >= 3 ? 'grid-cols-3' : 'grid-cols-2'} gap-1`}>
                 {remainingImages.map((img, idx) => {
                   const actualIdx = idx + 2;
                   return (
                     <div 
                       key={actualIdx}
                       onClick={() => setLightboxIndex(actualIdx)}
-                      className="aspect-[1900/2375] bg-[#FAF9F6] border border-neutral-200/60 overflow-hidden cursor-pointer group relative"
+                      className="aspect-[1900/2375] bg-[#FAF9F6] overflow-hidden cursor-pointer group relative"
                     >
                       <img 
                         src={img} 
                         alt={`${product.name} Detalle ${idx + 1}`}
-                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                        className="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-700"
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-end justify-end p-2">
                         <span className="bg-black/85 text-white text-[9px] font-mono px-1.5 py-0.5 opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-wider">
-                          Detalle #{idx + 1} 🔍
+                          DETALLE #{idx + 1} 🔍
                         </span>
                       </div>
                     </div>
@@ -191,8 +191,8 @@ export const ProductDetailPage: React.FC = () => {
 
         </div>
 
-        {/* RIGHT COLUMN: Sticky High-Conversion Checkout Panel */}
-        <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-28">
+        {/* RIGHT COLUMN: Sticky Purchase Panel with Elegant Spacing */}
+        <div className="lg:col-span-4 px-6 py-6 lg:px-8 lg:py-2 space-y-6 lg:sticky lg:top-28">
           
           {/* Header & Collection Tag */}
           <div className="space-y-1 relative">
