@@ -1,0 +1,103 @@
+sku,NOMBRE,Categoria,ESTADO,Precio regular,Precio en oferta,Garantia,cantidad total,cantidad en bodega,Cantidad en tienda,cantidad web
+MD680101,Papel de colgadura,Papel de colgadura,Privado,900000,800000,4 años,80,40,35,5
+MD680209,Papel de colgadura,Papel de colgadura,Privado,900000,800000,5 años,86,40,40,6
+MD680301,Papel de colgadura,Papel de colgadura,Privado,900000,800000,6 años,79,40,30,9
+MD680313,Papel de colgadura,Papel de colgadura,Privado,900000,800000,7 años,79,40,30,9
+MD680312,Papel de colgadura,Papel de colgadura,Privado,900000,800000,8 años,82,40,40,2
+MD680402B,Papel de colgadura,Papel de colgadura,Privado,900000,800000,9 años,78,30,40,8
+MD680510-B,Papel de colgadura,Papel de colgadura,Privado,900000,800000,10 años,94,50,40,4
+MD680512-B,Papel de colgadura,Papel de colgadura,Privado,900000,800000,11 años,70,40,30,5
+MD680603,Papel de colgadura,Papel de colgadura,Privado,900000,800000,12 años,74,40,30,4
+MD680704,Papel de colgadura,Papel de colgadura,agotado,900000,800000,13 años,79,30,40,9
+MD680904,Papel de colgadura,Papel de colgadura,Privado,900000,800000,14 años,65,30,30,5
+MD681014,Papel de colgadura,Papel de colgadura,Privado,900000,800000,15 años,71,40,30,1
+MD681113,Papel de colgadura,Papel de colgadura,Privado,900000,800000,16 años,71,40,30,1
+MD681209,Papel de colgadura,Papel de colgadura,Privado,900000,800000,17 años,75,40,30,5
+MD681309,Papel de colgadura,Papel de colgadura,Disponible,900000,800000,18 años,75,40,30,5
+MD681412,Papel de colgadura,Papel de colgadura,Privado,900000,800000,19 años,86,40,40,6
+MD681511,Papel de colgadura,Papel de colgadura,Privado,900000,800000,20 años,84,40,40,4
+MD681706,Papel de colgadura,Papel de colgadura,Privado,900000,800000,21 años,81,50,30,1
+MD680103,Papel de colgadura,Papel de colgadura,Privado,900000,800000,22 años,77,40,20,7
+MD681901,Papel de colgadura,Papel de colgadura,Privado,900000,800000,23 años,6,2,2,2
+A725CA42,Lavamanos,Lavamanos,Privado,400000,350000,1 años,15,5,5,5
+RB033,Lavamanos,Lavamanos,Privado,400000,350000,2 años,14,5,5,4
+A585AP01M,Lavamanos,Lavamanos,Privado,400000,350000,3 años,15,5,5,5
+A524AP01M,Lavamanos,Lavamanos,Privado,400000,350000,4 años,15,5,5,5
+A691CBKUG04M,Lavamanos,Lavamanos,Privado,400000,350000,5 años,15,5,5,5
+A707CUG20M,Lavamanos,Lavamanos,Privado,400000,350000,6 años,15,5,5,5
+A709CUG01M,Lavamanos,Lavamanos,Privado,400000,350000,7 años,15,5,5,5
+A706CUG04M,Lavamanos,Lavamanos,Privado,400000,350000,8 años,15,5,5,5
+A787P45M,Lavamanos,Lavamanos,Privado,400000,350000,9 años,14,5,5,4
+A739P429M,Lavamanos,Lavamanos,Privado,400000,350000,10 años,15,5,5,5
+A723P04M,Lavamanos,Lavamanos,Privado,400000,350000,11 años,14,5,5,4
+A822P04M,Lavamanos,Lavamanos,Privado,400000,350000,12 años,15,5,5,5
+A544GGCBK18,Lavamanos,Lavamanos,Privado,400000,350000,13 años,15,5,5,5
+A787GGCBK09,Lavamanos,Lavamanos,Privado,400000,350000,14 años,14,5,5,4
+A787CMCM,Lavamanos,Lavamanos,Privado,400000,350000,15 años,15,5,5,5
+A734CLKAM1840,Lavamanos,Lavamanos,Privado,400000,350000,16 años,15,5,5,5
+A787CDGRM,Lavamanos,Lavamanos,Privado,400000,350000,17 años,15,5,5,5
+A712CA52M,Lavamanos,Lavamanos,Privado,400000,350000,18 años,15,5,5,5
+5523,Espejos modernos,Espejos modernos,Privado,1000000,980000,19 años,10,5,4,1
+SF021,Espejos modernos,Espejos modernos,Privado,1000000,980000,20 años,5,2,2,1
+5814,Espejos modernos,Espejos modernos,Privado,1000000,980000,21 años,10,5,3,2
+5823,Espejos modernos,Espejos modernos,Privado,1000000,980000,22 años,10,4,4,2
+5822,Espejos modernos,Espejos modernos,Privado,1000000,980000,23 años,10,4,4,2
+5812,Espejos modernos,Espejos modernos,Privado,1000000,980000,24 años,10,4,4,2
+SF021,Espejos modernos,Espejos modernos,Privado,1000000,980000,25 años,5,2,2,1
+5343,Espejos modernos,Espejos modernos,Privado,1000000,980000,26 años,10,3,3,4
+5911,Espejos modernos,Espejos modernos,Privado,1000000,980000,27 años,10,3,3,4
+5334,Espejos modernos,Espejos modernos,Privado,1000000,980000,28 años,10,3,3,4
+6411,Espejos modernos,Espejos modernos,Privado,1000000,980000,29 años,10,3,3,4
+5322,Espejos modernos,Espejos modernos,Privado,1000000,980000,30 años,10,3,3,4
+5101,Espejos modernos,Espejos modernos,Privado,1000000,980000,31 años,10,3,3,4
+5512,Espejos modernos,Espejos modernos,Privado,1000000,980000,32 años,10,3,3,4
+SF022,Espejos modernos,Espejos modernos,Privado,1000000,980000,33 años,10,3,3,4
+5519,Espejos modernos,Espejos modernos,Privado,1000000,980000,34 años,10,3,3,4
+5520,Espejos modernos,Espejos modernos,Privado,1000000,980000,35 años,10,3,3,4
+6421,Espejos modernos,Espejos modernos,Privado,1000000,980000,36 años,10,3,3,4
+5521,Espejos modernos,Espejos modernos,Privado,1000000,980000,37 años,10,3,3,4
+5351,Espejos modernos,Espejos modernos,Privado,1000000,980000,38 años,10,3,3,4
+HP120X900947,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,38 años,5,2,2,1
+HP120X900948,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,39 años,5,2,2,1
+HP120X900963,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,40 años,5,2,2,1
+HP120X900964,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,41 años,5,2,2,1
+HP70X1401465,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,42 años,5,2,2,1
+HP50X1501546,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,43 años,5,2,2,1
+HP80X801097,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,44 años,6,2,2,2
+HP80X801098,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,45 años,6,2,2,2
+HP80X801103,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,46 años,6,2,2,2
+HP80X801104,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,47 años,6,2,2,2
+HP100X1400921,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,48 años,5,2,2,1
+HP100X1400923,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,49 años,5,2,2,1
+GY78X781606,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,50 años,6,2,2,2
+GY87X871608,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,51 años,6,2,2,2
+GY50X1501601,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,52 años,6,2,2,2
+GY50X1501604,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,53 años,6,2,2,2
+GY77X1171589,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,54 años,5,2,2,1
+GY77X1171593,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,55 años,6,2,2,2
+GY77X1171594,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,56 años,6,2,2,2
+AH60160045GD,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,57 años,10,3,3,4
+AH60160045BK,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,58 años,10,3,3,4
+SWR80070,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,59 años,10,3,3,4
+AH60120040,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,60 años,10,3,3,4
+AH60120043,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,61 años,10,3,3,4
+AH60120037BK,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,62 años,10,3,3,4
+AH60120037GD,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,63 años,10,3,3,4
+AH60160051BK,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,64 años,10,3,3,4
+AH60160051GD,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,65 años,10,3,3,4
+AH60160050BK,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,66 años,10,3,3,4
+AH60160050GD,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,67 años,10,3,3,4
+AHR80001,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,68 años,10,3,3,4
+AHR80006GD,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,69 años,10,3,3,4
+AHR80006BK,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,70 años,10,3,3,4
+AH60160022BK,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,71 años,10,3,3,4
+AH60160022GD,Espejos y cuadros,Espejos y cuadros,Privado,1500000,750000,72 años,10,3,3,4
+Flexible-Stone-Panel -(Startmoon stone),Flexible Stone Panel (Startmoon stone),Revestimientos,Privado,1200000,750000,70 años,50,20,20,10
+Flexible-Stone-Panel-(Weaving),Flexible Stone Panel (Weaving),Revestimientos,Privado,1200000,750000,71 años,50,20,20,10
+Flexible-Stone-Panel-(Line stone board),Flexible Stone Panel (Line stone board),Revestimientos,Privado,1200000,750000,72 años,50,20,20,10
+Travertine-Flexible-Stone-Panel-(Travertine)-3,Travertine Flexible Stone Panel（Travertine)-3,Revestimientos,Privado,1200000,750000,73 años,50,20,20,10
+Flexible-Stone Panel-(Travertine)-2,Flexible Stone Panel（Travertine)-2,Revestimientos,Privado,1200000,750000,74 años,50,20,20,10
+Flexible-Stone-Panel-(Travertine)-1,Flexible Stone Panel（Travertine)-1,Revestimientos,Privado,1200000,750000,75 años,50,20,20,10
+Flexible-Stone-Panel-(Square line stone),Flexible Stone Panel (Square line stone),Revestimientos,Privado,1200000,750000,76 años,50,20,20,10
+Flexible-Stone-Panel-(Slate),Flexible Stone Panel（Slate),Revestimientos,Privado,1200000,750000,77 años,50,20,20,10
+Flexible-Stone-Panel-(Rockcut Stone),Flexible Stone Panel (Rockcut Stone),Revestimientos,Privado,1200000,750000,78 años,50,20,20,10
