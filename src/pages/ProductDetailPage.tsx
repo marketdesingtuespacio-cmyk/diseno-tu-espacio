@@ -57,6 +57,12 @@ export const ProductDetailPage: React.FC = () => {
     );
   }
 
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
+  const imagesList = product.images && product.images.length > 0 
+    ? product.images 
+    : ['/images/lampara_bowie_1786563431628.jpg'];
+
   const swatches = product.colors || [
     { name: 'Cromo Espejo', hex: '#E0E0E0' },
     { name: 'Negro Azabache', hex: '#111111' },
@@ -81,26 +87,70 @@ export const ProductDetailPage: React.FC = () => {
       {/* Main Product Layout: Dual Photo Grid (Left) & Sales Conversion Panel (Right) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         
-        {/* LEFT COLUMN: Dual High-Res 1900×2375 Photo Presentation (Studio + In-Situ Room Scene) */}
-        <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* LEFT COLUMN: Interactive High-Res Photo Gallery (Renders ALL Uploaded Photos) */}
+        <div className="lg:col-span-8 space-y-4">
           
-          {/* Photo 1: Studio Isolated Photography */}
-          <div className="aspect-[1900/2375] bg-[#FAF9F6] border border-neutral-200/60 overflow-hidden">
+          {/* Main Featured Photo Display */}
+          <div className="aspect-[1900/2375] bg-[#FAF9F6] border border-neutral-200/60 overflow-hidden relative group">
             <img 
-              src={product.images[0]} 
-              alt={`${product.name} Estudio`}
-              className="w-full h-full object-cover object-center"
+              src={imagesList[selectedImageIndex] || imagesList[0]} 
+              alt={`${product.name} Vista ${selectedImageIndex + 1}`}
+              className="w-full h-full object-cover object-center transition-all duration-500"
             />
+            {imagesList.length > 1 && (
+              <div className="absolute bottom-4 left-4 bg-black/75 text-white text-[10px] font-mono px-2.5 py-1 tracking-wider uppercase">
+                Foto {selectedImageIndex + 1} de {imagesList.length}
+              </div>
+            )}
           </div>
 
-          {/* Photo 2: In-Situ Lifestyle Interior Scene */}
-          <div className="aspect-[1900/2375] bg-[#FAF9F6] border border-neutral-200/60 overflow-hidden">
-            <img 
-              src={product.images[1] || product.images[0]} 
-              alt={`${product.name} Ambiente Interiorismo`}
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
+          {/* Thumbnail Selector Strip (renders ALL uploaded photos) */}
+          {imagesList.length > 1 && (
+            <div className="grid grid-cols-4 sm:grid-cols-6 gap-3 pt-1">
+              {imagesList.map((img, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setSelectedImageIndex(idx)}
+                  className={`aspect-[1900/2375] bg-[#FAF9F6] border overflow-hidden transition-all relative ${
+                    selectedImageIndex === idx 
+                      ? 'border-black ring-2 ring-black ring-offset-1' 
+                      : 'border-neutral-200/60 opacity-70 hover:opacity-100 hover:border-neutral-400'
+                  }`}
+                >
+                  <img src={img} alt={`Miniatura ${idx + 1}`} className="w-full h-full object-cover" />
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Multi-Photo Grid (If product has multiple photos, render them in an editorial gallery format) */}
+          {imagesList.length > 1 && (
+            <div className="pt-6 border-t border-neutral-200">
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-400 block mb-3">
+                Galería Completa del Producto ({imagesList.length} Fotografías)
+              </span>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {imagesList.map((img, idx) => (
+                  <div 
+                    key={idx}
+                    onClick={() => setSelectedImageIndex(idx)}
+                    className={`aspect-[1900/2375] bg-[#FAF9F6] border overflow-hidden cursor-pointer group relative transition-all ${
+                      selectedImageIndex === idx ? 'border-black' : 'border-neutral-200/60'
+                    }`}
+                  >
+                    <img 
+                      src={img} 
+                      alt={`${product.name} Ángulo ${idx + 1}`}
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-3 left-3 bg-black/75 text-white text-[9px] font-mono px-2 py-0.5">
+                      FOTO {idx + 1}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
         </div>
 
