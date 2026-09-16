@@ -2,7 +2,7 @@ import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { Product, ProductFilterState } from '../types';
 import { MOCK_PRODUCTS } from './mockData';
 
-const LOCAL_STORAGE_PRODUCTS_KEY = 'luxe_products_v7';
+const LOCAL_STORAGE_PRODUCTS_KEY = 'luxe_products_v8';
 
 const getStoredProducts = (): Product[] => {
   const stored = localStorage.getItem(LOCAL_STORAGE_PRODUCTS_KEY);
