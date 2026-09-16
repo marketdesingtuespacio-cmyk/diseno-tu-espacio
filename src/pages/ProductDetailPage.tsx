@@ -14,6 +14,7 @@ export const ProductDetailPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isWishlisted, setIsWishlisted] = useState(false);
 
   // Accordion Expandable States
@@ -56,8 +57,6 @@ export const ProductDetailPage: React.FC = () => {
       </div>
     );
   }
-
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const imagesList = product.images && product.images.length > 0 
     ? product.images 

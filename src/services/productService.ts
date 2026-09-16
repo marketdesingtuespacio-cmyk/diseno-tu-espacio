@@ -162,26 +162,8 @@ export const productService = {
   },
 
   async getProductBySlug(slug: string, includePrivate: boolean = false): Promise<Product | null> {
-    if (isSupabaseConfigured()) {
-      try {
-        let query = supabase
-          .from('products')
-          .select('*')
-          .eq('slug', slug);
-        if (!includePrivate) {
-          query = query.neq('inventory_status', 'Privado');
-        }
-        const { data, error } = await query.single();
-        if (!error && data) return data as Product;
-      } catch {
-        // fallback
-      }
-    }
-    const products = getStoredProducts();
-    const found = products.find(p => p.slug === slug);
-    if (found && !includePrivate && found.inventory_status === 'Privado') {
-      return null;
-    }
+    const products = await this.getProducts(undefined, includePrivate);
+    const found = products.find(p => p.slug === slug || p.id === slug);
     return found || null;
   },
 
