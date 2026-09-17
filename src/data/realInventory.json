@@ -382,7 +382,7 @@
     "warehouse_stock": 0,
     "store_stock": 0,
     "web_stock": 0,
-    "boxes_count": 0,
+    "boxes_count": 1,
     "warranty": "13 años",
     "inventory_status": "Agotado",
     "is_featured": false,
