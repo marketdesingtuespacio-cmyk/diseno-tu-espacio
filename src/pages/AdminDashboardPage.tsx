@@ -135,6 +135,19 @@ export const AdminDashboardPage: React.FC = () => {
     }
   };
 
+  // Single Product Status Change
+  const handleSingleProductStatusChange = async (product: Product, newStatus: Product['inventory_status']) => {
+    await productService.updateProduct(product.id, { inventory_status: newStatus });
+    if (product.slug) {
+      await productService.updateProduct(product.slug, { inventory_status: newStatus });
+    }
+    await loadData();
+    setActionNotification({
+      title: '¡Estado Guardado en Servidor!',
+      message: `El producto "${product.name}" (SKU: ${product.sku || product.id}) fue actualizado a "${newStatus}" exitosamente.`
+    });
+  };
+
   // Bulk Selection & Bulk Operations State
   const [selectedProductIds, setSelectedProductIds] = useState<string[]>([]);
 
@@ -145,7 +158,11 @@ export const AdminDashboardPage: React.FC = () => {
     if (!confirm(`¿Confirmar cambio de estado a "${newStatus}" para los ${count} productos seleccionados?`)) return;
 
     for (const id of selectedProductIds) {
+      const targetProd = products.find(p => p.id === id);
       await productService.updateProduct(id, { inventory_status: newStatus });
+      if (targetProd && targetProd.slug) {
+        await productService.updateProduct(targetProd.slug, { inventory_status: newStatus });
+      }
     }
     setSelectedProductIds([]);
     await loadData();
@@ -700,17 +717,25 @@ export const AdminDashboardPage: React.FC = () => {
                             ) : null}
                           </td>
                           <td className="p-3">
-                            <span className={`px-2.5 py-1 text-[10px] font-bold uppercase rounded-full border ${
-                              isPrivado ? 'bg-purple-50 text-purple-800 border-purple-200' :
-                              isAgotado ? 'bg-red-50 text-red-800 border-red-200' :
-                              isPocoStock ? 'bg-amber-50 text-amber-800 border-amber-200 font-extrabold' :
-                              'bg-emerald-50 text-emerald-800 border-emerald-200'
-                            }`}>
-                              {isPrivado ? '🔒 Privado' :
-                               isAgotado ? '❌ Agotado' :
-                               isPocoStock ? '⚠️ Por Agotarse' :
-                               '✅ Disponible'}
-                            </span>
+                            <select
+                              value={p.inventory_status || (isAgotado ? 'Agotado' : 'Disponible')}
+                              onChange={async (e) => {
+                                const newStatus = e.target.value as Product['inventory_status'];
+                                await handleSingleProductStatusChange(p, newStatus);
+                              }}
+                              className={`px-2.5 py-1 text-[10px] font-bold uppercase rounded-full border focus:outline-none cursor-pointer transition-all ${
+                                isPrivado ? 'bg-purple-50 text-purple-800 border-purple-300 hover:bg-purple-100' :
+                                isAgotado ? 'bg-red-50 text-red-800 border-red-300 hover:bg-red-100' :
+                                isPocoStock ? 'bg-amber-50 text-amber-800 border-amber-300 hover:bg-amber-100 font-extrabold' :
+                                'bg-emerald-50 text-emerald-800 border-emerald-300 hover:bg-emerald-100'
+                              }`}
+                              title="Haz clic para cambiar el estado de este producto en el servidor"
+                            >
+                              <option value="Disponible">✅ Disponible</option>
+                              <option value="Privado">🔒 Privado</option>
+                              <option value="Agotado">❌ Agotado</option>
+                              <option value="Poco Stock">⚠️ Por Agotarse</option>
+                            </select>
                           </td>
                           <td className="p-3 text-neutral-600 font-medium">
                             {p.warranty || '3 años'}

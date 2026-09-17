@@ -2,7 +2,7 @@ import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { Product, ProductFilterState } from '../types';
 import { MOCK_PRODUCTS } from './mockData';
 
-const LOCAL_STORAGE_PRODUCTS_KEY = 'luxe_products_v15';
+const LOCAL_STORAGE_PRODUCTS_KEY = 'luxe_products_v16';
 
 const getStoredProducts = (): Product[] => {
   const stored = localStorage.getItem(LOCAL_STORAGE_PRODUCTS_KEY);
@@ -132,6 +132,7 @@ export const productService = {
           p.description.toLowerCase().includes(q) ||
           p.category.toLowerCase().includes(q) ||
           p.style.toLowerCase().includes(q) ||
+          (p.sku && p.sku.toLowerCase().includes(q)) ||
           (p.brand_collection && p.brand_collection.toLowerCase().includes(q)) ||
           (p.materials && p.materials.toLowerCase().includes(q))
         );
@@ -219,7 +220,14 @@ export const productService = {
 
   async updateProduct(id: string, updates: Partial<Product>): Promise<Product | null> {
     const currentLocal = getStoredProducts();
-    const index = currentLocal.findIndex(p => p.id === id || (updates.slug && p.slug === updates.slug));
+    let index = currentLocal.findIndex(p => 
+      p.id === id || 
+      p.slug === id || 
+      (p.sku && p.sku.toLowerCase() === id.toLowerCase()) || 
+      (updates.slug && p.slug === updates.slug) ||
+      (updates.sku && p.sku && p.sku.toLowerCase() === updates.sku.toLowerCase()) ||
+      (updates.name && p.name.toLowerCase() === updates.name.toLowerCase())
+    );
 
     let updatedProduct: Product | null = null;
 
@@ -227,6 +235,18 @@ export const productService = {
       updatedProduct = enrichProduct({ ...currentLocal[index], ...updates });
       currentLocal[index] = updatedProduct;
       saveStoredProducts([...currentLocal]);
+    } else {
+      const mockMatch = MOCK_PRODUCTS.find(p => 
+        p.id === id || 
+        p.slug === id || 
+        (p.sku && p.sku.toLowerCase() === id.toLowerCase())
+      );
+      if (mockMatch) {
+        updatedProduct = enrichProduct({ ...mockMatch, ...updates });
+        currentLocal.unshift(updatedProduct);
+        saveStoredProducts([...currentLocal]);
+        index = 0;
+      }
     }
 
     // Strict clean payload with only supported Supabase columns
