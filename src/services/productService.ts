@@ -159,7 +159,7 @@ export const productService = {
   async createProduct(productData: Omit<Product, 'id'>): Promise<Product> {
     const generatedId = `prod-${Date.now()}`;
     
-    // Clean payload for Supabase insertion
+    // Clean payload for Supabase insertion with full inventory columns
     const cleanPayload = {
       name: productData.name,
       slug: productData.slug,
@@ -174,7 +174,14 @@ export const productService = {
       colors: productData.colors || [],
       is_featured: !!productData.is_featured,
       dimensions: productData.dimensions || '',
-      materials: productData.materials || ''
+      materials: productData.materials || '',
+      sku: productData.sku || '',
+      warehouse_stock: Number(productData.warehouse_stock || 0),
+      store_stock: Number(productData.store_stock || 0),
+      web_stock: Number(productData.web_stock || 0),
+      boxes_count: Number(productData.boxes_count || 0),
+      warranty: productData.warranty || '3 años',
+      inventory_status: productData.inventory_status || 'Disponible'
     };
 
     let createdProduct: Product = {
@@ -199,16 +206,11 @@ export const productService = {
 
         if (!error && data) {
           createdProduct = enrichProduct({ ...productData, ...(data as Product) });
-          // Sync local cache with official Supabase database record
           const syncLocal = [createdProduct, ...currentLocal.filter(p => p.slug !== createdProduct.slug)];
           saveStoredProducts(syncLocal);
           console.log('✅ Producto guardado exitosamente en la nube Supabase:', createdProduct.name);
         } else if (error) {
           console.warn('⚠️ Supabase no permitió guardar en la nube (se guardó en este navegador local):', error.message);
-          // If RLS or missing schema error, raise notice
-          if (error.message.includes('row-level security') || error.message.includes('policy')) {
-            console.error('🔒 Ejecutar políticas de seguridad RLS en el editor SQL de Supabase.');
-          }
         }
       } catch (err) {
         console.error('Supabase exception, saved locally:', err);
@@ -249,7 +251,7 @@ export const productService = {
       }
     }
 
-    // Strict clean payload with only supported Supabase columns
+    // Strict clean payload with all supported Supabase columns
     const cleanPayload: any = {};
     if (updates.name !== undefined) cleanPayload.name = updates.name;
     if (updates.slug !== undefined) cleanPayload.slug = updates.slug;
@@ -265,6 +267,13 @@ export const productService = {
     if (updates.is_featured !== undefined) cleanPayload.is_featured = !!updates.is_featured;
     if (updates.dimensions !== undefined) cleanPayload.dimensions = updates.dimensions;
     if (updates.materials !== undefined) cleanPayload.materials = updates.materials;
+    if (updates.sku !== undefined) cleanPayload.sku = updates.sku;
+    if (updates.warehouse_stock !== undefined) cleanPayload.warehouse_stock = Number(updates.warehouse_stock);
+    if (updates.store_stock !== undefined) cleanPayload.store_stock = Number(updates.store_stock);
+    if (updates.web_stock !== undefined) cleanPayload.web_stock = Number(updates.web_stock);
+    if (updates.boxes_count !== undefined) cleanPayload.boxes_count = Number(updates.boxes_count);
+    if (updates.warranty !== undefined) cleanPayload.warranty = updates.warranty;
+    if (updates.inventory_status !== undefined) cleanPayload.inventory_status = updates.inventory_status;
 
     if (isSupabaseConfigured()) {
       try {
