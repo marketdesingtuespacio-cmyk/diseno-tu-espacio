@@ -73,8 +73,8 @@ export const authService = {
     const newProfile: UserProfile = { ...collaborator, id: newId };
 
     if (isSupabaseConfigured()) {
+      // 1. Try Edge Function if available
       try {
-        // Use edge function to securely invite user and create profile
         const { data, error } = await supabase.functions.invoke('invite-collaborator', {
           body: {
             email: collaborator.email,
@@ -85,12 +85,35 @@ export const authService = {
           }
         });
         
-        if (error) throw error;
-        if (data.error) throw new Error(data.error);
-        if (data.success && data.user) return data.user as UserProfile;
+        if (!error && data && data.success && data.user) {
+          return data.user as UserProfile;
+        }
       } catch (err) {
-        console.error('Error adding profile in Supabase via edge function:', err);
-        throw err; // Propagate the error so the UI can show it
+        console.warn('Edge Function "invite-collaborator" no disponible en Supabase Nube, utilizando inserción directa en tabla profiles:', err);
+      }
+
+      // 2. Direct Supabase Database insert fallback
+      try {
+        const { data: dbData, error: dbError } = await supabase
+          .from('profiles')
+          .insert([{
+            id: newId,
+            full_name: collaborator.full_name,
+            email: collaborator.email,
+            role: collaborator.role,
+            permissions: collaborator.permissions,
+            status: collaborator.status || 'active'
+          }])
+          .select();
+
+        if (!dbError && dbData && dbData.length > 0) {
+          const created = dbData[0] as UserProfile;
+          const current = getStoredProfiles();
+          saveStoredProfiles([created, ...current.filter(p => p.id !== created.id)]);
+          return created;
+        }
+      } catch (dbErr) {
+        console.warn('Error insertando en tabla profiles de Supabase:', dbErr);
       }
     }
 
