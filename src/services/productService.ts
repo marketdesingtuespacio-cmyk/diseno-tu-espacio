@@ -2,7 +2,7 @@ import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { Product, ProductFilterState } from '../types';
 import { MOCK_PRODUCTS } from './mockData';
 
-const LOCAL_STORAGE_PRODUCTS_KEY = 'luxe_products_v14';
+const LOCAL_STORAGE_PRODUCTS_KEY = 'luxe_products_v15';
 
 const getStoredProducts = (): Product[] => {
   const stored = localStorage.getItem(LOCAL_STORAGE_PRODUCTS_KEY);
@@ -52,7 +52,7 @@ const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Produ
     );
   }
 
-  const resolvedStatus = (p.inventory_status && p.inventory_status.trim().length > 0 && p.inventory_status !== 'Privado')
+  const resolvedStatus = (p.inventory_status && p.inventory_status.trim().length > 0)
     ? p.inventory_status
     : (fallback?.inventory_status || (p.stock > 0 ? 'Disponible' : 'Agotado'));
 

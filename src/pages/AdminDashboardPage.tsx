@@ -8,7 +8,8 @@ import {
   LayoutGrid,
   List,
   Download,
-  X
+  X,
+  CheckCircle2
 } from 'lucide-react';
 import { Product, Appointment, Order, Coupon } from '../types';
 import { productService } from '../services/productService';
@@ -119,11 +120,18 @@ export const AdminDashboardPage: React.FC = () => {
     loadData();
   }, []);
 
+  // Server Action Confirmation Pop-up State
+  const [actionNotification, setActionNotification] = useState<{ title: string; message: string } | null>(null);
+
   // Delete Product
   const handleDeleteProduct = async (id: string) => {
     if (confirm('¿Está seguro de eliminar este producto del inventario?')) {
       await productService.deleteProduct(id);
-      loadData();
+      await loadData();
+      setActionNotification({
+        title: '¡Producto Eliminado!',
+        message: 'El producto ha sido eliminado exitosamente del inventario y sincronizado en el servidor.'
+      });
     }
   };
 
@@ -133,37 +141,52 @@ export const AdminDashboardPage: React.FC = () => {
   // Bulk Change Status
   const handleBulkChangeStatus = async (newStatus: Product['inventory_status']) => {
     if (selectedProductIds.length === 0) return;
-    if (!confirm(`¿Confirmar cambio de estado a "${newStatus}" para ${selectedProductIds.length} productos seleccionados?`)) return;
+    const count = selectedProductIds.length;
+    if (!confirm(`¿Confirmar cambio de estado a "${newStatus}" para los ${count} productos seleccionados?`)) return;
 
     for (const id of selectedProductIds) {
       await productService.updateProduct(id, { inventory_status: newStatus });
     }
     setSelectedProductIds([]);
     await loadData();
+    setActionNotification({
+      title: '¡Cambios Sincronizados con Éxito!',
+      message: `Se actualizó el estado a "${newStatus}" para los ${count} productos seleccionados en el servidor y base de datos.`
+    });
   };
 
   // Bulk Change Category
   const handleBulkChangeCategory = async (newCategory: string) => {
     if (selectedProductIds.length === 0 || !newCategory) return;
-    if (!confirm(`¿Confirmar asignación de categoría "${newCategory}" a ${selectedProductIds.length} productos seleccionados?`)) return;
+    const count = selectedProductIds.length;
+    if (!confirm(`¿Confirmar asignación de categoría "${newCategory}" a los ${count} productos seleccionados?`)) return;
 
     for (const id of selectedProductIds) {
       await productService.updateProduct(id, { category: newCategory });
     }
     setSelectedProductIds([]);
     await loadData();
+    setActionNotification({
+      title: '¡Categorías Actualizadas!',
+      message: `Se asignó la categoría "${newCategory}" a los ${count} productos seleccionados exitosamente en el servidor.`
+    });
   };
 
   // Bulk Delete Products
   const handleBulkDelete = async () => {
     if (selectedProductIds.length === 0) return;
-    if (!confirm(`¿Está seguro de eliminar los ${selectedProductIds.length} productos seleccionados? Esta acción es irreversible.`)) return;
+    const count = selectedProductIds.length;
+    if (!confirm(`¿Está seguro de eliminar los ${count} productos seleccionados? Esta acción es irreversible.`)) return;
 
     for (const id of selectedProductIds) {
       await productService.deleteProduct(id);
     }
     setSelectedProductIds([]);
     await loadData();
+    setActionNotification({
+      title: '¡Eliminación Masiva Exitosa!',
+      message: `Se eliminaron ${count} productos correctamente del catálogo y servidor.`
+    });
   };
 
   // Update Order Status
@@ -1317,6 +1340,33 @@ export const AdminDashboardPage: React.FC = () => {
                   </button>
                 </div>
               </form>
+            </div>
+          </div>
+        )}
+
+        {/* Server Action Confirmation Pop-Up Modal */}
+        {actionNotification && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs animate-in fade-in duration-200">
+            <div className="bg-white max-w-md w-full rounded-2xl p-6 shadow-2xl border border-neutral-200 space-y-4 text-center transform scale-100 transition-all">
+              <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 mx-auto flex items-center justify-center">
+                <CheckCircle2 className="w-7 h-7" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-neutral-900">
+                  {actionNotification.title}
+                </h3>
+                <p className="text-xs text-neutral-600 mt-1 font-medium leading-relaxed">
+                  {actionNotification.message}
+                </p>
+              </div>
+              <div className="pt-2">
+                <button 
+                  onClick={() => setActionNotification(null)}
+                  className="w-full bg-brand-black text-white text-xs font-bold uppercase tracking-wider py-3 px-4 rounded-xl hover:bg-neutral-800 transition-colors shadow-sm"
+                >
+                  Aceptar y Entendido
+                </button>
+              </div>
             </div>
           </div>
         )}
