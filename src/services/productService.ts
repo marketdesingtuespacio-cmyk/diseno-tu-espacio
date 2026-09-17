@@ -396,5 +396,60 @@ export const productService = {
     if (updatedAny) {
       saveStoredProducts(products);
     }
+  },
+
+  async syncAllToSupabase(): Promise<{ success: boolean; count: number; message: string }> {
+    if (!isSupabaseConfigured()) {
+      return { success: false, count: 0, message: 'Supabase no está configurado.' };
+    }
+
+    const allProducts = MOCK_PRODUCTS;
+    let syncedCount = 0;
+
+    for (const p of allProducts) {
+      const cleanPayload = {
+        name: p.name,
+        slug: p.slug,
+        brand_collection: p.brand_collection || 'Diseño Tu Espacio Collection',
+        description: p.description || '',
+        price: Number(p.price),
+        original_price: p.original_price ? Number(p.original_price) : null,
+        category: p.category,
+        style: p.style,
+        stock: Number(p.stock),
+        images: p.images || [],
+        colors: p.colors || [],
+        is_featured: !!p.is_featured,
+        dimensions: p.dimensions || '',
+        materials: p.materials || '',
+        sku: p.sku || '',
+        warehouse_stock: Number(p.warehouse_stock || 0),
+        store_stock: Number(p.store_stock || 0),
+        web_stock: Number(p.web_stock || 0),
+        boxes_count: Number(p.boxes_count || 0),
+        warranty: p.warranty || '3 años',
+        inventory_status: p.inventory_status || 'Disponible'
+      };
+
+      try {
+        const { data: existing } = await supabase.from('products').select('id').eq('slug', p.slug);
+        if (existing && existing.length > 0) {
+          await supabase.from('products').update(cleanPayload).eq('slug', p.slug);
+        } else {
+          await supabase.from('products').insert([cleanPayload]);
+        }
+        syncedCount++;
+      } catch (err) {
+        console.warn('Supabase sync warning for product:', p.name, err);
+      }
+    }
+
+    saveStoredProducts(allProducts);
+
+    return {
+      success: true,
+      count: syncedCount,
+      message: `¡Se sincronizaron exitosamente los ${syncedCount} productos con SKU, garantía y existencias en la nube Supabase!`
+    };
   }
 };

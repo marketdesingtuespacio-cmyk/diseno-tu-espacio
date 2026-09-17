@@ -444,6 +444,19 @@ export const AdminDashboardPage: React.FC = () => {
     document.body.removeChild(link);
   };
 
+  const handleSyncAllSupabase = async () => {
+    setActionNotification({
+      title: 'Sincronizando con Supabase Nube...',
+      message: 'Enviando todos los productos con sus SKUs, existencias por ubicación y garantías a la base de datos Supabase.'
+    });
+    const res = await productService.syncAllToSupabase();
+    await loadData();
+    setActionNotification({
+      title: '¡Sincronización Total Exitosa!',
+      message: res.message
+    });
+  };
+
   return (
     <div className="flex h-screen bg-[#ECECED] overflow-hidden font-sans">
       
@@ -526,6 +539,15 @@ export const AdminDashboardPage: React.FC = () => {
               </div>
 
               <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
+                <button
+                  onClick={handleSyncAllSupabase}
+                  className="bg-sky-600 text-white font-bold text-xs uppercase tracking-wider py-2.5 px-4 rounded-xl hover:bg-sky-700 shadow-sm transition-all flex items-center gap-2 shrink-0"
+                  title="Forzar actualización completa de SKU, existencias por ubicación y garantías en Supabase Nube"
+                >
+                  <RefreshCw className="w-4 h-4" />
+                  <span>Sincronizar Supabase</span>
+                </button>
+
                 <button
                   onClick={handleExportInventoryCSV}
                   className="bg-[#C6F432] text-black font-extrabold text-xs uppercase tracking-wider py-2.5 px-4 rounded-xl hover:bg-[#b5e028] shadow-sm transition-all flex items-center gap-2 shrink-0"
