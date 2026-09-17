@@ -127,6 +127,45 @@ export const AdminDashboardPage: React.FC = () => {
     }
   };
 
+  // Bulk Selection & Bulk Operations State
+  const [selectedProductIds, setSelectedProductIds] = useState<string[]>([]);
+
+  // Bulk Change Status
+  const handleBulkChangeStatus = async (newStatus: Product['inventory_status']) => {
+    if (selectedProductIds.length === 0) return;
+    if (!confirm(`¿Confirmar cambio de estado a "${newStatus}" para ${selectedProductIds.length} productos seleccionados?`)) return;
+
+    for (const id of selectedProductIds) {
+      await productService.updateProduct(id, { inventory_status: newStatus });
+    }
+    setSelectedProductIds([]);
+    await loadData();
+  };
+
+  // Bulk Change Category
+  const handleBulkChangeCategory = async (newCategory: string) => {
+    if (selectedProductIds.length === 0 || !newCategory) return;
+    if (!confirm(`¿Confirmar asignación de categoría "${newCategory}" a ${selectedProductIds.length} productos seleccionados?`)) return;
+
+    for (const id of selectedProductIds) {
+      await productService.updateProduct(id, { category: newCategory });
+    }
+    setSelectedProductIds([]);
+    await loadData();
+  };
+
+  // Bulk Delete Products
+  const handleBulkDelete = async () => {
+    if (selectedProductIds.length === 0) return;
+    if (!confirm(`¿Está seguro de eliminar los ${selectedProductIds.length} productos seleccionados? Esta acción es irreversible.`)) return;
+
+    for (const id of selectedProductIds) {
+      await productService.deleteProduct(id);
+    }
+    setSelectedProductIds([]);
+    await loadData();
+  };
+
   // Update Order Status
   const handleUpdateOrderStatus = async (id: string, status: Order['status']) => {
     await orderService.updateOrderStatus(id, status);
@@ -382,7 +421,7 @@ export const AdminDashboardPage: React.FC = () => {
       />
 
       {/* RIGHT MAIN WORKSPACE AREA */}
-      <main className="my-4 mr-4 flex-1 overflow-y-auto space-y-5 pr-1">
+      <main className="my-6 px-6 lg:px-[100px] flex-1 overflow-y-auto space-y-6 pb-20">
         
         {/* Top Action Bar (Reference Style Header) */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white/90 backdrop-blur-2xl border border-white/90 p-4 rounded-[24px] shadow-[0_4px_20px_rgba(0,0,0,0.03)] gap-3">
@@ -478,11 +517,91 @@ export const AdminDashboardPage: React.FC = () => {
               categories={productCategories}
             />
 
+            {/* Sticky Bulk Action Toolbar */}
+            {selectedProductIds.length > 0 && (
+              <div className="bg-neutral-900 text-white p-4 rounded-xl shadow-elevated flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border border-neutral-800 animate-in fade-in duration-200">
+                <div className="flex items-center gap-3">
+                  <span className="bg-[#C6F432] text-black text-xs font-extrabold px-3 py-1 rounded-full font-mono">
+                    {selectedProductIds.length} seleccionados
+                  </span>
+                  <span className="text-xs text-neutral-300 font-medium">
+                    Edición en Bloque (Acciones Masivas para Productos Seleccionados):
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-3 flex-wrap">
+                  {/* Bulk Status Dropdown */}
+                  <select 
+                    onChange={(e) => {
+                      if (e.target.value) {
+                        handleBulkChangeStatus(e.target.value as Product['inventory_status']);
+                        e.target.value = '';
+                      }
+                    }}
+                    className="bg-neutral-800 text-white text-xs border border-neutral-700 rounded-lg px-3 py-2 focus:outline-none cursor-pointer"
+                  >
+                    <option value="">Cambiar Estado en Bloque...</option>
+                    <option value="Disponible">✅ Disponible</option>
+                    <option value="Privado">🔒 Privado</option>
+                    <option value="Agotado">❌ Agotado</option>
+                    <option value="Poco Stock">⚠️ Por Agotarse</option>
+                  </select>
+
+                  {/* Bulk Category Dropdown */}
+                  <select 
+                    onChange={(e) => {
+                      if (e.target.value) {
+                        handleBulkChangeCategory(e.target.value);
+                        e.target.value = '';
+                      }
+                    }}
+                    className="bg-neutral-800 text-white text-xs border border-neutral-700 rounded-lg px-3 py-2 focus:outline-none cursor-pointer"
+                  >
+                    <option value="">Cambiar Categoría en Bloque...</option>
+                    {productCategories.map(cat => (
+                      <option key={cat} value={cat}>{cat}</option>
+                    ))}
+                  </select>
+
+                  {/* Bulk Delete Button */}
+                  <button 
+                    onClick={handleBulkDelete}
+                    className="bg-red-600/90 hover:bg-red-600 text-white text-xs font-bold py-2 px-3.5 rounded-lg transition-colors flex items-center gap-1.5 shadow-sm"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" /> Eliminar ({selectedProductIds.length})
+                  </button>
+
+                  {/* Clear Selection */}
+                  <button 
+                    onClick={() => setSelectedProductIds([])}
+                    className="text-neutral-400 hover:text-white text-xs underline px-2"
+                  >
+                    Desmarcar
+                  </button>
+                </div>
+              </div>
+            )}
+
             {/* Products Table */}
             <div className="bg-white border border-brand-border overflow-x-auto rounded-xl shadow-xs">
               <table className="w-full text-left text-xs">
                 <thead className="bg-brand-surface uppercase text-[10px] tracking-widest text-neutral-500 border-b">
                   <tr>
+                    <th className="p-3 w-10 text-center">
+                      <input 
+                        type="checkbox" 
+                        checked={filteredProducts.length > 0 && selectedProductIds.length === filteredProducts.length}
+                        onChange={() => {
+                          if (selectedProductIds.length === filteredProducts.length) {
+                            setSelectedProductIds([]);
+                          } else {
+                            setSelectedProductIds(filteredProducts.map(p => p.id));
+                          }
+                        }}
+                        className="w-4 h-4 rounded border-neutral-300 accent-black cursor-pointer"
+                        title="Seleccionar / Desmarcar Todos los Productos Visibles"
+                      />
+                    </th>
                     <th className="p-3">Foto</th>
                     <th className="p-3">Referencia / SKU</th>
                     <th className="p-3">Categoría</th>
@@ -496,7 +615,7 @@ export const AdminDashboardPage: React.FC = () => {
                 <tbody className="divide-y">
                   {filteredProducts.length === 0 ? (
                     <tr>
-                      <td colSpan={8} className="p-8 text-center text-neutral-400 font-medium">
+                      <td colSpan={9} className="p-8 text-center text-neutral-400 font-medium">
                         No se encontraron productos que coincidan con los filtros seleccionados.
                       </td>
                     </tr>
@@ -505,9 +624,25 @@ export const AdminDashboardPage: React.FC = () => {
                       const isPrivado = p.inventory_status === 'Privado';
                       const isAgotado = p.stock <= 0 || p.inventory_status === 'Agotado';
                       const isPocoStock = !isAgotado && !isPrivado && p.stock <= 3;
+                      const isSelected = selectedProductIds.includes(p.id);
 
                       return (
-                        <tr key={p.id} className="hover:bg-brand-surface/50 transition-colors">
+                        <tr key={p.id} className={`transition-colors ${isSelected ? 'bg-amber-50/70 hover:bg-amber-100/60' : 'hover:bg-brand-surface/50'}`}>
+                          <td className="p-3 text-center">
+                            <input 
+                              type="checkbox" 
+                              checked={isSelected}
+                              onChange={(e) => {
+                                e.stopPropagation();
+                                if (isSelected) {
+                                  setSelectedProductIds(selectedProductIds.filter(id => id !== p.id));
+                                } else {
+                                  setSelectedProductIds([...selectedProductIds, p.id]);
+                                }
+                              }}
+                              className="w-4 h-4 rounded border-neutral-300 accent-black cursor-pointer"
+                            />
+                          </td>
                           <td className="p-3">
                             <img src={p.images[0]} alt="" className="w-10 h-12 object-cover border bg-brand-surface rounded-md shadow-2xs" />
                           </td>
