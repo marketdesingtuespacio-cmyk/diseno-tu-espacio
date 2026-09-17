@@ -7,7 +7,7 @@ const json = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
 let sql = `-- ==========================================================================\n`;
 sql += `-- SCRIPT DE MIGRACIÓN Y POBLACIÓN TOTAL DE INVENTARIOS EN SUPABASE\n`;
 sql += `-- ==========================================================================\n`;
-sql += `-- PASO 1: Ejecuta las siguientes 7 líneas para crear las columnas faltantes.\n`;
+sql += `-- PASO 1: Ejecuta las siguientes 7 líneas para asegurar las columnas.\n`;
 sql += `-- PASO 2: Ejecuta el resto del script para actualizar todos los productos.\n\n`;
 
 sql += `-- ==========================================================================\n`;
@@ -36,7 +36,12 @@ json.forEach((p, idx) => {
   const warrantyEsc = (p.warranty || '3 años').replace(/'/g, "''");
   const skuEsc = (p.sku || '').replace(/'/g, "''");
   const statusEsc = (p.inventory_status || 'Disponible').replace(/'/g, "''");
-  const imagesJson = JSON.stringify(p.images || []);
+  
+  // Format images as PostgreSQL ARRAY[...]::text[]
+  const imagesArr = (p.images || []).map(img => `'${img.replace(/'/g, "''")}'`).join(', ');
+  const imagesSql = imagesArr.length > 0 ? `ARRAY[${imagesArr}]::text[]` : `ARRAY[]::text[]`;
+
+  // Format colors as jsonb
   const colorsJson = JSON.stringify(p.colors || []);
   const origPrice = p.original_price ? p.original_price : 'NULL';
 
@@ -50,7 +55,7 @@ json.forEach((p, idx) => {
   sql += `  category = '${catEsc}',\n`;
   sql += `  style = '${styleEsc}',\n`;
   sql += `  stock = ${p.stock},\n`;
-  sql += `  images = '${imagesJson}'::jsonb,\n`;
+  sql += `  images = ${imagesSql},\n`;
   sql += `  colors = '${colorsJson}'::jsonb,\n`;
   sql += `  is_featured = ${p.is_featured ? 'true' : 'false'},\n`;
   sql += `  dimensions = '${dimEsc}',\n`;
@@ -68,10 +73,10 @@ json.forEach((p, idx) => {
   sql += `  name, slug, brand_collection, description, price, original_price, category, style, stock, images, colors, is_featured, dimensions, materials, sku, warehouse_stock, store_stock, web_stock, boxes_count, warranty, inventory_status\n`;
   sql += `)\n`;
   sql += `SELECT\n`;
-  sql += `  '${nameEsc}', '${p.slug}', '${brandEsc}', '${descEsc}', ${p.price}, ${origPrice}, '${catEsc}', '${styleEsc}', ${p.stock}, '${imagesJson}'::jsonb, '${colorsJson}'::jsonb, ${p.is_featured ? 'true' : 'false'}, '${dimEsc}', '${matEsc}', '${skuEsc}', ${p.warehouse_stock || 0}, ${p.store_stock || 0}, ${p.web_stock || 0}, ${p.boxes_count || 0}, '${warrantyEsc}', '${statusEsc}'\n`;
+  sql += `  '${nameEsc}', '${p.slug}', '${brandEsc}', '${descEsc}', ${p.price}, ${origPrice}, '${catEsc}', '${styleEsc}', ${p.stock}, ${imagesSql}, '${colorsJson}'::jsonb, ${p.is_featured ? 'true' : 'false'}, '${dimEsc}', '${matEsc}', '${skuEsc}', ${p.warehouse_stock || 0}, ${p.store_stock || 0}, ${p.web_stock || 0}, ${p.boxes_count || 0}, '${warrantyEsc}', '${statusEsc}'\n`;
   sql += `WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug = '${p.slug}');\n\n`;
 });
 
 const outPath = path.join(__dirname, '../inventarios/sync_all_products_to_supabase.sql');
 fs.writeFileSync(outPath, sql);
-console.log('SQL sync script regenerated successfully:', outPath);
+console.log('SQL sync script regenerated with PostgreSQL text[] images format successfully:', outPath);
