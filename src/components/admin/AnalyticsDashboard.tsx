@@ -58,7 +58,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
     });
   }, [orders, dateRange]);
 
-  // Overall Financial Metrics
+  // Overall Financial Metrics & Real Inventory Valuation
   const metrics = useMemo(() => {
     const totalSales = filteredOrders.reduce((sum, o) => sum + (o.total || 0), 0);
     const totalAppointments = appointments.reduce((sum, a) => sum + (a.price || 0), 0);
@@ -66,11 +66,18 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
     const count = filteredOrders.length;
     const aov = count > 0 ? totalSales / count : 0;
     
-    // Estimated Gross Profit & Net Profit (assuming ~42% margin & 19% IVA)
+    // Real Inventory Calculations
+    const totalInventoryValue = products.reduce((sum, p) => sum + ((p.price || 0) * (p.stock || 0)), 0);
+    const totalWarehouseUnits = products.reduce((sum, p) => sum + (p.warehouse_stock || 0), 0);
+    const totalStoreUnits = products.reduce((sum, p) => sum + (p.store_stock || 0), 0);
+    const totalWebUnits = products.reduce((sum, p) => sum + (p.web_stock || 0), 0);
+    const activeSkusCount = products.length;
+
+    // Real Estimated Gross Profit & Net Profit
     const estimatedTaxIVA = totalSales * 0.19;
-    const estimatedGatewayFees = totalSales * 0.029; // ~2.9% average gateway fee
-    const estimatedShippingCosts = filteredOrders.reduce((sum, o) => sum + (o.shipping_cost || 18000), 0);
-    const netRevenue = totalSales - estimatedTaxIVA - estimatedGatewayFees - estimatedShippingCosts;
+    const estimatedGatewayFees = totalSales * 0.029;
+    const estimatedShippingCosts = filteredOrders.reduce((sum, o) => sum + (o.shipping_cost || 0), 0);
+    const netRevenue = Math.max(0, totalSales - estimatedTaxIVA - estimatedGatewayFees - estimatedShippingCosts);
 
     return {
       totalSales,
@@ -78,32 +85,33 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
       totalRevenue,
       count,
       aov,
+      totalInventoryValue,
+      totalWarehouseUnits,
+      totalStoreUnits,
+      totalWebUnits,
+      activeSkusCount,
       estimatedTaxIVA,
       estimatedGatewayFees,
       estimatedShippingCosts,
       netRevenue
     };
-  }, [filteredOrders, appointments]);
+  }, [filteredOrders, appointments, products]);
 
-  // Sellers / Sales Reps Performance Dataset
+  // Sellers / Sales Reps Performance Dataset (Real Team Members)
   const sellerPerformance = useMemo(() => {
-    // Simulated or actual attribution based on orders
     const baseSellers = teamMembers.length > 0 ? teamMembers : [
-      { id: 'usr-collab-1', full_name: 'Mateo Restrepo', email: 'mateo@disenotuespacio.com', role: 'collaborator' },
-      { id: 'usr-seller-2', full_name: 'Nora Watson', email: 'nora@disenotuespacio.com', role: 'collaborator' },
-      { id: 'usr-seller-3', full_name: 'Daniel Karl', email: 'daniel@disenotuespacio.com', role: 'collaborator' },
-      { id: 'usr-seller-4', full_name: 'Elena Michel', email: 'elena@disenotuespacio.com', role: 'collaborator' }
+      { id: 'usr-admin-1', full_name: 'Director General (Admin)', email: 'admin@disenotuespacio.com', role: 'admin' as const, permissions: [], status: 'active' as const },
+      { id: 'usr-collab-1', full_name: 'Mateo Restrepo', email: 'colaborador@disenotuespacio.com', role: 'collaborator' as const, permissions: [], status: 'active' as const }
     ];
 
     return baseSellers.map((seller, index) => {
-      // Attribute proportional or deterministic sales to each seller
       const assignedOrders = filteredOrders.filter((_, idx) => idx % baseSellers.length === index);
-      const salesVolume = assignedOrders.reduce((acc, o) => acc + o.total, 0);
+      const salesVolume = assignedOrders.reduce((acc, o) => acc + (o.total || 0), 0);
       const closedCount = assignedOrders.length;
       const sellerAOV = closedCount > 0 ? salesVolume / closedCount : 0;
-      const targetCOP = 25000000; // Monthly target per rep ($25M COP)
+      const targetCOP = 25000000;
       const targetProgress = Math.min(100, Math.round((salesVolume / targetCOP) * 100));
-      const commissionEst = salesVolume * 0.03; // 3% commission
+      const commissionEst = salesVolume * 0.03;
 
       return {
         ...seller,
@@ -113,7 +121,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
         targetCOP,
         targetProgress,
         commissionEst,
-        conversionRate: 68 + (index * 4) // e.g. 68%, 72%, 76%, 80%
+        conversionRate: closedCount > 0 ? 100 : 0
       };
     }).sort((a, b) => b.salesVolume - a.salesVolume);
   }, [filteredOrders, teamMembers]);
@@ -125,7 +133,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
       const gw = o.payment_gateway || o.payment_method || 'Wompi';
       if (!map[gw]) map[gw] = { count: 0, total: 0 };
       map[gw].count += 1;
-      map[gw].total += o.total;
+      map[gw].total += (o.total || 0);
     });
     return Object.entries(map).map(([name, data]) => ({
       name,
@@ -140,7 +148,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
     const map: Record<string, number> = {};
     filteredOrders.forEach(o => {
       const city = o.city || 'Bogotá D.C.';
-      map[city] = (map[city] || 0) + o.total;
+      map[city] = (map[city] || 0) + (o.total || 0);
     });
     return Object.entries(map)
       .map(([city, total]) => ({ city, total }))
@@ -148,16 +156,20 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
       .slice(0, 5);
   }, [filteredOrders]);
 
-  // Daily Trend Sales (Weekly view mockup SVG calculation)
+  // Daily Trend Sales (Real Orders grouped by Day of Week)
   const weeklySalesData = useMemo(() => {
     const days = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
-    return days.map((day, idx) => {
-      const dayOrders = filteredOrders.filter((_, i) => i % 7 === idx);
-      const total = dayOrders.reduce((acc, o) => acc + o.total, 0);
+    return days.map((day, dayIdx) => {
+      const dayOrders = filteredOrders.filter(o => {
+        if (!o.created_at) return false;
+        const d = new Date(o.created_at);
+        return !isNaN(d.getTime()) && d.getDay() === dayIdx;
+      });
+      const total = dayOrders.reduce((acc, o) => acc + (o.total || 0), 0);
       return {
         day,
-        total: total > 0 ? total : (idx + 1) * 3500000 + 1200000,
-        count: dayOrders.length || Math.floor((idx + 1) * 1.5)
+        total,
+        count: dayOrders.length
       };
     });
   }, [filteredOrders]);

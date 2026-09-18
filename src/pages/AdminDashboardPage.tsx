@@ -11,11 +11,12 @@ import {
   X,
   CheckCircle2
 } from 'lucide-react';
-import { Product, Appointment, Order, Coupon } from '../types';
+import { Product, Appointment, Order, Coupon, UserProfile } from '../types';
 import { productService } from '../services/productService';
 import { appointmentService } from '../services/appointmentService';
 import { orderService } from '../services/orderService';
 import { couponService } from '../services/couponService';
+import { authService } from '../services/authService';
 import { useCurrency } from '../context/CurrencyContext';
 import { checkSupabaseHealth } from '../lib/supabase';
 import { AdminSidebar, AdminTab } from '../components/admin/AdminSidebar';
@@ -94,6 +95,7 @@ export const AdminDashboardPage: React.FC = () => {
     notes: ''
   });
 
+  const [teamMembers, setTeamMembers] = useState<UserProfile[]>([]);
   const [supabaseStatus, setSupabaseStatus] = useState<{ isConnected: boolean; message: string }>({
     isConnected: false,
     message: 'Comprobando conexión con Supabase...'
@@ -102,18 +104,20 @@ export const AdminDashboardPage: React.FC = () => {
   const { formatPrice } = useCurrency();
 
   const loadData = async () => {
-    const [pList, aList, oList, cList, sHealth] = await Promise.all([
+    const [pList, aList, oList, cList, sHealth, tList] = await Promise.all([
       productService.getProducts(undefined, true),
       appointmentService.getAppointments(),
       orderService.getOrders(),
       couponService.getCoupons(),
-      checkSupabaseHealth()
+      checkSupabaseHealth(),
+      authService.getTeamMembers()
     ]);
     setProducts(pList);
     setAppointments(aList);
     setOrders(oList);
     setCoupons(cList);
     setSupabaseStatus(sHealth);
+    setTeamMembers(tList);
   };
 
   useEffect(() => {
@@ -520,6 +524,7 @@ export const AdminDashboardPage: React.FC = () => {
             orders={orders} 
             products={products} 
             appointments={appointments} 
+            teamMembers={teamMembers}
           />
         )}
 
