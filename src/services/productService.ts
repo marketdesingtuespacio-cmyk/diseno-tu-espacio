@@ -150,9 +150,14 @@ export const productService = {
     return result;
   },
 
-  async getProductBySlug(slug: string, includePrivate: boolean = false): Promise<Product | null> {
+  async getProductBySlug(slug: string, includePrivate: boolean = true): Promise<Product | null> {
     const products = await this.getProducts(undefined, includePrivate);
-    const found = products.find(p => p.slug === slug || p.id === slug);
+    const target = (slug || '').toLowerCase().trim();
+    const found = products.find(p => 
+      (p.slug && p.slug.toLowerCase().trim() === target) || 
+      (p.id && p.id.toLowerCase().trim() === target) || 
+      (p.sku && p.sku.toLowerCase().trim() === target)
+    );
     return found || null;
   },
 
