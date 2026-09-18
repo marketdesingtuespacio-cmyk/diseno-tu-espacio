@@ -85,11 +85,38 @@ export const productService = {
         const { data, error } = await supabase.from('products').select('*');
         if (!error && data && data.length > 0) {
           const supabaseProducts = data as Product[];
-          
-          // Cloud DB merged with authentic local inventory fields (sku, stock breakdown, warranty)
-          const enrichedSupabaseProducts = supabaseProducts.map(sp => enrichProduct(sp, localLookupMap));
-          saveStoredProducts(enrichedSupabaseProducts);
-          localProducts = enrichedSupabaseProducts;
+          const supabaseMap = new Map<string, Product>();
+          supabaseProducts.forEach(sp => {
+            if (sp.slug) supabaseMap.set(sp.slug, sp);
+            if (sp.id) supabaseMap.set(sp.id, sp);
+            if (sp.sku) supabaseMap.set(sp.sku.toLowerCase(), sp);
+          });
+
+          // Merge: Preserve all authentic 102 items and overlay Supabase updates
+          const mergedProducts = MOCK_PRODUCTS.map(baseProd => {
+            const sp = supabaseMap.get(baseProd.slug) || 
+                       supabaseMap.get(baseProd.id) || 
+                       (baseProd.sku ? supabaseMap.get(baseProd.sku.toLowerCase()) : undefined);
+            if (sp) {
+              return enrichProduct({ ...baseProd, ...sp }, localLookupMap);
+            }
+            return enrichProduct(baseProd, localLookupMap);
+          });
+
+          // Include any newly added Supabase products not in MOCK_PRODUCTS
+          supabaseProducts.forEach(sp => {
+            const exists = mergedProducts.some(mp => 
+              mp.id === sp.id || 
+              mp.slug === sp.slug || 
+              (mp.sku && sp.sku && mp.sku.toLowerCase() === sp.sku.toLowerCase())
+            );
+            if (!exists) {
+              mergedProducts.push(enrichProduct(sp, localLookupMap));
+            }
+          });
+
+          saveStoredProducts(mergedProducts);
+          localProducts = mergedProducts;
         }
       } catch (err) {
         console.warn('Supabase fetch failed, using local product dataset', err);
