@@ -26,10 +26,21 @@ export const ProductDetailPage: React.FC = () => {
 
   useEffect(() => {
     if (slug) {
-      setLoading(true);
+      // 1. Instant synchronous lookup from memory/local storage (0ms delay)
+      const syncProd = productService.getProductBySlugSync(slug);
+      if (syncProd) {
+        setProduct(syncProd);
+        const syncRelated = productService.getProductsSync().filter(p => p.id !== syncProd.id).slice(0, 3);
+        setRelatedProducts(syncRelated);
+        setLoading(false);
+      } else {
+        setLoading(true);
+      }
+
+      // 2. Background async refresh/verification
       productService.getProductBySlug(slug).then(res => {
-        setProduct(res);
         if (res) {
+          setProduct(res);
           productService.getProducts().then(all => {
             setRelatedProducts(all.filter(p => p.id !== res.id).slice(0, 3));
           });

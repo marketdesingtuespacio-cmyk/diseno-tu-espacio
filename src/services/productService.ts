@@ -68,116 +68,174 @@ const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Produ
   };
 };
 
-export const productService = {
-  async getProducts(filters?: Partial<ProductFilterState>, includePrivate: boolean = false): Promise<Product[]> {
-    let localProducts = getStoredProducts();
+let memoryProductsCache: Product[] | null = null;
+let productsFetchPromise: Promise<Product[]> | null = null;
 
+export const clearProductCache = () => {
+  memoryProductsCache = null;
+  productsFetchPromise = null;
+};
+
+const applyProductFilters = (products: Product[], filters?: Partial<ProductFilterState>, includePrivate: boolean = false): Product[] => {
+  let result = [...products];
+
+  if (!includePrivate) {
+    result = result.filter(p => p.inventory_status !== 'Privado');
+  }
+
+  if (filters) {
+    if (filters.category && filters.category !== 'all') {
+      const catLower = filters.category.toLowerCase().trim();
+      result = result.filter(p => p.category && p.category.toLowerCase().trim() === catLower);
+    }
+    if (filters.style && filters.style !== 'all') {
+      result = result.filter(p => p.style === filters.style);
+    }
+    if (filters.inStockOnly) {
+      result = result.filter(p => p.stock > 0 && p.inventory_status !== 'Agotado');
+    }
+    if (filters.minPrice !== undefined) {
+      const minVal = filters.minPrice;
+      result = result.filter(p => p.price >= minVal);
+    }
+    if (filters.maxPrice !== undefined && filters.maxPrice > 0) {
+      const maxVal = filters.maxPrice;
+      result = result.filter(p => p.price <= maxVal);
+    }
+    if (filters.searchQuery) {
+      const q = filters.searchQuery.toLowerCase().trim();
+      result = result.filter(p => 
+        p.name.toLowerCase().includes(q) || 
+        p.description.toLowerCase().includes(q) ||
+        p.category.toLowerCase().includes(q) ||
+        p.style.toLowerCase().includes(q) ||
+        (p.sku && p.sku.toLowerCase().includes(q)) ||
+        (p.brand_collection && p.brand_collection.toLowerCase().includes(q)) ||
+        (p.materials && p.materials.toLowerCase().includes(q))
+      );
+    }
+    if (filters.sortBy) {
+      result.sort((a, b) => {
+        if (filters.sortBy === 'price-asc') return a.price - b.price;
+        if (filters.sortBy === 'price-desc') return b.price - a.price;
+        if (filters.sortBy === 'name') return a.name.localeCompare(b.name);
+        return 0;
+      });
+    }
+  }
+
+  return result;
+};
+
+export const productService = {
+  getProductsSync(filters?: Partial<ProductFilterState>, includePrivate: boolean = true): Product[] {
+    const base = memoryProductsCache || getStoredProducts() || MOCK_PRODUCTS;
     const localLookupMap = new Map<string, Product>();
-    localProducts.forEach(p => {
+    base.forEach(p => {
       if (p.id) localLookupMap.set(p.id, p);
       if (p.slug) localLookupMap.set(p.slug, p);
       if (p.sku) localLookupMap.set(p.sku.toLowerCase(), p);
       if (p.name) localLookupMap.set(p.name.toLowerCase(), p);
     });
+    const enriched = base.map(p => enrichProduct(p, localLookupMap));
+    return applyProductFilters(enriched, filters, includePrivate);
+  },
 
-    if (isSupabaseConfigured()) {
-      try {
-        const { data, error } = await supabase.from('products').select('*');
-        if (!error && data && data.length > 0) {
-          const supabaseProducts = data as Product[];
-          const supabaseMap = new Map<string, Product>();
-          supabaseProducts.forEach(sp => {
-            if (sp.slug) supabaseMap.set(sp.slug, sp);
-            if (sp.id) supabaseMap.set(sp.id, sp);
-            if (sp.sku) supabaseMap.set(sp.sku.toLowerCase(), sp);
-          });
+  getProductBySlugSync(slug: string, includePrivate: boolean = true): Product | null {
+    const products = this.getProductsSync(undefined, includePrivate);
+    const target = (slug || '').toLowerCase().trim();
+    const found = products.find(p => 
+      (p.slug && p.slug.toLowerCase().trim() === target) || 
+      (p.id && p.id.toLowerCase().trim() === target) || 
+      (p.sku && p.sku.toLowerCase().trim() === target)
+    );
+    return found || null;
+  },
 
-          // Merge: Preserve all authentic 102 items and overlay Supabase updates
-          const mergedProducts = MOCK_PRODUCTS.map(baseProd => {
-            const sp = supabaseMap.get(baseProd.slug) || 
-                       supabaseMap.get(baseProd.id) || 
-                       (baseProd.sku ? supabaseMap.get(baseProd.sku.toLowerCase()) : undefined);
-            if (sp) {
-              return enrichProduct({ ...baseProd, ...sp }, localLookupMap);
-            }
-            return enrichProduct(baseProd, localLookupMap);
-          });
+  async getProducts(filters?: Partial<ProductFilterState>, includePrivate: boolean = false, forceRefresh: boolean = false): Promise<Product[]> {
+    if (memoryProductsCache && !forceRefresh) {
+      return applyProductFilters(memoryProductsCache, filters, includePrivate);
+    }
 
-          // Include any newly added Supabase products not in MOCK_PRODUCTS
-          supabaseProducts.forEach(sp => {
-            const exists = mergedProducts.some(mp => 
-              mp.id === sp.id || 
-              mp.slug === sp.slug || 
-              (mp.sku && sp.sku && mp.sku.toLowerCase() === sp.sku.toLowerCase())
-            );
-            if (!exists) {
-              mergedProducts.push(enrichProduct(sp, localLookupMap));
-            }
-          });
+    if (productsFetchPromise && !forceRefresh) {
+      const fetched = await productsFetchPromise;
+      return applyProductFilters(fetched, filters, includePrivate);
+    }
 
-          saveStoredProducts(mergedProducts);
-          localProducts = mergedProducts;
+    productsFetchPromise = (async () => {
+      let localProducts = getStoredProducts();
+
+      const localLookupMap = new Map<string, Product>();
+      localProducts.forEach(p => {
+        if (p.id) localLookupMap.set(p.id, p);
+        if (p.slug) localLookupMap.set(p.slug, p);
+        if (p.sku) localLookupMap.set(p.sku.toLowerCase(), p);
+        if (p.name) localLookupMap.set(p.name.toLowerCase(), p);
+      });
+
+      if (isSupabaseConfigured()) {
+        try {
+          const { data, error } = await supabase.from('products').select('*');
+          if (!error && data && data.length > 0) {
+            const supabaseProducts = data as Product[];
+            const supabaseMap = new Map<string, Product>();
+            supabaseProducts.forEach(sp => {
+              if (sp.slug) supabaseMap.set(sp.slug, sp);
+              if (sp.id) supabaseMap.set(sp.id, sp);
+              if (sp.sku) supabaseMap.set(sp.sku.toLowerCase(), sp);
+            });
+
+            // Merge: Preserve all authentic 102 items and overlay Supabase updates
+            const mergedProducts = MOCK_PRODUCTS.map(baseProd => {
+              const sp = supabaseMap.get(baseProd.slug) || 
+                         supabaseMap.get(baseProd.id) || 
+                         (baseProd.sku ? supabaseMap.get(baseProd.sku.toLowerCase()) : undefined);
+              if (sp) {
+                return enrichProduct({ ...baseProd, ...sp }, localLookupMap);
+              }
+              return enrichProduct(baseProd, localLookupMap);
+            });
+
+            // Include any newly added Supabase products not in MOCK_PRODUCTS
+            supabaseProducts.forEach(sp => {
+              const exists = mergedProducts.some(mp => 
+                mp.id === sp.id || 
+                mp.slug === sp.slug || 
+                (mp.sku && sp.sku && mp.sku.toLowerCase() === sp.sku.toLowerCase())
+              );
+              if (!exists) {
+                mergedProducts.push(enrichProduct(sp, localLookupMap));
+              }
+            });
+
+            saveStoredProducts(mergedProducts);
+            localProducts = mergedProducts;
+          }
+        } catch (err) {
+          console.warn('Supabase fetch failed, using local product dataset', err);
         }
-      } catch (err) {
-        console.warn('Supabase fetch failed, using local product dataset', err);
       }
-    }
 
-    localProducts = localProducts.map(p => enrichProduct(p, localLookupMap));
+      const finalEnriched = localProducts.map(p => enrichProduct(p, localLookupMap));
+      memoryProductsCache = finalEnriched;
+      productsFetchPromise = null;
+      return finalEnriched;
+    })();
 
-    // Apply Filters
-    let result = [...localProducts];
-
-    // Filter out Private products for public consumers
-    if (!includePrivate) {
-      result = result.filter(p => p.inventory_status !== 'Privado');
-    }
-
-    if (filters) {
-      if (filters.category && filters.category !== 'all') {
-        const catLower = filters.category.toLowerCase().trim();
-        result = result.filter(p => p.category && p.category.toLowerCase().trim() === catLower);
-      }
-      if (filters.style && filters.style !== 'all') {
-        result = result.filter(p => p.style === filters.style);
-      }
-      if (filters.inStockOnly) {
-        result = result.filter(p => p.stock > 0 && p.inventory_status !== 'Agotado');
-      }
-      if (filters.minPrice !== undefined) {
-        const minVal = filters.minPrice;
-        result = result.filter(p => p.price >= minVal);
-      }
-      if (filters.maxPrice !== undefined && filters.maxPrice > 0) {
-        const maxVal = filters.maxPrice;
-        result = result.filter(p => p.price <= maxVal);
-      }
-      if (filters.searchQuery) {
-        const q = filters.searchQuery.toLowerCase().trim();
-        result = result.filter(p => 
-          p.name.toLowerCase().includes(q) || 
-          p.description.toLowerCase().includes(q) ||
-          p.category.toLowerCase().includes(q) ||
-          p.style.toLowerCase().includes(q) ||
-          (p.sku && p.sku.toLowerCase().includes(q)) ||
-          (p.brand_collection && p.brand_collection.toLowerCase().includes(q)) ||
-          (p.materials && p.materials.toLowerCase().includes(q))
-        );
-      }
-      if (filters.sortBy) {
-        result.sort((a, b) => {
-          if (filters.sortBy === 'price-asc') return a.price - b.price;
-          if (filters.sortBy === 'price-desc') return b.price - a.price;
-          if (filters.sortBy === 'name') return a.name.localeCompare(b.name);
-          return 0;
-        });
-      }
-    }
-
-    return result;
+    const resultProducts = await productsFetchPromise;
+    return applyProductFilters(resultProducts, filters, includePrivate);
   },
 
   async getProductBySlug(slug: string, includePrivate: boolean = true): Promise<Product | null> {
+    const syncResult = this.getProductBySlugSync(slug, includePrivate);
+    if (syncResult) {
+      // Trigger background update if cache isn't populated yet
+      if (!memoryProductsCache) {
+        this.getProducts(undefined, includePrivate).catch(() => {});
+      }
+      return syncResult;
+    }
+
     const products = await this.getProducts(undefined, includePrivate);
     const target = (slug || '').toLowerCase().trim();
     const found = products.find(p => 
