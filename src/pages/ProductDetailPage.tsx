@@ -66,14 +66,15 @@ export const ProductDetailPage: React.FC = () => {
   const topTwoImages = imagesList.slice(0, 2);
   const remainingImages = imagesList.slice(2);
 
-  const swatches = product.colors || [
-    { name: 'Cromo Espejo', hex: '#E0E0E0' },
-    { name: 'Negro Azabache', hex: '#111111' },
-    { name: 'Beige Nude', hex: '#D6C8BC' },
-    { name: 'Verde Oliva', hex: '#485244' }
-  ];
+  const swatches = (product.colors && product.colors.length > 0)
+    ? product.colors 
+    : [
+        { name: 'Latón Dorado', hex: '#CDB375' },
+        { name: 'Plata Níquel', hex: '#D4D4D2' },
+        { name: 'Negro Mate', hex: '#1C1C1C' }
+      ];
 
-  const selectedSwatch = swatches[selectedColorIndex] || swatches[0];
+  const selectedSwatch = swatches[selectedColorIndex] || swatches[0] || { name: 'Estándar', hex: '#111111' };
 
   return (
     <div className="max-w-[1600px] mx-auto px-0 sm:px-4 lg:px-6 py-4 space-y-6 font-sans">
@@ -253,7 +254,7 @@ export const ProductDetailPage: React.FC = () => {
           <div className="space-y-2 pt-2">
             <div className="flex items-center justify-between text-xs">
               <span className="text-neutral-500 uppercase tracking-wider text-[10px] font-bold">Acabado / Color</span>
-              <span className="font-medium text-neutral-900">{selectedSwatch.name}</span>
+              <span className="font-medium text-neutral-900">{selectedSwatch?.name || 'Estándar'}</span>
             </div>
 
             <div className="flex items-center gap-2">
