@@ -24,6 +24,8 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
   const [style, setStyle] = useState(initialProduct?.style || 'Contemporáneo');
   const [price, setPrice] = useState<number>(initialProduct?.price || 890000);
   const [originalPrice, setOriginalPrice] = useState<number | undefined>(initialProduct?.original_price || undefined);
+  const [wholesalePrice, setWholesalePrice] = useState<number | undefined>(initialProduct?.wholesale_price || undefined);
+  const [wholesaleMinQty, setWholesaleMinQty] = useState<number>(initialProduct?.wholesale_min_qty || 5);
   const [stock, setStock] = useState<number>(initialProduct?.stock || 10);
   const [isFeatured, setIsFeatured] = useState<boolean>(initialProduct?.is_featured || false);
   const [description, setDescription] = useState(initialProduct?.description || '');
@@ -177,6 +179,8 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
         style,
         price: Number(price),
         original_price: originalPrice && Number(originalPrice) > 0 ? Number(originalPrice) : undefined,
+        wholesale_price: wholesalePrice && Number(wholesalePrice) > 0 ? Number(wholesalePrice) : undefined,
+        wholesale_min_qty: Number(wholesaleMinQty) || 5,
         stock: Number(stock),
         is_featured: isFeatured,
         description: description.trim(),
@@ -390,6 +394,35 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
                 onChange={(e) => setOriginalPrice(e.target.value ? Number(e.target.value) : undefined)}
                 className="w-full bg-brand-surface border border-brand-border p-3 text-brand-black focus:outline-none focus:border-brand-black"
               />
+            </div>
+
+            <div>
+              <label className="block uppercase font-bold text-emerald-800 mb-1">Precio al Por Mayor (COP)</label>
+              <input 
+                type="number" 
+                min="0"
+                step="10000"
+                placeholder="Ej. 730000 (Precio especial por volumen)"
+                value={wholesalePrice || ''}
+                onChange={(e) => setWholesalePrice(e.target.value ? Number(e.target.value) : undefined)}
+                className="w-full bg-emerald-50/50 border border-emerald-300 p-3 font-bold text-emerald-900 focus:outline-none focus:border-emerald-600"
+              />
+              <span className="text-[10px] text-emerald-700 mt-1 block">
+                {wholesalePrice ? `Por Mayor: ${formatPrice(wholesalePrice)}` : 'Opcional'}
+              </span>
+            </div>
+
+            <div>
+              <label className="block uppercase font-bold text-emerald-800 mb-1">Cant. Mínima por Mayor</label>
+              <input 
+                type="number" 
+                min="1"
+                placeholder="Ej. 5 cajas / unidades"
+                value={wholesaleMinQty}
+                onChange={(e) => setWholesaleMinQty(Number(e.target.value))}
+                className="w-full bg-emerald-50/50 border border-emerald-300 p-3 font-medium text-emerald-900 focus:outline-none focus:border-emerald-600"
+              />
+              <span className="text-[10px] text-emerald-700 mt-1 block">Mínimo de unidades/cajas</span>
             </div>
 
             <div>

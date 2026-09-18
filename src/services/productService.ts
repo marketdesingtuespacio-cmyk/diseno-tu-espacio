@@ -57,6 +57,14 @@ const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Produ
     ? p.inventory_status
     : (fallback?.inventory_status || (p.stock > 0 ? 'Disponible' : 'Agotado'));
 
+  const resolvedWholesalePrice = p.wholesale_price !== undefined && p.wholesale_price !== null
+    ? Number(p.wholesale_price)
+    : (fallback?.wholesale_price ? Number(fallback.wholesale_price) : Math.round(p.price * 0.82));
+
+  const resolvedWholesaleMinQty = p.wholesale_min_qty !== undefined && p.wholesale_min_qty !== null
+    ? Number(p.wholesale_min_qty)
+    : (fallback?.wholesale_min_qty ? Number(fallback.wholesale_min_qty) : (p.boxes_count && p.boxes_count > 0 ? p.boxes_count : 5));
+
   return {
     ...p,
     sku: (p.sku && p.sku.trim().length > 0) ? p.sku : (fallback?.sku || ''),
@@ -65,7 +73,9 @@ const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Produ
     web_stock: p.web_stock !== undefined ? p.web_stock : (fallback?.web_stock ?? p.stock),
     boxes_count: p.boxes_count !== undefined ? p.boxes_count : (fallback?.boxes_count ?? 0),
     warranty: (p.warranty && p.warranty.trim().length > 0) ? p.warranty : (fallback?.warranty || '3 años'),
-    inventory_status: resolvedStatus
+    inventory_status: resolvedStatus,
+    wholesale_price: resolvedWholesalePrice,
+    wholesale_min_qty: resolvedWholesaleMinQty
   };
 };
 
@@ -302,7 +312,9 @@ export const productService = {
       web_stock: Number(productData.web_stock || 0),
       boxes_count: Number(productData.boxes_count || 0),
       warranty: productData.warranty || '3 años',
-      inventory_status: productData.inventory_status || 'Disponible'
+      inventory_status: productData.inventory_status || 'Disponible',
+      wholesale_price: productData.wholesale_price !== undefined && productData.wholesale_price !== null ? Number(productData.wholesale_price) : Math.round(Number(productData.price) * 0.82),
+      wholesale_min_qty: Number(productData.wholesale_min_qty || productData.boxes_count || 5)
     };
 
     let createdProduct: Product = {
@@ -319,11 +331,18 @@ export const productService = {
     // 2. Insert into central Supabase Cloud Database (for global sync across all devices/browsers)
     if (isSupabaseConfigured()) {
       try {
-        const { data, error } = await supabase
+        let { data, error } = await supabase
           .from('products')
           .insert([cleanPayload])
           .select()
           .single();
+
+        if (error && (error.message.includes('wholesale_price') || error.message.includes('wholesale_min_qty') || error.message.includes('column'))) {
+          const { wholesale_price, wholesale_min_qty, ...fallbackPayload } = cleanPayload;
+          const retryRes = await supabase.from('products').insert([fallbackPayload]).select().single();
+          data = retryRes.data;
+          error = retryRes.error;
+        }
 
         if (!error && data) {
           createdProduct = enrichProduct({ ...productData, ...(data as Product) });
@@ -405,6 +424,8 @@ export const productService = {
     if (updates.boxes_count !== undefined) cleanPayload.boxes_count = Number(updates.boxes_count);
     if (updates.warranty !== undefined) cleanPayload.warranty = updates.warranty;
     if (updates.inventory_status !== undefined) cleanPayload.inventory_status = updates.inventory_status;
+    if (updates.wholesale_price !== undefined) cleanPayload.wholesale_price = updates.wholesale_price ? Number(updates.wholesale_price) : null;
+    if (updates.wholesale_min_qty !== undefined) cleanPayload.wholesale_min_qty = Number(updates.wholesale_min_qty);
 
     if (isSupabaseConfigured()) {
       try {
@@ -625,7 +646,9 @@ export const productService = {
           web_stock: Number(p.web_stock || 0),
           boxes_count: calculatedBoxes,
           warranty: p.warranty || '3 años',
-          inventory_status: p.inventory_status || 'Disponible'
+          inventory_status: p.inventory_status || 'Disponible',
+          wholesale_price: p.wholesale_price ? Number(p.wholesale_price) : Math.round(Number(p.price || 0) * 0.82),
+          wholesale_min_qty: Number(p.wholesale_min_qty || p.boxes_count || 5)
         };
 
         // Find matching row in Supabase DB by: 1) ID, 2) SKU, 3) Slug, 4) Name, 5) SKU in Name
@@ -649,11 +672,22 @@ export const productService = {
 
         if (match) {
           usedDbIds.add(match.id);
-          const { error: updateErr } = await supabase.from('products').update(cleanPayload).eq('id', match.id);
+          let { error: updateErr } = await supabase.from('products').update(cleanPayload).eq('id', match.id);
+          if (updateErr && (updateErr.message.includes('wholesale_price') || updateErr.message.includes('wholesale_min_qty') || updateErr.message.includes('column'))) {
+            const { wholesale_price, wholesale_min_qty, ...fallbackPayload } = cleanPayload;
+            const retryRes = await supabase.from('products').update(fallbackPayload).eq('id', match.id);
+            updateErr = retryRes.error;
+          }
           if (!updateErr) updatedCount++;
           else console.warn('Supabase update warning for id:', match.id, updateErr);
         } else {
-          const { data: inserted, error: insertErr } = await supabase.from('products').insert([cleanPayload]).select();
+          let { data: inserted, error: insertErr } = await supabase.from('products').insert([cleanPayload]).select();
+          if (insertErr && (insertErr.message.includes('wholesale_price') || insertErr.message.includes('wholesale_min_qty') || insertErr.message.includes('column'))) {
+            const { wholesale_price, wholesale_min_qty, ...fallbackPayload } = cleanPayload;
+            const retryRes = await supabase.from('products').insert([fallbackPayload]).select();
+            inserted = retryRes.data;
+            insertErr = retryRes.error;
+          }
           if (!insertErr && inserted && inserted.length > 0) {
             usedDbIds.add(inserted[0].id);
             insertedCount++;

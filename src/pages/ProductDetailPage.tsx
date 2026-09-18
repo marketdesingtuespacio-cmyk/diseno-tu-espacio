@@ -256,7 +256,24 @@ export const ProductDetailPage: React.FC = () => {
                 </span>
               )}
             </div>
-            <p className="text-[10px] text-neutral-400 mt-0.5">
+
+            {product.wholesale_price && product.wholesale_price > 0 && (
+              <div className="mt-2.5 p-2.5 bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 flex items-center justify-between">
+                <div>
+                  <span className="font-bold uppercase tracking-wider text-[10px] text-emerald-800 block">
+                    Precio Especial al Por Mayor
+                  </span>
+                  <span className="text-sm font-extrabold text-emerald-700">
+                    {formatPrice(product.wholesale_price)} <span className="text-[10px] font-normal text-emerald-800">c/u</span>
+                  </span>
+                </div>
+                <span className="text-[10px] bg-emerald-800 text-white font-bold px-2 py-1 uppercase tracking-wider">
+                  Mín. {product.wholesale_min_qty || 5} u/cajas
+                </span>
+              </div>
+            )}
+
+            <p className="text-[10px] text-neutral-400 mt-1">
               IVA incluido • Envío disponible en todo el país
             </p>
           </div>

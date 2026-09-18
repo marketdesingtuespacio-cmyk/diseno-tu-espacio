@@ -33,6 +33,8 @@ export interface Product {
   dimensions?: string;
   materials?: string;
   original_price?: number | null;
+  wholesale_price?: number | null;
+  wholesale_min_qty?: number;
   colors?: { name: string; hex: string }[];
   brand_collection?: string;
   sku?: string;

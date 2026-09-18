@@ -769,6 +769,11 @@ export const AdminDashboardPage: React.FC = () => {
                             {p.original_price && p.original_price > p.price && (
                               <div className="text-[10px] text-neutral-400 line-through">{formatPrice(p.original_price)}</div>
                             )}
+                            {p.wholesale_price && p.wholesale_price > 0 && (
+                              <div className="text-[10px] text-emerald-700 font-semibold tracking-tight mt-0.5">
+                                Mayor: {formatPrice(p.wholesale_price)} ({p.wholesale_min_qty || 5}+ u/cajas)
+                              </div>
+                            )}
                           </td>
                           <td className="p-3">
                             <span className={`px-2 py-0.5 font-bold rounded-md text-[11px] ${
