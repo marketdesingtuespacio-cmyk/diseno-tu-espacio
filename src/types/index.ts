@@ -119,3 +119,17 @@ export interface ProductFilterState {
   inStockOnly: boolean;
   sortBy: 'price-asc' | 'price-desc' | 'newest' | 'name';
 }
+
+export interface ActivityLog {
+  id: string;
+  entity_type: 'product' | 'order' | 'appointment' | 'coupon' | 'team' | 'system';
+  entity_id?: string;
+  entity_name: string;
+  action: 'create' | 'update' | 'delete' | 'status_change' | 'sync';
+  description: string;
+  user_email: string;
+  user_name: string;
+  user_role?: string;
+  created_at: string;
+  details?: string;
+}

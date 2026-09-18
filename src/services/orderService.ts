@@ -1,6 +1,7 @@
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { Order } from '../types';
 import { productService } from './productService';
+import { activityLogService } from './activityLogService';
 
 const LOCAL_STORAGE_ORDERS_KEY = 'luxe_orders_cache_v2';
 
@@ -247,6 +248,16 @@ export const orderService = {
     const current = getStoredOrders();
     const updated = [newOrder, ...current.filter(o => o.order_ref !== newOrder.order_ref)];
     saveStoredOrders(updated);
+
+    activityLogService.logActivity({
+      entity_type: 'order',
+      entity_id: newOrder.id,
+      entity_name: newOrder.order_ref,
+      action: 'create',
+      description: `Registró el pedido "${newOrder.order_ref}" para ${newOrder.customer_name}`,
+      details: `Total: $${newOrder.total.toLocaleString('es-CO')} COP | Método: ${newOrder.payment_method}`
+    });
+
     notifyOrdersUpdated();
     return newOrder;
   },
@@ -265,6 +276,16 @@ export const orderService = {
           .select()
           .single();
         if (!error && data) {
+          activityLogService.logActivity({
+            entity_type: 'order',
+            entity_id: id,
+            entity_name: data.order_ref || id,
+            action: updates.status ? 'status_change' : 'update',
+            description: updates.status 
+              ? `Cambió el estado del pedido "${data.order_ref || id}" a "${updates.status}"`
+              : `Actualizó datos del pedido "${data.order_ref || id}"`,
+            details: `Modificaciones: ${Object.keys(updates).join(', ')}`
+          });
           notifyOrdersUpdated();
           return data as Order;
         }
@@ -278,6 +299,18 @@ export const orderService = {
     if (idx !== -1) {
       current[idx] = { ...current[idx], ...updates };
       saveStoredOrders(current);
+
+      activityLogService.logActivity({
+        entity_type: 'order',
+        entity_id: id,
+        entity_name: current[idx].order_ref || id,
+        action: updates.status ? 'status_change' : 'update',
+        description: updates.status 
+          ? `Cambió el estado del pedido "${current[idx].order_ref || id}" a "${updates.status}"`
+          : `Actualizó datos del pedido "${current[idx].order_ref || id}"`,
+        details: `Modificaciones: ${Object.keys(updates).join(', ')}`
+      });
+
       notifyOrdersUpdated();
       return current[idx];
     }
@@ -285,6 +318,9 @@ export const orderService = {
   },
 
   async deleteOrder(id: string): Promise<boolean> {
+    const current = getStoredOrders();
+    const targetOrder = current.find(o => o.id === id || o.order_ref === id);
+
     if (isSupabaseConfigured()) {
       try {
         await supabase.from('orders').delete().or(`id.eq.${id},order_ref.eq.${id}`);
@@ -293,9 +329,18 @@ export const orderService = {
       }
     }
 
-    const current = getStoredOrders();
     const filtered = current.filter(o => o.id !== id && o.order_ref !== id);
     saveStoredOrders(filtered);
+
+    activityLogService.logActivity({
+      entity_type: 'order',
+      entity_id: id,
+      entity_name: targetOrder?.order_ref || id,
+      action: 'delete',
+      description: `Eliminó el pedido "${targetOrder?.order_ref || id}" (${targetOrder?.customer_name || 'Cliente'})`,
+      details: `Monto total: $${(targetOrder?.total || 0).toLocaleString('es-CO')} COP`
+    });
+
     notifyOrdersUpdated();
     return true;
   }

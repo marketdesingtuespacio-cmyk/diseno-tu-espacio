@@ -1,6 +1,7 @@
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { Product, ProductFilterState } from '../types';
 import { MOCK_PRODUCTS } from './mockData';
+import { activityLogService } from './activityLogService';
 
 const LOCAL_STORAGE_PRODUCTS_KEY = 'luxe_products_v16';
 
@@ -337,6 +338,15 @@ export const productService = {
       }
     }
 
+    activityLogService.logActivity({
+      entity_type: 'product',
+      entity_id: createdProduct.id,
+      entity_name: createdProduct.name,
+      action: 'create',
+      description: `Registró el nuevo producto "${createdProduct.name}"`,
+      details: `SKU: ${createdProduct.sku || createdProduct.id} | Categoría: ${createdProduct.category} | Precio: $${createdProduct.price.toLocaleString('es-CO')} COP | Stock: ${createdProduct.stock} u.`
+    });
+
     notifyProductsUpdated();
     return createdProduct;
   },
@@ -446,6 +456,18 @@ export const productService = {
       }
     }
 
+    const prodName = updates.name || (updatedProduct?.name) || id;
+    activityLogService.logActivity({
+      entity_type: 'product',
+      entity_id: id,
+      entity_name: prodName,
+      action: updates.inventory_status ? 'status_change' : 'update',
+      description: updates.inventory_status 
+        ? `Cambió el estado a "${updates.inventory_status}" en el producto "${prodName}"`
+        : `Actualizó datos del producto "${prodName}"`,
+      details: `Campos modificados: ${Object.keys(updates).join(', ')}`
+    });
+
     notifyProductsUpdated();
     return updatedProduct;
   },
@@ -488,6 +510,15 @@ export const productService = {
         console.error('Supabase delete exception:', err);
       }
     }
+
+    activityLogService.logActivity({
+      entity_type: 'product',
+      entity_id: id,
+      entity_name: targetProd?.name || id,
+      action: 'delete',
+      description: `Eliminó el producto "${targetProd?.name || id}" del catálogo`,
+      details: `ID/SKU: ${targetProd?.sku || id}`
+    });
 
     notifyProductsUpdated();
     return true;

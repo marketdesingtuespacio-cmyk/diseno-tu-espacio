@@ -12,7 +12,8 @@ import {
   ChevronRight,
   Users,
   LogOut,
-  Sparkle
+  Sparkle,
+  History
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -25,6 +26,7 @@ export type AdminTab =
   | 'coupons' 
   | 'categories'
   | 'team' 
+  | 'logs'
   | 'settings';
 
 interface AdminSidebarProps {
@@ -80,6 +82,12 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
       label: 'Cupones & Ofertas',
       icon: Tag,
       badge: couponsCount
+    },
+    {
+      id: 'logs' as AdminTab,
+      label: 'Historial & Bitácora',
+      icon: History,
+      badge: null
     },
     ...(user?.role === 'admin' ? [{
       id: 'team' as AdminTab,

@@ -28,6 +28,7 @@ import { OrderEditModal } from '../components/admin/OrderEditModal';
 import { OrderFilterBar, OrderFilterState } from '../components/admin/OrderFilterBar';
 import { ProductFilterBar, ProductFilterState } from '../components/admin/ProductFilterBar';
 import { AnalyticsDashboard } from '../components/admin/AnalyticsDashboard';
+import { AuditLogsView } from '../components/admin/AuditLogsView';
 
 export const AdminDashboardPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<AdminTab>('overview');
@@ -1261,6 +1262,9 @@ export const AdminDashboardPage: React.FC = () => {
 
         {/* TAB 8: TEAM & PERMISSIONS MANAGEMENT */}
         {activeTab === 'team' && <TeamManagementView />}
+
+        {/* TAB: AUDIT LOGS & MODIFICATION HISTORY */}
+        {activeTab === 'logs' && <AuditLogsView />}
 
         {/* TAB 9: STORE SETTINGS */}
         {activeTab === 'settings' && (
