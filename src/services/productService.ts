@@ -70,10 +70,40 @@ const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Produ
 
 let memoryProductsCache: Product[] | null = null;
 let productsFetchPromise: Promise<Product[]> | null = null;
+let isProductRealtimeSubscribed = false;
 
 export const clearProductCache = () => {
   memoryProductsCache = null;
   productsFetchPromise = null;
+};
+
+export const notifyProductsUpdated = () => {
+  clearProductCache();
+  window.dispatchEvent(new Event('products_updated'));
+};
+
+export const subscribeToProducts = (callback: () => void): (() => void) => {
+  const handleEvent = () => callback();
+  window.addEventListener('products_updated', handleEvent);
+
+  if (isSupabaseConfigured() && !isProductRealtimeSubscribed) {
+    isProductRealtimeSubscribed = true;
+    try {
+      supabase
+        .channel('public_products_realtime')
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'products' }, () => {
+          clearProductCache();
+          window.dispatchEvent(new Event('products_updated'));
+        })
+        .subscribe();
+    } catch (err) {
+      console.warn('Supabase Realtime subscription warning for products:', err);
+    }
+  }
+
+  return () => {
+    window.removeEventListener('products_updated', handleEvent);
+  };
 };
 
 const applyProductFilters = (products: Product[], filters?: Partial<ProductFilterState>, includePrivate: boolean = false): Product[] => {
@@ -307,6 +337,7 @@ export const productService = {
       }
     }
 
+    notifyProductsUpdated();
     return createdProduct;
   },
 
@@ -415,6 +446,7 @@ export const productService = {
       }
     }
 
+    notifyProductsUpdated();
     return updatedProduct;
   },
 
@@ -457,6 +489,7 @@ export const productService = {
       }
     }
 
+    notifyProductsUpdated();
     return true;
   },
 

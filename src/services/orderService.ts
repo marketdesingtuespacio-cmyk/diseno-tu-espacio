@@ -4,6 +4,35 @@ import { productService } from './productService';
 
 const LOCAL_STORAGE_ORDERS_KEY = 'luxe_orders_cache_v2';
 
+let isOrderRealtimeSubscribed = false;
+
+export const notifyOrdersUpdated = () => {
+  window.dispatchEvent(new Event('orders_updated'));
+};
+
+export const subscribeToOrders = (callback: () => void): (() => void) => {
+  const handleEvent = () => callback();
+  window.addEventListener('orders_updated', handleEvent);
+
+  if (isSupabaseConfigured() && !isOrderRealtimeSubscribed) {
+    isOrderRealtimeSubscribed = true;
+    try {
+      supabase
+        .channel('public_orders_realtime')
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'orders' }, () => {
+          window.dispatchEvent(new Event('orders_updated'));
+        })
+        .subscribe();
+    } catch (err) {
+      console.warn('Supabase Realtime subscription warning for orders:', err);
+    }
+  }
+
+  return () => {
+    window.removeEventListener('orders_updated', handleEvent);
+  };
+};
+
 const INITIAL_ORDERS: Order[] = [
   {
     id: 'ord-1',
@@ -218,6 +247,7 @@ export const orderService = {
     const current = getStoredOrders();
     const updated = [newOrder, ...current.filter(o => o.order_ref !== newOrder.order_ref)];
     saveStoredOrders(updated);
+    notifyOrdersUpdated();
     return newOrder;
   },
 
@@ -234,7 +264,10 @@ export const orderService = {
           .eq('id', id)
           .select()
           .single();
-        if (!error && data) return data as Order;
+        if (!error && data) {
+          notifyOrdersUpdated();
+          return data as Order;
+        }
       } catch (err) {
         console.error('Supabase update order error:', err);
       }
@@ -245,6 +278,7 @@ export const orderService = {
     if (idx !== -1) {
       current[idx] = { ...current[idx], ...updates };
       saveStoredOrders(current);
+      notifyOrdersUpdated();
       return current[idx];
     }
     return null;
@@ -262,6 +296,7 @@ export const orderService = {
     const current = getStoredOrders();
     const filtered = current.filter(o => o.id !== id && o.order_ref !== id);
     saveStoredOrders(filtered);
+    notifyOrdersUpdated();
     return true;
   }
 };

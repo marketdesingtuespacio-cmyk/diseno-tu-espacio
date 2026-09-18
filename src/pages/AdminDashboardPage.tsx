@@ -12,9 +12,9 @@ import {
   CheckCircle2
 } from 'lucide-react';
 import { Product, Appointment, Order, Coupon, UserProfile } from '../types';
-import { productService } from '../services/productService';
+import { productService, subscribeToProducts } from '../services/productService';
 import { appointmentService } from '../services/appointmentService';
-import { orderService } from '../services/orderService';
+import { orderService, subscribeToOrders } from '../services/orderService';
 import { couponService } from '../services/couponService';
 import { authService } from '../services/authService';
 import { useCurrency } from '../context/CurrencyContext';
@@ -122,6 +122,18 @@ export const AdminDashboardPage: React.FC = () => {
 
   useEffect(() => {
     loadData();
+
+    const unsubProds = subscribeToProducts(() => {
+      loadData();
+    });
+    const unsubOrders = subscribeToOrders(() => {
+      loadData();
+    });
+
+    return () => {
+      unsubProds();
+      unsubOrders();
+    };
   }, []);
 
   // Server Action Confirmation Pop-up State

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Filter, X, SlidersHorizontal, ArrowUpDown, RefreshCw, Search } from 'lucide-react';
 import { Product, ProductFilterState } from '../types';
-import { productService } from '../services/productService';
+import { productService, subscribeToProducts } from '../services/productService';
 import { ProductCard } from '../components/ProductCard';
 import { useCurrency } from '../context/CurrencyContext';
 
@@ -62,6 +62,11 @@ export const CatalogPage: React.FC = () => {
       setProducts(res);
       setLoading(false);
     });
+
+    const unsub = subscribeToProducts(() => {
+      productService.getProducts(filters).then(res => setProducts(res));
+    });
+    return () => unsub();
   }, [filters]);
 
   const resetFilters = () => {
