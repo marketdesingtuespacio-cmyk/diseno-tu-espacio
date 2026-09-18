@@ -148,7 +148,7 @@ export const orderService = {
     const newOrder: Order = {
       ...orderData,
       id: newId,
-      created_at: new Date().toISOString().replace('T', ' ').substring(0, 16)
+      created_at: orderData.created_at || new Date().toISOString().replace('T', ' ').substring(0, 16)
     };
 
     // Automatically deduct stock for items in this order
@@ -162,30 +162,61 @@ export const orderService = {
 
     if (isSupabaseConfigured()) {
       try {
+        const payload = {
+          order_ref: orderData.order_ref,
+          customer_name: orderData.customer_name,
+          customer_email: orderData.customer_email,
+          customer_phone: orderData.customer_phone || '',
+          customer_tag: orderData.customer_tag || 'Residencial',
+          shipping_address: orderData.shipping_address || '',
+          city: orderData.city || 'Bogotá D.C.',
+          carrier: orderData.carrier || 'Servientrega',
+          tracking_number: orderData.tracking_number || '',
+          subtotal: Number(orderData.subtotal || orderData.total || 0),
+          shipping_cost: Number(orderData.shipping_cost || 0),
+          discount: Number(orderData.discount || 0),
+          total: Number(orderData.total || 0),
+          total_amount: Number(orderData.total || 0),
+          status: orderData.status || 'processing',
+          payment_method: orderData.payment_method || 'Tarjeta de Crédito',
+          payment_gateway: orderData.payment_gateway || 'Wompi Colombia',
+          items_count: Number(orderData.items_count || (orderData.items ? orderData.items.length : 1)),
+          items: orderData.items || [],
+          notes: orderData.notes || '',
+          created_at: newOrder.created_at
+        };
+
         const { data, error } = await supabase
           .from('orders')
-          .insert([{
-            order_ref: orderData.order_ref,
-            customer_name: orderData.customer_name,
-            customer_email: orderData.customer_email,
-            customer_phone: orderData.customer_phone,
-            total_amount: orderData.total,
-            status: orderData.status,
-            payment_gateway: orderData.payment_gateway,
-            payment_method: orderData.payment_method,
-            items: orderData.items || [],
-            shipping_address: orderData.shipping_address || ''
-          }])
-          .select()
-          .single();
-        if (!error && data) return data as Order;
+          .insert([payload])
+          .select();
+
+        if (error) {
+          console.warn('Supabase primary order insert warning:', error.message);
+          // Retry without total_amount if column error
+          const { total_amount, ...cleanPayload } = payload;
+          const { data: retryData, error: retryErr } = await supabase
+            .from('orders')
+            .insert([cleanPayload])
+            .select();
+
+          if (!retryErr && retryData && retryData.length > 0) {
+            console.log('✅ Pedido guardado exitosamente en Supabase Nube:', retryData[0].order_ref);
+            if (retryData[0].id) newOrder.id = String(retryData[0].id);
+          } else if (retryErr) {
+            console.error('❌ Error al guardar pedido en Supabase:', retryErr);
+          }
+        } else if (data && data.length > 0) {
+          console.log('✅ Pedido guardado exitosamente en Supabase Nube:', data[0].order_ref);
+          if (data[0].id) newOrder.id = String(data[0].id);
+        }
       } catch (err) {
-        console.error('Supabase order creation error:', err);
+        console.error('Supabase order creation exception:', err);
       }
     }
 
     const current = getStoredOrders();
-    const updated = [newOrder, ...current];
+    const updated = [newOrder, ...current.filter(o => o.order_ref !== newOrder.order_ref)];
     saveStoredOrders(updated);
     return newOrder;
   },
