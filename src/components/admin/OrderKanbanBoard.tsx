@@ -11,7 +11,8 @@ import {
   Home,
   Building2,
   Eye,
-  GripVertical
+  GripVertical,
+  Trash2
 } from 'lucide-react';
 import { Order } from '../../types';
 import { useCurrency } from '../../context/CurrencyContext';
@@ -29,6 +30,7 @@ interface OrderKanbanBoardProps {
   orders: Order[];
   onOrderUpdated: () => void;
   onEditOrder: (order: Order) => void;
+  onDeleteOrder?: (id: string) => void;
 }
 
 // Columns definition with Vibrant Header Ticket Colors
@@ -82,7 +84,7 @@ const KANBAN_COLUMNS: {
   }
 ];
 
-export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOrderUpdated, onEditOrder }) => {
+export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOrderUpdated, onEditOrder, onDeleteOrder }) => {
   const { formatPrice } = useCurrency();
 
   // Detail Modal State (View Only)
@@ -236,6 +238,22 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
                               >
                                 <Edit className="w-3 h-3" />
                               </button>
+
+                              {/* Delete Order Button */}
+                              {onDeleteOrder && (
+                                <button 
+                                  onClick={(e) => { 
+                                    e.stopPropagation(); 
+                                    if (confirm(`¿Está seguro de eliminar el pedido ${order.order_ref}?`)) {
+                                      onDeleteOrder(order.id);
+                                    }
+                                  }}
+                                  className="p-1 hover:bg-red-500/20 text-red-500 hover:text-red-700 rounded-full transition-colors"
+                                  title="Eliminar pedido"
+                                >
+                                  <Trash2 className="w-3 h-3" />
+                                </button>
+                              )}
                             </div>
                           </div>
                         </div>

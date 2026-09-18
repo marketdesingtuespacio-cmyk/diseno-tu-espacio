@@ -216,6 +216,34 @@ export const AdminDashboardPage: React.FC = () => {
     loadData();
   };
 
+  // Delete Single Order
+  const handleDeleteOrder = async (id: string) => {
+    await orderService.deleteOrder(id);
+    await loadData();
+    setActionNotification({
+      title: '¡Pedido Eliminado!',
+      message: 'El pedido fue eliminado exitosamente del sistema.'
+    });
+  };
+
+  // Delete All Cancelled Orders
+  const handleDeleteCancelledOrders = async () => {
+    const cancelled = orders.filter(o => o.status === 'cancelled');
+    if (cancelled.length === 0) {
+      return alert('No hay pedidos en estado Cancelado para eliminar.');
+    }
+    if (confirm(`¿Está seguro de eliminar los ${cancelled.length} pedidos en estado Cancelado?`)) {
+      for (const ord of cancelled) {
+        await orderService.deleteOrder(ord.id);
+      }
+      await loadData();
+      setActionNotification({
+        title: '¡Pedidos Cancelados Eliminados!',
+        message: `Se eliminaron ${cancelled.length} pedidos cancelados correctamente.`
+      });
+    }
+  };
+
 
 
   // Update Appointment Status
@@ -842,6 +870,16 @@ export const AdminDashboardPage: React.FC = () => {
                   </button>
                 </div>
 
+                {orders.some(o => o.status === 'cancelled') && (
+                  <button 
+                    onClick={handleDeleteCancelledOrders}
+                    className="bg-red-50 text-red-700 border border-red-200 text-xs font-bold uppercase tracking-wider py-2.5 px-4 rounded-xl hover:bg-red-100 flex items-center gap-1.5 transition-all"
+                    title="Eliminar todos los pedidos en estado Cancelado"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" /> Limpiar Cancelados
+                  </button>
+                )}
+
                 <button 
                   onClick={() => setIsOrderModalOpen(true)}
                   className="bg-brand-black text-white text-xs font-bold uppercase tracking-widest py-2.5 px-5 rounded-xl hover:bg-neutral-800 flex items-center gap-2 shadow-sm transition-all"
@@ -870,6 +908,7 @@ export const AdminDashboardPage: React.FC = () => {
                   setEditingOrderFull(order);
                   setIsEditModalOpen(true);
                 }}
+                onDeleteOrder={handleDeleteOrder}
               />
             ) : (
               <div className="bg-white border border-brand-border rounded-2xl overflow-hidden shadow-xs">
@@ -933,6 +972,17 @@ export const AdminDashboardPage: React.FC = () => {
                             <option value="delivered">Entregado</option>
                             <option value="cancelled">Cancelado</option>
                           </select>
+                          <button
+                            onClick={() => {
+                              if (confirm(`¿Está seguro de eliminar el pedido ${o.order_ref}?`)) {
+                                handleDeleteOrder(o.id);
+                              }
+                            }}
+                            className="p-1.5 bg-red-50 hover:bg-red-600 hover:text-white text-red-600 rounded-lg transition-colors border border-red-200 inline-flex items-center"
+                            title="Eliminar pedido"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
                         </td>
                       </tr>
                     ))}

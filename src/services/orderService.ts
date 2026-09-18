@@ -248,5 +248,20 @@ export const orderService = {
       return current[idx];
     }
     return null;
+  },
+
+  async deleteOrder(id: string): Promise<boolean> {
+    if (isSupabaseConfigured()) {
+      try {
+        await supabase.from('orders').delete().or(`id.eq.${id},order_ref.eq.${id}`);
+      } catch (err) {
+        console.error('Supabase delete order error:', err);
+      }
+    }
+
+    const current = getStoredOrders();
+    const filtered = current.filter(o => o.id !== id && o.order_ref !== id);
+    saveStoredOrders(filtered);
+    return true;
   }
 };

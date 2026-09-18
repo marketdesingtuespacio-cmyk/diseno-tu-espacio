@@ -419,15 +419,39 @@ export const productService = {
   },
 
   async deleteProduct(id: string): Promise<boolean> {
-    // 1. Update local storage first
+    clearProductCache();
+    const target = (id || '').toLowerCase().trim();
+
+    // 1. Update local storage
     const currentLocal = getStoredProducts();
-    const filtered = currentLocal.filter(p => p.id !== id);
+    const targetProd = currentLocal.find(p => 
+      p.id === id || 
+      (p.slug && p.slug.toLowerCase().trim() === target) || 
+      (p.sku && p.sku.toLowerCase().trim() === target) ||
+      (p.name && p.name.toLowerCase().trim() === target)
+    );
+
+    const filtered = currentLocal.filter(p => 
+      p.id !== id && 
+      (!p.slug || p.slug.toLowerCase().trim() !== target) && 
+      (!p.sku || p.sku.toLowerCase().trim() !== target) &&
+      (!p.name || p.name.toLowerCase().trim() !== target)
+    );
     saveStoredProducts(filtered);
 
     // 2. Sync with Supabase
     if (isSupabaseConfigured()) {
       try {
         await supabase.from('products').delete().eq('id', id);
+        if (targetProd?.slug) {
+          await supabase.from('products').delete().eq('slug', targetProd.slug);
+        }
+        if (targetProd?.id && targetProd.id !== id) {
+          await supabase.from('products').delete().eq('id', targetProd.id);
+        }
+        if (targetProd?.sku) {
+          await supabase.from('products').delete().eq('sku', targetProd.sku);
+        }
       } catch (err) {
         console.error('Supabase delete exception:', err);
       }
