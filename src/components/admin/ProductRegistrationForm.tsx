@@ -366,7 +366,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
             <div>
-              <label className="block uppercase font-bold text-neutral-500 mb-1">Precio Venta (COP) *</label>
+              <label className="block uppercase font-bold text-neutral-500 mb-1">Precio de Venta / Oferta (COP) *</label>
               <input 
                 type="number" 
                 required
@@ -376,16 +376,16 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
                 onChange={(e) => setPrice(Number(e.target.value))}
                 className="w-full bg-brand-surface border border-brand-border p-3 font-bold text-brand-black focus:outline-none focus:border-brand-black text-sm"
               />
-              <span className="text-[10px] text-neutral-400 mt-1 block">Vista Previa: {formatPrice(price)}</span>
+              <span className="text-[10px] text-neutral-400 mt-1 block">Precio a Cobrar: {formatPrice(price)}</span>
             </div>
 
             <div>
-              <label className="block uppercase font-bold text-neutral-500 mb-1">Precio Oferta / Tachado (COP)</label>
+              <label className="block uppercase font-bold text-neutral-500 mb-1">Precio Regular Original (Tachado)</label>
               <input 
                 type="number" 
                 min="0"
                 step="10000"
-                placeholder="Opcional para descuentos"
+                placeholder="Ej. 900000 (Mayor a precio de venta)"
                 value={originalPrice || ''}
                 onChange={(e) => setOriginalPrice(e.target.value ? Number(e.target.value) : undefined)}
                 className="w-full bg-brand-surface border border-brand-border p-3 text-brand-black focus:outline-none focus:border-brand-black"

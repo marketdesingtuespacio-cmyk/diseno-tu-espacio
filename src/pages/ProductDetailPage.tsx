@@ -238,7 +238,7 @@ export const ProductDetailPage: React.FC = () => {
               <span className="text-2xl font-bold text-neutral-900">
                 {formatPrice(product.price)}
               </span>
-              {product.original_price && (
+              {product.original_price && product.original_price > product.price && (
                 <span className="line-through text-neutral-400 text-sm">
                   {formatPrice(product.original_price)}
                 </span>

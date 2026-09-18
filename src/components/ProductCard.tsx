@@ -121,7 +121,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
       {/* Price & Offer Display with Dynamic Currency Formatting */}
       <div className="mt-1 text-[13px]">
-        {product.original_price ? (
+        {product.original_price && product.original_price > product.price ? (
           <div className="flex items-center gap-2">
             <span className="line-through text-neutral-400 text-xs font-normal">
               {formatPrice(product.original_price)}

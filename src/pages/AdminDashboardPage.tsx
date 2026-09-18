@@ -725,7 +725,7 @@ export const AdminDashboardPage: React.FC = () => {
                           <td className="p-3 text-neutral-500 font-medium">{p.category}</td>
                           <td className="p-3 font-bold">
                             <div>{formatPrice(p.price)}</div>
-                            {p.original_price && (
+                            {p.original_price && p.original_price > p.price && (
                               <div className="text-[10px] text-neutral-400 line-through">{formatPrice(p.original_price)}</div>
                             )}
                           </td>
