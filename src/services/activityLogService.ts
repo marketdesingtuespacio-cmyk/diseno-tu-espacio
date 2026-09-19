@@ -6,23 +6,53 @@ let isLogRealtimeSubscribed = false;
 
 const getCurrentUser = () => {
   try {
+    // 1. Primary active user session key set by AuthContext
+    const activeSession = localStorage.getItem('luxe_active_user_session');
+    if (activeSession) {
+      const parsed = JSON.parse(activeSession);
+      if (parsed && (parsed.email || parsed.full_name || parsed.name)) {
+        const email = parsed.email || 'admin@disenotuespacio.com';
+        const name = parsed.full_name || parsed.name || (email ? email.split('@')[0] : 'Usuario');
+        const role = parsed.role || 'admin';
+        return { email, name, role };
+      }
+    }
+
+    // 2. Fallback check for secondary auth key
     const authStored = localStorage.getItem('luxe_auth_user');
     if (authStored) {
       const parsed = JSON.parse(authStored);
-      if (parsed && parsed.email) {
-        return {
-          email: parsed.email,
-          name: parsed.full_name || parsed.email.split('@')[0],
-          role: parsed.role || 'admin'
-        };
+      if (parsed && (parsed.email || parsed.full_name || parsed.name)) {
+        const email = parsed.email || 'admin@disenotuespacio.com';
+        const name = parsed.full_name || parsed.name || (email ? email.split('@')[0] : 'Usuario');
+        const role = parsed.role || 'admin';
+        return { email, name, role };
       }
     }
-  } catch {
-    // fallback
+
+    // 3. Fallback check for Supabase auth token
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.includes('-auth-token')) {
+        const val = localStorage.getItem(key);
+        if (val) {
+          const parsed = JSON.parse(val);
+          const u = parsed?.user || parsed;
+          if (u && u.email) {
+            const email = u.email;
+            const name = u.user_metadata?.full_name || u.user_metadata?.name || email.split('@')[0];
+            const role = u.user_metadata?.role || 'admin';
+            return { email, name, role };
+          }
+        }
+      }
+    }
+  } catch (err) {
+    console.warn('Error resolviendo usuario activo para bitácora:', err);
   }
 
   return {
-    email: 'admin@diseñotuespacio.com',
+    email: 'admin@disenotuespacio.com',
     name: 'Administrador Principal',
     role: 'admin'
   };

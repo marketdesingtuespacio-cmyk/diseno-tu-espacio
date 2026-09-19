@@ -1,5 +1,6 @@
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { UserProfile, UserRole, UserPermission } from '../types';
+import { activityLogService } from './activityLogService';
 
 const LOCAL_STORAGE_PROFILES_KEY = 'luxe_team_profiles_v1';
 
@@ -71,6 +72,7 @@ export const authService = {
   async addCollaborator(collaborator: Omit<UserProfile, 'id'>): Promise<UserProfile> {
     const newId = `usr-${Date.now()}`;
     const newProfile: UserProfile = { ...collaborator, id: newId };
+    let result: UserProfile = newProfile;
 
     if (isSupabaseConfigured()) {
       // 1. Try Edge Function if available
@@ -86,41 +88,50 @@ export const authService = {
         });
         
         if (!error && data && data.success && data.user) {
-          return data.user as UserProfile;
+          result = data.user as UserProfile;
         }
       } catch (err) {
         console.warn('Edge Function "invite-collaborator" no disponible en Supabase Nube, utilizando inserción directa en tabla profiles:', err);
       }
 
-      // 2. Direct Supabase Database insert fallback
-      try {
-        const { data: dbData, error: dbError } = await supabase
-          .from('profiles')
-          .insert([{
-            id: newId,
-            full_name: collaborator.full_name,
-            email: collaborator.email,
-            role: collaborator.role,
-            permissions: collaborator.permissions,
-            status: collaborator.status || 'active'
-          }])
-          .select();
+      if (result.id === newId) {
+        // 2. Direct Supabase Database insert fallback
+        try {
+          const { data: dbData, error: dbError } = await supabase
+            .from('profiles')
+            .insert([{
+              id: newId,
+              full_name: collaborator.full_name,
+              email: collaborator.email,
+              role: collaborator.role,
+              permissions: collaborator.permissions,
+              status: collaborator.status || 'active'
+            }])
+            .select();
 
-        if (!dbError && dbData && dbData.length > 0) {
-          const created = dbData[0] as UserProfile;
-          const current = getStoredProfiles();
-          saveStoredProfiles([created, ...current.filter(p => p.id !== created.id)]);
-          return created;
+          if (!dbError && dbData && dbData.length > 0) {
+            result = dbData[0] as UserProfile;
+          }
+        } catch (dbErr) {
+          console.warn('Error insertando en tabla profiles de Supabase:', dbErr);
         }
-      } catch (dbErr) {
-        console.warn('Error insertando en tabla profiles de Supabase:', dbErr);
       }
     }
 
     const current = getStoredProfiles();
-    const updated = [newProfile, ...current];
+    const updated = [result, ...current.filter(p => p.id !== result.id)];
     saveStoredProfiles(updated);
-    return newProfile;
+
+    activityLogService.logActivity({
+      entity_type: 'team',
+      entity_id: result.id,
+      entity_name: result.full_name,
+      action: 'create',
+      description: `Invitó al miembro de equipo "${result.full_name}" (${result.email})`,
+      details: `Rol: ${result.role} | Estado: ${result.status}`
+    });
+
+    return result;
   },
 
   async updateUserRoleAndPermissions(
@@ -129,6 +140,8 @@ export const authService = {
     permissions: UserPermission[],
     status: 'active' | 'suspended'
   ): Promise<UserProfile | null> {
+    let updatedProfile: UserProfile | null = null;
+
     if (isSupabaseConfigured()) {
       try {
         const { data, error } = await supabase
@@ -137,37 +150,62 @@ export const authService = {
           .eq('id', id)
           .select()
           .single();
-        if (!error && data) return data as UserProfile;
+        if (!error && data) updatedProfile = data as UserProfile;
       } catch (err) {
         console.error('Error updating profile in Supabase:', err);
       }
     }
 
-    const current = getStoredProfiles();
-    const idx = current.findIndex(p => p.id === id);
-    if (idx !== -1) {
-      current[idx].role = role;
-      current[idx].permissions = permissions;
-      current[idx].status = status;
-      saveStoredProfiles(current);
-      return current[idx];
+    if (!updatedProfile) {
+      const current = getStoredProfiles();
+      const idx = current.findIndex(p => p.id === id);
+      if (idx !== -1) {
+        current[idx].role = role;
+        current[idx].permissions = permissions;
+        current[idx].status = status;
+        saveStoredProfiles(current);
+        updatedProfile = current[idx];
+      }
     }
-    return null;
+
+    if (updatedProfile) {
+      activityLogService.logActivity({
+        entity_type: 'team',
+        entity_id: id,
+        entity_name: updatedProfile.full_name,
+        action: 'update',
+        description: `Actualizó permisos y estado del colaborador "${updatedProfile.full_name}"`,
+        details: `Nuevo Rol: ${role} | Estado: ${status} | Permisos: ${permissions.length}`
+      });
+    }
+
+    return updatedProfile;
   },
 
   async deleteTeamMember(id: string): Promise<boolean> {
+    const current = getStoredProfiles();
+    const target = current.find(p => p.id === id);
+
     if (isSupabaseConfigured()) {
       try {
-        const { error } = await supabase.from('profiles').delete().eq('id', id);
-        if (!error) return true;
+        await supabase.from('profiles').delete().eq('id', id);
       } catch (err) {
         console.error('Error deleting profile in Supabase:', err);
       }
     }
 
-    const current = getStoredProfiles();
     const filtered = current.filter(p => p.id !== id);
     saveStoredProfiles(filtered);
+
+    activityLogService.logActivity({
+      entity_type: 'team',
+      entity_id: id,
+      entity_name: target?.full_name || id,
+      action: 'delete',
+      description: `Eliminó al usuario/colaborador "${target?.full_name || id}" (${target?.email || id})`,
+      details: `ID: ${id}`
+    });
+
     return true;
   }
 };

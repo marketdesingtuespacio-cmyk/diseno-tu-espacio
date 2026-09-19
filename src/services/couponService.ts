@@ -1,4 +1,5 @@
 import { Coupon } from '../types';
+import { activityLogService } from './activityLogService';
 
 const LOCAL_STORAGE_COUPONS_KEY = 'luxe_coupons_cache';
 
@@ -70,6 +71,16 @@ export const couponService = {
     const current = getStoredCoupons();
     const updated = [newCoupon, ...current];
     saveStoredCoupons(updated);
+
+    activityLogService.logActivity({
+      entity_type: 'coupon',
+      entity_id: newCoupon.id,
+      entity_name: newCoupon.code,
+      action: 'create',
+      description: `Creó el cupón de descuento "${newCoupon.code}"`,
+      details: `Tipo: ${newCoupon.discount_type === 'percentage' ? newCoupon.discount_value + '%' : '$' + newCoupon.discount_value.toLocaleString('es-CO')} | Compra mín: $${newCoupon.min_purchase.toLocaleString('es-CO')}`
+    });
+
     return newCoupon;
   },
 
@@ -79,6 +90,16 @@ export const couponService = {
     if (idx !== -1) {
       current[idx].is_active = !current[idx].is_active;
       saveStoredCoupons(current);
+
+      activityLogService.logActivity({
+        entity_type: 'coupon',
+        entity_id: id,
+        entity_name: current[idx].code,
+        action: 'status_change',
+        description: `Cambió estado del cupón "${current[idx].code}" a ${current[idx].is_active ? 'Activo' : 'Inactivo'}`,
+        details: `Código: ${current[idx].code}`
+      });
+
       return current[idx];
     }
     return null;
@@ -86,8 +107,19 @@ export const couponService = {
 
   async deleteCoupon(id: string): Promise<boolean> {
     const current = getStoredCoupons();
+    const target = current.find(c => c.id === id);
     const filtered = current.filter(c => c.id !== id);
     saveStoredCoupons(filtered);
+
+    activityLogService.logActivity({
+      entity_type: 'coupon',
+      entity_id: id,
+      entity_name: target?.code || id,
+      action: 'delete',
+      description: `Eliminó el cupón de descuento "${target?.code || id}"`,
+      details: `ID: ${id}`
+    });
+
     return true;
   }
 };
