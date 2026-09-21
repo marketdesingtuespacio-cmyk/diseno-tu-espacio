@@ -4,30 +4,90 @@ import { MOCK_PRODUCTS } from './mockData';
 import { activityLogService } from './activityLogService';
 
 const LOCAL_STORAGE_PRODUCTS_KEY = 'luxe_products_v16';
+const LOCAL_STORAGE_DELETED_PRODUCTS_KEY = 'luxe_deleted_products_v1';
 
-const getStoredProducts = (): Product[] => {
-  const stored = localStorage.getItem(LOCAL_STORAGE_PRODUCTS_KEY);
+export const getDeletedProductKeys = (): Set<string> => {
+  const stored = localStorage.getItem(LOCAL_STORAGE_DELETED_PRODUCTS_KEY);
   if (stored) {
     try {
       const parsed = JSON.parse(stored);
-      if (Array.isArray(parsed) && parsed.length > 0) {
-        return parsed;
+      if (Array.isArray(parsed)) {
+        return new Set(parsed.map((s: string) => String(s).toLowerCase().trim()));
       }
     } catch {
       // fallback
     }
   }
-  localStorage.setItem(LOCAL_STORAGE_PRODUCTS_KEY, JSON.stringify(MOCK_PRODUCTS));
-  return MOCK_PRODUCTS;
+  return new Set();
+};
+
+export const saveDeletedProductKeys = (keys: Set<string>) => {
+  try {
+    localStorage.setItem(LOCAL_STORAGE_DELETED_PRODUCTS_KEY, JSON.stringify(Array.from(keys)));
+  } catch (err) {
+    console.warn('Error saving deleted product keys:', err);
+  }
+};
+
+export const addDeletedProductKey = (...keys: (string | undefined)[]) => {
+  const current = getDeletedProductKeys();
+  keys.forEach(k => {
+    if (k && k.trim().length > 0) {
+      current.add(k.toLowerCase().trim());
+    }
+  });
+  saveDeletedProductKeys(current);
+};
+
+export const removeDeletedProductKey = (...keys: (string | undefined)[]) => {
+  const current = getDeletedProductKeys();
+  keys.forEach(k => {
+    if (k && k.trim().length > 0) {
+      current.delete(k.toLowerCase().trim());
+    }
+  });
+  saveDeletedProductKeys(current);
+};
+
+export const isProductDeleted = (p: { id?: string; slug?: string; sku?: string; name?: string }, deletedSet?: Set<string>): boolean => {
+  const set = deletedSet || getDeletedProductKeys();
+  if (!set || set.size === 0) return false;
+  if (p.id && set.has(p.id.toLowerCase().trim())) return true;
+  if (p.slug && set.has(p.slug.toLowerCase().trim())) return true;
+  if (p.sku && set.has(p.sku.toLowerCase().trim())) return true;
+  if (p.name && set.has(p.name.toLowerCase().trim())) return true;
+  return false;
+};
+
+const getStoredProducts = (): Product[] => {
+  const deletedSet = getDeletedProductKeys();
+  const stored = localStorage.getItem(LOCAL_STORAGE_PRODUCTS_KEY);
+  if (stored) {
+    try {
+      const parsed = JSON.parse(stored);
+      if (Array.isArray(parsed)) {
+        return parsed.filter(p => !isProductDeleted(p, deletedSet));
+      }
+    } catch {
+      // fallback
+    }
+  }
+  const initial = MOCK_PRODUCTS.filter(p => !isProductDeleted(p, deletedSet));
+  localStorage.setItem(LOCAL_STORAGE_PRODUCTS_KEY, JSON.stringify(initial));
+  return initial;
 };
 
 const saveStoredProducts = (products: Product[]) => {
   try {
-    localStorage.setItem(LOCAL_STORAGE_PRODUCTS_KEY, JSON.stringify(products));
+    const deletedSet = getDeletedProductKeys();
+    const clean = products.filter(p => !isProductDeleted(p, deletedSet));
+    localStorage.setItem(LOCAL_STORAGE_PRODUCTS_KEY, JSON.stringify(clean));
   } catch (err) {
     console.warn('localStorage quota warning:', err);
     try {
-      localStorage.setItem(LOCAL_STORAGE_PRODUCTS_KEY, JSON.stringify(products));
+      const deletedSet = getDeletedProductKeys();
+      const clean = products.filter(p => !isProductDeleted(p, deletedSet));
+      localStorage.setItem(LOCAL_STORAGE_PRODUCTS_KEY, JSON.stringify(clean));
     } catch {
       // Storage safety
     }
@@ -204,7 +264,8 @@ export const productService = {
     }
 
     productsFetchPromise = (async () => {
-      let localProducts = getStoredProducts();
+      const deletedSet = getDeletedProductKeys();
+      let localProducts = getStoredProducts().filter(p => !isProductDeleted(p, deletedSet));
 
       const localLookupMap = new Map<string, Product>();
       localProducts.forEach(p => {
@@ -218,7 +279,7 @@ export const productService = {
         try {
           const { data, error } = await supabase.from('products').select('*');
           if (!error && data && data.length > 0) {
-            const supabaseProducts = data as Product[];
+            const supabaseProducts = (data as Product[]).filter(sp => !isProductDeleted(sp, deletedSet));
             const supabaseMap = new Map<string, Product>();
             supabaseProducts.forEach(sp => {
               if (sp.slug) supabaseMap.set(sp.slug, sp);
@@ -226,8 +287,9 @@ export const productService = {
               if (sp.sku) supabaseMap.set(sp.sku.toLowerCase(), sp);
             });
 
-            // Merge: Preserve all authentic 102 items and overlay Supabase updates
-            const mergedProducts = MOCK_PRODUCTS.map(baseProd => {
+            // Merge: Preserve active items and overlay Supabase updates (skip deleted)
+            const validMockProducts = MOCK_PRODUCTS.filter(m => !isProductDeleted(m, deletedSet));
+            const mergedProducts = validMockProducts.map(baseProd => {
               const sp = supabaseMap.get(baseProd.slug) || 
                          supabaseMap.get(baseProd.id) || 
                          (baseProd.sku ? supabaseMap.get(baseProd.sku.toLowerCase()) : undefined);
@@ -249,15 +311,18 @@ export const productService = {
               }
             });
 
-            saveStoredProducts(mergedProducts);
-            localProducts = mergedProducts;
+            const cleanMerged = mergedProducts.filter(p => !isProductDeleted(p, deletedSet));
+            saveStoredProducts(cleanMerged);
+            localProducts = cleanMerged;
           }
         } catch (err) {
           console.warn('Supabase fetch failed, using local product dataset', err);
         }
       }
 
-      const finalEnriched = localProducts.map(p => enrichProduct(p, localLookupMap));
+      const finalEnriched = localProducts
+        .filter(p => !isProductDeleted(p, deletedSet))
+        .map(p => enrichProduct(p, localLookupMap));
       memoryProductsCache = finalEnriched;
       productsFetchPromise = null;
       return finalEnriched;
@@ -512,7 +577,7 @@ export const productService = {
     clearProductCache();
     const target = (id || '').toLowerCase().trim();
 
-    // 1. Update local storage
+    // 1. Update local storage & permanently track deleted keys
     const currentLocal = getStoredProducts();
     const targetProd = currentLocal.find(p => 
       p.id === id || 
@@ -520,6 +585,8 @@ export const productService = {
       (p.sku && p.sku.toLowerCase().trim() === target) ||
       (p.name && p.name.toLowerCase().trim() === target)
     );
+
+    addDeletedProductKey(id, targetProd?.slug, targetProd?.sku, targetProd?.name);
 
     const filtered = currentLocal.filter(p => 
       p.id !== id && 
