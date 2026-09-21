@@ -451,23 +451,38 @@ export const productService = {
           console.log('✅ Producto actualizado exitosamente en Supabase Nube:', updatedProduct.name);
         } else {
           // If record does not exist in Supabase yet, insert it automatically
+          const baseProd = index !== -1 ? currentLocal[index] : null;
           const fullInsertPayload = {
-            name: updates.name || (index !== -1 ? currentLocal[index].name : 'Nuevo Producto'),
-            slug: updates.slug || (index !== -1 ? currentLocal[index].slug : `prod-${Date.now()}`),
-            brand_collection: updates.brand_collection || 'Diseño Tu Espacio Collection',
-            description: updates.description || '',
-            price: Number(updates.price || 0),
-            original_price: updates.original_price ? Number(updates.original_price) : null,
-            category: updates.category || 'Varios',
-            style: updates.style || 'Contemporáneo',
-            stock: Number(updates.stock || 0),
-            images: updates.images || (index !== -1 ? currentLocal[index].images : []),
-            colors: updates.colors || [],
-            is_featured: !!updates.is_featured,
-            dimensions: updates.dimensions || '',
-            materials: updates.materials || ''
+            name: updates.name || baseProd?.name || 'Nuevo Producto',
+            slug: updates.slug || baseProd?.slug || `prod-${Date.now()}`,
+            brand_collection: updates.brand_collection || baseProd?.brand_collection || 'Diseño Tu Espacio Collection',
+            description: updates.description || baseProd?.description || '',
+            price: Number(updates.price !== undefined ? updates.price : (baseProd?.price || 0)),
+            original_price: updates.original_price !== undefined ? (updates.original_price ? Number(updates.original_price) : null) : (baseProd?.original_price || null),
+            category: updates.category || baseProd?.category || 'Varios',
+            style: updates.style || baseProd?.style || 'Contemporáneo',
+            stock: Number(updates.stock !== undefined ? updates.stock : (baseProd?.stock || 0)),
+            images: updates.images || baseProd?.images || [],
+            colors: updates.colors || baseProd?.colors || [],
+            is_featured: updates.is_featured !== undefined ? !!updates.is_featured : !!baseProd?.is_featured,
+            dimensions: updates.dimensions || baseProd?.dimensions || '',
+            materials: updates.materials || baseProd?.materials || '',
+            sku: updates.sku || baseProd?.sku || '',
+            warehouse_stock: Number(updates.warehouse_stock !== undefined ? updates.warehouse_stock : (baseProd?.warehouse_stock || 0)),
+            store_stock: Number(updates.store_stock !== undefined ? updates.store_stock : (baseProd?.store_stock || 0)),
+            web_stock: Number(updates.web_stock !== undefined ? updates.web_stock : (baseProd?.web_stock || 0)),
+            boxes_count: Number(updates.boxes_count !== undefined ? updates.boxes_count : (baseProd?.boxes_count || 0)),
+            warranty: updates.warranty || baseProd?.warranty || '3 años',
+            inventory_status: updates.inventory_status || baseProd?.inventory_status || 'Disponible',
+            wholesale_price: updates.wholesale_price !== undefined ? (updates.wholesale_price ? Number(updates.wholesale_price) : null) : (baseProd?.wholesale_price ? Number(baseProd.wholesale_price) : Math.round(Number(updates.price || baseProd?.price || 0) * 0.82)),
+            wholesale_min_qty: Number(updates.wholesale_min_qty !== undefined ? updates.wholesale_min_qty : (baseProd?.wholesale_min_qty || baseProd?.boxes_count || 5))
           };
-          const { data: insertedData } = await supabase.from('products').insert([fullInsertPayload]).select();
+          let { data: insertedData, error: insertError } = await supabase.from('products').insert([fullInsertPayload]).select();
+          if (insertError && (insertError.message.includes('wholesale_price') || insertError.message.includes('wholesale_min_qty') || insertError.message.includes('column'))) {
+            const { wholesale_price, wholesale_min_qty, ...fallbackPayload } = fullInsertPayload;
+            const retryRes = await supabase.from('products').insert([fallbackPayload]).select();
+            insertedData = retryRes.data;
+          }
           if (insertedData && insertedData.length > 0) {
             console.log('✅ Producto insertado exitosamente en Supabase Nube:', insertedData[0].name);
           }
