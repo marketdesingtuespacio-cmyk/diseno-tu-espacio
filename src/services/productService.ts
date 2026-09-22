@@ -117,9 +117,9 @@ const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Produ
     ? p.inventory_status
     : (fallback?.inventory_status || (p.stock > 0 ? 'Disponible' : 'Agotado'));
 
-  const resolvedWholesalePrice = p.wholesale_price !== undefined && p.wholesale_price !== null
+  const resolvedWholesalePrice = p.wholesale_price !== undefined && p.wholesale_price !== null && Number(p.wholesale_price) > 0
     ? Number(p.wholesale_price)
-    : (fallback?.wholesale_price ? Number(fallback.wholesale_price) : Math.round(p.price * 0.82));
+    : (fallback?.wholesale_price && Number(fallback.wholesale_price) > 0 ? Number(fallback.wholesale_price) : null);
 
   const resolvedWholesaleMinQty = p.wholesale_min_qty !== undefined && p.wholesale_min_qty !== null
     ? Number(p.wholesale_min_qty)
@@ -388,7 +388,7 @@ export const productService = {
       boxes_count: Number(productData.boxes_count || 0),
       warranty: productData.warranty || '3 años',
       inventory_status: productData.inventory_status || 'Disponible',
-      wholesale_price: productData.wholesale_price !== undefined && productData.wholesale_price !== null ? Number(productData.wholesale_price) : Math.round(Number(productData.price) * 0.82),
+      wholesale_price: productData.wholesale_price !== undefined && productData.wholesale_price !== null && Number(productData.wholesale_price) > 0 ? Number(productData.wholesale_price) : null,
       wholesale_min_qty: Number(productData.wholesale_min_qty || productData.boxes_count || 5),
       updated_at: nowISO,
       updated_by: userLabel
@@ -558,7 +558,7 @@ export const productService = {
             boxes_count: Number(updates.boxes_count !== undefined ? updates.boxes_count : (baseProd?.boxes_count || 0)),
             warranty: updates.warranty || baseProd?.warranty || '3 años',
             inventory_status: updates.inventory_status || baseProd?.inventory_status || 'Disponible',
-            wholesale_price: updates.wholesale_price !== undefined ? (updates.wholesale_price ? Number(updates.wholesale_price) : null) : (baseProd?.wholesale_price ? Number(baseProd.wholesale_price) : Math.round(Number(updates.price || baseProd?.price || 0) * 0.82)),
+            wholesale_price: updates.wholesale_price !== undefined ? (updates.wholesale_price ? Number(updates.wholesale_price) : null) : (baseProd?.wholesale_price ? Number(baseProd.wholesale_price) : null),
             wholesale_min_qty: Number(updates.wholesale_min_qty !== undefined ? updates.wholesale_min_qty : (baseProd?.wholesale_min_qty || baseProd?.boxes_count || 5))
           };
           let { data: insertedData, error: insertError } = await supabase.from('products').insert([fullInsertPayload]).select();
@@ -748,7 +748,7 @@ export const productService = {
           boxes_count: calculatedBoxes,
           warranty: p.warranty || '3 años',
           inventory_status: p.inventory_status || 'Disponible',
-          wholesale_price: p.wholesale_price ? Number(p.wholesale_price) : Math.round(Number(p.price || 0) * 0.82),
+          wholesale_price: p.wholesale_price && Number(p.wholesale_price) > 0 ? Number(p.wholesale_price) : null,
           wholesale_min_qty: Number(p.wholesale_min_qty || p.boxes_count || 5)
         };
 
