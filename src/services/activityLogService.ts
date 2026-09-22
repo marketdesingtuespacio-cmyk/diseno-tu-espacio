@@ -4,7 +4,7 @@ import { ActivityLog } from '../types';
 const LOCAL_STORAGE_LOGS_KEY = 'luxe_activity_logs_v1';
 let isLogRealtimeSubscribed = false;
 
-const getCurrentUser = () => {
+export const getCurrentUser = () => {
   try {
     // 1. Primary active user session key set by AuthContext
     const activeSession = localStorage.getItem('luxe_active_user_session');
@@ -79,6 +79,8 @@ const saveStoredLogs = (logs: ActivityLog[]) => {
 };
 
 export const activityLogService = {
+  getCurrentUser,
+
   async getLogs(): Promise<ActivityLog[]> {
     let localLogs = getStoredLogs();
 
@@ -88,13 +90,27 @@ export const activityLogService = {
           .from('activity_logs')
           .select('*')
           .order('created_at', { ascending: false })
-          .limit(200);
+          .limit(300);
 
-        if (!error && data && data.length > 0) {
+        if (!error && data) {
           const supabaseLogs = data as ActivityLog[];
           const mergedMap = new Map<string, ActivityLog>();
           localLogs.forEach(l => mergedMap.set(l.id, l));
           supabaseLogs.forEach(l => mergedMap.set(l.id, l));
+
+          // Auto-sync unsynced local logs to Supabase
+          const remoteIds = new Set(supabaseLogs.map(s => s.id));
+          const unsynced = localLogs.filter(l => !remoteIds.has(l.id));
+          if (unsynced.length > 0) {
+            (async () => {
+              try {
+                await supabase.from('activity_logs').insert(unsynced);
+              } catch {
+                // Background sync ignore
+              }
+            })();
+          }
+
           const combined = Array.from(mergedMap.values()).sort((a, b) => 
             new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
           );

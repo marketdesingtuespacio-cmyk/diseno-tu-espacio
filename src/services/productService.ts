@@ -135,7 +135,9 @@ const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Produ
     warranty: (p.warranty && p.warranty.trim().length > 0) ? p.warranty : (fallback?.warranty || '3 años'),
     inventory_status: resolvedStatus,
     wholesale_price: resolvedWholesalePrice,
-    wholesale_min_qty: resolvedWholesaleMinQty
+    wholesale_min_qty: resolvedWholesaleMinQty,
+    updated_at: p.updated_at || fallback?.updated_at,
+    updated_by: p.updated_by || fallback?.updated_by
   };
 };
 
@@ -354,6 +356,9 @@ export const productService = {
 
   async createProduct(productData: Omit<Product, 'id'>): Promise<Product> {
     const generatedId = `prod-${Date.now()}`;
+    const activeUser = activityLogService.getCurrentUser();
+    const nowISO = new Date().toISOString();
+    const userLabel = `${activeUser.name} (${activeUser.email})`;
     
     // Clean payload for Supabase insertion with full inventory columns
     const cleanPayload = {
@@ -379,7 +384,9 @@ export const productService = {
       warranty: productData.warranty || '3 años',
       inventory_status: productData.inventory_status || 'Disponible',
       wholesale_price: productData.wholesale_price !== undefined && productData.wholesale_price !== null ? Number(productData.wholesale_price) : Math.round(Number(productData.price) * 0.82),
-      wholesale_min_qty: Number(productData.wholesale_min_qty || productData.boxes_count || 5)
+      wholesale_min_qty: Number(productData.wholesale_min_qty || productData.boxes_count || 5),
+      updated_at: nowISO,
+      updated_by: userLabel
     };
 
     let createdProduct: Product = {
@@ -402,8 +409,8 @@ export const productService = {
           .select()
           .single();
 
-        if (error && (error.message.includes('wholesale_price') || error.message.includes('wholesale_min_qty') || error.message.includes('column'))) {
-          const { wholesale_price, wholesale_min_qty, ...fallbackPayload } = cleanPayload;
+        if (error && (error.message.includes('updated_at') || error.message.includes('updated_by') || error.message.includes('wholesale_price') || error.message.includes('wholesale_min_qty') || error.message.includes('column'))) {
+          const { updated_at, updated_by, wholesale_price, wholesale_min_qty, ...fallbackPayload } = cleanPayload;
           const retryRes = await supabase.from('products').insert([fallbackPayload]).select().single();
           data = retryRes.data;
           error = retryRes.error;
@@ -466,8 +473,15 @@ export const productService = {
       }
     }
 
+    const activeUser = activityLogService.getCurrentUser();
+    const nowISO = new Date().toISOString();
+    const userLabel = `${activeUser.name} (${activeUser.email})`;
+
     // Strict clean payload with all supported Supabase columns
-    const cleanPayload: any = {};
+    const cleanPayload: any = {
+      updated_at: nowISO,
+      updated_by: userLabel
+    };
     if (updates.name !== undefined) cleanPayload.name = updates.name;
     if (updates.slug !== undefined) cleanPayload.slug = updates.slug;
     if (updates.brand_collection !== undefined) cleanPayload.brand_collection = updates.brand_collection;
