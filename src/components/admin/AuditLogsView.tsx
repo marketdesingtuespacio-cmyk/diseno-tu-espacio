@@ -176,10 +176,7 @@ CREATE TABLE IF NOT EXISTS public.activity_logs (
 );
 
 -- 2. DESHABILITAR BLOQUEO RLS PARA PERMITIR GUARDADO MULTIUSUARIO
-ALTER TABLE public.activity_logs DISABLE ROW LEVEL SECURITY;
-
--- 3. HABILITAR TIEMPO REAL (REALTIME) EN LA TABLA
-ALTER PUBLICATION supabase_realtime ADD TABLE public.activity_logs;`;
+ALTER TABLE public.activity_logs DISABLE ROW LEVEL SECURITY;`;
 
   return (
     <div className="space-y-6">
