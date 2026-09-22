@@ -973,6 +973,25 @@ export const AdminDashboardPage: React.FC = () => {
                         <td className="p-3.5 font-bold">
                           <span className="text-neutral-900 block font-extrabold">{o.order_ref}</span>
                           <span className="text-[10px] text-neutral-400 font-normal">{o.created_at}</span>
+                          {o.updated_at && (
+                            <div className="text-[9.5px] text-emerald-700 font-medium mt-0.5">
+                              Modificado: {(() => {
+                                try {
+                                  return new Date(o.updated_at).toLocaleString('es-CO', {
+                                    timeZone: 'America/Bogota',
+                                    month: 'short',
+                                    day: 'numeric',
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                    hour12: true
+                                  });
+                                } catch {
+                                  return o.updated_at;
+                                }
+                              })()}
+                              {o.updated_by && <span className="block text-[9px] text-neutral-500 font-normal">Por: {o.updated_by}</span>}
+                            </div>
+                          )}
                         </td>
                         <td className="p-3.5">
                           <span className="font-bold text-neutral-900 block">{o.customer_name}</span>

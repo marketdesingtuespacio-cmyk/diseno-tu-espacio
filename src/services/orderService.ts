@@ -267,54 +267,58 @@ export const orderService = {
   },
 
   async updateOrder(id: string, updates: Partial<Order>): Promise<Order | null> {
+    const activeUser = activityLogService.getCurrentUser();
+    const nowISO = new Date().toISOString();
+    const userLabel = `${activeUser.name} (${activeUser.email})`;
+
+    const fullUpdates: any = {
+      ...updates,
+      updated_at: nowISO,
+      updated_by: userLabel
+    };
+
+    const current = getStoredOrders();
+    const idx = current.findIndex(o => o.id === id || o.order_ref === id);
+    let targetRef = id;
+    let targetCustomer = '';
+
+    if (idx !== -1) {
+      current[idx] = { ...current[idx], ...fullUpdates };
+      saveStoredOrders(current);
+      targetRef = current[idx].order_ref || id;
+      targetCustomer = current[idx].customer_name || '';
+    }
+
     if (isSupabaseConfigured()) {
       try {
-        const { data, error } = await supabase
+        const { error } = await supabase
           .from('orders')
-          .update(updates)
-          .eq('id', id)
-          .select()
-          .single();
-        if (!error && data) {
-          activityLogService.logActivity({
-            entity_type: 'order',
-            entity_id: id,
-            entity_name: data.order_ref || id,
-            action: updates.status ? 'status_change' : 'update',
-            description: updates.status 
-              ? `Cambió el estado del pedido "${data.order_ref || id}" a "${updates.status}"`
-              : `Actualizó datos del pedido "${data.order_ref || id}"`,
-            details: `Modificaciones: ${Object.keys(updates).join(', ')}`
-          });
-          notifyOrdersUpdated();
-          return data as Order;
+          .update(fullUpdates)
+          .or(`id.eq.${id},order_ref.eq.${id}`)
+          .select();
+        
+        if (error && (error.message.includes('updated_at') || error.message.includes('updated_by') || error.message.includes('column'))) {
+          const { updated_at, updated_by, ...fallbackPayload } = fullUpdates;
+          await supabase.from('orders').update(fallbackPayload).or(`id.eq.${id},order_ref.eq.${id}`);
         }
       } catch (err) {
         console.error('Supabase update order error:', err);
       }
     }
 
-    const current = getStoredOrders();
-    const idx = current.findIndex(o => o.id === id);
-    if (idx !== -1) {
-      current[idx] = { ...current[idx], ...updates };
-      saveStoredOrders(current);
+    activityLogService.logActivity({
+      entity_type: 'order',
+      entity_id: id,
+      entity_name: targetRef,
+      action: updates.status ? 'status_change' : 'update',
+      description: updates.status 
+        ? `Cambió el estado del pedido "${targetRef}" a "${updates.status}"${targetCustomer ? ` (${targetCustomer})` : ''}`
+        : `Actualizó datos del pedido "${targetRef}"${targetCustomer ? ` (${targetCustomer})` : ''}`,
+      details: `Modificaciones: ${Object.keys(updates).join(', ')}`
+    });
 
-      activityLogService.logActivity({
-        entity_type: 'order',
-        entity_id: id,
-        entity_name: current[idx].order_ref || id,
-        action: updates.status ? 'status_change' : 'update',
-        description: updates.status 
-          ? `Cambió el estado del pedido "${current[idx].order_ref || id}" a "${updates.status}"`
-          : `Actualizó datos del pedido "${current[idx].order_ref || id}"`,
-        details: `Modificaciones: ${Object.keys(updates).join(', ')}`
-      });
-
-      notifyOrdersUpdated();
-      return current[idx];
-    }
-    return null;
+    notifyOrdersUpdated();
+    return idx !== -1 ? current[idx] : null;
   },
 
   async deleteOrder(id: string): Promise<boolean> {

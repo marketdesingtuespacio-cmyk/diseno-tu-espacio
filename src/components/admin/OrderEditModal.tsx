@@ -191,6 +191,24 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
               </h2>
               <p className="text-[11px] text-neutral-400 font-medium mt-0.5">
                 Modifica dirección de entrega, cliente, guía de despacho, ítems o estado de la orden
+                {order.updated_at && (
+                  <span className="block text-[10px] text-amber-300 font-mono mt-0.5">
+                    🕒 Última modificación: {(() => {
+                      try {
+                        return new Date(order.updated_at).toLocaleString('es-CO', {
+                          timeZone: 'America/Bogota',
+                          month: 'short',
+                          day: 'numeric',
+                          hour: '2-digit',
+                          minute: '2-digit',
+                          hour12: true
+                        });
+                      } catch {
+                        return order.updated_at;
+                      }
+                    })()} {order.updated_by ? `por ${order.updated_by}` : ''}
+                  </span>
+                )}
               </p>
             </div>
           </div>

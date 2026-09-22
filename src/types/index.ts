@@ -107,6 +107,8 @@ export interface Order {
   items?: OrderItem[];
   notes?: string;
   created_at: string;
+  updated_at?: string;
+  updated_by?: string;
 }
 
 export interface CartItem {
