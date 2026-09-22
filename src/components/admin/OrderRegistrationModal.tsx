@@ -331,7 +331,7 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
                 <input 
                   type="number"
                   min="0"
-                  step="5000"
+                  step="any"
                   value={shippingCost}
                   onChange={(e) => setShippingCost(Number(e.target.value))}
                   className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2.5 font-mono font-bold text-xs"
@@ -343,7 +343,7 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
                 <input 
                   type="number"
                   min="0"
-                  step="10000"
+                  step="any"
                   value={discount}
                   onChange={(e) => setDiscount(Number(e.target.value))}
                   className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2.5 font-mono font-bold text-xs text-red-600"

@@ -375,7 +375,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
                 type="number" 
                 required
                 min="0"
-                step="10000"
+                step="any"
                 value={price}
                 onChange={(e) => setPrice(Number(e.target.value))}
                 className="w-full bg-brand-surface border border-brand-border p-3 font-bold text-brand-black focus:outline-none focus:border-brand-black text-sm"
@@ -388,7 +388,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
               <input 
                 type="number" 
                 min="0"
-                step="10000"
+                step="any"
                 placeholder="Ej. 900000 (Mayor a precio de venta)"
                 value={originalPrice || ''}
                 onChange={(e) => setOriginalPrice(e.target.value ? Number(e.target.value) : undefined)}
@@ -401,7 +401,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
               <input 
                 type="number" 
                 min="0"
-                step="10000"
+                step="any"
                 placeholder="Ej. 730000 (Precio especial por volumen)"
                 value={wholesalePrice || ''}
                 onChange={(e) => setWholesalePrice(e.target.value ? Number(e.target.value) : undefined)}
