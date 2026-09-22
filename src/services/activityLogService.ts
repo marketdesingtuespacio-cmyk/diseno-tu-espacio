@@ -125,7 +125,7 @@ export const activityLogService = {
                 for (const item of unsynced) {
                   const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(item.id);
                   const payload = {
-                    ...(isUUID ? { id: item.id } : { id: generateUUID() }),
+                    id: isUUID ? item.id : generateUUID(),
                     entity_type: item.entity_type,
                     entity_id: item.entity_id || '',
                     entity_name: item.entity_name,
@@ -139,8 +139,8 @@ export const activityLogService = {
                   };
                   const { error: insErr } = await supabase.from('activity_logs').insert([payload]);
                   if (insErr) {
-                    const { id, ...withoutId } = payload;
-                    await supabase.from('activity_logs').insert([withoutId]);
+                    const retryPayload = { ...payload, id: generateUUID() };
+                    await supabase.from('activity_logs').insert([retryPayload]);
                   }
                 }
               } catch {
@@ -214,12 +214,9 @@ export const activityLogService = {
         const { error } = await supabase.from('activity_logs').insert([payloadToInsert]);
 
         if (error) {
-          console.warn('Supabase activity_log insert error, retrying without explicit ID:', error.message);
-          const { id, ...withoutId } = payloadToInsert;
-          const { data: insertedData } = await supabase.from('activity_logs').insert([withoutId]).select();
-          if (insertedData && insertedData[0]?.id) {
-            newLog.id = insertedData[0].id;
-          }
+          console.warn('Supabase activity_log insert error, retrying with fresh UUID:', error.message);
+          const retryPayload = { ...payloadToInsert, id: generateUUID() };
+          await supabase.from('activity_logs').insert([retryPayload]);
         }
       } catch (err) {
         console.warn('Supabase activity_log insert notice:', err);
