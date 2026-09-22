@@ -140,6 +140,7 @@ export const AuditLogsView: React.FC = () => {
       const d = new Date(isoStr);
       if (isNaN(d.getTime())) return isoStr;
       return d.toLocaleString('es-CO', {
+        timeZone: 'America/Bogota',
         day: '2-digit',
         month: 'short',
         year: 'numeric',

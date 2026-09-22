@@ -125,6 +125,11 @@ const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Produ
     ? Number(p.wholesale_min_qty)
     : (fallback?.wholesale_min_qty ? Number(fallback.wholesale_min_qty) : (p.boxes_count && p.boxes_count > 0 ? p.boxes_count : 5));
 
+  const resolvedUpdatedAt = p.updated_at || fallback?.updated_at || p.created_at;
+  const activeUser = activityLogService.getCurrentUser ? activityLogService.getCurrentUser() : null;
+  const activeUserLabel = activeUser ? `${activeUser.name} (${activeUser.email})` : 'Administración';
+  const resolvedUpdatedBy = p.updated_by || fallback?.updated_by || activeUserLabel;
+
   return {
     ...p,
     sku: (p.sku && p.sku.trim().length > 0) ? p.sku : (fallback?.sku || ''),
@@ -136,8 +141,8 @@ const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Produ
     inventory_status: resolvedStatus,
     wholesale_price: resolvedWholesalePrice,
     wholesale_min_qty: resolvedWholesaleMinQty,
-    updated_at: p.updated_at || fallback?.updated_at,
-    updated_by: p.updated_by || fallback?.updated_by
+    updated_at: resolvedUpdatedAt,
+    updated_by: resolvedUpdatedBy
   };
 };
 

@@ -765,14 +765,29 @@ export const AdminDashboardPage: React.FC = () => {
                             {p.sku && (
                               <div className="text-[10px] text-neutral-500 font-mono font-bold">SKU: {p.sku}</div>
                             )}
-                            {p.updated_at ? (
+                            {(p.updated_at || p.created_at) && (
                               <div className="text-[9.5px] text-indigo-700 font-medium mt-0.5 flex flex-col gap-0.5">
-                                <span>Modificado: {new Date(p.updated_at).toLocaleString('es-CO', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true })}</span>
+                                <span>{p.updated_at ? 'Última mod:' : 'Ingreso:'} {(() => {
+                                  try {
+                                    const d = new Date((p.updated_at || p.created_at)!);
+                                    if (isNaN(d.getTime())) return p.updated_at || p.created_at;
+                                    return d.toLocaleString('es-CO', {
+                                      timeZone: 'America/Bogota',
+                                      day: '2-digit',
+                                      month: 'short',
+                                      year: 'numeric',
+                                      hour: '2-digit',
+                                      minute: '2-digit',
+                                      second: '2-digit',
+                                      hour12: true
+                                    });
+                                  } catch {
+                                    return p.updated_at || p.created_at;
+                                  }
+                                })()}</span>
                                 {p.updated_by && <span className="text-neutral-500 font-normal">Por: {p.updated_by}</span>}
                               </div>
-                            ) : p.created_at ? (
-                              <div className="text-[9.5px] text-neutral-400 font-light mt-0.5">Ingreso: {p.created_at.split(' ')[0]}</div>
-                            ) : null}
+                            )}
                           </td>
                           <td className="p-3 text-neutral-500 font-medium">{p.category}</td>
                           <td className="p-3 font-bold">
