@@ -4,6 +4,7 @@ import { Heart, ShoppingBag, Eye } from 'lucide-react';
 import { Product } from '../types';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
+import { useAuth } from '../context/AuthContext';
 
 interface ProductCardProps {
   product: Product;
@@ -12,6 +13,7 @@ interface ProductCardProps {
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addToCart } = useCart();
   const { formatPrice } = useCurrency();
+  const { isAuthenticated } = useAuth();
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [activeColorIndex, setActiveColorIndex] = useState(0);
 
@@ -136,7 +138,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </span>
         )}
 
-        {product.wholesale_price && product.wholesale_price > 0 && (
+        {isAuthenticated && product.wholesale_price && product.wholesale_price > 0 && (
           <div className="text-[10.5px] font-semibold text-emerald-700 tracking-tight">
             Por mayor: {formatPrice(product.wholesale_price)} ({product.wholesale_min_qty || 5}+ u/cajas)
           </div>

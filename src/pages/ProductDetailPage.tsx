@@ -5,6 +5,7 @@ import { Product } from '../types';
 import { productService } from '../services/productService';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
+import { useAuth } from '../context/AuthContext';
 import { ProductCard } from '../components/ProductCard';
 
 export const ProductDetailPage: React.FC = () => {
@@ -23,6 +24,7 @@ export const ProductDetailPage: React.FC = () => {
 
   const { addToCart } = useCart();
   const { formatPrice, language } = useCurrency();
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     if (slug) {
@@ -257,11 +259,11 @@ export const ProductDetailPage: React.FC = () => {
               )}
             </div>
 
-            {product.wholesale_price && product.wholesale_price > 0 && (
+            {isAuthenticated && product.wholesale_price && product.wholesale_price > 0 && (
               <div className="mt-2.5 p-2.5 bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 flex items-center justify-between">
                 <div>
                   <span className="font-bold uppercase tracking-wider text-[10px] text-emerald-800 block">
-                    Precio Especial al Por Mayor
+                    Precio Especial al Por Mayor (Colaboradores)
                   </span>
                   <span className="text-sm font-extrabold text-emerald-700">
                     {formatPrice(product.wholesale_price)} <span className="text-[10px] font-normal text-emerald-800">c/u</span>
