@@ -4,6 +4,17 @@ import { ActivityLog } from '../types';
 const LOCAL_STORAGE_LOGS_KEY = 'luxe_activity_logs_v1';
 let isLogRealtimeSubscribed = false;
 
+const generateUUID = (): string => {
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+    return crypto.randomUUID();
+  }
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+    const r = (Math.random() * 16) | 0;
+    const v = c === 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+};
+
 export const getCurrentUser = () => {
   try {
     // 1. Primary active user session key set by AuthContext
@@ -95,8 +106,15 @@ export const activityLogService = {
         if (!error && data) {
           const supabaseLogs = data as ActivityLog[];
           const mergedMap = new Map<string, ActivityLog>();
-          localLogs.forEach(l => mergedMap.set(l.id, l));
+          
+          // First add remote Supabase logs (source of truth)
           supabaseLogs.forEach(l => mergedMap.set(l.id, l));
+          // Then merge local logs if they are not already in remote
+          localLogs.forEach(l => {
+            if (!mergedMap.has(l.id)) {
+              mergedMap.set(l.id, l);
+            }
+          });
 
           // Auto-sync unsynced local logs to Supabase
           const remoteIds = new Set(supabaseLogs.map(s => s.id));
@@ -104,9 +122,29 @@ export const activityLogService = {
           if (unsynced.length > 0) {
             (async () => {
               try {
-                await supabase.from('activity_logs').insert(unsynced);
+                for (const item of unsynced) {
+                  const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(item.id);
+                  const payload = {
+                    ...(isUUID ? { id: item.id } : { id: generateUUID() }),
+                    entity_type: item.entity_type,
+                    entity_id: item.entity_id || '',
+                    entity_name: item.entity_name,
+                    action: item.action,
+                    description: item.description,
+                    details: item.details || '',
+                    user_email: item.user_email,
+                    user_name: item.user_name,
+                    user_role: item.user_role || 'admin',
+                    created_at: item.created_at
+                  };
+                  const { error: insErr } = await supabase.from('activity_logs').insert([payload]);
+                  if (insErr) {
+                    const { id, ...withoutId } = payload;
+                    await supabase.from('activity_logs').insert([withoutId]);
+                  }
+                }
               } catch {
-                // Background sync ignore
+                // Background sync fail silent
               }
             })();
           }
@@ -132,8 +170,10 @@ export const activityLogService = {
   }): Promise<ActivityLog> {
     const activeUser = getCurrentUser();
     const nowISO = new Date().toISOString();
+    const uuidId = generateUUID();
+
     const newLog: ActivityLog = {
-      id: `log-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
+      id: uuidId,
       entity_type: payload.entity_type,
       entity_id: payload.entity_id || '',
       entity_name: payload.entity_name,
@@ -157,7 +197,7 @@ export const activityLogService = {
     // 3. Try to sync to Supabase activity_logs table
     if (isSupabaseConfigured()) {
       try {
-        await supabase.from('activity_logs').insert([{
+        const payloadToInsert = {
           id: newLog.id,
           entity_type: newLog.entity_type,
           entity_id: newLog.entity_id,
@@ -169,7 +209,18 @@ export const activityLogService = {
           user_name: newLog.user_name,
           user_role: newLog.user_role,
           created_at: newLog.created_at
-        }]);
+        };
+
+        const { error } = await supabase.from('activity_logs').insert([payloadToInsert]);
+
+        if (error) {
+          console.warn('Supabase activity_log insert error, retrying without explicit ID:', error.message);
+          const { id, ...withoutId } = payloadToInsert;
+          const { data: insertedData } = await supabase.from('activity_logs').insert([withoutId]).select();
+          if (insertedData && insertedData[0]?.id) {
+            newLog.id = insertedData[0].id;
+          }
+        }
       } catch (err) {
         console.warn('Supabase activity_log insert notice:', err);
       }
@@ -182,7 +233,7 @@ export const activityLogService = {
     saveStoredLogs([]);
     if (isSupabaseConfigured()) {
       try {
-        await supabase.from('activity_logs').delete().neq('id', '');
+        await supabase.from('activity_logs').delete().neq('id', '00000000-0000-0000-0000-000000000000');
       } catch {
         // ignore
       }

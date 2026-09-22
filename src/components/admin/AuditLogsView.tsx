@@ -41,7 +41,13 @@ export const AuditLogsView: React.FC = () => {
     const unsub = activityLogService.subscribeToLogs(() => {
       fetchLogs();
     });
-    return () => unsub();
+    const interval = setInterval(() => {
+      fetchLogs();
+    }, 10000);
+    return () => {
+      unsub();
+      clearInterval(interval);
+    };
   }, []);
 
   // Filtered Logs
