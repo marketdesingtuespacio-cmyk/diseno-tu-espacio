@@ -160,7 +160,7 @@ export const AuditLogsView: React.FC = () => {
     }
   };
 
-  const sqlCode = `-- TABLA DE AUDITORÍA Y REGISTRO DE CAMBIOS EN SUPABASE
+  const sqlCode = `-- 1. CREAR TABLA DE AUDITORÍA Y REGISTRO DE CAMBIOS EN SUPABASE
 CREATE TABLE IF NOT EXISTS public.activity_logs (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   entity_type VARCHAR(50) NOT NULL,
@@ -175,7 +175,10 @@ CREATE TABLE IF NOT EXISTS public.activity_logs (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- HABILITAR REALTIME EN LA TABLA
+-- 2. DESHABILITAR BLOQUEO RLS PARA PERMITIR GUARDADO MULTIUSUARIO
+ALTER TABLE public.activity_logs DISABLE ROW LEVEL SECURITY;
+
+-- 3. HABILITAR TIEMPO REAL (REALTIME) EN LA TABLA
 ALTER PUBLICATION supabase_realtime ADD TABLE public.activity_logs;`;
 
   return (
