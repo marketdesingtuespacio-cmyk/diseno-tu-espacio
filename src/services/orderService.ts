@@ -159,18 +159,94 @@ const saveStoredOrders = (orders: Order[]) => {
 
 export const orderService = {
   async getOrders(): Promise<Order[]> {
+    let localOrders = getStoredOrders();
+
     if (isSupabaseConfigured()) {
       try {
         const { data, error } = await supabase
           .from('orders')
           .select('*')
           .order('created_at', { ascending: false });
-        if (!error && data && data.length > 0) return data as Order[];
+
+        if (!error && data) {
+          const supabaseOrders = data as Order[];
+          const mergedMap = new Map<string, Order>();
+
+          // Remote Supabase orders take precedence (source of truth)
+          supabaseOrders.forEach(o => {
+            const key = o.order_ref || o.id;
+            mergedMap.set(key, o);
+          });
+
+          // Merge local orders that are NOT demo orders unless they are real user orders
+          localOrders.forEach(o => {
+            const key = o.order_ref || o.id;
+            if (!mergedMap.has(key)) {
+              mergedMap.set(key, o);
+            }
+          });
+
+          // Auto-sync unsynced local orders to Supabase
+          const remoteRefs = new Set(supabaseOrders.map(s => s.order_ref || s.id));
+          const unsynced = localOrders.filter(l => 
+            !remoteRefs.has(l.order_ref) && 
+            !remoteRefs.has(l.id) && 
+            !l.id.startsWith('ord-1') && 
+            !l.id.startsWith('ord-2') && 
+            !l.id.startsWith('ord-3')
+          );
+
+          if (unsynced.length > 0) {
+            (async () => {
+              for (const item of unsynced) {
+                try {
+                  const payload = {
+                    order_ref: item.order_ref,
+                    customer_name: item.customer_name,
+                    customer_email: item.customer_email,
+                    customer_phone: item.customer_phone || '',
+                    customer_tag: item.customer_tag || 'Residencial',
+                    shipping_address: item.shipping_address || '',
+                    city: item.city || 'Bogotá D.C.',
+                    carrier: item.carrier || 'Servientrega',
+                    tracking_number: item.tracking_number || '',
+                    subtotal: Number(item.subtotal || item.total || 0),
+                    shipping_cost: Number(item.shipping_cost || 0),
+                    discount: Number(item.discount || 0),
+                    total: Number(item.total || 0),
+                    total_amount: Number(item.total || 0),
+                    status: item.status || 'processing',
+                    payment_method: item.payment_method || 'Tarjeta de Crédito',
+                    payment_gateway: item.payment_gateway || 'Wompi Colombia',
+                    items_count: Number(item.items_count || (item.items ? item.items.length : 1)),
+                    items: item.items || [],
+                    notes: item.notes || '',
+                    created_at: item.created_at
+                  };
+                  const { error: insErr } = await supabase.from('orders').insert([payload]);
+                  if (insErr) {
+                    const { total_amount, ...cleanPayload } = payload;
+                    await supabase.from('orders').insert([cleanPayload]);
+                  }
+                } catch {
+                  // Background sync ignore
+                }
+              }
+            })();
+          }
+
+          const combined = Array.from(mergedMap.values()).sort((a, b) => 
+            new Date(b.created_at || '').getTime() - new Date(a.created_at || '').getTime()
+          );
+          saveStoredOrders(combined);
+          return combined;
+        }
       } catch (err) {
         console.warn('Supabase fetch orders failed, using fallback cache', err);
       }
     }
-    return getStoredOrders();
+
+    return localOrders;
   },
 
   async createOrder(orderData: Omit<Order, 'id'>): Promise<Order> {
