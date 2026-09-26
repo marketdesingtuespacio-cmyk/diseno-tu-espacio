@@ -131,10 +131,10 @@ export const AdminDashboardPage: React.FC = () => {
       loadData();
     });
 
-    // Auto-sync polling every 10 seconds across all devices/computers
+    // Auto-sync fallback polling every 60 seconds (WebSocket realtime handles instant updates)
     const syncInterval = setInterval(() => {
       loadData();
-    }, 10000);
+    }, 60000);
 
     return () => {
       unsubProds();

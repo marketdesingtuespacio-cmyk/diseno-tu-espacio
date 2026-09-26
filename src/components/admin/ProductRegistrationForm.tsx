@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Trash2, Image as ImageIcon, Palette, CheckCircle2, Sparkles, ArrowRight, Upload } from 'lucide-react';
+import { Plus, Trash2, Image as ImageIcon, Palette, CheckCircle2, Sparkles, ArrowRight, Upload, ChevronLeft, ChevronRight, Star, GripVertical } from 'lucide-react';
 import { Product } from '../../types';
 import { productService } from '../../services/productService';
 import { useCurrency } from '../../context/CurrencyContext';
@@ -76,8 +76,8 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
         const img = new Image();
         img.onload = () => {
           const canvas = document.createElement('canvas');
-          const MAX_WIDTH = 900;
-          const MAX_HEIGHT = 1125;
+          const MAX_WIDTH = 640;
+          const MAX_HEIGHT = 800;
           let width = img.width;
           let height = img.height;
 
@@ -98,8 +98,8 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
           const ctx = canvas.getContext('2d');
           if (ctx) {
             ctx.drawImage(img, 0, 0, width, height);
-            // Convert to lightweight high-quality Web-Ready JPEG (72% compression)
-            const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.72);
+            // Convert to lightweight Web-Ready JPEG (58% quality for minimal payload)
+            const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.58);
             resolve(compressedDataUrl);
           } else {
             resolve(rawDataUrl);
@@ -144,6 +144,46 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
     } else {
       alert('El producto debe tener al menos 1 imagen principal.');
     }
+  };
+
+  // Move Image Left / Right
+  const handleMoveImage = (index: number, direction: 'left' | 'right') => {
+    const targetIndex = direction === 'left' ? index - 1 : index + 1;
+    if (targetIndex < 0 || targetIndex >= images.length) return;
+    const newImages = [...images];
+    const [moved] = newImages.splice(index, 1);
+    newImages.splice(targetIndex, 0, moved);
+    setImages(newImages);
+  };
+
+  // Set image as main cover (Position 0)
+  const handleSetMainImage = (index: number) => {
+    if (index === 0 || index >= images.length) return;
+    const newImages = [...images];
+    const [selected] = newImages.splice(index, 1);
+    newImages.unshift(selected);
+    setImages(newImages);
+  };
+
+  // Drag and drop handlers for image cards
+  const [draggedImageIndex, setDraggedImageIndex] = useState<number | null>(null);
+
+  const handleDragStart = (index: number) => {
+    setDraggedImageIndex(index);
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e: React.DragEvent, dropIndex: number) => {
+    e.preventDefault();
+    if (draggedImageIndex === null || draggedImageIndex === dropIndex) return;
+    const newImages = [...images];
+    const [dragged] = newImages.splice(draggedImageIndex, 1);
+    newImages.splice(dropIndex, 0, dragged);
+    setImages(newImages);
+    setDraggedImageIndex(null);
   };
 
   // Add Color Swatch
@@ -575,22 +615,79 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
             </div>
           </div>
 
-          {/* Images Grid Cards */}
+          {/* Images Grid Cards with Drag & Drop and Reorder Controls */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {images.map((img, idx) => (
-              <div key={idx} className="group relative aspect-[1900/2375] bg-[#FAF9F6] border border-neutral-300 overflow-hidden">
-                <img src={img} alt={`Vista ${idx+1}`} className="w-full h-full object-cover" />
-                <div className="absolute top-2 left-2 bg-black/80 text-white text-[8px] font-mono px-1.5 py-0.5">
-                  {idx === 0 ? 'FOTO PRINCIPAL' : `FOTO ${idx+1}`}
+              <div 
+                key={idx} 
+                draggable
+                onDragStart={() => handleDragStart(idx)}
+                onDragOver={handleDragOver}
+                onDrop={(e) => handleDrop(e, idx)}
+                className={`group relative aspect-[1900/2375] bg-[#FAF9F6] border ${
+                  idx === 0 ? 'border-brand-black ring-2 ring-brand-black/30' : 'border-neutral-300'
+                } overflow-hidden transition-all duration-200 cursor-grab active:cursor-grabbing hover:shadow-md`}
+              >
+                <img src={img} alt={`Vista ${idx+1}`} className="w-full h-full object-cover select-none pointer-events-none" />
+                
+                {/* Badge indicating Portada or Foto Number */}
+                <div className="absolute top-2 left-2 bg-black/85 text-white text-[8.5px] font-mono px-2 py-0.5 rounded-xs flex items-center gap-1 shadow-xs z-10">
+                  <GripVertical className="w-2.5 h-2.5 opacity-70" />
+                  {idx === 0 ? '★ PORTADA PRINCIPAL' : `FOTO ${idx+1}`}
                 </div>
+
+                {/* Set as Main Cover Image Button */}
+                {idx > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => handleSetMainImage(idx)}
+                    className="absolute top-2 right-9 bg-amber-500 hover:bg-amber-600 text-white p-1 rounded-xs shadow-xs transition-colors z-10"
+                    title="Establecer como Foto Principal (Portada)"
+                  >
+                    <Star className="w-3.5 h-3.5 fill-white" />
+                  </button>
+                )}
+
+                {/* Delete Button */}
                 <button 
                   type="button"
                   onClick={() => handleRemoveImage(idx)}
-                  className="absolute top-2 right-2 bg-red-600 text-white p-1 hover:bg-red-700 transition-colors"
+                  className="absolute top-2 right-2 bg-red-600 text-white p-1 rounded-xs hover:bg-red-700 transition-colors shadow-xs z-10"
                   title="Eliminar foto"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                 </button>
+
+                {/* Reorder Left / Right Move Overlay Controls */}
+                <div className="absolute inset-x-2 bottom-2 flex items-center justify-between gap-1 opacity-90 group-hover:opacity-100 transition-opacity z-10">
+                  <button
+                    type="button"
+                    disabled={idx === 0}
+                    onClick={() => handleMoveImage(idx, 'left')}
+                    className={`p-1.5 rounded bg-black/80 text-white hover:bg-black transition-colors ${
+                      idx === 0 ? 'opacity-30 cursor-not-allowed' : 'hover:scale-105'
+                    }`}
+                    title="Mover foto a la izquierda"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+
+                  <span className="text-[9px] font-bold text-white bg-black/70 px-2 py-0.5 rounded-xs font-mono uppercase tracking-wider backdrop-blur-xs">
+                    {idx === 0 ? 'Portada' : `Pos. ${idx + 1}`}
+                  </span>
+
+                  <button
+                    type="button"
+                    disabled={idx === images.length - 1}
+                    onClick={() => handleMoveImage(idx, 'right')}
+                    className={`p-1.5 rounded bg-black/80 text-white hover:bg-black transition-colors ${
+                      idx === images.length - 1 ? 'opacity-30 cursor-not-allowed' : 'hover:scale-105'
+                    }`}
+                    title="Mover foto a la derecha"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
             ))}
           </div>

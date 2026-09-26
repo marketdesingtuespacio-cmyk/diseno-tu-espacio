@@ -43,7 +43,7 @@ export const AuditLogsView: React.FC = () => {
     });
     const interval = setInterval(() => {
       fetchLogs();
-    }, 10000);
+    }, 60000);
     return () => {
       unsub();
       clearInterval(interval);
