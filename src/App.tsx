@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import { CurrencyProvider } from './context/CurrencyContext';
@@ -18,6 +18,15 @@ import { ProtectedRoute } from './components/ProtectedRoute';
 const MainContent: React.FC = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
+
+  // Automatically track page views in Google Analytics on route changes
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('config', 'G-GCG3E204JM', {
+        page_path: location.pathname + location.search
+      });
+    }
+  }, [location]);
 
   return (
     <main className={`flex-1 ${isHome ? 'pt-0' : 'pt-[110px]'}`}>
