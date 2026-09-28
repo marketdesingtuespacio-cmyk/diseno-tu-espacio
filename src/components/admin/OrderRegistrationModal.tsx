@@ -393,41 +393,60 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
                       <div className="flex items-center gap-3">
                         <img src={item.image} alt={item.name} className="w-10 h-12 object-cover rounded-lg border bg-white shadow-xs" />
                         <div>
-                          <div className="flex items-center gap-2">
-                            <p className="font-bold text-brand-black">{item.name}</p>
+                          <p className="font-bold text-brand-black text-xs">{item.name}</p>
+                          
+                          {/* Tariff Selector buttons directly under product title */}
+                          <div className="flex flex-wrap items-center gap-2 mt-1">
                             <button
                               type="button"
-                              onClick={() => handleToggleItemPriceType(idx)}
-                              className={`text-[9px] font-extrabold px-2 py-0.5 rounded-full border transition-all ${
-                                isWholesale 
-                                  ? 'bg-emerald-100 text-emerald-950 border-emerald-300' 
-                                  : 'bg-neutral-100 text-neutral-700 border-neutral-300'
+                              onClick={() => {
+                                if (isWholesale) handleToggleItemPriceType(idx);
+                              }}
+                              className={`px-2.5 py-1 rounded-lg text-[10px] font-bold border transition-all flex items-center gap-1 ${
+                                !isWholesale 
+                                  ? 'bg-neutral-900 text-white border-neutral-900 shadow-2xs font-extrabold' 
+                                  : 'bg-neutral-50 text-neutral-600 border-neutral-200 hover:bg-neutral-100'
                               }`}
-                              title="Haz clic para alternar entre Precio Detal y Precio Mayorista"
                             >
-                              {isWholesale ? '🏢 Mayorista' : '🛒 Detal / PVP'}
+                              🛒 Precio Normal ({formatPrice(item.original_retail_price || productObj?.price || item.price)})
                             </button>
+
+                            <button
+                              type="button"
+                              onClick={() => {
+                                if (!isWholesale) handleToggleItemPriceType(idx);
+                              }}
+                              className={`px-2.5 py-1 rounded-lg text-[10px] font-bold border transition-all flex items-center gap-1 ${
+                                isWholesale 
+                                  ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs font-extrabold ring-2 ring-emerald-300 ring-offset-1' 
+                                  : 'bg-emerald-50 text-emerald-800 border-emerald-200 hover:bg-emerald-100 font-bold'
+                              }`}
+                            >
+                              🏢 Precio Mayorista ({formatPrice(productObj ? getEffectiveWholesalePrice(productObj) : Math.round((item.original_retail_price || item.price) * 0.8))})
+                            </button>
+
+                            <div className="flex items-center gap-1 ml-1 pl-2 border-l border-neutral-200">
+                              <span className="text-[10px] text-neutral-400 font-medium">Unitario:</span>
+                              <input
+                                type="number"
+                                min="0"
+                                value={item.price}
+                                onChange={(e) => handleUpdateItemUnitPrice(idx, Number(e.target.value))}
+                                className="w-24 bg-neutral-50 border border-neutral-300 rounded-md text-[10px] px-1.5 py-0.5 font-mono font-extrabold text-brand-black"
+                                title="Modificar precio unitario manualmente"
+                              />
+                            </div>
                           </div>
 
-                          <div className="flex items-center gap-2 mt-1">
-                            <span className="text-[10px] text-neutral-400 font-medium">Precio Unitario:</span>
-                            <input
-                              type="number"
-                              min="0"
-                              value={item.price}
-                              onChange={(e) => handleUpdateItemUnitPrice(idx, Number(e.target.value))}
-                              className="w-24 bg-neutral-50 border border-neutral-200 rounded-md text-[10px] px-1.5 py-0.5 font-mono font-bold text-brand-black"
-                            />
-                            {item.original_retail_price && item.original_retail_price > item.price && (
-                              <span className="text-[9px] text-emerald-700 font-bold">
-                                (Ahorro: {formatPrice(item.original_retail_price - item.price)})
-                              </span>
-                            )}
-                          </div>
+                          {isWholesale && item.original_retail_price && item.original_retail_price > item.price && (
+                            <p className="text-[9.5px] text-emerald-700 font-extrabold mt-1 flex items-center gap-1">
+                              ✨ Tarifa Mayorista Aplicada — Descuento de {formatPrice(item.original_retail_price - item.price)} por unidad
+                            </p>
+                          )}
 
                           {productObj?.colors && productObj.colors.length > 0 && (
                             <div className="flex items-center gap-1.5 mt-1">
-                              <span className="text-[10px] text-neutral-400">Acabado:</span>
+                              <span className="text-[10px] text-neutral-400 font-medium">Acabado:</span>
                               <select 
                                 value={item.color || productObj.colors[0].name}
                                 onChange={(e) => handleColorChange(idx, e.target.value)}
