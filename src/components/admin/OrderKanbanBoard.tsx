@@ -275,16 +275,18 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
 
                             {order.customer_tag && (
                               <span className={`px-2 py-0.5 text-[8.5px] font-extrabold rounded-full uppercase tracking-wider border shrink-0 flex items-center gap-1 ${
+                                order.customer_tag === 'Mayorista' || order.pricing_mode === 'mayorista' ? 'bg-emerald-100 text-emerald-950 border-emerald-300' :
                                 order.customer_tag === 'VIP' ? 'bg-amber-100 text-amber-950 border-amber-300' :
                                 order.customer_tag === 'Arquitecto' ? 'bg-indigo-100 text-indigo-950 border-indigo-300' :
                                 order.customer_tag === 'Residencial' ? 'bg-emerald-100 text-emerald-950 border-emerald-300' :
                                 'bg-purple-100 text-purple-950 border-purple-300'
                               }`}>
+                                {order.customer_tag === 'Mayorista' && <Building2 className="w-2 h-2 text-emerald-700" />}
                                 {order.customer_tag === 'VIP' && <Crown className="w-2 h-2 text-amber-600" />}
                                 {order.customer_tag === 'Arquitecto' && <Ruler className="w-2 h-2 text-indigo-600" />}
                                 {order.customer_tag === 'Residencial' && <Home className="w-2 h-2 text-emerald-600" />}
                                 {order.customer_tag === 'Proyecto Especial' && <Building2 className="w-2 h-2 text-purple-600" />}
-                                {order.customer_tag === 'VIP' ? 'VIP' : order.customer_tag === 'Arquitecto' ? 'Arq' : order.customer_tag === 'Residencial' ? 'Res' : 'Contract'}
+                                {order.customer_tag === 'Mayorista' ? 'Mayorista' : order.customer_tag === 'VIP' ? 'VIP' : order.customer_tag === 'Arquitecto' ? 'Arq' : order.customer_tag === 'Residencial' ? 'Res' : 'Contract'}
                               </span>
                             )}
                           </div>

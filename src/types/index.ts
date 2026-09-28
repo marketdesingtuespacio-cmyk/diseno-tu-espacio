@@ -83,6 +83,8 @@ export interface OrderItem {
   price: number;
   quantity: number;
   color?: string;
+  price_type?: 'retail' | 'wholesale';
+  original_retail_price?: number;
 }
 
 export interface Order {
@@ -91,7 +93,8 @@ export interface Order {
   customer_name: string;
   customer_email: string;
   customer_phone: string;
-  customer_tag?: 'VIP' | 'Arquitecto' | 'Residencial' | 'Proyecto Especial';
+  customer_tag?: 'VIP' | 'Arquitecto' | 'Residencial' | 'Proyecto Especial' | 'Mayorista';
+  pricing_mode?: 'detal' | 'mayorista' | 'mixto';
   shipping_address?: string;
   city?: string;
   carrier?: string;

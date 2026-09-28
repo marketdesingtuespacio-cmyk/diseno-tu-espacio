@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { 
   X, 
   Search, 
-  Plus, 
   Trash2, 
   ShoppingBag, 
   UserCheck, 
@@ -49,6 +48,9 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
   const [shippingCost, setShippingCost] = useState<number>(35000);
   const [discount, setDiscount] = useState<number>(0);
 
+  // Wholesale vs Retail Pricing Mode State ('detal' | 'mayorista' | 'mixto')
+  const [pricingMode, setPricingMode] = useState<'detal' | 'mayorista' | 'mixto'>('detal');
+
   // Payment & Status State
   const [paymentGateway, setPaymentGateway] = useState('Transferencia Directa Bancaria');
   const [paymentMethod, setPaymentMethod] = useState('Consignación / Efectivo Showroom');
@@ -65,9 +67,20 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
     p.category.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Add Product to Cart/Items list
-  const handleAddProduct = (product: Product) => {
-    const existingIndex = items.findIndex(i => i.product_id === product.id);
+  const getEffectiveWholesalePrice = (product: Product): number => {
+    if (product.wholesale_price && Number(product.wholesale_price) > 0) {
+      return Number(product.wholesale_price);
+    }
+    return Math.round(product.price * 0.8);
+  };
+
+  // Add Product to Cart/Items list with support for Wholesale and Retail prices
+  const handleAddProduct = (product: Product, forceWholesale?: boolean) => {
+    const isWholesale = forceWholesale !== undefined ? forceWholesale : (pricingMode === 'mayorista');
+    const unitPrice = isWholesale ? getEffectiveWholesalePrice(product) : product.price;
+    const targetPriceType = isWholesale ? 'wholesale' : 'retail';
+
+    const existingIndex = items.findIndex(i => i.product_id === product.id && i.price_type === targetPriceType);
     if (existingIndex !== -1) {
       const updated = [...items];
       updated[existingIndex].quantity += 1;
@@ -80,11 +93,65 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
           product_id: product.id,
           name: product.name,
           image: product.images[0] || '',
-          price: product.price,
+          price: unitPrice,
           quantity: 1,
-          color: selectedColor
+          color: selectedColor,
+          price_type: targetPriceType,
+          original_retail_price: product.price
         }
       ]);
+    }
+  };
+
+  const handleToggleItemPriceType = (index: number) => {
+    const updated = [...items];
+    const targetItem = updated[index];
+    const productObj = products.find(p => p.id === targetItem.product_id);
+    const newPriceType = targetItem.price_type === 'wholesale' ? 'retail' : 'wholesale';
+    
+    if (newPriceType === 'wholesale') {
+      targetItem.price_type = 'wholesale';
+      targetItem.price = productObj ? getEffectiveWholesalePrice(productObj) : Math.round((targetItem.original_retail_price || targetItem.price) * 0.8);
+    } else {
+      targetItem.price_type = 'retail';
+      targetItem.price = targetItem.original_retail_price || productObj?.price || targetItem.price;
+    }
+    setItems(updated);
+  };
+
+  const handleUpdateItemUnitPrice = (index: number, newPrice: number) => {
+    const updated = [...items];
+    updated[index].price = Math.max(0, newPrice);
+    setItems(updated);
+  };
+
+  const handleSetGlobalPricingMode = (mode: 'detal' | 'mayorista') => {
+    setPricingMode(mode);
+    if (items.length > 0) {
+      const updated = items.map(item => {
+        const productObj = products.find(p => p.id === item.product_id);
+        if (mode === 'mayorista') {
+          return {
+            ...item,
+            price_type: 'wholesale' as const,
+            price: productObj ? getEffectiveWholesalePrice(productObj) : Math.round((item.original_retail_price || item.price) * 0.8)
+          };
+        } else {
+          return {
+            ...item,
+            price_type: 'retail' as const,
+            price: item.original_retail_price || productObj?.price || item.price
+          };
+        }
+      });
+      setItems(updated);
+    }
+  };
+
+  const handleSelectCustomerTag = (tag: Order['customer_tag']) => {
+    setCustomerTag(tag);
+    if (tag === 'Mayorista') {
+      handleSetGlobalPricingMode('mayorista');
     }
   };
 
@@ -127,12 +194,18 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
 
     const orderRef = `DT-${Math.floor(100000 + Math.random() * 900000)}`;
 
+    const wholesaleCount = items.filter(i => i.price_type === 'wholesale').length;
+    const computedPricingMode: Order['pricing_mode'] = 
+      wholesaleCount === items.length ? 'mayorista' :
+      wholesaleCount === 0 ? 'detal' : 'mixto';
+
     await orderService.createOrder({
       order_ref: orderRef,
       customer_name: customerName.trim(),
       customer_email: customerEmail.trim() || 'cliente@diseñotuespacio.com',
       customer_phone: customerPhone.trim(),
       customer_tag: customerTag,
+      pricing_mode: computedPricingMode,
       shipping_address: shippingAddress.trim(),
       city: city.trim(),
       carrier,
@@ -185,16 +258,40 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
           
           {/* STEP 1: VISUAL PRODUCT SELECTOR */}
           <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-5 space-y-4 shadow-xs">
-            <div className="flex justify-between items-center border-b border-neutral-100 pb-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-neutral-100 pb-3 gap-2">
               <div className="flex items-center gap-2">
                 <PackageCheck className="w-4 h-4 text-brand-black" />
                 <h3 className="font-bold uppercase tracking-wider text-brand-black text-xs">
                   1. Selección Visual de Productos (Catálogo Directo)
                 </h3>
               </div>
-              <span className="text-[10px] uppercase font-bold text-neutral-500 font-mono">
-                {products.length} productos en inventario
-              </span>
+
+              {/* Pricing Mode Toggle: Detal vs Mayorista */}
+              <div className="flex items-center gap-1.5 bg-neutral-100 p-1 rounded-xl border border-neutral-200">
+                <span className="text-[9.5px] uppercase font-extrabold text-neutral-500 px-1.5">Tarifa:</span>
+                <button
+                  type="button"
+                  onClick={() => handleSetGlobalPricingMode('detal')}
+                  className={`px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase transition-all ${
+                    pricingMode === 'detal'
+                      ? 'bg-white text-brand-black shadow-xs font-extrabold'
+                      : 'text-neutral-500 hover:text-black'
+                  }`}
+                >
+                  🛒 Detal / PVP
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleSetGlobalPricingMode('mayorista')}
+                  className={`px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase transition-all ${
+                    pricingMode === 'mayorista'
+                      ? 'bg-emerald-600 text-white shadow-xs font-extrabold'
+                      : 'text-emerald-700 hover:bg-emerald-100/60'
+                  }`}
+                >
+                  🏢 Mayorista
+                </button>
+              </div>
             </div>
 
             {/* Search Input */}
@@ -210,36 +307,63 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
             </div>
 
             {/* Visual Product Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 max-h-52 overflow-y-auto pr-1">
-              {filteredProducts.map(product => (
-                <div 
-                  key={product.id}
-                  onClick={() => handleAddProduct(product)}
-                  className="bg-white border border-neutral-200/80 rounded-xl p-2.5 cursor-pointer hover:border-black hover:shadow-md transition-all flex flex-col justify-between group relative"
-                >
-                  <div className="aspect-[4/5] bg-neutral-100 rounded-lg mb-2 overflow-hidden relative border border-neutral-100">
-                    <img 
-                      src={product.images[0]} 
-                      alt={product.name} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <span className="absolute top-1.5 right-1.5 bg-black/80 backdrop-blur-md text-white text-[9px] font-mono font-bold px-1.5 py-0.5 rounded-md">
-                      {product.stock} u.
-                    </span>
-                  </div>
-
-                  <div>
-                    <h4 className="font-bold text-[11px] text-brand-black truncate">{product.name}</h4>
-                    <p className="text-[10px] text-neutral-500 truncate">{product.category}</p>
-                    <div className="flex justify-between items-center mt-1.5 pt-1.5 border-t border-neutral-100">
-                      <span className="font-mono font-bold text-brand-black">{formatPrice(product.price)}</span>
-                      <span className="bg-amber-100 text-amber-950 text-[9px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1 group-hover:bg-amber-400 transition-colors">
-                        <Plus className="w-3 h-3" /> Añadir
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 max-h-56 overflow-y-auto pr-1">
+              {filteredProducts.map(product => {
+                const wholesaleVal = getEffectiveWholesalePrice(product);
+                return (
+                  <div 
+                    key={product.id}
+                    className="bg-white border border-neutral-200/80 rounded-xl p-2.5 hover:border-black hover:shadow-md transition-all flex flex-col justify-between group relative"
+                  >
+                    <div 
+                      onClick={() => handleAddProduct(product)}
+                      className="aspect-[4/5] bg-neutral-100 rounded-lg mb-2 overflow-hidden relative border border-neutral-100 cursor-pointer"
+                    >
+                      <img 
+                        src={product.images[0]} 
+                        alt={product.name} 
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <span className="absolute top-1.5 right-1.5 bg-black/80 backdrop-blur-md text-white text-[9px] font-mono font-bold px-1.5 py-0.5 rounded-md">
+                        {product.stock} u.
                       </span>
                     </div>
+
+                    <div>
+                      <h4 className="font-bold text-[11px] text-brand-black truncate">{product.name}</h4>
+                      <p className="text-[10px] text-neutral-500 truncate">{product.category}</p>
+                      
+                      <div className="mt-1.5 pt-1.5 border-t border-neutral-100 space-y-1">
+                        <div className="flex justify-between items-center text-[10px]">
+                          <span className="text-neutral-500">Detal:</span>
+                          <span className="font-mono font-bold text-brand-black">{formatPrice(product.price)}</span>
+                        </div>
+                        <div className="flex justify-between items-center text-[10px]">
+                          <span className="text-emerald-700 font-bold">Mayor:</span>
+                          <span className="font-mono font-extrabold text-emerald-700">{formatPrice(wholesaleVal)}</span>
+                        </div>
+                        
+                        <div className="flex gap-1 pt-1">
+                          <button
+                            type="button"
+                            onClick={() => handleAddProduct(product, false)}
+                            className="flex-1 bg-neutral-100 hover:bg-neutral-200 text-neutral-800 text-[9px] font-bold py-1 rounded-md transition-colors"
+                          >
+                            + Detal
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => handleAddProduct(product, true)}
+                            className="flex-1 bg-emerald-100 hover:bg-emerald-200 text-emerald-900 text-[9px] font-extrabold py-1 rounded-md transition-colors"
+                          >
+                            + Mayor
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
@@ -259,16 +383,48 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
                 No has seleccionado ningún producto. Haz clic en un producto del panel superior para añadirlo.
               </div>
             ) : (
-              <div className="divide-y border border-neutral-200/80 rounded-xl max-h-44 overflow-y-auto bg-white">
+              <div className="divide-y border border-neutral-200/80 rounded-xl max-h-52 overflow-y-auto bg-white">
                 {items.map((item, idx) => {
                   const productObj = products.find(p => p.id === item.product_id);
+                  const isWholesale = item.price_type === 'wholesale';
+
                   return (
                     <div key={idx} className="p-3 flex items-center justify-between gap-4 hover:bg-neutral-50/80 transition-colors">
                       <div className="flex items-center gap-3">
                         <img src={item.image} alt={item.name} className="w-10 h-12 object-cover rounded-lg border bg-white shadow-xs" />
                         <div>
-                          <p className="font-bold text-brand-black">{item.name}</p>
-                          <p className="text-[10px] text-neutral-500 font-mono">{formatPrice(item.price)} unitario</p>
+                          <div className="flex items-center gap-2">
+                            <p className="font-bold text-brand-black">{item.name}</p>
+                            <button
+                              type="button"
+                              onClick={() => handleToggleItemPriceType(idx)}
+                              className={`text-[9px] font-extrabold px-2 py-0.5 rounded-full border transition-all ${
+                                isWholesale 
+                                  ? 'bg-emerald-100 text-emerald-950 border-emerald-300' 
+                                  : 'bg-neutral-100 text-neutral-700 border-neutral-300'
+                              }`}
+                              title="Haz clic para alternar entre Precio Detal y Precio Mayorista"
+                            >
+                              {isWholesale ? '🏢 Mayorista' : '🛒 Detal / PVP'}
+                            </button>
+                          </div>
+
+                          <div className="flex items-center gap-2 mt-1">
+                            <span className="text-[10px] text-neutral-400 font-medium">Precio Unitario:</span>
+                            <input
+                              type="number"
+                              min="0"
+                              value={item.price}
+                              onChange={(e) => handleUpdateItemUnitPrice(idx, Number(e.target.value))}
+                              className="w-24 bg-neutral-50 border border-neutral-200 rounded-md text-[10px] px-1.5 py-0.5 font-mono font-bold text-brand-black"
+                            />
+                            {item.original_retail_price && item.original_retail_price > item.price && (
+                              <span className="text-[9px] text-emerald-700 font-bold">
+                                (Ahorro: {formatPrice(item.original_retail_price - item.price)})
+                              </span>
+                            )}
+                          </div>
+
                           {productObj?.colors && productObj.colors.length > 0 && (
                             <div className="flex items-center gap-1.5 mt-1">
                               <span className="text-[10px] text-neutral-400">Acabado:</span>
@@ -409,6 +565,7 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
               </label>
               <div className="flex flex-wrap gap-2">
                 {[
+                  { tag: 'Mayorista', label: 'Cliente Mayorista / Distribuidor', color: 'bg-emerald-100/90 text-emerald-950 border-emerald-300' },
                   { tag: 'VIP', label: 'Cliente VIP', color: 'bg-amber-100/90 text-amber-950 border-amber-300' },
                   { tag: 'Arquitecto', label: 'Arquitecto / Diseñador', color: 'bg-indigo-100/90 text-indigo-950 border-indigo-300' },
                   { tag: 'Residencial', label: 'Cliente Residencial', color: 'bg-emerald-100/90 text-emerald-950 border-emerald-300' },
@@ -417,7 +574,7 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
                   <button
                     key={item.tag}
                     type="button"
-                    onClick={() => setCustomerTag(item.tag as any)}
+                    onClick={() => handleSelectCustomerTag(item.tag as any)}
                     className={`px-3 py-1.5 rounded-xl border text-xs font-bold transition-all shadow-2xs ${item.color} ${
                       customerTag === item.tag ? 'ring-2 ring-brand-black ring-offset-1 font-extrabold scale-105' : 'opacity-70 hover:opacity-100'
                     }`}
