@@ -4,8 +4,50 @@ import { productService } from './productService';
 import { activityLogService } from './activityLogService';
 
 const LOCAL_STORAGE_ORDERS_KEY = 'luxe_orders_cache_v2';
+const LOCAL_STORAGE_DELETED_ORDERS_KEY = 'luxe_deleted_orders_v1';
 
 let isOrderRealtimeSubscribed = false;
+
+export const getDeletedOrderKeys = (): Set<string> => {
+  const stored = localStorage.getItem(LOCAL_STORAGE_DELETED_ORDERS_KEY);
+  if (stored) {
+    try {
+      const parsed = JSON.parse(stored);
+      if (Array.isArray(parsed)) {
+        return new Set(parsed.map((s: string) => String(s).toLowerCase().trim()));
+      }
+    } catch {
+      // fallback
+    }
+  }
+  return new Set();
+};
+
+export const saveDeletedOrderKeys = (keys: Set<string>) => {
+  try {
+    localStorage.setItem(LOCAL_STORAGE_DELETED_ORDERS_KEY, JSON.stringify(Array.from(keys)));
+  } catch (err) {
+    console.warn('Error saving deleted order keys:', err);
+  }
+};
+
+export const addDeletedOrderKey = (...keys: (string | undefined)[]) => {
+  const current = getDeletedOrderKeys();
+  keys.forEach(k => {
+    if (k && k.trim().length > 0) {
+      current.add(k.toLowerCase().trim());
+    }
+  });
+  saveDeletedOrderKeys(current);
+};
+
+export const isOrderDeleted = (o: { id?: string; order_ref?: string }, deletedSet?: Set<string>): boolean => {
+  const set = deletedSet || getDeletedOrderKeys();
+  if (!set || set.size === 0) return false;
+  if (o.id && set.has(o.id.toLowerCase().trim())) return true;
+  if (o.order_ref && set.has(o.order_ref.toLowerCase().trim())) return true;
+  return false;
+};
 
 export const notifyOrdersUpdated = () => {
   window.dispatchEvent(new Event('orders_updated'));
@@ -141,25 +183,33 @@ const INITIAL_ORDERS: Order[] = [
 ];
 
 const getStoredOrders = (): Order[] => {
+  const deletedSet = getDeletedOrderKeys();
   const stored = localStorage.getItem(LOCAL_STORAGE_ORDERS_KEY);
   if (stored) {
     try {
-      return JSON.parse(stored);
+      const parsed = JSON.parse(stored);
+      if (Array.isArray(parsed)) {
+        return parsed.filter(o => !isOrderDeleted(o, deletedSet));
+      }
     } catch {
       // fallback
     }
   }
-  localStorage.setItem(LOCAL_STORAGE_ORDERS_KEY, JSON.stringify(INITIAL_ORDERS));
-  return INITIAL_ORDERS;
+  const initial = INITIAL_ORDERS.filter(o => !isOrderDeleted(o, deletedSet));
+  localStorage.setItem(LOCAL_STORAGE_ORDERS_KEY, JSON.stringify(initial));
+  return initial;
 };
 
 const saveStoredOrders = (orders: Order[]) => {
-  localStorage.setItem(LOCAL_STORAGE_ORDERS_KEY, JSON.stringify(orders));
+  const deletedSet = getDeletedOrderKeys();
+  const clean = orders.filter(o => !isOrderDeleted(o, deletedSet));
+  localStorage.setItem(LOCAL_STORAGE_ORDERS_KEY, JSON.stringify(clean));
 };
 
 export const orderService = {
   async getOrders(): Promise<Order[]> {
-    let localOrders = getStoredOrders();
+    const deletedSet = getDeletedOrderKeys();
+    let localOrders = getStoredOrders().filter(o => !isOrderDeleted(o, deletedSet));
 
     if (isSupabaseConfigured()) {
       try {
@@ -169,28 +219,28 @@ export const orderService = {
           .order('created_at', { ascending: false });
 
         if (!error && data) {
-          const supabaseOrders = data as Order[];
+          const supabaseOrders = (data as Order[]).filter(o => !isOrderDeleted(o, deletedSet));
           const mergedMap = new Map<string, Order>();
 
           // Remote Supabase orders take precedence (source of truth)
           supabaseOrders.forEach(o => {
-            const key = o.order_ref || o.id;
+            const key = o.order_ref || String(o.id);
             mergedMap.set(key, o);
           });
 
           // Merge local orders that are NOT demo orders unless they are real user orders
           localOrders.forEach(o => {
-            const key = o.order_ref || o.id;
+            const key = o.order_ref || String(o.id);
             if (!mergedMap.has(key)) {
               mergedMap.set(key, o);
             }
           });
 
           // Auto-sync unsynced local orders to Supabase
-          const remoteRefs = new Set(supabaseOrders.map(s => s.order_ref || s.id));
+          const remoteRefs = new Set(supabaseOrders.map(s => s.order_ref || String(s.id)));
           const unsynced = localOrders.filter(l => 
             !remoteRefs.has(l.order_ref) && 
-            !remoteRefs.has(l.id) && 
+            !remoteRefs.has(String(l.id)) && 
             !l.id.startsWith('ord-1') && 
             !l.id.startsWith('ord-2') && 
             !l.id.startsWith('ord-3')
@@ -400,6 +450,8 @@ export const orderService = {
   async deleteOrder(id: string): Promise<boolean> {
     const current = getStoredOrders();
     const targetOrder = current.find(o => o.id === id || o.order_ref === id);
+
+    addDeletedOrderKey(id, targetOrder?.order_ref);
 
     if (isSupabaseConfigured()) {
       try {

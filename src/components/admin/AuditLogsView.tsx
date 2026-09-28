@@ -160,7 +160,12 @@ export const AuditLogsView: React.FC = () => {
     }
   };
 
-  const sqlCode = `-- 1. CREAR TABLA DE AUDITORÍA Y REGISTRO DE CAMBIOS EN SUPABASE
+  const sqlCode = `-- =========================================================================
+-- SCRIPT DE CONFIGURACIÓN COMPLETA PARA SUPABASE (REALTIME Y MULTIUSUARIO)
+-- Copia y ejecuta este script en el SQL Editor de tu consola Supabase
+-- =========================================================================
+
+-- 1. TABLA DE REGISTRO DE ACTIVIDAD Y AUDITORÍA
 CREATE TABLE IF NOT EXISTS public.activity_logs (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   entity_type VARCHAR(50) NOT NULL,
@@ -175,10 +180,62 @@ CREATE TABLE IF NOT EXISTS public.activity_logs (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- 2. DESHABILITAR BLOQUEO RLS PARA PERMITIR GUARDADO MULTIUSUARIO EN TODAS LAS TABLAS
+-- 2. TABLA DE PEDIDOS Y ÓRDENES DE COMPRA
+CREATE TABLE IF NOT EXISTS public.orders (
+  id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
+  order_ref TEXT UNIQUE NOT NULL,
+  customer_name TEXT NOT NULL,
+  customer_email TEXT NOT NULL,
+  customer_phone TEXT,
+  customer_tag TEXT DEFAULT 'Residencial',
+  shipping_address TEXT,
+  city TEXT DEFAULT 'Bogotá D.C.',
+  carrier TEXT DEFAULT 'Servientrega',
+  tracking_number TEXT,
+  subtotal NUMERIC DEFAULT 0,
+  shipping_cost NUMERIC DEFAULT 0,
+  discount NUMERIC DEFAULT 0,
+  total NUMERIC DEFAULT 0,
+  status TEXT DEFAULT 'processing',
+  payment_method TEXT,
+  payment_gateway TEXT,
+  items_count INT DEFAULT 1,
+  items JSONB DEFAULT '[]'::jsonb,
+  notes TEXT,
+  updated_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_by TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 3. DESHABILITAR BLOQUEO RLS PARA SINCRO MULTIUSUARIO EN TIEMPO REAL
 ALTER TABLE public.activity_logs DISABLE ROW LEVEL SECURITY;
 ALTER TABLE public.orders DISABLE ROW LEVEL SECURITY;
-ALTER TABLE public.products DISABLE ROW LEVEL SECURITY;`;
+ALTER TABLE public.products DISABLE ROW LEVEL SECURITY;
+
+-- 4. AGREGAR TABLAS A PUBLICACIÓN REALTIME SIN ERRORES (EVITA ERROR 42710)
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_publication_tables 
+    WHERE pubname = 'supabase_realtime' AND schemaname = 'public' AND tablename = 'orders'
+  ) THEN
+    ALTER PUBLICATION supabase_realtime ADD TABLE public.orders;
+  END IF;
+
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_publication_tables 
+    WHERE pubname = 'supabase_realtime' AND schemaname = 'public' AND tablename = 'activity_logs'
+  ) THEN
+    ALTER PUBLICATION supabase_realtime ADD TABLE public.activity_logs;
+  END IF;
+
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_publication_tables 
+    WHERE pubname = 'supabase_realtime' AND schemaname = 'public' AND tablename = 'products'
+  ) THEN
+    ALTER PUBLICATION supabase_realtime ADD TABLE public.products;
+  END IF;
+END $$;`;
 
   return (
     <div className="space-y-6">
