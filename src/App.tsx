@@ -19,12 +19,17 @@ const MainContent: React.FC = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
 
-  // Automatically track page views in Google Analytics on route changes
+  // Automatically track page views in Google Analytics and Meta Pixel on route changes
   useEffect(() => {
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('config', 'G-GCG3E204JM', {
-        page_path: location.pathname + location.search
-      });
+    if (typeof window !== 'undefined') {
+      if ((window as any).gtag) {
+        (window as any).gtag('config', 'G-GCG3E204JM', {
+          page_path: location.pathname + location.search
+        });
+      }
+      if ((window as any).fbq) {
+        (window as any).fbq('track', 'PageView');
+      }
     }
   }, [location]);
 
