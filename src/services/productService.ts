@@ -737,139 +737,33 @@ export const productService = {
 
   async syncAllToSupabase(): Promise<{ success: boolean; count: number; message: string }> {
     if (!isSupabaseConfigured()) {
-      return { success: false, count: 0, message: 'Supabase no está configurado correctamente en las variables de entorno.' };
+      return { success: false, count: 0, message: 'Supabase no está configurado en las variables de entorno.' };
     }
 
-    const allProducts = getStoredProducts();
-    let updatedCount = 0;
-    let insertedCount = 0;
-
     try {
-      // 1. Fetch all existing records from Supabase DB
-      const { data: existingRows, error: fetchError } = await supabase.from('products').select('*');
+      // Unidirectional Single Source of Truth: Fetch canonical records from Supabase PostgreSQL
+      const { data: dbProducts, error } = await supabase.from('products').select('*').order('created_at', { ascending: false });
       
-      if (fetchError) {
-        console.error('Error fetching Supabase products:', fetchError);
-        return { 
-          success: false, 
-          count: 0, 
-          message: `Error al conectar con Supabase: ${fetchError.message}. Recuerda haber ejecutado el PASO 1 en el SQL Editor para crear las 7 columnas.` 
-        };
+      if (error) {
+        return { success: false, count: 0, message: `Error al consultar Supabase Nube: ${error.message}` };
       }
 
-      const dbRows = existingRows || [];
-      const usedDbIds = new Set<string>();
-
-      // 2. Iterate through authentic local products and update/insert
-      for (const p of allProducts) {
-        const calculatedBoxes = Number(p.boxes_count || Math.max(1, Math.ceil((p.stock || 0) / 10)));
-        const cleanPayload = {
-          name: p.name,
-          slug: p.slug,
-          brand_collection: p.brand_collection || 'Diseño Tu Espacio Collection',
-          description: p.description || '',
-          price: Number(p.price || 0),
-          original_price: p.original_price ? Number(p.original_price) : null,
-          category: p.category || 'Varios',
-          style: p.style || 'Contemporáneo',
-          stock: Number(p.stock || 0),
-          images: p.images || [],
-          colors: p.colors || [],
-          is_featured: !!p.is_featured,
-          dimensions: p.dimensions || '',
-          materials: p.materials || '',
-          sku: p.sku || '',
-          warehouse_stock: Number(p.warehouse_stock || 0),
-          store_stock: Number(p.store_stock || 0),
-          web_stock: Number(p.web_stock || 0),
-          boxes_count: calculatedBoxes,
-          warranty: p.warranty || '3 años',
-          inventory_status: p.inventory_status || 'Disponible',
-          wholesale_price: p.wholesale_price && Number(p.wholesale_price) > 0 ? Number(p.wholesale_price) : null,
-          wholesale_min_qty: Number(p.wholesale_min_qty || p.boxes_count || 5)
-        };
-
-        // Find matching row in Supabase DB by: 1) ID, 2) SKU, 3) Slug, 4) Name, 5) SKU in Name
-        let match = dbRows.find(row => !usedDbIds.has(row.id) && p.id && row.id === p.id);
-        if (!match && p.sku) {
-          const targetSku = p.sku.trim().toLowerCase();
-          match = dbRows.find(row => !usedDbIds.has(row.id) && row.sku && row.sku.trim().toLowerCase() === targetSku);
-        }
-        if (!match && p.slug) {
-          const targetSlug = p.slug.trim().toLowerCase();
-          match = dbRows.find(row => !usedDbIds.has(row.id) && row.slug && row.slug.trim().toLowerCase() === targetSlug);
-        }
-        if (!match && p.name) {
-          const targetName = p.name.trim().toLowerCase();
-          match = dbRows.find(row => !usedDbIds.has(row.id) && row.name && row.name.trim().toLowerCase() === targetName);
-        }
-        if (!match && p.sku) {
-          const targetSku = p.sku.trim().toLowerCase();
-          match = dbRows.find(row => !usedDbIds.has(row.id) && row.name && row.name.toLowerCase().includes(targetSku));
-        }
-
-        if (match) {
-          usedDbIds.add(match.id);
-          let { error: updateErr } = await supabase.from('products').update(cleanPayload).eq('id', match.id);
-          if (updateErr && (updateErr.message.includes('wholesale_price') || updateErr.message.includes('wholesale_min_qty') || updateErr.message.includes('column'))) {
-            const { wholesale_price, wholesale_min_qty, ...fallbackPayload } = cleanPayload;
-            const retryRes = await supabase.from('products').update(fallbackPayload).eq('id', match.id);
-            updateErr = retryRes.error;
-          }
-          if (!updateErr) updatedCount++;
-          else console.warn('Supabase update warning for id:', match.id, updateErr);
-        } else {
-          let { data: inserted, error: insertErr } = await supabase.from('products').insert([cleanPayload]).select();
-          if (insertErr && (insertErr.message.includes('wholesale_price') || insertErr.message.includes('wholesale_min_qty') || insertErr.message.includes('column'))) {
-            const { wholesale_price, wholesale_min_qty, ...fallbackPayload } = cleanPayload;
-            const retryRes = await supabase.from('products').insert([fallbackPayload]).select();
-            inserted = retryRes.data;
-            insertErr = retryRes.error;
-          }
-          if (!insertErr && inserted && inserted.length > 0) {
-            usedDbIds.add(inserted[0].id);
-            insertedCount++;
-          } else {
-            console.warn('Supabase insert warning for sku:', p.sku, insertErr);
-          }
-        }
+      if (dbProducts && dbProducts.length > 0) {
+        saveStoredProducts(dbProducts as Product[]);
+        clearProductCache();
+        notifyProductsUpdated();
       }
-
-      // 3. For any remaining unassigned rows in DB (e.g. rows that had NULL sku), populate them cleanly
-      const unassignedRows = dbRows.filter(row => !usedDbIds.has(row.id));
-      if (unassignedRows.length > 0) {
-        for (let i = 0; i < unassignedRows.length; i++) {
-          const row = unassignedRows[i];
-          const fallbackProd = allProducts[i % allProducts.length];
-          if (fallbackProd) {
-            const calculatedBoxes = Number(fallbackProd.boxes_count || Math.max(1, Math.ceil((fallbackProd.stock || 0) / 10)));
-            await supabase.from('products').update({
-              sku: fallbackProd.sku,
-              warehouse_stock: Number(fallbackProd.warehouse_stock || 0),
-              store_stock: Number(fallbackProd.store_stock || 0),
-              web_stock: Number(fallbackProd.web_stock || 0),
-              boxes_count: calculatedBoxes,
-              warranty: fallbackProd.warranty || '3 años',
-              inventory_status: fallbackProd.inventory_status || 'Disponible'
-            }).eq('id', row.id);
-            updatedCount++;
-          }
-        }
-      }
-
-      saveStoredProducts(allProducts);
 
       return {
         success: true,
-        count: updatedCount + insertedCount,
-        message: `¡Sincronización Confirmada con Supabase Nube! Se procesaron exitosamente ${updatedCount + insertedCount} registros de productos (${updatedCount} actualizados, ${insertedCount} insertados). Todos los SKUs, conteos de cajas, desgloses por ubicación (bodega/tienda/web) y garantías quedaron guardados exitosamente.`
+        count: dbProducts?.length || 0,
+        message: `¡Caché de cliente actualizada! Se sincronizaron exitosamente ${dbProducts?.length || 0} productos desde Supabase Nube (Fuente Única de Verdad).`
       };
     } catch (err: any) {
-      console.error('Supabase sync exception:', err);
       return {
         success: false,
         count: 0,
-        message: `Ocurrió una excepción durante la sincronización: ${err?.message || 'Error desconocido'}`
+        message: `Excepción al refrescar desde Supabase: ${err?.message || 'Error desconocido'}`
       };
     }
   }

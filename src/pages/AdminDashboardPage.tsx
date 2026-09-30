@@ -498,14 +498,14 @@ export const AdminDashboardPage: React.FC = () => {
 
   const handleSyncAllSupabase = async () => {
     setActionNotification({
-      title: 'Sincronizando con Supabase Nube...',
-      message: 'Enviando todos los productos y pedidos resguardados a la base de datos Supabase.'
+      title: 'Consultando Supabase Nube (Fuente Única)...',
+      message: 'Obteniendo la versión oficial maestra de inventarios y pedidos desde Supabase PostgreSQL.'
     });
     const prodRes = await productService.syncAllToSupabase();
     const orderRes = await orderService.syncAllToSupabase();
     await loadData();
     setActionNotification({
-      title: '¡Sincronización Total Exitosa!',
+      title: '¡Datos Sincronizados desde la Nube!',
       message: `${prodRes.message} | ${orderRes.message}`
     });
   };

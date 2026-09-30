@@ -482,82 +482,29 @@ export const orderService = {
       return { success: false, count: 0, message: 'Supabase no está configurado en las variables de entorno.' };
     }
 
-    const allOrders = getStoredOrders();
-    let updatedCount = 0;
-    let insertedCount = 0;
-
     try {
-      const { data: existingRows, error: fetchError } = await supabase.from('orders').select('*');
-      if (fetchError) {
-        return {
-          success: false,
-          count: 0,
-          message: `Error al obtener pedidos de Supabase: ${fetchError.message}`
-        };
+      // Unidirectional Single Source of Truth: Fetch canonical records from Supabase PostgreSQL
+      const { data: dbOrders, error } = await supabase.from('orders').select('*').order('created_at', { ascending: false });
+      
+      if (error) {
+        return { success: false, count: 0, message: `Error al consultar pedidos de Supabase: ${error.message}` };
       }
 
-      const dbRows = existingRows || [];
-      for (const item of allOrders) {
-        const payload = {
-          order_ref: item.order_ref,
-          customer_name: item.customer_name,
-          customer_email: item.customer_email,
-          customer_phone: item.customer_phone || '',
-          customer_tag: item.customer_tag || 'Residencial',
-          shipping_address: item.shipping_address || '',
-          city: item.city || 'Bogotá D.C.',
-          carrier: item.carrier || 'Servientrega',
-          tracking_number: item.tracking_number || '',
-          subtotal: Number(item.subtotal || item.total || 0),
-          shipping_cost: Number(item.shipping_cost || 0),
-          discount: Number(item.discount || 0),
-          total: Number(item.total || 0),
-          total_amount: Number(item.total || 0),
-          status: item.status || 'processing',
-          payment_method: item.payment_method || 'Tarjeta de Crédito',
-          payment_gateway: item.payment_gateway || 'Wompi Colombia',
-          items_count: Number(item.items_count || (item.items ? item.items.length : 1)),
-          items: item.items || [],
-          notes: item.notes || '',
-          created_at: item.created_at
-        };
-
-        const match = dbRows.find(row => 
-          (item.id && String(row.id) === String(item.id)) || 
-          (item.order_ref && row.order_ref === item.order_ref)
-        );
-
-        if (match) {
-          let { error: updErr } = await supabase.from('orders').update(payload).or(`id.eq.${match.id},order_ref.eq.${match.order_ref}`);
-          if (updErr && updErr.message.includes('total_amount')) {
-            const { total_amount, ...cleanPayload } = payload;
-            const retryRes = await supabase.from('orders').update(cleanPayload).or(`id.eq.${match.id},order_ref.eq.${match.order_ref}`);
-            updErr = retryRes.error;
-          }
-          if (!updErr) updatedCount++;
-        } else {
-          let { error: insErr } = await supabase.from('orders').insert([payload]);
-          if (insErr && insErr.message.includes('total_amount')) {
-            const { total_amount, ...cleanPayload } = payload;
-            const retryRes = await supabase.from('orders').insert([cleanPayload]);
-            insErr = retryRes.error;
-          }
-          if (!insErr) insertedCount++;
-        }
+      if (dbOrders && dbOrders.length > 0) {
+        saveStoredOrders(dbOrders as Order[]);
+        notifyOrdersUpdated();
       }
-
-      saveStoredOrders(allOrders);
 
       return {
         success: true,
-        count: updatedCount + insertedCount,
-        message: `¡Sincronización de Pedidos Exitosa! Se procesaron ${updatedCount + insertedCount} pedidos en Supabase (${updatedCount} actualizados, ${insertedCount} insertados).`
+        count: dbOrders?.length || 0,
+        message: `¡Caché de pedidos actualizada! Se sincronizaron ${dbOrders?.length || 0} pedidos desde Supabase Nube (Fuente Única de Verdad).`
       };
     } catch (err: any) {
       return {
         success: false,
         count: 0,
-        message: `Excepción al sincronizar pedidos: ${err?.message || 'Error desconocido'}`
+        message: `Excepción al refrescar pedidos desde Supabase: ${err?.message || 'Error desconocido'}`
       };
     }
   }
