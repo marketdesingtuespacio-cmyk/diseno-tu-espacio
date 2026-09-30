@@ -206,6 +206,26 @@ const saveStoredOrders = (orders: Order[]) => {
   localStorage.setItem(LOCAL_STORAGE_ORDERS_KEY, JSON.stringify(clean));
 };
 
+const buildSupabaseOrderPayload = (orderData: Partial<Order>) => {
+  const fullAddress = orderData.city && orderData.shipping_address && !orderData.shipping_address.includes(orderData.city)
+    ? `${orderData.shipping_address}, ${orderData.city}`
+    : (orderData.shipping_address || '');
+
+  return {
+    order_ref: orderData.order_ref,
+    customer_name: orderData.customer_name || 'Cliente',
+    customer_email: orderData.customer_email || '',
+    customer_phone: orderData.customer_phone || '',
+    shipping_address: fullAddress,
+    total_amount: Number(orderData.total || orderData.subtotal || 0),
+    status: orderData.status || 'processing',
+    payment_method: orderData.payment_method || 'Tarjeta de Crédito',
+    payment_gateway: orderData.payment_gateway || 'Wompi Colombia',
+    items: orderData.items || [],
+    created_at: orderData.created_at || new Date().toISOString()
+  };
+};
+
 export const orderService = {
   async getOrders(): Promise<Order[]> {
     const deletedSet = getDeletedOrderKeys();
@@ -219,7 +239,14 @@ export const orderService = {
           .order('created_at', { ascending: false });
 
         if (!error && data) {
-          const supabaseOrders = (data as Order[]).filter(o => !isOrderDeleted(o, deletedSet));
+          const supabaseOrders = (data as any[]).map(o => ({
+            ...o,
+            id: String(o.id),
+            total: Number(o.total_amount || o.total || 0),
+            subtotal: Number(o.subtotal || o.total_amount || o.total || 0),
+            items_count: Number(o.items_count || (o.items && Array.isArray(o.items) ? o.items.reduce((acc: number, i: any) => acc + (i.quantity || 1), 0) : 1)),
+          })).filter(o => !isOrderDeleted(o, deletedSet));
+
           const mergedMap = new Map<string, Order>();
 
           // Remote Supabase orders take precedence (source of truth)
@@ -250,34 +277,8 @@ export const orderService = {
             (async () => {
               for (const item of unsynced) {
                 try {
-                  const payload = {
-                    order_ref: item.order_ref,
-                    customer_name: item.customer_name,
-                    customer_email: item.customer_email,
-                    customer_phone: item.customer_phone || '',
-                    customer_tag: item.customer_tag || 'Residencial',
-                    shipping_address: item.shipping_address || '',
-                    city: item.city || 'Bogotá D.C.',
-                    carrier: item.carrier || 'Servientrega',
-                    tracking_number: item.tracking_number || '',
-                    subtotal: Number(item.subtotal || item.total || 0),
-                    shipping_cost: Number(item.shipping_cost || 0),
-                    discount: Number(item.discount || 0),
-                    total: Number(item.total || 0),
-                    total_amount: Number(item.total || 0),
-                    status: item.status || 'processing',
-                    payment_method: item.payment_method || 'Tarjeta de Crédito',
-                    payment_gateway: item.payment_gateway || 'Wompi Colombia',
-                    items_count: Number(item.items_count || (item.items ? item.items.length : 1)),
-                    items: item.items || [],
-                    notes: item.notes || '',
-                    created_at: item.created_at
-                  };
-                  const { error: insErr } = await supabase.from('orders').insert([payload]);
-                  if (insErr) {
-                    const { total_amount, ...cleanPayload } = payload;
-                    await supabase.from('orders').insert([cleanPayload]);
-                  }
+                  const payload = buildSupabaseOrderPayload(item);
+                  await supabase.from('orders').insert([payload]);
                 } catch {
                   // Background sync ignore
                 }
@@ -318,29 +319,7 @@ export const orderService = {
 
     if (isSupabaseConfigured()) {
       try {
-        const payload = {
-          order_ref: orderData.order_ref,
-          customer_name: orderData.customer_name,
-          customer_email: orderData.customer_email,
-          customer_phone: orderData.customer_phone || '',
-          customer_tag: orderData.customer_tag || 'Residencial',
-          shipping_address: orderData.shipping_address || '',
-          city: orderData.city || 'Bogotá D.C.',
-          carrier: orderData.carrier || 'Servientrega',
-          tracking_number: orderData.tracking_number || '',
-          subtotal: Number(orderData.subtotal || orderData.total || 0),
-          shipping_cost: Number(orderData.shipping_cost || 0),
-          discount: Number(orderData.discount || 0),
-          total: Number(orderData.total || 0),
-          total_amount: Number(orderData.total || 0),
-          status: orderData.status || 'processing',
-          payment_method: orderData.payment_method || 'Tarjeta de Crédito',
-          payment_gateway: orderData.payment_gateway || 'Wompi Colombia',
-          items_count: Number(orderData.items_count || (orderData.items ? orderData.items.length : 1)),
-          items: orderData.items || [],
-          notes: orderData.notes || '',
-          created_at: newOrder.created_at
-        };
+        const payload = buildSupabaseOrderPayload(orderData);
 
         const { data, error } = await supabase
           .from('orders')
@@ -348,20 +327,7 @@ export const orderService = {
           .select();
 
         if (error) {
-          console.warn('Supabase primary order insert warning:', error.message);
-          // Retry without total_amount if column error
-          const { total_amount, ...cleanPayload } = payload;
-          const { data: retryData, error: retryErr } = await supabase
-            .from('orders')
-            .insert([cleanPayload])
-            .select();
-
-          if (!retryErr && retryData && retryData.length > 0) {
-            console.log('✅ Pedido guardado exitosamente en Supabase Nube:', retryData[0].order_ref);
-            if (retryData[0].id) newOrder.id = String(retryData[0].id);
-          } else if (retryErr) {
-            console.error('❌ Error al guardar pedido en Supabase:', retryErr);
-          }
+          console.error('❌ Error al guardar pedido en Supabase:', error.message);
         } else if (data && data.length > 0) {
           console.log('✅ Pedido guardado exitosamente en Supabase Nube:', data[0].order_ref);
           if (data[0].id) newOrder.id = String(data[0].id);
