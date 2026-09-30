@@ -242,9 +242,25 @@ export const orderService = {
           const supabaseOrders = (data as any[]).map(o => ({
             ...o,
             id: String(o.id),
+            order_ref: o.order_ref || `DT-${String(o.id).substring(0, 6)}`,
+            customer_name: o.customer_name || 'Cliente',
+            customer_email: o.customer_email || 'cliente@diseñotuespacio.com',
+            customer_phone: o.customer_phone || '',
+            customer_tag: o.customer_tag || 'Residencial',
+            shipping_address: o.shipping_address || '',
+            city: o.city || (o.shipping_address ? o.shipping_address.split(',').pop()?.trim() : '') || 'Bogotá D.C.',
+            carrier: o.carrier || 'Servientrega',
+            tracking_number: o.tracking_number || '',
             total: Number(o.total_amount || o.total || 0),
             subtotal: Number(o.subtotal || o.total_amount || o.total || 0),
+            shipping_cost: Number(o.shipping_cost || 0),
+            discount: Number(o.discount || 0),
+            payment_method: o.payment_method || 'Tarjeta de Crédito',
+            payment_gateway: o.payment_gateway || 'Wompi Colombia',
+            status: o.status || 'processing',
+            items: o.items || [],
             items_count: Number(o.items_count || (o.items && Array.isArray(o.items) ? o.items.reduce((acc: number, i: any) => acc + (i.quantity || 1), 0) : 1)),
+            created_at: o.created_at || new Date().toISOString()
           })).filter(o => !isOrderDeleted(o, deletedSet));
 
           const mergedMap = new Map<string, Order>();

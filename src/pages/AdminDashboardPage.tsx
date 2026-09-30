@@ -397,8 +397,8 @@ export const AdminDashboardPage: React.FC = () => {
     // 1. Free text search
     if (orderFilters.searchQuery.trim()) {
       const q = orderFilters.searchQuery.toLowerCase().trim();
-      const matchRef = o.order_ref.toLowerCase().includes(q);
-      const matchName = o.customer_name.toLowerCase().includes(q);
+      const matchRef = (o.order_ref || '').toLowerCase().includes(q);
+      const matchName = (o.customer_name || '').toLowerCase().includes(q);
       const matchEmail = (o.customer_email || '').toLowerCase().includes(q);
       const matchPhone = (o.customer_phone || '').toLowerCase().includes(q);
       const matchCarrier = (o.carrier || '').toLowerCase().includes(q);
@@ -438,7 +438,8 @@ export const AdminDashboardPage: React.FC = () => {
 
     // 6. Date Range Filter
     if (orderFilters.dateRange !== 'all') {
-      const orderDateStr = o.created_at.split(' ')[0];
+      const rawDateStr = o.created_at || '';
+      const orderDateStr = rawDateStr.includes('T') ? rawDateStr.split('T')[0] : rawDateStr.split(' ')[0];
       const now = new Date();
 
       if (orderFilters.dateRange === 'today') {
