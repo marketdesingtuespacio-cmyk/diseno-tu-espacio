@@ -14,13 +14,14 @@ import { CheckoutPage } from './pages/CheckoutPage';
 import { LoginPage } from './pages/LoginPage';
 import { AdminDashboardPage } from './pages/AdminDashboardPage';
 import { MaintenancePage } from './pages/MaintenancePage';
+import { WhatsAppButton } from './components/WhatsAppButton';
 import { ProtectedRoute } from './components/ProtectedRoute';
 
 // ----------------------------------------------------------------------
 // INTERRUPTOR DE MANTENIMIENTO GLOBAL
 // Cambiar a `false` cuando finalice el mantenimiento de la base de datos
 // ----------------------------------------------------------------------
-const IS_MAINTENANCE_MODE = true;
+const IS_MAINTENANCE_MODE = false;
 
 const MaintenanceGuard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user } = useAuth();
@@ -100,6 +101,7 @@ export const App: React.FC = () => {
                 <MainContent />
 
                 <Footer />
+                <WhatsAppButton phoneNumber="573113477785" />
               </div>
             </MaintenanceGuard>
           </Router>
