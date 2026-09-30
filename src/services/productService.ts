@@ -149,9 +149,17 @@ const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Produ
     ? Number(p.wholesale_min_qty)
     : (fallback?.wholesale_min_qty ? Number(fallback.wholesale_min_qty) : (p.boxes_count && p.boxes_count > 0 ? p.boxes_count : 5));
 
-  const resolvedImages = (p.images && p.images.length > 0)
+  let resolvedImages = (p.images && p.images.length > 0)
     ? p.images
     : (fallback?.images && fallback.images.length > 0 ? fallback.images : []);
+
+  const isCuadros = isCategoryMatch(p.category || fallback?.category, 'Cuadros');
+  if (isCuadros && resolvedImages.some(img => typeof img === 'string' && img.includes('cat_pie'))) {
+    resolvedImages = [
+      'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&q=80&w=1000',
+      'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&q=80&w=1000'
+    ];
+  }
 
   const resolvedUpdatedAt = p.updated_at || fallback?.updated_at || p.created_at;
   const activeUser = activityLogService.getCurrentUser ? activityLogService.getCurrentUser() : null;
