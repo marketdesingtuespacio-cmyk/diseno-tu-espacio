@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import { CurrencyProvider } from './context/CurrencyContext';
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { CartDrawer } from './components/CartDrawer';
@@ -21,6 +21,30 @@ import { ProtectedRoute } from './components/ProtectedRoute';
 // Cambiar a `false` cuando finalice el mantenimiento de la base de datos
 // ----------------------------------------------------------------------
 const IS_MAINTENANCE_MODE = true;
+
+const MaintenanceGuard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { user } = useAuth();
+  const location = useLocation();
+
+  const isAdmin = user?.role === 'admin';
+  const isLoginPage = location.pathname === '/login';
+
+  // Si está en mantenimiento, bloquear a todos los usuarios EXCEPTO administradores autenticados o la página de login
+  if (IS_MAINTENANCE_MODE && !isAdmin && !isLoginPage) {
+    return <MaintenancePage />;
+  }
+
+  return (
+    <>
+      {IS_MAINTENANCE_MODE && isAdmin && (
+        <div className="bg-amber-600 text-white text-xs font-bold py-2 px-4 text-center sticky top-0 z-[100] flex items-center justify-center gap-2 shadow-md">
+          <span>⚠️ MODO MANTENIMIENTO ACTIVO — Acceso Exclusivo de Administrador</span>
+        </div>
+      )}
+      {children}
+    </>
+  );
+};
 
 const MainContent: React.FC = () => {
   const location = useLocation();
@@ -63,23 +87,21 @@ const MainContent: React.FC = () => {
 };
 
 export const App: React.FC = () => {
-  if (IS_MAINTENANCE_MODE) {
-    return <MaintenancePage />;
-  }
-
   return (
     <AuthProvider>
       <CurrencyProvider>
         <CartProvider>
           <Router>
-            <div className="min-h-screen flex flex-col bg-brand-white text-brand-black selection:bg-brand-black selection:text-white">
-              <Navbar />
-              <CartDrawer />
-              
-              <MainContent />
+            <MaintenanceGuard>
+              <div className="min-h-screen flex flex-col bg-brand-white text-brand-black selection:bg-brand-black selection:text-white">
+                <Navbar />
+                <CartDrawer />
+                
+                <MainContent />
 
-              <Footer />
-            </div>
+                <Footer />
+              </div>
+            </MaintenanceGuard>
           </Router>
         </CartProvider>
       </CurrencyProvider>
