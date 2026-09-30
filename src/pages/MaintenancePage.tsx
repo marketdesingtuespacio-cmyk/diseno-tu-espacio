@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, ShieldAlert, Database, Wrench } from 'lucide-react';
+import { Clock, Database } from 'lucide-react';
 import { WhatsAppButton } from '../components/WhatsAppButton';
 
 export const MaintenancePage: React.FC = () => {
