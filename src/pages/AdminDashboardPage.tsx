@@ -12,7 +12,7 @@ import {
   CheckCircle2
 } from 'lucide-react';
 import { Product, Appointment, Order, Coupon, UserProfile } from '../types';
-import { productService, subscribeToProducts } from '../services/productService';
+import { productService, subscribeToProducts, isCategoryMatch } from '../services/productService';
 import { appointmentService } from '../services/appointmentService';
 import { orderService, subscribeToOrders } from '../services/orderService';
 import { couponService } from '../services/couponService';
@@ -347,7 +347,7 @@ export const AdminDashboardPage: React.FC = () => {
     }
 
     // 2. Category Filter
-    if (productFilters.category !== 'all' && p.category !== productFilters.category) {
+    if (!isCategoryMatch(p.category, productFilters.category)) {
       return false;
     }
 

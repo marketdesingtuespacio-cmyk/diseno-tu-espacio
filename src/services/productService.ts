@@ -94,6 +94,30 @@ const saveStoredProducts = (products: Product[]) => {
   }
 };
 
+export const isCategoryMatch = (prodCat?: string, filterCat?: string): boolean => {
+  if (!filterCat || filterCat === 'all') return true;
+  if (!prodCat) return false;
+
+  const p = prodCat.toLowerCase().trim();
+  const f = filterCat.toLowerCase().trim();
+
+  if (p === f) return true;
+
+  // Normalize Cuadros variations (Cuadros, Cuadros & Espejos, Cuadros y Espejos)
+  const isCuadrosFilter = f === 'cuadros' || f.includes('cuadro');
+  const isCuadrosProd = p === 'cuadros' || p.includes('cuadro');
+
+  if (isCuadrosFilter && isCuadrosProd) return true;
+
+  // Normalize Espejos variations
+  const isEspejosFilter = f === 'espejos' || f.includes('espejo');
+  const isEspejosProd = p === 'espejos' || p.includes('espejo');
+
+  if (isEspejosFilter && isEspejosProd) return true;
+
+  return false;
+};
+
 const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Product => {
   let fallback: Product | undefined;
 
@@ -125,13 +149,19 @@ const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Produ
     ? Number(p.wholesale_min_qty)
     : (fallback?.wholesale_min_qty ? Number(fallback.wholesale_min_qty) : (p.boxes_count && p.boxes_count > 0 ? p.boxes_count : 5));
 
+  const resolvedImages = (p.images && p.images.length > 0)
+    ? p.images
+    : (fallback?.images && fallback.images.length > 0 ? fallback.images : []);
+
   const resolvedUpdatedAt = p.updated_at || fallback?.updated_at || p.created_at;
   const activeUser = activityLogService.getCurrentUser ? activityLogService.getCurrentUser() : null;
   const activeUserLabel = activeUser ? `${activeUser.name} (${activeUser.email})` : 'Administración';
   const resolvedUpdatedBy = p.updated_by || fallback?.updated_by || activeUserLabel;
 
   return {
+    ...fallback,
     ...p,
+    images: resolvedImages,
     sku: (p.sku && p.sku.trim().length > 0) ? p.sku : (fallback?.sku || ''),
     warehouse_stock: p.warehouse_stock !== undefined ? p.warehouse_stock : (fallback?.warehouse_stock ?? 0),
     store_stock: p.store_stock !== undefined ? p.store_stock : (fallback?.store_stock ?? 0),
@@ -193,8 +223,7 @@ const applyProductFilters = (products: Product[], filters?: Partial<ProductFilte
 
   if (filters) {
     if (filters.category && filters.category !== 'all') {
-      const catLower = filters.category.toLowerCase().trim();
-      result = result.filter(p => p.category && p.category.toLowerCase().trim() === catLower);
+      result = result.filter(p => isCategoryMatch(p.category, filters.category));
     }
     if (filters.style && filters.style !== 'all') {
       result = result.filter(p => p.style === filters.style);
