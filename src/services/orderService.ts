@@ -201,9 +201,13 @@ const getStoredOrders = (): Order[] => {
 };
 
 const saveStoredOrders = (orders: Order[]) => {
-  const deletedSet = getDeletedOrderKeys();
-  const clean = orders.filter(o => !isOrderDeleted(o, deletedSet));
-  localStorage.setItem(LOCAL_STORAGE_ORDERS_KEY, JSON.stringify(clean));
+  try {
+    const deletedSet = getDeletedOrderKeys();
+    const clean = orders.filter(o => !isOrderDeleted(o, deletedSet));
+    localStorage.setItem(LOCAL_STORAGE_ORDERS_KEY, JSON.stringify(clean));
+  } catch (err) {
+    console.warn('Error saving orders to localStorage:', err);
+  }
 };
 
 const buildSupabaseOrderPayload = (orderData: Partial<Order>) => {
@@ -228,9 +232,6 @@ const buildSupabaseOrderPayload = (orderData: Partial<Order>) => {
 
 export const orderService = {
   async getOrders(): Promise<Order[]> {
-    const deletedSet = getDeletedOrderKeys();
-    let localOrders = getStoredOrders().filter(o => !isOrderDeleted(o, deletedSet));
-
     if (isSupabaseConfigured()) {
       try {
         const { data, error } = await supabase
@@ -261,59 +262,18 @@ export const orderService = {
             items: o.items || [],
             items_count: Number(o.items_count || (o.items && Array.isArray(o.items) ? o.items.reduce((acc: number, i: any) => acc + (i.quantity || 1), 0) : 1)),
             created_at: o.created_at || new Date().toISOString()
-          })).filter(o => !isOrderDeleted(o, deletedSet));
+          }));
 
-          const mergedMap = new Map<string, Order>();
-
-          // Remote Supabase orders take precedence (source of truth)
-          supabaseOrders.forEach(o => {
-            const key = o.order_ref || String(o.id);
-            mergedMap.set(key, o);
-          });
-
-          // Merge local orders that are NOT demo orders unless they are real user orders
-          localOrders.forEach(o => {
-            const key = o.order_ref || String(o.id);
-            if (!mergedMap.has(key)) {
-              mergedMap.set(key, o);
-            }
-          });
-
-          // Auto-sync unsynced local orders to Supabase
-          const remoteRefs = new Set(supabaseOrders.map(s => s.order_ref || String(s.id)));
-          const unsynced = localOrders.filter(l => 
-            !remoteRefs.has(l.order_ref) && 
-            !remoteRefs.has(String(l.id)) && 
-            !l.id.startsWith('ord-1') && 
-            !l.id.startsWith('ord-2') && 
-            !l.id.startsWith('ord-3')
-          );
-
-          if (unsynced.length > 0) {
-            (async () => {
-              for (const item of unsynced) {
-                try {
-                  const payload = buildSupabaseOrderPayload(item);
-                  await supabase.from('orders').insert([payload]);
-                } catch {
-                  // Background sync ignore
-                }
-              }
-            })();
-          }
-
-          const combined = Array.from(mergedMap.values()).sort((a, b) => 
-            new Date(b.created_at || '').getTime() - new Date(a.created_at || '').getTime()
-          );
-          saveStoredOrders(combined);
-          return combined;
+          saveStoredOrders(supabaseOrders);
+          return supabaseOrders;
         }
       } catch (err) {
         console.warn('Supabase fetch orders failed, using fallback cache', err);
       }
     }
 
-    return localOrders;
+    const deletedSet = getDeletedOrderKeys();
+    return getStoredOrders().filter(o => !isOrderDeleted(o, deletedSet));
   },
 
   async createOrder(orderData: Omit<Order, 'id'>): Promise<Order> {
@@ -465,7 +425,7 @@ export const orderService = {
     }
 
     try {
-      // Unidirectional Single Source of Truth: Fetch canonical records from Supabase PostgreSQL
+      localStorage.removeItem(LOCAL_STORAGE_DELETED_ORDERS_KEY);
       const { data: dbOrders, error } = await supabase.from('orders').select('*').order('created_at', { ascending: false });
       
       if (error) {
