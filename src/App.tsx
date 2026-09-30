@@ -13,7 +13,14 @@ import { BookingPage } from './pages/BookingPage';
 import { CheckoutPage } from './pages/CheckoutPage';
 import { LoginPage } from './pages/LoginPage';
 import { AdminDashboardPage } from './pages/AdminDashboardPage';
+import { MaintenancePage } from './pages/MaintenancePage';
 import { ProtectedRoute } from './components/ProtectedRoute';
+
+// ----------------------------------------------------------------------
+// INTERRUPTOR DE MANTENIMIENTO GLOBAL
+// Cambiar a `false` cuando finalice el mantenimiento de la base de datos
+// ----------------------------------------------------------------------
+const IS_MAINTENANCE_MODE = true;
 
 const MainContent: React.FC = () => {
   const location = useLocation();
@@ -56,6 +63,10 @@ const MainContent: React.FC = () => {
 };
 
 export const App: React.FC = () => {
+  if (IS_MAINTENANCE_MODE) {
+    return <MaintenancePage />;
+  }
+
   return (
     <AuthProvider>
       <CurrencyProvider>
