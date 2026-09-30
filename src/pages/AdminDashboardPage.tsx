@@ -8,13 +8,14 @@ import {
   LayoutGrid,
   List,
   Download,
+  Upload,
   X,
   CheckCircle2
 } from 'lucide-react';
 import { Product, Appointment, Order, Coupon, UserProfile } from '../types';
-import { productService, subscribeToProducts, isCategoryMatch } from '../services/productService';
+import { productService, subscribeToProducts, isCategoryMatch, getDeletedProductKeys } from '../services/productService';
 import { appointmentService } from '../services/appointmentService';
-import { orderService, subscribeToOrders } from '../services/orderService';
+import { orderService, subscribeToOrders, getDeletedOrderKeys } from '../services/orderService';
 import { couponService } from '../services/couponService';
 import { authService } from '../services/authService';
 import { useCurrency } from '../context/CurrencyContext';
@@ -498,14 +499,83 @@ export const AdminDashboardPage: React.FC = () => {
   const handleSyncAllSupabase = async () => {
     setActionNotification({
       title: 'Sincronizando con Supabase Nube...',
-      message: 'Enviando todos los productos con sus SKUs, existencias por ubicación y garantías a la base de datos Supabase.'
+      message: 'Enviando todos los productos y pedidos resguardados a la base de datos Supabase.'
     });
-    const res = await productService.syncAllToSupabase();
+    const prodRes = await productService.syncAllToSupabase();
+    const orderRes = await orderService.syncAllToSupabase();
     await loadData();
     setActionNotification({
       title: '¡Sincronización Total Exitosa!',
-      message: res.message
+      message: `${prodRes.message} | ${orderRes.message}`
     });
+  };
+
+  const handleExportBackupJSON = () => {
+    try {
+      const dataToBackup = {
+        timestamp: new Date().toISOString(),
+        products,
+        orders,
+        deletedProductKeys: Array.from(getDeletedProductKeys()),
+        deletedOrderKeys: Array.from(getDeletedOrderKeys()),
+        version: '1.0'
+      };
+      const jsonStr = JSON.stringify(dataToBackup, null, 2);
+      const blob = new Blob([jsonStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `backup_completo_disenotuespacio_${new Date().toISOString().slice(0, 10)}.json`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (err: any) {
+      alert('Error exportando copia de seguridad JSON: ' + err.message);
+    }
+  };
+
+  const handleImportBackupJSON = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      try {
+        const content = e.target?.result as string;
+        const parsed = JSON.parse(content);
+
+        if (!parsed.products && !parsed.orders) {
+          alert('El archivo no contiene un formato válido de copia de seguridad.');
+          return;
+        }
+
+        if (Array.isArray(parsed.products) && parsed.products.length > 0) {
+          localStorage.setItem('luxe_products_v16', JSON.stringify(parsed.products));
+        }
+
+        if (Array.isArray(parsed.orders) && parsed.orders.length > 0) {
+          localStorage.setItem('luxe_orders_cache_v2', JSON.stringify(parsed.orders));
+        }
+
+        setActionNotification({
+          title: 'Copia Restaurada Localmente',
+          message: 'Datos cargados localmente. Iniciando sincronización a la nube...'
+        });
+
+        await productService.syncAllToSupabase();
+        await orderService.syncAllToSupabase();
+        await loadData();
+
+        setActionNotification({
+          title: '¡Restauración Completa!',
+          message: `Se restauraron exitosamente ${parsed.products?.length || 0} productos y ${parsed.orders?.length || 0} pedidos localmente y en Supabase Nube.`
+        });
+      } catch (err: any) {
+        alert('Error importando copia de seguridad: ' + err.message);
+      }
+    };
+    reader.readAsText(file);
   };
 
   return (
@@ -590,23 +660,41 @@ export const AdminDashboardPage: React.FC = () => {
                 </p>
               </div>
 
-              <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
+              <div className="flex items-center gap-2 flex-wrap w-full sm:w-auto justify-end">
                 <button
                   onClick={handleSyncAllSupabase}
-                  className="bg-sky-600 text-white font-bold text-xs uppercase tracking-wider py-2.5 px-4 rounded-xl hover:bg-sky-700 shadow-sm transition-all flex items-center gap-2 shrink-0"
-                  title="Forzar actualización completa de SKU, existencias por ubicación y garantías en Supabase Nube"
+                  className="bg-sky-600 text-white font-bold text-xs uppercase tracking-wider py-2.5 px-3 rounded-xl hover:bg-sky-700 shadow-sm transition-all flex items-center gap-1.5 shrink-0"
+                  title="Forzar actualización completa de Productos y Pedidos a Supabase Nube"
                 >
-                  <RefreshCw className="w-4 h-4" />
-                  <span>Sincronizar Supabase</span>
+                  <RefreshCw className="w-3.5 h-3.5" />
+                  <span>Sincronizar Nube</span>
                 </button>
 
                 <button
-                  onClick={handleExportInventoryCSV}
-                  className="bg-[#C6F432] text-black font-extrabold text-xs uppercase tracking-wider py-2.5 px-4 rounded-xl hover:bg-[#b5e028] shadow-sm transition-all flex items-center gap-2 shrink-0"
-                  title="Exportar inventario completo con todas las casillas a CSV"
+                  onClick={handleExportBackupJSON}
+                  className="bg-purple-700 text-white font-bold text-xs uppercase tracking-wider py-2.5 px-3 rounded-xl hover:bg-purple-800 shadow-sm transition-all flex items-center gap-1.5 shrink-0"
+                  title="Descargar copia de seguridad completa (.json) con todos los productos, fotos y pedidos"
                 >
-                  <Download className="w-4 h-4 stroke-[2.5]" />
-                  <span>Exportar Inventario</span>
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Copia JSON</span>
+                </button>
+
+                <label
+                  className="bg-indigo-700 text-white font-bold text-xs uppercase tracking-wider py-2.5 px-3 rounded-xl hover:bg-indigo-800 shadow-sm transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
+                  title="Restaurar copia de seguridad desde un archivo .json"
+                >
+                  <Upload className="w-3.5 h-3.5" />
+                  <span>Restaurar JSON</span>
+                  <input type="file" accept=".json" onChange={handleImportBackupJSON} className="hidden" />
+                </label>
+
+                <button
+                  onClick={handleExportInventoryCSV}
+                  className="bg-[#C6F432] text-black font-extrabold text-xs uppercase tracking-wider py-2.5 px-3 rounded-xl hover:bg-[#b5e028] shadow-sm transition-all flex items-center gap-1.5 shrink-0"
+                  title="Exportar inventario completo a CSV"
+                >
+                  <Download className="w-3.5 h-3.5 stroke-[2.5]" />
+                  <span>CSV</span>
                 </button>
 
                 <button 
@@ -614,9 +702,9 @@ export const AdminDashboardPage: React.FC = () => {
                     setEditingProduct(null);
                     setActiveTab('add-product');
                   }}
-                  className="bg-brand-black text-white text-xs font-bold uppercase tracking-widest py-2.5 px-5 rounded-xl hover:bg-neutral-800 flex items-center gap-2 shrink-0 shadow-sm"
+                  className="bg-brand-black text-white text-xs font-bold uppercase tracking-widest py-2.5 px-4 rounded-xl hover:bg-neutral-800 flex items-center gap-1.5 shrink-0 shadow-sm"
                 >
-                  <PlusCircle className="w-4 h-4 text-amber-300" /> Registrar Producto
+                  <PlusCircle className="w-3.5 h-3.5 text-amber-300" /> Registrar Producto
                 </button>
               </div>
             </div>
