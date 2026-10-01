@@ -18,16 +18,18 @@ export const Footer: React.FC = () => {
           <div className="space-y-2 pt-2 text-xs text-neutral-300">
             <div className="flex items-center gap-2">
               <MapPin className="w-3.5 h-3.5 text-neutral-400 shrink-0" /> 
-              <span>Laureles • Medellín, Colombia</span>
+              <span>Tv. 41 #73-86, Laureles - Estadio, Medellín</span>
             </div>
             <div className="flex items-center gap-2">
               <Phone className="w-3.5 h-3.5 text-neutral-400 shrink-0" /> 
-              <span>+57 300 000 0000 • Atención al Cliente</span>
+              <a href="https://wa.me/573113477785" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                +57 311 347 7785 • Atención al Cliente
+              </a>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="w-3.5 h-3.5 text-neutral-400 shrink-0" /> 
-              <a href="mailto:marketingdesingespacio@gmail.com" className="hover:text-white transition-colors underline-offset-2 hover:underline">
-                marketingdesingespacio@gmail.com
+              <a href="mailto:diseñotuespacio9@gmail.com" className="hover:text-white transition-colors underline-offset-2 hover:underline">
+                diseñotuespacio9@gmail.com
               </a>
             </div>
           </div>
