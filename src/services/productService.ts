@@ -396,11 +396,101 @@ export const productService = {
     return found || null;
   },
 
+  async uploadProductImage(fileInput: File | Blob | string, customFileName?: string): Promise<string> {
+    if (typeof fileInput === 'string' && !fileInput.startsWith('data:image/')) {
+      return fileInput;
+    }
+
+    if (!isSupabaseConfigured()) {
+      return typeof fileInput === 'string' ? fileInput : URL.createObjectURL(fileInput);
+    }
+
+    try {
+      let fileBody: File | Blob;
+      let extension = 'jpg';
+
+      if (typeof fileInput === 'string' && fileInput.startsWith('data:image/')) {
+        const match = fileInput.match(/^data:(image\/\w+);base64,/);
+        const mimeType = match ? match[1] : 'image/jpeg';
+        extension = mimeType.split('/')[1] || 'jpg';
+        const base64Data = fileInput.replace(/^data:image\/\w+;base64,/, '');
+        const byteCharacters = atob(base64Data);
+        const byteNumbers = new Array(byteCharacters.length);
+        for (let i = 0; i < byteCharacters.length; i++) {
+          byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        const byteArray = new Uint8Array(byteNumbers);
+        fileBody = new Blob([byteArray], { type: mimeType });
+      } else if (fileInput instanceof File || fileInput instanceof Blob) {
+        fileBody = fileInput;
+        if (fileInput instanceof File && fileInput.name) {
+          const ext = fileInput.name.split('.').pop();
+          if (ext) extension = ext.toLowerCase();
+        }
+      } else {
+        return typeof fileInput === 'string' ? fileInput : '';
+      }
+
+      const uniqueId = typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID().substring(0, 8) : Math.floor(Math.random() * 100000);
+      const fileName = customFileName 
+        ? `${customFileName.replace(/[^a-zA-Z0-9_-]/g, '_')}_${Date.now()}.${extension}`
+        : `prod_${Date.now()}_${uniqueId}.${extension}`;
+
+      const filePath = `products/${fileName}`;
+
+      const { data: uploadData, error: uploadErr } = await supabase.storage
+        .from('product-images')
+        .upload(filePath, fileBody, {
+          contentType: fileBody.type || `image/${extension}`,
+          cacheControl: '3600',
+          upsert: true
+        });
+
+      if (uploadErr) {
+        console.warn('⚠️ Supabase Storage warning on image upload:', uploadErr.message);
+        return typeof fileInput === 'string' ? fileInput : URL.createObjectURL(fileInput);
+      }
+
+      if (uploadData?.path) {
+        const { data: publicData } = supabase.storage
+          .from('product-images')
+          .getPublicUrl(uploadData.path);
+
+        if (publicData?.publicUrl) {
+          console.log('✅ Imagen subida exitosamente a Supabase Storage:', publicData.publicUrl);
+          return publicData.publicUrl;
+        }
+      }
+    } catch (err) {
+      console.error('Excepción al subir imagen a Supabase Storage:', err);
+    }
+
+    return typeof fileInput === 'string' ? fileInput : URL.createObjectURL(fileInput);
+  },
+
+  async uploadMultipleProductImages(images: (File | Blob | string)[]): Promise<string[]> {
+    if (!images || images.length === 0) return [];
+    const uploadedUrls: string[] = [];
+
+    for (const img of images) {
+      const url = await this.uploadProductImage(img);
+      if (url) uploadedUrls.push(url);
+    }
+
+    return uploadedUrls;
+  },
+
   async createProduct(productData: Omit<Product, 'id'>): Promise<Product> {
     const generatedId = `prod-${Date.now()}`;
     const activeUser = activityLogService.getCurrentUser();
     const nowISO = new Date().toISOString();
     const userLabel = `${activeUser.name} (${activeUser.email})`;
+
+    // Upload base64 or File images to Supabase Storage and resolve permanent public URLs
+    let finalImages: string[] = productData.images || [];
+    if (finalImages.some(img => typeof img === 'string' && img.startsWith('data:image/'))) {
+      finalImages = await this.uploadMultipleProductImages(finalImages);
+    }
     
     // Clean payload for Supabase insertion with full inventory columns
     const cleanPayload = {
@@ -413,7 +503,7 @@ export const productService = {
       category: productData.category,
       style: productData.style,
       stock: Number(productData.stock),
-      images: productData.images || [],
+      images: finalImages,
       colors: productData.colors || [],
       is_featured: !!productData.is_featured,
       dimensions: productData.dimensions || '',
@@ -519,6 +609,12 @@ export const productService = {
     const nowISO = new Date().toISOString();
     const userLabel = `${activeUser.name} (${activeUser.email})`;
 
+    // Upload any base64 or File images to Supabase Storage
+    let finalImages: string[] | undefined = updates.images;
+    if (finalImages && finalImages.some(img => typeof img === 'string' && img.startsWith('data:image/'))) {
+      finalImages = await this.uploadMultipleProductImages(finalImages);
+    }
+
     // Strict clean payload with all supported Supabase columns
     const cleanPayload: any = {
       updated_at: nowISO,
@@ -533,7 +629,7 @@ export const productService = {
     if (updates.category !== undefined) cleanPayload.category = updates.category;
     if (updates.style !== undefined) cleanPayload.style = updates.style;
     if (updates.stock !== undefined) cleanPayload.stock = Number(updates.stock);
-    if (updates.images !== undefined) cleanPayload.images = updates.images;
+    if (finalImages !== undefined) cleanPayload.images = finalImages;
     if (updates.colors !== undefined) cleanPayload.colors = updates.colors;
     if (updates.is_featured !== undefined) cleanPayload.is_featured = !!updates.is_featured;
     if (updates.dimensions !== undefined) cleanPayload.dimensions = updates.dimensions;

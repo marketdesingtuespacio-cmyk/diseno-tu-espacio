@@ -112,12 +112,15 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
     });
   };
 
-  // Handle Direct File Upload (Computer / Mobile device file picker)
+  const [isUploadingImage, setIsUploadingImage] = useState(false);
+
+  // Handle Direct File Upload (Computer / Mobile device file picker -> Supabase Storage)
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (!files || files.length === 0) return;
 
     const fileList = Array.from(files);
+    setIsUploadingImage(true);
     
     for (const file of fileList) {
       if (!file.type.startsWith('image/')) {
@@ -127,12 +130,15 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
 
       try {
         const compressedBase64 = await compressAndResizeImage(file);
-        setImages((prevImages) => [...prevImages, compressedBase64]);
+        // Upload directly to Supabase Storage product-images bucket
+        const publicUrl = await productService.uploadProductImage(compressedBase64, name || 'producto');
+        setImages((prevImages) => [...prevImages, publicUrl]);
       } catch (err) {
-        console.warn('Error comprimiendo imagen:', err);
+        console.warn('Error procesando imagen para Supabase Storage:', err);
       }
     }
 
+    setIsUploadingImage(false);
     // Reset input
     e.target.value = '';
   };
@@ -549,13 +555,14 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
           <div className="space-y-3">
             <div className="flex flex-col sm:flex-row gap-3">
               {/* Direct File Picker Button (PC / Phone Gallery) */}
-              <label className="cursor-pointer bg-brand-black text-white text-xs font-bold uppercase tracking-wider px-5 py-3 hover:bg-neutral-800 transition-colors flex items-center justify-center gap-2 shadow-subtle shrink-0">
-                <Upload className="w-4 h-4 text-amber-300" />
-                <span>Seleccionar Fotos desde Mi Equipo</span>
+              <label className={`cursor-pointer bg-brand-black text-white text-xs font-bold uppercase tracking-wider px-5 py-3 hover:bg-neutral-800 transition-colors flex items-center justify-center gap-2 shadow-subtle shrink-0 ${isUploadingImage ? 'opacity-60 pointer-events-none' : ''}`}>
+                <Upload className={`w-4 h-4 text-amber-300 ${isUploadingImage ? 'animate-bounce' : ''}`} />
+                <span>{isUploadingImage ? 'Subiendo a Supabase Storage...' : 'Seleccionar Fotos desde Mi Equipo'}</span>
                 <input 
                   type="file" 
                   accept="image/*" 
                   multiple 
+                  disabled={isUploadingImage}
                   onChange={handleFileUpload}
                   className="hidden" 
                 />
