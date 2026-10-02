@@ -408,16 +408,19 @@ export const orderService = {
 
     if (isSupabaseConfigured()) {
       try {
-        // Attempt deleting order items first if order_items table exists
-        try {
-          await supabase.from('order_items').delete().or(`order_id.eq.${id},order_id.eq.${targetOrder?.id || id}`);
-        } catch {
-          // Ignore if table or column doesn't exist
+        const filterQuery = `id.eq.${id},order_ref.eq.${id}${targetOrder?.order_ref ? `,order_ref.eq.${targetOrder.order_ref}` : ''}`;
+        const { error } = await supabase
+          .from('orders')
+          .delete()
+          .or(filterQuery);
+
+        if (error) {
+          console.error('❌ Error al eliminar pedido en Supabase:', error.message);
+        } else {
+          console.log('✅ Pedido eliminado exitosamente de Supabase Nube:', targetOrder?.order_ref || id);
         }
-        
-        await supabase.from('orders').delete().or(`id.eq.${id},order_ref.eq.${id}${targetOrder?.order_ref ? `,order_ref.eq.${targetOrder.order_ref}` : ''}`);
       } catch (err) {
-        console.error('Supabase delete order error:', err);
+        console.error('Excepción al eliminar pedido en Supabase:', err);
       }
     }
 
