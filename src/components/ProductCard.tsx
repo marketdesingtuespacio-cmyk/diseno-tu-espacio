@@ -17,10 +17,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [activeColorIndex, setActiveColorIndex] = useState(0);
 
-  const colorSwatches = product.colors || [
-    { name: 'Níquel', hex: '#D4D4D2' },
-    { name: 'Negro', hex: '#1C1C1C' }
-  ];
+  const colorSwatches = (product.colors && product.colors.length > 0) ? product.colors : [];
 
   const isAgotado = product.stock <= 0 || product.inventory_status === 'Agotado';
 
@@ -96,19 +93,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </div>
 
       {/* Color Variant Swatches Bar */}
-      <div className="flex items-center gap-1.5 mt-3 mb-1 h-4">
-        {colorSwatches.map((color, idx) => (
-          <button
-            key={idx}
-            onClick={() => setActiveColorIndex(idx)}
-            title={color.name}
-            style={{ backgroundColor: color.hex }}
-            className={`w-3.5 h-3.5 rounded-none border border-neutral-300 transition-all ${
-              activeColorIndex === idx ? 'ring-1 ring-black ring-offset-1 border-transparent' : 'hover:scale-110'
-            }`}
-          />
-        ))}
-      </div>
+      {colorSwatches.length > 0 && (
+        <div className="flex items-center gap-1.5 mt-3 mb-1 h-4">
+          {colorSwatches.map((color, idx) => (
+            <button
+              key={idx}
+              onClick={() => setActiveColorIndex(idx)}
+              title={color.name}
+              style={{ backgroundColor: color.hex }}
+              className={`w-3.5 h-3.5 rounded-none border border-neutral-300 transition-all ${
+                activeColorIndex === idx ? 'ring-1 ring-black ring-offset-1 border-transparent' : 'hover:scale-110'
+              }`}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Product Title & Collection Meta (Clean & Elegant) */}
       <div className="space-y-0.5 text-left">

@@ -325,34 +325,24 @@ export const productService = {
           const { data, error } = await supabase.from('products').select('*');
           if (!error && data && data.length > 0) {
             const supabaseProducts = (data as Product[]).filter(sp => !isProductDeleted(sp, deletedSet));
-            const supabaseMap = new Map<string, Product>();
+            const supabaseSet = new Set<string>();
+            const mergedProducts: Product[] = [];
+
             supabaseProducts.forEach(sp => {
-              if (sp.slug) supabaseMap.set(sp.slug, sp);
-              if (sp.id) supabaseMap.set(sp.id, sp);
-              if (sp.sku) supabaseMap.set(sp.sku.toLowerCase(), sp);
+              if (sp.id) supabaseSet.add(sp.id);
+              if (sp.slug) supabaseSet.add(sp.slug);
+              if (sp.sku) supabaseSet.add(sp.sku.toLowerCase());
+              mergedProducts.push(enrichProduct(sp, localLookupMap));
             });
 
-            // Merge: Preserve active items and overlay Supabase updates (skip deleted)
+            // Append MOCK_PRODUCTS that are not present in Supabase nor deleted
             const validMockProducts = MOCK_PRODUCTS.filter(m => !isProductDeleted(m, deletedSet));
-            const mergedProducts = validMockProducts.map(baseProd => {
-              const sp = supabaseMap.get(baseProd.slug) || 
-                         supabaseMap.get(baseProd.id) || 
-                         (baseProd.sku ? supabaseMap.get(baseProd.sku.toLowerCase()) : undefined);
-              if (sp) {
-                return enrichProduct({ ...baseProd, ...sp }, localLookupMap);
-              }
-              return enrichProduct(baseProd, localLookupMap);
-            });
-
-            // Include any newly added Supabase products not in MOCK_PRODUCTS
-            supabaseProducts.forEach(sp => {
-              const exists = mergedProducts.some(mp => 
-                mp.id === sp.id || 
-                mp.slug === sp.slug || 
-                (mp.sku && sp.sku && mp.sku.toLowerCase() === sp.sku.toLowerCase())
-              );
-              if (!exists) {
-                mergedProducts.push(enrichProduct(sp, localLookupMap));
+            validMockProducts.forEach(m => {
+              const inSupabase = (m.id && supabaseSet.has(m.id)) ||
+                                 (m.slug && supabaseSet.has(m.slug)) ||
+                                 (m.sku && supabaseSet.has(m.sku.toLowerCase()));
+              if (!inSupabase) {
+                mergedProducts.push(enrichProduct(m, localLookupMap));
               }
             });
 
