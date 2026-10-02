@@ -54,13 +54,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </button>
 
         {/* High Resolution Product Photograph */}
-        <Link to={`/product/${product.slug}`} className="w-full h-full block">
+        <Link to={`/product/${product.slug}`} className="w-full h-full block relative bg-neutral-100">
           <img 
             src={product.images[0]} 
             alt={product.name} 
             loading="lazy"
-            className={`w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out ${
-              isAgotado ? 'opacity-75 grayscale-[20%]' : ''
+            decoding="async"
+            onLoad={(e) => (e.currentTarget.style.opacity = '1')}
+            className={`w-full h-full object-cover object-center group-hover:scale-105 opacity-0 transition-all duration-500 ease-out ${
+              isAgotado ? 'grayscale-[20%]' : ''
             }`}
           />
         </Link>

@@ -4,6 +4,7 @@ import { ArrowRight, Sparkles, Truck, Calendar } from 'lucide-react';
 import { Product } from '../types';
 import { productService } from '../services/productService';
 import { ProductCard } from '../components/ProductCard';
+import { ProductCardSkeleton } from '../components/ProductCardSkeleton';
 import { CategoryCarousel } from '../components/CategoryCarousel';
 import { AnimatedHeroHeader } from '../components/AnimatedHeroHeader';
 
@@ -12,6 +13,14 @@ export const HomePage: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // 1. Instant sync render (0ms delay)
+    const cached = productService.getProductsSync();
+    if (cached.length > 0) {
+      setFeaturedProducts(cached.filter(p => p.is_featured).slice(0, 4));
+      setLoading(false);
+    }
+
+    // 2. Background revalidation
     productService.getProducts().then(products => {
       setFeaturedProducts(products.filter(p => p.is_featured).slice(0, 4));
       setLoading(false);
@@ -117,10 +126,10 @@ export const HomePage: React.FC = () => {
           </Link>
         </div>
 
-        {loading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[1,2,3,4].map(i => (
-              <div key={i} className="h-80 bg-brand-surface animate-pulse" />
+        {loading && featuredProducts.length === 0 ? (
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
+            {[1, 2, 3, 4].map(i => (
+              <ProductCardSkeleton key={i} />
             ))}
           </div>
         ) : (

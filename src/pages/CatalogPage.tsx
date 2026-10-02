@@ -4,6 +4,7 @@ import { Filter, X, SlidersHorizontal, ArrowUpDown, RefreshCw, Search } from 'lu
 import { Product, ProductFilterState } from '../types';
 import { productService, subscribeToProducts } from '../services/productService';
 import { ProductCard } from '../components/ProductCard';
+import { ProductCardSkeleton } from '../components/ProductCardSkeleton';
 import { useCurrency } from '../context/CurrencyContext';
 
 const DEFAULT_CATEGORIES = ['all', 'Papel de Colgadura', 'Lavamanos', 'Espejos', 'Cuadros', 'Revestimientos', 'Lámparas de Techo', 'Iluminación de Pared', 'Lámparas de Pie', 'Lámparas de Mesa', 'Diseño Mobiliario'];
@@ -20,6 +21,11 @@ export const CatalogPage: React.FC = () => {
 
   // Fetch dynamic categories from active public products
   useEffect(() => {
+    const cached = productService.getProductsSync();
+    if (cached.length > 0) {
+      const activeCats = Array.from(new Set(cached.map(p => p.category).filter(Boolean)));
+      if (activeCats.length > 0) setCategories(['all', ...activeCats]);
+    }
     productService.getProducts().then(publicItems => {
       const activeCats = Array.from(new Set(publicItems.map(p => p.category).filter(Boolean)));
       if (activeCats.length > 0) {
@@ -55,9 +61,18 @@ export const CatalogPage: React.FC = () => {
     }));
   }, [searchParams]);
 
-  // Fetch filtered products
+  // Fetch filtered products with Stale-While-Revalidate (0ms instant render + background update)
   useEffect(() => {
-    setLoading(true);
+    // 1. Instant sync render (0ms delay)
+    const cachedProducts = productService.getProductsSync(filters);
+    if (cachedProducts.length > 0) {
+      setProducts(cachedProducts);
+      setLoading(false);
+    } else {
+      setLoading(true);
+    }
+
+    // 2. Background revalidation from Supabase
     productService.getProducts(filters).then(res => {
       setProducts(res);
       setLoading(false);
@@ -253,10 +268,10 @@ export const CatalogPage: React.FC = () => {
             </span>
           </div>
 
-          {loading ? (
+          {loading && products.length === 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {[1, 2, 3, 4, 5, 6].map(n => (
-                <div key={n} className="aspect-[1900/2375] bg-brand-surface animate-pulse" />
+                <ProductCardSkeleton key={n} />
               ))}
             </div>
           ) : products.length > 0 ? (
