@@ -3,18 +3,14 @@ import { Order } from '../types';
 import { productService } from './productService';
 import { activityLogService } from './activityLogService';
 
-const LOCAL_STORAGE_DELETED_ORDERS_KEY = 'luxe_deleted_orders_v1';
-
 // Purge any legacy oversized order catalog cache keys from localStorage to prevent QuotaExceededError
 export const clearLegacyOrderLocalStorage = () => {
   try {
     const keysToRemove: string[] = [];
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
-      if (key && (key.startsWith('luxe_orders') || key.startsWith('luxe_order') || key.includes('orders_v'))) {
-        if (key !== LOCAL_STORAGE_DELETED_ORDERS_KEY) {
-          keysToRemove.push(key);
-        }
+      if (key && (key.startsWith('luxe_orders') || key.startsWith('luxe_order') || key.includes('orders_v') || key.startsWith('luxe_deleted_orders'))) {
+        keysToRemove.push(key);
       }
     }
     keysToRemove.forEach(k => localStorage.removeItem(k));
@@ -26,51 +22,23 @@ export const clearLegacyOrderLocalStorage = () => {
 // Immediately execute on module load to free up browser storage
 clearLegacyOrderLocalStorage();
 
+// Legacy stubs kept for backward compatibility (no localStorage persistence)
+export const getDeletedOrderKeys = (): Set<string> => new Set();
+export const saveDeletedOrderKeys = (_keys: Set<string>) => {};
+export const addDeletedOrderKey = (..._keys: (string | undefined)[]) => {};
+export const isOrderDeleted = (_o: { id?: string; order_ref?: string }): boolean => false;
+
 let memoryOrdersCache: Order[] | null = null;
+let ordersFetchPromise: Promise<Order[]> | null = null;
 let isOrderRealtimeSubscribed = false;
 
-export const getDeletedOrderKeys = (): Set<string> => {
-  const stored = localStorage.getItem(LOCAL_STORAGE_DELETED_ORDERS_KEY);
-  if (stored) {
-    try {
-      const parsed = JSON.parse(stored);
-      if (Array.isArray(parsed)) {
-        return new Set(parsed.map((s: string) => String(s).toLowerCase().trim()));
-      }
-    } catch {
-      // fallback
-    }
-  }
-  return new Set();
-};
-
-export const saveDeletedOrderKeys = (keys: Set<string>) => {
-  try {
-    localStorage.setItem(LOCAL_STORAGE_DELETED_ORDERS_KEY, JSON.stringify(Array.from(keys)));
-  } catch (err) {
-    console.warn('Error saving deleted order keys:', err);
-  }
-};
-
-export const addDeletedOrderKey = (...keys: (string | undefined)[]) => {
-  const current = getDeletedOrderKeys();
-  keys.forEach(k => {
-    if (k && k.trim().length > 0) {
-      current.add(k.toLowerCase().trim());
-    }
-  });
-  saveDeletedOrderKeys(current);
-};
-
-export const isOrderDeleted = (o: { id?: string; order_ref?: string }, deletedSet?: Set<string>): boolean => {
-  const set = deletedSet || getDeletedOrderKeys();
-  if (!set || set.size === 0) return false;
-  if (o.id && set.has(o.id.toLowerCase().trim())) return true;
-  if (o.order_ref && set.has(o.order_ref.toLowerCase().trim())) return true;
-  return false;
+export const clearOrderCache = () => {
+  memoryOrdersCache = null;
+  ordersFetchPromise = null;
 };
 
 export const notifyOrdersUpdated = () => {
+  clearOrderCache();
   window.dispatchEvent(new Event('orders_updated'));
 };
 
@@ -84,6 +52,7 @@ export const subscribeToOrders = (callback: () => void): (() => void) => {
       supabase
         .channel('public_orders_realtime')
         .on('postgres_changes', { event: '*', schema: 'public', table: 'orders' }, () => {
+          clearOrderCache();
           window.dispatchEvent(new Event('orders_updated'));
         })
         .subscribe();
@@ -137,86 +106,8 @@ const INITIAL_ORDERS: Order[] = [
     ],
     notes: 'Cliente requiere entrega urgente en portería antes de las 5 PM.',
     created_at: '2026-08-22 14:30'
-  },
-  {
-    id: 'ord-2',
-    order_ref: 'DT-847291',
-    customer_name: 'Santiago Jaramillo',
-    customer_email: 'santiago.j@ejemplo.com',
-    customer_phone: '+57 301 234 5678',
-    customer_tag: 'Arquitecto',
-    shipping_address: 'Carrera 43A # 1-50, San Fernando',
-    city: 'Cali',
-    carrier: 'Interrapidísimo',
-    tracking_number: '200481923',
-    subtotal: 850000,
-    shipping_cost: 40000,
-    discount: 0,
-    total: 890000,
-    status: 'shipped',
-    payment_method: 'PSE Débito Bancario',
-    payment_gateway: 'Wompi Colombia',
-    items_count: 1,
-    items: [
-      {
-        product_id: 'prod-3',
-        name: 'Lámpara Colgante Cúpula Industrial',
-        image: 'https://images.unsplash.com/photo-1540932239986-30128078f3c5?auto=format&fit=crop&q=80&w=800',
-        price: 850000,
-        quantity: 1,
-        color: 'Cobre Pulido'
-      }
-    ],
-    notes: 'Proyecto residencial en Pance.',
-    created_at: '2026-08-21 09:15'
-  },
-  {
-    id: 'ord-3',
-    order_ref: 'DT-712390',
-    customer_name: 'Camila Morales',
-    customer_email: 'camila.m@ejemplo.com',
-    customer_phone: '+57 318 901 2345',
-    customer_tag: 'Residencial',
-    shipping_address: 'Calle 93B # 11A-45, Chico Reservado',
-    city: 'Bogotá D.C.',
-    carrier: 'Servientrega',
-    tracking_number: '550192837',
-    subtotal: 1650000,
-    shipping_cost: 0,
-    discount: 0,
-    total: 1650000,
-    status: 'delivered',
-    payment_method: 'Mercado Pago',
-    payment_gateway: 'Mercado Pago',
-    items_count: 1,
-    items: [
-      {
-        product_id: 'prod-4',
-        name: 'Candelabro Orgánico Hilos de Luz',
-        image: 'https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?auto=format&fit=crop&q=80&w=800',
-        price: 1650000,
-        quantity: 1,
-        color: 'Oro Satinado'
-      }
-    ],
-    created_at: '2026-08-19 16:45'
   }
 ];
-
-const getStoredOrders = (): Order[] => {
-  const deletedSet = getDeletedOrderKeys();
-  if (memoryOrdersCache && memoryOrdersCache.length > 0) {
-    return memoryOrdersCache.filter(o => !isOrderDeleted(o, deletedSet));
-  }
-  return INITIAL_ORDERS.filter(o => !isOrderDeleted(o, deletedSet));
-};
-
-const saveStoredOrders = (orders: Order[]) => {
-  const deletedSet = getDeletedOrderKeys();
-  const clean = orders.filter(o => !isOrderDeleted(o, deletedSet));
-  memoryOrdersCache = clean;
-  clearLegacyOrderLocalStorage();
-};
 
 const buildSupabaseOrderPayload = (orderData: Partial<Order>) => {
   const fullAddress = orderData.city && orderData.shipping_address && !orderData.shipping_address.includes(orderData.city)
@@ -240,48 +131,62 @@ const buildSupabaseOrderPayload = (orderData: Partial<Order>) => {
 
 export const orderService = {
   async getOrders(): Promise<Order[]> {
-    if (isSupabaseConfigured()) {
-      try {
-        const { data, error } = await supabase
-          .from('orders')
-          .select('*')
-          .order('created_at', { ascending: false });
-
-        if (!error && data) {
-          const supabaseOrders = (data as any[]).map(o => ({
-            ...o,
-            id: String(o.id),
-            order_ref: o.order_ref || `DT-${String(o.id).substring(0, 6)}`,
-            customer_name: o.customer_name || 'Cliente',
-            customer_email: o.customer_email || 'cliente@diseñotuespacio.com',
-            customer_phone: o.customer_phone || '',
-            customer_tag: o.customer_tag || 'Residencial',
-            shipping_address: o.shipping_address || '',
-            city: o.city || (o.shipping_address ? o.shipping_address.split(',').pop()?.trim() : '') || 'Bogotá D.C.',
-            carrier: o.carrier || 'Servientrega',
-            tracking_number: o.tracking_number || '',
-            total: Number(o.total_amount || o.total || 0),
-            subtotal: Number(o.subtotal || o.total_amount || o.total || 0),
-            shipping_cost: Number(o.shipping_cost || 0),
-            discount: Number(o.discount || 0),
-            payment_method: o.payment_method || 'Tarjeta de Crédito',
-            payment_gateway: o.payment_gateway || 'Wompi Colombia',
-            status: o.status || 'processing',
-            items: o.items || [],
-            items_count: Number(o.items_count || (o.items && Array.isArray(o.items) ? o.items.reduce((acc: number, i: any) => acc + (i.quantity || 1), 0) : 1)),
-            created_at: o.created_at || new Date().toISOString()
-          }));
-
-          saveStoredOrders(supabaseOrders);
-          return supabaseOrders;
-        }
-      } catch (err) {
-        console.warn('Supabase fetch orders failed, using fallback cache', err);
-      }
+    if (ordersFetchPromise) {
+      return ordersFetchPromise;
     }
 
-    const deletedSet = getDeletedOrderKeys();
-    return getStoredOrders().filter(o => !isOrderDeleted(o, deletedSet));
+    ordersFetchPromise = (async () => {
+      let fetchedOrders: Order[] = [];
+
+      if (isSupabaseConfigured()) {
+        try {
+          const { data, error } = await supabase
+            .from('orders')
+            .select('*')
+            .order('created_at', { ascending: false });
+
+          if (!error && data) {
+            fetchedOrders = (data as any[]).map(o => ({
+              ...o,
+              id: String(o.id),
+              order_ref: o.order_ref || `DT-${String(o.id).substring(0, 6)}`,
+              customer_name: o.customer_name || 'Cliente',
+              customer_email: o.customer_email || 'cliente@diseñotuespacio.com',
+              customer_phone: o.customer_phone || '',
+              customer_tag: o.customer_tag || 'Residencial',
+              shipping_address: o.shipping_address || '',
+              city: o.city || (o.shipping_address ? o.shipping_address.split(',').pop()?.trim() : '') || 'Bogotá D.C.',
+              carrier: o.carrier || 'Servientrega',
+              tracking_number: o.tracking_number || '',
+              total: Number(o.total_amount || o.total || 0),
+              subtotal: Number(o.subtotal || o.total_amount || o.total || 0),
+              shipping_cost: Number(o.shipping_cost || 0),
+              discount: Number(o.discount || 0),
+              payment_method: o.payment_method || 'Tarjeta de Crédito',
+              payment_gateway: o.payment_gateway || 'Wompi Colombia',
+              status: o.status || 'processing',
+              items: o.items || [],
+              items_count: Number(o.items_count || (o.items && Array.isArray(o.items) ? o.items.reduce((acc: number, i: any) => acc + (i.quantity || 1), 0) : 1)),
+              created_at: o.created_at || new Date().toISOString()
+            }));
+          } else if (error) {
+            console.warn('Supabase fetch orders error:', error.message);
+          }
+        } catch (err) {
+          console.warn('Supabase fetch orders exception:', err);
+        }
+      }
+
+      if (fetchedOrders.length === 0) {
+        fetchedOrders = memoryOrdersCache || INITIAL_ORDERS;
+      }
+
+      memoryOrdersCache = fetchedOrders;
+      ordersFetchPromise = null;
+      return fetchedOrders;
+    })();
+
+    return ordersFetchPromise;
   },
 
   async createOrder(orderData: Omit<Order, 'id'>): Promise<Order> {
@@ -292,7 +197,6 @@ export const orderService = {
       created_at: orderData.created_at || new Date().toISOString().replace('T', ' ').substring(0, 16)
     };
 
-    // Automatically deduct stock for items in this order
     if (orderData.items && orderData.items.length > 0) {
       try {
         await productService.deductStockForItems(orderData.items);
@@ -316,7 +220,6 @@ export const orderService = {
           console.log('✅ Pedido guardado exitosamente en Supabase Nube:', data[0].order_ref);
           if (data[0].id) newOrder.id = String(data[0].id);
 
-          // If relational order_items table exists, populate items transactionally
           if (newOrder.items && newOrder.items.length > 0 && data[0].id) {
             try {
               const relationalItems = newOrder.items.map(item => ({
@@ -337,10 +240,6 @@ export const orderService = {
         console.error('Supabase order creation exception:', err);
       }
     }
-
-    const current = getStoredOrders();
-    const updated = [newOrder, ...current.filter(o => o.order_ref !== newOrder.order_ref)];
-    saveStoredOrders(updated);
 
     activityLogService.logActivity({
       entity_type: 'order',
@@ -370,25 +269,17 @@ export const orderService = {
       updated_by: userLabel
     };
 
-    const current = getStoredOrders();
-    const idx = current.findIndex(o => o.id === id || o.order_ref === id);
-    let targetRef = id;
-    let targetCustomer = '';
-
-    if (idx !== -1) {
-      current[idx] = { ...current[idx], ...fullUpdates };
-      saveStoredOrders(current);
-      targetRef = current[idx].order_ref || id;
-      targetCustomer = current[idx].customer_name || '';
-    }
-
     if (isSupabaseConfigured()) {
       try {
-        const { error } = await supabase
-          .from('orders')
-          .update(fullUpdates)
-          .or(`id.eq.${id},order_ref.eq.${id}`)
-          .select();
+        const isNumeric = !isNaN(Number(id)) && Number.isInteger(Number(id));
+        let query = supabase.from('orders').update(fullUpdates);
+        if (isNumeric) {
+          query = query.eq('id', Number(id));
+        } else {
+          query = query.eq('order_ref', id);
+        }
+        
+        const { error } = await query.select();
         
         if (error && (error.message.includes('updated_at') || error.message.includes('updated_by') || error.message.includes('column'))) {
           const { updated_at, updated_by, ...fallbackPayload } = fullUpdates;
@@ -402,52 +293,38 @@ export const orderService = {
     activityLogService.logActivity({
       entity_type: 'order',
       entity_id: id,
-      entity_name: targetRef,
+      entity_name: id,
       action: updates.status ? 'status_change' : 'update',
       description: updates.status 
-        ? `Cambió el estado del pedido "${targetRef}" a "${updates.status}"${targetCustomer ? ` (${targetCustomer})` : ''}`
-        : `Actualizó datos del pedido "${targetRef}"${targetCustomer ? ` (${targetCustomer})` : ''}`,
+        ? `Cambió el estado del pedido "${id}" a "${updates.status}"`
+        : `Actualizó datos del pedido "${id}"`,
       details: `Modificaciones: ${Object.keys(updates).join(', ')}`
     });
 
     notifyOrdersUpdated();
-    return idx !== -1 ? current[idx] : null;
+    return null;
   },
 
   async deleteOrder(id: string): Promise<boolean> {
-    const current = getStoredOrders();
-    const targetOrder = current.find(o => o.id === id || o.order_ref === id);
-
-    addDeletedOrderKey(id, targetOrder?.order_ref);
-
-    const filtered = current.filter(o => o.id !== id && o.order_ref !== id);
-    saveStoredOrders(filtered);
+    const numericId = Number(id);
+    const isNumeric = !isNaN(numericId) && Number.isInteger(numericId);
 
     let isSuccess = true;
 
     if (isSupabaseConfigured()) {
       try {
-        // Clean relational order_items if order_items table exists
-        const targetId = targetOrder?.id || id;
-        if (targetId && targetId.length > 20) {
+        if (isNumeric) {
           try {
-            await supabase.from('order_items').delete().eq('order_id', targetId);
-          } catch {
-            // Ignore if order_items table is absent
-          }
-        }
-
-        const filterQuery = `id.eq.${id},order_ref.eq.${id}${targetOrder?.order_ref ? `,order_ref.eq.${targetOrder.order_ref}` : ''}`;
-        const { error } = await supabase
-          .from('orders')
-          .delete()
-          .or(filterQuery);
-
-        if (error) {
-          console.error('❌ Error al eliminar pedido en Supabase:', error.message);
-          isSuccess = false;
+            await supabase.from('order_items').delete().eq('order_id', numericId);
+          } catch {}
+          const { error } = await supabase.from('orders').delete().eq('id', numericId);
+          if (error) isSuccess = false;
         } else {
-          console.log('✅ Pedido eliminado exitosamente de Supabase Nube:', targetOrder?.order_ref || id);
+          try {
+            await supabase.from('order_items').delete().eq('order_id', id);
+          } catch {}
+          const { error } = await supabase.from('orders').delete().eq('order_ref', id);
+          if (error) isSuccess = false;
         }
       } catch (err) {
         console.error('Excepción al eliminar pedido en Supabase:', err);
@@ -459,10 +336,9 @@ export const orderService = {
       activityLogService.logActivity({
         entity_type: 'order',
         entity_id: id,
-        entity_name: targetOrder?.order_ref || id,
+        entity_name: id,
         action: 'delete',
-        description: `Eliminó el pedido "${targetOrder?.order_ref || id}" (${targetOrder?.customer_name || 'Cliente'})`,
-        details: `Monto total: $${(targetOrder?.total || 0).toLocaleString('es-CO')} COP`
+        description: `Eliminó el pedido "${id}"`
       });
     } catch {
       // Non-blocking log failure
@@ -478,17 +354,13 @@ export const orderService = {
     }
 
     try {
-      localStorage.removeItem(LOCAL_STORAGE_DELETED_ORDERS_KEY);
       const { data: dbOrders, error } = await supabase.from('orders').select('*').order('created_at', { ascending: false });
       
       if (error) {
         return { success: false, count: 0, message: `Error al consultar pedidos de Supabase: ${error.message}` };
       }
 
-      if (dbOrders && dbOrders.length > 0) {
-        saveStoredOrders(dbOrders as Order[]);
-        notifyOrdersUpdated();
-      }
+      notifyOrdersUpdated();
 
       return {
         success: true,
@@ -504,4 +376,3 @@ export const orderService = {
     }
   }
 };
-
