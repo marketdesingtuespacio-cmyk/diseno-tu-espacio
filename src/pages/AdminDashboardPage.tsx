@@ -238,10 +238,17 @@ export const AdminDashboardPage: React.FC = () => {
     loadData();
   };
 
-  // Delete Single Order
+  // Delete Single Order (Instant Optimistic UI Refresh)
   const handleDeleteOrder = async (id: string) => {
+    // 1. Instant optimistic update: filter out deleted order from React state immediately (0ms latency)
+    setOrders(prev => prev.filter(o => o.id !== id && o.order_ref !== id));
+
+    // 2. Perform background deletion in Supabase & memory cache
     await orderService.deleteOrder(id);
+
+    // 3. Refetch fresh data to ensure cloud alignment
     await loadData();
+
     setActionNotification({
       title: '¡Pedido Eliminado!',
       message: 'El pedido fue eliminado exitosamente del sistema.'
@@ -255,6 +262,9 @@ export const AdminDashboardPage: React.FC = () => {
       return alert('No hay pedidos en estado Cancelado para eliminar.');
     }
     if (confirm(`¿Está seguro de eliminar los ${cancelled.length} pedidos en estado Cancelado?`)) {
+      const cancelledIds = new Set(cancelled.map(c => c.id));
+      setOrders(prev => prev.filter(o => !cancelledIds.has(o.id)));
+
       for (const ord of cancelled) {
         await orderService.deleteOrder(ord.id);
       }
