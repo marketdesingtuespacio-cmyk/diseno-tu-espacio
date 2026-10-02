@@ -226,6 +226,22 @@ export const orderService = {
       updated_by: userLabel
     };
 
+    // If order status is set to cancelled, restore product stock in Supabase automatically
+    if (updates.status === 'cancelled' && isSupabaseConfigured()) {
+      try {
+        const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+        const query = isUUID
+          ? supabase.from('orders').select('items').eq('id', id).limit(1)
+          : supabase.from('orders').select('items').eq('order_ref', id).limit(1);
+        const { data: cancelledData } = await query;
+        if (cancelledData && cancelledData.length > 0 && Array.isArray(cancelledData[0].items)) {
+          await productService.restoreStockForItems(cancelledData[0].items);
+        }
+      } catch (stockErr) {
+        console.warn('Could not restore stock on order cancellation:', stockErr);
+      }
+    }
+
     if (isSupabaseConfigured()) {
       try {
         const isNumeric = !isNaN(Number(id)) && Number.isInteger(Number(id));
@@ -269,6 +285,19 @@ export const orderService = {
     if (isSupabaseConfigured()) {
       try {
         const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+
+        // Fetch order items prior to deletion to restore product inventory in Supabase
+        try {
+          const query = isUUID
+            ? supabase.from('orders').select('items').eq('id', id).limit(1)
+            : supabase.from('orders').select('items').eq('order_ref', id).limit(1);
+          const { data: orderData } = await query;
+          if (orderData && orderData.length > 0 && Array.isArray(orderData[0].items)) {
+            await productService.restoreStockForItems(orderData[0].items);
+          }
+        } catch (restoreErr) {
+          console.warn('Could not restore stock on order deletion:', restoreErr);
+        }
 
         // 1. Clean relational order_items if active
         try {

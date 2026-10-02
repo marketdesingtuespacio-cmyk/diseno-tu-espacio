@@ -575,6 +575,62 @@ export const productService = {
     notifyProductsUpdated();
   },
 
+  async restoreStockForItems(items: { product_id?: string; name?: string; quantity: number }[]): Promise<void> {
+    if (!items || items.length === 0) return;
+
+    for (const item of items) {
+      if (isSupabaseConfigured()) {
+        try {
+          let targetProd: Product | null = null;
+
+          if (item.product_id) {
+            const { data } = await supabase
+              .from('products')
+              .select('*')
+              .or(`id.eq.${item.product_id},slug.eq.${item.product_id}`)
+              .limit(1);
+            if (data && data.length > 0) targetProd = data[0] as Product;
+          }
+
+          if (!targetProd && item.name) {
+            const { data } = await supabase
+              .from('products')
+              .select('*')
+              .eq('name', item.name)
+              .limit(1);
+            if (data && data.length > 0) targetProd = data[0] as Product;
+          }
+
+          if (targetProd) {
+            const qty = item.quantity || 1;
+            const newStock = targetProd.stock + qty;
+            const currentWebStock = targetProd.web_stock !== undefined ? targetProd.web_stock : targetProd.stock;
+            const newWebStock = currentWebStock + qty;
+
+            let newStatus = targetProd.inventory_status || 'Disponible';
+            if (newStock > 3) {
+              newStatus = 'Disponible';
+            } else if (newStock > 0 && newStock <= 3) {
+              newStatus = 'Poco Stock';
+            } else {
+              newStatus = 'Agotado';
+            }
+
+            await supabase
+              .from('products')
+              .update({ stock: newStock, web_stock: newWebStock, inventory_status: newStatus })
+              .eq('id', targetProd.id);
+            console.log(`✅ Stock restaurado (+${qty} u.) en Supabase para:`, targetProd.name);
+          }
+        } catch (err) {
+          console.warn('Supabase stock restoration error:', err);
+        }
+      }
+    }
+
+    notifyProductsUpdated();
+  },
+
   async syncAllToSupabase(): Promise<{ success: boolean; count: number; message: string }> {
     if (!isSupabaseConfigured()) {
       return { success: false, count: 0, message: 'Supabase no está configurado en las variables de entorno.' };
