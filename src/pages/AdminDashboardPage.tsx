@@ -584,8 +584,8 @@ export const AdminDashboardPage: React.FC = () => {
         }
 
         setActionNotification({
-          title: 'Copia Restaurada Localmente',
-          message: 'Datos cargados localmente. Iniciando sincronización a la nube...'
+          title: 'Restauración en Proceso',
+          message: 'Iniciando sincronización directa con Supabase Nube...'
         });
 
         await productService.syncAllToSupabase();
@@ -594,7 +594,7 @@ export const AdminDashboardPage: React.FC = () => {
 
         setActionNotification({
           title: '¡Restauración Completa!',
-          message: `Se restauraron exitosamente ${parsed.products?.length || 0} productos y ${parsed.orders?.length || 0} pedidos localmente y en Supabase Nube.`
+          message: `Se sincronizaron exitosamente los datos en Supabase Nube.`
         });
       } catch (err: any) {
         alert('Error importando copia de seguridad: ' + err.message);

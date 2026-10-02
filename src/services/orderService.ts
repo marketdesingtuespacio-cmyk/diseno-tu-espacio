@@ -307,45 +307,39 @@ export const orderService = {
 
   async deleteOrder(id: string): Promise<boolean> {
     clearOrderCache();
-    const numericId = Number(id);
-    const isNumeric = !isNaN(numericId) && Number.isInteger(numericId);
-
     let isSuccess = false;
 
     if (isSupabaseConfigured()) {
       try {
+        // 1. Clean relational order_items by order_id (primary UUID or text)
         try {
-          if (isNumeric) {
+          await supabase.from('order_items').delete().eq('order_id', id);
+          const numericId = Number(id);
+          if (!isNaN(numericId) && Number.isInteger(numericId)) {
             await supabase.from('order_items').delete().eq('order_id', numericId);
           }
-          await supabase.from('order_items').delete().eq('order_id', id);
         } catch {
           // ignore if table doesn't exist
         }
 
-        let deleted = false;
-
-        if (isNumeric) {
-          const { error: errNum } = await supabase.from('orders').delete().eq('id', numericId);
-          if (!errNum) deleted = true;
+        // 2. Strict primary delete by id (UUID or PK) on Supabase orders table
+        let { error: primaryErr } = await supabase.from('orders').delete().eq('id', id);
+        
+        if (!primaryErr) {
+          isSuccess = true;
+          console.log('✅ Pedido eliminado por UUID/id en Supabase Nube:', id);
+        } else {
+          // Fallback if id passed is numeric or order_ref
+          const numericId = Number(id);
+          if (!isNaN(numericId) && Number.isInteger(numericId)) {
+            const { error: errNum } = await supabase.from('orders').delete().eq('id', numericId);
+            if (!errNum) isSuccess = true;
+          }
+          if (!isSuccess) {
+            const { error: errRef } = await supabase.from('orders').delete().eq('order_ref', id);
+            if (!errRef) isSuccess = true;
+          }
         }
-
-        if (!deleted) {
-          const { error: errId } = await supabase.from('orders').delete().eq('id', id);
-          if (!errId) deleted = true;
-        }
-
-        if (!deleted) {
-          const { error: errRef } = await supabase.from('orders').delete().eq('order_ref', id);
-          if (!errRef) deleted = true;
-        }
-
-        if (!deleted) {
-          const { error: errOr } = await supabase.from('orders').delete().or(`id.eq.${id},order_ref.eq.${id}`);
-          if (!errOr) deleted = true;
-        }
-
-        isSuccess = deleted;
       } catch (err) {
         console.error('Excepción al eliminar pedido en Supabase:', err);
         isSuccess = false;
@@ -362,7 +356,7 @@ export const orderService = {
         entity_id: id,
         entity_name: id,
         action: 'delete',
-        description: `Eliminó el pedido "${id}"`
+        description: `Eliminó el pedido con ID/Ref "${id}"`
       });
     } catch {
       // Non-blocking log failure
