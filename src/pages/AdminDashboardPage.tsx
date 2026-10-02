@@ -132,10 +132,12 @@ export const AdminDashboardPage: React.FC = () => {
       loadData();
     });
 
-    // Auto-sync fallback polling every 60 seconds (WebSocket realtime handles instant updates)
+    // Smart fallback polling (runs every 5 minutes only if window is active to save network Egress & logs)
     const syncInterval = setInterval(() => {
-      loadData();
-    }, 60000);
+      if (document.visibilityState === 'visible') {
+        loadData();
+      }
+    }, 300000);
 
     return () => {
       unsubProds();
