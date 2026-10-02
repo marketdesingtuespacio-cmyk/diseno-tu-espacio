@@ -186,15 +186,19 @@ export const activityLogService = {
       created_at: nowISO
     };
 
-    // 1. Update local storage immediately
-    const current = getStoredLogs();
-    const updated = [newLog, ...current];
-    saveStoredLogs(updated);
+    try {
+      // 1. Update local storage immediately
+      const current = getStoredLogs();
+      const updated = [newLog, ...current];
+      saveStoredLogs(updated);
 
-    // 2. Dispatch window event for instant UI update
-    window.dispatchEvent(new Event('activity_logs_updated'));
+      // 2. Dispatch window event for instant UI update
+      window.dispatchEvent(new Event('activity_logs_updated'));
+    } catch (localErr) {
+      console.warn('Local log save warning:', localErr);
+    }
 
-    // 3. Try to sync to Supabase activity_logs table
+    // 3. Try to sync to Supabase activity_logs table (Fault-Tolerant: NEVER throw or block execution)
     if (isSupabaseConfigured()) {
       try {
         const payloadToInsert = {
@@ -214,12 +218,10 @@ export const activityLogService = {
         const { error } = await supabase.from('activity_logs').insert([payloadToInsert]);
 
         if (error) {
-          console.warn('Supabase activity_log insert error, retrying with fresh UUID:', error.message);
-          const retryPayload = { ...payloadToInsert, id: generateUUID() };
-          await supabase.from('activity_logs').insert([retryPayload]);
+          console.warn('Supabase activity_log insert notice (non-blocking):', error.message);
         }
       } catch (err) {
-        console.warn('Supabase activity_log insert notice:', err);
+        console.warn('Supabase activity_log exception (non-blocking):', err);
       }
     }
 

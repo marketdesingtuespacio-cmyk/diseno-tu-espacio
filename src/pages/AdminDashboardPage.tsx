@@ -558,7 +558,7 @@ export const AdminDashboardPage: React.FC = () => {
         }
 
         if (Array.isArray(parsed.orders) && parsed.orders.length > 0) {
-          localStorage.setItem('luxe_orders_cache_v2', JSON.stringify(parsed.orders));
+          // Orders imported directly to memory cache & synced to Supabase
         }
 
         setActionNotification({

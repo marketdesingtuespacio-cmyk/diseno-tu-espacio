@@ -3,9 +3,30 @@ import { Order } from '../types';
 import { productService } from './productService';
 import { activityLogService } from './activityLogService';
 
-const LOCAL_STORAGE_ORDERS_KEY = 'luxe_orders_cache_v2';
 const LOCAL_STORAGE_DELETED_ORDERS_KEY = 'luxe_deleted_orders_v1';
 
+// Purge any legacy oversized order catalog cache keys from localStorage to prevent QuotaExceededError
+export const clearLegacyOrderLocalStorage = () => {
+  try {
+    const keysToRemove: string[] = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && (key.startsWith('luxe_orders') || key.startsWith('luxe_order') || key.includes('orders_v'))) {
+        if (key !== LOCAL_STORAGE_DELETED_ORDERS_KEY) {
+          keysToRemove.push(key);
+        }
+      }
+    }
+    keysToRemove.forEach(k => localStorage.removeItem(k));
+  } catch (err) {
+    console.warn('Error clearing legacy order localStorage keys:', err);
+  }
+};
+
+// Immediately execute on module load to free up browser storage
+clearLegacyOrderLocalStorage();
+
+let memoryOrdersCache: Order[] | null = null;
 let isOrderRealtimeSubscribed = false;
 
 export const getDeletedOrderKeys = (): Set<string> => {
@@ -184,30 +205,17 @@ const INITIAL_ORDERS: Order[] = [
 
 const getStoredOrders = (): Order[] => {
   const deletedSet = getDeletedOrderKeys();
-  const stored = localStorage.getItem(LOCAL_STORAGE_ORDERS_KEY);
-  if (stored) {
-    try {
-      const parsed = JSON.parse(stored);
-      if (Array.isArray(parsed)) {
-        return parsed.filter(o => !isOrderDeleted(o, deletedSet));
-      }
-    } catch {
-      // fallback
-    }
+  if (memoryOrdersCache && memoryOrdersCache.length > 0) {
+    return memoryOrdersCache.filter(o => !isOrderDeleted(o, deletedSet));
   }
-  const initial = INITIAL_ORDERS.filter(o => !isOrderDeleted(o, deletedSet));
-  localStorage.setItem(LOCAL_STORAGE_ORDERS_KEY, JSON.stringify(initial));
-  return initial;
+  return INITIAL_ORDERS.filter(o => !isOrderDeleted(o, deletedSet));
 };
 
 const saveStoredOrders = (orders: Order[]) => {
-  try {
-    const deletedSet = getDeletedOrderKeys();
-    const clean = orders.filter(o => !isOrderDeleted(o, deletedSet));
-    localStorage.setItem(LOCAL_STORAGE_ORDERS_KEY, JSON.stringify(clean));
-  } catch (err) {
-    console.warn('Error saving orders to localStorage:', err);
-  }
+  const deletedSet = getDeletedOrderKeys();
+  const clean = orders.filter(o => !isOrderDeleted(o, deletedSet));
+  memoryOrdersCache = clean;
+  clearLegacyOrderLocalStorage();
 };
 
 const buildSupabaseOrderPayload = (orderData: Partial<Order>) => {
@@ -395,25 +403,36 @@ export const orderService = {
 
     addDeletedOrderKey(id, targetOrder?.order_ref);
 
+    const filtered = current.filter(o => o.id !== id && o.order_ref !== id);
+    saveStoredOrders(filtered);
+
     if (isSupabaseConfigured()) {
       try {
-        await supabase.from('orders').delete().or(`id.eq.${id},order_ref.eq.${id}`);
+        // Attempt deleting order items first if order_items table exists
+        try {
+          await supabase.from('order_items').delete().or(`order_id.eq.${id},order_id.eq.${targetOrder?.id || id}`);
+        } catch {
+          // Ignore if table or column doesn't exist
+        }
+        
+        await supabase.from('orders').delete().or(`id.eq.${id},order_ref.eq.${id}${targetOrder?.order_ref ? `,order_ref.eq.${targetOrder.order_ref}` : ''}`);
       } catch (err) {
         console.error('Supabase delete order error:', err);
       }
     }
 
-    const filtered = current.filter(o => o.id !== id && o.order_ref !== id);
-    saveStoredOrders(filtered);
-
-    activityLogService.logActivity({
-      entity_type: 'order',
-      entity_id: id,
-      entity_name: targetOrder?.order_ref || id,
-      action: 'delete',
-      description: `Eliminó el pedido "${targetOrder?.order_ref || id}" (${targetOrder?.customer_name || 'Cliente'})`,
-      details: `Monto total: $${(targetOrder?.total || 0).toLocaleString('es-CO')} COP`
-    });
+    try {
+      activityLogService.logActivity({
+        entity_type: 'order',
+        entity_id: id,
+        entity_name: targetOrder?.order_ref || id,
+        action: 'delete',
+        description: `Eliminó el pedido "${targetOrder?.order_ref || id}" (${targetOrder?.customer_name || 'Cliente'})`,
+        details: `Monto total: $${(targetOrder?.total || 0).toLocaleString('es-CO')} COP`
+      });
+    } catch {
+      // Non-blocking log failure
+    }
 
     notifyOrdersUpdated();
     return true;
