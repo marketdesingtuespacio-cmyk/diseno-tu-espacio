@@ -554,7 +554,7 @@ export const AdminDashboardPage: React.FC = () => {
         }
 
         if (Array.isArray(parsed.products) && parsed.products.length > 0) {
-          localStorage.setItem('luxe_products_v16', JSON.stringify(parsed.products));
+          // Products imported directly to memory cache & synced to Supabase
         }
 
         if (Array.isArray(parsed.orders) && parsed.orders.length > 0) {

@@ -3,8 +3,28 @@ import { Product, ProductFilterState } from '../types';
 import { MOCK_PRODUCTS } from './mockData';
 import { activityLogService } from './activityLogService';
 
-const LOCAL_STORAGE_PRODUCTS_KEY = 'luxe_products_v16';
 const LOCAL_STORAGE_DELETED_PRODUCTS_KEY = 'luxe_deleted_products_v1';
+
+// Purge any legacy oversized product catalog cache keys from localStorage to prevent QuotaExceededError
+export const clearLegacyProductLocalStorage = () => {
+  try {
+    const keysToRemove: string[] = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && (key.startsWith('luxe_products') || key.startsWith('luxe_catalog') || key.includes('products_v'))) {
+        if (key !== LOCAL_STORAGE_DELETED_PRODUCTS_KEY) {
+          keysToRemove.push(key);
+        }
+      }
+    }
+    keysToRemove.forEach(k => localStorage.removeItem(k));
+  } catch (err) {
+    console.warn('Error clearing legacy product localStorage keys:', err);
+  }
+};
+
+// Immediately execute on module load to free up browser storage
+clearLegacyProductLocalStorage();
 
 export const getDeletedProductKeys = (): Set<string> => {
   const stored = localStorage.getItem(LOCAL_STORAGE_DELETED_PRODUCTS_KEY);
@@ -61,37 +81,17 @@ export const isProductDeleted = (p: { id?: string; slug?: string; sku?: string; 
 
 const getStoredProducts = (): Product[] => {
   const deletedSet = getDeletedProductKeys();
-  const stored = localStorage.getItem(LOCAL_STORAGE_PRODUCTS_KEY);
-  if (stored) {
-    try {
-      const parsed = JSON.parse(stored);
-      if (Array.isArray(parsed)) {
-        return parsed.filter(p => !isProductDeleted(p, deletedSet));
-      }
-    } catch {
-      // fallback
-    }
+  if (memoryProductsCache && memoryProductsCache.length > 0) {
+    return memoryProductsCache.filter(p => !isProductDeleted(p, deletedSet));
   }
-  const initial = MOCK_PRODUCTS.filter(p => !isProductDeleted(p, deletedSet));
-  localStorage.setItem(LOCAL_STORAGE_PRODUCTS_KEY, JSON.stringify(initial));
-  return initial;
+  return MOCK_PRODUCTS.filter(p => !isProductDeleted(p, deletedSet));
 };
 
 const saveStoredProducts = (products: Product[]) => {
-  try {
-    const deletedSet = getDeletedProductKeys();
-    const clean = products.filter(p => !isProductDeleted(p, deletedSet));
-    localStorage.setItem(LOCAL_STORAGE_PRODUCTS_KEY, JSON.stringify(clean));
-  } catch (err) {
-    console.warn('localStorage quota warning:', err);
-    try {
-      const deletedSet = getDeletedProductKeys();
-      const clean = products.filter(p => !isProductDeleted(p, deletedSet));
-      localStorage.setItem(LOCAL_STORAGE_PRODUCTS_KEY, JSON.stringify(clean));
-    } catch {
-      // Storage safety
-    }
-  }
+  const deletedSet = getDeletedProductKeys();
+  const clean = products.filter(p => !isProductDeleted(p, deletedSet));
+  memoryProductsCache = clean;
+  clearLegacyProductLocalStorage();
 };
 
 export const isCategoryMatch = (prodCat?: string, filterCat?: string): boolean => {
