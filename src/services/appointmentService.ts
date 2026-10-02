@@ -1,26 +1,8 @@
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { Appointment } from '../types';
-import { MOCK_APPOINTMENTS } from './mockData';
 import { activityLogService } from './activityLogService';
 
-const LOCAL_STORAGE_APPOINTMENTS_KEY = 'luxe_appointments_cache';
-
-const getStoredAppointments = (): Appointment[] => {
-  const stored = localStorage.getItem(LOCAL_STORAGE_APPOINTMENTS_KEY);
-  if (stored) {
-    try {
-      return JSON.parse(stored);
-    } catch {
-      // fallback
-    }
-  }
-  localStorage.setItem(LOCAL_STORAGE_APPOINTMENTS_KEY, JSON.stringify(MOCK_APPOINTMENTS));
-  return MOCK_APPOINTMENTS;
-};
-
-const saveStoredAppointments = (appointments: Appointment[]) => {
-  localStorage.setItem(LOCAL_STORAGE_APPOINTMENTS_KEY, JSON.stringify(appointments));
-};
+let memoryAppointmentsCache: Appointment[] = [];
 
 export const appointmentService = {
   async getAppointments(): Promise<Appointment[]> {
@@ -30,12 +12,15 @@ export const appointmentService = {
           .from('appointments')
           .select('*')
           .order('appointment_date', { ascending: true });
-        if (!error && data) return data as Appointment[];
+        if (!error && data) {
+          memoryAppointmentsCache = data as Appointment[];
+          return memoryAppointmentsCache;
+        }
       } catch (err) {
-        console.warn('Supabase appointments fetch failed, using fallback cache', err);
+        console.warn('Supabase appointments fetch failed', err);
       }
     }
-    return getStoredAppointments();
+    return memoryAppointmentsCache;
   },
 
   async createAppointment(appointment: Omit<Appointment, 'id'>): Promise<Appointment> {
@@ -61,9 +46,7 @@ export const appointmentService = {
       }
     }
 
-    const current = getStoredAppointments();
-    const updated = [result, ...current];
-    saveStoredAppointments(updated);
+    memoryAppointmentsCache = [result, ...memoryAppointmentsCache];
 
     activityLogService.logActivity({
       entity_type: 'appointment',
@@ -95,12 +78,10 @@ export const appointmentService = {
     }
 
     if (!updated) {
-      const current = getStoredAppointments();
-      const index = current.findIndex(a => a.id === id);
+      const index = memoryAppointmentsCache.findIndex(a => a.id === id);
       if (index !== -1) {
-        current[index].status = status;
-        saveStoredAppointments(current);
-        updated = current[index];
+        memoryAppointmentsCache[index].status = status;
+        updated = memoryAppointmentsCache[index];
       }
     }
 

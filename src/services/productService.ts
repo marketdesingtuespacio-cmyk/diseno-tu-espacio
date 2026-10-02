@@ -1,6 +1,5 @@
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { Product, ProductFilterState } from '../types';
-import { MOCK_PRODUCTS } from './mockData';
 import { activityLogService } from './activityLogService';
 
 // Purge any legacy oversized product catalog cache keys from localStorage to prevent QuotaExceededError
@@ -22,7 +21,7 @@ export const clearLegacyProductLocalStorage = () => {
 // Immediately execute on module load to free up browser storage
 clearLegacyProductLocalStorage();
 
-// Legacy stubs kept for backward compatibility (no localStorage persistence)
+// Legacy stubs kept for backward compatibility
 export const getDeletedProductKeys = (): Set<string> => new Set();
 export const saveDeletedProductKeys = (_keys: Set<string>) => {};
 export const addDeletedProductKey = (..._keys: (string | undefined)[]) => {};
@@ -54,25 +53,12 @@ export const isCategoryMatch = (prodCat?: string, filterCat?: string): boolean =
 };
 
 const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Product => {
-  const isFromSupabaseOrCache = Boolean(p.id && (p.created_at || p.updated_at || p.price !== undefined));
-
   let fallback: Product | undefined;
-  if (!isFromSupabaseOrCache) {
-    if (localLookupMap) {
-      if (p.id) fallback = localLookupMap.get(p.id);
-      if (!fallback && p.slug) fallback = localLookupMap.get(p.slug);
-      if (!fallback && p.sku) fallback = localLookupMap.get(p.sku.toLowerCase());
-      if (!fallback && p.name) fallback = localLookupMap.get(p.name.toLowerCase());
-    }
-
-    if (!fallback) {
-      fallback = MOCK_PRODUCTS.find(m => 
-        (p.id && m.id === p.id) || 
-        (p.slug && m.slug === p.slug) || 
-        (p.sku && m.sku && m.sku.toLowerCase() === p.sku.toLowerCase()) || 
-        (p.name && m.name.toLowerCase() === p.name.toLowerCase())
-      );
-    }
+  if (localLookupMap) {
+    if (p.id) fallback = localLookupMap.get(p.id);
+    if (!fallback && p.slug) fallback = localLookupMap.get(p.slug);
+    if (!fallback && p.sku) fallback = localLookupMap.get(p.sku.toLowerCase());
+    if (!fallback && p.name) fallback = localLookupMap.get(p.name.toLowerCase());
   }
 
   const resolvedStatus = (p.inventory_status && p.inventory_status.trim().length > 0)
@@ -209,7 +195,7 @@ const applyProductFilters = (products: Product[], filters?: Partial<ProductFilte
 
 export const productService = {
   getProductsSync(filters?: Partial<ProductFilterState>, includePrivate: boolean = true): Product[] {
-    const base = memoryProductsCache || MOCK_PRODUCTS;
+    const base = memoryProductsCache || [];
     const enriched = base.map(p => enrichProduct(p));
     return applyProductFilters(enriched, filters, includePrivate);
   },
@@ -238,23 +224,8 @@ export const productService = {
         try {
           const { data, error } = await supabase.from('products').select('*').order('created_at', { ascending: false });
           if (!error && data && data.length > 0) {
-            const supabaseSet = new Set<string>();
-
             (data as Product[]).forEach(sp => {
-              if (sp.id) supabaseSet.add(sp.id);
-              if (sp.slug) supabaseSet.add(sp.slug);
-              if (sp.sku) supabaseSet.add(sp.sku.toLowerCase());
               fetchedProducts.push(enrichProduct(sp));
-            });
-
-            // Append MOCK_PRODUCTS that do not exist in Supabase
-            MOCK_PRODUCTS.forEach(m => {
-              const inSupabase = (m.id && supabaseSet.has(m.id)) ||
-                                 (m.slug && supabaseSet.has(m.slug)) ||
-                                 (m.sku && supabaseSet.has(m.sku.toLowerCase()));
-              if (!inSupabase) {
-                fetchedProducts.push(enrichProduct(m));
-              }
             });
           } else if (error) {
             console.warn('Supabase fetch products error:', error.message);
@@ -265,9 +236,7 @@ export const productService = {
       }
 
       if (fetchedProducts.length === 0) {
-        fetchedProducts = (memoryProductsCache && memoryProductsCache.length > 0)
-          ? memoryProductsCache
-          : MOCK_PRODUCTS.map(p => enrichProduct(p));
+        fetchedProducts = memoryProductsCache || [];
       }
 
       memoryProductsCache = fetchedProducts;
