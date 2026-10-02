@@ -306,30 +306,54 @@ export const orderService = {
   },
 
   async deleteOrder(id: string): Promise<boolean> {
+    clearOrderCache();
     const numericId = Number(id);
     const isNumeric = !isNaN(numericId) && Number.isInteger(numericId);
 
-    let isSuccess = true;
+    let isSuccess = false;
 
     if (isSupabaseConfigured()) {
       try {
-        if (isNumeric) {
-          try {
+        try {
+          if (isNumeric) {
             await supabase.from('order_items').delete().eq('order_id', numericId);
-          } catch {}
-          const { error } = await supabase.from('orders').delete().eq('id', numericId);
-          if (error) isSuccess = false;
-        } else {
-          try {
-            await supabase.from('order_items').delete().eq('order_id', id);
-          } catch {}
-          const { error } = await supabase.from('orders').delete().eq('order_ref', id);
-          if (error) isSuccess = false;
+          }
+          await supabase.from('order_items').delete().eq('order_id', id);
+        } catch {
+          // ignore if table doesn't exist
         }
+
+        let deleted = false;
+
+        if (isNumeric) {
+          const { error: errNum } = await supabase.from('orders').delete().eq('id', numericId);
+          if (!errNum) deleted = true;
+        }
+
+        if (!deleted) {
+          const { error: errId } = await supabase.from('orders').delete().eq('id', id);
+          if (!errId) deleted = true;
+        }
+
+        if (!deleted) {
+          const { error: errRef } = await supabase.from('orders').delete().eq('order_ref', id);
+          if (!errRef) deleted = true;
+        }
+
+        if (!deleted) {
+          const { error: errOr } = await supabase.from('orders').delete().or(`id.eq.${id},order_ref.eq.${id}`);
+          if (!errOr) deleted = true;
+        }
+
+        isSuccess = deleted;
       } catch (err) {
         console.error('Excepción al eliminar pedido en Supabase:', err);
         isSuccess = false;
       }
+    }
+
+    if (memoryOrdersCache) {
+      memoryOrdersCache = memoryOrdersCache.filter(o => o.id !== id && o.order_ref !== id);
     }
 
     try {

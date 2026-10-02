@@ -243,11 +243,12 @@ export const AdminDashboardPage: React.FC = () => {
     // 1. Instant optimistic update: filter out deleted order from React state immediately (0ms latency)
     setOrders(prev => prev.filter(o => o.id !== id && o.order_ref !== id));
 
-    // 2. Perform background deletion in Supabase & memory cache
+    // 2. Perform deletion in Supabase & clear memory cache
     await orderService.deleteOrder(id);
 
-    // 3. Refetch fresh data to ensure cloud alignment
+    // 3. Reload data and strictly filter out the deleted order so it cannot re-appear
     await loadData();
+    setOrders(prev => prev.filter(o => o.id !== id && o.order_ref !== id));
 
     setActionNotification({
       title: '¡Pedido Eliminado!',
@@ -262,13 +263,24 @@ export const AdminDashboardPage: React.FC = () => {
       return alert('No hay pedidos en estado Cancelado para eliminar.');
     }
     if (confirm(`¿Está seguro de eliminar los ${cancelled.length} pedidos en estado Cancelado?`)) {
-      const cancelledIds = new Set(cancelled.map(c => c.id));
-      setOrders(prev => prev.filter(o => !cancelledIds.has(o.id)));
+      const cancelledKeys = new Set<string>();
+      cancelled.forEach(c => {
+        if (c.id) cancelledKeys.add(c.id);
+        if (c.order_ref) cancelledKeys.add(c.order_ref);
+      });
+
+      setOrders(prev => prev.filter(o => !cancelledKeys.has(o.id) && !cancelledKeys.has(o.order_ref)));
 
       for (const ord of cancelled) {
         await orderService.deleteOrder(ord.id);
+        if (ord.order_ref && ord.order_ref !== ord.id) {
+          await orderService.deleteOrder(ord.order_ref);
+        }
       }
+
       await loadData();
+      setOrders(prev => prev.filter(o => !cancelledKeys.has(o.id) && !cancelledKeys.has(o.order_ref)));
+
       setActionNotification({
         title: '¡Pedidos Cancelados Eliminados!',
         message: `Se eliminaron ${cancelled.length} pedidos cancelados correctamente.`
