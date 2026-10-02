@@ -79,15 +79,8 @@ export const ProductDetailPage: React.FC = () => {
   const topTwoImages = imagesList.slice(0, 2);
   const remainingImages = imagesList.slice(2);
 
-  const swatches = (product.colors && product.colors.length > 0)
-    ? product.colors 
-    : [
-        { name: 'Latón Dorado', hex: '#CDB375' },
-        { name: 'Plata Níquel', hex: '#D4D4D2' },
-        { name: 'Negro Mate', hex: '#1C1C1C' }
-      ];
-
-  const selectedSwatch = swatches[selectedColorIndex] || swatches[0] || { name: 'Estándar', hex: '#111111' };
+  const swatches = (product.colors && product.colors.length > 0) ? product.colors : [];
+  const selectedSwatch = swatches[selectedColorIndex] || swatches[0];
 
   return (
     <div className="max-w-[1600px] mx-auto px-0 sm:px-4 lg:px-6 py-4 space-y-6 font-sans">
@@ -281,28 +274,30 @@ export const ProductDetailPage: React.FC = () => {
           </div>
 
           {/* Color & Material Variant Selection */}
-          <div className="space-y-2 pt-2">
-            <div className="flex items-center justify-between text-xs">
-              <span className="text-neutral-500 uppercase tracking-wider text-[10px] font-bold">Acabado / Color</span>
-              <span className="font-medium text-neutral-900">{selectedSwatch?.name || 'Estándar'}</span>
-            </div>
+          {swatches.length > 0 && (
+            <div className="space-y-2 pt-2">
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-neutral-500 uppercase tracking-wider text-[10px] font-bold">Acabado / Color</span>
+                <span className="font-medium text-neutral-900">{selectedSwatch?.name || 'Estándar'}</span>
+              </div>
 
-            <div className="flex items-center gap-2">
-              {swatches.map((swatch, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setSelectedColorIndex(idx)}
-                  style={{ backgroundColor: swatch.hex }}
-                  title={swatch.name}
-                  className={`w-7 h-7 border border-neutral-300 transition-all ${
-                    selectedColorIndex === idx 
-                      ? 'ring-2 ring-black ring-offset-2 border-transparent' 
-                      : 'hover:scale-105 opacity-80 hover:opacity-100'
-                  }`}
-                />
-              ))}
+              <div className="flex items-center gap-2">
+                {swatches.map((swatch, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setSelectedColorIndex(idx)}
+                    style={{ backgroundColor: swatch.hex }}
+                    title={swatch.name}
+                    className={`w-7 h-7 border border-neutral-300 transition-all ${
+                      selectedColorIndex === idx 
+                        ? 'ring-2 ring-black ring-offset-2 border-transparent' 
+                        : 'hover:scale-105 opacity-80 hover:opacity-100'
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* High-Contrast Conversion CTA Button */}
           <div className="space-y-3 pt-4">

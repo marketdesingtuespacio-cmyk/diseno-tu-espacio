@@ -119,22 +119,26 @@ export const isCategoryMatch = (prodCat?: string, filterCat?: string): boolean =
 };
 
 const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Product => {
+  // If product comes from database/memory, strictly preserve its authoritative attributes
+  const isFromSupabaseOrCache = Boolean(p.id && (p.created_at || p.updated_at || p.price !== undefined));
+
   let fallback: Product | undefined;
+  if (!isFromSupabaseOrCache) {
+    if (localLookupMap) {
+      if (p.id) fallback = localLookupMap.get(p.id);
+      if (!fallback && p.slug) fallback = localLookupMap.get(p.slug);
+      if (!fallback && p.sku) fallback = localLookupMap.get(p.sku.toLowerCase());
+      if (!fallback && p.name) fallback = localLookupMap.get(p.name.toLowerCase());
+    }
 
-  if (localLookupMap) {
-    if (p.id) fallback = localLookupMap.get(p.id);
-    if (!fallback && p.slug) fallback = localLookupMap.get(p.slug);
-    if (!fallback && p.sku) fallback = localLookupMap.get(p.sku.toLowerCase());
-    if (!fallback && p.name) fallback = localLookupMap.get(p.name.toLowerCase());
-  }
-
-  if (!fallback) {
-    fallback = MOCK_PRODUCTS.find(m => 
-      (p.id && m.id === p.id) || 
-      (p.slug && m.slug === p.slug) || 
-      (p.sku && m.sku && m.sku.toLowerCase() === p.sku.toLowerCase()) || 
-      (p.name && m.name.toLowerCase() === p.name.toLowerCase())
-    );
+    if (!fallback) {
+      fallback = MOCK_PRODUCTS.find(m => 
+        (p.id && m.id === p.id) || 
+        (p.slug && m.slug === p.slug) || 
+        (p.sku && m.sku && m.sku.toLowerCase() === p.sku.toLowerCase()) || 
+        (p.name && m.name.toLowerCase() === p.name.toLowerCase())
+      );
+    }
   }
 
   const resolvedStatus = (p.inventory_status && p.inventory_status.trim().length > 0)
@@ -149,27 +153,24 @@ const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Produ
     ? Number(p.wholesale_min_qty)
     : (fallback?.wholesale_min_qty ? Number(fallback.wholesale_min_qty) : (p.boxes_count && p.boxes_count > 0 ? p.boxes_count : 5));
 
-  let resolvedImages = (p.images && p.images.length > 0)
+  const resolvedImages = (p.images && p.images.length > 0)
     ? p.images
     : (fallback?.images && fallback.images.length > 0 ? fallback.images : []);
 
-  const isCuadros = isCategoryMatch(p.category || fallback?.category, 'Cuadros');
-  if (isCuadros && resolvedImages.some(img => typeof img === 'string' && img.includes('cat_pie'))) {
-    resolvedImages = [
-      'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&q=80&w=1000',
-      'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&q=80&w=1000'
-    ];
-  }
+  const resolvedColors = p.colors !== undefined 
+    ? p.colors 
+    : (fallback?.colors || []);
 
-  const resolvedUpdatedAt = p.updated_at || fallback?.updated_at || p.created_at;
+  const resolvedUpdatedAt = p.updated_at || fallback?.updated_at || p.created_at || new Date().toISOString();
   const activeUser = activityLogService.getCurrentUser ? activityLogService.getCurrentUser() : null;
   const activeUserLabel = activeUser ? `${activeUser.name} (${activeUser.email})` : 'Administración';
   const resolvedUpdatedBy = p.updated_by || fallback?.updated_by || activeUserLabel;
 
   return {
-    ...fallback,
+    ...(fallback || {}),
     ...p,
     images: resolvedImages,
+    colors: resolvedColors,
     sku: (p.sku && p.sku.trim().length > 0) ? p.sku : (fallback?.sku || ''),
     warehouse_stock: p.warehouse_stock !== undefined ? p.warehouse_stock : (fallback?.warehouse_stock ?? 0),
     store_stock: p.store_stock !== undefined ? p.store_stock : (fallback?.store_stock ?? 0),

@@ -315,6 +315,23 @@ export const orderService = {
         } else if (data && data.length > 0) {
           console.log('✅ Pedido guardado exitosamente en Supabase Nube:', data[0].order_ref);
           if (data[0].id) newOrder.id = String(data[0].id);
+
+          // If relational order_items table exists, populate items transactionally
+          if (newOrder.items && newOrder.items.length > 0 && data[0].id) {
+            try {
+              const relationalItems = newOrder.items.map(item => ({
+                order_id: data[0].id,
+                product_id: (item.product_id && item.product_id.length > 20 && !item.product_id.startsWith('prod-')) ? item.product_id : null,
+                quantity: item.quantity,
+                unit_price: item.price,
+                total_price: item.price * item.quantity,
+                product_snapshot: item
+              }));
+              await supabase.from('order_items').insert(relationalItems);
+            } catch {
+              // Ignore if order_items table is not active
+            }
+          }
         }
       } catch (err) {
         console.error('Supabase order creation exception:', err);
@@ -406,8 +423,20 @@ export const orderService = {
     const filtered = current.filter(o => o.id !== id && o.order_ref !== id);
     saveStoredOrders(filtered);
 
+    let isSuccess = true;
+
     if (isSupabaseConfigured()) {
       try {
+        // Clean relational order_items if order_items table exists
+        const targetId = targetOrder?.id || id;
+        if (targetId && targetId.length > 20) {
+          try {
+            await supabase.from('order_items').delete().eq('order_id', targetId);
+          } catch {
+            // Ignore if order_items table is absent
+          }
+        }
+
         const filterQuery = `id.eq.${id},order_ref.eq.${id}${targetOrder?.order_ref ? `,order_ref.eq.${targetOrder.order_ref}` : ''}`;
         const { error } = await supabase
           .from('orders')
@@ -416,11 +445,13 @@ export const orderService = {
 
         if (error) {
           console.error('❌ Error al eliminar pedido en Supabase:', error.message);
+          isSuccess = false;
         } else {
           console.log('✅ Pedido eliminado exitosamente de Supabase Nube:', targetOrder?.order_ref || id);
         }
       } catch (err) {
         console.error('Excepción al eliminar pedido en Supabase:', err);
+        isSuccess = false;
       }
     }
 
@@ -438,7 +469,7 @@ export const orderService = {
     }
 
     notifyOrdersUpdated();
-    return true;
+    return isSuccess;
   },
 
   async syncAllToSupabase(): Promise<{ success: boolean; count: number; message: string }> {
