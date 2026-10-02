@@ -59,7 +59,15 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
     if (order.status === 'delivered') statusText = 'Entregado con Éxito';
     if (order.status === 'cancelled') statusText = 'Cancelado';
 
-    const text = `Hola *${order.customer_name}*, te saludamos de *Diseño Tu Espacio - By Alexis Madrigal*.\n\nTe informamos que tu pedido *Ref: ${order.order_ref}* se encuentra en el estado: *${statusText}*.\n\n*Detalles de Logística & Envíos:*\n• Transportadora: ${order.carrier || 'Flete Privado'}\n• Número de Guía: ${order.tracking_number || 'En asignación'}\n• Ciudad Destino: ${order.city || 'Colombia'}\n\nPuedes realizar cualquier consulta posventa respondiendo a este mensaje.\n¡Gracias por elegir diseño de autor!`;
+    const depositVal = order.deposit_amount || 0;
+    const pendingVal = order.pending_balance !== undefined ? order.pending_balance : Math.max(0, order.total - depositVal);
+
+    let paymentBreakdown = `• Total Pedido: $${order.total.toLocaleString('es-CO')} COP`;
+    if (depositVal > 0) {
+      paymentBreakdown += `\n• Abonado: $${depositVal.toLocaleString('es-CO')} COP\n• Saldo Pendiente por Cobrar: $${pendingVal.toLocaleString('es-CO')} COP`;
+    }
+
+    const text = `Hola *${order.customer_name}*, te saludamos de *Diseño Tu Espacio - By Alexis Madrigal*.\n\nTe informamos que tu pedido *Ref: ${order.order_ref}* se encuentra en el estado: *${statusText}*.\n\n*Detalles Financieros:*\n${paymentBreakdown}\n\n*Detalles de Logística & Envíos:*\n• Transportadora: ${order.carrier || 'Flete Privado'}\n• Número de Guía: ${order.tracking_number || 'En asignación'}\n• Ciudad Destino: ${order.city || 'Colombia'}\n\nPuedes realizar cualquier consulta posventa respondiendo a este mensaje.\n¡Gracias por elegir diseño de autor!`;
 
     return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(text)}`;
   };
@@ -302,10 +310,33 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
               <span className="text-[10px] text-neutral-400 font-medium">{order.payment_method || 'Pago Realizado'}</span>
             </div>
 
+            <div className="grid grid-cols-3 gap-2 py-1 text-[11px] border-b border-neutral-800">
+              <div>
+                <span className="text-[9.5px] uppercase text-neutral-400 block font-bold">Total Liquidado</span>
+                <span className="font-mono font-bold text-white">{formatPrice(order.total)}</span>
+              </div>
+              <div>
+                <span className="text-[9.5px] uppercase text-emerald-400 block font-bold">Abonado (Pago Parcial)</span>
+                <span className="font-mono font-bold text-emerald-400">{formatPrice(order.deposit_amount || 0)}</span>
+              </div>
+              <div>
+                <span className="text-[9.5px] uppercase text-amber-400 block font-bold">Saldo Pendiente</span>
+                <span className="font-mono font-extrabold text-amber-300">{formatPrice(order.pending_balance !== undefined ? order.pending_balance : Math.max(0, order.total - (order.deposit_amount || 0)))}</span>
+              </div>
+            </div>
+
             <div className="flex justify-between items-end pt-1">
               <div>
-                <span className="text-[10px] uppercase font-bold text-neutral-400 tracking-wider block">Total Liquidación</span>
-                <span className="font-extrabold text-xl text-white tracking-tight">{formatPrice(order.total)}</span>
+                <span className="text-[10px] uppercase font-bold text-neutral-400 tracking-wider block mb-1">Estado del Pago</span>
+                <span className={`text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md inline-block border ${
+                  (order.deposit_amount || 0) >= order.total && order.total > 0
+                    ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
+                    : (order.deposit_amount || 0) > 0
+                    ? 'bg-amber-500/20 text-amber-300 border-amber-500/40'
+                    : 'bg-red-500/20 text-red-300 border-red-500/40'
+                }`}>
+                  {(order.deposit_amount || 0) >= order.total && order.total > 0 ? '✓ Pago Completo (100%)' : (order.deposit_amount || 0) > 0 ? '⏳ Abono Parcial Registrado' : '⚠️ Pendiente de Pago (0%)'}
+                </span>
               </div>
 
               {/* Direct WhatsApp Action Pill inside Modal */}
@@ -316,7 +347,7 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
                 className="py-2.5 px-5 bg-[#25D366] hover:bg-[#1EBE57] text-white font-extrabold text-xs flex items-center gap-2 rounded-full shadow-lg shadow-emerald-500/20 transition-all cursor-pointer whitespace-nowrap"
               >
                 <WhatsAppIcon className="w-4 h-4 fill-white shrink-0" />
-                <span className="whitespace-nowrap">Enviar estado del pedido</span>
+                <span className="whitespace-nowrap">Enviar estado por WhatsApp</span>
               </a>
             </div>
           </div>

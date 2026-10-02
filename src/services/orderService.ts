@@ -71,13 +71,31 @@ const buildSupabaseOrderPayload = (orderData: Partial<Order>) => {
     ? `${orderData.shipping_address}, ${orderData.city}`
     : (orderData.shipping_address || '');
 
+  const total = Number(orderData.total || orderData.subtotal || 0);
+  const deposit = Number(orderData.deposit_amount || 0);
+  const pending = orderData.pending_balance !== undefined ? Number(orderData.pending_balance) : Math.max(0, total - deposit);
+
+  let paymentStatus: 'pending' | 'partial' | 'paid' = orderData.payment_status || 'pending';
+  if (!orderData.payment_status) {
+    if (deposit >= total && total > 0) {
+      paymentStatus = 'paid';
+    } else if (deposit > 0) {
+      paymentStatus = 'partial';
+    } else {
+      paymentStatus = 'pending';
+    }
+  }
+
   return {
     order_ref: orderData.order_ref,
     customer_name: orderData.customer_name || 'Cliente',
     customer_email: orderData.customer_email || '',
     customer_phone: orderData.customer_phone || '',
     shipping_address: fullAddress,
-    total_amount: Number(orderData.total || orderData.subtotal || 0),
+    total_amount: total,
+    deposit_amount: deposit,
+    pending_balance: pending,
+    payment_status: paymentStatus,
     status: orderData.status || 'processing',
     payment_method: orderData.payment_method || 'Tarjeta de Crédito',
     payment_gateway: orderData.payment_gateway || 'Wompi Colombia',
@@ -103,29 +121,48 @@ export const orderService = {
             .order('created_at', { ascending: false });
 
           if (!error && data) {
-            fetchedOrders = (data as any[]).map(o => ({
-              ...o,
-              id: String(o.id),
-              order_ref: o.order_ref || `DT-${String(o.id).substring(0, 6)}`,
-              customer_name: o.customer_name || 'Cliente',
-              customer_email: o.customer_email || 'cliente@diseñotuespacio.com',
-              customer_phone: o.customer_phone || '',
-              customer_tag: o.customer_tag || 'Residencial',
-              shipping_address: o.shipping_address || '',
-              city: o.city || (o.shipping_address ? o.shipping_address.split(',').pop()?.trim() : '') || 'Bogotá D.C.',
-              carrier: o.carrier || 'Servientrega',
-              tracking_number: o.tracking_number || '',
-              total: Number(o.total_amount || o.total || 0),
-              subtotal: Number(o.subtotal || o.total_amount || o.total || 0),
-              shipping_cost: Number(o.shipping_cost || 0),
-              discount: Number(o.discount || 0),
-              payment_method: o.payment_method || 'Tarjeta de Crédito',
-              payment_gateway: o.payment_gateway || 'Wompi Colombia',
-              status: o.status || 'processing',
-              items: o.items || [],
-              items_count: Number(o.items_count || (o.items && Array.isArray(o.items) ? o.items.reduce((acc: number, i: any) => acc + (i.quantity || 1), 0) : 1)),
-              created_at: o.created_at || new Date().toISOString()
-            }));
+            fetchedOrders = (data as any[]).map(o => {
+              const totalVal = Number(o.total_amount || o.total || 0);
+              const depositVal = Number(o.deposit_amount !== undefined ? o.deposit_amount : 0);
+              const pendingVal = Number(o.pending_balance !== undefined ? o.pending_balance : Math.max(0, totalVal - depositVal));
+              let payStatusVal: 'pending' | 'partial' | 'paid' = o.payment_status || 'pending';
+              if (!o.payment_status) {
+                if (depositVal >= totalVal && totalVal > 0) {
+                  payStatusVal = 'paid';
+                } else if (depositVal > 0) {
+                  payStatusVal = 'partial';
+                } else {
+                  payStatusVal = 'pending';
+                }
+              }
+
+              return {
+                ...o,
+                id: String(o.id),
+                order_ref: o.order_ref || `DT-${String(o.id).substring(0, 6)}`,
+                customer_name: o.customer_name || 'Cliente',
+                customer_email: o.customer_email || 'cliente@diseñotuespacio.com',
+                customer_phone: o.customer_phone || '',
+                customer_tag: o.customer_tag || 'Residencial',
+                shipping_address: o.shipping_address || '',
+                city: o.city || (o.shipping_address ? o.shipping_address.split(',').pop()?.trim() : '') || 'Bogotá D.C.',
+                carrier: o.carrier || 'Servientrega',
+                tracking_number: o.tracking_number || '',
+                total: totalVal,
+                deposit_amount: depositVal,
+                pending_balance: pendingVal,
+                payment_status: payStatusVal,
+                subtotal: Number(o.subtotal || o.total_amount || o.total || 0),
+                shipping_cost: Number(o.shipping_cost || 0),
+                discount: Number(o.discount || 0),
+                payment_method: o.payment_method || 'Tarjeta de Crédito',
+                payment_gateway: o.payment_gateway || 'Wompi Colombia',
+                status: o.status || 'processing',
+                items: o.items || [],
+                items_count: Number(o.items_count || (o.items && Array.isArray(o.items) ? o.items.reduce((acc: number, i: any) => acc + (i.quantity || 1), 0) : 1)),
+                created_at: o.created_at || new Date().toISOString()
+              };
+            });
           } else if (error) {
             console.warn('Supabase fetch orders error:', error.message);
           }
@@ -166,10 +203,17 @@ export const orderService = {
       try {
         const payload = buildSupabaseOrderPayload(orderData);
 
-        const { data, error } = await supabase
+        let { data, error } = await supabase
           .from('orders')
           .insert([payload])
           .select();
+
+        if (error && (error.message.includes('deposit_amount') || error.message.includes('pending_balance') || error.message.includes('payment_status') || error.message.includes('column'))) {
+          const { deposit_amount, pending_balance, payment_status, ...legacyPayload } = payload;
+          const retryRes = await supabase.from('orders').insert([legacyPayload]).select();
+          data = retryRes.data;
+          error = retryRes.error;
+        }
 
         if (error) {
           console.error('❌ Error al guardar pedido en Supabase:', error.message);
@@ -204,7 +248,7 @@ export const orderService = {
       entity_name: newOrder.order_ref,
       action: 'create',
       description: `Registró el pedido "${newOrder.order_ref}" para ${newOrder.customer_name}`,
-      details: `Total: $${newOrder.total.toLocaleString('es-CO')} COP | Método: ${newOrder.payment_method}`
+      details: `Total: $${newOrder.total.toLocaleString('es-CO')} COP | Abono: $${(newOrder.deposit_amount || 0).toLocaleString('es-CO')} COP | Método: ${newOrder.payment_method}`
     });
 
     notifyOrdersUpdated();
@@ -225,6 +269,23 @@ export const orderService = {
       updated_at: nowISO,
       updated_by: userLabel
     };
+
+    if (updates.deposit_amount !== undefined || updates.total !== undefined) {
+      const currentTotal = updates.total !== undefined ? updates.total : (fullUpdates.total || 0);
+      const currentDeposit = updates.deposit_amount !== undefined ? updates.deposit_amount : (fullUpdates.deposit_amount || 0);
+      if (updates.pending_balance === undefined) {
+        fullUpdates.pending_balance = Math.max(0, currentTotal - currentDeposit);
+      }
+      if (updates.payment_status === undefined) {
+        if (currentDeposit >= currentTotal && currentTotal > 0) {
+          fullUpdates.payment_status = 'paid';
+        } else if (currentDeposit > 0) {
+          fullUpdates.payment_status = 'partial';
+        } else {
+          fullUpdates.payment_status = 'pending';
+        }
+      }
+    }
 
     // If order status is set to cancelled, restore product stock in Supabase automatically
     if (updates.status === 'cancelled' && isSupabaseConfigured()) {
@@ -254,8 +315,8 @@ export const orderService = {
         
         const { error } = await query.select();
         
-        if (error && (error.message.includes('updated_at') || error.message.includes('updated_by') || error.message.includes('column'))) {
-          const { updated_at, updated_by, ...fallbackPayload } = fullUpdates;
+        if (error && (error.message.includes('updated_at') || error.message.includes('updated_by') || error.message.includes('deposit_amount') || error.message.includes('pending_balance') || error.message.includes('payment_status') || error.message.includes('column'))) {
+          const { updated_at, updated_by, deposit_amount, pending_balance, payment_status, ...fallbackPayload } = fullUpdates;
           await supabase.from('orders').update(fallbackPayload).or(`id.eq.${id},order_ref.eq.${id}`);
         }
       } catch (err) {

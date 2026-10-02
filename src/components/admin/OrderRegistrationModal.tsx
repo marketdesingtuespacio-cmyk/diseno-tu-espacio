@@ -47,6 +47,7 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
   const [items, setItems] = useState<OrderItem[]>([]);
   const [shippingCost, setShippingCost] = useState<number>(35000);
   const [discount, setDiscount] = useState<number>(0);
+  const [depositAmount, setDepositAmount] = useState<number>(0);
 
   // Wholesale vs Retail Pricing Mode State ('detal' | 'mayorista' | 'mixto')
   const [pricingMode, setPricingMode] = useState<'detal' | 'mayorista' | 'mixto'>('detal');
@@ -199,6 +200,12 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
       wholesaleCount === items.length ? 'mayorista' :
       wholesaleCount === 0 ? 'detal' : 'mixto';
 
+    const calculatedDeposit = Math.max(0, depositAmount);
+    const calculatedPending = Math.max(0, grandTotal - calculatedDeposit);
+    const calculatedPaymentStatus: Order['payment_status'] = 
+      calculatedDeposit >= grandTotal && grandTotal > 0 ? 'paid' :
+      calculatedDeposit > 0 ? 'partial' : 'pending';
+
     await orderService.createOrder({
       order_ref: orderRef,
       customer_name: customerName.trim(),
@@ -214,6 +221,9 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
       shipping_cost: shippingCost,
       discount,
       total: grandTotal,
+      deposit_amount: calculatedDeposit,
+      pending_balance: calculatedPending,
+      payment_status: calculatedPaymentStatus,
       status: orderStatus,
       payment_method: paymentMethod,
       payment_gateway: paymentGateway,
@@ -500,7 +510,7 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
             )}
 
             {/* Financial Calculator Row */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-3 border-t border-neutral-100">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-3 border-t border-neutral-100">
               <div>
                 <label className="block uppercase font-bold text-neutral-500 text-[10px] mb-1">Costo de Envío (COP)</label>
                 <input 
@@ -525,8 +535,31 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
                 />
               </div>
 
+              <div>
+                <label className="block uppercase font-bold text-emerald-800 text-[10px] mb-1">Abono / Pago Parcial (COP)</label>
+                <input 
+                  type="number"
+                  min="0"
+                  step="any"
+                  value={depositAmount}
+                  onChange={(e) => setDepositAmount(Number(e.target.value))}
+                  className="w-full bg-emerald-50 border border-emerald-300 rounded-xl p-2.5 font-mono font-extrabold text-xs text-emerald-900 focus:outline-none focus:border-emerald-600"
+                  placeholder="0"
+                />
+                <p className="text-[9.5px] text-neutral-500 mt-1">
+                  Saldo pendiente: <span className="font-mono font-bold text-amber-700">{formatPrice(Math.max(0, grandTotal - depositAmount))}</span>
+                </p>
+              </div>
+
               <div className="bg-neutral-950 text-white p-3.5 rounded-xl flex flex-col justify-between shadow-md">
-                <span className="text-[10px] uppercase tracking-widest text-neutral-400 font-bold">Total Final de la Orden</span>
+                <div className="flex justify-between items-center">
+                  <span className="text-[10px] uppercase tracking-widest text-neutral-400 font-bold">Total Final</span>
+                  <span className={`text-[9px] px-1.5 py-0.5 rounded font-extrabold uppercase ${
+                    depositAmount >= grandTotal && grandTotal > 0 ? 'bg-emerald-500 text-white' : depositAmount > 0 ? 'bg-amber-400 text-black' : 'bg-red-500 text-white'
+                  }`}>
+                    {depositAmount >= grandTotal && grandTotal > 0 ? 'Pago Completo' : depositAmount > 0 ? 'Abono Parcial' : 'Sin Abono'}
+                  </span>
+                </div>
                 <span className="text-xl font-bold font-mono text-amber-300">{formatPrice(grandTotal)}</span>
               </div>
             </div>

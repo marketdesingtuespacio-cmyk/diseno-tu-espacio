@@ -313,12 +313,30 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
                             </div>
                           )}
 
-                          {/* Price & Single-Line WhatsApp Button */}
-                          <div className="pt-2 border-t border-neutral-100 space-y-2">
+                          {/* Price & Payment Status & Single-Line WhatsApp Button */}
+                          <div className="pt-2 border-t border-neutral-100 space-y-1.5">
                             <div className="flex justify-between items-baseline">
                               <span className="text-[9px] uppercase font-bold text-neutral-400 tracking-wider">Total</span>
                               <span className="font-extrabold text-xs text-neutral-900">
                                 {formatPrice(order.total)}
+                              </span>
+                            </div>
+
+                            {/* Payment Abono Status Badge */}
+                            <div className="flex justify-between items-center text-[9px]">
+                              <span className="text-neutral-500 font-medium">Estado Pago:</span>
+                              <span className={`font-extrabold px-1.5 py-0.5 rounded text-[8.5px] uppercase border ${
+                                (order.deposit_amount || 0) >= order.total && order.total > 0
+                                  ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                                  : (order.deposit_amount || 0) > 0
+                                  ? 'bg-amber-100 text-amber-900 border-amber-300'
+                                  : 'bg-red-50 text-red-700 border-red-200'
+                              }`}>
+                                {(order.deposit_amount || 0) >= order.total && order.total > 0
+                                  ? '✓ Pagado 100%'
+                                  : (order.deposit_amount || 0) > 0
+                                  ? `Abono: ${formatPrice(order.deposit_amount || 0)}`
+                                  : 'Sin Abono'}
                               </span>
                             </div>
 

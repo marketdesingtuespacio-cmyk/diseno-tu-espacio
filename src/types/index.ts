@@ -103,6 +103,9 @@ export interface Order {
   shipping_cost?: number;
   discount?: number;
   total: number;
+  deposit_amount?: number;
+  pending_balance?: number;
+  payment_status?: 'pending' | 'partial' | 'paid';
   status: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
   payment_method: string;
   payment_gateway: string;
