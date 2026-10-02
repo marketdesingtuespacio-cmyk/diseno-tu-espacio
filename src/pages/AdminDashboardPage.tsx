@@ -1466,6 +1466,7 @@ export const AdminDashboardPage: React.FC = () => {
           onSuccess={loadData}
           order={editingOrderFull}
           products={products}
+          onDeleteOrder={handleDeleteOrder}
         />
 
         {/* MODAL 2: AGENDAR NUEVA CITA / ASESORÍA MANUAL */}

@@ -22,6 +22,7 @@ interface OrderEditModalProps {
   onSuccess: () => void;
   order: Order | null;
   products: Product[];
+  onDeleteOrder?: (id: string) => void;
 }
 
 export const OrderEditModal: React.FC<OrderEditModalProps> = ({
@@ -29,7 +30,8 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
   onClose,
   onSuccess,
   order,
-  products
+  products,
+  onDeleteOrder
 }) => {
   const { formatPrice } = useCurrency();
 
@@ -565,20 +567,40 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
           </div>
 
           {/* Action Footer */}
-          <div className="flex justify-end items-center gap-3 pt-4 border-t border-neutral-200">
-            <button 
-              type="button"
-              onClick={onClose}
-              className="px-5 py-2.5 border border-neutral-300 rounded-xl uppercase font-bold text-xs hover:bg-neutral-100 transition-colors"
-            >
-              Cancelar
-            </button>
-            <button 
-              type="submit"
-              className="px-8 py-2.5 bg-brand-black text-white rounded-xl uppercase font-bold text-xs hover:bg-neutral-800 flex items-center gap-2 shadow-md transition-all"
-            >
-              <CheckCircle2 className="w-4 h-4 text-amber-300" /> Guardar Cambios del Pedido
-            </button>
+          <div className="flex justify-between items-center pt-4 border-t border-neutral-200">
+            <div>
+              {onDeleteOrder && (
+                <button 
+                  type="button"
+                  onClick={() => {
+                    if (confirm(`¿Está seguro de eliminar el pedido ${order.order_ref}?`)) {
+                      onDeleteOrder(order.id);
+                      onClose();
+                    }
+                  }}
+                  className="px-4 py-2.5 bg-red-50 hover:bg-red-600 hover:text-white text-red-600 border border-red-200 rounded-xl uppercase font-bold text-xs transition-colors flex items-center gap-1.5"
+                  title="Eliminar pedido permanentemente"
+                >
+                  <Trash2 className="w-4 h-4" /> Eliminar Pedido
+                </button>
+              )}
+            </div>
+
+            <div className="flex items-center gap-3">
+              <button 
+                type="button"
+                onClick={onClose}
+                className="px-5 py-2.5 border border-neutral-300 rounded-xl uppercase font-bold text-xs hover:bg-neutral-100 transition-colors"
+              >
+                Cancelar
+              </button>
+              <button 
+                type="submit"
+                className="px-8 py-2.5 bg-brand-black text-white rounded-xl uppercase font-bold text-xs hover:bg-neutral-800 flex items-center gap-2 shadow-md transition-all"
+              >
+                <CheckCircle2 className="w-4 h-4 text-amber-300" /> Guardar Cambios del Pedido
+              </button>
+            </div>
           </div>
         </form>
 

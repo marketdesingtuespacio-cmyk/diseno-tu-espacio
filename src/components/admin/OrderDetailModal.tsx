@@ -3,6 +3,7 @@ import {
   X, 
   Truck, 
   Edit, 
+  Trash2,
   Calendar, 
   User, 
   Phone, 
@@ -26,6 +27,7 @@ interface OrderDetailModalProps {
   onClose: () => void;
   order: Order | null;
   onEditOrder: (order: Order) => void;
+  onDeleteOrder?: (id: string) => void;
 }
 
 // Official WhatsApp Brand Icon
@@ -39,7 +41,8 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
   isOpen,
   onClose,
   order,
-  onEditOrder
+  onEditOrder,
+  onDeleteOrder
 }) => {
   const { formatPrice } = useCurrency();
 
@@ -103,6 +106,20 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
           </div>
 
           <div className="flex items-center gap-2">
+            {onDeleteOrder && (
+              <button
+                onClick={() => {
+                  if (confirm(`¿Está seguro de eliminar el pedido ${order.order_ref}?`)) {
+                    onClose();
+                    onDeleteOrder(order.id);
+                  }
+                }}
+                className="px-3.5 py-1.5 bg-red-600/80 hover:bg-red-600 text-white rounded-xl text-xs font-bold uppercase transition-all flex items-center gap-1.5 border border-red-500/50 shadow-xs"
+                title="Eliminar pedido permanentemente"
+              >
+                <Trash2 className="w-3.5 h-3.5" /> Eliminar
+              </button>
+            )}
             <button
               onClick={() => {
                 onClose();
@@ -308,15 +325,31 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
 
         {/* Modal Footer */}
         <div className="p-4 bg-neutral-100 border-t border-neutral-200 flex justify-between items-center shrink-0">
-          <button
-            onClick={() => {
-              onClose();
-              onEditOrder(order);
-            }}
-            className="px-4 py-2 border border-neutral-300 rounded-full font-bold text-xs uppercase hover:bg-neutral-200 transition-colors flex items-center gap-1.5"
-          >
-            <Edit className="w-3.5 h-3.5" /> Editar Orden Completa
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => {
+                onClose();
+                onEditOrder(order);
+              }}
+              className="px-4 py-2 border border-neutral-300 rounded-full font-bold text-xs uppercase hover:bg-neutral-200 transition-colors flex items-center gap-1.5"
+            >
+              <Edit className="w-3.5 h-3.5" /> Editar Orden Completa
+            </button>
+            {onDeleteOrder && (
+              <button
+                onClick={() => {
+                  if (confirm(`¿Está seguro de eliminar el pedido ${order.order_ref}?`)) {
+                    onClose();
+                    onDeleteOrder(order.id);
+                  }
+                }}
+                className="px-4 py-2 bg-red-50 hover:bg-red-600 hover:text-white text-red-600 rounded-full font-bold text-xs uppercase transition-colors border border-red-200 flex items-center gap-1.5"
+                title="Eliminar pedido"
+              >
+                <Trash2 className="w-3.5 h-3.5" /> Eliminar Pedido
+              </button>
+            )}
+          </div>
           
           <button
             onClick={onClose}

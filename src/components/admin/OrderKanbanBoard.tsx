@@ -248,10 +248,10 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
                                       onDeleteOrder(order.id);
                                     }
                                   }}
-                                  className="p-1 hover:bg-red-500/20 text-red-500 hover:text-red-700 rounded-full transition-colors"
-                                  title="Eliminar pedido"
+                                  className="p-1 bg-red-500/20 hover:bg-red-600 text-red-600 hover:text-white rounded-md transition-all shadow-2xs"
+                                  title="Eliminar pedido permanentemente"
                                 >
-                                  <Trash2 className="w-3 h-3" />
+                                  <Trash2 className="w-3.5 h-3.5" />
                                 </button>
                               )}
                             </div>
@@ -354,6 +354,7 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
           onClose={() => setSelectedDetailOrder(null)}
           order={selectedDetailOrder}
           onEditOrder={(ord) => onEditOrder(ord)}
+          onDeleteOrder={onDeleteOrder}
         />
       )}
 
