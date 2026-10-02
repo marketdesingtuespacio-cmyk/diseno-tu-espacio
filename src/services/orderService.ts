@@ -268,33 +268,49 @@ export const orderService = {
 
     if (isSupabaseConfigured()) {
       try {
-        // 1. Clean relational order_items by order_id (primary UUID or text)
+        const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+
+        // 1. Clean relational order_items if active
         try {
-          await supabase.from('order_items').delete().eq('order_id', id);
-          const numericId = Number(id);
-          if (!isNaN(numericId) && Number.isInteger(numericId)) {
-            await supabase.from('order_items').delete().eq('order_id', numericId);
+          if (isUUID) {
+            await supabase.from('order_items').delete().eq('order_id', id);
+          } else {
+            const numericId = Number(id);
+            if (!isNaN(numericId) && Number.isInteger(numericId)) {
+              await supabase.from('order_items').delete().eq('order_id', numericId);
+            }
           }
         } catch {
-          // ignore if table doesn't exist
+          // ignore if table is absent
         }
 
-        // 2. Strict primary delete by id (UUID or PK) on Supabase orders table
-        let { error: primaryErr } = await supabase.from('orders').delete().eq('id', id);
-        
-        if (!primaryErr) {
-          isSuccess = true;
-          console.log('✅ Pedido eliminado por UUID/id en Supabase Nube:', id);
-        } else {
-          // Fallback if id passed is numeric or order_ref
+        // 2. Primary deletion on Supabase orders table with .select() verification
+        if (isUUID) {
+          const { data, error } = await supabase.from('orders').delete().eq('id', id).select();
+          if (!error && data && data.length > 0) {
+            isSuccess = true;
+            console.log('✅ Pedido eliminado exitosamente por UUID en Supabase Nube:', id);
+          }
+        }
+
+        // Fallback: If not UUID or UUID didn't match, attempt deletion by order_ref
+        if (!isSuccess) {
+          const { data: refData, error: refErr } = await supabase.from('orders').delete().eq('order_ref', id).select();
+          if (!refErr && refData && refData.length > 0) {
+            isSuccess = true;
+            console.log('✅ Pedido eliminado exitosamente por order_ref en Supabase Nube:', id);
+          }
+        }
+
+        // Secondary Fallback: Numeric ID
+        if (!isSuccess) {
           const numericId = Number(id);
           if (!isNaN(numericId) && Number.isInteger(numericId)) {
-            const { error: errNum } = await supabase.from('orders').delete().eq('id', numericId);
-            if (!errNum) isSuccess = true;
-          }
-          if (!isSuccess) {
-            const { error: errRef } = await supabase.from('orders').delete().eq('order_ref', id);
-            if (!errRef) isSuccess = true;
+            const { data: numData, error: numErr } = await supabase.from('orders').delete().eq('id', numericId).select();
+            if (!numErr && numData && numData.length > 0) {
+              isSuccess = true;
+              console.log('✅ Pedido eliminado exitosamente por ID numérico en Supabase Nube:', numericId);
+            }
           }
         }
       } catch (err) {
