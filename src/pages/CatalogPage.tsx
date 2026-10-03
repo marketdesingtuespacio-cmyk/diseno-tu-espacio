@@ -61,25 +61,20 @@ export const CatalogPage: React.FC = () => {
     }));
   }, [searchParams]);
 
-  // Fetch filtered products with Stale-While-Revalidate (0ms instant render + background update)
+  // Fetch filtered products with clean Skeleton Loader state
   useEffect(() => {
-    // 1. Instant sync render (0ms delay)
-    const cachedProducts = productService.getProductsSync(filters);
-    if (cachedProducts.length > 0) {
-      setProducts(cachedProducts);
-      setLoading(false);
-    } else {
-      setLoading(true);
-    }
+    setLoading(true);
 
-    // 2. Background revalidation from Supabase
     productService.getProducts(filters).then(res => {
       setProducts(res);
       setLoading(false);
     });
 
     const unsub = subscribeToProducts(() => {
-      productService.getProducts(filters).then(res => setProducts(res));
+      productService.getProducts(filters).then(res => {
+        setProducts(res);
+        setLoading(false);
+      });
     });
     return () => unsub();
   }, [filters]);
@@ -268,7 +263,7 @@ export const CatalogPage: React.FC = () => {
             </span>
           </div>
 
-          {loading && products.length === 0 ? (
+          {loading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {[1, 2, 3, 4, 5, 6].map(n => (
                 <ProductCardSkeleton key={n} />

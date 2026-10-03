@@ -13,14 +13,8 @@ export const HomePage: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // 1. Instant sync render (0ms delay)
-    const cached = productService.getProductsSync();
-    if (cached.length > 0) {
-      setFeaturedProducts(cached.filter(p => p.is_featured).slice(0, 4));
-      setLoading(false);
-    }
+    setLoading(true);
 
-    // 2. Background revalidation
     productService.getProducts().then(products => {
       setFeaturedProducts(products.filter(p => p.is_featured).slice(0, 4));
       setLoading(false);
@@ -126,7 +120,7 @@ export const HomePage: React.FC = () => {
           </Link>
         </div>
 
-        {loading && featuredProducts.length === 0 ? (
+        {loading ? (
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
             {[1, 2, 3, 4].map(i => (
               <ProductCardSkeleton key={i} />
