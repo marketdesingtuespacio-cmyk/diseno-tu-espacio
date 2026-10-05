@@ -100,6 +100,10 @@ const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Produ
     inventory_status: resolvedStatus,
     wholesale_price: resolvedWholesalePrice,
     wholesale_min_qty: resolvedWholesaleMinQty,
+    shipping_returns_info: p.shipping_returns_info !== undefined ? p.shipping_returns_info : fallback?.shipping_returns_info,
+    care_instructions: p.care_instructions !== undefined ? p.care_instructions : fallback?.care_instructions,
+    fast_shipping_badge: p.fast_shipping_badge !== undefined ? p.fast_shipping_badge : fallback?.fast_shipping_badge,
+    returns_policy_badge: p.returns_policy_badge !== undefined ? p.returns_policy_badge : fallback?.returns_policy_badge,
     updated_at: resolvedUpdatedAt,
     updated_by: resolvedUpdatedBy
   };
@@ -376,6 +380,10 @@ export const productService = {
       boxes_count: Number(productData.boxes_count || 0),
       warranty: productData.warranty || '3 años',
       inventory_status: productData.inventory_status || 'Disponible',
+      shipping_returns_info: productData.shipping_returns_info || '',
+      care_instructions: productData.care_instructions || '',
+      fast_shipping_badge: productData.fast_shipping_badge || '',
+      returns_policy_badge: productData.returns_policy_badge || '',
       wholesale_price: productData.wholesale_price !== undefined && productData.wholesale_price !== null && Number(productData.wholesale_price) > 0 ? Number(productData.wholesale_price) : null,
       wholesale_min_qty: Number(productData.wholesale_min_qty || productData.boxes_count || 5),
       updated_at: nowISO,
@@ -397,7 +405,7 @@ export const productService = {
           .single();
 
         if (error && (error.message.includes('updated_at') || error.message.includes('updated_by') || error.message.includes('wholesale_price') || error.message.includes('wholesale_min_qty') || error.message.includes('column'))) {
-          const { updated_at, updated_by, wholesale_price, wholesale_min_qty, ...fallbackPayload } = cleanPayload;
+          const { updated_at, updated_by, wholesale_price, wholesale_min_qty, shipping_returns_info, care_instructions, fast_shipping_badge, returns_policy_badge, ...fallbackPayload } = cleanPayload;
           const retryRes = await supabase.from('products').insert([fallbackPayload]).select().single();
           data = retryRes.data;
           error = retryRes.error;
@@ -464,6 +472,10 @@ export const productService = {
     if (updates.inventory_status !== undefined) cleanPayload.inventory_status = updates.inventory_status;
     if (updates.wholesale_price !== undefined) cleanPayload.wholesale_price = updates.wholesale_price ? Number(updates.wholesale_price) : null;
     if (updates.wholesale_min_qty !== undefined) cleanPayload.wholesale_min_qty = Number(updates.wholesale_min_qty);
+    if (updates.shipping_returns_info !== undefined) cleanPayload.shipping_returns_info = updates.shipping_returns_info;
+    if (updates.care_instructions !== undefined) cleanPayload.care_instructions = updates.care_instructions;
+    if (updates.fast_shipping_badge !== undefined) cleanPayload.fast_shipping_badge = updates.fast_shipping_badge;
+    if (updates.returns_policy_badge !== undefined) cleanPayload.returns_policy_badge = updates.returns_policy_badge;
 
     let updatedProduct: Product | null = null;
 

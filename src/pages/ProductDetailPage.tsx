@@ -336,13 +336,13 @@ export const ProductDetailPage: React.FC = () => {
               <span className="font-bold uppercase tracking-wider text-emerald-700 block flex items-center gap-1">
                 <Truck className="w-3.5 h-3.5 text-emerald-700" /> ENVÍO RÁPIDO
               </span>
-              <p className="text-neutral-500 leading-tight">En 3-5 días hábiles a tu domicilio</p>
+              <p className="text-neutral-500 leading-tight">{product.fast_shipping_badge || 'Despacho a nivel nacional disponible'}</p>
             </div>
             <div className="pl-2 space-y-1">
               <span className="font-bold uppercase tracking-wider text-emerald-700 block flex items-center gap-1">
-                <RefreshCw className="w-3.5 h-3.5 text-emerald-700" /> DEVOLUCIÓN GRATIS
+                <RefreshCw className="w-3.5 h-3.5 text-emerald-700" /> GARANTÍA & DEVOLUCIÓN
               </span>
-              <p className="text-neutral-500 leading-tight">30 días de plazo de devolución sin costo</p>
+              <p className="text-neutral-500 leading-tight">{product.returns_policy_badge || 'Garantía directa de fábrica y soporte posventa'}</p>
             </div>
           </div>
 
@@ -360,8 +360,7 @@ export const ProductDetailPage: React.FC = () => {
               </button>
               {openSection === 'dimensions' && (
                 <div className="pb-4 text-neutral-600 font-light text-[11px] leading-relaxed">
-                  <p>• {product.dimensions || '160cm alto x 38cm diámetro'}</p>
-                  <p>• Longitud del cable: 220cm con interruptor de pie integrado.</p>
+                  <p>• {product.dimensions || 'Consultar especificaciones exactas con nuestro equipo de asesoría.'}</p>
                 </div>
               )}
             </div>
@@ -378,8 +377,7 @@ export const ProductDetailPage: React.FC = () => {
               {openSection === 'details' && (
                 <div className="pb-4 text-neutral-600 font-light text-[11px] leading-relaxed space-y-2">
                   <p>{product.description}</p>
-                  <p>• Materiales principales: {product.materials || 'Aluminio espejado, acero'}.</p>
-                  <p>• Casquillo: E27 (Bombilla LED cálida 2700K incluida).</p>
+                  {product.materials && <p>• Materiales principales: {product.materials}.</p>}
                 </div>
               )}
             </div>
@@ -395,7 +393,7 @@ export const ProductDetailPage: React.FC = () => {
               </button>
               {openSection === 'shipping' && (
                 <div className="pb-4 text-neutral-600 font-light text-[11px] leading-relaxed">
-                  Despachos protegidos en caja acolchada especial. Devoluciones sin costo adicional durante los primeros 30 días posteriores a la recepción.
+                  {product.shipping_returns_info || 'Despachos protegidos en empaque de seguridad. Devoluciones gestionadas directamente con nuestro equipo de atención posventa.'}
                 </div>
               )}
             </div>
@@ -411,7 +409,7 @@ export const ProductDetailPage: React.FC = () => {
               </button>
               {openSection === 'care' && (
                 <div className="pb-4 text-neutral-600 font-light text-[11px] leading-relaxed">
-                  Limpiar suavemente con un paño de microfibra seco. No utilizar limpiadores abrasivos o disolventes químicos.
+                  {product.care_instructions || 'Limpiar suavemente con un paño seco de microfibra. Evitar el uso de detergentes abrasivos o químicos.'}
                 </div>
               )}
             </div>

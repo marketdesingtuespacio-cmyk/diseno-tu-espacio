@@ -39,6 +39,10 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
   const [boxesCount, setBoxesCount] = useState<number>(initialProduct?.boxes_count || 0);
   const [warranty, setWarranty] = useState(initialProduct?.warranty || '3 años');
   const [inventoryStatus, setInventoryStatus] = useState(initialProduct?.inventory_status || 'Disponible');
+  const [shippingReturnsInfo, setShippingReturnsInfo] = useState(initialProduct?.shipping_returns_info || '');
+  const [careInstructions, setCareInstructions] = useState(initialProduct?.care_instructions || '');
+  const [fastShippingBadge, setFastShippingBadge] = useState(initialProduct?.fast_shipping_badge || '');
+  const [returnsPolicyBadge, setReturnsPolicyBadge] = useState(initialProduct?.returns_policy_badge || '');
 
   // Media Gallery (1900 x 2375 px photos)
   const [images, setImages] = useState<string[]>(
@@ -240,7 +244,11 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
         web_stock: Number(webStock),
         boxes_count: Number(boxesCount),
         warranty: warranty.trim(),
-        inventory_status: inventoryStatus.trim()
+        inventory_status: inventoryStatus.trim(),
+        shipping_returns_info: shippingReturnsInfo.trim(),
+        care_instructions: careInstructions.trim(),
+        fast_shipping_badge: fastShippingBadge.trim(),
+        returns_policy_badge: returnsPolicyBadge.trim()
       };
 
       if (initialProduct?.id) {
@@ -778,6 +786,59 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
                 value={materials}
                 onChange={(e) => setMaterials(e.target.value)}
                 className="w-full bg-brand-surface border border-brand-border p-3 text-brand-black focus:outline-none focus:border-brand-black"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* SECTION 6: Posventa, Envío, Devoluciones y Cuidados */}
+        <div className="bg-white p-6 border border-brand-border space-y-6">
+          <h3 className="text-xs font-bold uppercase tracking-widest text-brand-black border-b border-brand-border pb-3">
+            6. Envío, Devoluciones e Instrucciones de Tratamiento (Posventa)
+          </h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+            <div>
+              <label className="block uppercase font-bold text-neutral-500 mb-1">Etiqueta de Envío Rápido</label>
+              <input 
+                type="text" 
+                placeholder="Ej. En 3-5 días hábiles a tu domicilio"
+                value={fastShippingBadge}
+                onChange={(e) => setFastShippingBadge(e.target.value)}
+                className="w-full bg-brand-surface border border-brand-border p-3 text-brand-black focus:outline-none focus:border-brand-black"
+              />
+            </div>
+
+            <div>
+              <label className="block uppercase font-bold text-neutral-500 mb-1">Etiqueta de Devolución / Garantía</label>
+              <input 
+                type="text" 
+                placeholder="Ej. Garantía directa y devoluciones según política"
+                value={returnsPolicyBadge}
+                onChange={(e) => setReturnsPolicyBadge(e.target.value)}
+                className="w-full bg-brand-surface border border-brand-border p-3 text-brand-black focus:outline-none focus:border-brand-black"
+              />
+            </div>
+
+            <div className="md:col-span-2">
+              <label className="block uppercase font-bold text-neutral-500 mb-1">Detalles Desplegables de Envío & Devolución</label>
+              <textarea 
+                rows={3}
+                placeholder="Escriba la información sobre embalaje especial, tiempos de despacho y términos de devolución..."
+                value={shippingReturnsInfo}
+                onChange={(e) => setShippingReturnsInfo(e.target.value)}
+                className="w-full bg-brand-surface border border-brand-border p-3 text-brand-black focus:outline-none focus:border-brand-black leading-relaxed"
+              />
+            </div>
+
+            <div className="md:col-span-2">
+              <label className="block uppercase font-bold text-neutral-500 mb-1">Instrucciones de Tratamiento & Cuidado</label>
+              <textarea 
+                rows={3}
+                placeholder="Escriba recomendaciones de limpieza, productos a evitar, paño de microfibra..."
+                value={careInstructions}
+                onChange={(e) => setCareInstructions(e.target.value)}
+                className="w-full bg-brand-surface border border-brand-border p-3 text-brand-black focus:outline-none focus:border-brand-black leading-relaxed"
               />
             </div>
           </div>

@@ -44,6 +44,10 @@ export interface Product {
   boxes_count?: number;
   warranty?: string;
   inventory_status?: string;
+  shipping_returns_info?: string;
+  care_instructions?: string;
+  fast_shipping_badge?: string;
+  returns_policy_badge?: string;
   created_at?: string;
   updated_at?: string;
   updated_by?: string;
