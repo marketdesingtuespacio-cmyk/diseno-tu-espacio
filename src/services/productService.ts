@@ -315,7 +315,9 @@ export const productService = {
 
       if (uploadErr) {
         console.warn('⚠️ Supabase Storage warning on image upload:', uploadErr.message);
-        return typeof fileInput === 'string' ? fileInput : URL.createObjectURL(fileInput);
+        // Do NOT use URL.createObjectURL because it dies on browser refresh/session!
+        // Return base64 string or original URL so it permanently persists in Supabase DB
+        return typeof fileInput === 'string' ? fileInput : '';
       }
 
       if (uploadData?.path) {
@@ -332,7 +334,7 @@ export const productService = {
       console.error('Excepción al subir imagen a Supabase Storage:', err);
     }
 
-    return typeof fileInput === 'string' ? fileInput : URL.createObjectURL(fileInput);
+    return typeof fileInput === 'string' ? fileInput : '';
   },
 
   async uploadMultipleProductImages(images: (File | Blob | string)[]): Promise<string[]> {

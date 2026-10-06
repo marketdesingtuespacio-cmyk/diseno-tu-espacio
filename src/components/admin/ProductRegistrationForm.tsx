@@ -48,7 +48,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
   const [images, setImages] = useState<string[]>(
     initialProduct?.images && initialProduct.images.length > 0 
       ? initialProduct.images 
-      : ['/images/lampara_bowie_1786563431628.jpg', '/images/bowie_lifestyle_1786565071854.jpg']
+      : []
   );
   const [newImageUrl, setNewImageUrl] = useState('');
 
@@ -149,11 +149,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
 
   // Remove Image
   const handleRemoveImage = (index: number) => {
-    if (images.length > 1) {
-      setImages(images.filter((_, i) => i !== index));
-    } else {
-      alert('El producto debe tener al menos 1 imagen principal.');
-    }
+    setImages(images.filter((_, i) => i !== index));
   };
 
   // Move Image Left / Right
@@ -631,7 +627,16 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
           </div>
 
           {/* Images Grid Cards with Drag & Drop and Reorder Controls */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          {images.length === 0 ? (
+            <div className="border-2 border-dashed border-neutral-300 rounded-xl p-8 text-center bg-neutral-50/50 flex flex-col items-center justify-center gap-2">
+              <ImageIcon className="w-8 h-8 text-neutral-400 stroke-[1.5]" />
+              <p className="text-xs font-bold uppercase tracking-wider text-neutral-600">No hay fotos seleccionadas aún</p>
+              <p className="text-[11px] text-neutral-500 max-w-sm">
+                Haz clic en el botón <strong className="text-neutral-700">"Seleccionar Fotos de Mi Equipo"</strong> arriba o usa la cámara/galería de tu móvil para subir las fotografías del producto.
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {images.map((img, idx) => (
               <div 
                 key={idx} 
@@ -706,6 +711,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
               </div>
             ))}
           </div>
+          )}
         </div>
 
         {/* SECTION 4: Gestor de Muestras de Color / Acabados */}

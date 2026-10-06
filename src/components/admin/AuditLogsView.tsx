@@ -212,7 +212,25 @@ ALTER TABLE public.activity_logs DISABLE ROW LEVEL SECURITY;
 ALTER TABLE public.orders DISABLE ROW LEVEL SECURITY;
 ALTER TABLE public.products DISABLE ROW LEVEL SECURITY;
 
--- 4. AGREGAR TABLAS A PUBLICACIÓN REALTIME SIN ERRORES (EVITA ERROR 42710)
+-- 4. ALMACENAMIENTO DE FOTOGRAFÍAS DE PRODUCTO (SUPABASE STORAGE)
+-- Crea el bucket 'product-images' y permite subida/lectura pública sin restricciones
+INSERT INTO storage.buckets (id, name, public) 
+VALUES ('product-images', 'product-images', true) 
+ON CONFLICT (id) DO UPDATE SET public = true;
+
+-- Políticas de acceso para el bucket 'product-images'
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_policies 
+    WHERE schemaname = 'storage' AND tablename = 'objects' AND policyname = 'Public Access product-images'
+  ) THEN
+    CREATE POLICY "Public Access product-images" ON storage.objects 
+    FOR ALL USING (bucket_id = 'product-images') WITH CHECK (bucket_id = 'product-images');
+  END IF;
+END $$;
+
+-- 5. AGREGAR TABLAS A PUBLICACIÓN REALTIME SIN ERRORES (EVITA ERROR 42710)
 DO $$
 BEGIN
   IF NOT EXISTS (
