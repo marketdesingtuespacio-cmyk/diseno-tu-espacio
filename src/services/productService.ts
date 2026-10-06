@@ -315,9 +315,13 @@ export const productService = {
 
       if (uploadErr) {
         console.warn('⚠️ Supabase Storage warning on image upload:', uploadErr.message);
-        // Do NOT use URL.createObjectURL because it dies on browser refresh/session!
-        // Return base64 string or original URL so it permanently persists in Supabase DB
-        return typeof fileInput === 'string' ? fileInput : '';
+        if (typeof fileInput === 'string') return fileInput;
+        return new Promise<string>((resolve) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result as string || '');
+          reader.onerror = () => resolve('');
+          reader.readAsDataURL(fileBody);
+        });
       }
 
       if (uploadData?.path) {
@@ -334,16 +338,22 @@ export const productService = {
       console.error('Excepción al subir imagen a Supabase Storage:', err);
     }
 
-    return typeof fileInput === 'string' ? fileInput : '';
+    if (typeof fileInput === 'string') return fileInput;
+    return '';
   },
 
   async uploadMultipleProductImages(images: (File | Blob | string)[]): Promise<string[]> {
     if (!images || images.length === 0) return [];
     const uploadedUrls: string[] = [];
 
-    for (const img of images) {
+    for (let i = 0; i < images.length; i++) {
+      const img = images[i];
       const url = await this.uploadProductImage(img);
-      if (url) uploadedUrls.push(url);
+      if (url && url.trim().length > 0) {
+        uploadedUrls.push(url);
+      } else if (typeof img === 'string' && img.trim().length > 0) {
+        uploadedUrls.push(img);
+      }
     }
 
     return uploadedUrls;
@@ -355,9 +365,12 @@ export const productService = {
     const nowISO = new Date().toISOString();
     const userLabel = `${activeUser.name} (${activeUser.email})`;
 
-    let finalImages: string[] = productData.images || [];
+    let finalImages: string[] = (productData.images || []).filter(img => typeof img === 'string' && img.trim().length > 0);
     if (finalImages.some(img => typeof img === 'string' && img.startsWith('data:image/'))) {
-      finalImages = await this.uploadMultipleProductImages(finalImages);
+      const processed = await this.uploadMultipleProductImages(finalImages);
+      if (processed.length > 0) {
+        finalImages = processed;
+      }
     }
     
     const cleanPayload = {
@@ -442,9 +455,12 @@ export const productService = {
     const nowISO = new Date().toISOString();
     const userLabel = `${activeUser.name} (${activeUser.email})`;
 
-    let finalImages: string[] | undefined = updates.images;
+    let finalImages: string[] | undefined = updates.images ? updates.images.filter(img => typeof img === 'string' && img.trim().length > 0) : undefined;
     if (finalImages && finalImages.some(img => typeof img === 'string' && img.startsWith('data:image/'))) {
-      finalImages = await this.uploadMultipleProductImages(finalImages);
+      const processed = await this.uploadMultipleProductImages(finalImages);
+      if (processed.length > 0) {
+        finalImages = processed;
+      }
     }
 
     const cleanPayload: any = {
