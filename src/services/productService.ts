@@ -509,16 +509,36 @@ export const productService = {
           query = query.eq('slug', id);
         }
 
-        const { data, error } = await query.select();
+        let { data, error } = await query.select();
+
+        if (error || !data || data.length === 0) {
+          console.warn('⚠️ Intentando actualización con campos estándar en Supabase:', error?.message || 'Sin resultados');
+          const { shipping_returns_info, care_instructions, fast_shipping_badge, returns_policy_badge, updated_at, updated_by, wholesale_price, wholesale_min_qty, ...fallbackPayload } = cleanPayload;
+          
+          let fallbackQuery = supabase.from('products').update(fallbackPayload);
+          if (isUUID) {
+            fallbackQuery = fallbackQuery.eq('id', id);
+          } else {
+            fallbackQuery = fallbackQuery.eq('slug', id);
+          }
+          const retryRes = await fallbackQuery.select();
+          data = retryRes.data;
+          error = retryRes.error;
+
+          if ((!data || data.length === 0) && id) {
+            const { data: skuData } = await supabase.from('products').update(fallbackPayload).eq('sku', id).select();
+            if (skuData && skuData.length > 0) {
+              data = skuData;
+              error = null;
+            }
+          }
+        }
 
         if (!error && data && data.length > 0) {
           updatedProduct = enrichProduct(data[0] as Product);
           console.log('✅ Producto actualizado exitosamente en Supabase Nube:', updatedProduct.name);
-        } else {
-          const { data: retryData } = await supabase.from('products').update(cleanPayload).eq('sku', id).select();
-          if (retryData && retryData.length > 0) {
-            updatedProduct = enrichProduct(retryData[0] as Product);
-          }
+        } else if (error) {
+          console.error('❌ Error al actualizar producto en Supabase Nube:', error.message);
         }
       } catch (err) {
         console.error('Supabase update exception:', err);
