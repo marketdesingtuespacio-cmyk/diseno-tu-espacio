@@ -11,6 +11,31 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-medium tracking-tight text-brand-black;
   }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+}
+
+/* Anti-zoom en móviles y tablets: iOS Safari hace zoom automático al enfocar
+   cualquier campo con font-size < 16px. Forzamos 16px solo en pantallas táctiles/pequeñas
+   para que el escritorio conserve su diseño compacto. */
+@media (max-width: 1023px), (hover: none) and (pointer: coarse) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]),
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Utilidad para ocultar scrollbar en carruseles horizontales táctiles */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Custom Scrollbar for Luxury Aesthetics */

@@ -13,7 +13,8 @@ import {
   Users,
   LogOut,
   Sparkle,
-  History
+  History,
+  X
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -36,17 +37,28 @@ interface AdminSidebarProps {
   ordersCount: number;
   appointmentsCount: number;
   couponsCount: number;
+  /** Estado del drawer en móvil/tablet (en escritorio el sidebar siempre está visible) */
+  isMobileOpen?: boolean;
+  onMobileClose?: () => void;
 }
 
 export const AdminSidebar: React.FC<AdminSidebarProps> = ({
   activeTab,
-  setActiveTab,
+  setActiveTab: setActiveTabProp,
   productsCount,
   ordersCount,
   appointmentsCount,
-  couponsCount
+  couponsCount,
+  isMobileOpen = false,
+  onMobileClose
 }) => {
   const { user, logout } = useAuth();
+
+  // Al elegir una sección en móvil, cerramos el drawer automáticamente
+  const setActiveTab = (tab: AdminTab) => {
+    setActiveTabProp(tab);
+    onMobileClose?.();
+  };
 
   const menuItems = [
     {
@@ -110,10 +122,21 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
   ];
 
   return (
-    <aside className="my-4 ml-4 w-64 bg-white/90 backdrop-blur-2xl text-neutral-900 rounded-[28px] border border-white/90 shadow-[0_10px_30px_rgba(0,0,0,0.04)] flex flex-col h-[calc(100vh-2rem)] shrink-0 font-sans p-4 justify-between overflow-hidden relative z-20">
+    <>
+    {/* Overlay oscuro del drawer (solo móvil/tablet) */}
+    <div
+      onClick={onMobileClose}
+      className={`lg:hidden fixed inset-0 z-40 bg-black/40 backdrop-blur-[2px] transition-opacity duration-300 ${
+        isMobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+      }`}
+      aria-hidden="true"
+    />
+    <aside className={`fixed inset-y-0 left-0 z-50 w-[84vw] max-w-[300px] h-[100dvh] rounded-r-[28px] bg-white transition-transform duration-300 ease-out ${
+      isMobileOpen ? 'translate-x-0' : '-translate-x-full'
+    } lg:translate-x-0 lg:relative lg:inset-auto lg:z-20 lg:my-4 lg:ml-4 lg:w-64 lg:max-w-none lg:h-[calc(100vh-2rem)] lg:rounded-[28px] lg:bg-white/90 backdrop-blur-2xl text-neutral-900 border border-white/90 shadow-[0_10px_30px_rgba(0,0,0,0.04)] flex flex-col shrink-0 font-sans p-4 justify-between overflow-hidden`}>
       
       {/* Top Header: Sparkle Icon + Title (Ref Image Style) */}
-      <div className="space-y-4">
+      <div className="space-y-4 min-h-0 flex flex-col">
         
         <div className="flex items-center justify-between px-2 pt-1 pb-2 border-b border-neutral-100">
           <div className="flex items-center gap-2.5">
@@ -129,6 +152,14 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
               </p>
             </div>
           </div>
+          {/* Botón cerrar drawer (solo móvil/tablet) */}
+          <button
+            onClick={onMobileClose}
+            className="lg:hidden p-2 -mr-1 rounded-full text-neutral-500 hover:bg-neutral-100 hover:text-black transition-colors"
+            aria-label="Cerrar menú"
+          >
+            <X className="w-5 h-5" />
+          </button>
         </div>
 
         {/* Logged in User Profile Card */}
@@ -145,7 +176,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
         </div>
 
         {/* Main Navigation List */}
-        <div className="space-y-1 max-h-[58vh] overflow-y-auto pr-0.5">
+        <div className="space-y-1 max-h-[calc(100dvh-320px)] lg:max-h-[58vh] overflow-y-auto overscroll-contain pr-0.5">
           <span className="px-2 text-[9px] font-bold uppercase tracking-widest text-neutral-400 block mb-2">
             Navegación Principal
           </span>
@@ -231,5 +262,6 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
       </div>
 
     </aside>
+    </>
   );
 };

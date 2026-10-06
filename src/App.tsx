@@ -65,8 +65,10 @@ const MainContent: React.FC = () => {
     }
   }, [location]);
 
+  const isAdmin = location.pathname.startsWith('/admin');
+
   return (
-    <main className={`flex-1 ${isHome ? 'pt-0' : 'pt-[110px]'}`}>
+    <main className={`flex-1 ${isHome ? 'pt-0' : isAdmin ? 'pt-0 lg:pt-[110px]' : 'pt-[110px]'}`}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/catalog" element={<CatalogPage />} />
@@ -87,6 +89,31 @@ const MainContent: React.FC = () => {
   );
 };
 
+const AppShell: React.FC = () => {
+  const location = useLocation();
+  const isAdmin = location.pathname.startsWith('/admin');
+  // En el panel interno, la barra pública, el footer y WhatsApp se ocultan en móvil/tablet
+  const publicChromeClass = isAdmin ? 'hidden lg:block' : '';
+
+  return (
+    <div className="min-h-screen flex flex-col bg-brand-white text-brand-black selection:bg-brand-black selection:text-white">
+      <div className={publicChromeClass}>
+        <Navbar />
+      </div>
+      <CartDrawer />
+
+      <MainContent />
+
+      <div className={publicChromeClass}>
+        <Footer />
+      </div>
+      <div className={publicChromeClass}>
+        <WhatsAppButton phoneNumber="573113477785" />
+      </div>
+    </div>
+  );
+};
+
 export const App: React.FC = () => {
   return (
     <AuthProvider>
@@ -94,15 +121,7 @@ export const App: React.FC = () => {
         <CartProvider>
           <Router>
             <MaintenanceGuard>
-              <div className="min-h-screen flex flex-col bg-brand-white text-brand-black selection:bg-brand-black selection:text-white">
-                <Navbar />
-                <CartDrawer />
-                
-                <MainContent />
-
-                <Footer />
-                <WhatsAppButton phoneNumber="573113477785" />
-              </div>
+              <AppShell />
             </MaintenanceGuard>
           </Router>
         </CartProvider>

@@ -151,8 +151,8 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
   return (
     <div className="space-y-4 font-sans text-xs">
       
-      {/* Kanban Grid Columns */}
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3.5 overflow-x-auto pb-6">
+      {/* Kanban Grid Columns - Horizontal scroll con snap en móvil, grid de 5 cols en escritorio */}
+      <div className="flex lg:grid lg:grid-cols-5 gap-3.5 overflow-x-auto pb-6 snap-x snap-mandatory lg:snap-none -mx-1 px-1">
         {KANBAN_COLUMNS.map(col => {
           const colOrders = orders.filter(o => o.status === col.id);
           const colTotalCOP = colOrders.reduce((acc, o) => acc + o.total, 0);
@@ -166,7 +166,7 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
               onDragOver={(e) => handleDragOver(e, col.id)}
               onDragLeave={handleDragLeave}
               onDrop={(e) => handleDrop(e, col.id)}
-              className={`bg-[#F3F3F5] rounded-[24px] flex flex-col min-h-[500px] shadow-2xs overflow-hidden p-2 transition-all duration-200 ${
+              className={`bg-[#F3F3F5] rounded-[24px] flex flex-col min-h-[460px] w-[85vw] sm:w-[320px] lg:w-auto shrink-0 lg:shrink snap-start shadow-2xs overflow-hidden p-2 transition-all duration-200 ${
                 isDropActive ? 'border-2 border-neutral-900 bg-neutral-200/90 ring-4 ring-black/5 scale-[1.01]' : 'border border-white/80'
               }`}
             >
@@ -338,6 +338,26 @@ export const OrderKanbanBoard: React.FC<OrderKanbanBoardProps> = ({ orders, onOr
                                   ? `Abono: ${formatPrice(order.deposit_amount || 0)}`
                                   : 'Sin Abono'}
                               </span>
+                            </div>
+
+                            {/* Fast Touch Status Selector for Mobile/Tablet */}
+                            <div className="flex items-center gap-1.5 pt-0.5" onClick={(e) => e.stopPropagation()}>
+                              <span className="text-[8.5px] text-neutral-400 font-bold uppercase tracking-wider shrink-0">Mover:</span>
+                              <select
+                                value={order.status}
+                                onChange={async (e) => {
+                                  e.stopPropagation();
+                                  await orderService.updateOrderStatus(order.id, e.target.value as any);
+                                  onOrderUpdated();
+                                }}
+                                className="w-full bg-neutral-100 hover:bg-neutral-200 border border-neutral-200 rounded-lg px-2 py-1 text-[9.5px] font-bold text-neutral-800 cursor-pointer focus:outline-none"
+                              >
+                                <option value="pending">🟡 Pendiente</option>
+                                <option value="processing">🔵 En Taller</option>
+                                <option value="shipped">🟢 Despachado</option>
+                                <option value="delivered">🟣 Entregado</option>
+                                <option value="cancelled">⚪ Cancelado</option>
+                              </select>
                             </div>
 
                             <a 

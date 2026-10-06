@@ -84,21 +84,21 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
   const stageIdx = getStageIndex(order.status);
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center p-4 z-50 animate-fadeIn font-sans">
-      <div className="bg-white/95 backdrop-blur-2xl max-w-2xl w-full border border-white/80 rounded-[32px] shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 z-50 animate-fadeIn font-sans">
+      <div className="bg-white/95 backdrop-blur-2xl max-w-2xl w-full border border-white/80 rounded-2xl sm:rounded-[32px] shadow-2xl overflow-hidden flex flex-col max-h-[92vh] sm:max-h-[90vh]">
         
         {/* Header Modal Bar */}
-        <div className="bg-neutral-900 text-white p-5 flex justify-between items-center shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-white/10 rounded-2xl">
-              <ShoppingBag className="w-5 h-5 text-amber-300" />
+        <div className="bg-neutral-900 text-white p-3.5 sm:p-5 flex justify-between items-center shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+            <div className="p-1.5 sm:p-2 bg-white/10 rounded-xl sm:rounded-2xl shrink-0">
+              <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5 text-amber-300" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <h2 className="text-base font-extrabold tracking-wider">
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                <h2 className="text-sm sm:text-base font-extrabold tracking-wider truncate">
                   {order.order_ref}
                 </h2>
-                <span className={`px-2.5 py-0.5 text-[10px] font-bold rounded-full uppercase border ${
+                <span className={`px-2 py-0.5 text-[9px] sm:text-[10px] font-bold rounded-full uppercase border shrink-0 ${
                   order.status === 'delivered' ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40' :
                   order.status === 'shipped' ? 'bg-blue-500/20 text-blue-300 border-blue-500/40' :
                   order.status === 'processing' ? 'bg-indigo-500/20 text-indigo-300 border-indigo-500/40' :
@@ -107,13 +107,13 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
                   {order.status}
                 </span>
               </div>
-              <p className="text-[11px] text-neutral-400 mt-0.5 flex items-center gap-1 font-medium">
-                <Calendar className="w-3 h-3" /> Fecha de Registro: {order.created_at}
+              <p className="text-[10px] sm:text-[11px] text-neutral-400 mt-0.5 flex items-center gap-1 font-medium truncate">
+                <Calendar className="w-3 h-3 shrink-0" /> {order.created_at}
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             {onDeleteOrder && (
               <button
                 onClick={() => {
@@ -122,10 +122,10 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
                     onDeleteOrder(order.id);
                   }
                 }}
-                className="px-3.5 py-1.5 bg-red-600/80 hover:bg-red-600 text-white rounded-xl text-xs font-bold uppercase transition-all flex items-center gap-1.5 border border-red-500/50 shadow-xs"
+                className="p-1.5 sm:px-3.5 sm:py-1.5 bg-red-600/80 hover:bg-red-600 text-white rounded-xl text-xs font-bold uppercase transition-all flex items-center gap-1 border border-red-500/50 shadow-xs"
                 title="Eliminar pedido permanentemente"
               >
-                <Trash2 className="w-3.5 h-3.5" /> Eliminar
+                <Trash2 className="w-3.5 h-3.5" /> <span className="hidden sm:inline">Eliminar</span>
               </button>
             )}
             <button
@@ -133,13 +133,14 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
                 onClose();
                 onEditOrder(order);
               }}
-              className="px-3.5 py-1.5 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs font-bold uppercase transition-all flex items-center gap-1.5 border border-white/20"
+              className="p-1.5 sm:px-3.5 sm:py-1.5 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs font-bold uppercase transition-all flex items-center gap-1 border border-white/20"
+              title="Editar orden"
             >
-              <Edit className="w-3.5 h-3.5" /> Editar
+              <Edit className="w-3.5 h-3.5" /> <span className="hidden sm:inline">Editar</span>
             </button>
             <button
               onClick={onClose}
-              className="p-2 text-neutral-400 hover:text-white rounded-full transition-colors"
+              className="p-1.5 sm:p-2 text-neutral-400 hover:text-white rounded-full transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -147,64 +148,64 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
         </div>
 
         {/* Modal Scrollable Body */}
-        <div className="p-6 space-y-5 overflow-y-auto flex-1 text-xs">
+        <div className="p-3 sm:p-6 space-y-4 sm:space-y-5 overflow-y-auto flex-1 text-xs">
           
           {/* Stepper Timeline Progress Bar */}
-          <div className="bg-neutral-50 p-4 rounded-2xl border border-neutral-200/80 space-y-2">
+          <div className="bg-neutral-50 p-3 sm:p-4 rounded-2xl border border-neutral-200/80 space-y-2">
             <span className="text-[10px] uppercase font-bold text-neutral-400 tracking-wider block">
               Línea de Tiempo de Producción & Entrega
             </span>
             
-            <div className="relative flex items-center justify-between px-4 pt-2 pb-2">
-              <div className="absolute top-4 left-6 right-6 h-0.5 bg-neutral-200 -z-0"></div>
+            <div className="relative flex items-center justify-between px-2 sm:px-4 pt-2 pb-2">
+              <div className="absolute top-4 left-4 sm:left-6 right-4 sm:right-6 h-0.5 bg-neutral-200 -z-0"></div>
               <div 
-                className="absolute top-4 left-6 h-0.5 bg-neutral-900 transition-all duration-500 -z-0"
+                className="absolute top-4 left-4 sm:left-6 h-0.5 bg-neutral-900 transition-all duration-500 -z-0"
                 style={{ width: `${(stageIdx / 3) * 100}%` }}
               ></div>
 
               <div className="relative z-10 flex flex-col items-center">
-                <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${
+                <div className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold ${
                   stageIdx >= 0 ? 'bg-neutral-900 text-white shadow-xs' : 'bg-neutral-200 text-neutral-500'
                 }`}>
-                  <Check className="w-4 h-4" />
+                  <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </div>
-                <span className="text-[10px] font-semibold text-neutral-700 mt-1">Recibido</span>
+                <span className="text-[9px] sm:text-[10px] font-semibold text-neutral-700 mt-1">Recibido</span>
               </div>
 
               <div className="relative z-10 flex flex-col items-center">
-                <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${
+                <div className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold ${
                   stageIdx >= 1 ? 'bg-neutral-900 text-white shadow-xs' : 'bg-neutral-200 text-neutral-500'
                 }`}>
-                  {stageIdx >= 1 ? <Check className="w-4 h-4" /> : '2'}
+                  {stageIdx >= 1 ? <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : '2'}
                 </div>
-                <span className="text-[10px] font-semibold text-neutral-700 mt-1">En Taller</span>
+                <span className="text-[9px] sm:text-[10px] font-semibold text-neutral-700 mt-1">En Taller</span>
               </div>
 
               <div className="relative z-10 flex flex-col items-center">
-                <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${
+                <div className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold ${
                   stageIdx >= 2 ? 'bg-neutral-900 text-white shadow-xs' : 'bg-neutral-200 text-neutral-500'
                 }`}>
-                  {stageIdx >= 2 ? <Check className="w-4 h-4" /> : '3'}
+                  {stageIdx >= 2 ? <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : '3'}
                 </div>
-                <span className="text-[10px] font-semibold text-neutral-700 mt-1">En Tránsito</span>
+                <span className="text-[9px] sm:text-[10px] font-semibold text-neutral-700 mt-1">En Tránsito</span>
               </div>
 
               <div className="relative z-10 flex flex-col items-center">
-                <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${
+                <div className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold ${
                   stageIdx >= 3 ? 'bg-emerald-600 text-white shadow-xs' : 'bg-neutral-200 text-neutral-500'
                 }`}>
-                  {stageIdx >= 3 ? <Check className="w-4 h-4" /> : '4'}
+                  {stageIdx >= 3 ? <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : '4'}
                 </div>
-                <span className="text-[10px] font-semibold text-neutral-700 mt-1">Entregado</span>
+                <span className="text-[9px] sm:text-[10px] font-semibold text-neutral-700 mt-1">Entregado</span>
               </div>
             </div>
           </div>
 
           {/* Customer & Shipping 2-Column Details */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             
             {/* Customer Information Card */}
-            <div className="bg-white p-4 rounded-2xl border border-neutral-200/80 space-y-2.5 shadow-2xs">
+            <div className="bg-white p-3.5 sm:p-4 rounded-2xl border border-neutral-200/80 space-y-2.5 shadow-2xs">
               <div className="flex justify-between items-center border-b pb-2">
                 <span className="text-[10px] font-bold uppercase text-neutral-400 tracking-wider flex items-center gap-1.5">
                   <User className="w-3.5 h-3.5 text-neutral-700" /> Perfil de Cliente
@@ -232,13 +233,13 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
                 </div>
                 <div className="flex items-center gap-2 text-neutral-600">
                   <Mail className="w-3 h-3 text-neutral-400" />
-                  <span>{order.customer_email || 'Sin registrar'}</span>
+                  <span className="truncate">{order.customer_email || 'Sin registrar'}</span>
                 </div>
               </div>
             </div>
 
             {/* Logistics & Shipping Card */}
-            <div className="bg-white p-4 rounded-2xl border border-neutral-200/80 space-y-2.5 shadow-2xs">
+            <div className="bg-white p-3.5 sm:p-4 rounded-2xl border border-neutral-200/80 space-y-2.5 shadow-2xs">
               <div className="border-b pb-2">
                 <span className="text-[10px] font-bold uppercase text-neutral-400 tracking-wider flex items-center gap-1.5">
                   <Truck className="w-3.5 h-3.5 text-neutral-700" /> Logística & Despacho
@@ -260,7 +261,7 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
                 </div>
                 <div className="flex justify-between">
                   <span className="text-neutral-400 font-medium">Guía de Rastreo:</span>
-                  <span className="font-bold text-neutral-900">{order.tracking_number || 'En asignación'}</span>
+                  <span className="font-bold text-neutral-900 truncate">{order.tracking_number || 'En asignación'}</span>
                 </div>
               </div>
             </div>
@@ -276,24 +277,24 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
           )}
 
           {/* Purchased Products Detailed List */}
-          <div className="bg-white p-4 rounded-2xl border border-neutral-200/80 space-y-3 shadow-2xs">
+          <div className="bg-white p-3.5 sm:p-4 rounded-2xl border border-neutral-200/80 space-y-3 shadow-2xs">
             <h3 className="font-bold uppercase tracking-wider text-neutral-400 text-[10px] flex items-center gap-1.5 border-b pb-2">
               <Package className="w-3.5 h-3.5 text-neutral-700" /> Productos en la Orden ({order.items?.length || 0})
             </h3>
 
             <div className="space-y-2">
               {order.items?.map((item, idx) => (
-                <div key={idx} className="flex items-center justify-between p-2.5 bg-neutral-50/90 rounded-xl border border-neutral-100">
-                  <div className="flex items-center gap-3">
-                    <img src={item.image} alt={item.name} className="w-11 h-12 object-cover rounded-xl border bg-white shadow-2xs shrink-0" />
-                    <div>
-                      <p className="font-extrabold text-neutral-900 text-xs">{item.name}</p>
-                      <p className="text-[10px] text-neutral-500 font-medium">
-                        {item.quantity} unidad{item.quantity > 1 ? 'es' : ''} • {formatPrice(item.price)} {item.color ? `(${item.color})` : ''}
+                <div key={idx} className="flex items-center justify-between p-2.5 bg-neutral-50/90 rounded-xl border border-neutral-100 gap-2">
+                  <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                    <img src={item.image} alt={item.name} className="w-10 h-10 sm:w-11 sm:h-12 object-cover rounded-xl border bg-white shadow-2xs shrink-0" />
+                    <div className="min-w-0">
+                      <p className="font-extrabold text-neutral-900 text-xs truncate">{item.name}</p>
+                      <p className="text-[10px] text-neutral-500 font-medium truncate">
+                        {item.quantity} un. • {formatPrice(item.price)} {item.color ? `(${item.color})` : ''}
                       </p>
                     </div>
                   </div>
-                  <span className="font-extrabold text-neutral-900 text-xs">
+                  <span className="font-extrabold text-neutral-900 text-xs shrink-0">
                     {formatPrice(item.price * item.quantity)}
                   </span>
                 </div>
@@ -302,30 +303,30 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
           </div>
 
           {/* Payment Gateway & Financial Breakdown */}
-          <div className="bg-neutral-900 text-white p-5 rounded-2xl space-y-3 shadow-md">
-            <div className="flex justify-between items-center border-b border-neutral-800 pb-2.5">
+          <div className="bg-neutral-900 text-white p-3.5 sm:p-5 rounded-2xl space-y-3 shadow-md">
+            <div className="flex justify-between items-center border-b border-neutral-800 pb-2.5 flex-wrap gap-1">
               <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 flex items-center gap-1.5">
-                <CreditCard className="w-3.5 h-3.5 text-amber-300" /> Pasarela: {order.payment_gateway || 'Transferencia Directa'}
+                <CreditCard className="w-3.5 h-3.5 text-amber-300" /> Pasarela: {order.payment_gateway || 'Transferencia'}
               </span>
               <span className="text-[10px] text-neutral-400 font-medium">{order.payment_method || 'Pago Realizado'}</span>
             </div>
 
-            <div className="grid grid-cols-3 gap-2 py-1 text-[11px] border-b border-neutral-800">
-              <div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 py-1 text-[11px] border-b border-neutral-800">
+              <div className="bg-neutral-800/40 sm:bg-transparent p-2 sm:p-0 rounded-lg">
                 <span className="text-[9.5px] uppercase text-neutral-400 block font-bold">Total Liquidado</span>
-                <span className="font-mono font-bold text-white">{formatPrice(order.total)}</span>
+                <span className="font-mono font-bold text-white text-xs sm:text-[11px]">{formatPrice(order.total)}</span>
               </div>
-              <div>
-                <span className="text-[9.5px] uppercase text-emerald-400 block font-bold">Abonado (Pago Parcial)</span>
-                <span className="font-mono font-bold text-emerald-400">{formatPrice(order.deposit_amount || 0)}</span>
+              <div className="bg-neutral-800/40 sm:bg-transparent p-2 sm:p-0 rounded-lg">
+                <span className="text-[9.5px] uppercase text-emerald-400 block font-bold">Abonado (Parcial)</span>
+                <span className="font-mono font-bold text-emerald-400 text-xs sm:text-[11px]">{formatPrice(order.deposit_amount || 0)}</span>
               </div>
-              <div>
+              <div className="bg-neutral-800/40 sm:bg-transparent p-2 sm:p-0 rounded-lg">
                 <span className="text-[9.5px] uppercase text-amber-400 block font-bold">Saldo Pendiente</span>
-                <span className="font-mono font-extrabold text-amber-300">{formatPrice(order.pending_balance !== undefined ? order.pending_balance : Math.max(0, order.total - (order.deposit_amount || 0)))}</span>
+                <span className="font-mono font-extrabold text-amber-300 text-xs sm:text-[11px]">{formatPrice(order.pending_balance !== undefined ? order.pending_balance : Math.max(0, order.total - (order.deposit_amount || 0)))}</span>
               </div>
             </div>
 
-            <div className="flex justify-between items-end pt-1">
+            <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-end pt-1 gap-3">
               <div>
                 <span className="text-[10px] uppercase font-bold text-neutral-400 tracking-wider block mb-1">Estado del Pago</span>
                 <span className={`text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md inline-block border ${
@@ -344,10 +345,10 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
                 href={getWhatsAppLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="py-2.5 px-5 bg-[#25D366] hover:bg-[#1EBE57] text-white font-extrabold text-xs flex items-center gap-2 rounded-full shadow-lg shadow-emerald-500/20 transition-all cursor-pointer whitespace-nowrap"
+                className="py-2.5 px-4 bg-[#25D366] hover:bg-[#1EBE57] text-white font-extrabold text-xs flex items-center justify-center gap-2 rounded-full shadow-lg shadow-emerald-500/20 transition-all cursor-pointer whitespace-nowrap min-h-[40px]"
               >
                 <WhatsAppIcon className="w-4 h-4 fill-white shrink-0" />
-                <span className="whitespace-nowrap">Enviar estado por WhatsApp</span>
+                <span>Enviar estado por WhatsApp</span>
               </a>
             </div>
           </div>
@@ -355,14 +356,14 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
         </div>
 
         {/* Modal Footer */}
-        <div className="p-4 bg-neutral-100 border-t border-neutral-200 flex justify-between items-center shrink-0">
-          <div className="flex items-center gap-2">
+        <div className="p-3 sm:p-4 bg-neutral-100 border-t border-neutral-200 flex flex-col-reverse sm:flex-row justify-between items-stretch sm:items-center gap-2 shrink-0">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
             <button
               onClick={() => {
                 onClose();
                 onEditOrder(order);
               }}
-              className="px-4 py-2 border border-neutral-300 rounded-full font-bold text-xs uppercase hover:bg-neutral-200 transition-colors flex items-center gap-1.5"
+              className="px-4 py-2 border border-neutral-300 rounded-full font-bold text-xs uppercase hover:bg-neutral-200 transition-colors flex items-center justify-center gap-1.5 min-h-[38px]"
             >
               <Edit className="w-3.5 h-3.5" /> Editar Orden Completa
             </button>
@@ -374,7 +375,7 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
                     onDeleteOrder(order.id);
                   }
                 }}
-                className="px-4 py-2 bg-red-50 hover:bg-red-600 hover:text-white text-red-600 rounded-full font-bold text-xs uppercase transition-colors border border-red-200 flex items-center gap-1.5"
+                className="px-4 py-2 bg-red-50 hover:bg-red-600 hover:text-white text-red-600 rounded-full font-bold text-xs uppercase transition-colors border border-red-200 flex items-center justify-center gap-1.5 min-h-[38px]"
                 title="Eliminar pedido"
               >
                 <Trash2 className="w-3.5 h-3.5" /> Eliminar Pedido
@@ -384,7 +385,7 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
           
           <button
             onClick={onClose}
-            className="px-6 py-2 bg-neutral-900 text-white rounded-full font-bold text-xs uppercase hover:bg-black transition-colors"
+            className="px-6 py-2 bg-neutral-900 text-white rounded-full font-bold text-xs uppercase hover:bg-black transition-colors min-h-[38px]"
           >
             Cerrar Detalle
           </button>

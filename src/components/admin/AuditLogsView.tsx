@@ -240,7 +240,7 @@ END $$;`;
   return (
     <div className="space-y-6">
       {/* Header Banner */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center bg-white/90 backdrop-blur-md border border-white/90 p-6 rounded-2xl shadow-xs gap-4">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center bg-white/90 backdrop-blur-md border border-white/90 p-4 sm:p-6 rounded-2xl shadow-xs gap-3 sm:gap-4">
         <div>
           <div className="flex items-center gap-2">
             <History className="w-5 h-5 text-brand-black" />
@@ -253,23 +253,23 @@ END $$;`;
           </p>
         </div>
 
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-2 shrink-0 w-full sm:w-auto justify-end flex-wrap">
           <button
             onClick={() => setShowSqlModal(true)}
-            className="px-3.5 py-2 border border-neutral-300 bg-neutral-100 hover:bg-neutral-200 text-neutral-800 text-xs font-bold uppercase rounded-xl flex items-center gap-1.5 transition-all"
+            className="px-3 py-2 border border-neutral-300 bg-neutral-100 hover:bg-neutral-200 text-neutral-800 text-xs font-bold uppercase rounded-xl flex items-center gap-1.5 transition-all min-h-[36px]"
             title="Ver SQL para crear la tabla de auditoría en Supabase"
           >
-            <Code className="w-3.5 h-3.5 text-neutral-600" /> Esquema Supabase
+            <Code className="w-3.5 h-3.5 text-neutral-600" /> <span className="hidden sm:inline">Esquema</span> Supabase
           </button>
           <button
             onClick={handleExportCSV}
-            className="px-4 py-2 border border-neutral-300 bg-white hover:bg-neutral-100 text-brand-black text-xs font-bold uppercase rounded-xl flex items-center gap-1.5 transition-all shadow-xs"
+            className="px-3.5 py-2 border border-neutral-300 bg-white hover:bg-neutral-100 text-brand-black text-xs font-bold uppercase rounded-xl flex items-center gap-1.5 transition-all shadow-xs min-h-[36px]"
           >
             <Download className="w-3.5 h-3.5 text-neutral-600" /> Exportar CSV
           </button>
           <button
             onClick={fetchLogs}
-            className="p-2 border border-neutral-300 bg-white hover:bg-neutral-100 rounded-xl transition-all"
+            className="p-2 border border-neutral-300 bg-white hover:bg-neutral-100 rounded-xl transition-all min-h-[36px] min-w-[36px] flex items-center justify-center"
             title="Actualizar registro"
           >
             <RefreshCw className={`w-4 h-4 text-neutral-600 ${loading ? 'animate-spin' : ''}`} />

@@ -209,67 +209,67 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
     <div className="space-y-6 font-sans">
 
       {/* TOP BAR: Role Selector Tabs & Global Controls (Niond Aesthetic) */}
-      <div className="bg-white/90 backdrop-blur-xl border border-white/90 p-4 rounded-[28px] shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div className="bg-white/90 backdrop-blur-xl border border-white/90 p-3 sm:p-4 rounded-2xl sm:rounded-[28px] shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col md:flex-row justify-between items-stretch md:items-center gap-3 sm:gap-4">
         
         {/* Role Switcher Pills */}
-        <div className="flex flex-wrap items-center gap-1.5 bg-neutral-100/80 p-1.5 rounded-2xl border border-neutral-200/60">
+        <div className="flex items-center gap-1.5 bg-neutral-100/80 p-1 sm:p-1.5 rounded-2xl border border-neutral-200/60 overflow-x-auto no-scrollbar py-1">
           <button
             onClick={() => setActiveRoleView('executive')}
-            className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all duration-200 flex items-center gap-2 ${
+            className={`px-3 sm:px-4 py-2 rounded-xl text-xs font-extrabold transition-all duration-200 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap shrink-0 ${
               activeRoleView === 'executive'
                 ? 'bg-neutral-900 text-white shadow-md scale-[1.02]'
                 : 'text-neutral-600 hover:text-black hover:bg-white/60'
             }`}
           >
             <Sparkles className={`w-3.5 h-3.5 ${activeRoleView === 'executive' ? 'text-[#C6F432]' : ''}`} />
-            <span>👑 Dueño de Negocio</span>
+            <span>👑 Dueño</span>
           </button>
 
           <button
             onClick={() => setActiveRoleView('accounting')}
-            className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all duration-200 flex items-center gap-2 ${
+            className={`px-3 sm:px-4 py-2 rounded-xl text-xs font-extrabold transition-all duration-200 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap shrink-0 ${
               activeRoleView === 'accounting'
                 ? 'bg-neutral-900 text-white shadow-md scale-[1.02]'
                 : 'text-neutral-600 hover:text-black hover:bg-white/60'
             }`}
           >
             <Building2 className={`w-3.5 h-3.5 ${activeRoleView === 'accounting' ? 'text-[#C6F432]' : ''}`} />
-            <span>💼 Contabilidad & IVA</span>
+            <span>💼 Contabilidad</span>
           </button>
 
           <button
             onClick={() => setActiveRoleView('sales')}
-            className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all duration-200 flex items-center gap-2 ${
+            className={`px-3 sm:px-4 py-2 rounded-xl text-xs font-extrabold transition-all duration-200 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap shrink-0 ${
               activeRoleView === 'sales'
                 ? 'bg-neutral-900 text-white shadow-md scale-[1.02]'
                 : 'text-neutral-600 hover:text-black hover:bg-white/60'
             }`}
           >
             <Users className={`w-3.5 h-3.5 ${activeRoleView === 'sales' ? 'text-[#C6F432]' : ''}`} />
-            <span>🎯 Vendedores & Productividad</span>
+            <span>🎯 Vendedores</span>
           </button>
 
           <button
             onClick={() => setActiveRoleView('marketing')}
-            className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all duration-200 flex items-center gap-2 ${
+            className={`px-3 sm:px-4 py-2 rounded-xl text-xs font-extrabold transition-all duration-200 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap shrink-0 ${
               activeRoleView === 'marketing'
                 ? 'bg-neutral-900 text-white shadow-md scale-[1.02]'
                 : 'text-neutral-600 hover:text-black hover:bg-white/60'
             }`}
           >
             <BarChart3 className={`w-3.5 h-3.5 ${activeRoleView === 'marketing' ? 'text-[#C6F432]' : ''}`} />
-            <span>📈 Marketing & Clientes</span>
+            <span>📈 Marketing</span>
           </button>
         </div>
 
-        {/* Global Controls: Date Range + High-Tech Neon Export Button */}
-        <div className="flex items-center gap-3 w-full md:w-auto justify-end">
-          <div className="flex items-center gap-2 bg-white border border-neutral-200 px-3 py-1.5 rounded-xl text-xs font-semibold">
-            <Calendar className="w-3.5 h-3.5 text-neutral-400" />
+        {/* Global Controls: Date Range + Export Button */}
+        <div className="flex items-center gap-2 sm:gap-3 justify-between md:justify-end">
+          <div className="flex items-center gap-2 bg-white border border-neutral-200 px-3 py-1.5 rounded-xl text-xs font-semibold flex-1 sm:flex-initial">
+            <Calendar className="w-3.5 h-3.5 text-neutral-400 shrink-0" />
             <select
               value={dateRange}
               onChange={(e) => setDateRange(e.target.value as DateFilter)}
-              className="bg-transparent font-bold text-neutral-800 focus:outline-none cursor-pointer"
+              className="bg-transparent font-bold text-neutral-800 focus:outline-none cursor-pointer w-full sm:w-auto"
             >
               <option value="7days">Últimos 7 Días</option>
               <option value="30days">Últimos 30 Días</option>
@@ -280,7 +280,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
 
           <button
             onClick={handleExportCSV}
-            className="bg-[#C6F432] text-black font-extrabold text-xs uppercase tracking-wider py-2 px-4 rounded-xl hover:bg-[#b5e028] shadow-sm transition-all duration-200 flex items-center gap-2 shrink-0 active:scale-95"
+            className="bg-[#C6F432] text-black font-extrabold text-xs uppercase tracking-wider py-2 px-3 sm:px-4 rounded-xl hover:bg-[#b5e028] shadow-sm transition-all duration-200 flex items-center gap-1.5 shrink-0 active:scale-95 min-h-[36px]"
             title="Exportar reporte analítico completo en CSV"
           >
             <Download className="w-4 h-4 stroke-[2.5]" />
@@ -628,9 +628,9 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
           </div>
 
           {/* Seller Productivity Leaderboard Table (Ref Niond "Team Member" Card Style) */}
-          <div className="bg-white rounded-[32px] border border-neutral-200/60 shadow-[0_4px_24px_rgba(0,0,0,0.03)] overflow-hidden">
+          <div className="bg-white rounded-2xl sm:rounded-[32px] border border-neutral-200/60 shadow-[0_4px_24px_rgba(0,0,0,0.03)] overflow-hidden">
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs">
+              <table className="w-full text-left text-xs min-w-[700px]">
                 <thead className="bg-neutral-50 uppercase text-[10px] font-extrabold tracking-widest text-neutral-400 border-b border-neutral-100">
                   <tr>
                     <th className="p-4">Asesor Comercial / Vendedor</th>

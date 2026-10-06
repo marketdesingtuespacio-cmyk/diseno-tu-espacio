@@ -82,32 +82,32 @@ export const TeamManagementView: React.FC = () => {
     <div className="space-y-6 font-sans">
       
       {/* Top Header */}
-      <div className="flex justify-between items-center bg-white p-6 border border-brand-border shadow-subtle">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white p-4 sm:p-6 border border-brand-border shadow-subtle gap-3">
         <div>
           <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 block mb-1">
             Gestión de Personal & Roles
           </span>
-          <h2 className="text-xl font-light text-brand-black flex items-center gap-2">
-            <Users className="w-5 h-5 text-brand-black" /> Control de Administradores & Colaboradores
+          <h2 className="text-lg sm:text-xl font-light text-brand-black flex items-center gap-2">
+            <Users className="w-5 h-5 text-brand-black shrink-0" /> Control de Administradores & Colaboradores
           </h2>
         </div>
 
         <button 
           onClick={() => setIsModalOpen(true)}
-          className="bg-brand-black text-white text-xs font-bold uppercase tracking-widest py-3 px-6 hover:bg-neutral-800 flex items-center gap-2"
+          className="w-full sm:w-auto bg-brand-black text-white text-xs font-bold uppercase tracking-widest py-3 px-5 sm:px-6 hover:bg-neutral-800 flex items-center justify-center gap-2 min-h-[40px]"
         >
-          <UserPlus className="w-4 h-4" /> Registrar Colaborador
+          <UserPlus className="w-4 h-4 shrink-0" /> Registrar Colaborador
         </button>
       </div>
 
       {/* Team Members List */}
       <div className="space-y-4">
         {members.map((member) => (
-          <div key={member.id} className="bg-white border border-brand-border p-6 space-y-4 shadow-subtle">
+          <div key={member.id} className="bg-white border border-brand-border p-4 sm:p-6 space-y-3 sm:space-y-4 shadow-subtle">
             
-            <div className="flex justify-between items-start border-b border-brand-border pb-4">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-brand-border pb-3 sm:pb-4 gap-3">
               <div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 flex-wrap">
                   <h3 className="text-sm font-bold text-brand-black">{member.full_name}</h3>
                   <span className={`px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider ${
                     member.role === 'admin' ? 'bg-black text-white' : 'bg-neutral-200 text-neutral-800'
@@ -118,7 +118,7 @@ export const TeamManagementView: React.FC = () => {
                 <p className="text-xs text-neutral-500 mt-0.5">{member.email}</p>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2.5 sm:gap-3 self-end sm:self-auto">
                 <select 
                   value={member.role}
                   onChange={(e) => handleChangeRole(member, e.target.value as UserRole)}
@@ -130,7 +130,7 @@ export const TeamManagementView: React.FC = () => {
 
                 <button 
                   onClick={() => handleDeleteMember(member.id)}
-                  className="text-neutral-400 hover:text-red-600 p-1"
+                  className="text-neutral-400 hover:text-red-600 p-1.5"
                   title="Eliminar miembro"
                 >
                   <Trash2 className="w-4 h-4" />

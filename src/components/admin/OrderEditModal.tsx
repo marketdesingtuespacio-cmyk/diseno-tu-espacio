@@ -189,61 +189,61 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center p-4 z-50 overflow-y-auto font-sans">
-      <div className="bg-white/95 backdrop-blur-2xl max-w-5xl w-full border border-white/80 rounded-2xl shadow-2xl my-8 text-xs overflow-hidden">
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 z-50 overflow-y-auto font-sans">
+      <div className="bg-white/95 backdrop-blur-2xl max-w-5xl w-full border border-white/80 rounded-2xl sm:rounded-3xl shadow-2xl my-auto text-xs overflow-hidden flex flex-col max-h-[94vh]">
         
         {/* Header Modal */}
-        <div className="flex justify-between items-center bg-neutral-950 text-white px-6 py-4.5 border-b border-white/10">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-amber-400/10 border border-amber-400/30 rounded-xl">
-              <Edit3 className="w-5 h-5 text-amber-300" />
+        <div className="flex justify-between items-center bg-neutral-950 text-white px-4 sm:px-6 py-3.5 sm:py-4.5 border-b border-white/10 shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="p-1.5 sm:p-2 bg-amber-400/10 border border-amber-400/30 rounded-xl shrink-0">
+              <Edit3 className="w-4 h-4 sm:w-5 sm:h-5 text-amber-300" />
             </div>
-            <div>
-              <h2 className="text-sm font-bold uppercase tracking-widest text-white flex items-center gap-2">
-                Editar Pedido — <span className="text-amber-300 font-extrabold">{order.order_ref}</span>
+            <div className="min-w-0">
+              <h2 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                <span>Editar Pedido —</span> <span className="text-amber-300 font-extrabold">{order.order_ref}</span>
               </h2>
-              <p className="text-[11px] text-neutral-400 font-medium mt-0.5">
+              <p className="text-[10px] sm:text-[11px] text-neutral-400 font-medium mt-0.5 truncate hidden sm:block">
                 Modifica dirección de entrega, cliente, guía de despacho, ítems o estado de la orden
-                {order.updated_at && (
-                  <span className="block text-[10px] text-amber-300 font-mono mt-0.5">
-                    🕒 Última modificación: {(() => {
-                      try {
-                        return new Date(order.updated_at).toLocaleString('es-CO', {
-                          timeZone: 'America/Bogota',
-                          month: 'short',
-                          day: 'numeric',
-                          hour: '2-digit',
-                          minute: '2-digit',
-                          hour12: true
-                        });
-                      } catch {
-                        return order.updated_at;
-                      }
-                    })()} {order.updated_by ? `por ${order.updated_by}` : ''}
-                  </span>
-                )}
               </p>
+              {order.updated_at && (
+                <span className="block text-[9px] sm:text-[10px] text-amber-300 font-mono mt-0.5 truncate">
+                  🕒 Modificado: {(() => {
+                    try {
+                      return new Date(order.updated_at).toLocaleString('es-CO', {
+                        timeZone: 'America/Bogota',
+                        month: 'short',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        hour12: true
+                      });
+                    } catch {
+                      return order.updated_at;
+                    }
+                  })()} {order.updated_by ? `(${order.updated_by})` : ''}
+                </span>
+              )}
             </div>
           </div>
           <button 
             onClick={onClose}
-            className="p-2 text-neutral-400 hover:text-white rounded-full transition-colors"
+            className="p-1.5 sm:p-2 text-neutral-400 hover:text-white rounded-full transition-colors shrink-0"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-6 space-y-6 max-h-[82vh] overflow-y-auto">
+        <form onSubmit={handleSubmit} className="p-3.5 sm:p-6 space-y-4 sm:space-y-6 overflow-y-auto flex-1">
           
           {/* STEP 1: CUSTOMER PROFILE & CRM */}
-          <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-5 space-y-4 shadow-xs">
-            <div className="flex justify-between items-center border-b border-neutral-100 pb-3">
+          <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-3.5 sm:p-5 space-y-3 sm:space-y-4 shadow-xs">
+            <div className="flex justify-between items-center border-b border-neutral-100 pb-2.5 sm:pb-3">
               <h3 className="font-bold uppercase tracking-wider text-brand-black text-xs flex items-center gap-2">
                 <UserCheck className="w-4 h-4 text-brand-black" /> 1. Datos del Cliente & Canal CRM
               </h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
               <div>
                 <label className="block uppercase font-bold text-neutral-500 text-[10px] mb-1">Nombre Completo *</label>
                 <input 
@@ -305,8 +305,8 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
           </div>
 
           {/* STEP 2: SHIPPING & LOGISTICS */}
-          <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-5 space-y-4 shadow-xs">
-            <h3 className="font-bold uppercase tracking-wider text-brand-black text-xs flex items-center gap-2 border-b border-neutral-100 pb-3">
+          <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-3.5 sm:p-5 space-y-3 sm:space-y-4 shadow-xs">
+            <h3 className="font-bold uppercase tracking-wider text-brand-black text-xs flex items-center gap-2 border-b border-neutral-100 pb-2.5 sm:pb-3">
               <Truck className="w-4 h-4 text-brand-black" /> 2. Dirección de Entrega & Logística de Despacho
             </h3>
 
@@ -322,7 +322,7 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
               <div>
                 <label className="block uppercase font-bold text-neutral-500 text-[10px] mb-1">Ciudad / Municipio *</label>
                 <input 
@@ -350,7 +350,7 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
                 </select>
               </div>
 
-              <div>
+              <div className="sm:col-span-2 md:col-span-1">
                 <label className="block uppercase font-bold text-neutral-500 text-[10px] mb-1">Número de Guía de Rastreo</label>
                 <input 
                   type="text"
@@ -364,15 +364,15 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
           </div>
 
           {/* STEP 3: ITEMS IN ORDER */}
-          <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-5 space-y-4 shadow-xs">
-            <div className="flex justify-between items-center border-b border-neutral-100 pb-3">
+          <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-3.5 sm:p-5 space-y-3 sm:space-y-4 shadow-xs">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-neutral-100 pb-2.5 sm:pb-3 gap-2">
               <h3 className="font-bold uppercase tracking-wider text-brand-black text-xs flex items-center gap-2">
                 <ShoppingBag className="w-4 h-4 text-brand-black" /> 3. Productos Incluidos ({items.length})
               </h3>
               <button 
                 type="button"
                 onClick={() => setIsAddingProduct(!isAddingProduct)}
-                className="text-xs font-bold text-brand-black uppercase bg-neutral-100 hover:bg-neutral-200 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1"
+                className="text-xs font-bold text-brand-black uppercase bg-neutral-100 hover:bg-neutral-200 px-3 py-1.5 rounded-lg transition-colors flex items-center justify-center gap-1 self-start sm:self-auto min-h-[36px]"
               >
                 <Plus className="w-3.5 h-3.5" /> {isAddingProduct ? 'Cerrar Buscador' : 'Añadir Producto de Catálogo'}
               </button>
@@ -391,17 +391,17 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
                     className="w-full pl-9 pr-3 py-2 bg-white border border-neutral-300 rounded-lg text-xs"
                   />
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-36 overflow-y-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 max-h-44 overflow-y-auto">
                   {filteredProducts.map(p => (
                     <div 
                       key={p.id}
                       onClick={() => handleAddProduct(p)}
                       className="p-2 bg-white border rounded-lg hover:border-black cursor-pointer flex items-center gap-2"
                     >
-                      <img src={p.images[0]} alt="" className="w-7 h-8 object-cover rounded" />
+                      <img src={p.images[0]} alt="" className="w-8 h-8 object-cover rounded shrink-0" />
                       <div className="truncate text-[10px]">
                         <p className="font-bold truncate">{p.name}</p>
-                        <p className="font-semibold">{formatPrice(p.price)}</p>
+                        <p className="font-semibold text-neutral-600">{formatPrice(p.price)}</p>
                       </div>
                     </div>
                   ))}
@@ -414,16 +414,16 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
                 No hay productos en esta orden.
               </div>
             ) : (
-              <div className="divide-y border border-neutral-200/80 rounded-xl bg-white max-h-40 overflow-y-auto">
+              <div className="divide-y border border-neutral-200/80 rounded-xl bg-white max-h-56 overflow-y-auto">
                 {items.map((item, idx) => {
                   const productObj = products.find(p => p.id === item.product_id);
                   return (
-                    <div key={idx} className="p-3 flex items-center justify-between gap-4 hover:bg-neutral-50/80">
-                      <div className="flex items-center gap-3">
-                        <img src={item.image} alt={item.name} className="w-10 h-12 object-cover rounded-lg border bg-white shadow-2xs" />
-                        <div>
-                          <p className="font-bold text-brand-black">{item.name}</p>
-                          <p className="text-[10px] text-neutral-500 font-medium">{formatPrice(item.price)} u.</p>
+                    <div key={idx} className="p-2.5 sm:p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 hover:bg-neutral-50/80">
+                      <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                        <img src={item.image} alt={item.name} className="w-10 h-11 object-cover rounded-lg border bg-white shadow-2xs shrink-0" />
+                        <div className="min-w-0">
+                          <p className="font-bold text-brand-black text-xs truncate">{item.name}</p>
+                          <p className="text-[10px] text-neutral-500 font-medium">{formatPrice(item.price)} c/u</p>
                           {productObj?.colors && productObj.colors.length > 0 && (
                             <div className="flex items-center gap-1.5 mt-1">
                               <span className="text-[10px] text-neutral-400">Acabado:</span>
@@ -441,7 +441,7 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center justify-between sm:justify-end gap-3 self-end sm:self-auto w-full sm:w-auto pt-1 sm:pt-0 border-t sm:border-t-0 border-neutral-100">
                         <div className="flex items-center border border-neutral-300 rounded-lg bg-white overflow-hidden shadow-2xs">
                           <button 
                             type="button"
@@ -450,7 +450,7 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
                           >
                             -
                           </button>
-                          <span className="px-3 font-bold text-xs">{item.quantity}</span>
+                          <span className="px-2.5 font-bold text-xs">{item.quantity}</span>
                           <button 
                             type="button"
                             onClick={() => handleUpdateQuantity(idx, 1)}
@@ -460,7 +460,7 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
                           </button>
                         </div>
 
-                        <div className="w-24 text-right font-bold text-brand-black">
+                        <div className="w-20 sm:w-24 text-right font-bold text-brand-black text-xs">
                           {formatPrice(item.price * item.quantity)}
                         </div>
 
@@ -479,7 +479,7 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
             )}
 
             {/* Financial Calculator */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-3 border-t border-neutral-100">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 pt-3 border-t border-neutral-100">
               <div>
                 <label className="block uppercase font-bold text-neutral-500 text-[10px] mb-1">Costo de Envío (COP)</label>
                 <input 
@@ -535,8 +535,8 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
           </div>
 
           {/* STEP 4: PAYMENT & STATUS */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-5 space-y-3 shadow-xs">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-3.5 sm:p-5 space-y-3 shadow-xs">
               <h3 className="font-bold uppercase tracking-wider text-brand-black text-xs flex items-center gap-2 border-b border-neutral-100 pb-2.5">
                 <CreditCard className="w-4 h-4 text-brand-black" /> Pasarela & Pago
               </h3>
@@ -566,7 +566,7 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
               </div>
             </div>
 
-            <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-5 space-y-3 shadow-xs">
+            <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-3.5 sm:p-5 space-y-3 shadow-xs">
               <h3 className="font-bold uppercase tracking-wider text-brand-black text-xs flex items-center gap-2 border-b border-neutral-100 pb-2.5">
                 <CheckCircle2 className="w-4 h-4 text-brand-black" /> Estado de la Orden
               </h3>
@@ -589,7 +589,7 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
           </div>
 
           {/* Notes Box */}
-          <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-4">
+          <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-3.5 sm:p-4">
             <label className="block uppercase font-bold text-neutral-500 text-[10px] mb-1">Notas Internas o Instrucciones Especiales</label>
             <textarea 
               rows={2}
@@ -601,7 +601,7 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
           </div>
 
           {/* Action Footer */}
-          <div className="flex justify-between items-center pt-4 border-t border-neutral-200">
+          <div className="flex flex-col-reverse sm:flex-row justify-between items-stretch sm:items-center gap-2 pt-4 border-t border-neutral-200">
             <div>
               {onDeleteOrder && (
                 <button 
@@ -612,7 +612,7 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
                       onClose();
                     }
                   }}
-                  className="px-4 py-2.5 bg-red-50 hover:bg-red-600 hover:text-white text-red-600 border border-red-200 rounded-xl uppercase font-bold text-xs transition-colors flex items-center gap-1.5"
+                  className="w-full sm:w-auto px-4 py-2.5 bg-red-50 hover:bg-red-600 hover:text-white text-red-600 border border-red-200 rounded-xl uppercase font-bold text-xs transition-colors flex items-center justify-center gap-1.5 min-h-[40px]"
                   title="Eliminar pedido permanentemente"
                 >
                   <Trash2 className="w-4 h-4" /> Eliminar Pedido
@@ -620,19 +620,19 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
               )}
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center gap-2">
               <button 
                 type="button"
                 onClick={onClose}
-                className="px-5 py-2.5 border border-neutral-300 rounded-xl uppercase font-bold text-xs hover:bg-neutral-100 transition-colors"
+                className="px-5 py-2.5 border border-neutral-300 rounded-xl uppercase font-bold text-xs hover:bg-neutral-100 transition-colors min-h-[40px]"
               >
                 Cancelar
               </button>
               <button 
                 type="submit"
-                className="px-8 py-2.5 bg-brand-black text-white rounded-xl uppercase font-bold text-xs hover:bg-neutral-800 flex items-center gap-2 shadow-md transition-all"
+                className="px-6 sm:px-8 py-2.5 bg-brand-black text-white rounded-xl uppercase font-bold text-xs hover:bg-neutral-800 flex items-center justify-center gap-2 shadow-md transition-all min-h-[40px]"
               >
-                <CheckCircle2 className="w-4 h-4 text-amber-300" /> Guardar Cambios del Pedido
+                <CheckCircle2 className="w-4 h-4 text-amber-300" /> Guardar Cambios
               </button>
             </div>
           </div>

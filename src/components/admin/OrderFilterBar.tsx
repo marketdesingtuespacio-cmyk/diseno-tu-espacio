@@ -59,12 +59,12 @@ export const OrderFilterBar: React.FC<OrderFilterBarProps> = ({
     filters.endDate !== '';
 
   return (
-    <div className="bg-white/80 backdrop-blur-md border border-white/90 p-5 rounded-2xl shadow-xs space-y-4 text-xs font-sans">
+    <div className="bg-white/80 backdrop-blur-md border border-white/90 p-4 sm:p-5 rounded-2xl shadow-xs space-y-3 sm:space-y-4 text-xs font-sans">
       
       {/* Title & Stats Summary Bar */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-neutral-100 pb-3">
         <div className="flex items-center gap-2">
-          <div className="p-1.5 bg-neutral-900 text-white rounded-xl shadow-2xs">
+          <div className="p-1.5 bg-neutral-900 text-white rounded-xl shadow-2xs shrink-0">
             <SlidersHorizontal className="w-4 h-4" />
           </div>
           <div>
@@ -78,7 +78,7 @@ export const OrderFilterBar: React.FC<OrderFilterBarProps> = ({
         </div>
 
         {/* Counter and Total Sum Badge */}
-        <div className="flex items-center gap-2 flex-wrap">
+        <div className="flex items-center gap-2 flex-wrap w-full sm:w-auto justify-between sm:justify-end">
           <span className="px-3 py-1 bg-neutral-100 border border-neutral-200 text-neutral-800 font-bold rounded-full text-[10px]">
             {filteredCount} de {totalCount} pedidos
           </span>
@@ -99,10 +99,10 @@ export const OrderFilterBar: React.FC<OrderFilterBarProps> = ({
       </div>
 
       {/* Filters Inputs Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3">
         
         {/* 1. Global Search Box */}
-        <div className="lg:col-span-2 relative">
+        <div className="sm:col-span-2 lg:col-span-2 relative">
           <label className="block uppercase font-bold text-neutral-400 text-[9px] tracking-wider mb-1">
             Buscador Global
           </label>
@@ -113,7 +113,7 @@ export const OrderFilterBar: React.FC<OrderFilterBarProps> = ({
               placeholder="Ref, cliente, guía, teléfono..."
               value={filters.searchQuery}
               onChange={(e) => handleUpdate('searchQuery', e.target.value)}
-              className="w-full bg-neutral-50 border border-neutral-200 rounded-xl pl-8 pr-3 py-1.5 text-xs font-medium focus:bg-white focus:outline-none focus:border-neutral-900 transition-all"
+              className="w-full bg-neutral-50 border border-neutral-200 rounded-xl pl-8 pr-3 py-2 sm:py-1.5 text-xs font-medium focus:bg-white focus:outline-none focus:border-neutral-900 transition-all"
             />
           </div>
         </div>
@@ -126,7 +126,7 @@ export const OrderFilterBar: React.FC<OrderFilterBarProps> = ({
           <select 
             value={filters.status}
             onChange={(e) => handleUpdate('status', e.target.value)}
-            className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-1.5 text-xs font-bold text-neutral-900 focus:bg-white focus:outline-none focus:border-neutral-900 transition-all"
+            className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2 sm:p-1.5 text-xs font-bold text-neutral-900 focus:bg-white focus:outline-none focus:border-neutral-900 transition-all"
           >
             <option value="all">Todos los Estados</option>
             <option value="pending">Pendientes por Verificar</option>
@@ -145,7 +145,7 @@ export const OrderFilterBar: React.FC<OrderFilterBarProps> = ({
           <select 
             value={filters.carrier}
             onChange={(e) => handleUpdate('carrier', e.target.value)}
-            className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-1.5 text-xs font-bold text-neutral-900 focus:bg-white focus:outline-none focus:border-neutral-900 transition-all"
+            className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2 sm:p-1.5 text-xs font-bold text-neutral-900 focus:bg-white focus:outline-none focus:border-neutral-900 transition-all"
           >
             <option value="all">Todas las Empresas</option>
             <option value="Servientrega">Servientrega</option>
@@ -164,7 +164,7 @@ export const OrderFilterBar: React.FC<OrderFilterBarProps> = ({
           <select 
             value={filters.paymentGateway}
             onChange={(e) => handleUpdate('paymentGateway', e.target.value)}
-            className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-1.5 text-xs font-bold text-neutral-900 focus:bg-white focus:outline-none focus:border-neutral-900 transition-all"
+            className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2 sm:p-1.5 text-xs font-bold text-neutral-900 focus:bg-white focus:outline-none focus:border-neutral-900 transition-all"
           >
             <option value="all">Todas las Pasarelas</option>
             <option value="Transferencia Directa Bancaria">Transferencia Bancaria</option>
@@ -182,7 +182,7 @@ export const OrderFilterBar: React.FC<OrderFilterBarProps> = ({
           <select 
             value={filters.dateRange}
             onChange={(e) => handleUpdate('dateRange', e.target.value)}
-            className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-1.5 text-xs font-bold text-neutral-900 focus:bg-white focus:outline-none focus:border-neutral-900 transition-all"
+            className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2 sm:p-1.5 text-xs font-bold text-neutral-900 focus:bg-white focus:outline-none focus:border-neutral-900 transition-all"
           >
             <option value="all">Histórico Completo</option>
             <option value="today">Registrados Hoy</option>
@@ -196,26 +196,26 @@ export const OrderFilterBar: React.FC<OrderFilterBarProps> = ({
 
       {/* Custom Date Pickers (if 'custom' is selected) */}
       {filters.dateRange === 'custom' && (
-        <div className="flex items-center gap-3 pt-2 border-t border-neutral-100 animate-fadeIn">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 pt-2 border-t border-neutral-100 animate-fadeIn">
           <span className="text-[10px] font-bold text-neutral-500 uppercase tracking-wider">Rango de Fecha:</span>
           
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 w-full sm:w-auto">
             <label className="text-[9.5px] font-semibold text-neutral-400">Desde:</label>
             <input 
               type="date" 
               value={filters.startDate}
               onChange={(e) => handleUpdate('startDate', e.target.value)}
-              className="bg-neutral-50 border border-neutral-200 rounded-xl px-2 py-1 font-bold text-xs"
+              className="bg-neutral-50 border border-neutral-200 rounded-xl px-2 py-1.5 font-bold text-xs flex-1 sm:flex-none"
             />
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 w-full sm:w-auto">
             <label className="text-[9.5px] font-semibold text-neutral-400">Hasta:</label>
             <input 
               type="date" 
               value={filters.endDate}
               onChange={(e) => handleUpdate('endDate', e.target.value)}
-              className="bg-neutral-50 border border-neutral-200 rounded-xl px-2 py-1 font-bold text-xs"
+              className="bg-neutral-50 border border-neutral-200 rounded-xl px-2 py-1.5 font-bold text-xs flex-1 sm:flex-none"
             />
           </div>
         </div>

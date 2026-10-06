@@ -238,47 +238,47 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center p-4 z-50 overflow-y-auto">
-      <div className="bg-white/95 backdrop-blur-2xl max-w-5xl w-full border border-white/80 rounded-2xl shadow-2xl my-8 text-xs font-sans overflow-hidden">
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 z-50 overflow-y-auto">
+      <div className="bg-white/95 backdrop-blur-2xl max-w-5xl w-full border border-white/80 rounded-2xl sm:rounded-3xl shadow-2xl my-auto text-xs font-sans overflow-hidden flex flex-col max-h-[94vh]">
         
         {/* Header Modal */}
-        <div className="flex justify-between items-center bg-neutral-950 text-white px-6 py-4.5 border-b border-white/10">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-amber-400/10 border border-amber-400/30 rounded-xl">
-              <ShoppingBag className="w-5 h-5 text-amber-300" />
+        <div className="flex justify-between items-center bg-neutral-950 text-white px-4 sm:px-6 py-3.5 sm:py-4.5 border-b border-white/10 shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="p-1.5 sm:p-2 bg-amber-400/10 border border-amber-400/30 rounded-xl shrink-0">
+              <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5 text-amber-300" />
             </div>
-            <div>
-              <h2 className="text-sm font-bold uppercase tracking-widest text-white">
-                Registro Inteligente de Pedido & CRM Posventa
+            <div className="min-w-0">
+              <h2 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white truncate">
+                Registro de Pedido & CRM Posventa
               </h2>
-              <p className="text-[10px] text-neutral-400 font-light">
+              <p className="text-[10px] text-neutral-400 font-light truncate hidden sm:block">
                 Diseño Tu Espacio — Sistema de Alta de Órdenes Directas y Gestión de Clientes
               </p>
             </div>
           </div>
           <button 
             onClick={onClose}
-            className="p-2 hover:bg-white/10 transition-colors text-neutral-300 rounded-xl"
+            className="p-1.5 sm:p-2 hover:bg-white/10 transition-colors text-neutral-300 rounded-xl shrink-0"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-6 space-y-6 max-h-[82vh] overflow-y-auto">
+        <form onSubmit={handleSubmit} className="p-3.5 sm:p-6 space-y-4 sm:space-y-6 overflow-y-auto flex-1">
           
           {/* STEP 1: VISUAL PRODUCT SELECTOR */}
-          <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-5 space-y-4 shadow-xs">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-neutral-100 pb-3 gap-2">
+          <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-3.5 sm:p-5 space-y-3 sm:space-y-4 shadow-xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-neutral-100 pb-2.5 sm:pb-3 gap-2">
               <div className="flex items-center gap-2">
                 <PackageCheck className="w-4 h-4 text-brand-black" />
                 <h3 className="font-bold uppercase tracking-wider text-brand-black text-xs">
-                  1. Selección Visual de Productos (Catálogo Directo)
+                  1. Selección Visual de Productos
                 </h3>
               </div>
 
               {/* Pricing Mode Toggle: Detal vs Mayorista */}
-              <div className="flex items-center gap-1.5 bg-neutral-100 p-1 rounded-xl border border-neutral-200">
-                <span className="text-[9.5px] uppercase font-extrabold text-neutral-500 px-1.5">Tarifa:</span>
+              <div className="flex items-center gap-1.5 bg-neutral-100 p-1 rounded-xl border border-neutral-200 self-start sm:self-auto">
+                <span className="text-[9.5px] uppercase font-extrabold text-neutral-500 px-1">Tarifa:</span>
                 <button
                   type="button"
                   onClick={() => handleSetGlobalPricingMode('detal')}
@@ -288,7 +288,7 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
                       : 'text-neutral-500 hover:text-black'
                   }`}
                 >
-                  🛒 Detal / PVP
+                  🛒 Detal
                 </button>
                 <button
                   type="button"
@@ -309,7 +309,7 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
               <Search className="w-4 h-4 absolute left-3.5 top-3 text-neutral-400" />
               <input 
                 type="text"
-                placeholder="Buscar por nombre de producto o categoría (ej. Lámpara de Pie, Cúpula)..."
+                placeholder="Buscar por nombre o categoría..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-2.5 bg-neutral-50 border border-neutral-200 rounded-xl text-xs focus:outline-none focus:border-brand-black font-medium transition-all"
@@ -317,13 +317,13 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
             </div>
 
             {/* Visual Product Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 max-h-56 overflow-y-auto pr-1">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5 sm:gap-3 max-h-56 overflow-y-auto pr-1">
               {filteredProducts.map(product => {
                 const wholesaleVal = getEffectiveWholesalePrice(product);
                 return (
                   <div 
                     key={product.id}
-                    className="bg-white border border-neutral-200/80 rounded-xl p-2.5 hover:border-black hover:shadow-md transition-all flex flex-col justify-between group relative"
+                    className="bg-white border border-neutral-200/80 rounded-xl p-2 sm:p-2.5 hover:border-black hover:shadow-md transition-all flex flex-col justify-between group relative"
                   >
                     <div 
                       onClick={() => handleAddProduct(product)}
@@ -340,15 +340,15 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
                     </div>
 
                     <div>
-                      <h4 className="font-bold text-[11px] text-brand-black truncate">{product.name}</h4>
-                      <p className="text-[10px] text-neutral-500 truncate">{product.category}</p>
+                      <h4 className="font-bold text-[10px] sm:text-[11px] text-brand-black truncate">{product.name}</h4>
+                      <p className="text-[9px] sm:text-[10px] text-neutral-500 truncate">{product.category}</p>
                       
                       <div className="mt-1.5 pt-1.5 border-t border-neutral-100 space-y-1">
-                        <div className="flex justify-between items-center text-[10px]">
+                        <div className="flex justify-between items-center text-[9px] sm:text-[10px]">
                           <span className="text-neutral-500">Detal:</span>
                           <span className="font-mono font-bold text-brand-black">{formatPrice(product.price)}</span>
                         </div>
-                        <div className="flex justify-between items-center text-[10px]">
+                        <div className="flex justify-between items-center text-[9px] sm:text-[10px]">
                           <span className="text-emerald-700 font-bold">Mayor:</span>
                           <span className="font-mono font-extrabold text-emerald-700">{formatPrice(wholesaleVal)}</span>
                         </div>
@@ -378,10 +378,10 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
           </div>
 
           {/* STEP 2: SELECTED LINE ITEMS & FINANCIAL RECAP */}
-          <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-5 space-y-4 shadow-xs">
-            <div className="flex justify-between items-center border-b border-neutral-100 pb-3">
+          <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-3.5 sm:p-5 space-y-3 sm:space-y-4 shadow-xs">
+            <div className="flex justify-between items-center border-b border-neutral-100 pb-2.5 sm:pb-3">
               <h3 className="font-bold uppercase tracking-wider text-brand-black text-xs flex items-center gap-2">
-                <ShoppingBag className="w-4 h-4 text-brand-black" /> 2. Productos Seleccionados en la Orden ({items.length})
+                <ShoppingBag className="w-4 h-4 text-brand-black" /> 2. Productos en la Orden ({items.length})
               </h3>
               <span className="text-[11px] font-bold text-emerald-800 font-mono">
                 Subtotal: {formatPrice(subtotal)}
@@ -389,36 +389,36 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
             </div>
 
             {items.length === 0 ? (
-              <div className="text-center py-8 border border-dashed border-neutral-300 rounded-xl text-neutral-400 text-xs bg-neutral-50/50">
-                No has seleccionado ningún producto. Haz clic en un producto del panel superior para añadirlo.
+              <div className="text-center py-6 sm:py-8 border border-dashed border-neutral-300 rounded-xl text-neutral-400 text-xs bg-neutral-50/50">
+                No has seleccionado ningún producto. Haz clic en un producto para añadirlo.
               </div>
             ) : (
-              <div className="divide-y border border-neutral-200/80 rounded-xl max-h-52 overflow-y-auto bg-white">
+              <div className="divide-y border border-neutral-200/80 rounded-xl max-h-56 overflow-y-auto bg-white">
                 {items.map((item, idx) => {
                   const productObj = products.find(p => p.id === item.product_id);
                   const isWholesale = item.price_type === 'wholesale';
 
                   return (
-                    <div key={idx} className="p-3 flex items-center justify-between gap-4 hover:bg-neutral-50/80 transition-colors">
-                      <div className="flex items-center gap-3">
-                        <img src={item.image} alt={item.name} className="w-10 h-12 object-cover rounded-lg border bg-white shadow-xs" />
-                        <div>
-                          <p className="font-bold text-brand-black text-xs">{item.name}</p>
+                    <div key={idx} className="p-2.5 sm:p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 hover:bg-neutral-50/80 transition-colors">
+                      <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                        <img src={item.image} alt={item.name} className="w-10 h-11 object-cover rounded-lg border bg-white shadow-xs shrink-0" />
+                        <div className="min-w-0">
+                          <p className="font-bold text-brand-black text-xs truncate">{item.name}</p>
                           
                           {/* Tariff Selector buttons directly under product title */}
-                          <div className="flex flex-wrap items-center gap-2 mt-1">
+                          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-1">
                             <button
                               type="button"
                               onClick={() => {
                                 if (isWholesale) handleToggleItemPriceType(idx);
                               }}
-                              className={`px-2.5 py-1 rounded-lg text-[10px] font-bold border transition-all flex items-center gap-1 ${
+                              className={`px-2 py-0.5 rounded-lg text-[9px] sm:text-[10px] font-bold border transition-all flex items-center gap-1 ${
                                 !isWholesale 
                                   ? 'bg-neutral-900 text-white border-neutral-900 shadow-2xs font-extrabold' 
                                   : 'bg-neutral-50 text-neutral-600 border-neutral-200 hover:bg-neutral-100'
                               }`}
                             >
-                              🛒 Precio Normal ({formatPrice(item.original_retail_price || productObj?.price || item.price)})
+                              🛒 Detal ({formatPrice(item.original_retail_price || productObj?.price || item.price)})
                             </button>
 
                             <button
@@ -426,31 +426,31 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
                               onClick={() => {
                                 if (!isWholesale) handleToggleItemPriceType(idx);
                               }}
-                              className={`px-2.5 py-1 rounded-lg text-[10px] font-bold border transition-all flex items-center gap-1 ${
+                              className={`px-2 py-0.5 rounded-lg text-[9px] sm:text-[10px] font-bold border transition-all flex items-center gap-1 ${
                                 isWholesale 
                                   ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs font-extrabold ring-2 ring-emerald-300 ring-offset-1' 
                                   : 'bg-emerald-50 text-emerald-800 border-emerald-200 hover:bg-emerald-100 font-bold'
                               }`}
                             >
-                              🏢 Precio Mayorista ({formatPrice(productObj ? getEffectiveWholesalePrice(productObj) : Math.round((item.original_retail_price || item.price) * 0.8))})
+                              🏢 Mayorista ({formatPrice(productObj ? getEffectiveWholesalePrice(productObj) : Math.round((item.original_retail_price || item.price) * 0.8))})
                             </button>
 
-                            <div className="flex items-center gap-1 ml-1 pl-2 border-l border-neutral-200">
-                              <span className="text-[10px] text-neutral-400 font-medium">Unitario:</span>
+                            <div className="flex items-center gap-1 pl-1">
+                              <span className="text-[9px] sm:text-[10px] text-neutral-400 font-medium">Unitario:</span>
                               <input
                                 type="number"
                                 min="0"
                                 value={item.price}
                                 onChange={(e) => handleUpdateItemUnitPrice(idx, Number(e.target.value))}
-                                className="w-24 bg-neutral-50 border border-neutral-300 rounded-md text-[10px] px-1.5 py-0.5 font-mono font-extrabold text-brand-black"
-                                title="Modificar precio unitario manualmente"
+                                className="w-20 sm:w-24 bg-neutral-50 border border-neutral-300 rounded-md text-[9px] sm:text-[10px] px-1 py-0.5 font-mono font-extrabold text-brand-black"
+                                title="Modificar precio unitario"
                               />
                             </div>
                           </div>
 
                           {isWholesale && item.original_retail_price && item.original_retail_price > item.price && (
-                            <p className="text-[9.5px] text-emerald-700 font-extrabold mt-1 flex items-center gap-1">
-                              ✨ Tarifa Mayorista Aplicada — Descuento de {formatPrice(item.original_retail_price - item.price)} por unidad
+                            <p className="text-[9px] sm:text-[9.5px] text-emerald-700 font-extrabold mt-1 truncate">
+                              ✨ Tarifa Mayorista Aplicada (-{formatPrice(item.original_retail_price - item.price)})
                             </p>
                           )}
 
@@ -471,7 +471,7 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center justify-between sm:justify-end gap-3 self-end sm:self-auto w-full sm:w-auto pt-1 sm:pt-0 border-t sm:border-t-0 border-neutral-100">
                         {/* Quantity controls */}
                         <div className="flex items-center border border-neutral-300 rounded-lg bg-white overflow-hidden shadow-2xs">
                           <button 
@@ -481,7 +481,7 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
                           >
                             -
                           </button>
-                          <span className="px-3 font-mono font-bold text-xs">{item.quantity}</span>
+                          <span className="px-2.5 font-mono font-bold text-xs">{item.quantity}</span>
                           <button 
                             type="button"
                             onClick={() => handleUpdateQuantity(idx, 1)}
@@ -491,7 +491,7 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
                           </button>
                         </div>
 
-                        <div className="w-24 text-right font-mono font-bold text-brand-black">
+                        <div className="w-20 sm:w-24 text-right font-mono font-bold text-brand-black text-xs">
                           {formatPrice(item.price * item.quantity)}
                         </div>
 
@@ -510,7 +510,7 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
             )}
 
             {/* Financial Calculator Row */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-3 border-t border-neutral-100">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 pt-3 border-t border-neutral-100">
               <div>
                 <label className="block uppercase font-bold text-neutral-500 text-[10px] mb-1">Costo de Envío (COP)</label>
                 <input 
@@ -566,14 +566,14 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
           </div>
 
           {/* STEP 3: CUSTOMER CRM PROFILE */}
-          <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-5 space-y-4 shadow-xs">
-            <div className="flex justify-between items-center border-b border-neutral-100 pb-3">
+          <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-3.5 sm:p-5 space-y-3 sm:space-y-4 shadow-xs">
+            <div className="flex justify-between items-center border-b border-neutral-100 pb-2.5 sm:pb-3">
               <h3 className="font-bold uppercase tracking-wider text-brand-black text-xs flex items-center gap-2">
                 <UserCheck className="w-4 h-4 text-brand-black" /> 3. Perfil de Cliente & Tag CRM
               </h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
               <div>
                 <label className="block uppercase font-bold text-neutral-500 text-[10px] mb-1">Nombre Completo *</label>
                 <input 
@@ -598,7 +598,7 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
                 />
               </div>
 
-              <div>
+              <div className="sm:col-span-2 md:col-span-1">
                 <label className="block uppercase font-bold text-neutral-500 text-[10px] mb-1">Correo Electrónico</label>
                 <input 
                   type="email"
@@ -615,19 +615,19 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
               <label className="block uppercase font-bold text-neutral-500 text-[10px] mb-1.5 flex items-center gap-1">
                 <Tag className="w-3 h-3 text-brand-black" /> Categorización de Cliente CRM
               </label>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {[
-                  { tag: 'Mayorista', label: 'Cliente Mayorista / Distribuidor', color: 'bg-emerald-100/90 text-emerald-950 border-emerald-300' },
-                  { tag: 'VIP', label: 'Cliente VIP', color: 'bg-amber-100/90 text-amber-950 border-amber-300' },
+                  { tag: 'Mayorista', label: 'Mayorista / Distribuidor', color: 'bg-emerald-100/90 text-emerald-950 border-emerald-300' },
+                  { tag: 'VIP', label: 'VIP', color: 'bg-amber-100/90 text-amber-950 border-amber-300' },
                   { tag: 'Arquitecto', label: 'Arquitecto / Diseñador', color: 'bg-indigo-100/90 text-indigo-950 border-indigo-300' },
-                  { tag: 'Residencial', label: 'Cliente Residencial', color: 'bg-emerald-100/90 text-emerald-950 border-emerald-300' },
-                  { tag: 'Proyecto Especial', label: 'Proyecto Contract / Hotelero', color: 'bg-purple-100/90 text-purple-950 border-purple-300' }
+                  { tag: 'Residencial', label: 'Residencial', color: 'bg-emerald-100/90 text-emerald-950 border-emerald-300' },
+                  { tag: 'Proyecto Especial', label: 'Contract / Hotelero', color: 'bg-purple-100/90 text-purple-950 border-purple-300' }
                 ].map(item => (
                   <button
                     key={item.tag}
                     type="button"
                     onClick={() => handleSelectCustomerTag(item.tag as any)}
-                    className={`px-3 py-1.5 rounded-xl border text-xs font-bold transition-all shadow-2xs ${item.color} ${
+                    className={`px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl border text-[11px] sm:text-xs font-bold transition-all shadow-2xs ${item.color} ${
                       customerTag === item.tag ? 'ring-2 ring-brand-black ring-offset-1 font-extrabold scale-105' : 'opacity-70 hover:opacity-100'
                     }`}
                   >
@@ -639,9 +639,9 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
           </div>
 
           {/* STEP 4: SHIPPING & PAYMENT DETAILS */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {/* Shipping Box */}
-            <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-5 space-y-3 shadow-xs">
+            <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-3.5 sm:p-5 space-y-3 shadow-xs">
               <h3 className="font-bold uppercase tracking-wider text-brand-black text-xs flex items-center gap-2 border-b border-neutral-100 pb-2.5">
                 <Truck className="w-4 h-4 text-brand-black" /> Logística & Envío Posventa
               </h3>
@@ -657,7 +657,7 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block uppercase font-bold text-neutral-500 text-[10px] mb-1">Ciudad Destino</label>
                   <input 
@@ -697,7 +697,7 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
             </div>
 
             {/* Payment & Status Box */}
-            <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-5 space-y-3 shadow-xs">
+            <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-3.5 sm:p-5 space-y-3 shadow-xs">
               <h3 className="font-bold uppercase tracking-wider text-brand-black text-xs flex items-center gap-2 border-b border-neutral-100 pb-2.5">
                 <CreditCard className="w-4 h-4 text-brand-black" /> Pago & Estado Inicial
               </h3>
@@ -743,11 +743,11 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
           </div>
 
           {/* Notes Box */}
-          <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-4">
+          <div className="bg-white/80 border border-neutral-200/80 rounded-2xl p-3.5 sm:p-4">
             <label className="block uppercase font-bold text-neutral-500 text-[10px] mb-1">Notas Internas o Instrucciones Especiales</label>
             <textarea 
               rows={2}
-              placeholder="Escribe aquí observaciones sobre acabados personalizados, empaque de regalo, horarios de entrega..."
+              placeholder="Observaciones de entrega, empaque..."
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2.5 text-xs focus:outline-none focus:border-brand-black"
@@ -755,17 +755,17 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
           </div>
 
           {/* Action Footer */}
-          <div className="flex justify-end items-center gap-3 pt-4 border-t border-neutral-200">
+          <div className="flex flex-col-reverse sm:flex-row justify-end items-stretch sm:items-center gap-2 pt-4 border-t border-neutral-200">
             <button 
               type="button"
               onClick={onClose}
-              className="px-5 py-2.5 border border-neutral-300 rounded-xl uppercase font-bold text-xs hover:bg-neutral-100 transition-colors"
+              className="px-5 py-2.5 border border-neutral-300 rounded-xl uppercase font-bold text-xs hover:bg-neutral-100 transition-colors min-h-[40px]"
             >
               Cancelar
             </button>
             <button 
               type="submit"
-              className="px-8 py-2.5 bg-brand-black text-white rounded-xl uppercase font-bold text-xs hover:bg-neutral-800 flex items-center gap-2 shadow-md transition-all"
+              className="px-6 sm:px-8 py-2.5 bg-brand-black text-white rounded-xl uppercase font-bold text-xs hover:bg-neutral-800 flex items-center justify-center gap-2 shadow-md transition-all min-h-[40px]"
             >
               <CheckCircle2 className="w-4 h-4 text-amber-300" /> Confirmar & Registrar Pedido
             </button>

@@ -272,28 +272,28 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
   };
 
   return (
-    <div className="space-y-8 font-sans max-w-5xl">
+    <div className="space-y-6 sm:space-y-8 font-sans max-w-5xl">
       
       {/* Header */}
-      <div className="border-b border-brand-border pb-4 flex justify-between items-end">
+      <div className="border-b border-brand-border pb-3 sm:pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-2">
         <div>
           <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 block mb-1">
             Back-office Manager • Alta de Productos
           </span>
-          <h2 className="text-2xl font-light text-brand-black tracking-tight">
+          <h2 className="text-xl sm:text-2xl font-light text-brand-black tracking-tight">
             {initialProduct ? 'Editar Ficha de Producto' : 'Registrar Nuevo Producto'}
           </h2>
         </div>
 
-        <div className="hidden sm:flex items-center gap-2 text-xs font-mono bg-brand-surface px-3 py-1.5 border border-brand-border text-neutral-600">
-          <Sparkles className="w-3.5 h-3.5 text-brand-black" />
+        <div className="flex items-center gap-2 text-[11px] sm:text-xs font-mono bg-brand-surface px-2.5 sm:px-3 py-1.5 border border-brand-border text-neutral-600">
+          <Sparkles className="w-3.5 h-3.5 text-brand-black shrink-0" />
           <span>Medida Estándar: 1900 × 2375 PX</span>
         </div>
       </div>
 
       {successMessage && (
-        <div className="bg-emerald-900 text-white p-4 text-xs font-bold uppercase tracking-widest flex items-center gap-2 shadow-subtle">
-          <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+        <div className="bg-emerald-900 text-white p-3.5 sm:p-4 text-xs font-bold uppercase tracking-widest flex items-center gap-2 shadow-subtle">
+          <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
           <span>¡Producto guardado exitosamente en el catálogo oficial!</span>
         </div>
       )}
@@ -301,12 +301,12 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
       <form onSubmit={handleSubmit} className="space-y-10">
         
         {/* SECTION 1: Informaciones Generales */}
-        <div className="bg-white p-6 border border-brand-border space-y-6">
+        <div className="bg-white p-4 sm:p-6 border border-brand-border space-y-4 sm:space-y-6">
           <h3 className="text-xs font-bold uppercase tracking-widest text-brand-black border-b border-brand-border pb-3">
             1. Información General del Producto
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 text-xs">
             <div>
               <label className="block uppercase font-bold text-neutral-500 mb-1">Nombre Comercial *</label>
               <input 
@@ -389,7 +389,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
               />
             </div>
 
-            <div>
+            <div className="sm:col-span-2 md:col-span-1">
               <label className="block uppercase font-bold text-neutral-500 mb-1">Estado de Inventario</label>
               <select 
                 value={inventoryStatus}
@@ -402,7 +402,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
               </select>
             </div>
 
-            <div className="md:col-span-2">
+            <div className="sm:col-span-2">
               <label className="block uppercase font-bold text-neutral-500 mb-1">Descripción Sobria & Editorial *</label>
               <textarea 
                 rows={3}
@@ -417,12 +417,12 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
         </div>
 
         {/* SECTION 2: Precios & Inventario por Ubicación en COP */}
-        <div className="bg-white p-6 border border-brand-border space-y-6">
+        <div className="bg-white p-4 sm:p-6 border border-brand-border space-y-4 sm:space-y-6">
           <h3 className="text-xs font-bold uppercase tracking-widest text-brand-black border-b border-brand-border pb-3">
             2. Precios en Pesos Colombianos (COP) & Desglose de Stock
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-xs">
             <div>
               <label className="block uppercase font-bold text-neutral-500 mb-1">Precio de Venta / Oferta (COP) *</label>
               <input 
@@ -443,7 +443,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
                 type="number" 
                 min="0"
                 step="any"
-                placeholder="Ej. 900000 (Mayor a precio de venta)"
+                placeholder="Ej. 900000"
                 value={originalPrice || ''}
                 onChange={(e) => setOriginalPrice(e.target.value ? Number(e.target.value) : undefined)}
                 className="w-full bg-brand-surface border border-brand-border p-3 text-brand-black focus:outline-none focus:border-brand-black"
@@ -456,7 +456,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
                 type="number" 
                 min="0"
                 step="any"
-                placeholder="Ej. 730000 (Precio especial por volumen)"
+                placeholder="Ej. 730000"
                 value={wholesalePrice || ''}
                 onChange={(e) => setWholesalePrice(e.target.value ? Number(e.target.value) : undefined)}
                 className="w-full bg-emerald-50/50 border border-emerald-300 p-3 font-bold text-emerald-900 focus:outline-none focus:border-emerald-600"
@@ -524,7 +524,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
               />
             </div>
 
-            <div>
+            <div className="sm:col-span-2 lg:col-span-1">
               <label className="block uppercase font-bold text-neutral-500 mb-1">Cantidad de Cajas / Lotes</label>
               <input 
                 type="number" 
@@ -542,7 +542,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
               id="isFeaturedToggle"
               checked={isFeatured}
               onChange={(e) => setIsFeatured(e.target.checked)}
-              className="accent-black w-4 h-4"
+              className="accent-black w-4 h-4 shrink-0"
             />
             <label htmlFor="isFeaturedToggle" className="text-xs font-bold uppercase text-brand-black cursor-pointer">
               Destacar producto en la Portada Principal de la Tienda
@@ -551,21 +551,21 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
         </div>
 
         {/* SECTION 3: Galería Fotográfica en Alta Resolución (1900 x 2375 px) */}
-        <div className="bg-white p-6 border border-brand-border space-y-6">
-          <div className="flex justify-between items-center border-b border-brand-border pb-3">
+        <div className="bg-white p-4 sm:p-6 border border-brand-border space-y-4 sm:space-y-6">
+          <div className="flex flex-col sm:flex-row justify-between sm:items-center border-b border-brand-border pb-3 gap-1">
             <h3 className="text-xs font-bold uppercase tracking-widest text-brand-black flex items-center gap-2">
-              <ImageIcon className="w-4 h-4" /> 3. Galería de Fotos (Medida 1900 × 2375 PX)
+              <ImageIcon className="w-4 h-4" /> 3. Galería de Fotos (1900 × 2375 PX)
             </h3>
             <span className="text-[10px] font-mono text-neutral-500">Mínimo 1 foto de estudio + 1 foto in-situ</span>
           </div>
 
           {/* Image Upload & URL Row */}
           <div className="space-y-3">
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
               {/* Direct File Picker Button (PC / Phone Gallery) */}
-              <label className={`cursor-pointer bg-brand-black text-white text-xs font-bold uppercase tracking-wider px-5 py-3 hover:bg-neutral-800 transition-colors flex items-center justify-center gap-2 shadow-subtle shrink-0 ${isUploadingImage ? 'opacity-60 pointer-events-none' : ''}`}>
-                <Upload className={`w-4 h-4 text-amber-300 ${isUploadingImage ? 'animate-bounce' : ''}`} />
-                <span>{isUploadingImage ? 'Subiendo a Supabase Storage...' : 'Seleccionar Fotos desde Mi Equipo'}</span>
+              <label className={`cursor-pointer bg-brand-black text-white text-xs font-bold uppercase tracking-wider px-4 sm:px-5 py-3 hover:bg-neutral-800 transition-colors flex items-center justify-center gap-2 shadow-subtle shrink-0 min-h-[42px] ${isUploadingImage ? 'opacity-60 pointer-events-none' : ''}`}>
+                <Upload className={`w-4 h-4 text-amber-300 shrink-0 ${isUploadingImage ? 'animate-bounce' : ''}`} />
+                <span>{isUploadingImage ? 'Subiendo...' : 'Seleccionar Fotos de Mi Equipo'}</span>
                 <input 
                   type="file" 
                   accept="image/*" 
@@ -580,7 +580,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
               <div className="flex-1 flex gap-2">
                 <input 
                   type="text" 
-                  placeholder="o pegue la URL de la imagen en formato 1900 x 2375 px..."
+                  placeholder="o pegue URL de imagen (1900 x 2375 px)..."
                   value={newImageUrl}
                   onChange={(e) => setNewImageUrl(e.target.value)}
                   onKeyDown={(e) => {
@@ -594,22 +594,22 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
                 <button 
                   type="button"
                   onClick={handleAddImage}
-                  className="bg-neutral-800 text-white text-xs font-bold uppercase tracking-wider px-4 hover:bg-black flex items-center gap-1 shrink-0"
+                  className="bg-neutral-800 text-white text-xs font-bold uppercase tracking-wider px-3 sm:px-4 hover:bg-black flex items-center justify-center gap-1 shrink-0 min-h-[42px]"
                 >
-                  <Plus className="w-4 h-4" /> Agregar URL
+                  <Plus className="w-4 h-4" /> <span className="hidden sm:inline">Agregar URL</span>
                 </button>
               </div>
             </div>
 
             {/* Quick 1-Click Presets */}
-            <div className="flex items-center gap-2 text-[10px] text-neutral-500 font-mono pt-1">
-              <span>Fotografías de prueba de alta resolución:</span>
+            <div className="flex items-center gap-2 text-[10px] text-neutral-500 font-mono pt-1 flex-wrap">
+              <span>Fotos de prueba:</span>
               <button 
                 type="button"
                 onClick={() => setImages(prev => [...prev, '/images/lampara_bowie_1786563431628.jpg'])}
                 className="underline hover:text-black"
               >
-                + Bowie Studio
+                + Bowie
               </button>
               <span>•</span>
               <button 
@@ -617,7 +617,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
                 onClick={() => setImages(prev => [...prev, '/images/lampara_walter_1786563440748.jpg'])}
                 className="underline hover:text-black"
               >
-                + Walter Chrome
+                + Walter
               </button>
               <span>•</span>
               <button 
@@ -709,14 +709,14 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
         </div>
 
         {/* SECTION 4: Gestor de Muestras de Color / Acabados */}
-        <div className="bg-white p-6 border border-brand-border space-y-6">
+        <div className="bg-white p-4 sm:p-6 border border-brand-border space-y-4 sm:space-y-6">
           <div className="flex justify-between items-center border-b border-brand-border pb-3">
             <h3 className="text-xs font-bold uppercase tracking-widest text-brand-black flex items-center gap-2">
               <Palette className="w-4 h-4" /> 4. Variantes de Acabado / Colores (Swatches)
             </h3>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
             <input 
               type="text" 
               placeholder="Nombre del acabado (ej. Cromo Espejo, Latón Satinado)"
@@ -724,7 +724,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
               onChange={(e) => setNewColorName(e.target.value)}
               className="flex-1 bg-brand-surface border border-brand-border p-2.5 text-xs focus:outline-none focus:border-brand-black"
             />
-            <div className="flex items-center gap-2 border border-brand-border p-1.5 bg-brand-surface">
+            <div className="flex items-center gap-2 border border-brand-border p-1.5 bg-brand-surface justify-between sm:justify-start">
               <span className="text-[10px] font-bold uppercase text-neutral-500">Color:</span>
               <input 
                 type="color" 
@@ -734,19 +734,19 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
               />
             </div>
             <button 
-              type="button"
+              type="button" 
               onClick={handleAddColor}
-              className="bg-brand-black text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 hover:bg-neutral-800"
+              className="bg-brand-black text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 hover:bg-neutral-800 min-h-[38px]"
             >
               + Agregar Color
             </button>
           </div>
 
           {/* List of Swatches */}
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-2 pt-1">
             {colors.map((c, idx) => (
-              <div key={idx} className="flex items-center gap-2 bg-brand-surface border border-brand-border p-2 text-xs">
-                <span className="w-4 h-4 border border-neutral-400" style={{ backgroundColor: c.hex }} />
+              <div key={idx} className="flex items-center gap-2 bg-brand-surface border border-brand-border px-3 py-1.5 text-xs">
+                <span className="w-3.5 h-3.5 rounded-full border border-neutral-400 shrink-0" style={{ backgroundColor: c.hex }} />
                 <span className="font-medium text-brand-black">{c.name}</span>
                 <button 
                   type="button" 
@@ -761,12 +761,12 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
         </div>
 
         {/* SECTION 5: Especificaciones Técnicas */}
-        <div className="bg-white p-6 border border-brand-border space-y-6">
+        <div className="bg-white p-4 sm:p-6 border border-brand-border space-y-4 sm:space-y-6">
           <h3 className="text-xs font-bold uppercase tracking-widest text-brand-black border-b border-brand-border pb-3">
             5. Especificaciones & Materiales
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 text-xs">
             <div>
               <label className="block uppercase font-bold text-neutral-500 mb-1">Dimensiones Exactas</label>
               <input 
@@ -792,12 +792,12 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
         </div>
 
         {/* SECTION 6: Posventa, Envío, Devoluciones y Cuidados */}
-        <div className="bg-white p-6 border border-brand-border space-y-6">
+        <div className="bg-white p-4 sm:p-6 border border-brand-border space-y-4 sm:space-y-6">
           <h3 className="text-xs font-bold uppercase tracking-widest text-brand-black border-b border-brand-border pb-3">
             6. Envío, Devoluciones e Instrucciones de Tratamiento (Posventa)
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 text-xs">
             <div>
               <label className="block uppercase font-bold text-neutral-500 mb-1">Etiqueta de Envío Rápido</label>
               <input 
@@ -820,7 +820,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
               />
             </div>
 
-            <div className="md:col-span-2">
+            <div className="sm:col-span-2">
               <label className="block uppercase font-bold text-neutral-500 mb-1">Detalles Desplegables de Envío & Devolución</label>
               <textarea 
                 rows={3}
@@ -831,7 +831,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
               />
             </div>
 
-            <div className="md:col-span-2">
+            <div className="sm:col-span-2">
               <label className="block uppercase font-bold text-neutral-500 mb-1">Instrucciones de Tratamiento & Cuidado</label>
               <textarea 
                 rows={3}
@@ -845,11 +845,11 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
         </div>
 
         {/* Submit Bar */}
-        <div className="flex justify-end gap-4 pt-4 border-t border-brand-border">
+        <div className="flex flex-col-reverse sm:flex-row justify-end gap-3 sm:gap-4 pt-4 border-t border-brand-border">
           <button 
             type="button"
             onClick={onSuccess}
-            className="bg-transparent border border-brand-black text-brand-black text-xs font-bold uppercase tracking-widest py-4 px-8 hover:bg-neutral-100"
+            className="w-full sm:w-auto bg-transparent border border-brand-black text-brand-black text-xs font-bold uppercase tracking-widest py-3.5 sm:py-4 px-8 hover:bg-neutral-100 min-h-[44px]"
           >
             Cancelar
           </button>
@@ -857,7 +857,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
           <button 
             type="submit"
             disabled={isSubmitting}
-            className="bg-brand-black text-white text-xs font-bold uppercase tracking-widest py-4 px-10 hover:bg-neutral-800 transition-colors flex items-center gap-2 shadow-elevated"
+            className="w-full sm:w-auto bg-brand-black text-white text-xs font-bold uppercase tracking-widest py-3.5 sm:py-4 px-8 sm:px-10 hover:bg-neutral-800 transition-colors flex items-center justify-center gap-2 shadow-elevated min-h-[44px]"
           >
             {isSubmitting ? 'Guardando en Catálogo...' : (
               <>
