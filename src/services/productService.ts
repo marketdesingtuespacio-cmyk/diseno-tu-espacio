@@ -342,9 +342,13 @@ export const productService = {
 
     for (let i = 0; i < images.length; i++) {
       const img = images[i];
+      if (typeof img === 'string' && !img.startsWith('data:image/')) {
+        uploadedUrls.push(img);
+        continue;
+      }
       try {
         const url = await this.uploadProductImage(img);
-        if (url && (url.startsWith('http://') || url.startsWith('https://'))) {
+        if (url && !url.startsWith('data:image/')) {
           uploadedUrls.push(url);
         }
       } catch (err) {
@@ -366,8 +370,8 @@ export const productService = {
       const processed = await this.uploadMultipleProductImages(finalImages);
       finalImages = processed;
     }
-    // Strictly filter out any base64 string to protect Postgres DB free storage limit
-    finalImages = finalImages.filter(img => typeof img === 'string' && (img.startsWith('http://') || img.startsWith('https://')));
+    // Filter out ONLY base64 data URLs to protect DB quota, retaining relative (/images/...) and absolute HTTP URLs
+    finalImages = finalImages.filter(img => typeof img === 'string' && !img.startsWith('data:image/'));
     
     const cleanPayload = {
       name: productData.name,
@@ -457,7 +461,7 @@ export const productService = {
       finalImages = processed;
     }
     if (finalImages) {
-      finalImages = finalImages.filter(img => typeof img === 'string' && (img.startsWith('http://') || img.startsWith('https://')));
+      finalImages = finalImages.filter(img => typeof img === 'string' && !img.startsWith('data:image/'));
     }
 
     const cleanPayload: any = {

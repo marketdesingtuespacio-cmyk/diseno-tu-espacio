@@ -72,7 +72,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
       setIsUploadingImage(true);
       try {
         const publicUrl = await productService.uploadProductImage(trimmed, name || 'producto');
-        if (publicUrl && (publicUrl.startsWith('http://') || publicUrl.startsWith('https://'))) {
+        if (publicUrl && !publicUrl.startsWith('data:image/')) {
           setImages(prev => [...prev, publicUrl]);
           setNewImageUrl('');
         }
@@ -81,11 +81,9 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
       } finally {
         setIsUploadingImage(false);
       }
-    } else if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+    } else {
       setImages(prev => [...prev, trimmed]);
       setNewImageUrl('');
-    } else {
-      alert('Por favor ingrese una URL válida que empiece con http:// o https://');
     }
   };
 
@@ -154,7 +152,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
         const compressedBase64 = await compressAndResizeImage(file);
         // Upload directly to Supabase Storage product-images bucket
         const publicUrl = await productService.uploadProductImage(compressedBase64, name || 'producto');
-        if (publicUrl && (publicUrl.startsWith('http://') || publicUrl.startsWith('https://'))) {
+        if (publicUrl && !publicUrl.startsWith('data:image/')) {
           setImages((prevImages) => [...prevImages, publicUrl]);
         }
       } catch (err: any) {
