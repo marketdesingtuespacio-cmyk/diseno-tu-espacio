@@ -269,7 +269,7 @@ export const productService = {
     }
 
     if (!isSupabaseConfigured()) {
-      return typeof fileInput === 'string' ? fileInput : URL.createObjectURL(fileInput);
+      throw new Error('Supabase no está configurado en las variables de entorno.');
     }
 
     try {
@@ -295,7 +295,7 @@ export const productService = {
           if (ext) extension = ext.toLowerCase();
         }
       } else {
-        return typeof fileInput === 'string' ? fileInput : '';
+        throw new Error('Formato de imagen inválido.');
       }
 
       const uniqueId = typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID().substring(0, 8) : Math.floor(Math.random() * 100000);
@@ -314,14 +314,8 @@ export const productService = {
         });
 
       if (uploadErr) {
-        console.warn('⚠️ Supabase Storage warning on image upload:', uploadErr.message);
-        if (typeof fileInput === 'string') return fileInput;
-        return new Promise<string>((resolve) => {
-          const reader = new FileReader();
-          reader.onload = () => resolve(reader.result as string || '');
-          reader.onerror = () => resolve('');
-          reader.readAsDataURL(fileBody);
-        });
+        console.error('❌ Error al subir imagen a Supabase Storage:', uploadErr.message);
+        throw new Error(`El bucket 'product-images' de Supabase Storage no está listo (${uploadErr.message}). Ejecuta el archivo SQL 'create_storage_bucket.sql' en el Editor SQL de Supabase.`);
       }
 
       if (uploadData?.path) {
@@ -334,12 +328,12 @@ export const productService = {
           return publicData.publicUrl;
         }
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error('Excepción al subir imagen a Supabase Storage:', err);
+      throw err;
     }
 
-    if (typeof fileInput === 'string') return fileInput;
-    return '';
+    throw new Error('No se pudo obtener la URL pública de la imagen en Supabase Storage.');
   },
 
   async uploadMultipleProductImages(images: (File | Blob | string)[]): Promise<string[]> {
@@ -348,11 +342,13 @@ export const productService = {
 
     for (let i = 0; i < images.length; i++) {
       const img = images[i];
-      const url = await this.uploadProductImage(img);
-      if (url && url.trim().length > 0) {
-        uploadedUrls.push(url);
-      } else if (typeof img === 'string' && img.trim().length > 0) {
-        uploadedUrls.push(img);
+      try {
+        const url = await this.uploadProductImage(img);
+        if (url && (url.startsWith('http://') || url.startsWith('https://'))) {
+          uploadedUrls.push(url);
+        }
+      } catch (err) {
+        console.warn('Falló la subida de imagen a Supabase Storage, se omitirá para no saturar la BD:', err);
       }
     }
 
@@ -368,10 +364,10 @@ export const productService = {
     let finalImages: string[] = (productData.images || []).filter(img => typeof img === 'string' && img.trim().length > 0);
     if (finalImages.some(img => typeof img === 'string' && img.startsWith('data:image/'))) {
       const processed = await this.uploadMultipleProductImages(finalImages);
-      if (processed.length > 0) {
-        finalImages = processed;
-      }
+      finalImages = processed;
     }
+    // Strictly filter out any base64 string to protect Postgres DB free storage limit
+    finalImages = finalImages.filter(img => typeof img === 'string' && (img.startsWith('http://') || img.startsWith('https://')));
     
     const cleanPayload = {
       name: productData.name,
@@ -458,9 +454,10 @@ export const productService = {
     let finalImages: string[] | undefined = updates.images ? updates.images.filter(img => typeof img === 'string' && img.trim().length > 0) : undefined;
     if (finalImages && finalImages.some(img => typeof img === 'string' && img.startsWith('data:image/'))) {
       const processed = await this.uploadMultipleProductImages(finalImages);
-      if (processed.length > 0) {
-        finalImages = processed;
-      }
+      finalImages = processed;
+    }
+    if (finalImages) {
+      finalImages = finalImages.filter(img => typeof img === 'string' && (img.startsWith('http://') || img.startsWith('https://')));
     }
 
     const cleanPayload: any = {

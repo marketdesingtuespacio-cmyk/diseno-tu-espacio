@@ -64,10 +64,28 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
   const [newColorHex, setNewColorHex] = useState('#000000');
 
   // Add Image URL
-  const handleAddImage = () => {
-    if (newImageUrl.trim()) {
-      setImages(prev => [...prev, newImageUrl.trim()]);
+  const handleAddImage = async () => {
+    const trimmed = newImageUrl.trim();
+    if (!trimmed) return;
+
+    if (trimmed.startsWith('data:image/')) {
+      setIsUploadingImage(true);
+      try {
+        const publicUrl = await productService.uploadProductImage(trimmed, name || 'producto');
+        if (publicUrl && (publicUrl.startsWith('http://') || publicUrl.startsWith('https://'))) {
+          setImages(prev => [...prev, publicUrl]);
+          setNewImageUrl('');
+        }
+      } catch (err: any) {
+        alert(`⚠️ NO SE PUDO SUBIR LA IMAGEN A SUPABASE STORAGE.\n\nMotivo: ${err?.message || 'Bucket no disponible'}\n\nPara no agotar el espacio de tu base de datos gratuita con texto Base64, debes ejecutar el script SQL create_storage_bucket.sql en el Editor SQL de tu panel de Supabase.`);
+      } finally {
+        setIsUploadingImage(false);
+      }
+    } else if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+      setImages(prev => [...prev, trimmed]);
       setNewImageUrl('');
+    } else {
+      alert('Por favor ingrese una URL válida que empiece con http:// o https://');
     }
   };
 
@@ -136,9 +154,13 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
         const compressedBase64 = await compressAndResizeImage(file);
         // Upload directly to Supabase Storage product-images bucket
         const publicUrl = await productService.uploadProductImage(compressedBase64, name || 'producto');
-        setImages((prevImages) => [...prevImages, publicUrl]);
-      } catch (err) {
-        console.warn('Error procesando imagen para Supabase Storage:', err);
+        if (publicUrl && (publicUrl.startsWith('http://') || publicUrl.startsWith('https://'))) {
+          setImages((prevImages) => [...prevImages, publicUrl]);
+        }
+      } catch (err: any) {
+        console.error('Error procesando imagen para Supabase Storage:', err);
+        alert(`⚠️ NO SE PUDO SUBIR LA IMAGEN A SUPABASE STORAGE.\n\n${err?.message || 'Error al conectar con Supabase Storage'}\n\nPara proteger la cuota gratuita de tu base de datos y no saturarla con imágenes Base64, por favor ejecuta el archivo SQL create_storage_bucket.sql en el Editor SQL de Supabase para habilitar el bucket product-images.`);
+        break;
       }
     }
 
