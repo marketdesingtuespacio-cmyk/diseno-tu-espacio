@@ -7,6 +7,7 @@ import { ProductCard } from '../components/ProductCard';
 import { ProductCardSkeleton } from '../components/ProductCardSkeleton';
 import { CategoryCarousel } from '../components/CategoryCarousel';
 import { AnimatedHeroHeader } from '../components/AnimatedHeroHeader';
+import { GrandOpeningEditorialGrid } from '../components/GrandOpeningEditorialGrid';
 
 export const HomePage: React.FC = () => {
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
@@ -29,6 +30,9 @@ export const HomePage: React.FC = () => {
 
       {/* Westwing-Style Category Carousel */}
       <CategoryCarousel />
+
+      {/* 4 Elegant Editorial Cards: Gran Apertura 16 de Octubre & Categorías de Autor */}
+      <GrandOpeningEditorialGrid />
 
       {/* Brand Pillars */}
       <section className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center border-y border-brand-border py-10 bg-brand-surface">

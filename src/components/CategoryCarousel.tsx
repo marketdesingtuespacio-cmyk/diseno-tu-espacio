@@ -18,10 +18,34 @@ const CATEGORY_ITEMS: CategoryItem[] = [
     isNewCard: true
   },
   {
-    id: 'cat-muebles',
-    name: 'MUEBLES',
-    categoryFilter: 'Diseño Mobiliario',
-    image: '/images/lampara_walter_1786563440748.jpg'
+    id: 'cat-espejos',
+    name: 'ESPEJOS',
+    categoryFilter: 'Espejos',
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'cat-papel',
+    name: 'PAPEL DE COLGADURA',
+    categoryFilter: 'Papel de Colgadura',
+    image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'cat-lavamanos',
+    name: 'LAVAMANOS',
+    categoryFilter: 'Lavamanos',
+    image: 'https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A691CBKUG04M_1.jpg'
+  },
+  {
+    id: 'cat-cuadros',
+    name: 'CUADROS',
+    categoryFilter: 'Cuadros',
+    image: 'https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY78X781606_1.jpg'
+  },
+  {
+    id: 'cat-revestimientos',
+    name: 'REVESTIMIENTOS',
+    categoryFilter: 'Revestimientos',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'cat-techo',
@@ -30,34 +54,22 @@ const CATEGORY_ITEMS: CategoryItem[] = [
     image: '/images/cat_techo_portrait_1787589732026.jpg'
   },
   {
-    id: 'cat-pie',
-    name: 'LÁMPARAS DE PIE',
-    categoryFilter: 'Lámparas de Pie',
-    image: '/images/cat_pie_portrait_1787589741558.jpg'
-  },
-  {
     id: 'cat-pared',
     name: 'ILUMINACIÓN DE PARED',
     categoryFilter: 'Iluminación de Pared',
     image: '/images/cat_pared_portrait_1787589752307.jpg'
   },
   {
+    id: 'cat-pie',
+    name: 'LÁMPARAS DE PIE',
+    categoryFilter: 'Lámparas de Pie',
+    image: '/images/cat_pie_portrait_1787589741558.jpg'
+  },
+  {
     id: 'cat-mesa',
     name: 'LÁMPARAS DE MESA',
     categoryFilter: 'Lámparas de Mesa',
     image: '/images/cat_mesa_portrait_1787589762766.jpg'
-  },
-  {
-    id: 'cat-decoracion',
-    name: 'DECORACIÓN',
-    categoryFilter: 'Diseño Mobiliario',
-    image: '/images/plafon_lace_1786563458884.jpg'
-  },
-  {
-    id: 'cat-asesoria',
-    name: 'ESTUDIO LUMÍNICO',
-    categoryFilter: 'all',
-    image: '/images/lampara_bowie_1786563431628.jpg'
   }
 ];
 
