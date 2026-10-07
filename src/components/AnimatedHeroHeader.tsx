@@ -45,10 +45,11 @@ const LIGHTING_STEPS: LightingStep[] = [
 export const AnimatedHeroHeader: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  const [activeMediaMode, setActiveMediaMode] = useState<'video' | 'lighting'>('video');
 
   // Progressive bulb-by-bulb lighting sequence loop (Calm & Slower Cinematic Pace)
   useEffect(() => {
-    if (!isPlaying) return;
+    if (!isPlaying || activeMediaMode !== 'lighting') return;
 
     // Advance to next lighting step every 3.0s, holding 5.0s on full residence illumination
     const stepDuration = currentStep === 4 ? 5000 : 3000;
@@ -58,76 +59,126 @@ export const AnimatedHeroHeader: React.FC = () => {
     }, stepDuration);
 
     return () => clearTimeout(timer);
-  }, [currentStep, isPlaying]);
+  }, [currentStep, isPlaying, activeMediaMode]);
 
   return (
     <section className="relative h-[88vh] bg-brand-black text-white flex items-center justify-center overflow-hidden font-sans select-none">
       
-      {/* PROGRESSIVE LIGHTING IMAGE LAYERS (Cinematic Slower Crossfade 1.8s + GPU Hardware Accelerated) */}
-      {LIGHTING_STEPS.map((step) => (
-        <div 
-          key={step.id}
-          className={`absolute inset-0 z-0 transition-opacity duration-[1800ms] ease-in-out will-change-opacity ${
-            currentStep === step.id ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
-          }`}
+      {/* VIDEO TOUR BACKGROUND: Tour virtual por el interior de una residencia de lujo */}
+      <div 
+        className={`absolute inset-0 z-0 transition-opacity duration-1000 ${
+          activeMediaMode === 'video' ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          preload="auto"
+          className="w-full h-full object-cover scale-105 transform will-change-transform"
         >
-          <img 
-            src={step.image} 
-            alt={step.label}
-            decoding="async"
-            loading={step.id === 0 || step.id === 1 ? 'eager' : 'lazy'}
-            className="w-full h-full object-cover"
-          />
-        </div>
-      ))}
+          <source src="/videos/house_interior_tour.mp4" type="video/mp4" />
+          Tu navegador no soporta videos en HTML5.
+        </video>
+      </div>
+
+      {/* PROGRESSIVE LIGHTING IMAGE LAYERS (Cinematic Crossfade) */}
+      <div 
+        className={`absolute inset-0 z-0 transition-opacity duration-1000 ${
+          activeMediaMode === 'lighting' ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        {LIGHTING_STEPS.map((step) => (
+          <div 
+            key={step.id}
+            className={`absolute inset-0 z-0 transition-opacity duration-[1800ms] ease-in-out will-change-opacity ${
+              currentStep === step.id ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
+            }`}
+          >
+            <img 
+              src={step.image} 
+              alt={step.label}
+              decoding="async"
+              loading={step.id === 0 || step.id === 1 ? 'eager' : 'lazy'}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ))}
+      </div>
 
       {/* Atmospheric Vignette & Gradient Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent z-0" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/30 z-0" />
       <div className="absolute inset-0 bg-black/20 z-0" />
 
-      {/* PHASE CONTROL CARD: VERTICALLY CENTERED ON THE RIGHT SIDE */}
-      <div className="absolute top-1/2 -translate-y-1/2 right-6 md:right-12 z-20 flex flex-col items-end gap-2">
-        <div className="bg-black/60 backdrop-blur-md border border-white/20 p-3 shadow-elevated max-w-xs space-y-2 text-right">
-          
-          <div className="flex items-center justify-end gap-2 text-xs font-bold uppercase tracking-wider text-amber-300">
-            <Zap className="w-4 h-4 text-amber-300 fill-amber-300 animate-pulse" />
-            <span>{LIGHTING_STEPS[currentStep].label}</span>
-          </div>
-
-          <p className="text-[10px] text-neutral-300 font-light leading-tight">
-            {LIGHTING_STEPS[currentStep].sublabel}
-          </p>
-
-          {/* Sequential Step Progress Bars */}
-          <div className="flex items-center justify-end gap-1.5 pt-1">
-            {LIGHTING_STEPS.map((step) => (
-              <button
-                key={step.id}
-                onClick={() => {
-                  setIsPlaying(false);
-                  setCurrentStep(step.id);
-                }}
-                className={`h-1.5 rounded-full transition-all duration-500 ${
-                  currentStep === step.id 
-                    ? 'w-6 bg-amber-400 shadow-[0_0_8px_#f59e0b]' 
-                    : currentStep > step.id 
-                    ? 'w-3 bg-amber-200/80' 
-                    : 'w-2 bg-white/20 hover:bg-white/40'
-                }`}
-                title={step.label}
-              />
-            ))}
-
-            <button 
-              onClick={() => setIsPlaying(!isPlaying)}
-              className="ml-2 text-white/80 hover:text-white transition-colors"
-              title={isPlaying ? 'Pausar secuencia' : 'Reproducir secuencia'}
-            >
-              {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-            </button>
-          </div>
-
+      {/* VIEW MODE SWITCHER + CONTROL CARD: VERTICALLY CENTERED ON THE RIGHT SIDE */}
+      <div className="absolute top-1/2 -translate-y-1/2 right-4 sm:right-6 md:right-12 z-20 flex flex-col items-end gap-2">
+        {/* Toggle between Video Tour and Lighting Phases */}
+        <div className="bg-black/70 backdrop-blur-md border border-white/20 p-1 flex items-center rounded-xs shadow-elevated">
+          <button
+            onClick={() => setActiveMediaMode('video')}
+            className={`px-3 py-1 text-[10px] font-bold uppercase tracking-wider transition-all ${
+              activeMediaMode === 'video'
+                ? 'bg-white text-black shadow-xs'
+                : 'text-neutral-300 hover:text-white'
+            }`}
+          >
+            Paseo Interior
+          </button>
+          <button
+            onClick={() => setActiveMediaMode('lighting')}
+            className={`px-3 py-1 text-[10px] font-bold uppercase tracking-wider transition-all ${
+              activeMediaMode === 'lighting'
+                ? 'bg-amber-400 text-black shadow-xs'
+                : 'text-neutral-300 hover:text-white'
+            }`}
+          >
+            Fases de Luz
+          </button>
         </div>
+
+        {/* Phase card only shown when Lighting mode is active */}
+        {activeMediaMode === 'lighting' && (
+          <div className="bg-black/60 backdrop-blur-md border border-white/20 p-3 shadow-elevated max-w-xs space-y-2 text-right animate-in fade-in duration-300">
+            <div className="flex items-center justify-end gap-2 text-xs font-bold uppercase tracking-wider text-amber-300">
+              <Zap className="w-4 h-4 text-amber-300 fill-amber-300 animate-pulse" />
+              <span>{LIGHTING_STEPS[currentStep].label}</span>
+            </div>
+
+            <p className="text-[10px] text-neutral-300 font-light leading-tight">
+              {LIGHTING_STEPS[currentStep].sublabel}
+            </p>
+
+            {/* Sequential Step Progress Bars */}
+            <div className="flex items-center justify-end gap-1.5 pt-1">
+              {LIGHTING_STEPS.map((step) => (
+                <button
+                  key={step.id}
+                  onClick={() => {
+                    setIsPlaying(false);
+                    setCurrentStep(step.id);
+                  }}
+                  className={`h-1.5 rounded-full transition-all duration-500 ${
+                    currentStep === step.id 
+                      ? 'w-6 bg-amber-400 shadow-[0_0_8px_#f59e0b]' 
+                      : currentStep > step.id 
+                      ? 'w-3 bg-amber-200/80' 
+                      : 'w-2 bg-white/20 hover:bg-white/40'
+                  }`}
+                  title={step.label}
+                />
+              ))}
+
+              <button 
+                onClick={() => setIsPlaying(!isPlaying)}
+                className="ml-2 text-white/80 hover:text-white transition-colors"
+                title={isPlaying ? 'Pausar secuencia' : 'Reproducir secuencia'}
+              >
+                {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
+              </button>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* MAIN HERO EDITORIAL CONTENT */}
