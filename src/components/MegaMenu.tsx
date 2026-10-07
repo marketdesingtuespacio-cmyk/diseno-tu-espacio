@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Lightbulb, Compass, Award, Sparkles } from 'lucide-react';
+import { ArrowRight, Compass, Award, Sparkles } from 'lucide-react';
 
 interface MegaMenuProps {
   isOpen: boolean;
@@ -17,36 +17,41 @@ export const MegaMenu: React.FC<MegaMenuProps> = ({ isOpen, onClose }) => {
     >
       <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-4 gap-8">
         
-        {/* Column 1: Colecciones de Iluminación */}
+        {/* Column 1: Categorías Principales */}
         <div>
           <div className="flex items-center gap-2 mb-4 text-xs font-bold tracking-widest uppercase text-brand-black border-b border-brand-black pb-2">
-            <Lightbulb className="w-4 h-4" />
-            Iluminación de Alta Gama
+            <Sparkles className="w-4 h-4 text-[#81c0b1]" />
+            Mobiliario & Acabados
           </div>
           <ul className="space-y-2.5 text-sm text-neutral-600">
             <li>
-              <Link to="/catalog?category=Lámparas de Techo" onClick={onClose} className="hover:text-brand-black hover:font-medium transition-colors">
-                Lámparas de Techo & Suspensión
+              <Link to="/catalog?category=Espejos" onClick={onClose} className="hover:text-brand-black hover:font-medium transition-colors">
+                Espejos de Autor
               </Link>
             </li>
             <li>
-              <Link to="/catalog?category=Iluminación de Pared" onClick={onClose} className="hover:text-brand-black hover:font-medium transition-colors">
-                Apliques & Iluminación Indirecta
+              <Link to="/catalog?category=Papel de Colgadura" onClick={onClose} className="hover:text-brand-black hover:font-medium transition-colors">
+                Papel de Colgadura
               </Link>
             </li>
             <li>
-              <Link to="/catalog?category=Lámparas de Pie" onClick={onClose} className="hover:text-brand-black hover:font-medium transition-colors">
-                Lámparas de Pie Esculturales
+              <Link to="/catalog?category=Lavamanos" onClick={onClose} className="hover:text-brand-black hover:font-medium transition-colors">
+                Lavamanos Esculturales
               </Link>
             </li>
             <li>
-              <Link to="/catalog?category=Lámparas de Mesa" onClick={onClose} className="hover:text-brand-black hover:font-medium transition-colors">
-                Lámparas de Sobremesa
+              <Link to="/catalog?category=Cuadros" onClick={onClose} className="hover:text-brand-black hover:font-medium transition-colors">
+                Cuadros & Arte Mural
+              </Link>
+            </li>
+            <li>
+              <Link to="/catalog?category=Revestimientos" onClick={onClose} className="hover:text-brand-black hover:font-medium transition-colors">
+                Revestimientos de Piedra Flexible
               </Link>
             </li>
             <li>
               <Link to="/catalog?category=all" onClick={onClose} className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-brand-black mt-2 hover:underline">
-                Ver Colección Completa <ArrowRight className="w-3.5 h-3.5" />
+                Ver Catálogo Completo <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </li>
           </ul>

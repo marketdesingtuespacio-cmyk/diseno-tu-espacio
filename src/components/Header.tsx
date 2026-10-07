@@ -93,10 +93,6 @@ export const Header: React.FC = () => {
     { label: 'LAVAMANOS', path: '/catalog?category=Lavamanos' },
     { label: 'CUADROS', path: '/catalog?category=Cuadros' },
     { label: 'REVESTIMIENTOS', path: '/catalog?category=Revestimientos' },
-    { label: 'LÁMPARAS DE TECHO', path: '/catalog?category=Lámparas de Techo' },
-    { label: 'ILUMINACIÓN DE PARED', path: '/catalog?category=Iluminación de Pared' },
-    { label: 'LÁMPARAS DE PIE', path: '/catalog?category=Lámparas de Pie' },
-    { label: 'LÁMPARAS DE MESA', path: '/catalog?category=Lámparas de Mesa' },
     { label: 'OFERTAS', path: '/catalog?filter=ofertas', isSpecialOffer: true },
   ];
 

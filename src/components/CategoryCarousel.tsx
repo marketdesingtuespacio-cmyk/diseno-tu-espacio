@@ -46,30 +46,6 @@ const CATEGORY_ITEMS: CategoryItem[] = [
     name: 'REVESTIMIENTOS',
     categoryFilter: 'Revestimientos',
     image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 'cat-techo',
-    name: 'LÁMPARAS DE TECHO',
-    categoryFilter: 'Lámparas de Techo',
-    image: '/images/cat_techo_portrait_1787589732026.jpg'
-  },
-  {
-    id: 'cat-pared',
-    name: 'ILUMINACIÓN DE PARED',
-    categoryFilter: 'Iluminación de Pared',
-    image: '/images/cat_pared_portrait_1787589752307.jpg'
-  },
-  {
-    id: 'cat-pie',
-    name: 'LÁMPARAS DE PIE',
-    categoryFilter: 'Lámparas de Pie',
-    image: '/images/cat_pie_portrait_1787589741558.jpg'
-  },
-  {
-    id: 'cat-mesa',
-    name: 'LÁMPARAS DE MESA',
-    categoryFilter: 'Lámparas de Mesa',
-    image: '/images/cat_mesa_portrait_1787589762766.jpg'
   }
 ];
 

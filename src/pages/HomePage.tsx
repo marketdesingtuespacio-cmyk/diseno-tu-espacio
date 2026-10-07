@@ -66,7 +66,7 @@ export const HomePage: React.FC = () => {
         <div className="flex justify-between items-end mb-8">
           <div>
             <span className="text-[11px] font-bold uppercase tracking-widest text-neutral-400 block mb-1">Categorías Destacadas</span>
-            <h2 className="text-2xl font-light text-brand-black tracking-tight">Arquitectura Lumínica</h2>
+            <h2 className="text-2xl font-light text-brand-black tracking-tight">Mobiliario & Arquitectura de Interiores</h2>
           </div>
           <Link to="/catalog" className="text-xs font-bold uppercase tracking-widest text-brand-black hover:underline flex items-center gap-1">
             Ver Todo <ArrowRight className="w-3.5 h-3.5" />
@@ -74,39 +74,39 @@ export const HomePage: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Link to="/catalog?category=Lámparas de Techo" className="group relative h-96 overflow-hidden bg-neutral-900">
+          <Link to="/catalog?category=Espejos" className="group relative h-96 overflow-hidden bg-neutral-900">
             <img 
-              src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?q=80&w=800&auto=format&fit=crop" 
-              alt="Lámparas de Techo"
+              src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" 
+              alt="Espejos de Autor"
               className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-all duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
-              <span className="text-[10px] uppercase font-bold tracking-widest text-neutral-300">Colección Techo</span>
-              <h3 className="text-lg font-medium text-white">Lámparas de Suspensión</h3>
+              <span className="text-[10px] uppercase font-bold tracking-widest text-neutral-300">Colección Espejos</span>
+              <h3 className="text-lg font-medium text-white">Espejos Minimalistas & Orgánicos</h3>
             </div>
           </Link>
 
-          <Link to="/catalog?category=Iluminación de Pared" className="group relative h-96 overflow-hidden bg-neutral-900">
+          <Link to="/catalog?category=Lavamanos" className="group relative h-96 overflow-hidden bg-neutral-900">
             <img 
-              src="https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?q=80&w=800&auto=format&fit=crop" 
-              alt="Iluminación de Pared"
+              src="https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A691CBKUG04M_1.jpg" 
+              alt="Lavamanos Esculturales"
               className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-all duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
-              <span className="text-[10px] uppercase font-bold tracking-widest text-neutral-300">Apliques de Pared</span>
-              <h3 className="text-lg font-medium text-white">Luz Indirecta & Apliques</h3>
+              <span className="text-[10px] uppercase font-bold tracking-widest text-neutral-300">Línea Baño de Lujo</span>
+              <h3 className="text-lg font-medium text-white">Lavamanos Esculturales</h3>
             </div>
           </Link>
 
-          <Link to="/catalog?category=Lámparas de Pie" className="group relative h-96 overflow-hidden bg-neutral-900">
+          <Link to="/catalog?category=Papel de Colgadura" className="group relative h-96 overflow-hidden bg-neutral-900">
             <img 
-              src="https://images.unsplash.com/photo-1540932239986-30128078f3c5?q=80&w=800&auto=format&fit=crop" 
-              alt="Lámparas de Pie"
+              src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80" 
+              alt="Papel de Colgadura"
               className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-all duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
-              <span className="text-[10px] uppercase font-bold tracking-widest text-neutral-300">Pie & Lectura</span>
-              <h3 className="text-lg font-medium text-white">Lámparas de Pie Esculturales</h3>
+              <span className="text-[10px] uppercase font-bold tracking-widest text-neutral-300">Texturas & Muros</span>
+              <h3 className="text-lg font-medium text-white">Papel de Colgadura & Revestimientos</h3>
             </div>
           </Link>
         </div>

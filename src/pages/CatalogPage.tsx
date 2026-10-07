@@ -7,7 +7,7 @@ import { ProductCard } from '../components/ProductCard';
 import { ProductCardSkeleton } from '../components/ProductCardSkeleton';
 import { useCurrency } from '../context/CurrencyContext';
 
-const DEFAULT_CATEGORIES = ['all', 'Papel de Colgadura', 'Lavamanos', 'Espejos', 'Cuadros', 'Revestimientos', 'Lámparas de Techo', 'Iluminación de Pared', 'Lámparas de Pie', 'Lámparas de Mesa', 'Diseño Mobiliario'];
+const DEFAULT_CATEGORIES = ['all', 'Espejos', 'Papel de Colgadura', 'Lavamanos', 'Cuadros', 'Revestimientos'];
 const STYLES = ['all', 'Minimalista', 'Contemporáneo', 'Bauhaus', 'Nórdico', 'Orgánico Moderno', 'Galería Contemporánea', 'Arquitectónico'];
 const DEFAULT_MAX_PRICE = 20000000; // $20.000.000 COP default max threshold
 
