@@ -92,13 +92,18 @@ const buildSupabaseOrderPayload = (orderData: Partial<Order>) => {
     customer_email: orderData.customer_email || '',
     customer_phone: orderData.customer_phone || '',
     shipping_address: fullAddress,
+    city: orderData.city || 'Bogotá D.C.',
+    total: total,
     total_amount: total,
+    subtotal: Number(orderData.subtotal || total),
+    shipping_cost: Number(orderData.shipping_cost || 0),
+    discount: Number(orderData.discount || 0),
     deposit_amount: deposit,
     pending_balance: pending,
     payment_status: paymentStatus,
     status: orderData.status || 'processing',
     payment_method: orderData.payment_method || 'Tarjeta de Crédito',
-    payment_gateway: orderData.payment_gateway || 'Wompi Colombia',
+    payment_gateway: orderData.payment_gateway || 'Bold Payments (Colombia)',
     items: orderData.items || [],
     created_at: orderData.created_at || new Date().toISOString()
   };
@@ -251,6 +256,7 @@ export const orderService = {
       details: `Total: $${newOrder.total.toLocaleString('es-CO')} COP | Abono: $${(newOrder.deposit_amount || 0).toLocaleString('es-CO')} COP | Método: ${newOrder.payment_method}`
     });
 
+    ordersFetchPromise = null;
     notifyOrdersUpdated();
     return newOrder;
   },
