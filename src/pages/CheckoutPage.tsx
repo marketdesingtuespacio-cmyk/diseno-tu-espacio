@@ -56,20 +56,39 @@ export const CheckoutPage: React.FC = () => {
   const [activeBoldOrder, setActiveBoldOrder] = useState<any>(null);
   const [orderCompleted, setOrderCompleted] = useState<any>(null);
 
-  // Capturar retorno exitoso de Bold desde la URL
+  // Capturar retorno exitoso de Bold desde la URL y obtener el total real del pedido
   useEffect(() => {
     if (urlStatus === 'success' && urlRef) {
-      setOrderCompleted({
-        orderRef: urlRef,
-        customer: 'Cliente verificado por Bold',
-        email: 'Confirmación oficial enviada por correo',
-        gateway: 'bold',
-        gatewayName: 'Bold Payments (Colombia)',
-        method: 'Tarjeta de Crédito / PSE / Nequi',
-        total: 0,
-        itemsCount: 1
+      orderService.getOrders().then(orders => {
+        const matchingOrder = orders.find(o => o.order_ref === urlRef);
+        if (matchingOrder) {
+          // Marcar pedido como pagado en Supabase
+          orderService.updateOrder(matchingOrder.id, { status: 'processing' });
+
+          setOrderCompleted({
+            orderRef: urlRef,
+            customer: matchingOrder.customer_name,
+            email: matchingOrder.customer_email,
+            gateway: 'bold',
+            gatewayName: 'Bold Payments (Colombia)',
+            method: matchingOrder.payment_method || 'Tarjeta de Crédito / PSE / Nequi',
+            total: matchingOrder.total,
+            itemsCount: matchingOrder.items_count || 1
+          });
+        } else {
+          setOrderCompleted({
+            orderRef: urlRef,
+            customer: 'Cliente verificado por Bold',
+            email: 'Confirmación oficial enviada por correo',
+            gateway: 'bold',
+            gatewayName: 'Bold Payments (Colombia)',
+            method: 'Tarjeta de Crédito / PSE / Nequi',
+            total: totalPrice > 0 ? totalPrice : 0,
+            itemsCount: 1
+          });
+        }
+        clearCart();
       });
-      clearCart();
     }
   }, [urlStatus, urlRef]);
 
