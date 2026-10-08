@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { ShieldCheck, ArrowLeft, CheckCircle2, Info } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { shippingService } from '../services/shippingService';
 import { orderService } from '../services/orderService';
+import { boldPaymentService } from '../services/boldPaymentService';
 
-export type PaymentGateway = 'wompi' | 'mercadopago' | 'stripe' | 'pse' | 'nequi';
+export type PaymentGateway = 'bold';
 
 interface PaymentProviderConfig {
   id: PaymentGateway;
@@ -19,36 +20,12 @@ interface PaymentProviderConfig {
 
 const PAYMENT_PROVIDERS: PaymentProviderConfig[] = [
   {
-    id: 'wompi',
-    name: 'Wompi Colombia (Bancolombia)',
-    subtitle: 'Pago local seguro en Colombia: Tarjetas, PSE, Nequi y Daviplata',
-    badge: 'Recomendado Colombia',
-    icons: ['Tarjetas', 'PSE', 'Nequi'],
-    methods: ['Tarjeta de Crédito / Débito', 'PSE (Débito Bancario)', 'Nequi / Daviplata', 'Botón Bancolombia']
-  },
-  {
-    id: 'mercadopago',
-    name: 'Mercado Pago',
-    subtitle: 'Paga con tu cuenta de Mercado Pago o tarjetas en cuotas sin interés',
-    badge: 'Popular América Latina',
-    icons: ['Mercado Pago', 'Cuotas'],
-    methods: ['Cuenta Mercado Pago', 'Tarjetas en Cuotas', 'Efecty / Puntos de Pago']
-  },
-  {
-    id: 'stripe',
-    name: 'Stripe International',
-    subtitle: 'Pago internacional seguro para tarjetas globales y Apple/Google Pay',
-    badge: 'Global (USD/EUR)',
-    icons: ['Global', 'Apple Pay', 'Google Pay'],
-    methods: ['Visa / Mastercard / AMEX Global', 'Apple Pay', 'Google Pay']
-  },
-  {
-    id: 'pse',
-    name: 'PSE (Pagos Seguros en Línea)',
-    subtitle: 'Transferencia directa desde cualquier banco colombiano',
-    badge: 'Débito Bancario',
-    icons: ['PSE Bancos'],
-    methods: ['Cualquier Banco de Colombia (Bancolombia, Davivienda, BBVA, etc.)']
+    id: 'bold',
+    name: 'Bold Payments (Colombia)',
+    subtitle: 'Pago rápido y seguro en Colombia: Tarjetas de Crédito/Débito, PSE, Nequi, Daviplata y Botón Bold',
+    badge: 'Pasarela Oficial',
+    icons: ['Tarjetas', 'PSE', 'Nequi', 'Daviplata'],
+    methods: ['Tarjetas de Crédito / Débito', 'PSE (Débito Bancario)', 'Nequi / Daviplata', 'Botón de Pago Bold']
   }
 ];
 
@@ -56,27 +33,77 @@ export const CheckoutPage: React.FC = () => {
   const { cart, totalPrice, clearCart } = useCart();
   const { formatPrice, currency } = useCurrency();
   const shippingRates = shippingService.getRates();
+  const [searchParams] = useSearchParams();
+
+  const urlStatus = searchParams.get('status');
+  const urlRef = searchParams.get('ref');
 
   // Form State
   const [shippingForm, setShippingForm] = useState({
     fullName: '',
     email: '',
     phone: '',
-    documentId: '', // CC / NIT required for Wompi / MercadoPago
+    documentId: '', // CC / NIT required for Bold
     address: '',
     cityRateId: shippingRates[0].id,
     notes: ''
   });
 
-  const [selectedGateway, setSelectedGateway] = useState<PaymentGateway>('wompi');
-  const [selectedSubMethod, setSelectedSubMethod] = useState<string>('Tarjeta de Crédito / Débito');
+  const [selectedGateway, setSelectedGateway] = useState<PaymentGateway>('bold');
+  const [selectedSubMethod, setSelectedSubMethod] = useState<string>('Tarjetas de Crédito / Débito');
   const [isProcessing, setIsProcessing] = useState(false);
+  const [boldLaunched, setBoldLaunched] = useState(false);
+  const [activeBoldOrder, setActiveBoldOrder] = useState<any>(null);
   const [orderCompleted, setOrderCompleted] = useState<any>(null);
+
+  // Capturar retorno exitoso de Bold desde la URL
+  useEffect(() => {
+    if (urlStatus === 'success' && urlRef) {
+      setOrderCompleted({
+        orderRef: urlRef,
+        customer: 'Cliente verificado por Bold',
+        email: 'Confirmación oficial enviada por correo',
+        gateway: 'bold',
+        gatewayName: 'Bold Payments (Colombia)',
+        method: 'Tarjeta de Crédito / PSE / Nequi',
+        total: 0,
+        itemsCount: 1
+      });
+      clearCart();
+    }
+  }, [urlStatus, urlRef]);
+
+  // Disparar lanzamiento de Bold una vez que el contenedor #bold-button-container esté en el DOM
+  useEffect(() => {
+    if (boldLaunched && activeBoldOrder) {
+      boldPaymentService.launchCheckout(activeBoldOrder);
+    }
+  }, [boldLaunched, activeBoldOrder]);
 
   // Calculate dynamic shipping rate
   const selectedCityRate = shippingRates.find(r => r.id === shippingForm.cityRateId) || shippingRates[0];
   const shippingCost = totalPrice > 1500000 ? 0 : selectedCityRate.cost;
   const grandTotal = totalPrice + shippingCost;
+
+  if (boldLaunched) {
+    return (
+      <div className="max-w-xl mx-auto px-6 py-20 text-center font-sans space-y-6">
+        <div className="bg-brand-surface border border-brand-black p-8 md:p-12 text-center space-y-6 shadow-subtle">
+          <div className="w-12 h-12 border-4 border-black border-t-transparent rounded-full animate-spin mx-auto" />
+          <h2 className="text-xl font-light text-brand-black">Conectando con Pasarela Segura de Bold...</h2>
+          <p className="text-xs text-neutral-500 leading-relaxed">
+            Tu pedido ha sido registrado en el sistema. Presiona el botón a continuación para completar tu pago mediante Tarjetas, PSE o Nequi:
+          </p>
+          <div id="bold-button-container" className="pt-4 flex justify-center min-h-[60px]" />
+          <div className="pt-4 border-t border-brand-border">
+            <Link to="/catalog" className="text-xs text-neutral-500 hover:text-black font-bold uppercase tracking-wider">
+              Volver a la Tienda
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const handleProcessPayment = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -98,7 +125,7 @@ export const CheckoutPage: React.FC = () => {
         shipping_cost: shippingCost,
         discount: 0,
         total: grandTotal,
-        status: 'processing',
+        status: 'pending',
         payment_method: selectedSubMethod,
         payment_gateway: PAYMENT_PROVIDERS.find(p => p.id === selectedGateway)?.name || selectedGateway,
         items_count: cart.reduce((acc, item) => acc + item.quantity, 0),
@@ -114,21 +141,34 @@ export const CheckoutPage: React.FC = () => {
         created_at: new Date().toISOString().replace('T', ' ').substring(0, 16)
       });
 
-      setOrderCompleted({
-        orderRef,
-        customer: shippingForm.fullName,
-        email: shippingForm.email,
-        gateway: selectedGateway,
-        gatewayName: PAYMENT_PROVIDERS.find(p => p.id === selectedGateway)?.name,
-        method: selectedSubMethod,
-        total: grandTotal,
-        itemsCount: cart.length
-      });
-      clearCart();
+      // Lógica de lanzamiento oficial para Bold Colombia
+      if (selectedGateway === 'bold') {
+        setActiveBoldOrder({
+          orderId: orderRef,
+          amount: grandTotal,
+          description: `Pedido ${orderRef} en Diseño Tu Espacio`,
+          customerEmail: shippingForm.email.trim(),
+          customerName: shippingForm.fullName.trim(),
+          customerPhone: shippingForm.phone.trim()
+        });
+        setBoldLaunched(true);
+      } else {
+        setOrderCompleted({
+          orderRef,
+          customer: shippingForm.fullName,
+          email: shippingForm.email,
+          gateway: selectedGateway,
+          gatewayName: PAYMENT_PROVIDERS.find(p => p.id === selectedGateway)?.name,
+          method: selectedSubMethod,
+          total: grandTotal,
+          itemsCount: cart.length
+        });
+        clearCart();
+      }
     } catch (err) {
       console.error('Error procesando pago:', err);
-    } finally {
       setIsProcessing(false);
+      setBoldLaunched(false);
     }
   };
 
