@@ -53,8 +53,8 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
   const [pricingMode, setPricingMode] = useState<'detal' | 'mayorista' | 'mixto'>('detal');
 
   // Payment & Status State
-  const [paymentGateway, setPaymentGateway] = useState('Transferencia Directa Bancaria');
-  const [paymentMethod, setPaymentMethod] = useState('Consignación / Efectivo Showroom');
+  const [paymentGateway, setPaymentGateway] = useState('Pago por Bold');
+  const [paymentMethod, setPaymentMethod] = useState('Pago por Bold');
   const [orderStatus, setOrderStatus] = useState<Order['status']>('processing');
 
   // Product Search State inside Modal
@@ -703,27 +703,18 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
               </h3>
 
               <div>
-                <label className="block uppercase font-bold text-neutral-500 text-[10px] mb-1">Pasarela de Pago / Canal</label>
+                <label className="block uppercase font-bold text-neutral-500 text-[10px] mb-1">Método de Pago / Canal de Facturación</label>
                 <select 
                   value={paymentGateway}
-                  onChange={(e) => setPaymentGateway(e.target.value)}
+                  onChange={(e) => {
+                    setPaymentGateway(e.target.value);
+                    setPaymentMethod(e.target.value);
+                  }}
                   className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2.5 text-xs font-bold"
                 >
-                  <option value="Transferencia Directa Bancaria">Transferencia Bancaria (Bancolombia / Davivienda)</option>
-                  <option value="Wompi Colombia">Wompi Colombia (TC / PSE)</option>
-                  <option value="Mercado Pago">Mercado Pago</option>
-                  <option value="Efectivo en Showroom">Efectivo en Showroom</option>
+                  <option value="Pago por Bold">💳 Pago por Bold (Datáfono / Link / Web - Factura Electrónica SIIGO)</option>
+                  <option value="Efectivo">💵 Efectivo (Showroom / Tienda Física - Sin Factura Electrónica)</option>
                 </select>
-              </div>
-
-              <div>
-                <label className="block uppercase font-bold text-neutral-500 text-[10px] mb-1">Método de Pago</label>
-                <input 
-                  type="text"
-                  value={paymentMethod}
-                  onChange={(e) => setPaymentMethod(e.target.value)}
-                  className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2.5 text-xs"
-                />
               </div>
 
               <div>

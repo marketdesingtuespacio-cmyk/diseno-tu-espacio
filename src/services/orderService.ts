@@ -94,7 +94,6 @@ const buildSupabaseOrderPayload = (orderData: Partial<Order>) => {
     shipping_address: fullAddress,
     city: orderData.city || 'Bogotá D.C.',
     total: total,
-    total_amount: total,
     subtotal: Number(orderData.subtotal || total),
     shipping_cost: Number(orderData.shipping_cost || 0),
     discount: Number(orderData.discount || 0),
@@ -102,7 +101,7 @@ const buildSupabaseOrderPayload = (orderData: Partial<Order>) => {
     pending_balance: pending,
     payment_status: paymentStatus,
     status: orderData.status || 'processing',
-    payment_method: orderData.payment_method || 'Tarjeta de Crédito',
+    payment_method: orderData.payment_method || 'Pago por Bold',
     payment_gateway: orderData.payment_gateway || 'Bold Payments (Colombia)',
     items: orderData.items || [],
     created_at: orderData.created_at || new Date().toISOString()
