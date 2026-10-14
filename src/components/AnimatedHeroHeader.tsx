@@ -78,7 +78,8 @@ export const AnimatedHeroHeader: React.FC = () => {
           preload="auto"
           className="w-full h-full object-cover scale-105 transform will-change-transform"
         >
-          <source src="/videos/house_interior_tour.mp4" type="video/mp4" />
+          <source src="/videos/casa_santa_marta.mp4" type="video/mp4" />
+          <source src="/videos/CASA%20SANTA%20MARTA..mp4" type="video/mp4" />
           Tu navegador no soporta videos en HTML5.
         </video>
       </div>

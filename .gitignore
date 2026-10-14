@@ -23,3 +23,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Raw uncompressed video source files exceeding GitHub 100MB limit
+public/videos/CASA SANTA MARTA..mp4
