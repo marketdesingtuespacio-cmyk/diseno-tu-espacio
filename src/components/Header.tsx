@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { 
   Menu, 
   X, 
@@ -23,6 +23,8 @@ export const Header: React.FC = () => {
   const { currency, setCurrency, language, setLanguage } = useCurrency();
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   // Navigation Drawer State
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,6 +40,10 @@ export const Header: React.FC = () => {
 
   // Desktop Hover MegaMenu
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
+
+  // Transparent overlay is ONLY applied on the Home page when at the very top (over the hero video).
+  // All other pages (Single Product, Catalog, Booking, Checkout, etc.) always have a crisp white, clean header.
+  const isTransparent = isHomePage && !isScrolled;
 
   // Scroll listener
   useEffect(() => {
@@ -102,8 +108,8 @@ export const Header: React.FC = () => {
           MAIN HEADER COMPONENT
       ========================================================================= */}
       <header 
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 font-sans ${
-          isScrolled 
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 font-sans ${
+          !isTransparent 
             ? 'bg-white text-stone-900 shadow-subtle border-b border-brand-border' 
             : 'bg-gradient-to-b from-black/85 via-black/45 to-transparent text-white border-b border-white/10'
         }`}
@@ -111,7 +117,7 @@ export const Header: React.FC = () => {
         {/* Top Utility Announcement Bar */}
         <div 
           className={`text-[11px] font-light py-1.5 px-4 sm:px-8 flex justify-between items-center tracking-widest uppercase transition-colors duration-300 ${
-            isScrolled 
+            !isTransparent 
               ? 'bg-brand-black text-white' 
               : 'bg-black/50 text-neutral-200 border-b border-white/10 backdrop-blur-xs'
           }`}
@@ -168,7 +174,7 @@ export const Header: React.FC = () => {
             <button 
               onClick={() => setIsMenuOpen(true)}
               className={`group flex items-center gap-2.5 px-3 py-2 border transition-all duration-300 focus:outline-none ${
-                isScrolled
+                !isTransparent
                   ? 'border-stone-300 hover:border-black text-stone-900 bg-stone-50/70 hover:bg-black hover:text-white'
                   : 'border-white/30 hover:border-white text-white bg-black/30 hover:bg-white hover:text-black backdrop-blur-xs'
               }`}
@@ -187,7 +193,7 @@ export const Header: React.FC = () => {
               src="/images/logo_black.png" 
               alt="Diseña Tu Espacio - Mobiliario & Diseño de Interiores"
               className={`h-14 sm:h-16 md:h-20 w-auto object-contain transition-all duration-500 drop-shadow-sm ${
-                isScrolled 
+                !isTransparent 
                   ? 'brightness-100' 
                   : 'brightness-0 invert'
               }`}
@@ -205,7 +211,7 @@ export const Header: React.FC = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className={`w-44 xl:w-64 transition-all duration-300 text-xs py-2 pl-3 pr-8 focus:outline-none rounded-none ${
-                  isScrolled
+                  !isTransparent
                     ? 'bg-stone-50 border border-stone-300 text-stone-900 focus:border-stone-900'
                     : 'bg-transparent border-b border-white/60 text-white placeholder-neutral-300 focus:border-white'
                 }`}
@@ -213,7 +219,7 @@ export const Header: React.FC = () => {
               <button 
                 type="submit" 
                 className={`absolute right-2 transition-colors ${
-                  isScrolled ? 'text-stone-500 hover:text-black' : 'text-white/80 hover:text-white'
+                  !isTransparent ? 'text-stone-500 hover:text-black' : 'text-white/80 hover:text-white'
                 }`}
                 aria-label="Buscar"
               >
@@ -224,7 +230,7 @@ export const Header: React.FC = () => {
             {/* Quick Catalog Desktop Link */}
             <div 
               className={`hidden md:flex relative py-6 cursor-pointer items-center gap-1 text-xs font-semibold uppercase tracking-[0.15em] transition-colors ${
-                isScrolled ? 'text-stone-800 hover:text-black' : 'text-white hover:text-amber-200'
+                !isTransparent ? 'text-stone-800 hover:text-black' : 'text-white hover:text-amber-200'
               }`}
               onMouseEnter={() => setIsMegaMenuOpen(true)}
             >
@@ -236,7 +242,7 @@ export const Header: React.FC = () => {
             <Link 
               to="/booking" 
               className={`hidden sm:flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.15em] transition-colors ${
-                isScrolled ? 'text-stone-800 hover:text-black' : 'text-white hover:text-amber-200'
+                !isTransparent ? 'text-stone-800 hover:text-black' : 'text-white hover:text-amber-200'
               }`}
             >
               <Calendar className="w-4 h-4" />
@@ -249,7 +255,7 @@ export const Header: React.FC = () => {
                 <Link 
                   to="/admin" 
                   className={`p-1.5 transition-colors flex items-center gap-1.5 border px-2 sm:px-2.5 py-1 ${
-                    isScrolled
+                    !isTransparent
                       ? 'border-brand-border bg-brand-surface text-brand-black'
                       : 'border-white/30 bg-black/40 text-white backdrop-blur-xs'
                   }`}
@@ -269,7 +275,7 @@ export const Header: React.FC = () => {
                 <button 
                   onClick={logout}
                   className={`p-1.5 transition-colors ${
-                    isScrolled ? 'text-stone-400 hover:text-red-600' : 'text-white/70 hover:text-red-400'
+                    !isTransparent ? 'text-stone-400 hover:text-red-600' : 'text-white/70 hover:text-red-400'
                   }`}
                   title="Cerrar Sesión"
                 >
@@ -280,7 +286,7 @@ export const Header: React.FC = () => {
               <Link 
                 to="/login" 
                 className={`p-2 transition-colors flex items-center gap-1 text-xs font-bold uppercase tracking-wider ${
-                  isScrolled ? 'text-stone-800 hover:text-black' : 'text-white hover:text-amber-200'
+                  !isTransparent ? 'text-stone-800 hover:text-black' : 'text-white hover:text-amber-200'
                 }`}
                 title="Iniciar Sesión"
               >
@@ -293,7 +299,7 @@ export const Header: React.FC = () => {
             <button 
               onClick={() => setIsCartOpen(true)} 
               className={`p-2 relative transition-colors ${
-                isScrolled ? 'text-stone-900 hover:text-black' : 'text-white hover:text-amber-200'
+                !isTransparent ? 'text-stone-900 hover:text-black' : 'text-white hover:text-amber-200'
               }`}
               aria-label="Abrir carrito"
             >
