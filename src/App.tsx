@@ -51,8 +51,11 @@ const MainContent: React.FC = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
 
-  // Automatically track page views in Google Analytics and Meta Pixel on route changes
+  // Automatically track page views in Google Analytics and Meta Pixel on route changes,
+  // and ensure scroll position immediately resets to the very top of the page (0, 0)
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
     if (typeof window !== 'undefined') {
       if ((window as any).gtag) {
         (window as any).gtag('config', 'G-GCG3E204JM', {
@@ -63,7 +66,7 @@ const MainContent: React.FC = () => {
         (window as any).fbq('track', 'PageView');
       }
     }
-  }, [location]);
+  }, [location.pathname, location.search]);
 
   const isAdmin = location.pathname.startsWith('/admin');
 

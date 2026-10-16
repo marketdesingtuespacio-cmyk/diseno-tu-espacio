@@ -27,6 +27,8 @@ export const ProductDetailPage: React.FC = () => {
   const { isAuthenticated } = useAuth();
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
     if (slug) {
       // 1. Instant synchronous lookup from memory/local storage (0ms delay)
       const syncProd = productService.getProductBySlugSync(slug);
