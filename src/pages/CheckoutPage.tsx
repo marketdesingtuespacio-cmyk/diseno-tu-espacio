@@ -62,8 +62,13 @@ export const CheckoutPage: React.FC = () => {
       orderService.getOrders().then(orders => {
         const matchingOrder = orders.find(o => o.order_ref === urlRef);
         if (matchingOrder) {
-          // Marcar pedido como pagado en Supabase
-          orderService.updateOrder(matchingOrder.id, { status: 'processing' });
+          // Marcar pedido como pagado en Supabase con saldo pendiente $0 y abono completo
+          orderService.updateOrder(matchingOrder.id, {
+            status: 'processing',
+            payment_status: 'paid',
+            deposit_amount: matchingOrder.total,
+            pending_balance: 0
+          });
 
           setOrderCompleted({
             orderRef: urlRef,

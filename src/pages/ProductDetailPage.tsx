@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ShoppingBag, Heart, Star, ChevronDown, ChevronUp, Truck, RefreshCw, ChevronLeft, ChevronRight, X } from 'lucide-react';
-import { Product } from '../types';
+import { Product, ProductReviewStats } from '../types';
 import { productService } from '../services/productService';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { useAuth } from '../context/AuthContext';
 import { ProductCard } from '../components/ProductCard';
+import { ProductReviewsSection } from '../components/ProductReviewsSection';
 
 export const ProductDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -18,6 +19,11 @@ export const ProductDetailPage: React.FC = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const [reviewStats, setReviewStats] = useState<ProductReviewStats>({
+    averageRating: 0,
+    totalReviews: 0,
+    distribution: { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 }
+  });
 
   // Accordion Expandable States
   const [openSection, setOpenSection] = useState<'dimensions' | 'details' | 'shipping' | 'care' | null>('details');
@@ -228,17 +234,33 @@ export const ProductDetailPage: React.FC = () => {
               {product.category}
             </p>
 
-            {/* Social Proof / Star Rating */}
-            <div className="flex items-center gap-1.5 pt-1">
+            {/* Real Reviews & Star Rating (Links to reviews section) */}
+            <a
+              href="#reviews-section"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('reviews-section')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="flex items-center gap-1.5 pt-1 group cursor-pointer w-fit"
+            >
               <div className="flex text-emerald-600">
-                {[1,2,3,4,5].map(i => (
-                  <Star key={i} className="w-3.5 h-3.5 fill-emerald-600 text-emerald-600" />
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <Star 
+                    key={i} 
+                    className={`w-3.5 h-3.5 ${
+                      i <= Math.round(reviewStats.averageRating) && reviewStats.totalReviews > 0
+                        ? 'fill-emerald-600 text-emerald-600' 
+                        : 'text-neutral-300'
+                    }`} 
+                  />
                 ))}
               </div>
-              <span className="text-[11px] text-neutral-500 font-medium">
-                (1,372 reseñas)
+              <span className="text-[11px] text-neutral-500 font-medium group-hover:text-black group-hover:underline transition-colors">
+                {reviewStats.totalReviews > 0 
+                  ? `${reviewStats.averageRating.toFixed(1)} (${reviewStats.totalReviews} ${reviewStats.totalReviews === 1 ? 'reseña' : 'reseñas'})`
+                  : 'Sin reseñas aún · Sé el primero en opinar'}
               </span>
-            </div>
+            </a>
           </div>
 
           {/* Pricing Display */}
@@ -421,6 +443,13 @@ export const ProductDetailPage: React.FC = () => {
         </div>
 
       </div>
+
+      {/* REAL CUSTOMER REVIEWS SECTION */}
+      <ProductReviewsSection
+        productId={product.id || product.slug}
+        productName={product.name}
+        onStatsCalculated={(stats) => setReviewStats(stats)}
+      />
 
       {/* CROSS-SELLING SECTION ("COMBINAN BIEN" / "COMPLETE THE LOOK") */}
       {relatedProducts.length > 0 && (

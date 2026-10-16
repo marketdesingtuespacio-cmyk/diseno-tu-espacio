@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import { ArrowRight, ArrowLeft, UserPlus, LogIn, CheckCircle2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { UserRole } from '../types';
 
 export const LoginPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'login' | 'register'>('login');
+  const [searchParams] = useSearchParams();
+  const redirectParam = searchParams.get('redirect');
 
   // Login Form State
   const [loginEmail, setLoginEmail] = useState('');
@@ -35,7 +37,11 @@ export const LoginPage: React.FC = () => {
     setIsLoading(false);
 
     if (result.success) {
-      navigate('/admin');
+      if (redirectParam) {
+        navigate(redirectParam);
+      } else {
+        navigate('/admin');
+      }
     } else {
       setErrorMsg(result.error || 'Credenciales no válidas.');
     }
@@ -59,7 +65,11 @@ export const LoginPage: React.FC = () => {
     if (result.success) {
       setSuccessMsg('¡Cuenta registrada y conectada exitosamente!');
       setTimeout(() => {
-        navigate('/');
+        if (redirectParam) {
+          navigate(redirectParam);
+        } else {
+          navigate('/');
+        }
       }, 1000);
     } else {
       setErrorMsg(result.error || 'Error al registrar la cuenta.');

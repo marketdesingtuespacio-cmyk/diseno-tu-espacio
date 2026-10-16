@@ -103,6 +103,14 @@ const buildSupabaseOrderPayload = (orderData: Partial<Order>) => {
     status: orderData.status || 'processing',
     payment_method: orderData.payment_method || 'Pago por Bold',
     payment_gateway: orderData.payment_gateway || 'Bold Payments (Colombia)',
+    customer_document_type: orderData.customer_document_type || 'CC',
+    customer_document_id: orderData.customer_document_id || '',
+    siigo_invoice_id: orderData.siigo_invoice_id || null,
+    siigo_invoice_number: orderData.siigo_invoice_number || null,
+    siigo_invoice_status: orderData.siigo_invoice_status || (orderData.payment_method === 'Pago por Bold' ? 'pending' : 'not_applicable'),
+    siigo_cufe: orderData.siigo_cufe || null,
+    siigo_pdf_url: orderData.siigo_pdf_url || null,
+    siigo_error_log: orderData.siigo_error_log || null,
     items: orderData.items || [],
     created_at: orderData.created_at || new Date().toISOString()
   };
@@ -310,9 +318,12 @@ export const orderService = {
 
     if (isSupabaseConfigured()) {
       try {
+        const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
         const isNumeric = !isNaN(Number(id)) && Number.isInteger(Number(id));
         let query = supabase.from('orders').update(fullUpdates);
-        if (isNumeric) {
+        if (isUUID) {
+          query = query.eq('id', id);
+        } else if (isNumeric) {
           query = query.eq('id', Number(id));
         } else {
           query = query.eq('order_ref', id);

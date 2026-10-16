@@ -115,6 +115,15 @@ export interface Order {
   payment_gateway: string;
   items_count: number;
   items?: OrderItem[];
+  // Facturación Electrónica Siigo Nube / DIAN
+  customer_document_type?: 'CC' | 'NIT' | 'CE' | 'TI' | 'PASAPORTE';
+  customer_document_id?: string;
+  siigo_invoice_id?: string;
+  siigo_invoice_number?: string;
+  siigo_invoice_status?: 'pending' | 'generated' | 'failed' | 'not_applicable';
+  siigo_cufe?: string;
+  siigo_pdf_url?: string;
+  siigo_error_log?: string;
   notes?: string;
   created_at: string;
   updated_at?: string;
@@ -149,3 +158,23 @@ export interface ActivityLog {
   created_at: string;
   details?: string;
 }
+
+export interface ProductReview {
+  id: string;
+  product_id: string;
+  user_id?: string;
+  user_name: string;
+  user_email?: string;
+  rating: number;
+  title?: string;
+  comment: string;
+  status: 'approved' | 'pending' | 'rejected';
+  created_at?: string;
+}
+
+export interface ProductReviewStats {
+  averageRating: number;
+  totalReviews: number;
+  distribution: { [stars: number]: number };
+}
+
