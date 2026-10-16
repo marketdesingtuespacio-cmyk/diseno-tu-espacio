@@ -17,10 +17,14 @@ import {
   Building2,
   Check,
   Package,
-  ShoppingBag
+  ShoppingBag,
+  FileText,
+  Download,
+  Loader2
 } from 'lucide-react';
 import { Order } from '../../types';
 import { useCurrency } from '../../context/CurrencyContext';
+import { siigoInvoiceService } from '../../services/siigoInvoiceService';
 
 interface OrderDetailModalProps {
   isOpen: boolean;
@@ -45,6 +49,8 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
   onDeleteOrder
 }) => {
   const { formatPrice } = useCurrency();
+  const [isGeneratingInvoice, setIsGeneratingInvoice] = React.useState(false);
+  const [invoiceFeedback, setInvoiceFeedback] = React.useState<string | null>(null);
 
   if (!isOpen || !order) return null;
 
@@ -351,6 +357,97 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
                 <span>Enviar estado por WhatsApp</span>
               </a>
             </div>
+          </div>
+
+          {/* Electronic Invoicing Siigo Card */}
+          <div className="bg-white p-3.5 sm:p-4 rounded-2xl border border-neutral-200/80 space-y-2.5 shadow-2xs">
+            <div className="flex justify-between items-center border-b pb-2 flex-wrap gap-2">
+              <span className="text-[10px] font-bold uppercase text-neutral-400 tracking-wider flex items-center gap-1.5">
+                <FileText className="w-3.5 h-3.5 text-blue-600" /> Facturación Electrónica (Siigo Nube / DIAN)
+              </span>
+              <span className={`px-2.5 py-0.5 text-[9px] font-extrabold rounded-full uppercase tracking-wider border shadow-2xs ${
+                order.siigo_invoice_status === 'generated'
+                  ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                  : order.siigo_invoice_status === 'failed'
+                  ? 'bg-red-100 text-red-800 border-red-300'
+                  : order.payment_method?.toLowerCase().includes('efectivo') || order.payment_gateway?.toLowerCase().includes('efectivo')
+                  ? 'bg-neutral-100 text-neutral-600 border-neutral-200'
+                  : 'bg-blue-50 text-blue-800 border-blue-200'
+              }`}>
+                {order.siigo_invoice_status === 'generated'
+                  ? '✓ Factura Emitida'
+                  : order.siigo_invoice_status === 'failed'
+                  ? '⚠️ Error de Emisión'
+                  : order.payment_method?.toLowerCase().includes('efectivo') || order.payment_gateway?.toLowerCase().includes('efectivo')
+                  ? 'No Aplica (Efectivo)'
+                  : 'Pendiente de Emisión'}
+              </span>
+            </div>
+
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-xs">
+              <div className="space-y-1">
+                <p className="text-neutral-500 font-medium text-[11px]">
+                  Consecutivo Fiscal: <strong className="text-neutral-900">{order.siigo_invoice_number || 'Aún no asignado'}</strong>
+                </p>
+                {order.customer_document_id && (
+                  <p className="text-neutral-500 text-[10px]">
+                    Documento Cliente: <strong>{order.customer_document_type || 'CC'} {order.customer_document_id}</strong>
+                  </p>
+                )}
+                {order.siigo_error_log && (
+                  <p className="text-red-600 text-[10px] font-medium max-w-md">
+                    Detalle: {order.siigo_error_log}
+                  </p>
+                )}
+              </div>
+
+              <div className="flex items-center gap-2">
+                {order.siigo_pdf_url && (
+                  <a
+                    href={order.siigo_pdf_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="py-2 px-3 bg-neutral-100 hover:bg-neutral-200 text-neutral-800 font-bold text-xs rounded-xl flex items-center gap-1.5 transition-colors border border-neutral-300"
+                  >
+                    <Download className="w-3.5 h-3.5" /> Ver Factura PDF
+                  </a>
+                )}
+
+                {/* Si no es efectivo, permitir emitir o reintentar factura en Siigo */}
+                {!(order.payment_method?.toLowerCase().includes('efectivo') || order.payment_gateway?.toLowerCase().includes('efectivo')) && (
+                  <button
+                    disabled={isGeneratingInvoice}
+                    onClick={async () => {
+                      setIsGeneratingInvoice(true);
+                      setInvoiceFeedback(null);
+                      try {
+                        const res = await siigoInvoiceService.generateInvoiceForOrder(order);
+                        setInvoiceFeedback(`¡Factura ${res.invoiceNumber} generada en Siigo!`);
+                      } catch (err: any) {
+                        setInvoiceFeedback(err.message || 'Error al conectar con Siigo');
+                      } finally {
+                        setIsGeneratingInvoice(false);
+                      }
+                    }}
+                    className="py-2 px-3 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl flex items-center gap-1.5 transition-colors shadow-sm disabled:opacity-50"
+                  >
+                    {isGeneratingInvoice ? (
+                      <><Loader2 className="w-3.5 h-3.5 animate-spin" /> Conectando Siigo...</>
+                    ) : order.siigo_invoice_status === 'generated' ? (
+                      <><FileText className="w-3.5 h-3.5" /> Reenviar a Siigo</>
+                    ) : (
+                      <><FileText className="w-3.5 h-3.5" /> Emitir Factura Siigo</>
+                    )}
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {invoiceFeedback && (
+              <p className={`text-[11px] font-medium pt-1 border-t ${invoiceFeedback.includes('¡Factura') ? 'text-emerald-600' : 'text-red-600'}`}>
+                {invoiceFeedback}
+              </p>
+            )}
           </div>
 
         </div>

@@ -121,9 +121,9 @@ export interface Order {
   siigo_invoice_id?: string;
   siigo_invoice_number?: string;
   siigo_invoice_status?: 'pending' | 'generated' | 'failed' | 'not_applicable';
-  siigo_cufe?: string;
-  siigo_pdf_url?: string;
-  siigo_error_log?: string;
+  siigo_cufe?: string | null;
+  siigo_pdf_url?: string | null;
+  siigo_error_log?: string | null;
   notes?: string;
   created_at: string;
   updated_at?: string;

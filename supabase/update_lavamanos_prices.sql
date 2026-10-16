@@ -1,0 +1,18 @@
+UPDATE public.products SET price = 705949, wholesale_price = 423569, sku = 'A725-CA42', dimensions = '370x370x130 mm', materials = 'Art Basin | Outside Glossy Black + 1/3 Gilding Gold, Inside Gold' WHERE id = 'ffdf3501-62c1-45cb-8577-28969cc0d8bb';
+UPDATE public.products SET price = 730260, wholesale_price = 387038, sku = 'RB033', dimensions = '395x395x140 mm', materials = 'Resin Basin | Matt Marble' WHERE id = '46f2ea2c-9063-4d24-a954-750716854b14';
+UPDATE public.products SET price = 536888, wholesale_price = 322133, sku = 'A585A-P01M', dimensions = '600x380x130 mm', materials = 'Art Basin | Matt Marble Color P01M' WHERE id = 'ed3c7bc9-7997-4563-b037-7a21364f3933';
+UPDATE public.products SET price = 559055, wholesale_price = 335433, sku = 'A524B-CBKUG04-M', dimensions = '360x360x125 mm', materials = 'Art Basin | Matt Black With Underglaze' WHERE id = '7bc21450-0ebb-4078-9275-5d3ec6d13e23';
+UPDATE public.products SET price = 739321, wholesale_price = 443593, sku = 'A691-CBKUG04-M', dimensions = '500x360x140 mm', materials = 'Art Basin | Matt Black With Underglaze' WHERE id = '087698bf-b4c5-4a84-9f3f-49d54c914db7';
+UPDATE public.products SET price = 628937, wholesale_price = 377362, sku = 'A707-CUG20-M', dimensions = '370x370x135 mm', materials = 'Art Basin | Matt White With Underglaze' WHERE id = '3ec0cc08-e8d0-426a-853e-7e6269d32552';
+UPDATE public.products SET price = 680278, wholesale_price = 408167, sku = 'A709-CUG01-M', dimensions = '500x370x135 mm', materials = 'Art Basin | Matt White With Underglaze' WHERE id = '6301b20b-b124-4fb9-b461-3f1c39f6db9b';
+UPDATE public.products SET price = 662309, wholesale_price = 397385, sku = 'A706-CUG04-M', dimensions = '500x370x135 mm', materials = 'Art Basin | Matt White With Underglaze' WHERE id = '14cc4a60-f778-4820-b5b0-3ba67f493b75';
+UPDATE public.products SET price = 603266, wholesale_price = 361959, sku = 'A787-P45M', dimensions = '380x380x145 mm', materials = 'Art Basin | Matt Marble Color P45M' WHERE id = '8dda535f-0291-48d7-9c45-cf6e931a4bb9';
+UPDATE public.products SET price = 641772, wholesale_price = 385063, sku = 'A739-P429M', dimensions = '500x340x145 mm', materials = 'Art Basin | Matt Marble Color P429M' WHERE id = 'b99d973e-1194-4040-8092-1806312ed572';
+-- Insertado nuevo producto A723-P04M
+UPDATE public.products SET price = 603266, wholesale_price = 361959, sku = 'A822-P04M', dimensions = '380x380x130 mm', materials = 'Art Basin | Matt Marble P04' WHERE id = '07c8b5ad-fe44-46e5-9ed2-21d39a05bd0c';
+UPDATE public.products SET price = 744455, wholesale_price = 446673, sku = 'A544-GGCBK18', dimensions = '420x420x125 mm', materials = 'Art Basin | Outside Gold, Inside Glossy Black With Gold Decal K18' WHERE id = '373222d4-467a-4cc5-b19f-f7c2cccecbbb';
+UPDATE public.products SET price = 790663, wholesale_price = 474398, sku = 'A787-GGCBK09', dimensions = '380x380x145 mm', materials = 'Art Basin | Outside Gold, Inside Glossy Black With Gold Decal K09' WHERE id = 'b4f6cc6b-2e47-4e8e-8ac4-878fc0de1860';
+UPDATE public.products SET price = 641772, wholesale_price = 385063, sku = 'A787-CMC-M', dimensions = '380x380x145 mm', materials = 'Art Basin | Matt Milk Coffee' WHERE id = 'ba78b63e-b362-4a92-a623-10fcd123aefd';
+-- Insertado nuevo producto A734-CLKA-M(1840)
+UPDATE public.products SET price = 654607, wholesale_price = 392764, sku = 'A787-CDGR-M', dimensions = '380x380x145 mm', materials = 'Art Basin | Matt Dark Grey' WHERE id = 'f55b3587-ff71-4783-804a-1396e6a72795';
+UPDATE public.products SET price = 662309, wholesale_price = 397385, sku = 'A712-CA52M', dimensions = '375x375x135 mm', materials = 'Art Basin | Outside Matt Rough White Mix Matt Coffee, Inside Matt Coffee (1804)' WHERE id = '7ded7cde-3dd2-4b96-8c73-53891f50195c';

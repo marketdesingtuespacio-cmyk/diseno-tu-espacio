@@ -6,6 +6,7 @@ import { useCurrency } from '../context/CurrencyContext';
 import { shippingService } from '../services/shippingService';
 import { orderService } from '../services/orderService';
 import { boldPaymentService } from '../services/boldPaymentService';
+import { siigoInvoiceService } from '../services/siigoInvoiceService';
 
 export type PaymentGateway = 'bold';
 
@@ -68,6 +69,17 @@ export const CheckoutPage: React.FC = () => {
             payment_status: 'paid',
             deposit_amount: matchingOrder.total,
             pending_balance: 0
+          });
+
+          // Disparar emisión de Factura Electrónica oficial en Siigo Nube
+          siigoInvoiceService.generateInvoiceForOrder({
+            ...matchingOrder,
+            status: 'processing',
+            payment_status: 'paid',
+            deposit_amount: matchingOrder.total,
+            pending_balance: 0
+          }).catch(err => {
+            console.warn('Emisión automática en Siigo se procesará o revisará en panel:', err);
           });
 
           setOrderCompleted({
@@ -141,6 +153,8 @@ export const CheckoutPage: React.FC = () => {
         customer_name: shippingForm.fullName.trim(),
         customer_email: shippingForm.email.trim(),
         customer_phone: shippingForm.phone.trim(),
+        customer_document_type: 'CC',
+        customer_document_id: shippingForm.documentId.trim() || '222222222222',
         customer_tag: 'Residencial',
         shipping_address: shippingForm.address.trim(),
         city: selectedCityRate.city,
