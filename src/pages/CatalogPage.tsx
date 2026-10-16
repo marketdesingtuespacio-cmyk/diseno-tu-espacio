@@ -251,7 +251,7 @@ export const CatalogPage: React.FC = () => {
   );
 
   return (
-    <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-6 md:py-10 font-sans">
+    <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-6 md:py-10 pb-24 md:pb-10 font-sans">
       
       {/* Page Header */}
       <div className="border-b border-brand-border pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
@@ -357,17 +357,48 @@ export const CatalogPage: React.FC = () => {
 
       </div>
 
-      {/* MOBILE FLOATING ACTION PILL: Always accessible while scrolling */}
-      <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-30 pointer-events-auto">
-        <button
-          onClick={() => setIsMobileFilterOpen(true)}
-          className="bg-brand-black/95 text-white backdrop-blur-md px-5 py-3 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-2.5 shadow-2xl border border-white/20 active:scale-95 transition-all"
-        >
-          <SlidersHorizontal className="w-3.5 h-3.5 text-amber-300" />
-          <span>Filtros {activeFiltersCount > 0 ? `(${activeFiltersCount})` : ''}</span>
-          <span className="w-1 h-1 rounded-full bg-white/40" />
-          <span className="text-neutral-300 font-normal lowercase">{products.length} {products.length === 1 ? 'pieza' : 'piezas'}</span>
-        </button>
+      {/* MOBILE BOTTOM TOOLBAR (White Header Style) */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-brand-border shadow-[0_-4px_25px_rgba(0,0,0,0.08)] pb-[env(safe-area-inset-bottom)]">
+        <div className="flex items-center divide-x divide-brand-border h-14">
+          
+          {/* 1. FILTROS BUTTON */}
+          <button
+            onClick={() => setIsMobileFilterOpen(true)}
+            className="flex-1 h-full flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-black active:bg-neutral-100 transition-colors"
+          >
+            <SlidersHorizontal className="w-3.5 h-3.5 text-stone-900" />
+            <span>Filtros</span>
+            {activeFiltersCount > 0 ? (
+              <span className="bg-brand-black text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
+                {activeFiltersCount}
+              </span>
+            ) : (
+              <span className="text-[10px] text-neutral-400 font-normal tracking-normal lowercase">({products.length})</span>
+            )}
+          </button>
+
+          {/* 2. ORDENAR BUTTON (Native picker on tap) */}
+          <div className="flex-1 h-full relative flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-black active:bg-neutral-100 transition-colors">
+            <ArrowUpDown className="w-3.5 h-3.5 text-stone-900" />
+            <span className="truncate max-w-[130px]">
+              {filters.sortBy === 'newest' ? 'Más Recientes' :
+               filters.sortBy === 'price-asc' ? 'Menor Precio' :
+               filters.sortBy === 'price-desc' ? 'Mayor Precio' : 'Nombre (A-Z)'}
+            </span>
+            <select
+              value={filters.sortBy}
+              onChange={(e) => setFilters(prev => ({ ...prev, sortBy: e.target.value as any }))}
+              className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
+              aria-label="Ordenar productos"
+            >
+              <option value="newest">Más Recientes</option>
+              <option value="price-asc">Precio: Menor a Mayor</option>
+              <option value="price-desc">Precio: Mayor a Menor</option>
+              <option value="name">Nombre (A-Z)</option>
+            </select>
+          </div>
+
+        </div>
       </div>
 
       {/* MOBILE FILTER DRAWER (SLIDE-OVER FROM RIGHT) */}

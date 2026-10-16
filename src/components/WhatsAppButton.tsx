@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { X, Send } from 'lucide-react';
 
 interface WhatsAppButtonProps {
@@ -27,6 +28,9 @@ const HELPER_MESSAGES = [
 export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
   phoneNumber = '573113477785'
 }) => {
+  const location = useLocation();
+  const isCatalog = location.pathname === '/catalog';
+
   const [messageIndex, setMessageIndex] = useState(0);
   const [isPopupVisible, setIsPopupVisible] = useState(true);
 
@@ -44,7 +48,7 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(currentMessage.whatsappMsg)}`;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end font-sans">
+    <div className={`fixed ${isCatalog ? 'bottom-20 md:bottom-6' : 'bottom-6'} right-4 sm:right-6 z-50 flex flex-col items-end font-sans transition-all duration-300`}>
       
       {/* Globo Flotante Sútil y Compacto */}
       {isPopupVisible && (
