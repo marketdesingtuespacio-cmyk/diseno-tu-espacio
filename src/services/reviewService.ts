@@ -97,16 +97,52 @@ export const reviewService = {
           status: newReview.status
         };
 
-        // If user_id is a valid UUID, attach it
-        if (newReview.user_id && newReview.user_id.length > 20) {
-          insertPayload.user_id = newReview.user_id;
+        const isValidUUID = Boolean(
+          newReview.user_id &&
+          /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(newReview.user_id)
+        );
+
+        if (isValidUUID) {
+          try {
+            const { data: existingProfile } = await supabase
+              .from('profiles')
+              .select('id')
+              .eq('id', newReview.user_id)
+              .maybeSingle();
+
+            if (!existingProfile) {
+              await supabase.from('profiles').insert([{
+                id: newReview.user_id,
+                full_name: newReview.user_name,
+                email: newReview.user_email,
+                role: 'customer',
+                status: 'active'
+              }]);
+            }
+            insertPayload.user_id = newReview.user_id;
+          } catch (profileErr) {
+            console.warn('Could not verify profile existence:', profileErr);
+          }
         }
 
-        const { data, error } = await supabase
+        let { data, error } = await supabase
           .from('product_reviews')
           .insert([insertPayload])
           .select('*')
           .single();
+
+        // Auto-heal fallback: If foreign key error occurred, retry without user_id
+        if (error && (error.message.includes('foreign key') || error.message.includes('product_reviews_user_id_fkey'))) {
+          console.warn('Foreign key violation on user_id, retrying without user_id link...');
+          delete insertPayload.user_id;
+          const retry = await supabase
+            .from('product_reviews')
+            .insert([insertPayload])
+            .select('*')
+            .single();
+          data = retry.data;
+          error = retry.error;
+        }
 
         if (!error && data) {
           const created = data as ProductReview;
