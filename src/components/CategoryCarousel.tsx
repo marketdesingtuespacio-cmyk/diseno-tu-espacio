@@ -21,13 +21,13 @@ const CATEGORY_ITEMS: CategoryItem[] = [
     id: 'cat-espejos',
     name: 'ESPEJOS',
     categoryFilter: 'Espejos',
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80'
+    image: 'https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AHR80001_1792009018407.jpeg'
   },
   {
     id: 'cat-papel',
     name: 'PAPEL DE COLGADURA',
     categoryFilter: 'Papel de Colgadura',
-    image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80'
+    image: 'https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680209_1.jpeg'
   },
   {
     id: 'cat-lavamanos',
@@ -45,7 +45,7 @@ const CATEGORY_ITEMS: CategoryItem[] = [
     id: 'cat-revestimientos',
     name: 'REVESTIMIENTOS',
     categoryFilter: 'Revestimientos',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'
+    image: 'https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg'
   }
 ];
 
