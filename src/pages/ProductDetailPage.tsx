@@ -85,10 +85,10 @@ export const ProductDetailPage: React.FC = () => {
   const selectedSwatch = swatches[selectedColorIndex] || swatches[0];
 
   return (
-    <div className="max-w-[1600px] mx-auto px-0 sm:px-4 lg:px-6 py-4 space-y-6 font-sans">
+    <div className="max-w-[1600px] mx-auto px-0 sm:px-4 lg:px-6 pt-2 pb-8 space-y-6 font-sans">
       
       {/* Top Breadcrumb Navigation */}
-      <nav className="text-[11px] text-neutral-500 font-light flex items-center gap-2 tracking-tight px-4 sm:px-0">
+      <nav className="text-[11px] text-neutral-500 font-light flex items-center gap-2 tracking-tight px-4 sm:px-0 py-2">
         <Link to="/" className="hover:text-black">{language === 'en' ? 'Home' : 'Página de inicio'}</Link>
         <span>/</span>
         <Link to="/catalog" className="hover:text-black">{product.brand_collection || 'Diseño Tu Espacio Collection'}</Link>

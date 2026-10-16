@@ -71,7 +71,7 @@ const MainContent: React.FC = () => {
   const isAdmin = location.pathname.startsWith('/admin');
 
   return (
-    <main className={`flex-1 ${isHome ? 'pt-0' : isAdmin ? 'pt-0 lg:pt-[110px]' : 'pt-[110px]'}`}>
+    <main className={`flex-1 ${isHome ? 'pt-0' : isAdmin ? 'pt-0 lg:pt-[140px]' : 'pt-[116px] md:pt-[130px] lg:pt-[140px]'}`}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/catalog" element={<CatalogPage />} />
