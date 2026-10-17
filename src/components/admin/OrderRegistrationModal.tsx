@@ -45,7 +45,7 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
 
   // Order Items & Financials State
   const [items, setItems] = useState<OrderItem[]>([]);
-  const [shippingCost, setShippingCost] = useState<number>(35000);
+  const [shippingCost, setShippingCost] = useState<number>(30000);
   const [discount, setDiscount] = useState<number>(0);
   const [depositAmount, setDepositAmount] = useState<number>(0);
 

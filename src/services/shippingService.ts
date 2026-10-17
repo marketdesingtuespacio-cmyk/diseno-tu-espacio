@@ -12,7 +12,7 @@ export const COLOMBIAN_SHIPPING_RATES: ShippingRate[] = [
     id: 'ship-bog',
     city: 'Bogotá D.C.',
     department: 'Cundinamarca',
-    cost: 15000,
+    cost: 30000,
     deliveryDays: '1 - 2 días hábiles',
     isFreeThreshold: true
   },
@@ -20,7 +20,7 @@ export const COLOMBIAN_SHIPPING_RATES: ShippingRate[] = [
     id: 'ship-med',
     city: 'Medellín / Área Metropolitana',
     department: 'Antioquia',
-    cost: 25000,
+    cost: 30000,
     deliveryDays: '2 - 3 días hábiles',
     isFreeThreshold: true
   },
@@ -28,7 +28,7 @@ export const COLOMBIAN_SHIPPING_RATES: ShippingRate[] = [
     id: 'ship-cal',
     city: 'Cali / Yumbo',
     department: 'Valle del Cauca',
-    cost: 25000,
+    cost: 30000,
     deliveryDays: '2 - 3 días hábiles',
     isFreeThreshold: true
   },
@@ -36,7 +36,7 @@ export const COLOMBIAN_SHIPPING_RATES: ShippingRate[] = [
     id: 'ship-bar',
     city: 'Barranquilla / Soledad',
     department: 'Atlántico',
-    cost: 32000,
+    cost: 30000,
     deliveryDays: '3 - 4 días hábiles',
     isFreeThreshold: true
   },
@@ -44,7 +44,7 @@ export const COLOMBIAN_SHIPPING_RATES: ShippingRate[] = [
     id: 'ship-ctg',
     city: 'Cartagena de Indias',
     department: 'Bolívar',
-    cost: 35000,
+    cost: 30000,
     deliveryDays: '3 - 4 días hábiles',
     isFreeThreshold: true
   },
@@ -52,7 +52,7 @@ export const COLOMBIAN_SHIPPING_RATES: ShippingRate[] = [
     id: 'ship-buc',
     city: 'Bucaramanga / Floridablanca',
     department: 'Santander',
-    cost: 28000,
+    cost: 30000,
     deliveryDays: '2 - 3 días hábiles',
     isFreeThreshold: true
   },
@@ -60,7 +60,7 @@ export const COLOMBIAN_SHIPPING_RATES: ShippingRate[] = [
     id: 'ship-per',
     city: 'Pereira / Eje Cafetero',
     department: 'Risaralda',
-    cost: 26000,
+    cost: 30000,
     deliveryDays: '2 - 3 días hábiles',
     isFreeThreshold: true
   },
@@ -68,20 +68,23 @@ export const COLOMBIAN_SHIPPING_RATES: ShippingRate[] = [
     id: 'ship-nat',
     city: 'Otras Ciudades y Municipios (Nacional)',
     department: 'Colombia',
-    cost: 45000,
+    cost: 30000,
     deliveryDays: '4 - 6 días hábiles',
     isFreeThreshold: true
   }
 ];
 
-const LOCAL_STORAGE_SHIPPING_KEY = 'luxe_shipping_rates_cache';
+const LOCAL_STORAGE_SHIPPING_KEY = 'luxe_shipping_rates_cache_v2';
 
 export const shippingService = {
   getRates(): ShippingRate[] {
     const stored = localStorage.getItem(LOCAL_STORAGE_SHIPPING_KEY);
     if (stored) {
       try {
-        return JSON.parse(stored);
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
       } catch {
         // fallback
       }
