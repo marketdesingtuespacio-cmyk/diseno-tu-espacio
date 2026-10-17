@@ -548,10 +548,9 @@ export const OrderEditModal: React.FC<OrderEditModalProps> = ({
                   onChange={(e) => setPaymentGateway(e.target.value)}
                   className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2.5 text-xs font-bold"
                 >
-                  <option value="Transferencia Directa Bancaria">Transferencia Bancaria (Bancolombia / Davivienda)</option>
-                  <option value="Wompi Colombia">Wompi Colombia (TC / PSE)</option>
-                  <option value="Mercado Pago">Mercado Pago</option>
-                  <option value="Efectivo en Showroom">Efectivo en Showroom</option>
+                  <option value="Pago por Bold">💳 Pago por Bold (Datáfono / Link / Web - Factura SIIGO)</option>
+                  <option value="Crédito Addi">⚡ Crédito Addi (Factura SIIGO)</option>
+                  <option value="Efectivo">💵 Efectivo (Showroom / Tienda Física - Sin Factura)</option>
                 </select>
               </div>
 

@@ -167,10 +167,9 @@ export const OrderFilterBar: React.FC<OrderFilterBarProps> = ({
             className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2 sm:p-1.5 text-xs font-bold text-neutral-900 focus:bg-white focus:outline-none focus:border-neutral-900 transition-all"
           >
             <option value="all">Todas las Pasarelas</option>
-            <option value="Transferencia Directa Bancaria">Transferencia Bancaria</option>
-            <option value="Wompi Colombia">Wompi Colombia (TC/PSE)</option>
-            <option value="Mercado Pago">Mercado Pago</option>
-            <option value="Efectivo en Showroom">Efectivo Showroom</option>
+            <option value="bold">💳 Bold (Datáfono / Link / Web)</option>
+            <option value="addi">⚡ Crédito Addi</option>
+            <option value="efectivo">💵 Efectivo (Showroom / Tienda)</option>
           </select>
         </div>
 

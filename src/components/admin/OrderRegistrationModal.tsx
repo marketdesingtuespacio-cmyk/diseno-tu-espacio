@@ -713,6 +713,7 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
                   className="w-full bg-neutral-50 border border-neutral-200 rounded-xl p-2.5 text-xs font-bold"
                 >
                   <option value="Pago por Bold">💳 Pago por Bold (Datáfono / Link / Web - Factura Electrónica SIIGO)</option>
+                  <option value="Crédito Addi">⚡ Crédito Addi (Factura Electrónica SIIGO)</option>
                   <option value="Efectivo">💵 Efectivo (Showroom / Tienda Física - Sin Factura Electrónica)</option>
                 </select>
               </div>

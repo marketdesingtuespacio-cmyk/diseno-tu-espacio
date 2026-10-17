@@ -448,11 +448,17 @@ export const AdminDashboardPage: React.FC = () => {
       }
     }
 
-    // 4. Payment Gateway Filter
+    // 4. Payment Gateway Filter (Bold, Addi, Efectivo)
     if (orderFilters.paymentGateway !== 'all') {
-      if (orderFilters.paymentGateway === 'Transferencia Directa Bancaria') {
-        if (!o.payment_gateway?.includes('Transferencia') && !o.payment_gateway?.includes('Bancaria')) return false;
-      } else if (o.payment_gateway !== orderFilters.paymentGateway) {
+      const g = (o.payment_gateway || '').toLowerCase();
+      const m = (o.payment_method || '').toLowerCase();
+      if (orderFilters.paymentGateway === 'bold') {
+        if (!g.includes('bold') && !m.includes('bold') && !g.includes('wompi') && !m.includes('tarjeta') && !m.includes('pse') && !m.includes('nequi')) return false;
+      } else if (orderFilters.paymentGateway === 'addi') {
+        if (!g.includes('addi') && !m.includes('addi')) return false;
+      } else if (orderFilters.paymentGateway === 'efectivo') {
+        if (!g.includes('efectivo') && !m.includes('efectivo')) return false;
+      } else if (!g.includes(orderFilters.paymentGateway.toLowerCase())) {
         return false;
       }
     }
