@@ -288,7 +288,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
   };
 
   return (
-    <div className="space-y-6 sm:space-y-8 font-sans max-w-5xl">
+    <div className="space-y-6 sm:space-y-8 font-sans w-full max-w-[1600px] mx-auto">
       
       {/* Header */}
       <div className="border-b border-brand-border pb-3 sm:pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-2">
@@ -314,15 +314,15 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-10">
+      <form onSubmit={handleSubmit} className="space-y-8 sm:space-y-10">
         
         {/* SECTION 1: Informaciones Generales */}
-        <div className="bg-white p-4 sm:p-6 border border-brand-border space-y-4 sm:space-y-6">
+        <div className="bg-white p-4 sm:p-6 lg:p-8 border border-brand-border space-y-4 sm:space-y-6">
           <h3 className="text-xs font-bold uppercase tracking-widest text-brand-black border-b border-brand-border pb-3">
             1. Información General del Producto
           </h3>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 text-xs">
             <div>
               <label className="block uppercase font-bold text-neutral-500 mb-1">Nombre Comercial *</label>
               <input 
@@ -405,7 +405,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
               />
             </div>
 
-            <div className="sm:col-span-2 md:col-span-1">
+            <div>
               <label className="block uppercase font-bold text-neutral-500 mb-1">Estado de Inventario</label>
               <select 
                 value={inventoryStatus}
@@ -418,7 +418,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
               </select>
             </div>
 
-            <div className="sm:col-span-2">
+            <div className="sm:col-span-2 lg:col-span-2">
               <label className="block uppercase font-bold text-neutral-500 mb-1">Descripción Sobria & Editorial *</label>
               <textarea 
                 rows={3}
@@ -656,7 +656,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {images.map((img, idx) => (
               <div 
                 key={idx} 

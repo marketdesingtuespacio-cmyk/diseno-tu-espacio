@@ -238,8 +238,8 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 z-50 overflow-y-auto">
-      <div className="bg-white/95 backdrop-blur-2xl max-w-5xl w-full border border-white/80 rounded-2xl sm:rounded-3xl shadow-2xl my-auto text-xs font-sans overflow-hidden flex flex-col max-h-[94vh]">
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 md:p-6 z-50 overflow-y-auto">
+      <div className="bg-white/95 backdrop-blur-2xl w-[98vw] sm:w-[96vw] max-w-[1600px] h-[95vh] max-h-[95vh] border border-white/80 rounded-2xl sm:rounded-3xl shadow-2xl my-auto text-xs font-sans overflow-hidden flex flex-col">
         
         {/* Header Modal */}
         <div className="flex justify-between items-center bg-neutral-950 text-white px-4 sm:px-6 py-3.5 sm:py-4.5 border-b border-white/10 shrink-0">
