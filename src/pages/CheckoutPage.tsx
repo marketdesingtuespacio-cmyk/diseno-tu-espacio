@@ -156,9 +156,11 @@ export const CheckoutPage: React.FC = () => {
         customer_document_type: 'CC',
         customer_document_id: shippingForm.documentId.trim() || '222222222222',
         customer_tag: 'Residencial',
-        shipping_address: shippingForm.address.trim(),
+        shipping_address: selectedCityRate.id === 'ship-pickup' && !shippingForm.address.trim() 
+          ? 'Retiro en Tienda / Showroom Medellín' 
+          : shippingForm.address.trim(),
         city: selectedCityRate.city,
-        carrier: 'Servientrega',
+        carrier: selectedCityRate.id === 'ship-pickup' ? 'Retiro en Tienda' : 'Servientrega',
         subtotal: totalPrice,
         shipping_cost: shippingCost,
         discount: 0,
@@ -361,19 +363,7 @@ export const CheckoutPage: React.FC = () => {
               </div>
 
               <div className="sm:col-span-2">
-                <label className="block uppercase font-bold text-neutral-500 mb-1">Dirección de Entrega *</label>
-                <input 
-                  type="text" 
-                  required
-                  placeholder="Calle 93 # 12-45, Apto / Suite"
-                  value={shippingForm.address}
-                  onChange={(e) => setShippingForm({ ...shippingForm, address: e.target.value })}
-                  className="w-full bg-brand-surface border border-brand-border p-2.5 text-brand-black focus:outline-none focus:border-brand-black"
-                />
-              </div>
-
-              <div className="sm:col-span-2">
-                <label className="block uppercase font-bold text-neutral-500 mb-1">Ciudad & Destino de Envío (Colombia) *</label>
+                <label className="block uppercase font-bold text-neutral-500 mb-1">Método de Entrega / Destino *</label>
                 <select 
                   value={shippingForm.cityRateId}
                   onChange={(e) => setShippingForm({ ...shippingForm, cityRateId: e.target.value })}
@@ -381,13 +371,29 @@ export const CheckoutPage: React.FC = () => {
                 >
                   {shippingRates.map(r => (
                     <option key={r.id} value={r.id}>
-                      {r.city} ({r.department}) — {totalPrice > 1500000 ? 'Envío GRATIS' : formatPrice(r.cost)} ({r.deliveryDays})
+                      {r.city} — {r.cost === 0 ? 'GRATIS ($0 COP)' : totalPrice > 1500000 ? 'Envío GRATIS' : formatPrice(r.cost)} ({r.deliveryDays})
                     </option>
                   ))}
                 </select>
                 <p className="text-[10px] text-neutral-400 mt-1">
-                  Tiempo estimado de entrega para {selectedCityRate.city}: <strong>{selectedCityRate.deliveryDays}</strong>
+                  {selectedCityRate.id === 'ship-pickup' 
+                    ? '📍 Retiro presencial en nuestra tienda principal / Showroom en Medellín sin ningún costo de flete.' 
+                    : `Tiempo estimado de entrega para ${selectedCityRate.city}: ${selectedCityRate.deliveryDays}`}
                 </p>
+              </div>
+
+              <div className="sm:col-span-2">
+                <label className="block uppercase font-bold text-neutral-500 mb-1">
+                  {selectedCityRate.id === 'ship-pickup' ? 'Dirección del Comprador (Opcional)' : 'Dirección de Entrega *'}
+                </label>
+                <input 
+                  type="text" 
+                  required={selectedCityRate.id !== 'ship-pickup'}
+                  placeholder={selectedCityRate.id === 'ship-pickup' ? 'Retiro en Tienda / Showroom Medellín (o escribe tu dirección)' : 'Calle 93 # 12-45, Apto / Suite'}
+                  value={shippingForm.address}
+                  onChange={(e) => setShippingForm({ ...shippingForm, address: e.target.value })}
+                  className="w-full bg-brand-surface border border-brand-border p-2.5 text-brand-black focus:outline-none focus:border-brand-black"
+                />
               </div>
             </div>
           </div>

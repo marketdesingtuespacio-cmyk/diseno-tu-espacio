@@ -9,6 +9,14 @@ export interface ShippingRate {
 
 export const COLOMBIAN_SHIPPING_RATES: ShippingRate[] = [
   {
+    id: 'ship-pickup',
+    city: '🏬 Retiro en Tienda / Showroom (Sin Costo)',
+    department: 'Medellín',
+    cost: 0,
+    deliveryDays: 'Inmediato / Coordinar recogida',
+    isFreeThreshold: false
+  },
+  {
     id: 'ship-bog',
     city: 'Bogotá D.C.',
     department: 'Cundinamarca',
@@ -74,7 +82,7 @@ export const COLOMBIAN_SHIPPING_RATES: ShippingRate[] = [
   }
 ];
 
-const LOCAL_STORAGE_SHIPPING_KEY = 'luxe_shipping_rates_cache_v2';
+const LOCAL_STORAGE_SHIPPING_KEY = 'luxe_shipping_rates_cache_v3';
 
 export const shippingService = {
   getRates(): ShippingRate[] {

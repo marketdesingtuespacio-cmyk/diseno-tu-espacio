@@ -65,6 +65,10 @@ export interface Appointment {
   payment_status: 'unpaid' | 'paid' | 'refunded';
   price: number;
   notes?: string;
+  city?: string;
+  address?: string;
+  payment_gateway?: string;
+  bold_order_id?: string;
   created_at?: string;
 }
 
