@@ -175,7 +175,8 @@ export const CheckoutPage: React.FC = () => {
           image: item.product.images[0] || '',
           price: item.product.price,
           quantity: item.quantity,
-          color: item.product.colors && item.product.colors.length > 0 ? item.product.colors[0].name : undefined
+          color: item.product.colors && item.product.colors.length > 0 ? item.product.colors[0].name : undefined,
+          stock_location: 'web' as const
         })),
         notes: shippingForm.notes.trim(),
         created_at: new Date().toISOString().replace('T', ' ').substring(0, 16)

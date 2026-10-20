@@ -32,8 +32,11 @@ let cachedAuth: CachedToken | null = null;
 
 export const siigoInvoiceService = {
   getConfig(): SiigoAuthConfig {
+    // Usar proxy /api/siigo para evitar bloqueo de CORS en el navegador
+    const isBrowser = typeof window !== 'undefined';
+    const defaultApiUrl = isBrowser ? '/api/siigo' : 'https://api.siigo.com';
     return {
-      apiUrl: import.meta.env.VITE_SIIGO_API_URL || 'https://api.siigo.com',
+      apiUrl: import.meta.env.VITE_SIIGO_API_URL || defaultApiUrl,
       username: import.meta.env.VITE_SIIGO_USERNAME || 'disenotuespacio9@gmail.com',
       accessKey: import.meta.env.VITE_SIIGO_ACCESS_KEY || 'NDI0OGIxY2EtNGVhNy00ZGJhLWI2ZWQtMWZmYzJjMzA5Y2QzOihjbzJRTyoua0U=',
       partnerId: import.meta.env.VITE_SIIGO_PARTNER_ID || 'DisenoTuEspacio',
@@ -221,32 +224,37 @@ export const siigoInvoiceService = {
     const config = this.getConfig();
 
     // 5.1 Garantizar que el cliente exista en Siigo
-    const customerId = await this.ensureCustomerInSiigo(order);
+    await this.ensureCustomerInSiigo(order);
+    const documentId = (order.customer_document_id || '').trim() || '222222222222';
 
     // 5.2 Determinar forma de pago contable según método
     const isAddi = (order.payment_method || '').toLowerCase().includes('addi') || (order.payment_gateway || '').toLowerCase().includes('addi');
     const paymentId = isAddi ? config.paymentIdAddi : config.paymentIdBold;
 
-    // 5.3 Preparar ítems de la orden para Siigo
+    // 5.3 Preparar ítems de la orden para Siigo (desglosando precio base antes de IVA 19%)
     const invoiceItems = (order.items && order.items.length > 0)
-      ? order.items.map(item => ({
-          code: '1', // Mercancía no fabricada por la empresa
-          description: item.name,
-          quantity: item.quantity,
-          price: item.price,
-          discount: 0,
-          taxes: [
-            {
-              id: 5575 // IVA 19% oficial en Siigo
-            }
-          ]
-        }))
+      ? order.items.map(item => {
+          const unitPriceWithTax = item.price;
+          const baseUnitPrice = Math.round((unitPriceWithTax / 1.19) * 100) / 100;
+          return {
+            code: '1', // Mercancía no fabricada por la empresa
+            description: item.name,
+            quantity: item.quantity,
+            price: baseUnitPrice,
+            discount: 0,
+            taxes: [
+              {
+                id: 5575 // IVA 19% oficial en Siigo
+              }
+            ]
+          };
+        })
       : [
           {
             code: '1',
             description: `Pedido ${order.order_ref} - Diseño Tu Espacio`,
             quantity: 1,
-            price: order.total,
+            price: Math.round((order.total / 1.19) * 100) / 100,
             discount: 0,
             taxes: [{ id: 5575 }]
           }
@@ -260,7 +268,7 @@ export const siigoInvoiceService = {
       },
       date: todayStr,
       customer: {
-        id: customerId
+        identification: documentId
       },
       seller: config.sellerId,
       items: invoiceItems,

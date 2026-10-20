@@ -231,9 +231,24 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
                         <img src={item.image} alt={item.name} className="w-12 h-12 sm:w-14 sm:h-14 object-cover rounded-xl border bg-white shadow-2xs shrink-0" />
                         <div className="min-w-0">
                           <p className="font-extrabold text-neutral-900 text-xs sm:text-sm truncate">{item.name}</p>
-                          <p className="text-[11px] text-neutral-500 font-medium truncate mt-0.5">
-                            {item.quantity} un. • {formatPrice(item.price)} {item.color ? `• Acabado: ${item.color}` : ''}
-                          </p>
+                          <div className="flex items-center gap-2 flex-wrap mt-0.5">
+                            <span className="text-[11px] text-neutral-500 font-medium">
+                              {item.quantity} un. • {formatPrice(item.price)} {item.color ? `• Acabado: ${item.color}` : ''}
+                            </span>
+                            {item.stock_location === 'store' ? (
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-extrabold bg-amber-100 text-amber-900 border border-amber-300">
+                                🏬 Tienda Física
+                              </span>
+                            ) : item.stock_location === 'warehouse' ? (
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-extrabold bg-indigo-100 text-indigo-900 border border-indigo-300">
+                                🏭 Bodega Principal
+                              </span>
+                            ) : (
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-extrabold bg-emerald-100 text-emerald-900 border border-emerald-300">
+                                🌐 Stock Web
+                              </span>
+                            )}
+                          </div>
                         </div>
                       </div>
                       <div className="text-right shrink-0">

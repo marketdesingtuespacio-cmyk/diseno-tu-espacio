@@ -12,6 +12,14 @@ export default defineConfig({
   },
   server: {
     port: 3000,
-    host: true
+    host: true,
+    proxy: {
+      '/api/siigo': {
+        target: 'https://api.siigo.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/siigo/, ''),
+        secure: false,
+      }
+    }
   }
 });

@@ -93,6 +93,7 @@ export interface OrderItem {
   color?: string;
   price_type?: 'retail' | 'wholesale';
   original_retail_price?: number;
+  stock_location?: 'store' | 'warehouse' | 'web';
 }
 
 export interface Order {

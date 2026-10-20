@@ -584,29 +584,56 @@ export const productService = {
     return true;
   },
 
-  async deductStockForItems(items: { product_id: string; quantity: number }[]): Promise<void> {
+  async deductStockForItems(items: { product_id?: string; name?: string; quantity: number; stock_location?: 'store' | 'warehouse' | 'web' }[]): Promise<void> {
     if (!items || items.length === 0) return;
 
     for (const item of items) {
       if (isSupabaseConfigured()) {
         try {
-          const { data } = await supabase
-            .from('products')
-            .select('*')
-            .or(`id.eq.${item.product_id},slug.eq.${item.product_id}`)
-            .single();
+          let targetProd: Product | null = null;
+          if (item.product_id) {
+            const { data } = await supabase
+              .from('products')
+              .select('*')
+              .or(`id.eq.${item.product_id},slug.eq.${item.product_id}`)
+              .limit(1);
+            if (data && data.length > 0) targetProd = data[0] as Product;
+          }
 
-          if (data) {
-            const prod = data as Product;
+          if (!targetProd && item.name) {
+            const { data } = await supabase
+              .from('products')
+              .select('*')
+              .eq('name', item.name)
+              .limit(1);
+            if (data && data.length > 0) targetProd = data[0] as Product;
+          }
+
+          if (targetProd) {
             const qty = item.quantity || 1;
-            const newStock = Math.max(0, prod.stock - qty);
-            const currentWebStock = prod.web_stock !== undefined ? prod.web_stock : prod.stock;
-            const newWebStock = Math.max(0, currentWebStock - qty);
+            const location = item.stock_location || 'web';
 
-            let newStatus = prod.inventory_status || 'Disponible';
-            if (newStock <= 0) {
+            let newStoreStock = targetProd.store_stock ?? 0;
+            let newWarehouseStock = targetProd.warehouse_stock ?? 0;
+            let newWebStock = targetProd.web_stock !== undefined ? targetProd.web_stock : targetProd.stock;
+
+            if (location === 'store') {
+              newStoreStock = Math.max(0, newStoreStock - qty);
+            } else if (location === 'warehouse') {
+              newWarehouseStock = Math.max(0, newWarehouseStock - qty);
+            } else {
+              // 'web'
+              newWebStock = Math.max(0, newWebStock - qty);
+            }
+
+            const calculatedTotal = newStoreStock + newWarehouseStock + newWebStock;
+            const newStock = Math.max(0, targetProd.stock - qty);
+            const finalStock = calculatedTotal > 0 ? calculatedTotal : newStock;
+
+            let newStatus = targetProd.inventory_status || 'Disponible';
+            if (finalStock <= 0) {
               newStatus = 'Agotado';
-            } else if (newStock <= 3) {
+            } else if (finalStock <= 3) {
               newStatus = 'Poco Stock';
             } else {
               newStatus = 'Disponible';
@@ -614,8 +641,26 @@ export const productService = {
 
             await supabase
               .from('products')
-              .update({ stock: newStock, web_stock: newWebStock, inventory_status: newStatus })
-              .eq('id', prod.id);
+              .update({ 
+                stock: finalStock, 
+                store_stock: newStoreStock, 
+                warehouse_stock: newWarehouseStock, 
+                web_stock: newWebStock, 
+                inventory_status: newStatus,
+                updated_at: new Date().toISOString()
+              })
+              .eq('id', targetProd.id);
+
+            activityLogService.logActivity({
+              entity_type: 'product',
+              entity_id: targetProd.id,
+              entity_name: targetProd.name,
+              action: 'update',
+              description: `Descontó ${qty} un. de [${location.toUpperCase()}] por venta`,
+              details: `Stock restante: Total: ${finalStock} (Tienda: ${newStoreStock}, Bodega: ${newWarehouseStock}, Web: ${newWebStock})`
+            });
+
+            console.log(`✅ Stock descontado de [${location.toUpperCase()}]: -${qty} u. (${targetProd.name}) -> Resta Tienda: ${newStoreStock}, Bodega: ${newWarehouseStock}, Web: ${newWebStock}`);
           }
         } catch (err) {
           console.warn('Supabase stock deduction error:', err);
@@ -626,7 +671,7 @@ export const productService = {
     notifyProductsUpdated();
   },
 
-  async restoreStockForItems(items: { product_id?: string; name?: string; quantity: number }[]): Promise<void> {
+  async restoreStockForItems(items: { product_id?: string; name?: string; quantity: number; stock_location?: 'store' | 'warehouse' | 'web' }[]): Promise<void> {
     if (!items || items.length === 0) return;
 
     for (const item of items) {
@@ -654,14 +699,28 @@ export const productService = {
 
           if (targetProd) {
             const qty = item.quantity || 1;
-            const newStock = targetProd.stock + qty;
-            const currentWebStock = targetProd.web_stock !== undefined ? targetProd.web_stock : targetProd.stock;
-            const newWebStock = currentWebStock + qty;
+            const location = item.stock_location || 'web';
+
+            let newStoreStock = targetProd.store_stock ?? 0;
+            let newWarehouseStock = targetProd.warehouse_stock ?? 0;
+            let newWebStock = targetProd.web_stock !== undefined ? targetProd.web_stock : targetProd.stock;
+
+            if (location === 'store') {
+              newStoreStock += qty;
+            } else if (location === 'warehouse') {
+              newWarehouseStock += qty;
+            } else {
+              // 'web'
+              newWebStock += qty;
+            }
+
+            const calculatedTotal = newStoreStock + newWarehouseStock + newWebStock;
+            const finalStock = calculatedTotal > 0 ? calculatedTotal : (targetProd.stock + qty);
 
             let newStatus = targetProd.inventory_status || 'Disponible';
-            if (newStock > 3) {
+            if (finalStock > 3) {
               newStatus = 'Disponible';
-            } else if (newStock > 0 && newStock <= 3) {
+            } else if (finalStock > 0 && finalStock <= 3) {
               newStatus = 'Poco Stock';
             } else {
               newStatus = 'Agotado';
@@ -669,9 +728,26 @@ export const productService = {
 
             await supabase
               .from('products')
-              .update({ stock: newStock, web_stock: newWebStock, inventory_status: newStatus })
+              .update({ 
+                stock: finalStock, 
+                store_stock: newStoreStock, 
+                warehouse_stock: newWarehouseStock, 
+                web_stock: newWebStock, 
+                inventory_status: newStatus,
+                updated_at: new Date().toISOString()
+              })
               .eq('id', targetProd.id);
-            console.log(`✅ Stock restaurado (+${qty} u.) en Supabase para:`, targetProd.name);
+
+            activityLogService.logActivity({
+              entity_type: 'product',
+              entity_id: targetProd.id,
+              entity_name: targetProd.name,
+              action: 'update',
+              description: `Restauró ${qty} un. a [${location.toUpperCase()}] por anulación`,
+              details: `Stock actualizado: Total: ${finalStock} (Tienda: ${newStoreStock}, Bodega: ${newWarehouseStock}, Web: ${newWebStock})`
+            });
+
+            console.log(`✅ Stock restaurado a [${location.toUpperCase()}]: +${qty} u. (${targetProd.name}) -> Tienda: ${newStoreStock}, Bodega: ${newWarehouseStock}, Web: ${newWebStock}`);
           }
         } catch (err) {
           console.warn('Supabase stock restoration error:', err);

@@ -88,6 +88,15 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
       setItems(updated);
     } else {
       const selectedColor = product.colors && product.colors.length > 0 ? product.colors[0].name : undefined;
+      let initialLocation: 'store' | 'warehouse' | 'web' = 'store';
+      if ((product.store_stock ?? 0) > 0) {
+        initialLocation = 'store';
+      } else if ((product.warehouse_stock ?? 0) > 0) {
+        initialLocation = 'warehouse';
+      } else {
+        initialLocation = 'web';
+      }
+
       setItems([
         ...items,
         {
@@ -98,10 +107,17 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
           quantity: 1,
           color: selectedColor,
           price_type: targetPriceType,
-          original_retail_price: product.price
+          original_retail_price: product.price,
+          stock_location: initialLocation
         }
       ]);
     }
+  };
+
+  const handleUpdateItemLocation = (index: number, location: 'store' | 'warehouse' | 'web') => {
+    const updated = [...items];
+    updated[index].stock_location = location;
+    setItems(updated);
   };
 
   const handleToggleItemPriceType = (index: number) => {
@@ -468,6 +484,51 @@ export const OrderRegistrationModal: React.FC<OrderRegistrationModalProps> = ({
                               </select>
                             </div>
                           )}
+
+                          {/* Multi-Location Stock Deduction Origin Selector */}
+                          <div className="flex flex-wrap items-center gap-1 sm:gap-1.5 mt-1.5 pt-1.5 border-t border-neutral-100">
+                            <span className="text-[9px] sm:text-[9.5px] font-bold uppercase tracking-wider text-neutral-500">
+                              Descontar de:
+                            </span>
+                            <div className="flex items-center gap-1">
+                              <button
+                                type="button"
+                                onClick={() => handleUpdateItemLocation(idx, 'store')}
+                                className={`px-2 py-0.5 rounded text-[9px] sm:text-[9.5px] font-bold border transition-all flex items-center gap-1 cursor-pointer ${
+                                  item.stock_location === 'store'
+                                    ? 'bg-amber-100 text-amber-950 border-amber-400 font-extrabold shadow-2xs ring-1 ring-amber-400'
+                                    : 'bg-neutral-50 text-neutral-600 border-neutral-200 hover:bg-neutral-100'
+                                }`}
+                                title="Descontar de Tienda Física / Showroom"
+                              >
+                                🏬 Tienda ({productObj?.store_stock ?? 0})
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => handleUpdateItemLocation(idx, 'warehouse')}
+                                className={`px-2 py-0.5 rounded text-[9px] sm:text-[9.5px] font-bold border transition-all flex items-center gap-1 cursor-pointer ${
+                                  item.stock_location === 'warehouse'
+                                    ? 'bg-indigo-100 text-indigo-950 border-indigo-400 font-extrabold shadow-2xs ring-1 ring-indigo-400'
+                                    : 'bg-neutral-50 text-neutral-600 border-neutral-200 hover:bg-neutral-100'
+                                }`}
+                                title="Descontar de Bodega Principal"
+                              >
+                                🏭 Bodega ({productObj?.warehouse_stock ?? 0})
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => handleUpdateItemLocation(idx, 'web')}
+                                className={`px-2 py-0.5 rounded text-[9px] sm:text-[9.5px] font-bold border transition-all flex items-center gap-1 cursor-pointer ${
+                                  (item.stock_location === 'web' || !item.stock_location)
+                                    ? 'bg-emerald-100 text-emerald-950 border-emerald-400 font-extrabold shadow-2xs ring-1 ring-emerald-400'
+                                    : 'bg-neutral-50 text-neutral-600 border-neutral-200 hover:bg-neutral-100'
+                                }`}
+                                title="Descontar de Stock Web"
+                              >
+                                🌐 Web ({productObj?.web_stock ?? productObj?.stock ?? 0})
+                              </button>
+                            </div>
+                          </div>
                         </div>
                       </div>
 
