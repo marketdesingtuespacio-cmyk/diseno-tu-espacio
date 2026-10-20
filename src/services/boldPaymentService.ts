@@ -11,23 +11,8 @@ export interface BoldPaymentConfig {
 }
 
 export const boldPaymentService = {
-  // Obtiene las llaves activas detectando automáticamente el dominio (localhost / cloudflare pages vs producción)
+  // Obtiene las llaves oficiales de Bold (Producción Real)
   getKeys() {
-    const hostname = typeof window !== 'undefined' ? window.location.hostname : '';
-    // Si estamos en localhost o en dominio de prueba de Cloudflare (*.pages.dev), usar ambiente de prueba
-    const isTestDomain = hostname.includes('localhost') || hostname.includes('127.0.0.1') || hostname.includes('pages.dev');
-
-    const forcedEnv = import.meta.env.VITE_BOLD_ENVIRONMENT;
-    const environment = forcedEnv ? forcedEnv : (isTestDomain ? 'test' : 'production');
-
-    if (environment === 'test') {
-      return {
-        environment: 'test',
-        identityKey: import.meta.env.VITE_BOLD_IDENTITY_KEY_TEST || '-LQUaNJojK4vuLfW1IF7pA3M8lH2wXdVSLdO0sNObOM',
-        secretKey: import.meta.env.VITE_BOLD_SECRET_KEY_TEST || '1eyqeEDNwMMrSO1eaWLxzA'
-      };
-    }
-
     return {
       environment: 'production',
       identityKey: import.meta.env.VITE_BOLD_IDENTITY_KEY_PROD || 'NkEEf-txN7jPrz74sRkAW7jigqa39uSuSCmYPv-MoXI',
