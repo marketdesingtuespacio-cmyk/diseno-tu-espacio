@@ -18,7 +18,8 @@ import {
   Ruler,
   FileText,
   Box,
-  Eye
+  Eye,
+  Lock
 } from 'lucide-react';
 import { Product, ProductReviewStats } from '../types';
 import { productService } from '../services/productService';
@@ -381,12 +382,21 @@ export const ProductDetailPage: React.FC = () => {
               {product.name}
             </h1>
             
-            <p className="text-xs text-neutral-500 font-light flex items-center gap-2">
+            <p className="text-xs text-neutral-500 font-light flex items-center gap-2 flex-wrap">
               <span>{product.category}</span>
               {product.style && (
                 <>
                   <span className="text-neutral-300">•</span>
                   <span>Estilo {product.style}</span>
+                </>
+              )}
+              {product.warranty && (
+                <>
+                  <span className="text-neutral-300">•</span>
+                  <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/60">
+                    <ShieldCheck className="w-3 h-3 text-emerald-700" />
+                    Garantía: {product.warranty}
+                  </span>
                 </>
               )}
             </p>
@@ -550,6 +560,21 @@ export const ProductDetailPage: React.FC = () => {
                   </span>
                 </div>
               </div>
+
+              {/* Tiempo Real de Garantía del Producto */}
+              {product.warranty && (
+                <div className="flex items-center gap-2 text-neutral-800 bg-white/80 p-2.5 rounded-xl border border-neutral-200/50">
+                  <ShieldCheck className="w-4 h-4 text-emerald-700 shrink-0" />
+                  <div>
+                    <span className="font-bold text-neutral-900 block text-[11.5px]">
+                      Garantía Real del Fabricante: <span className="text-emerald-950 font-extrabold">{product.warranty}</span>
+                    </span>
+                    <span className="text-[10.5px] text-neutral-500 font-light">
+                      Cobertura directa y respaldo posventa oficial
+                    </span>
+                  </div>
+                </div>
+              )}
             </div>
 
           </div>
@@ -595,7 +620,7 @@ export const ProductDetailPage: React.FC = () => {
             </a>
           </div>
 
-          {/* 4 Value-Added Guarantee Pillars (Kave Home Trust Badges) */}
+          {/* 4 Value-Added Trust Badges (Kave Home Pillars) */}
           <div className="grid grid-cols-2 gap-3 pt-3 border-t border-neutral-100 text-[11px] text-neutral-600">
             <div className="flex items-start gap-2">
               <Truck className="w-4 h-4 text-neutral-800 shrink-0 mt-0.5" />
@@ -606,10 +631,10 @@ export const ProductDetailPage: React.FC = () => {
             </div>
 
             <div className="flex items-start gap-2">
-              <ShieldCheck className="w-4 h-4 text-neutral-800 shrink-0 mt-0.5" />
+              <Lock className="w-4 h-4 text-neutral-800 shrink-0 mt-0.5" />
               <div>
-                <strong className="block text-neutral-900 font-bold">Garantía 3 Años</strong>
-                <span className="text-neutral-500">Directa de fábrica y posventa</span>
+                <strong className="block text-neutral-900 font-bold">Pago 100% Seguro</strong>
+                <span className="text-neutral-500">Pasarelas encriptadas Bold & Addi</span>
               </div>
             </div>
 
@@ -687,10 +712,20 @@ export const ProductDetailPage: React.FC = () => {
                       <span className="text-neutral-400 text-[10px] uppercase font-bold block">Colección</span>
                       <span className="font-semibold text-neutral-900">{product.brand_collection || 'Atelier'}</span>
                     </div>
-                    {product.warranty && (
+                    {product.warranty ? (
+                      <div className="p-2.5 bg-neutral-50 rounded-lg col-span-2 border border-neutral-100 flex items-center justify-between">
+                        <div>
+                          <span className="text-neutral-400 text-[10px] uppercase font-bold block">Garantía Oficial del Producto</span>
+                          <span className="font-bold text-neutral-900 text-xs">{product.warranty}</span>
+                        </div>
+                        <span className="text-[10px] bg-neutral-200/60 text-neutral-700 px-2.5 py-0.5 rounded-full font-semibold">
+                          Directa de Fábrica
+                        </span>
+                      </div>
+                    ) : (
                       <div className="p-2 bg-neutral-50 rounded-lg col-span-2">
-                        <span className="text-neutral-400 text-[10px] uppercase font-bold block">Garantía Certificada</span>
-                        <span className="font-semibold text-neutral-900">{product.warranty}</span>
+                        <span className="text-neutral-400 text-[10px] uppercase font-bold block">Garantía Oficial</span>
+                        <span className="font-semibold text-neutral-700">Según política de categoría y fabricante</span>
                       </div>
                     )}
                   </div>
