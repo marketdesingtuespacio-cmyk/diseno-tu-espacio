@@ -22,8 +22,8 @@ export const Footer: React.FC = () => {
             </div>
             <div className="flex items-center gap-2">
               <Phone className="w-3.5 h-3.5 text-neutral-400 shrink-0" /> 
-              <a href="https://wa.me/573113477785" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                +57 311 347 7785 • Atención al Cliente
+              <a href="https://wa.me/573000044784" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                +57 300 004 4784 • Atención al Cliente
               </a>
             </div>
             <div className="flex items-center gap-2">

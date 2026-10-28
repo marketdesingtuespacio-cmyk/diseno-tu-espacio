@@ -164,7 +164,7 @@ export const ProductDetailPage: React.FC = () => {
   const installmentAmount = Math.round(product.price / 3);
 
   // WhatsApp Interior Advisor chat pre-filled link
-  const whatsappAdvisorLink = `https://wa.me/573113477785?text=${encodeURIComponent(
+  const whatsappAdvisorLink = `https://wa.me/573000044784?text=${encodeURIComponent(
     `Hola Diseño Tu Espacio, me interesa la pieza "${product.name}" (${product.sku ? `Ref: ${product.sku}` : ''}) y me gustaría recibir asesoría de interiorismo y disponibilidad.`
   )}`;
 

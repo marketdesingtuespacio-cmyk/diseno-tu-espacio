@@ -637,7 +637,7 @@ export const BookingPage: React.FC = () => {
 
             {/* WhatsApp Direct Chat with Architect */}
             <a 
-              href={`https://wa.me/573113477785?text=${encodeURIComponent(
+              href={`https://wa.me/573000044784?text=${encodeURIComponent(
                 `Hola Diseño Tu Espacio, acabo de pagar y confirmar mi cita de "${bookingResult.service_type}" para el ${bookingResult.appointment_date} a las ${bookingResult.appointment_time} (ID: ${bookingResult.id}). Deseo compartirles los planos y ubicación exacta.`
               )}`}
               target="_blank"
