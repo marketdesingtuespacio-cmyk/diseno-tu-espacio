@@ -28,6 +28,7 @@ import { useCurrency } from '../context/CurrencyContext';
 import { useAuth } from '../context/AuthContext';
 import { ProductCard } from '../components/ProductCard';
 import { ProductReviewsSection } from '../components/ProductReviewsSection';
+import { trackingService } from '../services/trackingService';
 
 export const ProductDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -121,6 +122,13 @@ export const ProductDetailPage: React.FC = () => {
       });
     }
   }, [slug]);
+
+  // Track Meta Pixel ViewContent & Google Analytics view_item
+  useEffect(() => {
+    if (product) {
+      trackingService.trackViewItem(product);
+    }
+  }, [product?.id]);
 
   if (loading) {
     return (

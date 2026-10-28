@@ -31,6 +31,7 @@ import { OrderFilterBar, OrderFilterState } from '../components/admin/OrderFilte
 import { ProductFilterBar, ProductFilterState } from '../components/admin/ProductFilterBar';
 import { AnalyticsDashboard } from '../components/admin/AnalyticsDashboard';
 import { AuditLogsView } from '../components/admin/AuditLogsView';
+import { MarketingFeedsView } from '../components/admin/MarketingFeedsView';
 
 export const AdminDashboardPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<AdminTab>('overview');
@@ -618,6 +619,7 @@ export const AdminDashboardPage: React.FC = () => {
     orders: 'Pedidos',
     appointments: 'Citas & Asesorías',
     coupons: 'Cupones',
+    marketing: 'Pauta & Catálogos',
     team: 'Equipo & Permisos',
     categories: 'Categorías & Estilos',
     logs: 'Historial & Bitácora',
@@ -678,6 +680,7 @@ export const AdminDashboardPage: React.FC = () => {
               {activeTab === 'orders' && 'Pedidos, Kanban & Facturación'}
               {activeTab === 'appointments' && 'Citas de Interiorismo & Asesoría'}
               {activeTab === 'coupons' && 'Cupones & Descuentos'}
+              {activeTab === 'marketing' && 'Pauta Digital & Catálogos (Meta / Google)'}
               {activeTab === 'team' && 'Gestión de Equipo & Permisos'}
               {activeTab === 'categories' && 'Categorías & Estilos'}
               {activeTab === 'settings' && 'Configuración Global'}
@@ -1473,6 +1476,9 @@ export const AdminDashboardPage: React.FC = () => {
 
         {/* TAB: AUDIT LOGS & MODIFICATION HISTORY */}
         {activeTab === 'logs' && <AuditLogsView />}
+
+        {/* TAB: MARKETING FEEDS (META BUSINESS & GOOGLE SHOPPING) */}
+        {activeTab === 'marketing' && <MarketingFeedsView products={products} />}
 
         {/* TAB 9: STORE SETTINGS */}
         {activeTab === 'settings' && (

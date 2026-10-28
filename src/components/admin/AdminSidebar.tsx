@@ -14,7 +14,8 @@ import {
   LogOut,
   Sparkle,
   History,
-  X
+  X,
+  Share2
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -26,6 +27,7 @@ export type AdminTab =
   | 'appointments' 
   | 'coupons' 
   | 'categories'
+  | 'marketing'
   | 'team' 
   | 'logs'
   | 'settings';
@@ -94,6 +96,12 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
       label: 'Cupones & Ofertas',
       icon: Tag,
       badge: couponsCount
+    },
+    {
+      id: 'marketing' as AdminTab,
+      label: 'Pauta & Catálogos',
+      icon: Share2,
+      badge: 'Meta/Google'
     },
     {
       id: 'logs' as AdminTab,

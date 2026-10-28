@@ -7,6 +7,7 @@ import { shippingService } from '../services/shippingService';
 import { orderService } from '../services/orderService';
 import { boldPaymentService } from '../services/boldPaymentService';
 import { siigoInvoiceService } from '../services/siigoInvoiceService';
+import { trackingService } from '../services/trackingService';
 
 export type PaymentGateway = 'bold';
 
@@ -92,6 +93,7 @@ export const CheckoutPage: React.FC = () => {
             total: matchingOrder.total,
             itemsCount: matchingOrder.items_count || 1
           });
+          trackingService.trackPurchase(matchingOrder);
         } else {
           setOrderCompleted({
             orderRef: urlRef,
@@ -108,6 +110,13 @@ export const CheckoutPage: React.FC = () => {
       });
     }
   }, [urlStatus, urlRef]);
+
+  // Track Meta Pixel InitiateCheckout & Google Analytics begin_checkout
+  useEffect(() => {
+    if (cart.length > 0 && !urlStatus) {
+      trackingService.trackInitiateCheckout(cart, grandTotal);
+    }
+  }, []);
 
   // Disparar lanzamiento de Bold una vez que el contenedor #bold-button-container esté en el DOM
   useEffect(() => {
