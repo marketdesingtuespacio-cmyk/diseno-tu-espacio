@@ -1,8 +1,16 @@
 // Servicio oficial de integración para Pasarela de Pagos Bold Colombia
+// La firma de integridad se genera en el servidor (/api/orders/create, /api/appointments/pay):
+// la llave secreta de Bold NUNCA viaja al navegador.
 
-export interface BoldPaymentConfig {
+export interface BoldButtonConfig {
   orderId: string;
   amount: number; // Monto en COP (número entero)
+  currency: string;
+  identityKey: string;
+  signature: string;
+}
+
+export interface BoldPaymentConfig extends BoldButtonConfig {
   description: string;
   customerEmail: string;
   customerName: string;
@@ -11,44 +19,10 @@ export interface BoldPaymentConfig {
 }
 
 export const boldPaymentService = {
-  // Obtiene las llaves oficiales de Bold (Producción Real)
-  getKeys() {
-    return {
-      environment: 'production',
-      identityKey: import.meta.env.VITE_BOLD_IDENTITY_KEY_PROD || 'NkEEf-txN7jPrz74sRkAW7jigqa39uSuSCmYPv-MoXI',
-      secretKey: import.meta.env.VITE_BOLD_SECRET_KEY_PROD || 'VSlSWCrKwBrDO9xDRAF6Kw'
-    };
-  },
-
-  // Genera la firma de integridad SHA-256 requerida por Bold
-  // Fórmula oficial Bold: SHA256(orderId + amount + currency + secretKey)
-  async generateIntegritySignature(orderId: string, amount: number, currency: string = 'COP'): Promise<string> {
-    const { secretKey } = this.getKeys();
-    const amountStr = Math.round(amount).toString();
-    const rawString = `${orderId}${amountStr}${currency}${secretKey}`;
-
-    const encoder = new TextEncoder();
-    const data = encoder.encode(rawString);
-    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-  },
-
   // Carga e inyecta la etiqueta script oficial de Bold que contiene el src y los atributos data-* en la misma etiqueta
   async launchCheckout(config: BoldPaymentConfig): Promise<void> {
-    const { identityKey, environment } = this.getKeys();
-    const currency = 'COP';
     const amountStr = Math.round(config.amount).toString();
-    const signature = await this.generateIntegritySignature(config.orderId, config.amount, currency);
     const redirect = config.redirectionUrl || `${window.location.origin}/checkout?status=success&ref=${config.orderId}`;
-
-    console.log(`🚀 Montando Botón Oficial de Bold (${environment.toUpperCase()}):`, {
-      identityKey: identityKey.substring(0, 8) + '...',
-      orderId: config.orderId,
-      amount: amountStr,
-      currency,
-      signature
-    });
 
     const container = document.getElementById('bold-button-container');
     if (!container) {
@@ -62,11 +36,11 @@ export const boldPaymentService = {
     const script = document.createElement('script');
     script.src = 'https://checkout.bold.co/library/boldPaymentButton.js';
     script.setAttribute('data-bold-button', 'dark-L');
-    script.setAttribute('data-api-key', identityKey);
+    script.setAttribute('data-api-key', config.identityKey);
     script.setAttribute('data-order-id', config.orderId);
     script.setAttribute('data-amount', amountStr);
-    script.setAttribute('data-currency', currency);
-    script.setAttribute('data-integrity-signature', signature);
+    script.setAttribute('data-currency', config.currency || 'COP');
+    script.setAttribute('data-integrity-signature', config.signature);
     script.setAttribute('data-redirection-url', redirect);
     script.setAttribute('data-description', config.description || `Pedido ${config.orderId}`);
     if (config.customerEmail) {
@@ -80,9 +54,25 @@ export const boldPaymentService = {
     setTimeout(() => {
       const boldBtn = container.querySelector('button, [class*="bold"], iframe, a, div') as HTMLElement;
       if (boldBtn) {
-        console.log('✅ Click automático en botón de Bold...');
         boldBtn.click();
       }
     }, 800);
+  },
+
+  // Al volver de Bold el servidor consulta el estado real del pago. Bold puede tardar unos
+  // segundos en registrar la transacción, así que se reintenta mientras siga "pending".
+  async confirmWithRetry<T extends { status: string }>(url: string, body: object, attempts = 6): Promise<T> {
+    let last = { status: 'pending' } as T;
+    for (let i = 0; i < attempts; i++) {
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      last = await res.json().catch(() => ({ status: 'error' }));
+      if (last.status !== 'pending') return last;
+      await new Promise(r => setTimeout(r, 2500));
+    }
+    return last;
   }
 };

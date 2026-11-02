@@ -80,18 +80,18 @@ export const BookingPage: React.FC = () => {
   const [activeBoldAppointment, setActiveBoldAppointment] = useState<Appointment | null>(null);
   const [bookingResult, setBookingResult] = useState<Appointment | null>(null);
 
-  // 1. Detectar si el usuario regresa de Bold con pago exitoso
+  // 1. Retorno desde Bold: el servidor consulta a Bold el estado real del pago antes de confirmar la cita
   useEffect(() => {
     if (urlStatus === 'success' && urlAppId) {
-      appointmentService.updateAppointmentPayment(urlAppId, 'paid', 'confirmed').then((updated) => {
-        if (updated) {
-          setBookingResult(updated);
+      boldPaymentService.confirmWithRetry<any>('/api/appointments/confirm', { appointmentId: urlAppId }).then((result) => {
+        if (result.status === 'paid' && result.appointment) {
+          setBookingResult(result.appointment as Appointment);
+          setStep(3);
+        } else if (result.status === 'rejected') {
+          alert('Bold no aprobó el pago de tu cita. Puedes intentarlo de nuevo.');
         } else {
-          appointmentService.getAppointmentById(urlAppId).then((app) => {
-            if (app) setBookingResult(app);
-          });
+          alert('Tu cita quedó registrada y el pago aún está en proceso. Te confirmaremos por correo o WhatsApp.');
         }
-        setStep(3);
       });
     }
   }, [urlStatus, urlAppId]);
@@ -115,15 +115,29 @@ export const BookingPage: React.FC = () => {
   // 3. Montar y disparar el botón oficial de Bold cuando el contenedor esté disponible en el DOM
   useEffect(() => {
     if (boldLaunched && activeBoldAppointment) {
-      boldPaymentService.launchCheckout({
-        orderId: activeBoldAppointment.id,
-        amount: activeBoldAppointment.price,
-        description: `Visita ${activeBoldAppointment.service_type} - ${activeBoldAppointment.customer_name}`,
-        customerEmail: activeBoldAppointment.customer_email,
-        customerName: activeBoldAppointment.customer_name,
-        customerPhone: activeBoldAppointment.customer_phone,
-        redirectionUrl: `${window.location.origin}/booking?status=success&app_id=${activeBoldAppointment.id}`
-      });
+      // La firma de Bold (con el precio oficial del servicio) la genera el servidor
+      fetch('/api/appointments/pay', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ appointmentId: activeBoldAppointment.id })
+      })
+        .then(res => res.json().then(data => ({ ok: res.ok, data })))
+        .then(({ ok, data }) => {
+          if (!ok || !data.bold) throw new Error(data.error || 'No se pudo preparar el pago');
+          return boldPaymentService.launchCheckout({
+            ...data.bold,
+            description: `Visita ${activeBoldAppointment.service_type} - ${activeBoldAppointment.customer_name}`,
+            customerEmail: activeBoldAppointment.customer_email,
+            customerName: activeBoldAppointment.customer_name,
+            customerPhone: activeBoldAppointment.customer_phone,
+            redirectionUrl: `${window.location.origin}/booking?status=success&app_id=${activeBoldAppointment.id}`
+          });
+        })
+        .catch(err => {
+          console.error('Error al iniciar pago con Bold:', err);
+          alert('Ocurrió un error al preparar la pasarela de pagos. Por favor intenta de nuevo.');
+          setBoldLaunched(false);
+        });
     }
   }, [boldLaunched, activeBoldAppointment]);
 

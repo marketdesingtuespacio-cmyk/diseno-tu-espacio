@@ -58,12 +58,26 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
     });
   }, [orders, dateRange]);
 
+  // Solo es venta el dinero recibido: pedido pagado => total; con abono => lo abonado.
+  // Pedidos sin pagar (p. ej. los que crea Zuhuy esperando el pago) y cancelados no suman.
+  const paidAmount = (o: Order) => {
+    if (o.status === 'cancelled') return 0;
+    if (o.payment_status === 'paid') return o.total || 0;
+    if (o.payment_status === 'partial') return o.deposit_amount || 0;
+    return 0;
+  };
+  const salesOrders = useMemo(() => filteredOrders.filter(o => paidAmount(o) > 0), [filteredOrders]);
+  const pendingCollection = useMemo(
+    () => filteredOrders.reduce((sum, o) => sum + (o.status === 'cancelled' ? 0 : Math.max(0, (o.total || 0) - paidAmount(o))), 0),
+    [filteredOrders]
+  );
+
   // Overall Financial Metrics & Real Inventory Valuation
   const metrics = useMemo(() => {
-    const totalSales = filteredOrders.reduce((sum, o) => sum + (o.total || 0), 0);
-    const totalAppointments = appointments.reduce((sum, a) => sum + (a.price || 0), 0);
+    const totalSales = salesOrders.reduce((sum, o) => sum + paidAmount(o), 0);
+    const totalAppointments = appointments.reduce((sum, a) => sum + (a.payment_status === 'paid' ? (a.price || 0) : 0), 0);
     const totalRevenue = totalSales + totalAppointments;
-    const count = filteredOrders.length;
+    const count = salesOrders.length;
     const aov = count > 0 ? totalSales / count : 0;
     
     // Real Inventory Calculations
@@ -76,7 +90,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
     // Real Estimated Gross Profit & Net Profit
     const estimatedTaxIVA = totalSales * 0.19;
     const estimatedGatewayFees = totalSales * 0.029;
-    const estimatedShippingCosts = filteredOrders.reduce((sum, o) => sum + (o.shipping_cost || 0), 0);
+    const estimatedShippingCosts = salesOrders.reduce((sum, o) => sum + (o.shipping_cost || 0), 0);
     const netRevenue = Math.max(0, totalSales - estimatedTaxIVA - estimatedGatewayFees - estimatedShippingCosts);
 
     return {
@@ -95,7 +109,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
       estimatedShippingCosts,
       netRevenue
     };
-  }, [filteredOrders, appointments, products]);
+  }, [salesOrders, appointments, products]);
 
   // Sellers / Sales Reps Performance Dataset (Real Team Members)
   const sellerPerformance = useMemo(() => {
@@ -105,8 +119,8 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
     ];
 
     return baseSellers.map((seller, index) => {
-      const assignedOrders = filteredOrders.filter((_, idx) => idx % baseSellers.length === index);
-      const salesVolume = assignedOrders.reduce((acc, o) => acc + (o.total || 0), 0);
+      const assignedOrders = salesOrders.filter((_, idx) => idx % baseSellers.length === index);
+      const salesVolume = assignedOrders.reduce((acc, o) => acc + paidAmount(o), 0);
       const closedCount = assignedOrders.length;
       const sellerAOV = closedCount > 0 ? salesVolume / closedCount : 0;
       const targetCOP = 25000000;
@@ -124,16 +138,16 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
         conversionRate: closedCount > 0 ? 100 : 0
       };
     }).sort((a, b) => b.salesVolume - a.salesVolume);
-  }, [filteredOrders, teamMembers]);
+  }, [salesOrders, teamMembers]);
 
   // Payment Gateway Distribution
   const gatewayBreakdown = useMemo(() => {
     const map: Record<string, { count: number; total: number }> = {};
-    filteredOrders.forEach(o => {
+    salesOrders.forEach(o => {
       const gw = o.payment_gateway || o.payment_method || 'Wompi';
       if (!map[gw]) map[gw] = { count: 0, total: 0 };
       map[gw].count += 1;
-      map[gw].total += (o.total || 0);
+      map[gw].total += paidAmount(o);
     });
     return Object.entries(map).map(([name, data]) => ({
       name,
@@ -141,38 +155,38 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
       total: data.total,
       percentage: metrics.totalSales > 0 ? Math.round((data.total / metrics.totalSales) * 100) : 0
     }));
-  }, [filteredOrders, metrics.totalSales]);
+  }, [salesOrders, metrics.totalSales]);
 
   // City Geographical Distribution
   const cityBreakdown = useMemo(() => {
     const map: Record<string, number> = {};
-    filteredOrders.forEach(o => {
+    salesOrders.forEach(o => {
       const city = o.city || 'Bogotá D.C.';
-      map[city] = (map[city] || 0) + (o.total || 0);
+      map[city] = (map[city] || 0) + paidAmount(o);
     });
     return Object.entries(map)
       .map(([city, total]) => ({ city, total }))
       .sort((a, b) => b.total - a.total)
       .slice(0, 5);
-  }, [filteredOrders]);
+  }, [salesOrders]);
 
   // Daily Trend Sales (Real Orders grouped by Day of Week)
   const weeklySalesData = useMemo(() => {
     const days = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
     return days.map((day, dayIdx) => {
-      const dayOrders = filteredOrders.filter(o => {
+      const dayOrders = salesOrders.filter(o => {
         if (!o.created_at) return false;
         const d = new Date(o.created_at);
         return !isNaN(d.getTime()) && d.getDay() === dayIdx;
       });
-      const total = dayOrders.reduce((acc, o) => acc + (o.total || 0), 0);
+      const total = dayOrders.reduce((acc, o) => acc + paidAmount(o), 0);
       return {
         day,
         total,
         count: dayOrders.length
       };
     });
-  }, [filteredOrders]);
+  }, [salesOrders]);
 
   const maxDailySales = useMemo(() => {
     return Math.max(...weeklySalesData.map(d => d.total), 1);
@@ -308,7 +322,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
             </div>
             <p className="text-[11px] font-semibold text-[#6D28D9] mt-1 flex items-center gap-1">
               <TrendingUp className="w-3 h-3" />
-              <span>+18.4% respecto al ciclo anterior</span>
+              <span>Solo pagado · {formatPrice(pendingCollection)} por cobrar</span>
             </p>
           </div>
         </div>

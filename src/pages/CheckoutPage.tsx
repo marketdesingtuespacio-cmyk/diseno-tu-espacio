@@ -4,10 +4,10 @@ import { ShieldCheck, ArrowLeft, CheckCircle2, Info } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { shippingService } from '../services/shippingService';
-import { orderService } from '../services/orderService';
+import { notifyOrdersUpdated } from '../services/orderService';
 import { boldPaymentService } from '../services/boldPaymentService';
-import { siigoInvoiceService } from '../services/siigoInvoiceService';
 import { trackingService } from '../services/trackingService';
+import { Order } from '../types';
 
 export type PaymentGateway = 'bold';
 
@@ -57,56 +57,38 @@ export const CheckoutPage: React.FC = () => {
   const [boldLaunched, setBoldLaunched] = useState(false);
   const [activeBoldOrder, setActiveBoldOrder] = useState<any>(null);
   const [orderCompleted, setOrderCompleted] = useState<any>(null);
+  const [paymentNotice, setPaymentNotice] = useState<{ tone: 'info' | 'error'; text: string } | null>(null);
 
-  // Capturar retorno exitoso de Bold desde la URL y obtener el total real del pedido
+  // Retorno desde Bold: el servidor consulta a Bold el estado real del pago antes de marcar el pedido
+  // como pagado y emitir la factura. La URL "?status=success" por sí sola no confirma nada.
   useEffect(() => {
     if (urlStatus === 'success' && urlRef) {
-      orderService.getOrders().then(orders => {
-        const matchingOrder = orders.find(o => o.order_ref === urlRef);
-        if (matchingOrder) {
-          // Marcar pedido como pagado en Supabase con saldo pendiente $0 y abono completo
-          orderService.updateOrder(matchingOrder.id, {
-            status: 'processing',
-            payment_status: 'paid',
-            deposit_amount: matchingOrder.total,
-            pending_balance: 0
-          });
-
-          // Disparar emisión de Factura Electrónica oficial en Siigo Nube
-          siigoInvoiceService.generateInvoiceForOrder({
-            ...matchingOrder,
-            status: 'processing',
-            payment_status: 'paid',
-            deposit_amount: matchingOrder.total,
-            pending_balance: 0
-          }).catch(err => {
-            console.warn('Emisión automática en Siigo se procesará o revisará en panel:', err);
-          });
-
+      setPaymentNotice({ tone: 'info', text: 'Verificando tu pago con Bold...' });
+      boldPaymentService.confirmWithRetry<any>('/api/orders/confirm', { ref: urlRef }).then(result => {
+        if (result.status === 'paid' && result.order) {
+          const order = result.order;
           setOrderCompleted({
-            orderRef: urlRef,
-            customer: matchingOrder.customer_name,
-            email: matchingOrder.customer_email,
+            orderRef: order.order_ref,
+            customer: order.customer_name,
+            email: order.customer_email,
             gateway: 'bold',
             gatewayName: 'Bold Payments (Colombia)',
-            method: matchingOrder.payment_method || 'Tarjeta de Crédito / PSE / Nequi',
-            total: matchingOrder.total,
-            itemsCount: matchingOrder.items_count || 1
+            method: order.payment_method || 'Tarjeta de Crédito / PSE / Nequi',
+            total: order.total,
+            itemsCount: order.items_count || 1
           });
-          trackingService.trackPurchase(matchingOrder);
+          trackingService.trackPurchase(order as Order);
+          notifyOrdersUpdated();
+          clearCart();
+          setPaymentNotice(null);
+        } else if (result.status === 'rejected') {
+          setPaymentNotice({ tone: 'error', text: `Bold no aprobó el pago del pedido ${urlRef}. Puedes intentarlo de nuevo.` });
         } else {
-          setOrderCompleted({
-            orderRef: urlRef,
-            customer: 'Cliente verificado por Bold',
-            email: 'Confirmación oficial enviada por correo',
-            gateway: 'bold',
-            gatewayName: 'Bold Payments (Colombia)',
-            method: 'Tarjeta de Crédito / PSE / Nequi',
-            total: totalPrice > 0 ? totalPrice : 0,
-            itemsCount: 1
+          setPaymentNotice({
+            tone: 'info',
+            text: `Tu pedido ${urlRef} quedó registrado y el pago aún está en proceso (PSE puede tardar unos minutos). Te confirmaremos por correo o WhatsApp.`
           });
         }
-        clearCart();
       });
     }
   }, [urlStatus, urlRef]);
@@ -155,47 +137,35 @@ export const CheckoutPage: React.FC = () => {
     setIsProcessing(true);
 
     try {
-      const orderRef = `DT-${Math.floor(100000 + Math.random() * 900000)}`;
-
-      await orderService.createOrder({
-        order_ref: orderRef,
-        customer_name: shippingForm.fullName.trim(),
-        customer_email: shippingForm.email.trim(),
-        customer_phone: shippingForm.phone.trim(),
-        customer_document_type: 'CC',
-        customer_document_id: shippingForm.documentId.trim() || '222222222222',
-        customer_tag: 'Residencial',
-        shipping_address: selectedCityRate.id === 'ship-pickup' && !shippingForm.address.trim() 
-          ? 'Retiro en Tienda / Showroom Medellín' 
-          : shippingForm.address.trim(),
-        city: selectedCityRate.city,
-        carrier: selectedCityRate.id === 'ship-pickup' ? 'Retiro en Tienda' : 'Servientrega',
-        subtotal: totalPrice,
-        shipping_cost: shippingCost,
-        discount: 0,
-        total: grandTotal,
-        status: 'pending',
-        payment_method: selectedSubMethod,
-        payment_gateway: PAYMENT_PROVIDERS.find(p => p.id === selectedGateway)?.name || selectedGateway,
-        items_count: cart.reduce((acc, item) => acc + item.quantity, 0),
-        items: cart.map(item => ({
-          product_id: item.product.id,
-          name: item.product.name,
-          image: item.product.images[0] || '',
-          price: item.product.price,
-          quantity: item.quantity,
-          color: item.product.colors && item.product.colors.length > 0 ? item.product.colors[0].name : undefined,
-          stock_location: 'web' as const
-        })),
-        notes: shippingForm.notes.trim(),
-        created_at: new Date().toISOString().replace('T', ' ').substring(0, 16)
+      // El servidor crea el pedido con los precios oficiales del catálogo y firma el pago de Bold
+      const response = await fetch('/api/orders/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          customer: {
+            fullName: shippingForm.fullName,
+            email: shippingForm.email,
+            phone: shippingForm.phone,
+            documentId: shippingForm.documentId,
+            address: shippingForm.address,
+            notes: shippingForm.notes
+          },
+          cityRateId: selectedCityRate.id,
+          paymentMethod: selectedSubMethod,
+          items: cart.map(item => ({ product_id: item.product.id, quantity: item.quantity }))
+        })
       });
+      const created = await response.json().catch(() => ({}));
+      if (!response.ok || !created.bold) {
+        throw new Error(created.error || 'No pudimos registrar tu pedido. Intenta de nuevo.');
+      }
+      const orderRef: string = created.order.order_ref;
+      notifyOrdersUpdated();
 
       // Lógica de lanzamiento oficial para Bold Colombia
       if (selectedGateway === 'bold') {
         setActiveBoldOrder({
-          orderId: orderRef,
-          amount: grandTotal,
+          ...created.bold,
           description: `Pedido ${orderRef} en Diseño Tu Espacio`,
           customerEmail: shippingForm.email.trim(),
           customerName: shippingForm.fullName.trim(),
@@ -215,8 +185,9 @@ export const CheckoutPage: React.FC = () => {
         });
         clearCart();
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error procesando pago:', err);
+      setPaymentNotice({ tone: 'error', text: err.message || 'No pudimos registrar tu pedido. Intenta de nuevo.' });
       setIsProcessing(false);
       setBoldLaunched(false);
     }
@@ -272,6 +243,25 @@ export const CheckoutPage: React.FC = () => {
               Seguir Explorando
             </Link>
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Retorno de Bold mientras se verifica el pago, o si quedó pendiente / rechazado
+  if (urlStatus === 'success' && urlRef && paymentNotice) {
+    return (
+      <div className="max-w-xl mx-auto px-6 py-20 text-center font-sans">
+        <div className="bg-brand-surface border border-brand-black p-8 md:p-12 space-y-6">
+          {paymentNotice.tone === 'info' && paymentNotice.text.startsWith('Verificando') && (
+            <div className="w-12 h-12 border-4 border-black border-t-transparent rounded-full animate-spin mx-auto" />
+          )}
+          <p className={`text-sm leading-relaxed ${paymentNotice.tone === 'error' ? 'text-red-700' : 'text-neutral-700'}`}>
+            {paymentNotice.text}
+          </p>
+          <Link to="/catalog" className="text-xs text-neutral-500 hover:text-black font-bold uppercase tracking-wider">
+            Volver a la Tienda
+          </Link>
         </div>
       </div>
     );
@@ -494,8 +484,12 @@ export const CheckoutPage: React.FC = () => {
 
           </div>
 
+          {paymentNotice?.tone === 'error' && (
+            <p className="text-xs text-red-700 bg-red-50 border border-red-200 p-3">{paymentNotice.text}</p>
+          )}
+
           {/* Submit Action Button */}
-          <button 
+          <button
             type="submit"
             disabled={isProcessing}
             className="w-full bg-brand-black text-white text-xs font-bold uppercase tracking-widest py-4 px-6 hover:bg-neutral-800 transition-colors flex items-center justify-center gap-2 shadow-elevated"
