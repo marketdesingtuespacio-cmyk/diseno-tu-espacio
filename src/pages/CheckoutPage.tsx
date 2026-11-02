@@ -37,8 +37,10 @@ export const CheckoutPage: React.FC = () => {
   const shippingRates = shippingService.getRates();
   const [searchParams] = useSearchParams();
 
-  const urlStatus = searchParams.get('status');
-  const urlRef = searchParams.get('ref');
+  // Bold agrega sus propios parámetros al volver (bold-order-id, bold-tx-status) y puede pegarlos con
+  // un segundo "?" sobre nuestra URL, así que la referencia se extrae con un patrón y no tal cual.
+  const urlRef = `${searchParams.get('ref') || ''} ${searchParams.get('bold-order-id') || ''}`.match(/DT-\d{6,10}/)?.[0] || null;
+  const urlStatus = searchParams.get('status') || (urlRef && searchParams.get('bold-tx-status') ? 'success' : null);
 
   // Form State
   const [shippingForm, setShippingForm] = useState({

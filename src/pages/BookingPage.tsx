@@ -54,7 +54,8 @@ export const BookingPage: React.FC = () => {
   const { formatPrice } = useCurrency();
   const [searchParams] = useSearchParams();
   const urlStatus = searchParams.get('status');
-  const urlAppId = searchParams.get('app_id');
+  // Bold puede pegar sus parámetros con un segundo "?" sobre app_id: se toma solo el UUID
+  const urlAppId = (searchParams.get('app_id') || '').match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i)?.[0] || null;
 
   const [selectedService, setSelectedService] = useState(SERVICES[1]); // Default a Visita de Interiorismo
   const [selectedDate, setSelectedDate] = useState<string>(
