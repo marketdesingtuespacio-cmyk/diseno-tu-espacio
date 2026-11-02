@@ -60,8 +60,8 @@ export const boldPaymentService = {
   },
 
   // Al volver de Bold el servidor consulta el estado real del pago. Bold puede tardar unos
-  // segundos en registrar la transacción, así que se reintenta mientras siga "pending".
-  async confirmWithRetry<T extends { status: string }>(url: string, body: object, attempts = 6): Promise<T> {
+  // segundos (a veces más de 15) en registrar la transacción: se reintenta ~1 minuto mientras siga "pending".
+  async confirmWithRetry<T extends { status: string }>(url: string, body: object, attempts = 15): Promise<T> {
     let last = { status: 'pending' } as T;
     for (let i = 0; i < attempts; i++) {
       const res = await fetch(url, {
@@ -71,7 +71,7 @@ export const boldPaymentService = {
       });
       last = await res.json().catch(() => ({ status: 'error' }));
       if (last.status !== 'pending') return last;
-      await new Promise(r => setTimeout(r, 2500));
+      await new Promise(r => setTimeout(r, 4000));
     }
     return last;
   }
