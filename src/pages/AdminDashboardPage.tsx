@@ -652,10 +652,10 @@ export const AdminDashboardPage: React.FC = () => {
   const completionPercent = totalSales > 0 ? Math.min(100, Math.round((totalPaid / totalSales) * 100)) : 0;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#c6e7de] via-[#d7e4ea] to-[#dad5f0] p-3 sm:p-5 lg:p-8 font-sans text-neutral-800 relative overflow-x-hidden selection:bg-neutral-900 selection:text-white">
+    <div className="min-h-screen bg-gradient-to-br from-[#bfe8de] via-[#d6e7ec] to-[#ded7f4] p-3 sm:p-5 lg:p-8 font-sans text-neutral-800 relative overflow-x-hidden selection:bg-neutral-900 selection:text-white">
       {/* Ambient Radial Lights */}
-      <div className="fixed top-0 left-10 w-[500px] h-[500px] bg-emerald-200/35 rounded-full blur-[140px] pointer-events-none -z-0" />
-      <div className="fixed bottom-0 right-10 w-[500px] h-[500px] bg-purple-200/35 rounded-full blur-[140px] pointer-events-none -z-0" />
+      <div className="fixed top-[-100px] left-[-100px] w-[600px] h-[600px] bg-emerald-200/40 rounded-full blur-[160px] pointer-events-none -z-0" />
+      <div className="fixed bottom-[-100px] right-[-100px] w-[600px] h-[600px] bg-purple-200/40 rounded-full blur-[160px] pointer-events-none -z-0" />
 
       {/* OFF-CANVAS / DRAWER SIDEBAR */}
       <AdminSidebar 
@@ -675,7 +675,7 @@ export const AdminDashboardPage: React.FC = () => {
       <div className="max-w-[1580px] mx-auto space-y-6 relative z-10">
 
         {/* TOP FLOATING NAVIGATION BAR */}
-        <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white/70 backdrop-blur-2xl border border-white/80 px-5 py-3 rounded-[28px] shadow-[0_10px_30px_rgba(0,0,0,0.03)] gap-3">
+        <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white/45 backdrop-blur-3xl border border-white/60 px-5 py-3 rounded-[28px] shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] gap-3">
           <div className="flex items-center gap-3">
             <span className="font-serif italic font-extrabold text-2xl text-neutral-950 tracking-tighter">
               dt.
@@ -683,7 +683,7 @@ export const AdminDashboardPage: React.FC = () => {
 
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="w-9 h-9 rounded-full bg-white/90 hover:bg-white border border-white flex items-center justify-center text-neutral-800 shadow-2xs transition-all active:scale-95 cursor-pointer"
+              className="w-9 h-9 rounded-full bg-white/70 hover:bg-white/95 border border-white/80 flex items-center justify-center text-neutral-800 shadow-2xs transition-all active:scale-95 cursor-pointer backdrop-blur-md"
               title="Abrir Menú Completo"
             >
               <LayoutGrid className="w-4 h-4" />
@@ -691,7 +691,7 @@ export const AdminDashboardPage: React.FC = () => {
 
             <Link
               to="/"
-              className="w-9 h-9 rounded-full bg-white/90 hover:bg-white border border-white flex items-center justify-center text-neutral-800 shadow-2xs transition-all active:scale-95"
+              className="w-9 h-9 rounded-full bg-white/70 hover:bg-white/95 border border-white/80 flex items-center justify-center text-neutral-800 shadow-2xs transition-all active:scale-95 backdrop-blur-md"
               title="Volver a la Tienda Pública"
             >
               <ArrowLeft className="w-4 h-4" />
@@ -710,21 +710,21 @@ export const AdminDashboardPage: React.FC = () => {
           <div className="flex items-center gap-2 flex-wrap self-end sm:self-auto">
             <button
               onClick={() => setIsOrderModalOpen(true)}
-              className="bg-white/90 hover:bg-white text-neutral-900 border border-white rounded-full px-4 py-2 text-[11px] font-bold uppercase tracking-wider shadow-2xs flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer"
+              className="bg-white/70 hover:bg-white text-neutral-900 border border-white/80 backdrop-blur-md rounded-full px-4 py-2 text-[11px] font-bold uppercase tracking-wider shadow-2xs flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer"
             >
               <PlusCircle className="w-3.5 h-3.5 text-neutral-700" /> Registrar Pedido
             </button>
 
             <button
               onClick={() => setActiveTab('add-product')}
-              className="bg-white/90 hover:bg-white text-neutral-900 border border-white rounded-full px-4 py-2 text-[11px] font-bold uppercase tracking-wider shadow-2xs flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer"
+              className="bg-white/70 hover:bg-white text-neutral-900 border border-white/80 backdrop-blur-md rounded-full px-4 py-2 text-[11px] font-bold uppercase tracking-wider shadow-2xs flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer"
             >
               <PlusCircle className="w-3.5 h-3.5 text-neutral-700" /> Nuevo Producto
             </button>
 
             <button
               onClick={loadData}
-              className="w-9 h-9 rounded-full bg-white/90 hover:bg-white border border-white flex items-center justify-center text-neutral-800 shadow-2xs transition-all active:scale-95 cursor-pointer"
+              className="w-9 h-9 rounded-full bg-white/70 hover:bg-white border border-white/80 backdrop-blur-md flex items-center justify-center text-neutral-800 shadow-2xs transition-all active:scale-95 cursor-pointer"
               title="Actualizar Datos en Tiempo Real"
             >
               <RefreshCw className="w-4 h-4" />
@@ -737,7 +737,7 @@ export const AdminDashboardPage: React.FC = () => {
         </header>
 
         {/* HERO FINANCIAL & KPI BENTO CARD */}
-        <section className="bg-white/70 backdrop-blur-2xl border border-white/80 rounded-[36px] p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.03)] space-y-6">
+        <section className="bg-white/45 backdrop-blur-3xl border border-white/60 rounded-[36px] p-6 sm:p-8 shadow-[0_16px_48px_0_rgba(31,38,135,0.06)] space-y-6">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
             <div className="flex items-center gap-4">
               <div className="w-14 h-14 rounded-2xl bg-white/90 border border-white flex items-center justify-center text-neutral-700 shadow-2xs shrink-0">
@@ -836,35 +836,32 @@ export const AdminDashboardPage: React.FC = () => {
           </div>
         </section>
 
-        {/* DUAL BENTO GRID (Main Content & Activity) */}
-        <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
-
-          {/* LEFT BENTO CARD (Workspace / Tab Content) */}
-          <div className="xl:col-span-8 bg-white/75 backdrop-blur-2xl border border-white/90 rounded-[36px] p-5 sm:p-7 shadow-[0_20px_50px_rgba(0,0,0,0.02)] space-y-6">
-            
-            {/* Top Pill Navigation Tabs */}
-            <div className="flex items-center gap-2 overflow-x-auto pb-2 border-b border-neutral-100 no-scrollbar">
-              {[
-                { id: 'orders', label: 'Pedidos & Facturación' },
-                { id: 'products', label: 'Inventario & Catálogo' },
-                { id: 'overview', label: 'Analíticas' },
-                { id: 'appointments', label: 'Citas & Asesorías' },
-                { id: 'coupons', label: 'Cupones' },
-                { id: 'marketing', label: 'Pauta & Catálogos' }
-              ].map(tab => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id as AdminTab)}
-                  className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer ${
-                    activeTab === tab.id
-                      ? 'bg-neutral-950 text-white shadow-xs'
-                      : 'bg-white/80 hover:bg-white text-neutral-600 border border-white/80'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
+        {/* MAIN FULL-WIDTH WORKSPACE (GLASSMORPHIC) */}
+        <section className="w-full bg-white/45 backdrop-blur-3xl border border-white/60 rounded-[36px] p-5 sm:p-8 shadow-[0_16px_48px_0_rgba(31,38,135,0.06)] space-y-6">
+          
+          {/* Top Pill Navigation Tabs */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 border-b border-white/60 no-scrollbar">
+            {[
+              { id: 'orders', label: 'Pedidos & Facturación' },
+              { id: 'products', label: 'Inventario & Catálogo' },
+              { id: 'overview', label: 'Analíticas' },
+              { id: 'appointments', label: 'Citas & Asesorías' },
+              { id: 'coupons', label: 'Cupones' },
+              { id: 'marketing', label: 'Pauta & Catálogos' }
+            ].map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id as AdminTab)}
+                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer ${
+                  activeTab === tab.id
+                    ? 'bg-neutral-950 text-white shadow-xs'
+                    : 'bg-white/60 hover:bg-white/80 text-neutral-700 border border-white/70 backdrop-blur-md'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
 
             {/* TAB CONTENT */}
 
@@ -1806,141 +1803,139 @@ export const AdminDashboardPage: React.FC = () => {
           </div>
         )}
 
-          </div>
+        </section>
 
-          {/* RIGHT BENTO CARD (Activity & Agenda from Image) */}
-          <div className="xl:col-span-4 bg-white/75 backdrop-blur-2xl border border-white/90 rounded-[36px] p-6 shadow-[0_20px_50px_rgba(0,0,0,0.02)] space-y-6">
-            <div className="flex justify-between items-center">
-              <h3 className="text-xl font-extrabold text-neutral-950 tracking-tight">Actividad</h3>
-              <div className="flex items-center gap-1.5">
-                <button 
-                  onClick={() => setIsAppointmentModalOpen(true)}
-                  className="w-8 h-8 rounded-full bg-white/90 hover:bg-white border border-white flex items-center justify-center text-neutral-700 shadow-2xs cursor-pointer transition-all active:scale-95"
-                  title="Nueva Cita"
-                >
-                  <PlusCircle className="w-3.5 h-3.5" />
-                </button>
-                <button 
-                  onClick={() => setActiveTab('appointments')}
-                  className="w-8 h-8 rounded-full bg-white/90 hover:bg-white border border-white flex items-center justify-center text-neutral-700 shadow-2xs cursor-pointer transition-all active:scale-95"
-                  title="Ver Calendario"
-                >
-                  <Calendar className="w-3.5 h-3.5" />
-                </button>
-                <a 
-                  href="https://wa.me/573000000000" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-full bg-white/90 hover:bg-white border border-white flex items-center justify-center text-neutral-700 shadow-2xs cursor-pointer transition-all active:scale-95"
-                  title="WhatsApp"
-                >
-                  <Phone className="w-3.5 h-3.5" />
-                </a>
-              </div>
+        {/* BOTTOM SECTION: ACTIVIDAD & AGENDA (FULL-WIDTH 3-COLUMN PASTEL BENTO) */}
+        <section className="w-full bg-white/45 backdrop-blur-3xl border border-white/60 rounded-[36px] p-6 sm:p-8 shadow-[0_16px_48px_0_rgba(31,38,135,0.06)] space-y-6">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-white/60 pb-4">
+            <div>
+              <h3 className="text-xl font-extrabold text-neutral-950 tracking-tight flex items-center gap-2">
+                Actividad & Agenda Reciente
+              </h3>
+              <p className="text-xs text-neutral-500 font-medium mt-0.5">
+                Próximas citas de asesoría de diseño, seguimiento a pedidos en curso y facturación DIAN
+              </p>
             </div>
 
-            <div>
-              <div className="flex justify-between items-center mb-3">
-                <span className="text-xs font-bold uppercase tracking-wider text-neutral-400">Próximas Tareas & Citas</span>
-                <span className="text-xs font-extrabold text-neutral-900 bg-white/80 px-2.5 py-0.5 rounded-full border border-white">
-                  {appointments.length} Citas
-                </span>
-              </div>
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-extrabold text-neutral-900 bg-white/80 px-3 py-1 rounded-full border border-white shadow-2xs">
+                {appointments.length} Citas & Actividades
+              </span>
+              <button 
+                onClick={() => setIsAppointmentModalOpen(true)}
+                className="w-9 h-9 rounded-full bg-white/80 hover:bg-white border border-white flex items-center justify-center text-neutral-800 shadow-2xs cursor-pointer transition-all active:scale-95"
+                title="Nueva Cita"
+              >
+                <PlusCircle className="w-4 h-4" />
+              </button>
+              <button 
+                onClick={() => setActiveTab('appointments')}
+                className="w-9 h-9 rounded-full bg-white/80 hover:bg-white border border-white flex items-center justify-center text-neutral-800 shadow-2xs cursor-pointer transition-all active:scale-95"
+                title="Ver Calendario"
+              >
+                <Calendar className="w-4 h-4" />
+              </button>
+              <a 
+                href="https://wa.me/573000000000" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-white/80 hover:bg-white border border-white flex items-center justify-center text-neutral-800 shadow-2xs cursor-pointer transition-all active:scale-95"
+                title="WhatsApp Directo"
+              >
+                <Phone className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
 
-              {/* Pastel Cards from Image */}
-              <div className="space-y-3">
-                {/* 1. Lavender Card: Appointment */}
-                {appointments.length > 0 ? (
-                  appointments.slice(0, 2).map((app, idx) => (
-                    <div 
-                      key={app.id || idx}
-                      onClick={() => setActiveTab('appointments')}
-                      className="bg-[#ede4f8] text-[#4a154b] rounded-[24px] p-4 border border-[#e0d0f5] shadow-2xs space-y-2.5 cursor-pointer hover:shadow-md transition-all group"
-                    >
-                      <div className="flex justify-between items-center">
-                        <span className="px-2.5 py-0.5 rounded-full bg-white/70 text-[#4a154b] text-[10px] font-bold">
-                          {app.appointment_date} • {app.appointment_time}
-                        </span>
-                        <div className="w-6 h-6 rounded-full bg-white/70 flex items-center justify-center text-[#4a154b] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
-                          <ArrowUpRight className="w-3.5 h-3.5" />
-                        </div>
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-xs text-[#2e0854]">{app.service_type}</h4>
-                        <p className="text-[11px] text-[#4a154b]/80 mt-0.5 flex items-center gap-1.5">
-                          <span className="w-4 h-4 rounded-full bg-[#4a154b]/20 flex items-center justify-center text-[9px] font-bold">
-                            {app.customer_name.charAt(0)}
-                          </span>
-                          <span>{app.customer_name}</span>
-                        </p>
-                      </div>
-                    </div>
-                  ))
-                ) : (
-                  <div 
-                    onClick={() => setIsAppointmentModalOpen(true)}
-                    className="bg-[#ede4f8] text-[#4a154b] rounded-[24px] p-4 border border-[#e0d0f5] shadow-2xs space-y-2 cursor-pointer hover:shadow-md transition-all"
-                  >
-                    <span className="px-2.5 py-0.5 rounded-full bg-white/70 text-[#4a154b] text-[10px] font-bold">Agenda Disponible</span>
-                    <h4 className="font-bold text-xs text-[#2e0854]">Agendar Cita de Asesoría</h4>
-                    <p className="text-[11px] text-[#4a154b]/80">Haz clic para programar una visita técnica o reunión 3D.</p>
-                  </div>
-                )}
-
-                {/* 2. Butter Yellow Card: Pedidos Pendientes */}
-                {orders.filter(o => o.status === 'processing' || (o.pending_balance || 0) > 0).slice(0, 1).map((ord, idx) => (
-                  <div 
-                    key={ord.id || idx}
-                    onClick={() => { setSelectedDetailOrder(ord); }}
-                    className="bg-[#fef9c3] text-[#713f12] rounded-[24px] p-4 border border-[#fef08a] shadow-2xs space-y-2.5 cursor-pointer hover:shadow-md transition-all group"
-                  >
-                    <div className="flex justify-between items-center">
-                      <span className="px-2.5 py-0.5 rounded-full bg-white/70 text-[#713f12] text-[10px] font-bold">
-                        Ref: {ord.order_ref}
-                      </span>
-                      <div className="w-6 h-6 rounded-full bg-white/70 flex items-center justify-center text-[#713f12] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-xs text-[#522c06]">Seguimiento de Producción & Envío</h4>
-                      <p className="text-[11px] text-[#713f12]/80 mt-0.5 flex items-center gap-1.5">
-                        <span className="w-4 h-4 rounded-full bg-[#713f12]/20 flex items-center justify-center text-[9px] font-bold">
-                          {ord.customer_name.charAt(0)}
-                        </span>
-                        <span>{ord.customer_name} • ${formatPrice(ord.total)}</span>
-                      </p>
-                    </div>
-                  </div>
-                ))}
-
-                {/* 3. Soft Mint Card: Facturación Siigo / DIAN */}
+          {/* 3 Pastel Cards Grid Horizontally Below */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {/* Card 1: Lavender (Citas) */}
+            {appointments.length > 0 ? (
+              appointments.slice(0, 1).map((app, idx) => (
                 <div 
-                  onClick={() => setActiveTab('orders')}
-                  className="bg-[#dcfce7] text-[#14532d] rounded-[24px] p-4 border border-[#bbf7d0] shadow-2xs space-y-2.5 cursor-pointer hover:shadow-md transition-all group"
+                  key={app.id || idx}
+                  onClick={() => setActiveTab('appointments')}
+                  className="bg-[#ede4f8]/90 text-[#4a154b] rounded-[28px] p-5 border border-[#e0d0f5] shadow-2xs space-y-3 cursor-pointer hover:shadow-md transition-all group"
                 >
                   <div className="flex justify-between items-center">
-                    <span className="px-2.5 py-0.5 rounded-full bg-white/70 text-[#14532d] text-[10px] font-bold">
-                      Facturación DIAN
+                    <span className="px-3 py-1 rounded-full bg-white/80 text-[#4a154b] text-[10.5px] font-bold">
+                      {app.appointment_date} • {app.appointment_time}
                     </span>
-                    <div className="w-6 h-6 rounded-full bg-white/70 flex items-center justify-center text-[#14532d] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
-                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    <div className="w-7 h-7 rounded-full bg-white/80 flex items-center justify-center text-[#4a154b] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
+                      <ArrowUpRight className="w-4 h-4" />
                     </div>
                   </div>
                   <div>
-                    <h4 className="font-bold text-xs text-[#0a381d]">Sincronización Fiscal Siigo Nube</h4>
-                    <p className="text-[11px] text-[#14532d]/80 mt-0.5">
-                      {orders.filter(o => o.siigo_invoice_status === 'generated').length} facturas emitidas • {orders.filter(o => o.siigo_invoice_status === 'pending').length} pendientes
+                    <h4 className="font-extrabold text-sm text-[#2e0854]">{app.service_type}</h4>
+                    <p className="text-xs text-[#4a154b]/80 mt-1 flex items-center gap-1.5 font-medium">
+                      <span className="w-5 h-5 rounded-full bg-[#4a154b]/20 flex items-center justify-center text-[10px] font-bold">
+                        {app.customer_name.charAt(0)}
+                      </span>
+                      <span>{app.customer_name}</span>
                     </p>
                   </div>
                 </div>
+              ))
+            ) : (
+              <div 
+                onClick={() => setIsAppointmentModalOpen(true)}
+                className="bg-[#ede4f8]/90 text-[#4a154b] rounded-[28px] p-5 border border-[#e0d0f5] shadow-2xs space-y-2 cursor-pointer hover:shadow-md transition-all"
+              >
+                <span className="px-3 py-1 rounded-full bg-white/80 text-[#4a154b] text-[10.5px] font-bold">Agenda Disponible</span>
+                <h4 className="font-extrabold text-sm text-[#2e0854]">Agendar Cita de Asesoría</h4>
+                <p className="text-xs text-[#4a154b]/80">Haz clic para programar una visita técnica o reunión 3D.</p>
+              </div>
+            )}
 
+            {/* Card 2: Butter Yellow (Pedidos Pendientes / En Taller) */}
+            {orders.filter(o => o.status === 'processing' || (o.pending_balance || 0) > 0).slice(0, 1).map((ord, idx) => (
+              <div 
+                key={ord.id || idx}
+                onClick={() => { setSelectedDetailOrder(ord); }}
+                className="bg-[#fef9c3]/90 text-[#713f12] rounded-[28px] p-5 border border-[#fef08a] shadow-2xs space-y-3 cursor-pointer hover:shadow-md transition-all group"
+              >
+                <div className="flex justify-between items-center">
+                  <span className="px-3 py-1 rounded-full bg-white/80 text-[#713f12] text-[10.5px] font-bold">
+                    Ref: {ord.order_ref}
+                  </span>
+                  <div className="w-7 h-7 rounded-full bg-white/80 flex items-center justify-center text-[#713f12] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
+                    <ArrowUpRight className="w-4 h-4" />
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-extrabold text-sm text-[#522c06]">Seguimiento de Producción & Envío</h4>
+                  <p className="text-xs text-[#713f12]/80 mt-1 flex items-center gap-1.5 font-medium">
+                    <span className="w-5 h-5 rounded-full bg-[#713f12]/20 flex items-center justify-center text-[10px] font-bold">
+                      {ord.customer_name.charAt(0)}
+                    </span>
+                    <span>{ord.customer_name} • ${formatPrice(ord.total)}</span>
+                  </p>
+                </div>
+              </div>
+            ))}
+
+            {/* Card 3: Soft Mint (Facturación DIAN / Siigo) */}
+            <div 
+              onClick={() => setActiveTab('orders')}
+              className="bg-[#dcfce7]/90 text-[#14532d] rounded-[28px] p-5 border border-[#bbf7d0] shadow-2xs space-y-3 cursor-pointer hover:shadow-md transition-all group"
+            >
+              <div className="flex justify-between items-center">
+                <span className="px-3 py-1 rounded-full bg-white/80 text-[#14532d] text-[10.5px] font-bold">
+                  Facturación DIAN
+                </span>
+                <div className="w-7 h-7 rounded-full bg-white/80 flex items-center justify-center text-[#14532d] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
+                  <ArrowUpRight className="w-4 h-4" />
+                </div>
+              </div>
+              <div>
+                <h4 className="font-extrabold text-sm text-[#0a381d]">Sincronización Fiscal Siigo Nube</h4>
+                <p className="text-xs text-[#14532d]/80 mt-1 font-medium">
+                  {orders.filter(o => o.siigo_invoice_status === 'generated').length} facturas emitidas • {orders.filter(o => o.siigo_invoice_status === 'pending').length} pendientes
+                </p>
               </div>
             </div>
-
           </div>
-
-        </div>
+        </section>
 
       </div>
 

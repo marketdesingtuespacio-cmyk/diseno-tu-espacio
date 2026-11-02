@@ -131,17 +131,17 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
 
   return (
     <>
-    {/* Overlay oscuro del drawer (solo móvil/tablet) */}
+    {/* Overlay oscuro con blur del drawer (en cualquier resolución) */}
     <div
       onClick={onMobileClose}
-      className={`lg:hidden fixed inset-0 z-40 bg-black/40 backdrop-blur-[2px] transition-opacity duration-300 ${
+      className={`fixed inset-0 z-40 bg-black/35 backdrop-blur-xs transition-opacity duration-300 ${
         isMobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
       }`}
       aria-hidden="true"
     />
-    <aside className={`fixed inset-y-0 left-0 z-50 w-[84vw] max-w-[300px] h-[100dvh] rounded-r-[28px] bg-white transition-transform duration-300 ease-out ${
+    <aside className={`fixed inset-y-0 left-0 z-50 w-[84vw] max-w-[310px] h-[100dvh] bg-white/90 backdrop-blur-3xl border-r border-white/80 shadow-2xl transition-transform duration-300 ease-out ${
       isMobileOpen ? 'translate-x-0' : '-translate-x-full'
-    } lg:translate-x-0 lg:relative lg:inset-auto lg:z-20 lg:my-4 lg:ml-4 lg:w-64 lg:max-w-none lg:h-[calc(100vh-2rem)] lg:rounded-[28px] lg:bg-white/90 backdrop-blur-2xl text-neutral-900 border border-white/90 shadow-[0_10px_30px_rgba(0,0,0,0.04)] flex flex-col shrink-0 font-sans p-4 justify-between overflow-hidden`}>
+    } text-neutral-900 flex flex-col shrink-0 font-sans p-4 justify-between overflow-hidden`}>
       
       {/* Top Header: Sparkle Icon + Title (Ref Image Style) */}
       <div className="space-y-4 min-h-0 flex flex-col">
@@ -160,10 +160,10 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
               </p>
             </div>
           </div>
-          {/* Botón cerrar drawer (solo móvil/tablet) */}
+          {/* Botón cerrar drawer */}
           <button
             onClick={onMobileClose}
-            className="lg:hidden p-2 -mr-1 rounded-full text-neutral-500 hover:bg-neutral-100 hover:text-black transition-colors"
+            className="p-2 -mr-1 rounded-full text-neutral-500 hover:bg-neutral-100 hover:text-black transition-colors cursor-pointer"
             aria-label="Cerrar menú"
           >
             <X className="w-5 h-5" />
