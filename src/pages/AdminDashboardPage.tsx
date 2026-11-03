@@ -520,7 +520,7 @@ export const AdminDashboardPage: React.FC = () => {
         `"${p.style}"`,
         p.price,
         p.original_price || '',
-        p.stock,
+        (p.warehouse_stock !== undefined || p.store_stock !== undefined || p.web_stock !== undefined) ? ((p.warehouse_stock || 0) + (p.store_stock || 0) + (p.web_stock || 0)) : p.stock,
         p.warehouse_stock || 0,
         p.store_stock || 0,
         p.web_stock || 0,
@@ -1053,9 +1053,15 @@ export const AdminDashboardPage: React.FC = () => {
                     </tr>
                   ) : (
                     filteredProducts.map(p => {
+                      const wStock = p.warehouse_stock || 0;
+                      const sStock = p.store_stock || 0;
+                      const bStock = p.web_stock || 0;
+                      const totalDivStock = wStock + sStock + bStock;
+                      const realTotalStock = (p.warehouse_stock !== undefined || p.store_stock !== undefined || p.web_stock !== undefined) ? totalDivStock : p.stock;
+
                       const isPrivado = p.inventory_status === 'Privado';
-                      const isAgotado = p.stock <= 0 || p.inventory_status === 'Agotado';
-                      const isPocoStock = !isAgotado && !isPrivado && p.stock <= 3;
+                      const isAgotado = realTotalStock <= 0 || p.inventory_status === 'Agotado';
+                      const isPocoStock = !isAgotado && !isPrivado && realTotalStock <= 3;
                       const isSelected = selectedProductIds.includes(p.id);
 
                       return (
@@ -1120,18 +1126,24 @@ export const AdminDashboardPage: React.FC = () => {
                             )}
                           </td>
                           <td className="p-3">
-                            <span className={`px-2 py-0.5 font-bold rounded-md text-[11px] ${
-                              isAgotado ? 'bg-red-100 text-red-800' :
-                              isPocoStock ? 'bg-amber-100 text-amber-900 font-extrabold' :
-                              'bg-neutral-100 text-brand-black'
+                            <span className={`px-2.5 py-1 font-bold rounded-md text-[11px] font-mono inline-block shadow-2xs ${
+                              isAgotado ? 'bg-red-100 text-red-800 border border-red-200' :
+                              isPocoStock ? 'bg-amber-100 text-amber-900 border border-amber-200 font-extrabold' :
+                              'bg-emerald-50 text-emerald-950 border border-emerald-200 font-black'
                             }`}>
-                              {p.stock} u. total
+                              {realTotalStock} u. total
                             </span>
-                            {(p.warehouse_stock || p.store_stock || p.web_stock) ? (
-                              <div className="text-[9px] text-neutral-500 mt-1 font-mono">
-                                Bodega: {p.warehouse_stock || 0} | Tienda: {p.store_stock || 0} | Web: {p.web_stock || 0}
-                              </div>
-                            ) : null}
+                            <div className="text-[9.5px] mt-1.5 flex items-center gap-1 flex-wrap font-medium">
+                              <span className="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded border border-slate-200" title="Stock en Bodega Principal">
+                                🏭 Bod: <strong className="font-bold">{wStock}</strong>
+                              </span>
+                              <span className="bg-amber-50 text-amber-800 px-1.5 py-0.5 rounded border border-amber-200" title="Stock en Tienda Física / Showroom">
+                                🏬 Tie: <strong className="font-bold">{sStock}</strong>
+                              </span>
+                              <span className="bg-indigo-50 text-indigo-800 px-1.5 py-0.5 rounded border border-indigo-200" title="Stock Web Online">
+                                🌐 Web: <strong className="font-bold">{bStock}</strong>
+                              </span>
+                            </div>
                           </td>
                           <td className="p-3">
                             <select

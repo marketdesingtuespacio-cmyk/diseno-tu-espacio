@@ -26,16 +26,29 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
   const [originalPrice, setOriginalPrice] = useState<number | undefined>(initialProduct?.original_price || undefined);
   const [wholesalePrice, setWholesalePrice] = useState<number | undefined>(initialProduct?.wholesale_price || undefined);
   const [wholesaleMinQty, setWholesaleMinQty] = useState<number>(initialProduct?.wholesale_min_qty || 5);
-  const [stock, setStock] = useState<number>(initialProduct?.stock || 10);
+  // Subdivisión de inventario: Si el producto anterior tenía stock pero las divisiones estaban en 0, asignamos ese stock preexistente a Bodega
+  const initWarehouse = initialProduct?.warehouse_stock ?? 0;
+  const initStore = initialProduct?.store_stock ?? 0;
+  const initWeb = initialProduct?.web_stock ?? 0;
+  const legacyStock = initialProduct?.stock ?? 0;
+
+  const resolvedWarehouse = (initWarehouse === 0 && initStore === 0 && initWeb === 0 && legacyStock > 0)
+    ? legacyStock
+    : initWarehouse;
+
+  const [warehouseStock, setWarehouseStock] = useState<number>(resolvedWarehouse);
+  const [storeStock, setStoreStock] = useState<number>(initStore);
+  const [webStock, setWebStock] = useState<number>(initWeb);
+
+  // Stock Total calculado estrictamente como suma viva de las 3 divisiones
+  const calculatedStock = Math.max(0, (Number(warehouseStock) || 0) + (Number(storeStock) || 0) + (Number(webStock) || 0));
+
   const [isFeatured, setIsFeatured] = useState<boolean>(initialProduct?.is_featured || false);
   const [description, setDescription] = useState(initialProduct?.description || '');
   const [dimensions, setDimensions] = useState(initialProduct?.dimensions || '160cm alto x 38cm diámetro');
   const [materials, setMaterials] = useState(initialProduct?.materials || 'Aluminio espejado, Acero satinado');
 
   const [sku, setSku] = useState(initialProduct?.sku || '');
-  const [warehouseStock, setWarehouseStock] = useState<number>(initialProduct?.warehouse_stock || 0);
-  const [storeStock, setStoreStock] = useState<number>(initialProduct?.store_stock || 0);
-  const [webStock, setWebStock] = useState<number>(initialProduct?.web_stock || 0);
   const [boxesCount, setBoxesCount] = useState<number>(initialProduct?.boxes_count || 0);
   const [warranty, setWarranty] = useState(initialProduct?.warranty || '3 años');
   const [inventoryStatus, setInventoryStatus] = useState(initialProduct?.inventory_status || 'Disponible');
@@ -247,7 +260,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
         original_price: originalPrice && Number(originalPrice) > 0 ? Number(originalPrice) : undefined,
         wholesale_price: wholesalePrice && Number(wholesalePrice) > 0 ? Number(wholesalePrice) : undefined,
         wholesale_min_qty: Number(wholesaleMinQty) || 5,
-        stock: Number(stock),
+        stock: calculatedStock,
         is_featured: isFeatured,
         description: description.trim(),
         dimensions: dimensions.trim(),
@@ -255,12 +268,12 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
         images,
         colors,
         sku: sku.trim(),
-        warehouse_stock: Number(warehouseStock),
-        store_stock: Number(storeStock),
-        web_stock: Number(webStock),
+        warehouse_stock: Math.max(0, Number(warehouseStock) || 0),
+        store_stock: Math.max(0, Number(storeStock) || 0),
+        web_stock: Math.max(0, Number(webStock) || 0),
         boxes_count: Number(boxesCount),
         warranty: warranty.trim(),
-        inventory_status: inventoryStatus.trim(),
+        inventory_status: calculatedStock <= 0 ? 'Agotado' : calculatedStock <= 3 ? 'Poco Stock' : inventoryStatus.trim(),
         shipping_returns_info: shippingReturnsInfo.trim(),
         care_instructions: careInstructions.trim(),
         fast_shipping_badge: fastShippingBadge.trim(),
@@ -495,49 +508,86 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
               <span className="text-[10px] text-emerald-700 mt-1 block">Mínimo de unidades/cajas</span>
             </div>
 
-            <div>
-              <label className="block uppercase font-bold text-neutral-500 mb-1">Stock Total *</label>
-              <input 
-                type="number" 
-                required
-                min="0"
-                value={stock}
-                onChange={(e) => setStock(Number(e.target.value))}
-                className="w-full bg-brand-surface border border-brand-border p-3 font-bold text-brand-black focus:outline-none focus:border-brand-black"
-              />
+            {/* STOCK TOTAL CALCULADO AUTOMÁTICAMENTE */}
+            <div className="relative">
+              <div className="flex items-center justify-between mb-1">
+                <label className="block uppercase font-bold text-neutral-700 text-[11px] tracking-wide">
+                  Stock Total Disponible *
+                </label>
+                <span className="text-[10px] font-bold text-emerald-800 bg-emerald-100/90 border border-emerald-300 px-2 py-0.5 rounded-full flex items-center gap-1 shadow-2xs">
+                  ✓ Suma Automática
+                </span>
+              </div>
+              <div className="w-full bg-gradient-to-r from-emerald-50/90 via-teal-50/70 to-emerald-50/90 border-2 border-emerald-400/80 p-3 rounded-lg flex items-center justify-between shadow-2xs select-none">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-2xl font-black text-emerald-950 tracking-tight font-mono">
+                    {calculatedStock}
+                  </span>
+                  <span className="text-xs font-bold text-emerald-800 uppercase tracking-widest">
+                    unidades
+                  </span>
+                </div>
+                <div className="text-[10px] text-right font-medium text-emerald-900/90 font-mono hidden sm:block">
+                  Bodega ({warehouseStock || 0}) + Tienda ({storeStock || 0}) + Web ({webStock || 0})
+                </div>
+              </div>
+              <span className="text-[10px] text-neutral-500 mt-1 block">
+                Total automático: suma de Bodega, Tienda y Web.
+              </span>
             </div>
 
+            {/* STOCK EN BODEGA PRINCIPAL */}
             <div>
-              <label className="block uppercase font-bold text-neutral-500 mb-1">Stock en Bodega Principal</label>
+              <div className="flex items-center justify-between mb-1">
+                <label className="block uppercase font-bold text-neutral-700 text-[11px]">
+                  🏭 Stock en Bodega Principal
+                </label>
+              </div>
               <input 
                 type="number" 
                 min="0"
-                value={warehouseStock}
-                onChange={(e) => setWarehouseStock(Number(e.target.value))}
-                className="w-full bg-brand-surface border border-brand-border p-3 text-brand-black focus:outline-none focus:border-brand-black"
+                placeholder="0"
+                value={warehouseStock === 0 ? '' : warehouseStock}
+                onChange={(e) => setWarehouseStock(Math.max(0, parseInt(e.target.value, 10) || 0))}
+                className="w-full bg-white border border-brand-border p-3 rounded-lg text-brand-black font-semibold text-sm focus:outline-none focus:border-brand-black transition-all"
               />
+              <span className="text-[10px] text-neutral-400 mt-1 block">Existencias en bodega central</span>
             </div>
 
+            {/* STOCK EN TIENDA FÍSICA */}
             <div>
-              <label className="block uppercase font-bold text-neutral-500 mb-1">Stock en Tienda Física</label>
+              <div className="flex items-center justify-between mb-1">
+                <label className="block uppercase font-bold text-neutral-700 text-[11px]">
+                  🏬 Stock en Tienda Física
+                </label>
+              </div>
               <input 
                 type="number" 
                 min="0"
-                value={storeStock}
-                onChange={(e) => setStoreStock(Number(e.target.value))}
-                className="w-full bg-brand-surface border border-brand-border p-3 text-brand-black focus:outline-none focus:border-brand-black"
+                placeholder="0"
+                value={storeStock === 0 ? '' : storeStock}
+                onChange={(e) => setStoreStock(Math.max(0, parseInt(e.target.value, 10) || 0))}
+                className="w-full bg-white border border-brand-border p-3 rounded-lg text-brand-black font-semibold text-sm focus:outline-none focus:border-brand-black transition-all"
               />
+              <span className="text-[10px] text-neutral-400 mt-1 block">Exhibición y retiro en tienda</span>
             </div>
 
+            {/* STOCK WEB ONLINE */}
             <div>
-              <label className="block uppercase font-bold text-neutral-500 mb-1">Stock Web Online</label>
+              <div className="flex items-center justify-between mb-1">
+                <label className="block uppercase font-bold text-neutral-700 text-[11px]">
+                  🌐 Stock Web Online
+                </label>
+              </div>
               <input 
                 type="number" 
                 min="0"
-                value={webStock}
-                onChange={(e) => setWebStock(Number(e.target.value))}
-                className="w-full bg-brand-surface border border-brand-border p-3 text-brand-black focus:outline-none focus:border-brand-black"
+                placeholder="0"
+                value={webStock === 0 ? '' : webStock}
+                onChange={(e) => setWebStock(Math.max(0, parseInt(e.target.value, 10) || 0))}
+                className="w-full bg-white border border-brand-border p-3 rounded-lg text-brand-black font-semibold text-sm focus:outline-none focus:border-brand-black transition-all"
               />
+              <span className="text-[10px] text-neutral-400 mt-1 block">Cupo asignado a ecommerce web</span>
             </div>
 
             <div className="sm:col-span-2 lg:col-span-1">

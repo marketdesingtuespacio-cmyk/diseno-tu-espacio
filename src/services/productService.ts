@@ -92,9 +92,26 @@ const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Produ
     images: resolvedImages,
     colors: resolvedColors,
     sku: (p.sku && p.sku.trim().length > 0) ? p.sku : (fallback?.sku || ''),
-    warehouse_stock: p.warehouse_stock !== undefined ? p.warehouse_stock : (fallback?.warehouse_stock ?? 0),
-    store_stock: p.store_stock !== undefined ? p.store_stock : (fallback?.store_stock ?? 0),
-    web_stock: p.web_stock !== undefined ? p.web_stock : (fallback?.web_stock ?? p.stock),
+    warehouse_stock: (() => {
+      const w = p.warehouse_stock !== undefined ? Number(p.warehouse_stock) : (Number(fallback?.warehouse_stock) || 0);
+      const s = p.store_stock !== undefined ? Number(p.store_stock) : (Number(fallback?.store_stock) || 0);
+      const b = p.web_stock !== undefined ? Number(p.web_stock) : (fallback?.web_stock !== undefined ? Number(fallback.web_stock) : 0);
+      // Si las divisiones están en 0 pero existía stock global previo, asignarlo a Bodega
+      if (w === 0 && s === 0 && b === 0 && (Number(p.stock) || 0) > 0) {
+        return Number(p.stock);
+      }
+      return w;
+    })(),
+    store_stock: p.store_stock !== undefined ? Number(p.store_stock) : (Number(fallback?.store_stock) || 0),
+    web_stock: p.web_stock !== undefined ? Number(p.web_stock) : (fallback?.web_stock !== undefined ? Number(fallback.web_stock) : 0),
+    stock: (() => {
+      const w = p.warehouse_stock !== undefined ? Number(p.warehouse_stock) : (Number(fallback?.warehouse_stock) || 0);
+      const s = p.store_stock !== undefined ? Number(p.store_stock) : (Number(fallback?.store_stock) || 0);
+      const b = p.web_stock !== undefined ? Number(p.web_stock) : (fallback?.web_stock !== undefined ? Number(fallback.web_stock) : 0);
+      const sum = w + s + b;
+      if (sum > 0) return sum;
+      return Number(p.stock || 0);
+    })(),
     boxes_count: p.boxes_count !== undefined ? p.boxes_count : (fallback?.boxes_count ?? 0),
     warranty: (p.warranty && p.warranty.trim().length > 0) ? p.warranty : (fallback?.warranty || '3 años'),
     inventory_status: resolvedStatus,
@@ -373,6 +390,11 @@ export const productService = {
     // Filter out ONLY base64 data URLs to protect DB quota, retaining relative (/images/...) and absolute HTTP URLs
     finalImages = finalImages.filter(img => typeof img === 'string' && !img.startsWith('data:image/'));
     
+    const warehouse_stock = Math.max(0, Number(productData.warehouse_stock || 0));
+    const store_stock = Math.max(0, Number(productData.store_stock || 0));
+    const web_stock = Math.max(0, Number(productData.web_stock || 0));
+    const totalCalculatedStock = warehouse_stock + store_stock + web_stock;
+
     const cleanPayload = {
       name: productData.name,
       slug: productData.slug,
@@ -382,19 +404,19 @@ export const productService = {
       original_price: productData.original_price ? Number(productData.original_price) : null,
       category: productData.category,
       style: productData.style,
-      stock: Number(productData.stock),
+      stock: totalCalculatedStock,
       images: finalImages,
       colors: productData.colors || [],
       is_featured: !!productData.is_featured,
       dimensions: productData.dimensions || '',
       materials: productData.materials || '',
       sku: productData.sku || '',
-      warehouse_stock: Number(productData.warehouse_stock || 0),
-      store_stock: Number(productData.store_stock || 0),
-      web_stock: Number(productData.web_stock || 0),
+      warehouse_stock,
+      store_stock,
+      web_stock,
       boxes_count: Number(productData.boxes_count || 0),
       warranty: productData.warranty || '3 años',
-      inventory_status: productData.inventory_status || 'Disponible',
+      inventory_status: totalCalculatedStock <= 0 ? 'Agotado' : totalCalculatedStock <= 3 ? 'Poco Stock' : (productData.inventory_status || 'Disponible'),
       shipping_returns_info: productData.shipping_returns_info || '',
       care_instructions: productData.care_instructions || '',
       fast_shipping_badge: productData.fast_shipping_badge || '',
@@ -476,16 +498,26 @@ export const productService = {
     if (updates.original_price !== undefined) cleanPayload.original_price = updates.original_price ? Number(updates.original_price) : null;
     if (updates.category !== undefined) cleanPayload.category = updates.category;
     if (updates.style !== undefined) cleanPayload.style = updates.style;
-    if (updates.stock !== undefined) cleanPayload.stock = Number(updates.stock);
+    if (updates.warehouse_stock !== undefined) cleanPayload.warehouse_stock = Math.max(0, Number(updates.warehouse_stock));
+    if (updates.store_stock !== undefined) cleanPayload.store_stock = Math.max(0, Number(updates.store_stock));
+    if (updates.web_stock !== undefined) cleanPayload.web_stock = Math.max(0, Number(updates.web_stock));
+
+    // Si se enviaron divisiones, el stock total es obligatoriamente su suma estricta
+    if (cleanPayload.warehouse_stock !== undefined || cleanPayload.store_stock !== undefined || cleanPayload.web_stock !== undefined) {
+      const w = cleanPayload.warehouse_stock !== undefined ? cleanPayload.warehouse_stock : 0;
+      const s = cleanPayload.store_stock !== undefined ? cleanPayload.store_stock : 0;
+      const b = cleanPayload.web_stock !== undefined ? cleanPayload.web_stock : 0;
+      cleanPayload.stock = w + s + b;
+    } else if (updates.stock !== undefined) {
+      cleanPayload.stock = Number(updates.stock);
+    }
+
     if (finalImages !== undefined) cleanPayload.images = finalImages;
     if (updates.colors !== undefined) cleanPayload.colors = updates.colors;
     if (updates.is_featured !== undefined) cleanPayload.is_featured = !!updates.is_featured;
     if (updates.dimensions !== undefined) cleanPayload.dimensions = updates.dimensions;
     if (updates.materials !== undefined) cleanPayload.materials = updates.materials;
     if (updates.sku !== undefined) cleanPayload.sku = updates.sku;
-    if (updates.warehouse_stock !== undefined) cleanPayload.warehouse_stock = Number(updates.warehouse_stock);
-    if (updates.store_stock !== undefined) cleanPayload.store_stock = Number(updates.store_stock);
-    if (updates.web_stock !== undefined) cleanPayload.web_stock = Number(updates.web_stock);
     if (updates.boxes_count !== undefined) cleanPayload.boxes_count = Number(updates.boxes_count);
     if (updates.warranty !== undefined) cleanPayload.warranty = updates.warranty;
     if (updates.inventory_status !== undefined) cleanPayload.inventory_status = updates.inventory_status;
@@ -610,25 +642,75 @@ export const productService = {
           }
 
           if (targetProd) {
-            const qty = item.quantity || 1;
+            const qty = Math.max(1, item.quantity || 1);
             const location = item.stock_location || 'web';
 
-            let newStoreStock = targetProd.store_stock ?? 0;
-            let newWarehouseStock = targetProd.warehouse_stock ?? 0;
-            let newWebStock = targetProd.web_stock !== undefined ? targetProd.web_stock : targetProd.stock;
+            let newStoreStock = Math.max(0, Number(targetProd.store_stock) || 0);
+            let newWarehouseStock = Math.max(0, Number(targetProd.warehouse_stock) || 0);
+            let newWebStock = Math.max(0, Number(targetProd.web_stock) || 0);
 
-            if (location === 'store') {
-              newStoreStock = Math.max(0, newStoreStock - qty);
-            } else if (location === 'warehouse') {
-              newWarehouseStock = Math.max(0, newWarehouseStock - qty);
-            } else {
-              // 'web'
-              newWebStock = Math.max(0, newWebStock - qty);
+            // Si las 3 divisiones estaban en 0 pero el producto tenía stock preexistente:
+            if (newStoreStock === 0 && newWarehouseStock === 0 && newWebStock === 0 && (Number(targetProd.stock) || 0) > 0) {
+              if (location === 'warehouse') newWarehouseStock = Number(targetProd.stock);
+              else if (location === 'store') newStoreStock = Number(targetProd.stock);
+              else newWebStock = Number(targetProd.stock);
             }
 
-            const calculatedTotal = newStoreStock + newWarehouseStock + newWebStock;
-            const newStock = Math.max(0, targetProd.stock - qty);
-            const finalStock = calculatedTotal > 0 ? calculatedTotal : newStock;
+            // Descontar con prioridad en la división elegida y amortiguar en las otras si no alcanza
+            let remaining = qty;
+            if (location === 'store') {
+              if (newStoreStock >= remaining) {
+                newStoreStock -= remaining;
+                remaining = 0;
+              } else {
+                remaining -= newStoreStock;
+                newStoreStock = 0;
+                if (newWarehouseStock >= remaining) {
+                  newWarehouseStock -= remaining;
+                  remaining = 0;
+                } else {
+                  remaining -= newWarehouseStock;
+                  newWarehouseStock = 0;
+                  newWebStock = Math.max(0, newWebStock - remaining);
+                }
+              }
+            } else if (location === 'warehouse') {
+              if (newWarehouseStock >= remaining) {
+                newWarehouseStock -= remaining;
+                remaining = 0;
+              } else {
+                remaining -= newWarehouseStock;
+                newWarehouseStock = 0;
+                if (newWebStock >= remaining) {
+                  newWebStock -= remaining;
+                  remaining = 0;
+                } else {
+                  remaining -= newWebStock;
+                  newWebStock = 0;
+                  newStoreStock = Math.max(0, newStoreStock - remaining);
+                }
+              }
+            } else {
+              // 'web'
+              if (newWebStock >= remaining) {
+                newWebStock -= remaining;
+                remaining = 0;
+              } else {
+                remaining -= newWebStock;
+                newWebStock = 0;
+                if (newWarehouseStock >= remaining) {
+                  newWarehouseStock -= remaining;
+                  remaining = 0;
+                } else {
+                  remaining -= newWarehouseStock;
+                  newWarehouseStock = 0;
+                  newStoreStock = Math.max(0, newStoreStock - remaining);
+                }
+              }
+            }
+
+            // REGLA INDECLINABLE: El stock total es exactamente la suma de las 3 divisiones
+            const finalStock = newStoreStock + newWarehouseStock + newWebStock;
 
             let newStatus = targetProd.inventory_status || 'Disponible';
             if (finalStock <= 0) {
@@ -698,12 +780,12 @@ export const productService = {
           }
 
           if (targetProd) {
-            const qty = item.quantity || 1;
+            const qty = Math.max(1, item.quantity || 1);
             const location = item.stock_location || 'web';
 
-            let newStoreStock = targetProd.store_stock ?? 0;
-            let newWarehouseStock = targetProd.warehouse_stock ?? 0;
-            let newWebStock = targetProd.web_stock !== undefined ? targetProd.web_stock : targetProd.stock;
+            let newStoreStock = Math.max(0, Number(targetProd.store_stock) || 0);
+            let newWarehouseStock = Math.max(0, Number(targetProd.warehouse_stock) || 0);
+            let newWebStock = Math.max(0, Number(targetProd.web_stock) || 0);
 
             if (location === 'store') {
               newStoreStock += qty;
@@ -714,8 +796,8 @@ export const productService = {
               newWebStock += qty;
             }
 
-            const calculatedTotal = newStoreStock + newWarehouseStock + newWebStock;
-            const finalStock = calculatedTotal > 0 ? calculatedTotal : (targetProd.stock + qty);
+            // REGLA INDECLINABLE: El stock total es exactamente la suma de las 3 divisiones
+            const finalStock = newStoreStock + newWarehouseStock + newWebStock;
 
             let newStatus = targetProd.inventory_status || 'Disponible';
             if (finalStock > 3) {

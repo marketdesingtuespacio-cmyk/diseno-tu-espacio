@@ -16,14 +16,42 @@ function newOrderRef(): string {
 }
 
 async function deductWebStock(env: ServerEnv, product: any, qty: number) {
-  const store = product.store_stock ?? 0;
-  const warehouse = product.warehouse_stock ?? 0;
-  const web = Math.max(0, (product.web_stock ?? product.stock ?? 0) - qty);
-  const calculated = store + warehouse + web;
-  const stock = calculated > 0 ? calculated : Math.max(0, (product.stock ?? 0) - qty);
+  let store = Math.max(0, Number(product.store_stock) || 0);
+  let warehouse = Math.max(0, Number(product.warehouse_stock) || 0);
+  let web = Math.max(0, Number(product.web_stock) || 0);
+
+  // Si las 3 divisiones estaban en 0 pero existía stock global previo:
+  if (store === 0 && warehouse === 0 && web === 0 && (Number(product.stock) || 0) > 0) {
+    web = Number(product.stock);
+  }
+
+  // Descontar de Web prioritariamente; si no alcanza, amortiguar de Bodega y Tienda
+  let remaining = qty;
+  if (web >= remaining) {
+    web -= remaining;
+    remaining = 0;
+  } else {
+    remaining -= web;
+    web = 0;
+    if (warehouse >= remaining) {
+      warehouse -= remaining;
+      remaining = 0;
+    } else {
+      remaining -= warehouse;
+      warehouse = 0;
+      store = Math.max(0, store - remaining);
+    }
+  }
+
+  const stock = store + warehouse + web;
   const inventory_status = stock <= 0 ? 'Agotado' : stock <= 3 ? 'Poco Stock' : 'Disponible';
   await dbUpdate(env, 'products', `id=eq.${product.id}`, {
-    stock, web_stock: web, inventory_status, updated_at: new Date().toISOString()
+    stock,
+    store_stock: store,
+    warehouse_stock: warehouse,
+    web_stock: web,
+    inventory_status,
+    updated_at: new Date().toISOString()
   });
 }
 
