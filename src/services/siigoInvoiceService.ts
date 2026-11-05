@@ -14,6 +14,7 @@ export const siigoInvoiceService = {
   async generateInvoiceForOrder(order: Order): Promise<{
     invoiceId: string;
     invoiceNumber: string;
+    cufe?: string;
     pdfUrl?: string;
   }> {
     const { data } = await supabase.auth.getSession();

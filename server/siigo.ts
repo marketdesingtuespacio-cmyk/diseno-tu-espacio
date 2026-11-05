@@ -10,7 +10,8 @@ let cachedAuth: { token: string; expiresAt: number } | null = null;
 
 const config = (env: ServerEnv) => ({
   partnerId: env.SIIGO_PARTNER_ID || 'DisenoTuEspacio',
-  documentId: Number(env.SIIGO_DOCUMENT_ID || 10367),
+  // 64261 es la resolución oficial de Factura Electrónica de Venta habilitada ante la DIAN (Prefijo FEF)
+  documentId: Number(env.SIIGO_DOCUMENT_ID || 64261),
   sellerId: Number(env.SIIGO_SELLER_ID || 10760),
   paymentIdBold: Number(env.SIIGO_PAYMENT_ID_BOLD || 2389),
   paymentIdAddi: Number(env.SIIGO_PAYMENT_ID_ADDI || 2389)
@@ -131,18 +132,25 @@ export async function generateInvoiceForOrder(env: ServerEnv, order: any): Promi
         taxes: [{ id: 5575 }]
       }];
 
+  const invoicePayload: any = {
+    document: { id: cfg.documentId },
+    date: today,
+    customer: { identification: documentId },
+    seller: cfg.sellerId,
+    items,
+    payments: [{ id: isAddi ? cfg.paymentIdAddi : cfg.paymentIdBold, value: total, due_date: today }],
+    observations: `Pedido tienda virtual: ${order.order_ref}. Pasarela: ${order.payment_gateway || order.payment_method}`
+  };
+
+  // Si el cliente tiene correo registrado válido, solicitar envío automático por correo desde Siigo
+  if (order.customer_email && /^\S+@\S+\.\S+$/.test(order.customer_email)) {
+    invoicePayload.mail = { send: true };
+  }
+
   const res = await fetch(`${SIIGO_API}/v1/invoices`, {
     method: 'POST',
     headers,
-    body: JSON.stringify({
-      document: { id: cfg.documentId },
-      date: today,
-      customer: { identification: documentId },
-      seller: cfg.sellerId,
-      items,
-      payments: [{ id: isAddi ? cfg.paymentIdAddi : cfg.paymentIdBold, value: total, due_date: today }],
-      observations: `Pedido tienda virtual: ${order.order_ref}. Pasarela: ${order.payment_gateway || order.payment_method}`
-    })
+    body: JSON.stringify(invoicePayload)
   });
 
   if (!res.ok) {
@@ -152,14 +160,39 @@ export async function generateInvoiceForOrder(env: ServerEnv, order: any): Promi
   }
 
   const invoice = await res.json();
-  const invoiceNumber = invoice.name || `FV-${invoice.number || invoice.id}`;
-  const pdfUrl = invoice.public_url || null;
+  const prefix = invoice.prefix || 'FEF';
+  const number = invoice.number;
+  const invoiceNumber = (prefix && number) ? `${prefix}-${number}` : (invoice.name || `FEF-${number || invoice.id}`);
+  let cufe = invoice.stamp?.cufe || null;
+  let pdfUrl = invoice.public_url || null;
+
+  // Si la DIAN tarda unos instantes en sellar el CUFE sincrónico, consultar comprobante actualizado
+  if (!cufe && invoice.id) {
+    try {
+      await new Promise(r => setTimeout(r, 1200));
+      const verifyRes = await fetch(`${SIIGO_API}/v1/invoices/${invoice.id}`, { headers });
+      if (verifyRes.ok) {
+        const verifyData = await verifyRes.json();
+        if (verifyData.stamp?.cufe) {
+          cufe = verifyData.stamp.cufe;
+        }
+        if (verifyData.public_url) {
+          pdfUrl = verifyData.public_url;
+        }
+      }
+    } catch (e) {
+      console.warn('Verificación diferida de CUFE en Siigo:', e);
+    }
+  }
+
   await dbUpdate(env, 'orders', `id=eq.${order.id}`, {
     siigo_invoice_id: invoice.id,
     siigo_invoice_number: invoiceNumber,
     siigo_invoice_status: 'generated',
+    siigo_cufe: cufe,
     siigo_pdf_url: pdfUrl,
     siigo_error_log: null
   });
-  return { invoiceId: invoice.id, invoiceNumber, pdfUrl: pdfUrl || undefined };
+
+  return { invoiceId: invoice.id, invoiceNumber, cufe: cufe || undefined, pdfUrl: pdfUrl || undefined };
 }

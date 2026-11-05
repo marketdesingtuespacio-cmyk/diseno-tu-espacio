@@ -417,17 +417,26 @@ export const OrderDetailModal: React.FC<OrderDetailModalProps> = ({
                 </div>
 
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-xs">
-                  <div className="space-y-1">
-                    <p className="text-neutral-500 font-medium text-[11px]">
-                      Consecutivo Fiscal: <strong className="text-neutral-900">{order.siigo_invoice_number || 'Aún no asignado'}</strong>
+                  <div className="space-y-1.5 w-full sm:max-w-md">
+                    <p className="text-neutral-500 font-medium text-[11px] flex items-center gap-1.5 flex-wrap">
+                      <span>Consecutivo Fiscal DIAN:</span>
+                      <strong className="text-neutral-900 font-mono font-bold bg-neutral-100 px-2 py-0.5 rounded border border-neutral-200">
+                        {order.siigo_invoice_number || 'Aún no asignado'}
+                      </strong>
                     </p>
                     {order.customer_document_id && (
                       <p className="text-neutral-500 text-[10px]">
                         Documento: <strong>{order.customer_document_type || 'CC'} {order.customer_document_id}</strong>
                       </p>
                     )}
+                    {order.siigo_cufe && (
+                      <div className="bg-emerald-50 border border-emerald-200/90 p-2 rounded-xl text-[9px] text-emerald-950 font-mono break-all mt-1">
+                        <strong className="text-emerald-800 block text-[8.5px] uppercase tracking-wider mb-0.5">CUFE (Aprobación DIAN):</strong>
+                        {order.siigo_cufe}
+                      </div>
+                    )}
                     {order.siigo_error_log && (
-                      <p className="text-red-600 text-[10px] font-medium max-w-md">
+                      <p className="text-red-600 text-[10px] font-medium max-w-md bg-red-50 p-2 rounded-lg border border-red-200">
                         Detalle: {order.siigo_error_log}
                       </p>
                     )}
