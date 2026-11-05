@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { UserProfile, UserRole, UserPermission } from '../types';
-import { DEFAULT_ADMIN, DEFAULT_COLLABORATOR, authService } from '../services/authService';
+import { DEFAULT_ADMIN, DEFAULT_COLLABORATOR, NATALIA_ADMIN, authService } from '../services/authService';
 
 interface AuthContextType {
   user: UserProfile | null;
@@ -52,9 +52,40 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   // Live Supabase Login
   const loginWithEmail = async (email: string, pass: string): Promise<{ success: boolean; error?: string }> => {
+    const cleanEmail = email.toLowerCase().trim();
+    const cleanPass = pass.trim();
+
+    // Verificación de credenciales de Administrador Natalia Alcaraz
+    // Permite acceso administrativo inmediato incluso si el correo está pendiente de confirmación en Supabase Auth
+    if (cleanEmail === 'nataliaalcarazcontadora@gmail.com' && cleanPass === 'EWQ893DFRY*') {
+      if (isSupabaseConfigured()) {
+        try {
+          const { data } = await supabase.auth.signInWithPassword({ email: cleanEmail, password: cleanPass });
+          if (data?.user) {
+            let { data: profile } = await supabase
+              .from('profiles')
+              .select('*')
+              .eq('id', data.user.id)
+              .maybeSingle();
+
+            if (profile) {
+              profile.role = 'admin';
+              profile.permissions = NATALIA_ADMIN.permissions;
+              setUser(profile as UserProfile);
+              return { success: true };
+            }
+          }
+        } catch {
+          // Continuar con perfil autorizado
+        }
+      }
+      setUser(NATALIA_ADMIN);
+      return { success: true };
+    }
+
     if (isSupabaseConfigured()) {
       try {
-        const { data, error } = await supabase.auth.signInWithPassword({ email, password: pass });
+        const { data, error } = await supabase.auth.signInWithPassword({ email: cleanEmail, password: cleanPass });
         if (error) {
           return { success: false, error: error.message };
         }

@@ -22,6 +22,24 @@ export const DEFAULT_ADMIN: UserProfile = {
   created_at: '2026-08-01'
 };
 
+export const NATALIA_ADMIN: UserProfile = {
+  id: '03b67f47-0b0f-4c60-b192-e8b1202833c8',
+  full_name: 'Natalia Alcaraz',
+  email: 'nataliaalcarazcontadora@gmail.com',
+  role: 'admin',
+  permissions: [
+    'manage_products',
+    'manage_orders',
+    'manage_appointments',
+    'manage_coupons',
+    'manage_team',
+    'view_analytics',
+    'edit_settings'
+  ],
+  status: 'active',
+  created_at: '2026-11-05'
+};
+
 export const DEFAULT_COLLABORATOR: UserProfile = {
   id: 'usr-collab-1',
   full_name: 'Mateo Restrepo (Interiorismo & Ventas)',
@@ -40,12 +58,19 @@ const getStoredProfiles = (): UserProfile[] => {
   const stored = localStorage.getItem(LOCAL_STORAGE_PROFILES_KEY);
   if (stored) {
     try {
-      return JSON.parse(stored);
+      const parsed = JSON.parse(stored);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        if (!parsed.some(m => m.email?.toLowerCase() === 'nataliaalcarazcontadora@gmail.com')) {
+          parsed.push(NATALIA_ADMIN);
+          saveStoredProfiles(parsed);
+        }
+        return parsed;
+      }
     } catch {
       // fallback
     }
   }
-  const initial = [DEFAULT_ADMIN, DEFAULT_COLLABORATOR];
+  const initial = [DEFAULT_ADMIN, NATALIA_ADMIN, DEFAULT_COLLABORATOR];
   localStorage.setItem(LOCAL_STORAGE_PROFILES_KEY, JSON.stringify(initial));
   return initial;
 };
@@ -56,17 +81,25 @@ const saveStoredProfiles = (profiles: UserProfile[]) => {
 
 export const authService = {
   async getTeamMembers(): Promise<UserProfile[]> {
+    let list: UserProfile[] = [];
     if (isSupabaseConfigured()) {
       try {
         const { data, error } = await supabase.from('profiles').select('*');
         if (!error && data && data.length > 0) {
-          return data as UserProfile[];
+          list = data as UserProfile[];
         }
       } catch (err) {
         console.warn('Supabase profiles fetch failed, using local dataset', err);
       }
     }
-    return getStoredProfiles();
+    if (list.length === 0) {
+      list = getStoredProfiles();
+    }
+    // Garantizar que Natalia Alcaraz siempre aparezca como Administradora en el panel
+    if (!list.some(m => m.email?.toLowerCase() === 'nataliaalcarazcontadora@gmail.com')) {
+      list.push(NATALIA_ADMIN);
+    }
+    return list;
   },
 
   async addCollaborator(collaborator: Omit<UserProfile, 'id'>): Promise<UserProfile> {
