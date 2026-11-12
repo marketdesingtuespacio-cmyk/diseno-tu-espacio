@@ -7,6 +7,7 @@ import { ProductCard } from '../components/ProductCard';
 import { ProductCardSkeleton } from '../components/ProductCardSkeleton';
 import { CategoryCarousel } from '../components/CategoryCarousel';
 import { AnimatedHeroHeader } from '../components/AnimatedHeroHeader';
+import { BlackFridayVideoBanner } from '../components/BlackFridayVideoBanner';
 import { GrandOpeningEditorialGrid } from '../components/GrandOpeningEditorialGrid';
 
 export const HomePage: React.FC = () => {
@@ -27,6 +28,9 @@ export const HomePage: React.FC = () => {
       
       {/* Animated Architectural House Lighting Hero Header */}
       <AnimatedHeroHeader />
+
+      {/* Interactive Black Friday Video Banner - 20% OFF Papeles de Colgadura until Nov 30 */}
+      <BlackFridayVideoBanner />
 
       {/* Westwing-Style Category Carousel */}
       <CategoryCarousel />
