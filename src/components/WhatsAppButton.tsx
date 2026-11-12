@@ -26,7 +26,7 @@ const HELPER_MESSAGES = [
 ];
 
 export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
-  phoneNumber = '573000044784'
+  phoneNumber = '573113477785'
 }) => {
   const location = useLocation();
   const isCatalog = location.pathname === '/catalog';

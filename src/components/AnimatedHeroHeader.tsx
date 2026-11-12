@@ -25,8 +25,8 @@ const WALLPAPER_PREVIEWS: WallpaperItem[] = [
     sku: 'MD681511',
     name: 'Textura Lino Arena',
     collection: 'Serie Textil Contemporánea',
-    regularPrice: 800000,
-    discountPrice: 640000,
+    regularPrice: 600000,
+    discountPrice: 480000,
     image:
       'https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681511_2.jpeg',
   },
@@ -34,8 +34,8 @@ const WALLPAPER_PREVIEWS: WallpaperItem[] = [
     sku: 'MD680313',
     name: 'Piedra Caliza & Seda',
     collection: 'Colección Mineral Luxury',
-    regularPrice: 800000,
-    discountPrice: 640000,
+    regularPrice: 600000,
+    discountPrice: 480000,
     image:
       'https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680313_1.jpeg',
   },
@@ -43,8 +43,8 @@ const WALLPAPER_PREVIEWS: WallpaperItem[] = [
     sku: 'MD680101',
     name: 'Estuco Gris Grafito',
     collection: 'Minimalismo Monolítico',
-    regularPrice: 800000,
-    discountPrice: 640000,
+    regularPrice: 600000,
+    discountPrice: 480000,
     image:
       'https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680101_2.jpeg',
   },
@@ -52,8 +52,8 @@ const WALLPAPER_PREVIEWS: WallpaperItem[] = [
     sku: 'MD680402B',
     name: 'Fibra Botánica & Carbón',
     collection: 'Edición Especial de Autor',
-    regularPrice: 800000,
-    discountPrice: 640000,
+    regularPrice: 600000,
+    discountPrice: 480000,
     image:
       'https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680402B_1.jpeg',
   },
@@ -240,9 +240,9 @@ export const AnimatedHeroHeader: React.FC = () => {
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hola Diseño Tu Espacio, quiero aprovechar el 20% de descuento de Black Friday en Papeles de Colgadura (válido hasta el 30 de noviembre). Me interesa la referencia ${selectedWallpaper.sku} (${selectedWallpaper.name}) con precio de oferta de ${formatPriceCOP(selectedWallpaper.discountPrice)}. ¿Tienen disponibilidad y asesoría?`
+    `Hola Diseño Tu Espacio, quiero aprovechar la oferta de Black Friday en Papeles de Colgadura a $480.000 (válido hasta el 30 de noviembre). Me interesa la referencia ${selectedWallpaper.sku} (${selectedWallpaper.name}). ¿Tienen disponibilidad y asesoría?`
   );
-  const whatsappUrl = `https://wa.me/573000044784?text=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/573113477785?text=${whatsappMessage}`;
 
   return (
     <section
@@ -373,16 +373,17 @@ export const AnimatedHeroHeader: React.FC = () => {
                 Campaña Oficial de Autor
               </span>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-light text-white leading-tight tracking-tight">
-                Todos nuestros papeles de colgadura con un{' '}
+                Todos nuestros papeles de colgadura a{' '}
                 <span className="font-bold text-red-400 underline decoration-red-500/60 underline-offset-8">
-                  20% de descuento
+                  $480.000
                 </span>
               </h1>
               <p className="text-sm sm:text-base text-neutral-300 font-light leading-relaxed max-w-xl mx-auto lg:mx-0">
                 Lleva la alta decoración a tus muros con texturas vinílicas arquitectónicas de alto
                 gramaje, lavables y con relieve táctil. Cada rollo cubre hasta{' '}
-                <strong className="text-white font-medium">16.5 m²</strong>. Elige tu referencia
-                favorita y cotiza al instante por WhatsApp.
+                <strong className="text-white font-medium">16.5 m²</strong>. Oferta especial de
+                Black Friday (20% OFF) válida hasta el{' '}
+                <strong className="text-white font-medium">30 de noviembre</strong>.
               </p>
             </div>
 
@@ -394,7 +395,7 @@ export const AnimatedHeroHeader: React.FC = () => {
                   Explorador de Texturas en Oferta
                 </span>
                 <span className="text-[11px] text-red-400 font-bold uppercase tracking-wider">
-                  Ahorras $160.000 por rollo
+                  Ahorras $120.000 por rollo
                 </span>
               </div>
 
@@ -484,7 +485,7 @@ export const AnimatedHeroHeader: React.FC = () => {
 
             </div>
 
-            {/* CALLS TO ACTION: WhatsApp 3000044784 + Catalog Link */}
+            {/* CALLS TO ACTION: WhatsApp 3113477785 + Catalog Link */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
               <a
                 href={whatsappUrl}
@@ -493,7 +494,7 @@ export const AnimatedHeroHeader: React.FC = () => {
                 className="flex-1 inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-neutral-950 font-bold text-xs uppercase tracking-[0.16em] shadow-lg shadow-[#25D366]/25 transition-all duration-300 group"
               >
                 <MessageCircle className="w-4 h-4 fill-neutral-950" aria-hidden="true" />
-                <span>Pedir 20% OFF por WhatsApp</span>
+                <span>Pedir Oferta $480.000 por WhatsApp</span>
                 <ArrowRight
                   className="w-4 h-4 transition-transform group-hover:translate-x-1"
                   aria-hidden="true"
@@ -511,7 +512,7 @@ export const AnimatedHeroHeader: React.FC = () => {
 
             {/* Contact Note */}
             <p className="text-[11px] text-neutral-400 text-center lg:text-left">
-              Línea directa WhatsApp: <strong className="text-white">+57 300 004 4784</strong> • Atención inmediata y cálculo de rollos para tu proyecto.
+              Línea directa WhatsApp: <strong className="text-white">+57 311 347 7785</strong> • Atención inmediata y cálculo de rollos para tu proyecto.
             </p>
 
           </div>
