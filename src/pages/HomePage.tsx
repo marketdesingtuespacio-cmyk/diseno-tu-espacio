@@ -7,6 +7,7 @@ import { ProductCard } from '../components/ProductCard';
 import { ProductCardSkeleton } from '../components/ProductCardSkeleton';
 import { CategoryCarousel } from '../components/CategoryCarousel';
 import { AnimatedHeroHeader } from '../components/AnimatedHeroHeader';
+import { EditorialBestsellersGrid } from '../components/EditorialBestsellersGrid';
 import { GrandOpeningEditorialGrid } from '../components/GrandOpeningEditorialGrid';
 
 export const HomePage: React.FC = () => {
@@ -30,6 +31,9 @@ export const HomePage: React.FC = () => {
 
       {/* Westwing-Style Category Carousel */}
       <CategoryCarousel />
+
+      {/* Editorial Bestsellers Grid: NUESTROS MÁS VENDIDOS - Las piezas más populares de esta temporada */}
+      <EditorialBestsellersGrid />
 
       {/* 4 Elegant Editorial Cards: Gran Apertura 16 de Octubre & Categorías de Autor */}
       <GrandOpeningEditorialGrid />
