@@ -25,7 +25,8 @@ const mapGoogleCategory = (cat = '') => {
   if (c.includes('lavamano') || c.includes('griferia')) return 'Hardware > Plumbing > Plumbing Fixtures > Sinks > Bathroom Sinks';
   if (c.includes('papel') || c.includes('revestimiento') || c.includes('panel')) return 'Home & Garden > Decor > Wallpaper';
   if (c.includes('lampara') || c.includes('iluminac')) return 'Home & Garden > Lighting > Lamps';
-  if (c.includes('mueble') || c.includes('mesa') || c.includes('silla')) return 'Furniture';
+  if (c.includes('mesa')) return 'Furniture > Tables';
+  if (c.includes('mueble') || c.includes('silla')) return 'Furniture';
   return 'Home & Garden > Decor';
 };
 

@@ -49,6 +49,11 @@ export const isCategoryMatch = (prodCat?: string, filterCat?: string): boolean =
 
   if (isEspejosFilter && isEspejosProd) return true;
 
+  // Normalize Mesas variations (Mesas, Mesas con Base, Mesas Completas)
+  if (f === 'mesas' && p.includes('mesa')) return true;
+  if ((f === 'mesas con base' || f.includes('base')) && (p === 'mesas con base' || p.includes('base'))) return true;
+  if ((f === 'mesas completas' || f.includes('completa')) && (p === 'mesas completas' || p.includes('completa'))) return true;
+
   return false;
 };
 

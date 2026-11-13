@@ -7,7 +7,7 @@ import { ProductCard } from '../components/ProductCard';
 import { ProductCardSkeleton } from '../components/ProductCardSkeleton';
 import { useCurrency } from '../context/CurrencyContext';
 
-const DEFAULT_CATEGORIES = ['all', 'Espejos', 'Papel de Colgadura', 'Lavamanos', 'Cuadros', 'Revestimientos'];
+const DEFAULT_CATEGORIES = ['all', 'Espejos', 'Papel de Colgadura', 'Lavamanos', 'Cuadros', 'Revestimientos', 'Mesas con Base', 'Mesas Completas'];
 const STYLES = ['all', 'Minimalista', 'Contemporáneo', 'Bauhaus', 'Nórdico', 'Orgánico Moderno', 'Galería Contemporánea', 'Arquitectónico'];
 const DEFAULT_MAX_PRICE = 20000000; // $20.000.000 COP default max threshold
 
@@ -23,6 +23,8 @@ const cleanAndDedupeCategories = (rawList: string[]): string[] => {
     else if (trimmed.toLowerCase() === 'lavamanos') canonical = 'Lavamanos';
     else if (trimmed.toLowerCase() === 'cuadros') canonical = 'Cuadros';
     else if (trimmed.toLowerCase() === 'revestimientos') canonical = 'Revestimientos';
+    else if (trimmed.toLowerCase() === 'mesas con base') canonical = 'Mesas con Base';
+    else if (trimmed.toLowerCase() === 'mesas completas') canonical = 'Mesas Completas';
 
     const key = canonical.toLowerCase();
     if (!map.has(key)) {

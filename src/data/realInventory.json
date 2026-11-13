@@ -4384,5 +4384,822 @@
     "created_at": "2026-09-01 10:00",
     "wholesale_price": 615000,
     "wholesale_min_qty": 5
+  },
+  {
+    "id": "9f4c96c6-bcb4-42f9-b32d-e2fc36f893aa",
+    "name": "Mesa AA100052",
+    "slug": "mesa-aa100052",
+    "sku": "AA100052",
+    "brand_collection": "Diseño Tu Espacio Collection",
+    "category": "Mesas con Base",
+    "style": "Contemporáneo",
+    "price": 714000,
+    "original_price": null,
+    "stock": 6,
+    "warehouse_stock": 2,
+    "store_stock": 2,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "3 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "/images/cat_mesa_1787548081162.jpg",
+      "/images/cat_mesa_portrait_1787589762766.jpg"
+    ],
+    "colors": [
+      {
+        "hex": "#6b4423",
+        "name": "Nogal Natural"
+      },
+      {
+        "hex": "#403328",
+        "name": "Roble Ahumado"
+      },
+      {
+        "hex": "#1c1c1c",
+        "name": "Mármol Negro"
+      }
+    ],
+    "dimensions": "Estándar Arquitectónico",
+    "materials": "Madera Noble, Piedra y Metal",
+    "description": "Mesa de diseño arquitectónico Mesa AA100052 (Ref. SKU: AA100052). Acabados de lujo, estructura robusta y estilo contemporáneo.",
+    "created_at": "2026-11-13T03:37:52.118959+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "024a029c-0870-467f-bfd8-50f06bd51f13",
+    "name": "Mesa AA1010068",
+    "slug": "mesa-aa1010068",
+    "sku": "AA1010068",
+    "brand_collection": "Diseño Tu Espacio Collection",
+    "category": "Mesas con Base",
+    "style": "Contemporáneo",
+    "price": 714000,
+    "original_price": null,
+    "stock": 6,
+    "warehouse_stock": 2,
+    "store_stock": 2,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "3 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "/images/cat_mesa_1787548081162.jpg",
+      "/images/cat_mesa_portrait_1787589762766.jpg"
+    ],
+    "colors": [
+      {
+        "hex": "#6b4423",
+        "name": "Nogal Natural"
+      },
+      {
+        "hex": "#403328",
+        "name": "Roble Ahumado"
+      },
+      {
+        "hex": "#1c1c1c",
+        "name": "Mármol Negro"
+      }
+    ],
+    "dimensions": "Estándar Arquitectónico",
+    "materials": "Madera Noble, Piedra y Metal",
+    "description": "Mesa de diseño arquitectónico Mesa AA1010068 (Ref. SKU: AA1010068). Acabados de lujo, estructura robusta y estilo contemporáneo.",
+    "created_at": "2026-11-13T03:37:52.118959+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "504b4642-b970-42de-94fd-6cb37816c6c4",
+    "name": "Mesa AA1010081",
+    "slug": "mesa-aa1010081",
+    "sku": "AA1010081",
+    "brand_collection": "Diseño Tu Espacio Collection",
+    "category": "Mesas con Base",
+    "style": "Contemporáneo",
+    "price": 714000,
+    "original_price": null,
+    "stock": 6,
+    "warehouse_stock": 2,
+    "store_stock": 2,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "3 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "/images/cat_mesa_1787548081162.jpg",
+      "/images/cat_mesa_portrait_1787589762766.jpg"
+    ],
+    "colors": [
+      {
+        "hex": "#6b4423",
+        "name": "Nogal Natural"
+      },
+      {
+        "hex": "#403328",
+        "name": "Roble Ahumado"
+      },
+      {
+        "hex": "#1c1c1c",
+        "name": "Mármol Negro"
+      }
+    ],
+    "dimensions": "Estándar Arquitectónico",
+    "materials": "Madera Noble, Piedra y Metal",
+    "description": "Mesa de diseño arquitectónico Mesa AA1010081 (Ref. SKU: AA1010081). Acabados de lujo, estructura robusta y estilo contemporáneo.",
+    "created_at": "2026-11-13T03:37:52.118959+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "ab5cc4de-6ef5-4c44-a03a-15c7b5abf0d3",
+    "name": "Mesa AA1010088",
+    "slug": "mesa-aa1010088",
+    "sku": "AA1010088",
+    "brand_collection": "Diseño Tu Espacio Collection",
+    "category": "Mesas con Base",
+    "style": "Contemporáneo",
+    "price": 714000,
+    "original_price": null,
+    "stock": 6,
+    "warehouse_stock": 2,
+    "store_stock": 2,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "3 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "/images/cat_mesa_1787548081162.jpg",
+      "/images/cat_mesa_portrait_1787589762766.jpg"
+    ],
+    "colors": [
+      {
+        "hex": "#6b4423",
+        "name": "Nogal Natural"
+      },
+      {
+        "hex": "#403328",
+        "name": "Roble Ahumado"
+      },
+      {
+        "hex": "#1c1c1c",
+        "name": "Mármol Negro"
+      }
+    ],
+    "dimensions": "Estándar Arquitectónico",
+    "materials": "Madera Noble, Piedra y Metal",
+    "description": "Mesa de diseño arquitectónico Mesa AA1010088 (Ref. SKU: AA1010088). Acabados de lujo, estructura robusta y estilo contemporáneo.",
+    "created_at": "2026-11-13T03:37:52.118959+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "f509da3c-d72c-4740-b185-99c702c9340a",
+    "name": "Mesa AA101009",
+    "slug": "mesa-aa101009",
+    "sku": "AA101009",
+    "brand_collection": "Diseño Tu Espacio Collection",
+    "category": "Mesas con Base",
+    "style": "Contemporáneo",
+    "price": 654500,
+    "original_price": null,
+    "stock": 6,
+    "warehouse_stock": 2,
+    "store_stock": 2,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "3 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "/images/cat_mesa_1787548081162.jpg",
+      "/images/cat_mesa_portrait_1787589762766.jpg"
+    ],
+    "colors": [
+      {
+        "hex": "#6b4423",
+        "name": "Nogal Natural"
+      },
+      {
+        "hex": "#403328",
+        "name": "Roble Ahumado"
+      },
+      {
+        "hex": "#1c1c1c",
+        "name": "Mármol Negro"
+      }
+    ],
+    "dimensions": "Estándar Arquitectónico",
+    "materials": "Madera Noble, Piedra y Metal",
+    "description": "Mesa de diseño arquitectónico Mesa AA101009 (Ref. SKU: AA101009). Acabados de lujo, estructura robusta y estilo contemporáneo.",
+    "created_at": "2026-11-13T03:37:52.118959+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "23facf7b-451f-4151-b691-606d69bf489c",
+    "name": "Mesa AA1010069",
+    "slug": "mesa-aa1010069",
+    "sku": "AA1010069",
+    "brand_collection": "Diseño Tu Espacio Collection",
+    "category": "Mesas con Base",
+    "style": "Contemporáneo",
+    "price": 714000,
+    "original_price": null,
+    "stock": 6,
+    "warehouse_stock": 2,
+    "store_stock": 2,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "3 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "/images/cat_mesa_1787548081162.jpg",
+      "/images/cat_mesa_portrait_1787589762766.jpg"
+    ],
+    "colors": [
+      {
+        "hex": "#6b4423",
+        "name": "Nogal Natural"
+      },
+      {
+        "hex": "#403328",
+        "name": "Roble Ahumado"
+      },
+      {
+        "hex": "#1c1c1c",
+        "name": "Mármol Negro"
+      }
+    ],
+    "dimensions": "Estándar Arquitectónico",
+    "materials": "Madera Noble, Piedra y Metal",
+    "description": "Mesa de diseño arquitectónico Mesa AA1010069 (Ref. SKU: AA1010069). Acabados de lujo, estructura robusta y estilo contemporáneo.",
+    "created_at": "2026-11-13T03:37:52.118959+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "d6f6863f-58c5-40b6-8f00-c613f02fc2c3",
+    "name": "Mesa AA1010091-720",
+    "slug": "mesa-aa1010091-720",
+    "sku": "AA1010091-720",
+    "brand_collection": "Diseño Tu Espacio Collection",
+    "category": "Mesas con Base",
+    "style": "Contemporáneo",
+    "price": 714000,
+    "original_price": null,
+    "stock": 6,
+    "warehouse_stock": 2,
+    "store_stock": 2,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "3 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "/images/cat_mesa_1787548081162.jpg",
+      "/images/cat_mesa_portrait_1787589762766.jpg"
+    ],
+    "colors": [
+      {
+        "hex": "#6b4423",
+        "name": "Nogal Natural"
+      },
+      {
+        "hex": "#403328",
+        "name": "Roble Ahumado"
+      },
+      {
+        "hex": "#1c1c1c",
+        "name": "Mármol Negro"
+      }
+    ],
+    "dimensions": "Estándar Arquitectónico",
+    "materials": "Madera Noble, Piedra y Metal",
+    "description": "Mesa de diseño arquitectónico Mesa AA1010091-720 (Ref. SKU: AA1010091-720). Acabados de lujo, estructura robusta y estilo contemporáneo.",
+    "created_at": "2026-11-13T03:37:52.118959+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "b9bba48f-e009-4f2e-a257-ffe674aeb579",
+    "name": "Mesa AA1010091-1100",
+    "slug": "mesa-aa1010091-1100",
+    "sku": "AA1010091-1100",
+    "brand_collection": "Diseño Tu Espacio Collection",
+    "category": "Mesas con Base",
+    "style": "Contemporáneo",
+    "price": 773500,
+    "original_price": null,
+    "stock": 6,
+    "warehouse_stock": 2,
+    "store_stock": 2,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "3 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "/images/cat_mesa_1787548081162.jpg",
+      "/images/cat_mesa_portrait_1787589762766.jpg"
+    ],
+    "colors": [
+      {
+        "hex": "#6b4423",
+        "name": "Nogal Natural"
+      },
+      {
+        "hex": "#403328",
+        "name": "Roble Ahumado"
+      },
+      {
+        "hex": "#1c1c1c",
+        "name": "Mármol Negro"
+      }
+    ],
+    "dimensions": "Estándar Arquitectónico",
+    "materials": "Madera Noble, Piedra y Metal",
+    "description": "Mesa de diseño arquitectónico Mesa AA1010091-1100 (Ref. SKU: AA1010091-1100). Acabados de lujo, estructura robusta y estilo contemporáneo.",
+    "created_at": "2026-11-13T03:37:52.118959+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "05df60d7-d624-4a1b-8304-40df5e095c6e",
+    "name": "Mesa AA1010085",
+    "slug": "mesa-aa1010085",
+    "sku": "AA1010085",
+    "brand_collection": "Diseño Tu Espacio Collection",
+    "category": "Mesas con Base",
+    "style": "Contemporáneo",
+    "price": 714000,
+    "original_price": null,
+    "stock": 6,
+    "warehouse_stock": 2,
+    "store_stock": 2,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "3 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "/images/cat_mesa_1787548081162.jpg",
+      "/images/cat_mesa_portrait_1787589762766.jpg"
+    ],
+    "colors": [
+      {
+        "hex": "#6b4423",
+        "name": "Nogal Natural"
+      },
+      {
+        "hex": "#403328",
+        "name": "Roble Ahumado"
+      },
+      {
+        "hex": "#1c1c1c",
+        "name": "Mármol Negro"
+      }
+    ],
+    "dimensions": "Estándar Arquitectónico",
+    "materials": "Madera Noble, Piedra y Metal",
+    "description": "Mesa de diseño arquitectónico Mesa AA1010085 (Ref. SKU: AA1010085). Acabados de lujo, estructura robusta y estilo contemporáneo.",
+    "created_at": "2026-11-13T03:37:52.118959+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "b7cbc54c-9a96-4138-a70b-d34bf3d28b01",
+    "name": "Mesa A-143",
+    "slug": "mesa-a-143",
+    "sku": "A-143",
+    "brand_collection": "Diseño Tu Espacio Collection",
+    "category": "Mesas con Base",
+    "style": "Contemporáneo",
+    "price": 535500,
+    "original_price": null,
+    "stock": 6,
+    "warehouse_stock": 2,
+    "store_stock": 2,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "3 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "/images/cat_mesa_1787548081162.jpg",
+      "/images/cat_mesa_portrait_1787589762766.jpg"
+    ],
+    "colors": [
+      {
+        "hex": "#6b4423",
+        "name": "Nogal Natural"
+      },
+      {
+        "hex": "#403328",
+        "name": "Roble Ahumado"
+      },
+      {
+        "hex": "#1c1c1c",
+        "name": "Mármol Negro"
+      }
+    ],
+    "dimensions": "Estándar Arquitectónico",
+    "materials": "Madera Noble, Piedra y Metal",
+    "description": "Mesa de diseño arquitectónico Mesa A-143 (Ref. SKU: A-143). Acabados de lujo, estructura robusta y estilo contemporáneo.",
+    "created_at": "2026-11-13T03:37:52.118959+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "cc5e1ac6-c1d2-46b4-b3a1-ad9db85072b4",
+    "name": "Mesa AA1010086",
+    "slug": "mesa-aa1010086",
+    "sku": "AA1010086",
+    "brand_collection": "Diseño Tu Espacio Collection",
+    "category": "Mesas con Base",
+    "style": "Contemporáneo",
+    "price": 714000,
+    "original_price": null,
+    "stock": 6,
+    "warehouse_stock": 2,
+    "store_stock": 2,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "3 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "/images/cat_mesa_1787548081162.jpg",
+      "/images/cat_mesa_portrait_1787589762766.jpg"
+    ],
+    "colors": [
+      {
+        "hex": "#6b4423",
+        "name": "Nogal Natural"
+      },
+      {
+        "hex": "#403328",
+        "name": "Roble Ahumado"
+      },
+      {
+        "hex": "#1c1c1c",
+        "name": "Mármol Negro"
+      }
+    ],
+    "dimensions": "Estándar Arquitectónico",
+    "materials": "Madera Noble, Piedra y Metal",
+    "description": "Mesa de diseño arquitectónico Mesa AA1010086 (Ref. SKU: AA1010086). Acabados de lujo, estructura robusta y estilo contemporáneo.",
+    "created_at": "2026-11-13T03:37:52.118959+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "9c8826ca-0824-476f-aa14-d11af6531514",
+    "name": "Mesa AA1010087",
+    "slug": "mesa-aa1010087",
+    "sku": "AA1010087",
+    "brand_collection": "Diseño Tu Espacio Collection",
+    "category": "Mesas con Base",
+    "style": "Contemporáneo",
+    "price": 535500,
+    "original_price": null,
+    "stock": 6,
+    "warehouse_stock": 2,
+    "store_stock": 2,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "3 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "/images/cat_mesa_1787548081162.jpg",
+      "/images/cat_mesa_portrait_1787589762766.jpg"
+    ],
+    "colors": [
+      {
+        "hex": "#6b4423",
+        "name": "Nogal Natural"
+      },
+      {
+        "hex": "#403328",
+        "name": "Roble Ahumado"
+      },
+      {
+        "hex": "#1c1c1c",
+        "name": "Mármol Negro"
+      }
+    ],
+    "dimensions": "Estándar Arquitectónico",
+    "materials": "Madera Noble, Piedra y Metal",
+    "description": "Mesa de diseño arquitectónico Mesa AA1010087 (Ref. SKU: AA1010087). Acabados de lujo, estructura robusta y estilo contemporáneo.",
+    "created_at": "2026-11-13T03:37:52.118959+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "dada68e7-4c6b-4e92-9d42-9c5c154d952b",
+    "name": "Mesa 11",
+    "slug": "mesa-11",
+    "sku": "11",
+    "brand_collection": "Diseño Tu Espacio Collection",
+    "category": "Mesas con Base",
+    "style": "Contemporáneo",
+    "price": 714000,
+    "original_price": null,
+    "stock": 6,
+    "warehouse_stock": 2,
+    "store_stock": 2,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "3 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "/images/cat_mesa_1787548081162.jpg",
+      "/images/cat_mesa_portrait_1787589762766.jpg"
+    ],
+    "colors": [
+      {
+        "hex": "#6b4423",
+        "name": "Nogal Natural"
+      },
+      {
+        "hex": "#403328",
+        "name": "Roble Ahumado"
+      },
+      {
+        "hex": "#1c1c1c",
+        "name": "Mármol Negro"
+      }
+    ],
+    "dimensions": "Estándar Arquitectónico",
+    "materials": "Madera Noble, Piedra y Metal",
+    "description": "Mesa de diseño arquitectónico Mesa 11 (Ref. SKU: 11). Acabados de lujo, estructura robusta y estilo contemporáneo.",
+    "created_at": "2026-11-13T03:37:52.118959+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "3c0b50c9-46fa-4ed8-b990-17ae36f4a8af",
+    "name": "Mesa A10019",
+    "slug": "mesa-a10019",
+    "sku": "A10019",
+    "brand_collection": "Diseño Tu Espacio Collection",
+    "category": "Mesas con Base",
+    "style": "Contemporáneo",
+    "price": 654500,
+    "original_price": null,
+    "stock": 6,
+    "warehouse_stock": 2,
+    "store_stock": 2,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "3 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "/images/cat_mesa_1787548081162.jpg",
+      "/images/cat_mesa_portrait_1787589762766.jpg"
+    ],
+    "colors": [
+      {
+        "hex": "#6b4423",
+        "name": "Nogal Natural"
+      },
+      {
+        "hex": "#403328",
+        "name": "Roble Ahumado"
+      },
+      {
+        "hex": "#1c1c1c",
+        "name": "Mármol Negro"
+      }
+    ],
+    "dimensions": "Estándar Arquitectónico",
+    "materials": "Madera Noble, Piedra y Metal",
+    "description": "Mesa de diseño arquitectónico Mesa A10019 (Ref. SKU: A10019). Acabados de lujo, estructura robusta y estilo contemporáneo.",
+    "created_at": "2026-11-13T03:37:52.118959+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "f7a109dc-4c95-48e2-9233-b13e97abb21a",
+    "name": "Mesa AA1010089-500",
+    "slug": "mesa-aa1010089-500",
+    "sku": "AA1010089-500",
+    "brand_collection": "Diseño Tu Espacio Collection",
+    "category": "Mesas Completas",
+    "style": "Contemporáneo",
+    "price": 714000,
+    "original_price": null,
+    "stock": 6,
+    "warehouse_stock": 2,
+    "store_stock": 2,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "3 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "/images/cat_mesa_1787548081162.jpg",
+      "/images/cat_mesa_portrait_1787589762766.jpg"
+    ],
+    "colors": [
+      {
+        "hex": "#6b4423",
+        "name": "Nogal Natural"
+      },
+      {
+        "hex": "#403328",
+        "name": "Roble Ahumado"
+      },
+      {
+        "hex": "#1c1c1c",
+        "name": "Mármol Negro"
+      }
+    ],
+    "dimensions": "Estándar Arquitectónico",
+    "materials": "Madera Noble, Piedra y Metal",
+    "description": "Mesa de diseño arquitectónico Mesa AA1010089-500 (Ref. SKU: AA1010089-500). Acabados de lujo, estructura robusta y estilo contemporáneo.",
+    "created_at": "2026-11-13T03:37:52.118959+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "f14c0511-d417-4250-95f5-d98f182d9235",
+    "name": "Mesa AA1010089-1100",
+    "slug": "mesa-aa1010089-1100",
+    "sku": "AA1010089-1100",
+    "brand_collection": "Diseño Tu Espacio Collection",
+    "category": "Mesas Completas",
+    "style": "Contemporáneo",
+    "price": 714000,
+    "original_price": null,
+    "stock": 6,
+    "warehouse_stock": 2,
+    "store_stock": 2,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "3 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "/images/cat_mesa_1787548081162.jpg",
+      "/images/cat_mesa_portrait_1787589762766.jpg"
+    ],
+    "colors": [
+      {
+        "hex": "#6b4423",
+        "name": "Nogal Natural"
+      },
+      {
+        "hex": "#403328",
+        "name": "Roble Ahumado"
+      },
+      {
+        "hex": "#1c1c1c",
+        "name": "Mármol Negro"
+      }
+    ],
+    "dimensions": "Estándar Arquitectónico",
+    "materials": "Madera Noble, Piedra y Metal",
+    "description": "Mesa de diseño arquitectónico Mesa AA1010089-1100 (Ref. SKU: AA1010089-1100). Acabados de lujo, estructura robusta y estilo contemporáneo.",
+    "created_at": "2026-11-13T03:37:52.118959+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "4fe00bf6-3920-411f-834a-40929368f683",
+    "name": "Mesa AA1010084-01",
+    "slug": "mesa-aa1010084-01",
+    "sku": "AA1010084-01",
+    "brand_collection": "Diseño Tu Espacio Collection",
+    "category": "Mesas Completas",
+    "style": "Contemporáneo",
+    "price": 1047200,
+    "original_price": null,
+    "stock": 6,
+    "warehouse_stock": 2,
+    "store_stock": 2,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "3 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "/images/cat_mesa_1787548081162.jpg",
+      "/images/cat_mesa_portrait_1787589762766.jpg"
+    ],
+    "colors": [
+      {
+        "hex": "#6b4423",
+        "name": "Nogal Natural"
+      },
+      {
+        "hex": "#403328",
+        "name": "Roble Ahumado"
+      },
+      {
+        "hex": "#1c1c1c",
+        "name": "Mármol Negro"
+      }
+    ],
+    "dimensions": "Estándar Arquitectónico",
+    "materials": "Madera Noble, Piedra y Metal",
+    "description": "Mesa de diseño arquitectónico Mesa AA1010084-01 (Ref. SKU: AA1010084-01). Acabados de lujo, estructura robusta y estilo contemporáneo.",
+    "created_at": "2026-11-13T03:37:52.118959+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "740545c5-1323-4dd6-bdd6-b92cb29812ce",
+    "name": "Mesa AA1010084-02",
+    "slug": "mesa-aa1010084-02",
+    "sku": "AA1010084-02",
+    "brand_collection": "Diseño Tu Espacio Collection",
+    "category": "Mesas Completas",
+    "style": "Contemporáneo",
+    "price": 1047200,
+    "original_price": null,
+    "stock": 6,
+    "warehouse_stock": 2,
+    "store_stock": 2,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "3 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "/images/cat_mesa_1787548081162.jpg",
+      "/images/cat_mesa_portrait_1787589762766.jpg"
+    ],
+    "colors": [
+      {
+        "hex": "#6b4423",
+        "name": "Nogal Natural"
+      },
+      {
+        "hex": "#403328",
+        "name": "Roble Ahumado"
+      },
+      {
+        "hex": "#1c1c1c",
+        "name": "Mármol Negro"
+      }
+    ],
+    "dimensions": "Estándar Arquitectónico",
+    "materials": "Madera Noble, Piedra y Metal",
+    "description": "Mesa de diseño arquitectónico Mesa AA1010084-02 (Ref. SKU: AA1010084-02). Acabados de lujo, estructura robusta y estilo contemporáneo.",
+    "created_at": "2026-11-13T03:37:52.118959+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "2762ba07-b14a-4ed8-9423-ec3fb028e8ed",
+    "name": "Mesa AA1010089-600",
+    "slug": "mesa-aa1010089-600",
+    "sku": "AA1010089-600",
+    "brand_collection": "Diseño Tu Espacio Collection",
+    "category": "Mesas Completas",
+    "style": "Contemporáneo",
+    "price": 773500,
+    "original_price": null,
+    "stock": 6,
+    "warehouse_stock": 2,
+    "store_stock": 2,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "3 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "/images/cat_mesa_1787548081162.jpg",
+      "/images/cat_mesa_portrait_1787589762766.jpg"
+    ],
+    "colors": [
+      {
+        "hex": "#6b4423",
+        "name": "Nogal Natural"
+      },
+      {
+        "hex": "#403328",
+        "name": "Roble Ahumado"
+      },
+      {
+        "hex": "#1c1c1c",
+        "name": "Mármol Negro"
+      }
+    ],
+    "dimensions": "Estándar Arquitectónico",
+    "materials": "Madera Noble, Piedra y Metal",
+    "description": "Mesa de diseño arquitectónico Mesa AA1010089-600 (Ref. SKU: AA1010089-600). Acabados de lujo, estructura robusta y estilo contemporáneo.",
+    "created_at": "2026-11-13T03:37:52.118959+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
   }
 ]

@@ -46,6 +46,18 @@ const CATEGORY_ITEMS: CategoryItem[] = [
     name: 'REVESTIMIENTOS',
     categoryFilter: 'Revestimientos',
     image: 'https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg'
+  },
+  {
+    id: 'cat-mesas-base',
+    name: 'MESAS CON BASE',
+    categoryFilter: 'Mesas con Base',
+    image: '/images/cat_mesa_1787548081162.jpg'
+  },
+  {
+    id: 'cat-mesas-completas',
+    name: 'MESAS COMPLETAS',
+    categoryFilter: 'Mesas Completas',
+    image: '/images/cat_mesa_portrait_1787589762766.jpg'
   }
 ];
 
