@@ -301,36 +301,6 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>AA100052</g:id>
-      <g:title>Mesa AA100052</g:title>
-      <g:description>Mesa de diseño arquitectónico Mesa AA100052 (Ref. SKU: AA100052). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
-      <g:link>https://disenotuespacio.com/product/mesa-aa100052</g:link>
-      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
-      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>714000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
-      <g:product_type>Mesas con Base</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>AA1010068</g:id>
-      <g:title>Mesa AA1010068</g:title>
-      <g:description>Mesa de diseño arquitectónico Mesa AA1010068 (Ref. SKU: AA1010068). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
-      <g:link>https://disenotuespacio.com/product/mesa-aa1010068</g:link>
-      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
-      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>714000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
-      <g:product_type>Mesas con Base</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
       <g:id>MD680512-B</g:id>
       <g:title>Papel de colgadura MD680512-B</g:title>
       <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
@@ -430,6 +400,21 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
       <g:product_type>Revestimientos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>AA100052</g:id>
+      <g:title>Mesa AA100052</g:title>
+      <g:description>Mesa de diseño arquitectónico Mesa AA100052 (Ref. SKU: AA100052). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/mesa-aa100052</g:link>
+      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
+      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>714000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
+      <g:product_type>Mesas con Base</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -581,6 +566,35 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>MD680209</g:id>
+      <g:title>Papel de colgadura MD680209</g:title>
+      <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
+
+El modelo  cuenta demás con garantía de 1 año, un respaldo que acompaña la elección de esta pieza para proyectos de decoración.
+
+Especificaciones técnicas
+Tipo: Papel de colgadura
+Acabado: Acabados de lujo
+Garantía: 1 año
+Beneficios
+Pieza de autor: Aporta un carácter distintivo a la propuesta de decoración.
+Acabados de lujo: Refuerzan una estética sofisticada y cuidada.
+Valor decorativo: Puede convertirse en un elemento protagonista dentro del interiorismo.
+Diseño con presencia: Contribuye a crear espacios con una identidad visual más definida.
+Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-2-md680209</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680209_2.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680209_1.jpeg</g:additional_image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680209_ecommerce.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>800000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
+      <g:product_type>Papel de Colgadura</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>AA1010085</g:id>
       <g:title>Mesa AA1010085</g:title>
       <g:description>Mesa de diseño arquitectónico Mesa AA1010085 (Ref. SKU: AA1010085). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
@@ -608,35 +622,6 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
       <g:product_type>Mesas con Base</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>MD680209</g:id>
-      <g:title>Papel de colgadura MD680209</g:title>
-      <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
-
-El modelo  cuenta demás con garantía de 1 año, un respaldo que acompaña la elección de esta pieza para proyectos de decoración.
-
-Especificaciones técnicas
-Tipo: Papel de colgadura
-Acabado: Acabados de lujo
-Garantía: 1 año
-Beneficios
-Pieza de autor: Aporta un carácter distintivo a la propuesta de decoración.
-Acabados de lujo: Refuerzan una estética sofisticada y cuidada.
-Valor decorativo: Puede convertirse en un elemento protagonista dentro del interiorismo.
-Diseño con presencia: Contribuye a crear espacios con una identidad visual más definida.
-Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-2-md680209</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680209_2.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680209_1.jpeg</g:additional_image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680209_ecommerce.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>800000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
-      <g:product_type>Papel de Colgadura</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -698,6 +683,66 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>AA1010089-1100</g:id>
+      <g:title>Mesa AA1010089-1100</g:title>
+      <g:description>Mesa de diseño arquitectónico Mesa AA1010089-1100 (Ref. SKU: AA1010089-1100). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/mesa-aa1010089-1100</g:link>
+      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
+      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>714000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
+      <g:product_type>Mesas Completas</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>AA1010084-02</g:id>
+      <g:title>Mesa AA1010084-02</g:title>
+      <g:description>Mesa de diseño arquitectónico Mesa AA1010084-02 (Ref. SKU: AA1010084-02). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/mesa-aa1010084-02</g:link>
+      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
+      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>1047200 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
+      <g:product_type>Mesas Completas</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>AA1010084-01</g:id>
+      <g:title>Mesa AA1010084-01</g:title>
+      <g:description>Mesa de diseño arquitectónico Mesa AA1010084-01 (Ref. SKU: AA1010084-01). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/mesa-aa1010084-01</g:link>
+      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
+      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>1047200 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
+      <g:product_type>Mesas Completas</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>AA1010089-500</g:id>
+      <g:title>Mesa AA1010089-500</g:title>
+      <g:description>Mesa de diseño arquitectónico Mesa AA1010089-500 (Ref. SKU: AA1010089-500). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/mesa-aa1010089-500</g:link>
+      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
+      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>714000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
+      <g:product_type>Mesas Completas</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>11</g:id>
       <g:title>Mesa 11</g:title>
       <g:description>Mesa de diseño arquitectónico Mesa 11 (Ref. SKU: 11). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
@@ -728,63 +773,18 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>AA1010089-500</g:id>
-      <g:title>Mesa AA1010089-500</g:title>
-      <g:description>Mesa de diseño arquitectónico Mesa AA1010089-500 (Ref. SKU: AA1010089-500). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
-      <g:link>https://disenotuespacio.com/product/mesa-aa1010089-500</g:link>
-      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
-      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
+      <g:id>5812</g:id>
+      <g:title>Espejos modernos 5812</g:title>
+      <g:description>Pieza de autor Espejos modernos 5812 referencia SKU 5812. Acabados de lujo y garantía de 24 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-44-5812</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5812_1792096183972.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5812_1792096185035.jpeg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>714000 COP</g:price>
+      <g:price>912963 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
-      <g:product_type>Mesas Completas</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>AA1010089-1100</g:id>
-      <g:title>Mesa AA1010089-1100</g:title>
-      <g:description>Mesa de diseño arquitectónico Mesa AA1010089-1100 (Ref. SKU: AA1010089-1100). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
-      <g:link>https://disenotuespacio.com/product/mesa-aa1010089-1100</g:link>
-      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
-      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>714000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
-      <g:product_type>Mesas Completas</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>AA1010084-01</g:id>
-      <g:title>Mesa AA1010084-01</g:title>
-      <g:description>Mesa de diseño arquitectónico Mesa AA1010084-01 (Ref. SKU: AA1010084-01). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
-      <g:link>https://disenotuespacio.com/product/mesa-aa1010084-01</g:link>
-      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
-      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>1047200 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
-      <g:product_type>Mesas Completas</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>AA1010084-02</g:id>
-      <g:title>Mesa AA1010084-02</g:title>
-      <g:description>Mesa de diseño arquitectónico Mesa AA1010084-02 (Ref. SKU: AA1010084-02). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
-      <g:link>https://disenotuespacio.com/product/mesa-aa1010084-02</g:link>
-      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
-      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>1047200 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
-      <g:product_type>Mesas Completas</g:product_type>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -800,21 +800,6 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
       <g:product_type>Mesas Completas</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>5812</g:id>
-      <g:title>Espejos modernos 5812</g:title>
-      <g:description>Pieza de autor Espejos modernos 5812 referencia SKU 5812. Acabados de lujo y garantía de 24 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-44-5812</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5812_1792096183972.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5812_1792096185035.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>912963 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -919,6 +904,21 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>AA1010068</g:id>
+      <g:title>Mesa AA1010068</g:title>
+      <g:description>Mesa de diseño arquitectónico Mesa AA1010068 (Ref. SKU: AA1010068). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/mesa-aa1010068</g:link>
+      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
+      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>714000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
+      <g:product_type>Mesas con Base</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>AH60160022BK</g:id>
       <g:title>Espejos AH60160022BK</g:title>
       <g:description>Pieza de autor Espejos y cuadros AH60160022BK referencia SKU AH60160022BK. Acabados de lujo y garantía de 71 años.</g:description>
@@ -931,6 +931,126 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>10046-BLACK</g:id>
+      <g:title>Lavaplatos 10046-BLACK</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 10046-BLACK (Ref. SKU: 10046-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-10046-black</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>1011500 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>7546C-BLACK</g:id>
+      <g:title>Lavaplatos 7546C-BLACK</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 7546C-BLACK (Ref. SKU: 7546C-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-7546c-black</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>714000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>7546C-GOLD</g:id>
+      <g:title>Lavaplatos 7546C-GOLD</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 7546C-GOLD (Ref. SKU: 7546C-GOLD). Acabado Dorado Cepillado, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-7546c-gold</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>773500 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>7046A-BLACK</g:id>
+      <g:title>Lavaplatos 7046A-BLACK</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 7046A-BLACK (Ref. SKU: 7046A-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-7046a-black</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>714000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>6846C-BLACK</g:id>
+      <g:title>Lavaplatos 6846C-BLACK</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 6846C-BLACK (Ref. SKU: 6846C-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-6846c-black</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>654500 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>6846C-GOLD</g:id>
+      <g:title>Lavaplatos 6846C-GOLD</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 6846C-GOLD (Ref. SKU: 6846C-GOLD). Acabado Dorado Cepillado, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-6846c-gold</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>654500 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>7546E-BLACK</g:id>
+      <g:title>Lavaplatos 7546E-BLACK</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 7546E-BLACK (Ref. SKU: 7546E-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-7546e-black</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>975800 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>6045A-GOLD</g:id>
+      <g:title>Lavaplatos 6045A-GOLD</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 6045A-GOLD (Ref. SKU: 6045A-GOLD). Acabado Dorado Cepillado, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-6045a-gold</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>618800 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -963,6 +1083,21 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>6045B-GOLD</g:id>
+      <g:title>Lavaplatos 6045B-GOLD</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 6045B-GOLD (Ref. SKU: 6045B-GOLD). Acabado Dorado Cepillado, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-6045b-gold</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>595000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>MD680312</g:id>
       <g:title>Papel de colgadura MD680312</g:title>
       <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
@@ -992,6 +1127,111 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>6045A-ROSE</g:id>
+      <g:title>Lavaplatos 6045A-ROSE</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 6045A-ROSE (Ref. SKU: 6045A-ROSE). Acabado Oro Rosa / Cobre, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-6045a-rose</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>654500 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>5051A-BLACK</g:id>
+      <g:title>Lavaplatos 5051A-BLACK</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 5051A-BLACK (Ref. SKU: 5051A-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-5051a-black</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>749700 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>5051A-GOLD</g:id>
+      <g:title>Lavaplatos 5051A-GOLD</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 5051A-GOLD (Ref. SKU: 5051A-GOLD). Acabado Dorado Cepillado, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-5051a-gold</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>773500 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>5051A-SATIN</g:id>
+      <g:title>Lavaplatos 5051A-SATIN</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 5051A-SATIN (Ref. SKU: 5051A-SATIN). Acabado Acero Satinado, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-5051a-satin</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>773500 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>12050C-BLACK</g:id>
+      <g:title>Lavaplatos 12050C-BLACK</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 12050C-BLACK (Ref. SKU: 12050C-BLACK). Acabado Negro Mate Doble Pozo, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-12050c-black</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>1368500 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>9045A-BLACK</g:id>
+      <g:title>Lavaplatos 9045A-BLACK</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 9045A-BLACK (Ref. SKU: 9045A-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-9045a-black</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>1011500 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>8550A-BLACK</g:id>
+      <g:title>Lavaplatos 8550A-BLACK</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 8550A-BLACK (Ref. SKU: 8550A-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-8550a-black</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>892500 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>MD680209</g:id>
       <g:title>Papel de colgadura MD680512-B</g:title>
       <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
@@ -1018,6 +1258,36 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
       <g:product_type>Papel de colgadura</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>6045C-GRAY</g:id>
+      <g:title>Lavaplatos 6045C-GRAY</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 6045C-GRAY (Ref. SKU: 6045C-GRAY). Acabado Gris Grafito / Titanio, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-6045c-gray</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>595000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>5045A-BLACK</g:id>
+      <g:title>Lavaplatos 5045A-BLACK</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 5045A-BLACK (Ref. SKU: 5045A-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-5045a-black</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>595000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>

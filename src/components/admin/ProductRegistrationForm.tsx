@@ -379,6 +379,7 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
               >
                 <option value="Papel de Colgadura">Papel de Colgadura</option>
                 <option value="Lavamanos">Lavamanos</option>
+                <option value="Lavaplatos">Lavaplatos</option>
                 <option value="Espejos">Espejos</option>
                 <option value="Cuadros">Cuadros</option>
                 <option value="Revestimientos">Revestimientos</option>

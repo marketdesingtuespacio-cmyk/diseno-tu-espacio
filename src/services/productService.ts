@@ -54,6 +54,10 @@ export const isCategoryMatch = (prodCat?: string, filterCat?: string): boolean =
   if ((f === 'mesas con base' || f.includes('base')) && (p === 'mesas con base' || p.includes('base'))) return true;
   if ((f === 'mesas completas' || f.includes('completa')) && (p === 'mesas completas' || p.includes('completa'))) return true;
 
+  // Normalize Lavaplatos vs Lavamanos
+  if ((f === 'lavaplatos' || f.includes('plato')) && (p === 'lavaplatos' || p.includes('plato'))) return true;
+  if ((f === 'lavamanos' || f.includes('mano')) && (p === 'lavamanos' || p.includes('mano'))) return true;
+
   return false;
 };
 

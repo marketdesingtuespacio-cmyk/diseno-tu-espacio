@@ -36,6 +36,12 @@ const CATEGORY_ITEMS: CategoryItem[] = [
     image: 'https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A691CBKUG04M_1.jpg'
   },
   {
+    id: 'cat-lavaplatos',
+    name: 'LAVAPLATOS',
+    categoryFilter: 'Lavaplatos',
+    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000'
+  },
+  {
     id: 'cat-cuadros',
     name: 'CUADROS',
     categoryFilter: 'Cuadros',

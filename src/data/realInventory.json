@@ -5201,5 +5201,635 @@
     "created_at": "2026-11-13T03:37:52.118959+00:00",
     "wholesale_price": null,
     "wholesale_min_qty": 5
+  },
+  {
+    "id": "05ab26b5-a794-449f-80bf-b397ef75ae18",
+    "name": "Lavaplatos 10046-BLACK",
+    "slug": "lavaplatos-10046-black",
+    "sku": "10046-BLACK",
+    "brand_collection": "Diseño Tu Espacio Kitchen Collection",
+    "category": "Lavaplatos",
+    "style": "Contemporáneo",
+    "price": 1011500,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 3,
+    "store_stock": 2,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#1C1C1C",
+        "name": "Negro Mate"
+      }
+    ],
+    "dimensions": "Estándar de Cocina",
+    "materials": "Acero Inoxidable Quirúrgico SUS304",
+    "description": "Lavaplatos de cocina arquitectónico Lavaplatos 10046-BLACK (Ref. SKU: 10046-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.",
+    "created_at": "2026-11-13T03:43:11.528191+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "448e19c6-97fa-41c5-a036-cbacd7bf343a",
+    "name": "Lavaplatos 7546C-BLACK",
+    "slug": "lavaplatos-7546c-black",
+    "sku": "7546C-BLACK",
+    "brand_collection": "Diseño Tu Espacio Kitchen Collection",
+    "category": "Lavaplatos",
+    "style": "Contemporáneo",
+    "price": 714000,
+    "original_price": null,
+    "stock": 2,
+    "warehouse_stock": 0,
+    "store_stock": 0,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#1C1C1C",
+        "name": "Negro Mate"
+      }
+    ],
+    "dimensions": "Estándar de Cocina",
+    "materials": "Acero Inoxidable Quirúrgico SUS304",
+    "description": "Lavaplatos de cocina arquitectónico Lavaplatos 7546C-BLACK (Ref. SKU: 7546C-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.",
+    "created_at": "2026-11-13T03:43:11.528191+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "f1ba298e-faf9-4f49-b90f-ff1178ba1eed",
+    "name": "Lavaplatos 7546C-GOLD",
+    "slug": "lavaplatos-7546c-gold",
+    "sku": "7546C-GOLD",
+    "brand_collection": "Diseño Tu Espacio Kitchen Collection",
+    "category": "Lavaplatos",
+    "style": "Contemporáneo",
+    "price": 773500,
+    "original_price": null,
+    "stock": 20,
+    "warehouse_stock": 5,
+    "store_stock": 5,
+    "web_stock": 10,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&fit=crop&q=80&w=1000",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#D4AF37",
+        "name": "Dorado Cepillado"
+      }
+    ],
+    "dimensions": "Estándar de Cocina",
+    "materials": "Acero Inoxidable Quirúrgico SUS304",
+    "description": "Lavaplatos de cocina arquitectónico Lavaplatos 7546C-GOLD (Ref. SKU: 7546C-GOLD). Acabado Dorado Cepillado, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.",
+    "created_at": "2026-11-13T03:43:11.528191+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "2575a0d8-8752-48b4-9004-a192850a4371",
+    "name": "Lavaplatos 7046A-BLACK",
+    "slug": "lavaplatos-7046a-black",
+    "sku": "7046A-BLACK",
+    "brand_collection": "Diseño Tu Espacio Kitchen Collection",
+    "category": "Lavaplatos",
+    "style": "Contemporáneo",
+    "price": 714000,
+    "original_price": null,
+    "stock": 20,
+    "warehouse_stock": 5,
+    "store_stock": 5,
+    "web_stock": 10,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#1C1C1C",
+        "name": "Negro Mate"
+      }
+    ],
+    "dimensions": "Estándar de Cocina",
+    "materials": "Acero Inoxidable Quirúrgico SUS304",
+    "description": "Lavaplatos de cocina arquitectónico Lavaplatos 7046A-BLACK (Ref. SKU: 7046A-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.",
+    "created_at": "2026-11-13T03:43:11.528191+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "901bd30b-0ac5-4214-902d-e36049af4231",
+    "name": "Lavaplatos 6846C-BLACK",
+    "slug": "lavaplatos-6846c-black",
+    "sku": "6846C-BLACK",
+    "brand_collection": "Diseño Tu Espacio Kitchen Collection",
+    "category": "Lavaplatos",
+    "style": "Contemporáneo",
+    "price": 654500,
+    "original_price": null,
+    "stock": 20,
+    "warehouse_stock": 5,
+    "store_stock": 5,
+    "web_stock": 10,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#1C1C1C",
+        "name": "Negro Mate"
+      }
+    ],
+    "dimensions": "Estándar de Cocina",
+    "materials": "Acero Inoxidable Quirúrgico SUS304",
+    "description": "Lavaplatos de cocina arquitectónico Lavaplatos 6846C-BLACK (Ref. SKU: 6846C-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.",
+    "created_at": "2026-11-13T03:43:11.528191+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "b7ee7b69-7c2f-4c5d-8ba4-3a169abd8b87",
+    "name": "Lavaplatos 6846C-GOLD",
+    "slug": "lavaplatos-6846c-gold",
+    "sku": "6846C-GOLD",
+    "brand_collection": "Diseño Tu Espacio Kitchen Collection",
+    "category": "Lavaplatos",
+    "style": "Contemporáneo",
+    "price": 654500,
+    "original_price": null,
+    "stock": 20,
+    "warehouse_stock": 5,
+    "store_stock": 5,
+    "web_stock": 10,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&fit=crop&q=80&w=1000",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#D4AF37",
+        "name": "Dorado Cepillado"
+      }
+    ],
+    "dimensions": "Estándar de Cocina",
+    "materials": "Acero Inoxidable Quirúrgico SUS304",
+    "description": "Lavaplatos de cocina arquitectónico Lavaplatos 6846C-GOLD (Ref. SKU: 6846C-GOLD). Acabado Dorado Cepillado, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.",
+    "created_at": "2026-11-13T03:43:11.528191+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "3b573c14-ca97-4e04-a1d1-ea604a4b8973",
+    "name": "Lavaplatos 7546E-BLACK",
+    "slug": "lavaplatos-7546e-black",
+    "sku": "7546E-BLACK",
+    "brand_collection": "Diseño Tu Espacio Kitchen Collection",
+    "category": "Lavaplatos",
+    "style": "Contemporáneo",
+    "price": 975800,
+    "original_price": null,
+    "stock": 20,
+    "warehouse_stock": 5,
+    "store_stock": 5,
+    "web_stock": 10,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#1C1C1C",
+        "name": "Negro Mate"
+      }
+    ],
+    "dimensions": "Estándar de Cocina",
+    "materials": "Acero Inoxidable Quirúrgico SUS304",
+    "description": "Lavaplatos de cocina arquitectónico Lavaplatos 7546E-BLACK (Ref. SKU: 7546E-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.",
+    "created_at": "2026-11-13T03:43:11.528191+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "c23016ba-d02e-41b3-ad8f-292633bc2f07",
+    "name": "Lavaplatos 6045A-GOLD",
+    "slug": "lavaplatos-6045a-gold",
+    "sku": "6045A-GOLD",
+    "brand_collection": "Diseño Tu Espacio Kitchen Collection",
+    "category": "Lavaplatos",
+    "style": "Contemporáneo",
+    "price": 618800,
+    "original_price": null,
+    "stock": 5,
+    "warehouse_stock": 0,
+    "store_stock": 0,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&fit=crop&q=80&w=1000",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#D4AF37",
+        "name": "Dorado Cepillado"
+      }
+    ],
+    "dimensions": "Estándar de Cocina",
+    "materials": "Acero Inoxidable Quirúrgico SUS304",
+    "description": "Lavaplatos de cocina arquitectónico Lavaplatos 6045A-GOLD (Ref. SKU: 6045A-GOLD). Acabado Dorado Cepillado, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.",
+    "created_at": "2026-11-13T03:43:11.528191+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "bf9853e0-52ac-4c82-946e-8d09991eea42",
+    "name": "Lavaplatos 6045B-GOLD",
+    "slug": "lavaplatos-6045b-gold",
+    "sku": "6045B-GOLD",
+    "brand_collection": "Diseño Tu Espacio Kitchen Collection",
+    "category": "Lavaplatos",
+    "style": "Contemporáneo",
+    "price": 595000,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 3,
+    "store_stock": 2,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&fit=crop&q=80&w=1000",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#D4AF37",
+        "name": "Dorado Cepillado"
+      }
+    ],
+    "dimensions": "Estándar de Cocina",
+    "materials": "Acero Inoxidable Quirúrgico SUS304",
+    "description": "Lavaplatos de cocina arquitectónico Lavaplatos 6045B-GOLD (Ref. SKU: 6045B-GOLD). Acabado Dorado Cepillado, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.",
+    "created_at": "2026-11-13T03:43:11.528191+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "1e618ae9-3587-47bd-a198-0b9881532d76",
+    "name": "Lavaplatos 6045A-ROSE",
+    "slug": "lavaplatos-6045a-rose",
+    "sku": "6045A-ROSE",
+    "brand_collection": "Diseño Tu Espacio Kitchen Collection",
+    "category": "Lavaplatos",
+    "style": "Contemporáneo",
+    "price": 654500,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 3,
+    "store_stock": 2,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=1000",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#B76E79",
+        "name": "Oro Rosa / Cobre"
+      }
+    ],
+    "dimensions": "Estándar de Cocina",
+    "materials": "Acero Inoxidable Quirúrgico SUS304",
+    "description": "Lavaplatos de cocina arquitectónico Lavaplatos 6045A-ROSE (Ref. SKU: 6045A-ROSE). Acabado Oro Rosa / Cobre, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.",
+    "created_at": "2026-11-13T03:43:11.528191+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "5ee23158-e374-4a7e-b6d1-29006cb32097",
+    "name": "Lavaplatos 5051A-BLACK",
+    "slug": "lavaplatos-5051a-black",
+    "sku": "5051A-BLACK",
+    "brand_collection": "Diseño Tu Espacio Kitchen Collection",
+    "category": "Lavaplatos",
+    "style": "Contemporáneo",
+    "price": 749700,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 3,
+    "store_stock": 2,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#1C1C1C",
+        "name": "Negro Mate"
+      }
+    ],
+    "dimensions": "Estándar de Cocina",
+    "materials": "Acero Inoxidable Quirúrgico SUS304",
+    "description": "Lavaplatos de cocina arquitectónico Lavaplatos 5051A-BLACK (Ref. SKU: 5051A-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.",
+    "created_at": "2026-11-13T03:43:11.528191+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "0a298e7d-5a6d-4f7c-b6c5-87bd2886aed5",
+    "name": "Lavaplatos 5051A-GOLD",
+    "slug": "lavaplatos-5051a-gold",
+    "sku": "5051A-GOLD",
+    "brand_collection": "Diseño Tu Espacio Kitchen Collection",
+    "category": "Lavaplatos",
+    "style": "Contemporáneo",
+    "price": 773500,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 3,
+    "store_stock": 2,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&fit=crop&q=80&w=1000",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#D4AF37",
+        "name": "Dorado Cepillado"
+      }
+    ],
+    "dimensions": "Estándar de Cocina",
+    "materials": "Acero Inoxidable Quirúrgico SUS304",
+    "description": "Lavaplatos de cocina arquitectónico Lavaplatos 5051A-GOLD (Ref. SKU: 5051A-GOLD). Acabado Dorado Cepillado, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.",
+    "created_at": "2026-11-13T03:43:11.528191+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "73b0cab9-aa55-4200-a8f3-72ddce247968",
+    "name": "Lavaplatos 5051A-SATIN",
+    "slug": "lavaplatos-5051a-satin",
+    "sku": "5051A-SATIN",
+    "brand_collection": "Diseño Tu Espacio Kitchen Collection",
+    "category": "Lavaplatos",
+    "style": "Contemporáneo",
+    "price": 773500,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 3,
+    "store_stock": 2,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=1000",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#1C1C1C",
+        "name": "Acero Satinado"
+      }
+    ],
+    "dimensions": "Estándar de Cocina",
+    "materials": "Acero Inoxidable Quirúrgico SUS304",
+    "description": "Lavaplatos de cocina arquitectónico Lavaplatos 5051A-SATIN (Ref. SKU: 5051A-SATIN). Acabado Acero Satinado, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.",
+    "created_at": "2026-11-13T03:43:11.528191+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "c2025ddb-fb96-4e41-8a7a-dbda6bb37d21",
+    "name": "Lavaplatos 12050C-BLACK",
+    "slug": "lavaplatos-12050c-black",
+    "sku": "12050C-BLACK",
+    "brand_collection": "Diseño Tu Espacio Kitchen Collection",
+    "category": "Lavaplatos",
+    "style": "Contemporáneo",
+    "price": 1368500,
+    "original_price": null,
+    "stock": 9,
+    "warehouse_stock": 1,
+    "store_stock": 3,
+    "web_stock": 6,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#1C1C1C",
+        "name": "Negro Mate Doble Pozo"
+      }
+    ],
+    "dimensions": "Estándar de Cocina",
+    "materials": "Acero Inoxidable Quirúrgico SUS304",
+    "description": "Lavaplatos de cocina arquitectónico Lavaplatos 12050C-BLACK (Ref. SKU: 12050C-BLACK). Acabado Negro Mate Doble Pozo, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.",
+    "created_at": "2026-11-13T03:43:11.528191+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "8ac23832-890d-48f1-9a11-d07e744ca4f9",
+    "name": "Lavaplatos 9045A-BLACK",
+    "slug": "lavaplatos-9045a-black",
+    "sku": "9045A-BLACK",
+    "brand_collection": "Diseño Tu Espacio Kitchen Collection",
+    "category": "Lavaplatos",
+    "style": "Contemporáneo",
+    "price": 1011500,
+    "original_price": null,
+    "stock": 9,
+    "warehouse_stock": 1,
+    "store_stock": 3,
+    "web_stock": 6,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#1C1C1C",
+        "name": "Negro Mate"
+      }
+    ],
+    "dimensions": "Estándar de Cocina",
+    "materials": "Acero Inoxidable Quirúrgico SUS304",
+    "description": "Lavaplatos de cocina arquitectónico Lavaplatos 9045A-BLACK (Ref. SKU: 9045A-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.",
+    "created_at": "2026-11-13T03:43:11.528191+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "98877ffc-6f90-4058-aef9-cb956ce2bead",
+    "name": "Lavaplatos 8550A-BLACK",
+    "slug": "lavaplatos-8550a-black",
+    "sku": "8550A-BLACK",
+    "brand_collection": "Diseño Tu Espacio Kitchen Collection",
+    "category": "Lavaplatos",
+    "style": "Contemporáneo",
+    "price": 892500,
+    "original_price": null,
+    "stock": 2,
+    "warehouse_stock": 0,
+    "store_stock": 0,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#1C1C1C",
+        "name": "Negro Mate"
+      }
+    ],
+    "dimensions": "Estándar de Cocina",
+    "materials": "Acero Inoxidable Quirúrgico SUS304",
+    "description": "Lavaplatos de cocina arquitectónico Lavaplatos 8550A-BLACK (Ref. SKU: 8550A-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.",
+    "created_at": "2026-11-13T03:43:11.528191+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "73634b73-749b-4c94-9c06-77428bf4c9e6",
+    "name": "Lavaplatos 6045C-GRAY",
+    "slug": "lavaplatos-6045c-gray",
+    "sku": "6045C-GRAY",
+    "brand_collection": "Diseño Tu Espacio Kitchen Collection",
+    "category": "Lavaplatos",
+    "style": "Contemporáneo",
+    "price": 595000,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 3,
+    "store_stock": 2,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=1000",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#1C1C1C",
+        "name": "Gris Grafito / Titanio"
+      }
+    ],
+    "dimensions": "Estándar de Cocina",
+    "materials": "Acero Inoxidable Quirúrgico SUS304",
+    "description": "Lavaplatos de cocina arquitectónico Lavaplatos 6045C-GRAY (Ref. SKU: 6045C-GRAY). Acabado Gris Grafito / Titanio, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.",
+    "created_at": "2026-11-13T03:43:11.528191+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "1fa37ecc-29d3-4d7c-b53c-1c22fd19fd8d",
+    "name": "Lavaplatos 5045A-BLACK",
+    "slug": "lavaplatos-5045a-black",
+    "sku": "5045A-BLACK",
+    "brand_collection": "Diseño Tu Espacio Kitchen Collection",
+    "category": "Lavaplatos",
+    "style": "Contemporáneo",
+    "price": 595000,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 3,
+    "store_stock": 2,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Disponible",
+    "is_featured": false,
+    "images": [
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#1C1C1C",
+        "name": "Negro Mate"
+      }
+    ],
+    "dimensions": "Estándar de Cocina",
+    "materials": "Acero Inoxidable Quirúrgico SUS304",
+    "description": "Lavaplatos de cocina arquitectónico Lavaplatos 5045A-BLACK (Ref. SKU: 5045A-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.",
+    "created_at": "2026-11-13T03:43:11.528191+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
   }
 ]
