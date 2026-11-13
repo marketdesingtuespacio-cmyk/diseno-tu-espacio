@@ -948,6 +948,20 @@ export const AdminDashboardPage: React.FC = () => {
                   <span>CSV</span>
                 </button>
 
+                <button
+                  type="button"
+                  onClick={() => {
+                    setQrModalProduct(null);
+                    setQrModalProducts(filteredProducts.length > 0 ? filteredProducts : products);
+                    setIsQrModalOpen(true);
+                  }}
+                  className="bg-amber-400 hover:bg-amber-300 text-neutral-950 font-extrabold text-xs uppercase tracking-wider py-2.5 px-3.5 rounded-xl shadow-sm transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
+                  title="Generar e imprimir etiquetas QR físicas de todos los productos visibles"
+                >
+                  <QrCode className="w-4 h-4 text-neutral-950" />
+                  <span>Etiquetas QR ({filteredProducts.length})</span>
+                </button>
+
                 <button 
                   onClick={() => {
                     setEditingProduct(null);
@@ -1072,6 +1086,7 @@ export const AdminDashboardPage: React.FC = () => {
                     <th className="p-3">Precio (COP)</th>
                     <th className="p-3">Stock & Ubicaciones</th>
                     <th className="p-3">Estado</th>
+                    <th className="p-3 text-center">Etiqueta QR</th>
                     <th className="p-3">Garantía</th>
                     <th className="p-3 text-right">Acciones</th>
                   </tr>
@@ -1079,7 +1094,7 @@ export const AdminDashboardPage: React.FC = () => {
                 <tbody className="divide-y">
                   {filteredProducts.length === 0 ? (
                     <tr>
-                      <td colSpan={9} className="p-8 text-center text-neutral-400 font-medium">
+                      <td colSpan={10} className="p-8 text-center text-neutral-400 font-medium">
                         No se encontraron productos que coincidan con los filtros seleccionados.
                       </td>
                     </tr>
@@ -1121,6 +1136,15 @@ export const AdminDashboardPage: React.FC = () => {
                             {p.sku && (
                               <div className="text-[10px] text-neutral-500 font-mono font-bold">SKU: {p.sku}</div>
                             )}
+                            <button
+                              type="button"
+                              onClick={() => handleOpenSingleQR(p)}
+                              className="inline-flex items-center gap-1.5 mt-1.5 px-2.5 py-1 rounded-md bg-amber-100 hover:bg-amber-200 text-amber-950 border border-amber-300 text-[10.5px] font-bold tracking-tight transition-colors cursor-pointer shadow-2xs"
+                              title="Abrir e imprimir etiqueta QR para este producto"
+                            >
+                              <QrCode className="w-3.5 h-3.5 text-amber-800" />
+                              <span>Ver QR Físico</span>
+                            </button>
                             {(p.updated_at || p.created_at) && (
                               <div className="text-[9.5px] text-indigo-700 font-medium mt-0.5 flex flex-col gap-0.5">
                                 <span>{p.updated_at ? 'Última mod:' : 'Ingreso:'} {(() => {
@@ -1197,6 +1221,17 @@ export const AdminDashboardPage: React.FC = () => {
                               <option value="Agotado">❌ Agotado</option>
                               <option value="Poco Stock">⚠️ Por Agotarse</option>
                             </select>
+                          </td>
+                          <td className="p-3 text-center">
+                            <button 
+                              type="button"
+                              onClick={() => handleOpenSingleQR(p)}
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-900 hover:bg-black text-white text-[11px] font-mono font-bold tracking-tight transition-all shadow-xs cursor-pointer"
+                              title="Generar e imprimir etiqueta física con código QR"
+                            >
+                              <QrCode className="w-3.5 h-3.5 text-amber-400" />
+                              <span>Imprimir QR</span>
+                            </button>
                           </td>
                           <td className="p-3 text-neutral-600 font-medium">
                             {p.warranty || '3 años'}

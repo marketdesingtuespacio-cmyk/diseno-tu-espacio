@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, ShoppingBag, Eye } from 'lucide-react';
+import { Heart, ShoppingBag, Eye, QrCode } from 'lucide-react';
 import { Product } from '../types';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { useAuth } from '../context/AuthContext';
+import { ProductQRModal } from './admin/ProductQRModal';
 
 interface ProductCardProps {
   product: Product;
@@ -16,6 +17,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { isAuthenticated } = useAuth();
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [activeColorIndex, setActiveColorIndex] = useState(0);
+  const [isQRModalOpen, setIsQRModalOpen] = useState(false);
 
   const colorSwatches = (product.colors && product.colors.length > 0) ? product.colors : [];
 
@@ -88,6 +90,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           >
             <Eye className="w-3.5 h-3.5" />
           </Link>
+          <button 
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setIsQRModalOpen(true);
+            }}
+            className="bg-white text-black p-2.5 hover:bg-neutral-100 transition-colors flex items-center justify-center border border-neutral-200 shadow-elevated cursor-pointer"
+            title="Ver Código QR para Ruteo Físico"
+          >
+            <QrCode className="w-3.5 h-3.5 text-amber-700" />
+          </button>
         </div>
 
       </div>
@@ -145,6 +159,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </div>
         )}
       </div>
+
+      {/* Product Physical Routing QR Modal */}
+      <ProductQRModal
+        isOpen={isQRModalOpen}
+        onClose={() => setIsQRModalOpen(false)}
+        product={product}
+      />
 
     </div>
   );

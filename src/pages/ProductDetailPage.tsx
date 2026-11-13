@@ -640,6 +640,31 @@ export const ProductDetailPage: React.FC = () => {
             </a>
           </div>
 
+          {/* Physical Routing & Warehouse QR Box */}
+          <div className="bg-[#FAF9F6] border border-neutral-200/80 rounded-2xl p-4 flex items-center justify-between gap-3 shadow-2xs">
+            <div className="flex items-center gap-3">
+              <div className="w-11 h-11 bg-white rounded-xl border border-neutral-200/80 p-1 flex items-center justify-center shrink-0 shadow-2xs">
+                <QrCode className="w-6 h-6 text-neutral-900" />
+              </div>
+              <div>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-900">
+                  Ruteo Físico & Código QR
+                </h4>
+                <p className="text-[11px] text-neutral-500">
+                  SKU: <strong className="font-mono text-neutral-900">{product.sku || product.id}</strong> • Etiquetado para bodega y tienda
+                </p>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => setIsQRModalOpen(true)}
+              className="px-3.5 py-2 rounded-xl bg-neutral-900 hover:bg-black text-white text-[11px] font-bold uppercase tracking-wider transition-colors shrink-0 shadow-xs cursor-pointer flex items-center gap-1.5"
+            >
+              <QrCode className="w-3.5 h-3.5 text-amber-400" />
+              <span>Ver QR</span>
+            </button>
+          </div>
+
           {/* 4 Value-Added Trust Badges (Kave Home Pillars) */}
           <div className="grid grid-cols-2 gap-3 pt-3 border-t border-neutral-100 text-[11px] text-neutral-600">
             <div className="flex items-start gap-2">
