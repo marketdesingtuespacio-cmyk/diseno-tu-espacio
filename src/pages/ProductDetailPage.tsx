@@ -19,7 +19,8 @@ import {
   FileText,
   Box,
   Eye,
-  Lock
+  Lock,
+  QrCode
 } from 'lucide-react';
 import { Product, ProductReviewStats } from '../types';
 import { productService } from '../services/productService';
@@ -28,6 +29,7 @@ import { useCurrency } from '../context/CurrencyContext';
 import { useAuth } from '../context/AuthContext';
 import { ProductCard } from '../components/ProductCard';
 import { ProductReviewsSection } from '../components/ProductReviewsSection';
+import { ProductQRModal } from '../components/admin/ProductQRModal';
 import { trackingService } from '../services/trackingService';
 
 export const ProductDetailPage: React.FC = () => {
@@ -42,6 +44,7 @@ export const ProductDetailPage: React.FC = () => {
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
   const [showStickyBar, setShowStickyBar] = useState(false);
+  const [isQRModalOpen, setIsQRModalOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState('Bogotá D.C.');
 
   const [reviewStats, setReviewStats] = useState<ProductReviewStats>({
@@ -207,6 +210,15 @@ export const ProductDetailPage: React.FC = () => {
           >
             <Heart className={`w-3.5 h-3.5 ${isWishlisted ? 'fill-red-500 text-red-500' : 'text-neutral-600'}`} />
             <span>{isWishlisted ? 'En Favoritos' : 'Guardar'}</span>
+          </button>
+          <span className="text-neutral-300">|</span>
+          <button 
+            onClick={() => setIsQRModalOpen(true)}
+            className="flex items-center gap-1 text-[11px] font-medium hover:text-black transition-colors cursor-pointer"
+            title="Ver código QR para escaneo o ruteo físico"
+          >
+            <QrCode className="w-3.5 h-3.5 text-amber-600" />
+            <span>Código QR</span>
           </button>
         </div>
       </div>
@@ -920,6 +932,13 @@ export const ProductDetailPage: React.FC = () => {
           </button>
         </div>
       )}
+
+      {/* Product Physical Routing QR Modal */}
+      <ProductQRModal
+        isOpen={isQRModalOpen}
+        onClose={() => setIsQRModalOpen(false)}
+        product={product}
+      />
 
     </div>
   );

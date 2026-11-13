@@ -21,7 +21,8 @@ import {
   FileText,
   Clock,
   CreditCard,
-  Check
+  Check,
+  QrCode
 } from 'lucide-react';
 import { Product, Appointment, Order, Coupon, UserProfile } from '../types';
 import { productService, subscribeToProducts, isCategoryMatch, getDeletedProductKeys } from '../services/productService';
@@ -33,6 +34,7 @@ import { useCurrency } from '../context/CurrencyContext';
 import { checkSupabaseHealth } from '../lib/supabase';
 import { AdminSidebar, AdminTab } from '../components/admin/AdminSidebar';
 import { ProductRegistrationForm } from '../components/admin/ProductRegistrationForm';
+import { ProductQRModal } from '../components/admin/ProductQRModal';
 import { TeamManagementView } from '../components/admin/TeamManagementView';
 import { OrderRegistrationModal } from '../components/admin/OrderRegistrationModal';
 import { OrderKanbanBoard } from '../components/admin/OrderKanbanBoard';
@@ -191,6 +193,25 @@ export const AdminDashboardPage: React.FC = () => {
 
   // Bulk Selection & Bulk Operations State
   const [selectedProductIds, setSelectedProductIds] = useState<string[]>([]);
+
+  // Physical Routing & QR Modal State
+  const [isQrModalOpen, setIsQrModalOpen] = useState<boolean>(false);
+  const [qrModalProduct, setQrModalProduct] = useState<Product | null>(null);
+  const [qrModalProducts, setQrModalProducts] = useState<Product[]>([]);
+
+  const handleOpenSingleQR = (prod: Product) => {
+    setQrModalProduct(prod);
+    setQrModalProducts([]);
+    setIsQrModalOpen(true);
+  };
+
+  const handleOpenBulkQR = () => {
+    const selected = products.filter(p => selectedProductIds.includes(p.id));
+    if (selected.length === 0) return;
+    setQrModalProduct(null);
+    setQrModalProducts(selected);
+    setIsQrModalOpen(true);
+  };
 
   // Bulk Change Status
   const handleBulkChangeStatus = async (newStatus: Product['inventory_status']) => {
@@ -995,6 +1016,17 @@ export const AdminDashboardPage: React.FC = () => {
                     ))}
                   </select>
 
+                  {/* Bulk QR Generator Button */}
+                  <button 
+                    type="button"
+                    onClick={handleOpenBulkQR}
+                    className="bg-neutral-800 hover:bg-neutral-700 text-white text-xs font-bold py-2 px-3.5 rounded-lg transition-colors flex items-center gap-1.5 shadow-sm border border-neutral-700 cursor-pointer"
+                    title="Generar e imprimir etiquetas físicas QR para los productos seleccionados"
+                  >
+                    <QrCode className="w-3.5 h-3.5 text-amber-400" /> 
+                    <span>Etiquetas QR ({selectedProductIds.length})</span>
+                  </button>
+
                   {/* Bulk Delete Button */}
                   <button 
                     onClick={handleBulkDelete}
@@ -1169,7 +1201,14 @@ export const AdminDashboardPage: React.FC = () => {
                           <td className="p-3 text-neutral-600 font-medium">
                             {p.warranty || '3 años'}
                           </td>
-                          <td className="p-3 text-right space-x-2">
+                          <td className="p-3 text-right space-x-1.5 whitespace-nowrap">
+                            <button 
+                              onClick={() => handleOpenSingleQR(p)}
+                              className="p-1.5 text-amber-700 hover:text-amber-950 hover:bg-amber-100/60 rounded-lg transition-colors cursor-pointer"
+                              title="Generar e imprimir etiqueta QR para ruteo físico"
+                            >
+                              <QrCode className="w-4 h-4" />
+                            </button>
                             <button 
                               onClick={() => {
                                 setEditingProduct(p);
@@ -2106,6 +2145,18 @@ export const AdminDashboardPage: React.FC = () => {
             </div>
           </div>
         )}
+
+        {/* Product Physical Routing QR Modal (Individual o en Lote) */}
+        <ProductQRModal
+          isOpen={isQrModalOpen}
+          onClose={() => {
+            setIsQrModalOpen(false);
+            setQrModalProduct(null);
+            setQrModalProducts([]);
+          }}
+          product={qrModalProduct}
+          products={qrModalProducts}
+        />
 
         {/* Server Action Confirmation Pop-Up Modal */}
         {actionNotification && (

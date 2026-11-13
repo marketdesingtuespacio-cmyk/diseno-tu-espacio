@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Plus, Trash2, Image as ImageIcon, Palette, CheckCircle2, Sparkles, ArrowRight, Upload, ChevronLeft, ChevronRight, Star, GripVertical } from 'lucide-react';
+import { Plus, Trash2, Image as ImageIcon, Palette, CheckCircle2, Sparkles, ArrowRight, Upload, ChevronLeft, ChevronRight, Star, GripVertical, QrCode } from 'lucide-react';
 import { Product } from '../../types';
 import { productService } from '../../services/productService';
 import { useCurrency } from '../../context/CurrencyContext';
+import { ProductQRModal } from './ProductQRModal';
 
 interface ProductRegistrationFormProps {
   onSuccess: () => void;
@@ -16,6 +17,8 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
   const { formatPrice } = useCurrency();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState(false);
+  const [createdProductForQR, setCreatedProductForQR] = useState<Product | null>(null);
+  const [isQRModalOpen, setIsQRModalOpen] = useState(false);
 
   // Base & Extended Inventory Form State
   const [name, setName] = useState(initialProduct?.name || '');
@@ -280,19 +283,19 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
         returns_policy_badge: returnsPolicyBadge.trim()
       };
 
+      let savedProduct: Product | null = null;
       if (initialProduct?.id) {
-        await productService.updateProduct(initialProduct.id, productPayload);
+        savedProduct = await productService.updateProduct(initialProduct.id, productPayload);
       } else {
-        await productService.createProduct(productPayload);
+        savedProduct = await productService.createProduct(productPayload);
       }
 
       setIsSubmitting(false);
       setSuccessMessage(true);
-      
-      setTimeout(() => {
-        setSuccessMessage(false);
-        onSuccess();
-      }, 1200);
+      if (savedProduct) {
+        setCreatedProductForQR(savedProduct);
+        setIsQRModalOpen(true);
+      }
     } catch (err: any) {
       console.error('Error guardando producto:', err);
       setIsSubmitting(false);
@@ -314,16 +317,42 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
           </h2>
         </div>
 
-        <div className="flex items-center gap-2 text-[11px] sm:text-xs font-mono bg-brand-surface px-2.5 sm:px-3 py-1.5 border border-brand-border text-neutral-600">
-          <Sparkles className="w-3.5 h-3.5 text-brand-black shrink-0" />
-          <span>Medida Estándar: 1900 × 2375 PX</span>
+        <div className="flex items-center gap-2">
+          {initialProduct && (
+            <button
+              type="button"
+              onClick={() => {
+                setCreatedProductForQR(initialProduct);
+                setIsQRModalOpen(true);
+              }}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-neutral-300 bg-white hover:bg-neutral-50 text-neutral-800 text-xs font-bold uppercase tracking-wider cursor-pointer shadow-xs"
+            >
+              <QrCode className="w-3.5 h-3.5 text-amber-600" />
+              <span>Etiqueta QR</span>
+            </button>
+          )}
+
+          <div className="flex items-center gap-2 text-[11px] sm:text-xs font-mono bg-brand-surface px-2.5 sm:px-3 py-1.5 border border-brand-border text-neutral-600">
+            <Sparkles className="w-3.5 h-3.5 text-brand-black shrink-0" />
+            <span>Medida Estándar: 1900 × 2375 PX</span>
+          </div>
         </div>
       </div>
 
-      {successMessage && (
-        <div className="bg-emerald-900 text-white p-3.5 sm:p-4 text-xs font-bold uppercase tracking-widest flex items-center gap-2 shadow-subtle">
-          <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-          <span>¡Producto guardado exitosamente en el catálogo oficial!</span>
+      {successMessage && createdProductForQR && (
+        <div className="bg-emerald-900 text-white p-3.5 sm:p-4 text-xs font-bold uppercase tracking-widest flex flex-col sm:flex-row items-center justify-between gap-3 shadow-subtle rounded-xl">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+            <span>¡Producto guardado exitosamente en el catálogo oficial! (SKU: {createdProductForQR.sku || createdProductForQR.id})</span>
+          </div>
+          <button
+            type="button"
+            onClick={() => setIsQRModalOpen(true)}
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-amber-400 hover:bg-amber-300 text-neutral-950 font-extrabold text-xs uppercase tracking-wider transition-colors cursor-pointer shadow-sm"
+          >
+            <QrCode className="w-4 h-4" />
+            <span>Imprimir Etiqueta QR Ahora</span>
+          </button>
         </div>
       )}
 
@@ -948,6 +977,18 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
         </div>
 
       </form>
+
+      {/* Product Physical Routing QR Modal */}
+      <ProductQRModal
+        isOpen={isQRModalOpen}
+        onClose={() => {
+          setIsQRModalOpen(false);
+          if (successMessage) {
+            onSuccess();
+          }
+        }}
+        product={createdProductForQR}
+      />
 
     </div>
   );
