@@ -87,14 +87,67 @@ export const ProductQRModal: React.FC<ProductQRModalProps> = ({
   };
 
   const handleDownloadQR = (prod: Product) => {
-    const dataUrl = qrMap[prod.id];
-    if (!dataUrl) return;
-    const link = document.createElement('a');
-    link.href = dataUrl;
-    link.download = `QR-${prod.sku || prod.slug || prod.id}.png`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    const rawQr = qrMap[prod.id];
+    if (!rawQr) return;
+
+    // Generar imagen PNG sticker completa con QR + Referencia + Nombre de la empresa debajo
+    const canvas = document.createElement('canvas');
+    canvas.width = 600;
+    canvas.height = 720;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // Fondo blanco nítido
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Marco exterior para sticker físico
+    ctx.strokeStyle = '#0f172a';
+    ctx.lineWidth = 4;
+    ctx.strokeRect(14, 14, canvas.width - 28, canvas.height - 28);
+
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => {
+      // Dibujar QR centrado
+      ctx.drawImage(img, 60, 40, 480, 480);
+
+      // Línea divisoria suave
+      ctx.strokeStyle = '#e2e8f0';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(60, 535);
+      ctx.lineTo(540, 535);
+      ctx.stroke();
+
+      // Referencia del producto justo debajo del QR
+      ctx.fillStyle = '#0f172a';
+      ctx.font = 'bold 30px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText(`REF: ${prod.sku || prod.id}`, canvas.width / 2, 575);
+
+      // Nombre de la empresa justo debajo de la referencia
+      ctx.fillStyle = '#1e293b';
+      ctx.font = '900 24px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+      ctx.letterSpacing = '2px';
+      ctx.fillText('DISEÑO TU ESPACIO', canvas.width / 2, 615);
+
+      // Nombre del producto y categoría como contexto
+      ctx.fillStyle = '#64748b';
+      ctx.font = '500 18px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+      const truncatedName = prod.name.length > 38 ? `${prod.name.substring(0, 36)}...` : prod.name;
+      ctx.fillText(truncatedName, canvas.width / 2, 655);
+
+      // Descargar archivo PNG
+      const downloadUrl = canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = `QR-${prod.sku || prod.slug || prod.id}-DisenoTuEspacio.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    };
+    img.src = rawQr;
   };
 
   const handleCopyLink = async (prod: Product) => {
@@ -220,18 +273,29 @@ export const ProductQRModal: React.FC<ProductQRModalProps> = ({
 
                   {/* Center: QR Code + Product Meta */}
                   <div className="flex items-center gap-4">
-                    <div className="w-32 h-32 sm:w-36 sm:h-36 shrink-0 bg-white border border-neutral-200 rounded-lg p-1.5 flex items-center justify-center shadow-2xs">
-                      {qrImage ? (
-                        <img
-                          src={qrImage}
-                          alt={`QR ${item.name}`}
-                          className="w-full h-full object-contain"
-                        />
-                      ) : (
-                        <div className="animate-pulse text-xs text-neutral-400 font-mono">
-                          Generando QR...
-                        </div>
-                      )}
+                    <div className="w-32 sm:w-36 shrink-0 flex flex-col items-center">
+                      <div className="w-full aspect-square bg-white border border-neutral-300 rounded-lg p-1.5 flex items-center justify-center shadow-2xs">
+                        {qrImage ? (
+                          <img
+                            src={qrImage}
+                            alt={`QR ${item.name}`}
+                            className="w-full h-full object-contain"
+                          />
+                        ) : (
+                          <div className="animate-pulse text-xs text-neutral-400 font-mono text-center">
+                            Generando QR...
+                          </div>
+                        )}
+                      </div>
+                      {/* Referencia y Nombre de Empresa Justo Debajo del QR */}
+                      <div className="mt-1.5 text-center w-full px-0.5">
+                        <span className="block text-[10px] sm:text-[10.5px] font-mono font-black text-neutral-900 tracking-tight uppercase truncate">
+                          REF: {item.sku || item.id}
+                        </span>
+                        <span className="block text-[8px] sm:text-[8.5px] font-sans font-extrabold uppercase tracking-[0.18em] text-neutral-600 truncate mt-0.5">
+                          DISEÑO TU ESPACIO
+                        </span>
+                      </div>
                     </div>
 
                     <div className="flex-1 min-w-0 space-y-2 text-left">

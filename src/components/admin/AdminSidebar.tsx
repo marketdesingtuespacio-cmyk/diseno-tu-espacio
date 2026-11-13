@@ -15,7 +15,8 @@ import {
   Sparkle,
   History,
   X,
-  Share2
+  Share2,
+  ScanLine
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -42,6 +43,8 @@ interface AdminSidebarProps {
   /** Estado del drawer en móvil/tablet (en escritorio el sidebar siempre está visible) */
   isMobileOpen?: boolean;
   onMobileClose?: () => void;
+  /** Disparador para abrir el escáner de cámara/imagen */
+  onOpenScanner?: () => void;
 }
 
 export const AdminSidebar: React.FC<AdminSidebarProps> = ({
@@ -52,7 +55,8 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
   appointmentsCount,
   couponsCount,
   isMobileOpen = false,
-  onMobileClose
+  onMobileClose,
+  onOpenScanner
 }) => {
   const { user, logout } = useAuth();
 
@@ -249,6 +253,23 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
 
       {/* Bottom Actions */}
       <div className="space-y-2 pt-3 border-t border-neutral-100">
+        <button
+          type="button"
+          onClick={() => {
+            onOpenScanner?.();
+            onMobileClose?.();
+          }}
+          className="w-full flex items-center justify-between text-xs text-neutral-950 bg-amber-400 hover:bg-amber-300 py-2.5 px-3.5 rounded-2xl transition-all font-bold shadow-xs cursor-pointer border border-amber-300"
+        >
+          <div className="flex items-center gap-2">
+            <ScanLine className="w-4 h-4 text-neutral-950" />
+            <span className="text-[11px] font-extrabold uppercase tracking-wider">Escanear QR Físico</span>
+          </div>
+          <span className="text-[9px] bg-neutral-950 text-amber-300 font-mono font-bold px-2 py-0.5 rounded-full">
+            Cámara
+          </span>
+        </button>
+
         <Link 
           to="/" 
           className="w-full flex items-center justify-between text-xs text-neutral-700 hover:text-black py-2.5 px-3.5 rounded-2xl bg-neutral-100/70 hover:bg-neutral-100 border border-neutral-200/60 transition-all font-semibold"

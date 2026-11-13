@@ -11,7 +11,8 @@ import {
   Globe, 
   LogOut,
   ChevronDown,
-  Sparkles
+  Sparkles,
+  ScanLine
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
@@ -252,6 +253,21 @@ export const Header: React.FC = () => {
             {/* User Profile / Back-office Indicator */}
             {user ? (
               <div className="flex items-center gap-1.5 sm:gap-2">
+                <Link
+                  to="/admin?scan=true"
+                  className={`p-1.5 transition-colors flex items-center gap-1 border px-2 py-1 ${
+                    !isTransparent
+                      ? 'border-amber-300 bg-amber-100/90 text-amber-950 hover:bg-amber-200'
+                      : 'border-amber-400/40 bg-amber-400/20 text-amber-300 hover:bg-amber-400/30 backdrop-blur-xs'
+                  }`}
+                  title="Abrir Escáner QR de Inventario Físico (Cámara / Foto)"
+                >
+                  <ScanLine className="w-3.5 h-3.5 text-amber-700" />
+                  <span className="hidden sm:inline-block text-[10px] font-black uppercase tracking-wider">
+                    Escanear
+                  </span>
+                </Link>
+
                 <Link 
                   to="/admin" 
                   className={`p-1.5 transition-colors flex items-center gap-1.5 border px-2 sm:px-2.5 py-1 ${

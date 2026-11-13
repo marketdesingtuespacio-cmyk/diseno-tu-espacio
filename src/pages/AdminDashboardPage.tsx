@@ -22,7 +22,8 @@ import {
   Clock,
   CreditCard,
   Check,
-  QrCode
+  QrCode,
+  ScanLine
 } from 'lucide-react';
 import { Product, Appointment, Order, Coupon, UserProfile } from '../types';
 import { productService, subscribeToProducts, isCategoryMatch, getDeletedProductKeys } from '../services/productService';
@@ -35,6 +36,7 @@ import { checkSupabaseHealth } from '../lib/supabase';
 import { AdminSidebar, AdminTab } from '../components/admin/AdminSidebar';
 import { ProductRegistrationForm } from '../components/admin/ProductRegistrationForm';
 import { ProductQRModal } from '../components/admin/ProductQRModal';
+import { InventoryQRScannerModal } from '../components/admin/InventoryQRScannerModal';
 import { TeamManagementView } from '../components/admin/TeamManagementView';
 import { OrderRegistrationModal } from '../components/admin/OrderRegistrationModal';
 import { OrderKanbanBoard } from '../components/admin/OrderKanbanBoard';
@@ -212,6 +214,19 @@ export const AdminDashboardPage: React.FC = () => {
     setQrModalProducts(selected);
     setIsQrModalOpen(true);
   };
+
+  // Physical Inventory QR Camera / Image Scanner State
+  const [isScannerModalOpen, setIsScannerModalOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    // Check if query param ?scan=true or #scan is present
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('scan') === 'true' || window.location.hash === '#scan' || window.location.hash === '#scanner') {
+        setIsScannerModalOpen(true);
+      }
+    }
+  }, []);
 
   // Bulk Change Status
   const handleBulkChangeStatus = async (newStatus: Product['inventory_status']) => {
@@ -691,6 +706,7 @@ export const AdminDashboardPage: React.FC = () => {
         couponsCount={coupons.length}
         isMobileOpen={isMobileMenuOpen}
         onMobileClose={() => setIsMobileMenuOpen(false)}
+        onOpenScanner={() => setIsScannerModalOpen(true)}
       />
 
       <div className="max-w-[1580px] mx-auto space-y-6 relative z-10">
@@ -729,6 +745,16 @@ export const AdminDashboardPage: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-2 flex-wrap self-end sm:self-auto">
+            <button
+              type="button"
+              onClick={() => setIsScannerModalOpen(true)}
+              className="bg-amber-400 hover:bg-amber-300 text-neutral-950 font-extrabold rounded-full px-4 py-2 text-[11px] uppercase tracking-wider shadow-sm flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer border border-amber-300"
+              title="Abrir Escáner QR de Inventario Físico (Cámara / Foto)"
+            >
+              <ScanLine className="w-3.5 h-3.5 text-neutral-950" />
+              <span>Escanear QR</span>
+            </button>
+
             <button
               onClick={() => setIsOrderModalOpen(true)}
               className="bg-white/70 hover:bg-white text-neutral-900 border border-white/80 backdrop-blur-md rounded-full px-4 py-2 text-[11px] font-bold uppercase tracking-wider shadow-2xs flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer"
@@ -960,6 +986,16 @@ export const AdminDashboardPage: React.FC = () => {
                 >
                   <QrCode className="w-4 h-4 text-neutral-950" />
                   <span>Etiquetas QR ({filteredProducts.length})</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setIsScannerModalOpen(true)}
+                  className="bg-neutral-950 hover:bg-black text-white font-extrabold text-xs uppercase tracking-wider py-2.5 px-3.5 rounded-xl shadow-sm transition-all flex items-center gap-1.5 shrink-0 cursor-pointer border border-neutral-800"
+                  title="Escanear etiquetas QR físicas con la cámara del celular o foto para consultar y editar stock"
+                >
+                  <ScanLine className="w-4 h-4 text-amber-400" />
+                  <span>Escanear QR</span>
                 </button>
 
                 <button 
@@ -2191,6 +2227,17 @@ export const AdminDashboardPage: React.FC = () => {
           }}
           product={qrModalProduct}
           products={qrModalProducts}
+        />
+
+        {/* Physical Inventory Live Camera & Image Scanner Modal */}
+        <InventoryQRScannerModal
+          isOpen={isScannerModalOpen}
+          onClose={() => setIsScannerModalOpen(false)}
+          products={products}
+          onProductUpdated={(updated) => {
+            setProducts(prev => prev.map(p => p.id === updated.id ? updated : p));
+            loadData();
+          }}
         />
 
         {/* Server Action Confirmation Pop-Up Modal */}
