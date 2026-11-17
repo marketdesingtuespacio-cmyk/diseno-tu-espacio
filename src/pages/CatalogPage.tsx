@@ -7,7 +7,7 @@ import { ProductCard } from '../components/ProductCard';
 import { ProductCardSkeleton } from '../components/ProductCardSkeleton';
 import { useCurrency } from '../context/CurrencyContext';
 
-const DEFAULT_CATEGORIES = ['all', 'Espejos', 'Papel de Colgadura', 'Lavamanos', 'Lavaplatos', 'Cuadros', 'Revestimientos', 'Mesas con Base', 'Mesas Completas'];
+const DEFAULT_CATEGORIES = ['all', 'Espejos', 'Papel de Colgadura', 'Lavamanos', 'Cuadros', 'Revestimientos'];
 const STYLES = ['all', 'Minimalista', 'Contemporáneo', 'Bauhaus', 'Nórdico', 'Orgánico Moderno', 'Galería Contemporánea', 'Arquitectónico'];
 const DEFAULT_MAX_PRICE = 20000000; // $20.000.000 COP default max threshold
 
@@ -35,6 +35,15 @@ const cleanAndDedupeCategories = (rawList: string[]): string[] => {
   return Array.from(map.values());
 };
 
+const extractAvailableCategories = (items: Product[]): string[] => {
+  const availableItems = items.filter(p => 
+    p.inventory_status !== 'Privado' && 
+    p.inventory_status !== 'Agotado' && 
+    (p.stock > 0 || p.stock === undefined)
+  );
+  return cleanAndDedupeCategories(availableItems.map(p => p.category).filter(Boolean));
+};
+
 export const CatalogPage: React.FC = () => {
   const { formatPrice } = useCurrency();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -57,17 +66,29 @@ export const CatalogPage: React.FC = () => {
 
   // Fetch dynamic categories from active public products & deduplicate case variants
   useEffect(() => {
-    const cached = productService.getProductsSync();
-    if (cached.length > 0) {
-      const activeCats = cleanAndDedupeCategories(cached.map(p => p.category).filter(Boolean));
-      if (activeCats.length > 0) setCategories(['all', ...activeCats]);
-    }
-    productService.getProducts().then(publicItems => {
-      const activeCats = cleanAndDedupeCategories(publicItems.map(p => p.category).filter(Boolean));
+    const updateCategoriesFromProducts = (items: Product[]) => {
+      const activeCats = extractAvailableCategories(items);
       if (activeCats.length > 0) {
         setCategories(['all', ...activeCats]);
       }
+    };
+
+    const cached = productService.getProductsSync(undefined, false);
+    if (cached.length > 0) {
+      updateCategoriesFromProducts(cached);
+    }
+
+    productService.getProducts(undefined, false).then(publicItems => {
+      updateCategoriesFromProducts(publicItems);
     });
+
+    const unsub = subscribeToProducts(() => {
+      productService.getProducts(undefined, false, true).then(publicItems => {
+        updateCategoriesFromProducts(publicItems);
+      });
+    });
+
+    return () => unsub();
   }, []);
 
   // Filter State

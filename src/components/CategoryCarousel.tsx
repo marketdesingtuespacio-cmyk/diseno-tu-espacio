@@ -1,6 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Product } from '../types';
+import { productService, subscribeToProducts, isCategoryMatch } from '../services/productService';
 
 interface CategoryItem {
   id: string;
@@ -10,7 +12,8 @@ interface CategoryItem {
   image?: string;
 }
 
-const CATEGORY_ITEMS: CategoryItem[] = [
+// Catálogo base con imágenes curadas de estudio
+const CURATED_CATEGORIES: CategoryItem[] = [
   {
     id: 'cat-new',
     name: 'NOVEDADES',
@@ -70,6 +73,77 @@ const CATEGORY_ITEMS: CategoryItem[] = [
 export const CategoryCarousel: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const [products, setProducts] = useState<Product[]>([]);
+
+  // Cargar productos públicos y suscribirse a cambios de Supabase
+  useEffect(() => {
+    // 1. Carga inicial síncrona / rápida desde memoria local
+    const syncProducts = productService.getProductsSync(undefined, false);
+    if (syncProducts.length > 0) {
+      setProducts(syncProducts);
+    }
+
+    // 2. Consulta asíncrona a Supabase para verificar stock y estado oficial
+    productService.getProducts(undefined, false).then((fetched) => {
+      setProducts(fetched);
+    });
+
+    // 3. Suscripción en tiempo real: cuando un admin cambie un producto a "Disponible", se actualiza solo
+    const unsub = subscribeToProducts(() => {
+      productService.getProducts(undefined, false, true).then((fetched) => {
+        setProducts(fetched);
+      });
+    });
+
+    return () => unsub();
+  }, []);
+
+  // REGLA INDECLINABLE: Ocultar automáticamente las categorías que no tienen productos disponibles.
+  // Solo se activan cuando existan piezas públicas con stock disponible.
+  const visibleCategories = useMemo<CategoryItem[]>(() => {
+    // Productos que están verdaderamente disponibles para clientes
+    const availableProducts = products.filter(p => 
+      p.inventory_status !== 'Privado' && 
+      p.inventory_status !== 'Agotado' && 
+      (p.stock > 0 || p.stock === undefined)
+    );
+
+    // Si aún están cargando los productos desde la red, mostrar provisionalmente solo las categorías con inventario comprobado
+    if (products.length === 0) {
+      return CURATED_CATEGORIES.filter(item => 
+        item.isNewCard || ['Espejos', 'Papel de Colgadura', 'Lavamanos', 'Cuadros', 'Revestimientos'].includes(item.categoryFilter || '')
+      );
+    }
+
+    // Filtrar de la lista curada únicamente aquellas que tienen al menos 1 producto disponible
+    const filteredCurated = CURATED_CATEGORIES.filter(item => {
+      if (item.isNewCard) return true; // Siempre conservar la tarjeta NEW
+      const filter = item.categoryFilter || item.name;
+      return availableProducts.some(p => isCategoryMatch(p.category, filter));
+    });
+
+    // Detectar si existen nuevas categorías dinámicas con productos disponibles que no estén en la lista curada
+    const registeredFilters = new Set(
+      CURATED_CATEGORIES.map(c => (c.categoryFilter || c.name).toLowerCase().trim())
+    );
+
+    const extraDynamicCategories: CategoryItem[] = [];
+    for (const p of availableProducts) {
+      const cat = p.category?.trim();
+      if (!cat) continue;
+      const lower = cat.toLowerCase();
+      if (!registeredFilters.has(lower) && !extraDynamicCategories.some(e => e.categoryFilter?.toLowerCase() === lower)) {
+        extraDynamicCategories.push({
+          id: `cat-dyn-${lower.replace(/\s+/g, '-')}`,
+          name: cat.toUpperCase(),
+          categoryFilter: cat,
+          image: (p.images && p.images.length > 0) ? p.images[0] : undefined
+        });
+      }
+    }
+
+    return [...filteredCurated, ...extraDynamicCategories];
+  }, [products]);
 
   const handleScroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
@@ -98,14 +172,14 @@ export const CategoryCarousel: React.FC = () => {
         <div className="flex items-center gap-1.5">
           <button 
             onClick={() => handleScroll('left')}
-            className="p-1.5 sm:p-2 border border-brand-border hover:border-black text-brand-black transition-colors"
+            className="p-1.5 sm:p-2 border border-brand-border hover:border-black text-brand-black transition-colors cursor-pointer"
             aria-label="Anterior categoría"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
           <button 
             onClick={() => handleScroll('right')}
-            className="p-1.5 sm:p-2 border border-brand-border hover:border-black text-brand-black transition-colors"
+            className="p-1.5 sm:p-2 border border-brand-border hover:border-black text-brand-black transition-colors cursor-pointer"
             aria-label="Siguiente categoría"
           >
             <ChevronRight className="w-4 h-4" />
@@ -119,7 +193,7 @@ export const CategoryCarousel: React.FC = () => {
         className="flex gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none pb-2 snap-x snap-mandatory"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
-        {CATEGORY_ITEMS.map((item) => (
+        {visibleCategories.map((item) => (
           <div 
             key={item.id}
             onClick={() => handleCategoryClick(item.categoryFilter)}
@@ -131,12 +205,16 @@ export const CategoryCarousel: React.FC = () => {
                 <div className="text-center font-sans tracking-[0.25em] text-3xl sm:text-4xl font-light text-brand-black group-hover:scale-105 transition-transform duration-300">
                   NEW
                 </div>
-              ) : (
+              ) : item.image ? (
                 <img 
                   src={item.image} 
                   alt={item.name}
                   className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-300"
                 />
+              ) : (
+                <div className="text-center font-sans font-bold text-xs uppercase tracking-wider text-neutral-400">
+                  {item.name}
+                </div>
               )}
             </div>
 

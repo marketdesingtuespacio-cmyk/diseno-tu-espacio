@@ -919,6 +919,7 @@ export const AdminDashboardPage: React.FC = () => {
             products={products} 
             appointments={appointments} 
             teamMembers={teamMembers}
+            onOpenScanner={() => setIsScannerModalOpen(true)}
           />
         )}
 

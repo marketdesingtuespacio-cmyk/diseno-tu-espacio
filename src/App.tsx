@@ -76,6 +76,7 @@ const MainContent: React.FC = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/catalog" element={<CatalogPage />} />
         <Route path="/product/:slug" element={<ProductDetailPage />} />
+        <Route path="/p/:slug" element={<ProductDetailPage />} />
         <Route path="/booking" element={<BookingPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/login" element={<LoginPage />} />

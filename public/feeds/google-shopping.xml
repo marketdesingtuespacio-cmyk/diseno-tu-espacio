@@ -50,6 +50,20 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>90f680eb-622a-4114-8a53-d6aec750416c</g:id>
+      <g:title>Producto prueba de compra</g:title>
+      <g:description>Lampara de mesa elegante.</g:description>
+      <g:link>https://disenotuespacio.com/product/producto-prueba-de-compra</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Producto_prueba_de_compra__1793582344063.jpeg</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>1000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
+      <g:product_type>Papel de Colgadura</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>AH60160022GD</g:id>
       <g:title>Espejos AH60160022GD</g:title>
       <g:description>Pieza de autor Espejos y cuadros AH60160022GD referencia SKU AH60160022GD. Acabados de lujo y garantía de 72 años.</g:description>
@@ -62,20 +76,6 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>90f680eb-622a-4114-8a53-d6aec750416c</g:id>
-      <g:title>Producto prueba de compra</g:title>
-      <g:description>Lampara de mesa elegante.</g:description>
-      <g:link>https://disenotuespacio.com/product/producto-prueba-de-compra</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Producto_prueba_de_compra__1793582344063.jpeg</g:image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>1000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
-      <g:product_type>Papel de Colgadura</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -539,20 +539,9 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
     <item>
       <g:id>MD681309</g:id>
       <g:title>Papel de colgadura MD681309</g:title>
-      <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
+      <g:description>Transforma tus espacios con nuestra exclusiva colección de papeles de colgadura en PVC. Diseños modernos, elegantes y sofisticados, con variedad de colores, texturas y acabados que aportan lujo, personalidad y distinción a cada ambiente.
 
-El modelo  cuenta demás con garantía de 1 año, un respaldo que acompaña la elección de esta pieza para proyectos de decoración.
-
-Especificaciones técnicas
-Tipo: Papel de colgadura
-Acabado: Acabados de lujo
-Garantía: 1 año
-Beneficios
-Pieza de autor: Aporta un carácter distintivo a la propuesta de decoración.
-Acabados de lujo: Refuerzan una estética sofisticada y cuidada.
-Valor decorativo: Puede convertirse en un elemento protagonista dentro del interiorismo.
-Diseño con presencia: Contribuye a crear espacios con una identidad visual más definida.
-Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:description>
+Ideales para salas, habitaciones, oficinas y espacios comerciales.</g:description>
       <g:link>https://disenotuespacio.com/product/prod-15-md681309</g:link>
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681309_2.jpeg</g:image_link>
       <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681309_1.jpeg</g:additional_image_link>
@@ -773,21 +762,6 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>5812</g:id>
-      <g:title>Espejos modernos 5812</g:title>
-      <g:description>Pieza de autor Espejos modernos 5812 referencia SKU 5812. Acabados de lujo y garantía de 24 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-44-5812</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5812_1792096183972.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5812_1792096185035.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>912963 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
       <g:id>AA1010089-600</g:id>
       <g:title>Mesa AA1010089-600</g:title>
       <g:description>Mesa de diseño arquitectónico Mesa AA1010089-600 (Ref. SKU: AA1010089-600). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
@@ -828,6 +802,21 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
       <g:product_type>Papel de Colgadura</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>5812</g:id>
+      <g:title>Espejos modernos 5812</g:title>
+      <g:description>Pieza de autor Espejos modernos 5812 referencia SKU 5812. Acabados de lujo y garantía de 24 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-44-5812</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5812_1792096183972.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5812_1792096185035.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>912963 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -916,21 +905,6 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
       <g:product_type>Mesas con Base</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>AH60160022BK</g:id>
-      <g:title>Espejos AH60160022BK</g:title>
-      <g:description>Pieza de autor Espejos y cuadros AH60160022BK referencia SKU AH60160022BK. Acabados de lujo y garantía de 71 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-92-ah60160022bk</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60160022BK_1792009236314.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60160022BK_1792009283171.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>935821 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1024,6 +998,21 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>AH60160022BK</g:id>
+      <g:title>Espejos AH60160022BK</g:title>
+      <g:description>Pieza de autor Espejos y cuadros AH60160022BK referencia SKU AH60160022BK. Acabados de lujo y garantía de 71 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-92-ah60160022bk</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60160022BK_1792009236314.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60160022BK_1792009283171.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>935821 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>10046-BLACK</g:id>
       <g:title>Lavaplatos 10046-BLACK</g:title>
       <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 10046-BLACK (Ref. SKU: 10046-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
@@ -1036,35 +1025,6 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
       <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
       <g:product_type>Lavaplatos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>MD680101</g:id>
-      <g:title>Papel de colgadura MD680101</g:title>
-      <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
-
-El modelo  cuenta demás con garantía de 1 año, un respaldo que acompaña la elección de esta pieza para proyectos de decoración.
-
-Especificaciones técnicas
-Tipo: Papel de colgadura
-Acabado: Acabados de lujo
-Garantía: 1 año
-Beneficios
-Pieza de autor: Aporta un carácter distintivo a la propuesta de decoración.
-Acabados de lujo: Refuerzan una estética sofisticada y cuidada.
-Valor decorativo: Puede convertirse en un elemento protagonista dentro del interiorismo.
-Diseño con presencia: Contribuye a crear espacios con una identidad visual más definida.
-Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-1-md680101</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680101_2.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680101_1.jpeg</g:additional_image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680101_ecommerce.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>800000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
-      <g:product_type>Papel de Colgadura</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1154,6 +1114,24 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
       <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
       <g:product_type>Lavaplatos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>MD680101</g:id>
+      <g:title>Papel de colgadura MD680101</g:title>
+      <g:description>Transforma tus espacios con nuestra exclusiva colección de papeles de colgadura en PVC. Diseños modernos, elegantes y sofisticados, con variedad de colores, texturas y acabados que aportan lujo, personalidad y distinción a cada ambiente.
+
+Ideales para salas, habitaciones, oficinas y espacios comerciales.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-1-md680101</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680101_2.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680101_1.jpeg</g:additional_image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680101_ecommerce.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>800000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
+      <g:product_type>Papel de Colgadura</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1334,21 +1312,6 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>HP-120X90-0948</g:id>
-      <g:title>Cuadros HP120X900948</g:title>
-      <g:description>Pieza de autor Espejos y cuadros HP120X900948 referencia SKU HP120X900948. Acabados de lujo y garantía de 39 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-60-hp120x900948</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP120X900948_1.jpg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP120X900948_2.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>747523 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
-      <g:product_type>Cuadros</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
       <g:id>6421</g:id>
       <g:title>Espejos modernos 6421</g:title>
       <g:description>Pieza de autor Espejos modernos 6421 referencia SKU 6421. Acabados de lujo y garantía de 36 años.</g:description>
@@ -1361,6 +1324,21 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>HP-120X90-0948</g:id>
+      <g:title>Cuadros HP120X900948</g:title>
+      <g:description>Pieza de autor Espejos y cuadros HP120X900948 referencia SKU HP120X900948. Acabados de lujo y garantía de 39 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-60-hp120x900948</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP120X900948_1.jpg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP120X900948_2.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>747523 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
+      <g:product_type>Cuadros</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1388,21 +1366,6 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>662910 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>5523</g:id>
-      <g:title>Espejos modernos 5523</g:title>
-      <g:description>Pieza de autor Espejos modernos 5523 referencia SKU 5523. Acabados de lujo y garantía de 19 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-39-5523</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5523_1792098149682.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5523_1792098150211.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>983423 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
@@ -1441,6 +1404,21 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>5523</g:id>
+      <g:title>Espejos modernos 5523</g:title>
+      <g:description>Pieza de autor Espejos modernos 5523 referencia SKU 5523. Acabados de lujo y garantía de 19 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-39-5523</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5523_1792098149682.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5523_1792098150211.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>983423 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>KAS05 Flexible-Stone Panel-(Travertine)-2</g:id>
       <g:title>Flexible Stone Panel（Travertine)-2 Flexible-Stone Panel-(Travertine)-2</g:title>
       <g:description>Pieza de autor Flexible Stone Panel（Travertine)-2 Flexible-Stone Panel-(Travertine)-2 referencia SKU Flexible-Stone Panel-(Travertine)-2. Acabados de lujo y garantía de 74 años.</g:description>
@@ -1453,21 +1431,6 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
       <g:product_type>Revestimientos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>AHR80006BK</g:id>
-      <g:title>Espejos  AHR80006BK</g:title>
-      <g:description>Pieza de autor Espejos y cuadros AHR80006BK referencia SKU AHR80006BK. Acabados de lujo y garantía de 70 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-91-ahr80006bk</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AHR80006BK_1792012152355.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AHR80006BK_1792012154280.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>697287 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1534,6 +1497,21 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>AHR80006BK</g:id>
+      <g:title>Espejos  AHR80006BK</g:title>
+      <g:description>Pieza de autor Espejos y cuadros AHR80006BK referencia SKU AHR80006BK. Acabados de lujo y garantía de 70 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-91-ahr80006bk</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AHR80006BK_1792012152355.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AHR80006BK_1792012154280.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>697287 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>A707-CUG20-M</g:id>
       <g:title>Lavamanos A707-CUG20-M</g:title>
       <g:description>Pieza de autor Lavamanos A707CUG20M referencia SKU A707CUG20M. Acabados de lujo y garantía de 6 años.</g:description>
@@ -1547,21 +1525,6 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
       <g:product_type>Lavamanos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>5351</g:id>
-      <g:title>Espejos modernos 5351</g:title>
-      <g:description>Pieza de autor Espejos modernos 5351 referencia SKU 5351. Acabados de lujo y garantía de 38 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-58-5351</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5351_1792008862871.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5351_1792008878290.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>864749 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1580,6 +1543,21 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>5351</g:id>
+      <g:title>Espejos modernos 5351</g:title>
+      <g:description>Pieza de autor Espejos modernos 5351 referencia SKU 5351. Acabados de lujo y garantía de 38 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-58-5351</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5351_1792008862871.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5351_1792008878290.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>864749 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>SF022</g:id>
       <g:title>Espejos modernos SF022</g:title>
       <g:description>Pieza de autor Espejos modernos SF022 referencia SKU SF022. Acabados de lujo y garantía de 33 años.</g:description>
@@ -1589,36 +1567,6 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>944126 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>5334</g:id>
-      <g:title>Espejos modernos 5334</g:title>
-      <g:description>Pieza de autor Espejos modernos 5334 referencia SKU 5334. Acabados de lujo y garantía de 28 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-48-5334</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5334_1792158566282.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5334_1792158567150.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>624644 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>AH60120037BK</g:id>
-      <g:title>Espejos  AH60120037BK</g:title>
-      <g:description>Pieza de autor Espejos y cuadros AH60120037BK referencia SKU AH60120037BK. Acabados de lujo y garantía de 62 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-83-ah60120037bk</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60120037BK_1792159353786.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60120037BK_1792159354317.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>920000 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
@@ -1640,15 +1588,45 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>6411</g:id>
-      <g:title>Espejos modernos 6411</g:title>
-      <g:description>Pieza de autor Espejos modernos 6411 referencia SKU 6411. Acabados de lujo y garantía de 29 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-49-6411</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_6411_1792009998729.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_6411_1792010001658.jpeg</g:additional_image_link>
+      <g:id>5334</g:id>
+      <g:title>Espejos modernos 5334</g:title>
+      <g:description>Pieza de autor Espejos modernos 5334 referencia SKU 5334. Acabados de lujo y garantía de 28 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-48-5334</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5334_1792158566282.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5334_1792158567150.jpeg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>950084 COP</g:price>
+      <g:price>624644 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>5343</g:id>
+      <g:title>Espejos modernos 5343</g:title>
+      <g:description>Pieza de autor Espejos modernos 5343 referencia SKU 5343. Acabados de lujo y garantía de 26 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-46-5343</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5343_1792009823989.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5343_1792009824818.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>670529 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>AH60120037BK</g:id>
+      <g:title>Espejos  AH60120037BK</g:title>
+      <g:description>Pieza de autor Espejos y cuadros AH60120037BK referencia SKU AH60120037BK. Acabados de lujo y garantía de 62 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-83-ah60120037bk</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60120037BK_1792159353786.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60120037BK_1792159354317.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>920000 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
@@ -1672,15 +1650,15 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>5343</g:id>
-      <g:title>Espejos modernos 5343</g:title>
-      <g:description>Pieza de autor Espejos modernos 5343 referencia SKU 5343. Acabados de lujo y garantía de 26 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-46-5343</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5343_1792009823989.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5343_1792009824818.jpeg</g:additional_image_link>
+      <g:id>6411</g:id>
+      <g:title>Espejos modernos 6411</g:title>
+      <g:description>Pieza de autor Espejos modernos 6411 referencia SKU 6411. Acabados de lujo y garantía de 29 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-49-6411</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_6411_1792009998729.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_6411_1792010001658.jpeg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>670529 COP</g:price>
+      <g:price>950084 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
@@ -1702,19 +1680,18 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>RB033</g:id>
-      <g:title>Lavamanos RB033</g:title>
-      <g:description>Pieza de autor Lavamanos RB033 referencia SKU RB033. Acabados de lujo y garantía de 2 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-22-rb033</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_RB033_1.jpg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_RB033_2.jpg</g:additional_image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_RB033_3.jpg</g:additional_image_link>
+      <g:id>AH60120043</g:id>
+      <g:title>Espejos  AH60120043</g:title>
+      <g:description>Pieza de autor Espejos y cuadros AH60120043 referencia SKU AH60120043. Acabados de lujo y garantía de 61 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-82-ah60120043</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60120043_1792094023949.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60120043_1792094025019.jpeg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>730260 COP</g:price>
+      <g:price>920000 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
-      <g:product_type>Lavamanos</g:product_type>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1733,18 +1710,19 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>AH60120043</g:id>
-      <g:title>Espejos  AH60120043</g:title>
-      <g:description>Pieza de autor Espejos y cuadros AH60120043 referencia SKU AH60120043. Acabados de lujo y garantía de 61 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-82-ah60120043</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60120043_1792094023949.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60120043_1792094025019.jpeg</g:additional_image_link>
+      <g:id>RB033</g:id>
+      <g:title>Lavamanos RB033</g:title>
+      <g:description>Pieza de autor Lavamanos RB033 referencia SKU RB033. Acabados de lujo y garantía de 2 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-22-rb033</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_RB033_1.jpg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_RB033_2.jpg</g:additional_image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_RB033_3.jpg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>920000 COP</g:price>
+      <g:price>730260 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1841,15 +1819,30 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>AH60160050GD</g:id>
-      <g:title>Espejos  AH60160050GD</g:title>
-      <g:description>Pieza de autor Espejos y cuadros AH60160050GD referencia SKU AH60160050GD. Acabados de lujo y garantía de 67 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-88-ah60160050gd</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60160050GD_1792093743900.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60160050GD_1792093744537.jpeg</g:additional_image_link>
+      <g:id>AH60160050BK</g:id>
+      <g:title>Espejos  AH60160050BK</g:title>
+      <g:description>Pieza de autor Espejos y cuadros AH60160050BK referencia SKU AH60160050BK. Acabados de lujo y garantía de 66 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-87-ah60160050bk</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60160050BK_1792093204184.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60160050BK_1792093283486.jpeg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>982612 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>SWR80070</g:id>
+      <g:title>Espejos SWR80070</g:title>
+      <g:description>Pieza de autor Espejos y cuadros SWR80070 referencia SKU SWR80070. Acabados de lujo y garantía de 59 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-80-swr80070</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_SWR80070_1792012098205.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_SWR80070_1792012098909.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>855503 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
@@ -1902,27 +1895,12 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>SWR80070</g:id>
-      <g:title>Espejos SWR80070</g:title>
-      <g:description>Pieza de autor Espejos y cuadros SWR80070 referencia SKU SWR80070. Acabados de lujo y garantía de 59 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-80-swr80070</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_SWR80070_1792012098205.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_SWR80070_1792012098909.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>855503 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>AH60160050BK</g:id>
-      <g:title>Espejos  AH60160050BK</g:title>
-      <g:description>Pieza de autor Espejos y cuadros AH60160050BK referencia SKU AH60160050BK. Acabados de lujo y garantía de 66 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-87-ah60160050bk</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60160050BK_1792093204184.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60160050BK_1792093283486.jpeg</g:additional_image_link>
+      <g:id>AH60160050GD</g:id>
+      <g:title>Espejos  AH60160050GD</g:title>
+      <g:description>Pieza de autor Espejos y cuadros AH60160050GD referencia SKU AH60160050GD. Acabados de lujo y garantía de 67 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-88-ah60160050gd</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60160050GD_1792093743900.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60160050GD_1792093744537.jpeg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>982612 COP</g:price>
@@ -1944,21 +1922,6 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
       <g:product_type>Cuadros</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>5911</g:id>
-      <g:title>Espejos modernos 5911</g:title>
-      <g:description>Espejo</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-47-5911</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5911_1792160398563.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5911_1792160434851.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>588138 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -2011,6 +1974,21 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>5911</g:id>
+      <g:title>Espejos modernos 5911</g:title>
+      <g:description>Espejo</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-47-5911</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5911_1792160398563.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5911_1792160434851.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>588138 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>HP-80X80-1104</g:id>
       <g:title>Cuadros HP80X801104</g:title>
       <g:description>Pieza de autor Espejos y cuadros HP80X801104 referencia SKU HP80X801104. Acabados de lujo y garantía de 47 años.</g:description>
@@ -2023,21 +2001,6 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
       <g:product_type>Cuadros</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>5823</g:id>
-      <g:title>Espejos modernos 5823</g:title>
-      <g:description>Pieza de autor Espejos modernos 5823 referencia SKU 5823. Acabados de lujo y garantía de 22 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-42-5823</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5823_1792093402778.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5823_1792093419664.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>662910 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -2086,6 +2049,21 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>5823</g:id>
+      <g:title>Espejos modernos 5823</g:title>
+      <g:description>Pieza de autor Espejos modernos 5823 referencia SKU 5823. Acabados de lujo y garantía de 22 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-42-5823</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5823_1792093402778.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5823_1792093419664.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>662910 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>KAS08 Flexible-Stone-Panel-(Slate)</g:id>
       <g:title>Flexible Stone Panel（Slate) Flexible-Stone-Panel-(Slate)</g:title>
       <g:description>Pieza de autor Flexible Stone Panel（Slate) Flexible-Stone-Panel-(Slate) referencia SKU Flexible-Stone-Panel-(Slate). Acabados de lujo y garantía de 77 años.</g:description>
@@ -2098,21 +2076,6 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
       <g:product_type>Revestimientos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>AH60160045BK</g:id>
-      <g:title>Espejos AH60160045BK</g:title>
-      <g:description>Pieza de autor Espejos y cuadros AH60160045BK referencia SKU AH60160045BK. Acabados de lujo y garantía de 58 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-79-ah60160045bk</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60160045BK_1792159219367.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60160045BK_1792159220263.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>842239 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -2161,15 +2124,30 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>5521</g:id>
-      <g:title>Espejos modernos 5521</g:title>
-      <g:description>Pieza de autor Espejos modernos 5521 referencia SKU 5521. Acabados de lujo y garantía de 37 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-57-5521</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5521_1792101345881.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5521_1792101346482.jpeg</g:additional_image_link>
+      <g:id>AH60160045BK</g:id>
+      <g:title>Espejos AH60160045BK</g:title>
+      <g:description>Pieza de autor Espejos y cuadros AH60160045BK referencia SKU AH60160045BK. Acabados de lujo y garantía de 58 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-79-ah60160045bk</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60160045BK_1792159219367.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60160045BK_1792159220263.jpeg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>678995 COP</g:price>
+      <g:price>842239 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>5814</g:id>
+      <g:title>Espejos modernos 5814</g:title>
+      <g:description>Pieza de autor Espejos modernos 5814 referencia SKU 5814. Acabados de lujo y garantía de 21 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-41-5814</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5814_1792101121657.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5814_1792101188419.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>998133 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
@@ -2192,15 +2170,15 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>5814</g:id>
-      <g:title>Espejos modernos 5814</g:title>
-      <g:description>Pieza de autor Espejos modernos 5814 referencia SKU 5814. Acabados de lujo y garantía de 21 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-41-5814</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5814_1792101121657.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5814_1792101188419.jpeg</g:additional_image_link>
+      <g:id>5521</g:id>
+      <g:title>Espejos modernos 5521</g:title>
+      <g:description>Pieza de autor Espejos modernos 5521 referencia SKU 5521. Acabados de lujo y garantía de 37 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-57-5521</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5521_1792101345881.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5521_1792101346482.jpeg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>998133 COP</g:price>
+      <g:price>678995 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
@@ -2284,6 +2262,21 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>5101</g:id>
+      <g:title>Espejos modernos 5101</g:title>
+      <g:description>Pieza de autor Espejos modernos 5101 referencia SKU 5101. Acabados de lujo y garantía de 31 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-51-5101</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5101_1792009117529.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5101_1792009119162.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>945480 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>A787-CDGR-M</g:id>
       <g:title>Lavamanos A787-CDGR-M</g:title>
       <g:description>Pieza de autor Lavamanos A787CDGRM referencia SKU A787CDGRM. Acabados de lujo y garantía de 17 años.</g:description>
@@ -2298,21 +2291,6 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
       <g:product_type>Lavamanos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>5101</g:id>
-      <g:title>Espejos modernos 5101</g:title>
-      <g:description>Pieza de autor Espejos modernos 5101 referencia SKU 5101. Acabados de lujo y garantía de 31 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-51-5101</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5101_1792009117529.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5101_1792009119162.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>945480 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>

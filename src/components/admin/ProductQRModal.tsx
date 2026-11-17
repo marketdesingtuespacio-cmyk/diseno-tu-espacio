@@ -44,13 +44,15 @@ export const ProductQRModal: React.FC<ProductQRModalProps> = ({
       const newMap: Record<string, string> = {};
       for (const item of itemsToRender) {
         try {
-          const productUrl = `${origin}/product/${item.id}`;
+          // Usar enlace corto /p/[sku] y nivel de corrección 'L' para generar un QR con pocos cuadros (bloques grandes y lectura ultra rápida en celulares)
+          const shortIdentifier = (item.sku && item.sku.trim().length > 0) ? item.sku.trim() : (item.slug || item.id);
+          const productUrl = `${origin}/p/${encodeURIComponent(shortIdentifier)}`;
           const dataUrl = await QRCode.toDataURL(productUrl, {
-            width: 320,
-            margin: 1.5,
-            errorCorrectionLevel: 'H',
+            width: 360,
+            margin: 1, // Margen compacto para maximizar los cuadros
+            errorCorrectionLevel: 'L', // Nivel L (Low ~7%): Pocos cuadros, bloques grandes, ideal para escanear de lejos con cualquier cámara
             color: {
-              dark: '#0f172a',
+              dark: '#000000',
               light: '#ffffff',
             },
           });
@@ -151,7 +153,8 @@ export const ProductQRModal: React.FC<ProductQRModalProps> = ({
   };
 
   const handleCopyLink = async (prod: Product) => {
-    const url = `${window.location.origin}/product/${prod.id}`;
+    const shortId = (prod.sku && prod.sku.trim().length > 0) ? prod.sku.trim() : (prod.slug || prod.id);
+    const url = `${window.location.origin}/p/${encodeURIComponent(shortId)}`;
     try {
       await navigator.clipboard.writeText(url);
       setCopiedId(prod.id);
@@ -397,7 +400,7 @@ export const ProductQRModal: React.FC<ProductQRModalProps> = ({
         {/* Modal Footer */}
         <div className="px-6 py-3.5 border-t border-neutral-200 bg-white flex flex-wrap items-center justify-between gap-3 text-xs text-neutral-500">
           <div>
-            URL Base: <code className="font-mono text-neutral-800">{window.location.origin}/product/[id]</code>
+            URL Directa Optimizada: <code className="font-mono text-neutral-800">{window.location.origin}/p/[sku]</code> (Matriz simplificada con pocos cuadros)
           </div>
           <div className="flex items-center gap-2">
             <button

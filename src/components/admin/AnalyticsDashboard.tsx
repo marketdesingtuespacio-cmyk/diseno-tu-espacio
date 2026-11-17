@@ -20,7 +20,9 @@ import {
   Building2,
   BarChart3,
   Sparkles,
-  MapPin
+  MapPin,
+  ScanLine,
+  Camera
 } from 'lucide-react';
 
 interface AnalyticsDashboardProps {
@@ -28,6 +30,7 @@ interface AnalyticsDashboardProps {
   products: Product[];
   appointments: Appointment[];
   teamMembers?: UserProfile[];
+  onOpenScanner?: () => void;
 }
 
 type RoleView = 'executive' | 'accounting' | 'sales' | 'marketing';
@@ -37,7 +40,8 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
   orders,
   products,
   appointments,
-  teamMembers = []
+  teamMembers = [],
+  onOpenScanner
 }) => {
   const { formatPrice } = useCurrency();
   const [activeRoleView, setActiveRoleView] = useState<RoleView>('executive');
@@ -221,6 +225,37 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
 
   return (
     <div className="space-y-6 font-sans">
+
+      {/* QUICK INVENTORY SCANNER HERO BANNER (MOBILE & DESKTOP) */}
+      <div className="bg-gradient-to-r from-neutral-950 via-neutral-900 to-neutral-950 text-white p-4 sm:p-5 rounded-2xl sm:rounded-[26px] border border-neutral-800 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="flex items-center gap-3.5">
+          <div className="w-12 h-12 rounded-2xl bg-amber-400 text-neutral-950 flex items-center justify-center shrink-0 shadow-md">
+            <ScanLine className="w-6 h-6 stroke-[2.5]" />
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <h3 className="text-sm sm:text-base font-extrabold tracking-tight text-white">
+                Escáner QR con Cámara de Teléfono
+              </h3>
+              <span className="text-[9.5px] uppercase font-mono font-black px-2 py-0.5 rounded-full bg-amber-400 text-neutral-950">
+                En Vivo
+              </span>
+            </div>
+            <p className="text-xs text-neutral-300 font-light mt-0.5">
+              Apunta la cámara de tu celular a la etiqueta física para ver existencias, fotos y editar stock de bodega en tiempo real.
+            </p>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          onClick={onOpenScanner}
+          className="w-full sm:w-auto px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-neutral-950 font-extrabold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg shrink-0 active:scale-95 cursor-pointer border border-amber-300"
+        >
+          <Camera className="w-4 h-4 text-neutral-950" />
+          <span>Escanear con Cámara</span>
+        </button>
+      </div>
 
       {/* TOP BAR: Role Selector Tabs & Global Controls (Niond Aesthetic) */}
       <div className="bg-white/90 backdrop-blur-xl border border-white/90 p-3 sm:p-4 rounded-2xl sm:rounded-[28px] shadow-[0_4px_20px_rgba(0,0,0,0.03)] flex flex-col md:flex-row justify-between items-stretch md:items-center gap-3 sm:gap-4">

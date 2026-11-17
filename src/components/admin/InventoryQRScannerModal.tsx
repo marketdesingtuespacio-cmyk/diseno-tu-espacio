@@ -102,7 +102,7 @@ export const InventoryQRScannerModal: React.FC<InventoryQRScannerModalProps> = (
     try {
       if (query.startsWith('http://') || query.startsWith('https://')) {
         const parsedUrl = new URL(query);
-        const match = parsedUrl.pathname.match(/\/product\/([^/?#]+)/i);
+        const match = parsedUrl.pathname.match(/\/(?:product|p)\/([^/?#]+)/i);
         if (match && match[1]) {
           query = decodeURIComponent(match[1]);
         }
