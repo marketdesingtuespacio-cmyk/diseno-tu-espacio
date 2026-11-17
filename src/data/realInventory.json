@@ -5831,5 +5831,1405 @@
     "created_at": "2026-11-13T03:43:11.528191+00:00",
     "wholesale_price": null,
     "wholesale_min_qty": 5
+  },
+  {
+    "id": "d8e650d1-f7bf-4609-9230-5c6fab7a39f7",
+    "name": "Lavamanos 400A-BLACK",
+    "slug": "lavamanos-400a-black",
+    "sku": "400A-BLACK",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Contemporáneo",
+    "price": 0,
+    "original_price": null,
+    "stock": 9,
+    "warehouse_stock": 3,
+    "store_stock": 3,
+    "web_stock": 3,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A691CBKUG04M_1.jpg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#1C1C1C",
+        "name": "Negro Mate"
+      }
+    ],
+    "dimensions": "Estándar Sobreponer",
+    "materials": "Cerámica Vitrificada de Alta Densidad",
+    "description": "Lavamanos 400A-BLACK (Ref. SKU: 400A-BLACK). Acabado Negro Mate. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "fbc7b804-2dd1-4087-965a-2309c4ae6639",
+    "name": "Lavamanos 400A-ROSE",
+    "slug": "lavamanos-400a-rose",
+    "sku": "400A-ROSE",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Contemporáneo",
+    "price": 0,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 2,
+    "store_stock": 3,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787P45M_1.jpg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#B76E79",
+        "name": "Oro Rosa / Cobre"
+      }
+    ],
+    "dimensions": "Estándar Sobreponer",
+    "materials": "Cerámica Vitrificada de Alta Densidad",
+    "description": "Lavamanos 400A-ROSE (Ref. SKU: 400A-ROSE). Acabado Oro Rosa / Cobre. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "cfccbf7e-c99b-493b-a8ba-20a2a197ca3a",
+    "name": "Lavamanos 400A-GOLD",
+    "slug": "lavamanos-400a-gold",
+    "sku": "400A-GOLD",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Contemporáneo",
+    "price": 0,
+    "original_price": null,
+    "stock": 9,
+    "warehouse_stock": 3,
+    "store_stock": 3,
+    "web_stock": 3,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A544GGCBK18_1.jpg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#D4AF37",
+        "name": "Dorado Cepillado"
+      }
+    ],
+    "dimensions": "Estándar Sobreponer",
+    "materials": "Cerámica Vitrificada de Alta Densidad",
+    "description": "Lavamanos 400A-GOLD (Ref. SKU: 400A-GOLD). Acabado Dorado Cepillado. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "ef04ee63-57cf-42ca-ad85-2c3470e3c6d8",
+    "name": "Lavamanos 400B-BLACK",
+    "slug": "lavamanos-400b-black",
+    "sku": "400B-BLACK",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Contemporáneo",
+    "price": 0,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 2,
+    "store_stock": 3,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A691CBKUG04M_1.jpg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#1C1C1C",
+        "name": "Negro Mate"
+      }
+    ],
+    "dimensions": "Estándar Sobreponer",
+    "materials": "Cerámica Vitrificada de Alta Densidad",
+    "description": "Lavamanos 400B-BLACK (Ref. SKU: 400B-BLACK). Acabado Negro Mate. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "e341c667-7ad2-443c-9361-324d8bf4fd73",
+    "name": "Lavamanos 400B-ROSE",
+    "slug": "lavamanos-400b-rose",
+    "sku": "400B-ROSE",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Contemporáneo",
+    "price": 0,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 2,
+    "store_stock": 3,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787P45M_1.jpg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#B76E79",
+        "name": "Oro Rosa / Cobre"
+      }
+    ],
+    "dimensions": "Estándar Sobreponer",
+    "materials": "Cerámica Vitrificada de Alta Densidad",
+    "description": "Lavamanos 400B-ROSE (Ref. SKU: 400B-ROSE). Acabado Oro Rosa / Cobre. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "6c80d8b4-98f9-4d8e-b2f9-cf449388b0e1",
+    "name": "Lavamanos 400B-GOLD",
+    "slug": "lavamanos-400b-gold",
+    "sku": "400B-GOLD",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Contemporáneo",
+    "price": 0,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 2,
+    "store_stock": 3,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A544GGCBK18_1.jpg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#D4AF37",
+        "name": "Dorado Cepillado"
+      }
+    ],
+    "dimensions": "Estándar Sobreponer",
+    "materials": "Cerámica Vitrificada de Alta Densidad",
+    "description": "Lavamanos 400B-GOLD (Ref. SKU: 400B-GOLD). Acabado Dorado Cepillado. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "124e87f9-12d0-424a-871d-b7f131559279",
+    "name": "Lavamanos 400C-BLACK",
+    "slug": "lavamanos-400c-black",
+    "sku": "400C-BLACK",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Contemporáneo",
+    "price": 0,
+    "original_price": null,
+    "stock": 8,
+    "warehouse_stock": 2,
+    "store_stock": 2,
+    "web_stock": 4,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A691CBKUG04M_1.jpg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#1C1C1C",
+        "name": "Negro Mate"
+      }
+    ],
+    "dimensions": "Estándar Sobreponer",
+    "materials": "Cerámica Vitrificada de Alta Densidad",
+    "description": "Lavamanos 400C-BLACK (Ref. SKU: 400C-BLACK). Acabado Negro Mate. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "d297e38d-fe78-43a3-b569-daf2a6818f61",
+    "name": "Lavamanos 400C-ROSE",
+    "slug": "lavamanos-400c-rose",
+    "sku": "400C-ROSE",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Contemporáneo",
+    "price": 0,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 2,
+    "store_stock": 3,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787P45M_1.jpg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#B76E79",
+        "name": "Oro Rosa / Cobre"
+      }
+    ],
+    "dimensions": "Estándar Sobreponer",
+    "materials": "Cerámica Vitrificada de Alta Densidad",
+    "description": "Lavamanos 400C-ROSE (Ref. SKU: 400C-ROSE). Acabado Oro Rosa / Cobre. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "d4e4e062-4022-405e-bbd7-9bc78b7d1537",
+    "name": "Lavamanos 400C-GOLD",
+    "slug": "lavamanos-400c-gold",
+    "sku": "400C-GOLD",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Contemporáneo",
+    "price": 0,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 2,
+    "store_stock": 3,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A544GGCBK18_1.jpg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#D4AF37",
+        "name": "Dorado Cepillado"
+      }
+    ],
+    "dimensions": "Estándar Sobreponer",
+    "materials": "Cerámica Vitrificada de Alta Densidad",
+    "description": "Lavamanos 400C-GOLD (Ref. SKU: 400C-GOLD). Acabado Dorado Cepillado. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "714c6d1c-521b-4c7e-bc4b-d856feb0710c",
+    "name": "Lavamanos 4736A-BLACK",
+    "slug": "lavamanos-4736a-black",
+    "sku": "4736A-BLACK",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Contemporáneo",
+    "price": 0,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 2,
+    "store_stock": 3,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A691CBKUG04M_1.jpg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#1C1C1C",
+        "name": "Negro Mate"
+      }
+    ],
+    "dimensions": "Estándar Sobreponer",
+    "materials": "Cerámica Vitrificada de Alta Densidad",
+    "description": "Lavamanos 4736A-BLACK (Ref. SKU: 4736A-BLACK). Acabado Negro Mate. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "3b1220a9-8762-4d33-a228-0fb66c6bf3e4",
+    "name": "Lavamanos 4736A-ROSE",
+    "slug": "lavamanos-4736a-rose",
+    "sku": "4736A-ROSE",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Contemporáneo",
+    "price": 0,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 2,
+    "store_stock": 3,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787P45M_1.jpg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#B76E79",
+        "name": "Oro Rosa / Cobre"
+      }
+    ],
+    "dimensions": "Estándar Sobreponer",
+    "materials": "Cerámica Vitrificada de Alta Densidad",
+    "description": "Lavamanos 4736A-ROSE (Ref. SKU: 4736A-ROSE). Acabado Oro Rosa / Cobre. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "ec4fb071-1e48-4ebe-a3ca-543073ad2646",
+    "name": "Lavamanos 4736A-GOLD",
+    "slug": "lavamanos-4736a-gold",
+    "sku": "4736A-GOLD",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Contemporáneo",
+    "price": 0,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 2,
+    "store_stock": 3,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A544GGCBK18_1.jpg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#D4AF37",
+        "name": "Dorado Cepillado"
+      }
+    ],
+    "dimensions": "Estándar Sobreponer",
+    "materials": "Cerámica Vitrificada de Alta Densidad",
+    "description": "Lavamanos 4736A-GOLD (Ref. SKU: 4736A-GOLD). Acabado Dorado Cepillado. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "abc6ca28-12e9-41ce-a8fc-5ea412bb5681",
+    "name": "Lavamanos 4085A-BLACK",
+    "slug": "lavamanos-4085a-black",
+    "sku": "4085A-BLACK",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Contemporáneo",
+    "price": 0,
+    "original_price": null,
+    "stock": 3,
+    "warehouse_stock": 0,
+    "store_stock": 0,
+    "web_stock": 3,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A691CBKUG04M_1.jpg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#1C1C1C",
+        "name": "Negro Mate"
+      }
+    ],
+    "dimensions": "Estándar Sobreponer",
+    "materials": "Cerámica Vitrificada de Alta Densidad",
+    "description": "Lavamanos 4085A-BLACK (Ref. SKU: 4085A-BLACK). Acabado Negro Mate. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "408a19ed-fab9-446c-83ea-fbcfbe08b16d",
+    "name": "Lavamanos 4085A-GOLD",
+    "slug": "lavamanos-4085a-gold",
+    "sku": "4085A-GOLD",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Contemporáneo",
+    "price": 0,
+    "original_price": null,
+    "stock": 2,
+    "warehouse_stock": 0,
+    "store_stock": 0,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A544GGCBK18_1.jpg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#D4AF37",
+        "name": "Dorado Cepillado"
+      }
+    ],
+    "dimensions": "Estándar Sobreponer",
+    "materials": "Cerámica Vitrificada de Alta Densidad",
+    "description": "Lavamanos 4085A-GOLD (Ref. SKU: 4085A-GOLD). Acabado Dorado Cepillado. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "da0b624c-bcf5-49c7-856f-a75763e23822",
+    "name": "Lavamanos 4085A-ROSE",
+    "slug": "lavamanos-4085a-rose",
+    "sku": "4085A-ROSE",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Contemporáneo",
+    "price": 0,
+    "original_price": null,
+    "stock": 4,
+    "warehouse_stock": 0,
+    "store_stock": 0,
+    "web_stock": 4,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787P45M_1.jpg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#B76E79",
+        "name": "Oro Rosa / Cobre"
+      }
+    ],
+    "dimensions": "Estándar Sobreponer",
+    "materials": "Cerámica Vitrificada de Alta Densidad",
+    "description": "Lavamanos 4085A-ROSE (Ref. SKU: 4085A-ROSE). Acabado Oro Rosa / Cobre. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "6e6f0e9b-7f7e-446b-9af9-df50fcb14497",
+    "name": "Lavamanos 4080A-BLACK",
+    "slug": "lavamanos-4080a-black",
+    "sku": "4080A-BLACK",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Contemporáneo",
+    "price": 0,
+    "original_price": null,
+    "stock": 4,
+    "warehouse_stock": 0,
+    "store_stock": 0,
+    "web_stock": 4,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A691CBKUG04M_1.jpg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#1C1C1C",
+        "name": "Negro Mate"
+      }
+    ],
+    "dimensions": "Estándar Sobreponer",
+    "materials": "Cerámica Vitrificada de Alta Densidad",
+    "description": "Lavamanos 4080A-BLACK (Ref. SKU: 4080A-BLACK). Acabado Negro Mate. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "b15d1071-b56d-482a-8685-f540e47d70bd",
+    "name": "Lavamanos 4080A-GOLD",
+    "slug": "lavamanos-4080a-gold",
+    "sku": "4080A-GOLD",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Contemporáneo",
+    "price": 0,
+    "original_price": null,
+    "stock": 4,
+    "warehouse_stock": 0,
+    "store_stock": 0,
+    "web_stock": 4,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A544GGCBK18_1.jpg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#D4AF37",
+        "name": "Dorado Cepillado"
+      }
+    ],
+    "dimensions": "Estándar Sobreponer",
+    "materials": "Cerámica Vitrificada de Alta Densidad",
+    "description": "Lavamanos 4080A-GOLD (Ref. SKU: 4080A-GOLD). Acabado Dorado Cepillado. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "012b8507-22a9-44ee-b37c-32008c916d02",
+    "name": "Lavamanos 4080A-ROSE",
+    "slug": "lavamanos-4080a-rose",
+    "sku": "4080A-ROSE",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Contemporáneo",
+    "price": 0,
+    "original_price": null,
+    "stock": 4,
+    "warehouse_stock": 0,
+    "store_stock": 0,
+    "web_stock": 4,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787P45M_1.jpg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#B76E79",
+        "name": "Oro Rosa / Cobre"
+      }
+    ],
+    "dimensions": "Estándar Sobreponer",
+    "materials": "Cerámica Vitrificada de Alta Densidad",
+    "description": "Lavamanos 4080A-ROSE (Ref. SKU: 4080A-ROSE). Acabado Oro Rosa / Cobre. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "55048951-41f3-4d3c-97a6-32b09b0ee2c2",
+    "name": "Lavamanos en Piedra 011-80-03",
+    "slug": "lavamanos-011-80-03",
+    "sku": "011-80-03",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Orgánico Moderno",
+    "price": 0,
+    "original_price": null,
+    "stock": 7,
+    "warehouse_stock": 2,
+    "store_stock": 1,
+    "web_stock": 4,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#78716C",
+        "name": "Piedra Natural Gris"
+      }
+    ],
+    "dimensions": "Diseño Escultural en Piedra",
+    "materials": "Piedra Natural y Mármol Arquitectónico",
+    "description": "Lavamanos en Piedra 011-80-03 (Ref. SKU: 011-80-03). Acabado Piedra Natural Gris. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "3f046ac8-0f5c-4f9b-ad3a-224998c8478a",
+    "name": "Lavamanos en Piedra 011-80-01",
+    "slug": "lavamanos-011-80-01",
+    "sku": "011-80-01",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Orgánico Moderno",
+    "price": 0,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 2,
+    "store_stock": 3,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#78716C",
+        "name": "Piedra Natural Mármol Blanco"
+      }
+    ],
+    "dimensions": "Diseño Escultural en Piedra",
+    "materials": "Piedra Natural y Mármol Arquitectónico",
+    "description": "Lavamanos en Piedra 011-80-01 (Ref. SKU: 011-80-01). Acabado Piedra Natural Mármol Blanco. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "80fd9da0-b336-43be-ae60-25596f40977a",
+    "name": "Lavamanos en Piedra 010-60--03",
+    "slug": "lavamanos-010-60--03",
+    "sku": "010-60--03",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Orgánico Moderno",
+    "price": 0,
+    "original_price": null,
+    "stock": 4,
+    "warehouse_stock": 1,
+    "store_stock": 1,
+    "web_stock": 2,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#78716C",
+        "name": "Piedra Natural Antracita"
+      }
+    ],
+    "dimensions": "Diseño Escultural en Piedra",
+    "materials": "Piedra Natural y Mármol Arquitectónico",
+    "description": "Lavamanos en Piedra 010-60--03 (Ref. SKU: 010-60--03). Acabado Piedra Natural Antracita. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "9d4de581-0197-48dc-9efc-53ec9aa924f5",
+    "name": "Lavamanos en Piedra 008-60-70",
+    "slug": "lavamanos-008-60-70",
+    "sku": "008-60-70",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Orgánico Moderno",
+    "price": 0,
+    "original_price": null,
+    "stock": 9,
+    "warehouse_stock": 3,
+    "store_stock": 3,
+    "web_stock": 3,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#78716C",
+        "name": "Piedra Natural Travertino"
+      }
+    ],
+    "dimensions": "Diseño Escultural en Piedra",
+    "materials": "Piedra Natural y Mármol Arquitectónico",
+    "description": "Lavamanos en Piedra 008-60-70 (Ref. SKU: 008-60-70). Acabado Piedra Natural Travertino. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "71e36d11-d26c-4314-b639-1d69da959ec3",
+    "name": "Lavamanos en Piedra 008-100-70",
+    "slug": "lavamanos-008-100-70",
+    "sku": "008-100-70",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Orgánico Moderno",
+    "price": 0,
+    "original_price": null,
+    "stock": 9,
+    "warehouse_stock": 3,
+    "store_stock": 3,
+    "web_stock": 3,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#78716C",
+        "name": "Piedra Natural Travertino"
+      }
+    ],
+    "dimensions": "Diseño Escultural en Piedra",
+    "materials": "Piedra Natural y Mármol Arquitectónico",
+    "description": "Lavamanos en Piedra 008-100-70 (Ref. SKU: 008-100-70). Acabado Piedra Natural Travertino. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "d2238adc-17c0-4990-949f-5cac22dc4f5b",
+    "name": "Lavamanos en Piedra 077-60-112",
+    "slug": "lavamanos-077-60-112",
+    "sku": "077-60-112",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Orgánico Moderno",
+    "price": 0,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 2,
+    "store_stock": 3,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#78716C",
+        "name": "Piedra Esculpida Gris Oxford"
+      }
+    ],
+    "dimensions": "Diseño Escultural en Piedra",
+    "materials": "Piedra Natural y Mármol Arquitectónico",
+    "description": "Lavamanos en Piedra 077-60-112 (Ref. SKU: 077-60-112). Acabado Piedra Esculpida Gris Oxford. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "9bc669fe-9b38-4f70-b367-21bac62410a7",
+    "name": "Lavamanos en Piedra 077-80-112",
+    "slug": "lavamanos-077-80-112",
+    "sku": "077-80-112",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Orgánico Moderno",
+    "price": 0,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 2,
+    "store_stock": 3,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#78716C",
+        "name": "Piedra Esculpida Gris Oxford"
+      }
+    ],
+    "dimensions": "Diseño Escultural en Piedra",
+    "materials": "Piedra Natural y Mármol Arquitectónico",
+    "description": "Lavamanos en Piedra 077-80-112 (Ref. SKU: 077-80-112). Acabado Piedra Esculpida Gris Oxford. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "b0ae5ca0-25f8-4770-9fdf-4bfff616d5eb",
+    "name": "Lavamanos en Piedra M11-60",
+    "slug": "lavamanos-m11-60",
+    "sku": "M11-60",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Orgánico Moderno",
+    "price": 0,
+    "original_price": null,
+    "stock": 5,
+    "warehouse_stock": 0,
+    "store_stock": 0,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#78716C",
+        "name": "Mármol Escultural"
+      }
+    ],
+    "dimensions": "Diseño Escultural en Piedra",
+    "materials": "Piedra Natural y Mármol Arquitectónico",
+    "description": "Lavamanos en Piedra M11-60 (Ref. SKU: M11-60). Acabado Mármol Escultural. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "9a6405e2-6f75-43c8-a2b1-669e017d4a9e",
+    "name": "Lavamanos en Piedra A01-80",
+    "slug": "lavamanos-a01-80",
+    "sku": "A01-80",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Orgánico Moderno",
+    "price": 0,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 2,
+    "store_stock": 3,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#78716C",
+        "name": "Piedra Natural Caliza"
+      }
+    ],
+    "dimensions": "Diseño Escultural en Piedra",
+    "materials": "Piedra Natural y Mármol Arquitectónico",
+    "description": "Lavamanos en Piedra A01-80 (Ref. SKU: A01-80). Acabado Piedra Natural Caliza. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "5e13daad-f9c0-4458-b1f1-0f3bdf19810b",
+    "name": "Lavamanos en Piedra 090-60-72",
+    "slug": "lavamanos-090-60-72",
+    "sku": "090-60-72",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Orgánico Moderno",
+    "price": 0,
+    "original_price": null,
+    "stock": 5,
+    "warehouse_stock": 0,
+    "store_stock": 0,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#78716C",
+        "name": "Piedra Natural Ébano"
+      }
+    ],
+    "dimensions": "Diseño Escultural en Piedra",
+    "materials": "Piedra Natural y Mármol Arquitectónico",
+    "description": "Lavamanos en Piedra 090-60-72 (Ref. SKU: 090-60-72). Acabado Piedra Natural Ébano. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "0c8e5c97-e86a-4005-b0dd-2bae118d3d1e",
+    "name": "Lavamanos en Piedra A22-80",
+    "slug": "lavamanos-a22-80",
+    "sku": "A22-80",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Orgánico Moderno",
+    "price": 0,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 2,
+    "store_stock": 3,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#78716C",
+        "name": "Mármol y Piedra Arquitectónica"
+      }
+    ],
+    "dimensions": "Diseño Escultural en Piedra",
+    "materials": "Piedra Natural y Mármol Arquitectónico",
+    "description": "Lavamanos en Piedra A22-80 (Ref. SKU: A22-80). Acabado Mármol y Piedra Arquitectónica. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "0a1f6d35-38e7-4556-9084-0da116bea3dc",
+    "name": "Lavamanos en Piedra A17-80",
+    "slug": "lavamanos-a17-80",
+    "sku": "A17-80",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Orgánico Moderno",
+    "price": 0,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 2,
+    "store_stock": 3,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#78716C",
+        "name": "Piedra Arenisca Natural"
+      }
+    ],
+    "dimensions": "Diseño Escultural en Piedra",
+    "materials": "Piedra Natural y Mármol Arquitectónico",
+    "description": "Lavamanos en Piedra A17-80 (Ref. SKU: A17-80). Acabado Piedra Arenisca Natural. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "59d0c367-51d0-4a38-bc2f-f8f744a6c9a9",
+    "name": "Lavamanos en Piedra M06-80",
+    "slug": "lavamanos-m06-80",
+    "sku": "M06-80",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Orgánico Moderno",
+    "price": 0,
+    "original_price": null,
+    "stock": 5,
+    "warehouse_stock": 0,
+    "store_stock": 0,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#78716C",
+        "name": "Mármol Natural Pulido"
+      }
+    ],
+    "dimensions": "Diseño Escultural en Piedra",
+    "materials": "Piedra Natural y Mármol Arquitectónico",
+    "description": "Lavamanos en Piedra M06-80 (Ref. SKU: M06-80). Acabado Mármol Natural Pulido. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "77dd76ba-51c8-4694-aa5e-64f9db6873da",
+    "name": "Lavamanos en Piedra M13-80",
+    "slug": "lavamanos-m13-80",
+    "sku": "M13-80",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Orgánico Moderno",
+    "price": 0,
+    "original_price": null,
+    "stock": 5,
+    "warehouse_stock": 0,
+    "store_stock": 0,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#78716C",
+        "name": "Mármol Negro Veteado"
+      }
+    ],
+    "dimensions": "Diseño Escultural en Piedra",
+    "materials": "Piedra Natural y Mármol Arquitectónico",
+    "description": "Lavamanos en Piedra M13-80 (Ref. SKU: M13-80). Acabado Mármol Negro Veteado. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "3a5dde28-a5b0-4a21-b566-6a36a880f686",
+    "name": "Lavamanos en Piedra 089-60-63",
+    "slug": "lavamanos-089-60-63",
+    "sku": "089-60-63",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Orgánico Moderno",
+    "price": 0,
+    "original_price": null,
+    "stock": 4,
+    "warehouse_stock": 0,
+    "store_stock": 0,
+    "web_stock": 4,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#78716C",
+        "name": "Piedra Basalto Natural"
+      }
+    ],
+    "dimensions": "Diseño Escultural en Piedra",
+    "materials": "Piedra Natural y Mármol Arquitectónico",
+    "description": "Lavamanos en Piedra 089-60-63 (Ref. SKU: 089-60-63). Acabado Piedra Basalto Natural. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "ea74aa31-2242-4a4d-8c2e-d89010d491f4",
+    "name": "Lavamanos en Piedra 026-80-08+90",
+    "slug": "lavamanos-026-80-08-90",
+    "sku": "026-80-08+90",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Orgánico Moderno",
+    "price": 0,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 2,
+    "store_stock": 3,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#78716C",
+        "name": "Piedra Texturizada"
+      }
+    ],
+    "dimensions": "Diseño Escultural en Piedra",
+    "materials": "Piedra Natural y Mármol Arquitectónico",
+    "description": "Lavamanos en Piedra 026-80-08+90 (Ref. SKU: 026-80-08+90). Acabado Piedra Texturizada. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "01643fcc-8f5c-497a-8d32-945e8a17461d",
+    "name": "Lavamanos en Piedra 041-60-83",
+    "slug": "lavamanos-041-60-83",
+    "sku": "041-60-83",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Orgánico Moderno",
+    "price": 0,
+    "original_price": null,
+    "stock": 8,
+    "warehouse_stock": 2,
+    "store_stock": 2,
+    "web_stock": 4,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#78716C",
+        "name": "Piedra Natural Crema"
+      }
+    ],
+    "dimensions": "Diseño Escultural en Piedra",
+    "materials": "Piedra Natural y Mármol Arquitectónico",
+    "description": "Lavamanos en Piedra 041-60-83 (Ref. SKU: 041-60-83). Acabado Piedra Natural Crema. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "f8112d4c-dbb0-4eb1-ad89-0d57932669ce",
+    "name": "Lavamanos en Piedra 064-60-102",
+    "slug": "lavamanos-064-60-102",
+    "sku": "064-60-102",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Orgánico Moderno",
+    "price": 0,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 2,
+    "store_stock": 3,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#78716C",
+        "name": "Piedra Grafito Esculpida"
+      }
+    ],
+    "dimensions": "Diseño Escultural en Piedra",
+    "materials": "Piedra Natural y Mármol Arquitectónico",
+    "description": "Lavamanos en Piedra 064-60-102 (Ref. SKU: 064-60-102). Acabado Piedra Grafito Esculpida. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "895da28e-9ff0-4d46-a3c6-634f1d63dc03",
+    "name": "Lavamanos en Piedra 063-60-36",
+    "slug": "lavamanos-063-60-36",
+    "sku": "063-60-36",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Orgánico Moderno",
+    "price": 0,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 2,
+    "store_stock": 3,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#78716C",
+        "name": "Piedra Monolítica"
+      }
+    ],
+    "dimensions": "Diseño Escultural en Piedra",
+    "materials": "Piedra Natural y Mármol Arquitectónico",
+    "description": "Lavamanos en Piedra 063-60-36 (Ref. SKU: 063-60-36). Acabado Piedra Monolítica. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "ec1c84f8-3169-4caf-83c9-0c4bc17b346d",
+    "name": "Lavamanos en Piedra 006-60-01",
+    "slug": "lavamanos-006-60-01",
+    "sku": "006-60-01",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Orgánico Moderno",
+    "price": 0,
+    "original_price": null,
+    "stock": 5,
+    "warehouse_stock": 0,
+    "store_stock": 0,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#78716C",
+        "name": "Piedra Caliza Blanca"
+      }
+    ],
+    "dimensions": "Diseño Escultural en Piedra",
+    "materials": "Piedra Natural y Mármol Arquitectónico",
+    "description": "Lavamanos en Piedra 006-60-01 (Ref. SKU: 006-60-01). Acabado Piedra Caliza Blanca. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "edf5077a-7d16-4465-9a38-b40837dda8db",
+    "name": "Lavamanos en Piedra 005-60-45",
+    "slug": "lavamanos-005-60-45",
+    "sku": "005-60-45",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Orgánico Moderno",
+    "price": 0,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 2,
+    "store_stock": 3,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#78716C",
+        "name": "Piedra Río Texturizada"
+      }
+    ],
+    "dimensions": "Diseño Escultural en Piedra",
+    "materials": "Piedra Natural y Mármol Arquitectónico",
+    "description": "Lavamanos en Piedra 005-60-45 (Ref. SKU: 005-60-45). Acabado Piedra Río Texturizada. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
+  },
+  {
+    "id": "c7c14fef-e3f7-4428-922d-92fc4b2923b0",
+    "name": "Lavamanos en Piedra 068-60-01",
+    "slug": "lavamanos-068-60-01",
+    "sku": "068-60-01",
+    "brand_collection": "Diseño Tu Espacio Bath Collection",
+    "category": "Lavamanos",
+    "style": "Orgánico Moderno",
+    "price": 0,
+    "original_price": null,
+    "stock": 10,
+    "warehouse_stock": 2,
+    "store_stock": 3,
+    "web_stock": 5,
+    "boxes_count": 1,
+    "warranty": "5 años",
+    "inventory_status": "Privado",
+    "is_featured": false,
+    "images": [
+      "https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000"
+    ],
+    "colors": [
+      {
+        "hex": "#78716C",
+        "name": "Piedra Mármol Gris"
+      }
+    ],
+    "dimensions": "Diseño Escultural en Piedra",
+    "materials": "Piedra Natural y Mármol Arquitectónico",
+    "description": "Lavamanos en Piedra 068-60-01 (Ref. SKU: 068-60-01). Acabado Piedra Mármol Gris. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.",
+    "created_at": "2026-11-17T18:16:44.123401+00:00",
+    "wholesale_price": null,
+    "wholesale_min_qty": 5
   }
 ]
