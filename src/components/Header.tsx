@@ -12,8 +12,7 @@ import {
   LogOut,
   ChevronDown,
   Sparkles,
-  ScanLine,
-  Gift
+  ScanLine
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
@@ -188,33 +187,17 @@ export const Header: React.FC = () => {
             </button>
           </div>
 
-          {/* CENTER: Official Logo with Festive Christmas Wreath & Holly Badge */}
-          <Link to="/" className="flex items-center gap-2.5 group py-2 relative">
-            <div className="relative">
-              <img 
-                src="/images/logo_black.png" 
-                alt="Diseña Tu Espacio - Mobiliario & Diseño de Interiores"
-                className={`h-14 sm:h-16 md:h-20 w-auto object-contain transition-all duration-500 drop-shadow-sm ${
-                  !isTransparent 
-                    ? 'brightness-100' 
-                    : 'brightness-0 invert'
-                }`}
-              />
-              {/* Decorative Santa Hat / Holly SVG Accent */}
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 36 36"
-                className="w-6 h-6 sm:w-7 sm:h-7 absolute -top-1.5 -right-3 drop-shadow-md christmas-ornament-sway pointer-events-none"
-              >
-                <path d="M6 26 C10 10, 24 8, 30 22 Z" fill="#b91c1c" />
-                <circle cx="30" cy="22" r="4" fill="#ffffff" />
-                <rect x="4" y="24" width="24" height="5" rx="2.5" fill="#ffffff" />
-                <circle cx="16" cy="26" r="2" fill="#f59e0b" />
-              </svg>
-            </div>
-            <span className="hidden xl:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-gradient-to-r from-[#8b0d18] to-[#0f3823] text-amber-200 border border-amber-400/50 text-[9px] font-bold uppercase tracking-widest shadow-sm">
-              🎄 Navidad
-            </span>
+          {/* CENTER: Official Logo */}
+          <Link to="/" className="flex items-center group py-2">
+            <img 
+              src="/images/logo_black.png" 
+              alt="Diseña Tu Espacio - Mobiliario & Diseño de Interiores"
+              className={`h-14 sm:h-16 md:h-20 w-auto object-contain transition-all duration-500 drop-shadow-sm ${
+                !isTransparent 
+                  ? 'brightness-100' 
+                  : 'brightness-0 invert'
+              }`}
+            />
           </Link>
 
           {/* RIGHT: Search Bar + Back-office / Account + Cart */}
@@ -243,15 +226,6 @@ export const Header: React.FC = () => {
                 <Search className="w-4 h-4" />
               </button>
             </form>
-
-            {/* Quick Christmas Special Desktop Link */}
-            <a
-              href="/#especial-navidad"
-              className="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-[#8b0d18] to-[#b91c1c] hover:from-[#a3101d] hover:to-[#dc2626] text-amber-100 border border-amber-400/50 text-[10px] font-bold uppercase tracking-widest shadow-sm transition-transform hover:scale-105"
-            >
-              <Gift className="w-3.5 h-3.5 text-amber-300" aria-hidden="true" />
-              <span>Especial Navidad</span>
-            </a>
 
             {/* Quick Catalog Desktop Link */}
             <div 

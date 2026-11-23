@@ -9,7 +9,6 @@ import { CategoryCarousel } from '../components/CategoryCarousel';
 import { AnimatedHeroHeader } from '../components/AnimatedHeroHeader';
 import { EditorialBestsellersGrid } from '../components/EditorialBestsellersGrid';
 import { GrandOpeningEditorialGrid } from '../components/GrandOpeningEditorialGrid';
-import { ChristmasSeasonShowcase } from '../components/ChristmasSeasonShowcase';
 
 export const HomePage: React.FC = () => {
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
@@ -32,9 +31,6 @@ export const HomePage: React.FC = () => {
 
       {/* Westwing-Style Category Carousel */}
       <CategoryCarousel />
-
-      {/* Festive Christmas Season Showcase: Regalos & Renovación de Navidad */}
-      <ChristmasSeasonShowcase />
 
       {/* Editorial Bestsellers Grid: NUESTROS MÁS VENDIDOS - Las piezas más populares de esta temporada */}
       <EditorialBestsellersGrid />
