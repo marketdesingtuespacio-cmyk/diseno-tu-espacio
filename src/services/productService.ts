@@ -86,9 +86,7 @@ const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Produ
     ? p.images
     : (fallback?.images && fallback.images.length > 0 ? fallback.images : []);
 
-  const resolvedColors = p.colors !== undefined 
-    ? p.colors 
-    : (fallback?.colors || []);
+  const resolvedColors = Array.isArray(p.colors) ? p.colors : [];
 
   const resolvedUpdatedAt = p.updated_at || fallback?.updated_at || p.created_at || new Date().toISOString();
   const activeUser = activityLogService.getCurrentUser ? activityLogService.getCurrentUser() : null;
@@ -135,7 +133,7 @@ const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Produ
   };
 };
 
-const SESSION_PRODUCTS_CACHE_KEY = 'dte_products_session_cache_v1';
+const SESSION_PRODUCTS_CACHE_KEY = 'dte_products_session_cache_v2';
 
 const loadSessionCache = (): Product[] | null => {
   try {

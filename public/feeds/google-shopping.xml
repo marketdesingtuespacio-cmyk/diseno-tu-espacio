@@ -5,20 +5,6 @@
     <link>https://disenotuespacio.com</link>
     <description>Catálogo de Mobiliario, Espejos de Autor, Cuadros, Lavamanos y Diseño de Interiores</description>
     <item>
-      <g:id>GJ-2025-L</g:id>
-      <g:title>Espejo con marco GJ-2025-L</g:title>
-      <g:description>GJ-2025-L</g:description>
-      <g:link>https://disenotuespacio.com/product/espejo-con-marco-gj-2025-l</g:link>
-      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>750000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
       <g:id>MD681511</g:id>
       <g:title>Papel de colgadura MD681511</g:title>
       <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
@@ -80,14 +66,14 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>GJ-7818-C</g:id>
-      <g:title>Espejo con marco GJ-7818-C</g:title>
-      <g:description>GJ-7818-C</g:description>
-      <g:link>https://disenotuespacio.com/product/espejo-con-marco-gj-7818-c</g:link>
+      <g:id>GJ-2025-L</g:id>
+      <g:title>Espejo con marco GJ-2025-L</g:title>
+      <g:description>GJ-2025-L</g:description>
+      <g:link>https://disenotuespacio.com/product/espejo-con-marco-gj-2025-l</g:link>
       <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>650000 COP</g:price>
+      <g:price>750000 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
@@ -140,6 +126,35 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>GJ-7818-C</g:id>
+      <g:title>Espejo con marco GJ-7818-C</g:title>
+      <g:description>GJ-7818-C</g:description>
+      <g:link>https://disenotuespacio.com/product/espejo-con-marco-gj-7818-c</g:link>
+      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>650000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>400C-BLACK</g:id>
+      <g:title>Lavamanos 400C-BLACK</g:title>
+      <g:description>Lavamanos 400C-BLACK (Ref. SKU: 400C-BLACK). Acabado Negro Mate. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-400c-black</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A691CBKUG04M_1.jpg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>400A-BLACK</g:id>
       <g:title>Lavamanos 400A-BLACK</g:title>
       <g:description>Lavamanos 400A-BLACK (Ref. SKU: 400A-BLACK). Acabado Negro Mate. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
@@ -155,11 +170,11 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>400B-GOLD</g:id>
-      <g:title>Lavamanos 400B-GOLD</g:title>
-      <g:description>Lavamanos 400B-GOLD (Ref. SKU: 400B-GOLD). Acabado Dorado Cepillado. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-400b-gold</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A544GGCBK18_1.jpg</g:image_link>
+      <g:id>400B-BLACK</g:id>
+      <g:title>Lavamanos 400B-BLACK</g:title>
+      <g:description>Lavamanos 400B-BLACK (Ref. SKU: 400B-BLACK). Acabado Negro Mate. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-400b-black</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A691CBKUG04M_1.jpg</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
@@ -185,11 +200,11 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>400C-BLACK</g:id>
-      <g:title>Lavamanos 400C-BLACK</g:title>
-      <g:description>Lavamanos 400C-BLACK (Ref. SKU: 400C-BLACK). Acabado Negro Mate. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-400c-black</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A691CBKUG04M_1.jpg</g:image_link>
+      <g:id>400B-ROSE</g:id>
+      <g:title>Lavamanos 400B-ROSE</g:title>
+      <g:description>Lavamanos 400B-ROSE (Ref. SKU: 400B-ROSE). Acabado Oro Rosa / Cobre. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-400b-rose</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787P45M_1.jpg</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
@@ -216,26 +231,11 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>400B-BLACK</g:id>
-      <g:title>Lavamanos 400B-BLACK</g:title>
-      <g:description>Lavamanos 400B-BLACK (Ref. SKU: 400B-BLACK). Acabado Negro Mate. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-400b-black</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A691CBKUG04M_1.jpg</g:image_link>
-      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>890000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
-      <g:product_type>Lavamanos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>400B-ROSE</g:id>
-      <g:title>Lavamanos 400B-ROSE</g:title>
-      <g:description>Lavamanos 400B-ROSE (Ref. SKU: 400B-ROSE). Acabado Oro Rosa / Cobre. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-400b-rose</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787P45M_1.jpg</g:image_link>
+      <g:id>400B-GOLD</g:id>
+      <g:title>Lavamanos 400B-GOLD</g:title>
+      <g:description>Lavamanos 400B-GOLD (Ref. SKU: 400B-GOLD). Acabado Dorado Cepillado. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-400b-gold</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A544GGCBK18_1.jpg</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
@@ -338,21 +338,6 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>AA100052</g:id>
-      <g:title>Mesa AA100052</g:title>
-      <g:description>Mesa de diseño arquitectónico Mesa AA100052 (Ref. SKU: AA100052). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
-      <g:link>https://disenotuespacio.com/product/mesa-aa100052</g:link>
-      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
-      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>714000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
-      <g:product_type>Mesas con Base</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
       <g:id>MD680103</g:id>
       <g:title>Papel de colgadura MD680103</g:title>
       <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
@@ -369,41 +354,10 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>MD680904</g:id>
-      <g:title>Papel de colgadura MD680904</g:title>
-      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-11-md680904</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680904_1.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680904_2.jpeg</g:additional_image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680904_ecommerce.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>600000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
-      <g:product_type>Papel de Colgadura</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>AA1010081</g:id>
-      <g:title>Mesa AA1010081</g:title>
-      <g:description>Mesa de diseño arquitectónico Mesa AA1010081 (Ref. SKU: AA1010081). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
-      <g:link>https://disenotuespacio.com/product/mesa-aa1010081</g:link>
-      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
-      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>714000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
-      <g:product_type>Mesas con Base</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>AA1010088</g:id>
-      <g:title>Mesa AA1010088</g:title>
-      <g:description>Mesa de diseño arquitectónico Mesa AA1010088 (Ref. SKU: AA1010088). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
-      <g:link>https://disenotuespacio.com/product/mesa-aa1010088</g:link>
+      <g:id>AA100052</g:id>
+      <g:title>Mesa AA100052</g:title>
+      <g:description>Mesa de diseño arquitectónico Mesa AA100052 (Ref. SKU: AA100052). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/mesa-aa100052</g:link>
       <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
       <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
       <g:condition>new</g:condition>
@@ -427,6 +381,22 @@
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
       <g:product_type>Mesas con Base</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>MD680904</g:id>
+      <g:title>Papel de colgadura MD680904</g:title>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-11-md680904</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680904_1.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680904_2.jpeg</g:additional_image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680904_ecommerce.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>600000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
+      <g:product_type>Papel de Colgadura</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -460,6 +430,36 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>AA1010081</g:id>
+      <g:title>Mesa AA1010081</g:title>
+      <g:description>Mesa de diseño arquitectónico Mesa AA1010081 (Ref. SKU: AA1010081). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/mesa-aa1010081</g:link>
+      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
+      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>714000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
+      <g:product_type>Mesas con Base</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>AA1010088</g:id>
+      <g:title>Mesa AA1010088</g:title>
+      <g:description>Mesa de diseño arquitectónico Mesa AA1010088 (Ref. SKU: AA1010088). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/mesa-aa1010088</g:link>
+      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
+      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>714000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
+      <g:product_type>Mesas con Base</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>AA1010091-1100</g:id>
       <g:title>Mesa AA1010091-1100</g:title>
       <g:description>Mesa de diseño arquitectónico Mesa AA1010091-1100 (Ref. SKU: AA1010091-1100). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
@@ -469,6 +469,21 @@
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>773500 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
+      <g:product_type>Mesas con Base</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>AA1010087</g:id>
+      <g:title>Mesa AA1010087</g:title>
+      <g:description>Mesa de diseño arquitectónico Mesa AA1010087 (Ref. SKU: AA1010087). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/mesa-aa1010087</g:link>
+      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
+      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>535500 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
       <g:product_type>Mesas con Base</g:product_type>
@@ -536,36 +551,6 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>AA1010087</g:id>
-      <g:title>Mesa AA1010087</g:title>
-      <g:description>Mesa de diseño arquitectónico Mesa AA1010087 (Ref. SKU: AA1010087). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
-      <g:link>https://disenotuespacio.com/product/mesa-aa1010087</g:link>
-      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
-      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>535500 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
-      <g:product_type>Mesas con Base</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>MD681113</g:id>
-      <g:title>Papel de colgadura MD681113</g:title>
-      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-13-md681113</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681113_1.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681113_2.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>600000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
-      <g:product_type>Papel de Colgadura</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
       <g:id>A10019</g:id>
       <g:title>Mesa A10019</g:title>
       <g:description>Mesa de diseño arquitectónico Mesa A10019 (Ref. SKU: A10019). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
@@ -578,51 +563,6 @@
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
       <g:product_type>Mesas con Base</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>AA1010089-1100</g:id>
-      <g:title>Mesa AA1010089-1100</g:title>
-      <g:description>Mesa de diseño arquitectónico Mesa AA1010089-1100 (Ref. SKU: AA1010089-1100). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
-      <g:link>https://disenotuespacio.com/product/mesa-aa1010089-1100</g:link>
-      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
-      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>714000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
-      <g:product_type>Mesas Completas</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>AA1010084-02</g:id>
-      <g:title>Mesa AA1010084-02</g:title>
-      <g:description>Mesa de diseño arquitectónico Mesa AA1010084-02 (Ref. SKU: AA1010084-02). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
-      <g:link>https://disenotuespacio.com/product/mesa-aa1010084-02</g:link>
-      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
-      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>1047200 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
-      <g:product_type>Mesas Completas</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>AA1010084-01</g:id>
-      <g:title>Mesa AA1010084-01</g:title>
-      <g:description>Mesa de diseño arquitectónico Mesa AA1010084-01 (Ref. SKU: AA1010084-01). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
-      <g:link>https://disenotuespacio.com/product/mesa-aa1010084-01</g:link>
-      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
-      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>1047200 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
-      <g:product_type>Mesas Completas</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -656,15 +596,60 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>AA1010089-600</g:id>
-      <g:title>Mesa AA1010089-600</g:title>
-      <g:description>Mesa de diseño arquitectónico Mesa AA1010089-600 (Ref. SKU: AA1010089-600). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
-      <g:link>https://disenotuespacio.com/product/mesa-aa1010089-600</g:link>
+      <g:id>AA1010089-1100</g:id>
+      <g:title>Mesa AA1010089-1100</g:title>
+      <g:description>Mesa de diseño arquitectónico Mesa AA1010089-1100 (Ref. SKU: AA1010089-1100). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/mesa-aa1010089-1100</g:link>
       <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
       <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>773500 COP</g:price>
+      <g:price>714000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
+      <g:product_type>Mesas Completas</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>MD681113</g:id>
+      <g:title>Papel de colgadura MD681113</g:title>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-13-md681113</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681113_1.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681113_2.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>600000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
+      <g:product_type>Papel de Colgadura</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>AA1010084-02</g:id>
+      <g:title>Mesa AA1010084-02</g:title>
+      <g:description>Mesa de diseño arquitectónico Mesa AA1010084-02 (Ref. SKU: AA1010084-02). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/mesa-aa1010084-02</g:link>
+      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
+      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>1047200 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
+      <g:product_type>Mesas Completas</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>AA1010084-01</g:id>
+      <g:title>Mesa AA1010084-01</g:title>
+      <g:description>Mesa de diseño arquitectónico Mesa AA1010084-01 (Ref. SKU: AA1010084-01). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/mesa-aa1010084-01</g:link>
+      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
+      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>1047200 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
       <g:product_type>Mesas Completas</g:product_type>
@@ -716,21 +701,6 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>5812</g:id>
-      <g:title>Espejos modernos 5812</g:title>
-      <g:description>Pieza de autor Espejos modernos 5812 referencia SKU 5812. Acabados de lujo y garantía de 24 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-44-5812</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5812_1792096183972.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5812_1792096185035.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>912963 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
       <g:id>4736A-ROSE</g:id>
       <g:title>Lavamanos 4736A-ROSE</g:title>
       <g:description>Lavamanos 4736A-ROSE (Ref. SKU: 4736A-ROSE). Acabado Oro Rosa / Cobre. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
@@ -746,6 +716,21 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>5812</g:id>
+      <g:title>Espejos modernos 5812</g:title>
+      <g:description>Pieza de autor Espejos modernos 5812 referencia SKU 5812. Acabados de lujo y garantía de 24 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-44-5812</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5812_1792096183972.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5812_1792096185035.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>912963 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>4085A-ROSE</g:id>
       <g:title>Lavamanos 4085A-ROSE</g:title>
       <g:description>Lavamanos 4085A-ROSE (Ref. SKU: 4085A-ROSE). Acabado Oro Rosa / Cobre. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
@@ -758,6 +743,21 @@
       <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
       <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
       <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>AA1010089-600</g:id>
+      <g:title>Mesa AA1010089-600</g:title>
+      <g:description>Mesa de diseño arquitectónico Mesa AA1010089-600 (Ref. SKU: AA1010089-600). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/mesa-aa1010089-600</g:link>
+      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
+      <g:additional_image_link>https://disenotuespacio.com/images/cat_mesa_portrait_1787589762766.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>773500 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
+      <g:product_type>Mesas Completas</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -868,21 +868,6 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>6846C-GOLD</g:id>
-      <g:title>Lavaplatos 6846C-GOLD</g:title>
-      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 6846C-GOLD (Ref. SKU: 6846C-GOLD). Acabado Dorado Cepillado, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavaplatos-6846c-gold</g:link>
-      <g:image_link>https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
-      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>654500 COP</g:price>
-      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
-      <g:product_type>Lavaplatos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
       <g:id>6846C-BLACK</g:id>
       <g:title>Lavaplatos 6846C-BLACK</g:title>
       <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 6846C-BLACK (Ref. SKU: 6846C-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
@@ -943,15 +928,30 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>6045A-ROSE</g:id>
-      <g:title>Lavaplatos 6045A-ROSE</g:title>
-      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 6045A-ROSE (Ref. SKU: 6045A-ROSE). Acabado Oro Rosa / Cobre, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavaplatos-6045a-rose</g:link>
-      <g:image_link>https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:id>6846C-GOLD</g:id>
+      <g:title>Lavaplatos 6846C-GOLD</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 6846C-GOLD (Ref. SKU: 6846C-GOLD). Acabado Dorado Cepillado, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-6846c-gold</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>654500 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>12050C-BLACK</g:id>
+      <g:title>Lavaplatos 12050C-BLACK</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 12050C-BLACK (Ref. SKU: 12050C-BLACK). Acabado Negro Mate Doble Pozo, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-12050c-black</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>1368500 COP</g:price>
       <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
       <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
       <g:product_type>Lavaplatos</g:product_type>
@@ -971,6 +971,21 @@
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
       <g:product_type>Papel de Colgadura</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>6045A-ROSE</g:id>
+      <g:title>Lavaplatos 6045A-ROSE</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 6045A-ROSE (Ref. SKU: 6045A-ROSE). Acabado Oro Rosa / Cobre, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-6045a-rose</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>654500 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1004,15 +1019,46 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>12050C-BLACK</g:id>
-      <g:title>Lavaplatos 12050C-BLACK</g:title>
-      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 12050C-BLACK (Ref. SKU: 12050C-BLACK). Acabado Negro Mate Doble Pozo, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavaplatos-12050c-black</g:link>
+      <g:id>011-80-03</g:id>
+      <g:title>Lavamanos en Piedra 011-80-03</g:title>
+      <g:description>Lavamanos en Piedra 011-80-03 (Ref. SKU: 011-80-03). Acabado Piedra Natural Gris. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-011-80-03</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>MD680209</g:id>
+      <g:title>Papel de colgadura MD680512-B</g:title>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-8-md680512-b</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680209_1.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680209_2.jpeg</g:additional_image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680209_ecommerce.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>600000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
+      <g:product_type>Papel de colgadura</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>8550A-BLACK</g:id>
+      <g:title>Lavaplatos 8550A-BLACK</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 8550A-BLACK (Ref. SKU: 8550A-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-8550a-black</g:link>
       <g:image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>1368500 COP</g:price>
+      <g:price>892500 COP</g:price>
       <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
       <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
       <g:product_type>Lavaplatos</g:product_type>
@@ -1031,22 +1077,6 @@
       <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
       <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
       <g:product_type>Lavaplatos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>MD680209</g:id>
-      <g:title>Papel de colgadura MD680512-B</g:title>
-      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-8-md680512-b</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680209_1.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680209_2.jpeg</g:additional_image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680209_ecommerce.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>600000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
-      <g:product_type>Papel de colgadura</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1080,33 +1110,18 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>8550A-BLACK</g:id>
-      <g:title>Lavaplatos 8550A-BLACK</g:title>
-      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 8550A-BLACK (Ref. SKU: 8550A-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavaplatos-8550a-black</g:link>
-      <g:image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:id>5051A-GOLD</g:id>
+      <g:title>Lavaplatos 5051A-GOLD</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 5051A-GOLD (Ref. SKU: 5051A-GOLD). Acabado Dorado Cepillado, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-5051a-gold</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>892500 COP</g:price>
+      <g:price>773500 COP</g:price>
       <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
       <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
       <g:product_type>Lavaplatos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>011-80-03</g:id>
-      <g:title>Lavamanos en Piedra 011-80-03</g:title>
-      <g:description>Lavamanos en Piedra 011-80-03 (Ref. SKU: 011-80-03). Acabado Piedra Natural Gris. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-011-80-03</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
-      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>890000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
-      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1141,18 +1156,18 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>6045B-GOLD</g:id>
-      <g:title>Lavaplatos 6045B-GOLD</g:title>
-      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 6045B-GOLD (Ref. SKU: 6045B-GOLD). Acabado Dorado Cepillado, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavaplatos-6045b-gold</g:link>
-      <g:image_link>https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:id>011-80-01</g:id>
+      <g:title>Lavamanos en Piedra 011-80-01</g:title>
+      <g:description>Lavamanos en Piedra 011-80-01 (Ref. SKU: 011-80-01). Acabado Piedra Natural Mármol Blanco. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-011-80-01</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>595000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
-      <g:product_type>Lavaplatos</g:product_type>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1171,33 +1186,18 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>5051A-GOLD</g:id>
-      <g:title>Lavaplatos 5051A-GOLD</g:title>
-      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 5051A-GOLD (Ref. SKU: 5051A-GOLD). Acabado Dorado Cepillado, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavaplatos-5051a-gold</g:link>
+      <g:id>6045B-GOLD</g:id>
+      <g:title>Lavaplatos 6045B-GOLD</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 6045B-GOLD (Ref. SKU: 6045B-GOLD). Acabado Dorado Cepillado, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-6045b-gold</g:link>
       <g:image_link>https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>773500 COP</g:price>
+      <g:price>595000 COP</g:price>
       <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
       <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
       <g:product_type>Lavaplatos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>011-80-01</g:id>
-      <g:title>Lavamanos en Piedra 011-80-01</g:title>
-      <g:description>Lavamanos en Piedra 011-80-01 (Ref. SKU: 011-80-01). Acabado Piedra Natural Mármol Blanco. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-011-80-01</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
-      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>890000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
-      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1216,18 +1216,18 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>7546C-BLACK</g:id>
-      <g:title>Lavaplatos 7546C-BLACK</g:title>
-      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 7546C-BLACK (Ref. SKU: 7546C-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavaplatos-7546c-black</g:link>
-      <g:image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:id>010-60--03</g:id>
+      <g:title>Lavamanos en Piedra 010-60--03</g:title>
+      <g:description>Lavamanos en Piedra 010-60--03 (Ref. SKU: 010-60--03). Acabado Piedra Natural Antracita. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-010-60--03</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>714000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
-      <g:product_type>Lavaplatos</g:product_type>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1278,18 +1278,18 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>010-60--03</g:id>
-      <g:title>Lavamanos en Piedra 010-60--03</g:title>
-      <g:description>Lavamanos en Piedra 010-60--03 (Ref. SKU: 010-60--03). Acabado Piedra Natural Antracita. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-010-60--03</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:id>7546C-BLACK</g:id>
+      <g:title>Lavaplatos 7546C-BLACK</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 7546C-BLACK (Ref. SKU: 7546C-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-7546c-black</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>890000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
-      <g:product_type>Lavamanos</g:product_type>
+      <g:price>714000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1338,10 +1338,10 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>008-60-70</g:id>
-      <g:title>Lavamanos en Piedra 008-60-70</g:title>
-      <g:description>Lavamanos en Piedra 008-60-70 (Ref. SKU: 008-60-70). Acabado Piedra Natural Travertino. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-008-60-70</g:link>
+      <g:id>077-60-112</g:id>
+      <g:title>Lavamanos en Piedra 077-60-112</g:title>
+      <g:description>Lavamanos en Piedra 077-60-112 (Ref. SKU: 077-60-112). Acabado Piedra Esculpida Gris Oxford. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-077-60-112</g:link>
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
@@ -1383,10 +1383,10 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>077-60-112</g:id>
-      <g:title>Lavamanos en Piedra 077-60-112</g:title>
-      <g:description>Lavamanos en Piedra 077-60-112 (Ref. SKU: 077-60-112). Acabado Piedra Esculpida Gris Oxford. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-077-60-112</g:link>
+      <g:id>008-100-70</g:id>
+      <g:title>Lavamanos en Piedra 008-100-70</g:title>
+      <g:description>Lavamanos en Piedra 008-100-70 (Ref. SKU: 008-100-70). Acabado Piedra Natural Travertino. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-008-100-70</g:link>
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
@@ -1398,10 +1398,10 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>008-100-70</g:id>
-      <g:title>Lavamanos en Piedra 008-100-70</g:title>
-      <g:description>Lavamanos en Piedra 008-100-70 (Ref. SKU: 008-100-70). Acabado Piedra Natural Travertino. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-008-100-70</g:link>
+      <g:id>008-60-70</g:id>
+      <g:title>Lavamanos en Piedra 008-60-70</g:title>
+      <g:description>Lavamanos en Piedra 008-60-70 (Ref. SKU: 008-60-70). Acabado Piedra Natural Travertino. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-008-60-70</g:link>
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
@@ -1477,21 +1477,6 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>A01-80</g:id>
-      <g:title>Lavamanos en Piedra A01-80</g:title>
-      <g:description>Lavamanos en Piedra A01-80 (Ref. SKU: A01-80). Acabado Piedra Natural Caliza. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-a01-80</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
-      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>890000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
-      <g:product_type>Lavamanos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
       <g:id>M11-60</g:id>
       <g:title>Lavamanos en Piedra M11-60</g:title>
       <g:description>Lavamanos en Piedra M11-60 (Ref. SKU: M11-60). Acabado Mármol Escultural. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
@@ -1537,10 +1522,25 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>A17-80</g:id>
-      <g:title>Lavamanos en Piedra A17-80</g:title>
-      <g:description>Lavamanos en Piedra A17-80 (Ref. SKU: A17-80). Acabado Piedra Arenisca Natural. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-a17-80</g:link>
+      <g:id>A01-80</g:id>
+      <g:title>Lavamanos en Piedra A01-80</g:title>
+      <g:description>Lavamanos en Piedra A01-80 (Ref. SKU: A01-80). Acabado Piedra Natural Caliza. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-a01-80</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>A22-80</g:id>
+      <g:title>Lavamanos en Piedra A22-80</g:title>
+      <g:description>Lavamanos en Piedra A22-80 (Ref. SKU: A22-80). Acabado Mármol y Piedra Arquitectónica. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-a22-80</g:link>
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
@@ -1646,10 +1646,10 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>A22-80</g:id>
-      <g:title>Lavamanos en Piedra A22-80</g:title>
-      <g:description>Lavamanos en Piedra A22-80 (Ref. SKU: A22-80). Acabado Mármol y Piedra Arquitectónica. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-a22-80</g:link>
+      <g:id>A17-80</g:id>
+      <g:title>Lavamanos en Piedra A17-80</g:title>
+      <g:description>Lavamanos en Piedra A17-80 (Ref. SKU: A17-80). Acabado Piedra Arenisca Natural. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-a17-80</g:link>
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
@@ -1674,6 +1674,21 @@
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
       <g:product_type>Papel de Colgadura</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>M13-80</g:id>
+      <g:title>Lavamanos en Piedra M13-80</g:title>
+      <g:description>Lavamanos en Piedra M13-80 (Ref. SKU: M13-80). Acabado Mármol Negro Veteado. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-m13-80</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1738,25 +1753,10 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>M13-80</g:id>
-      <g:title>Lavamanos en Piedra M13-80</g:title>
-      <g:description>Lavamanos en Piedra M13-80 (Ref. SKU: M13-80). Acabado Mármol Negro Veteado. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-m13-80</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
-      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>890000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
-      <g:product_type>Lavamanos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>026-80-08+90</g:id>
-      <g:title>Lavamanos en Piedra 026-80-08+90</g:title>
-      <g:description>Lavamanos en Piedra 026-80-08+90 (Ref. SKU: 026-80-08+90). Acabado Piedra Texturizada. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-026-80-08-90</g:link>
+      <g:id>089-60-63</g:id>
+      <g:title>Lavamanos en Piedra 089-60-63</g:title>
+      <g:description>Lavamanos en Piedra 089-60-63 (Ref. SKU: 089-60-63). Acabado Piedra Basalto Natural. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-089-60-63</g:link>
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
@@ -1799,10 +1799,10 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>089-60-63</g:id>
-      <g:title>Lavamanos en Piedra 089-60-63</g:title>
-      <g:description>Lavamanos en Piedra 089-60-63 (Ref. SKU: 089-60-63). Acabado Piedra Basalto Natural. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-089-60-63</g:link>
+      <g:id>026-80-08+90</g:id>
+      <g:title>Lavamanos en Piedra 026-80-08+90</g:title>
+      <g:description>Lavamanos en Piedra 026-80-08+90 (Ref. SKU: 026-80-08+90). Acabado Piedra Texturizada. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-026-80-08-90</g:link>
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
@@ -1968,6 +1968,21 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>GY-87X87-1608</g:id>
+      <g:title>Cuadros GY87X871608</g:title>
+      <g:description>Pieza de autor Espejos y cuadros GY87X871608 referencia SKU GY87X871608. Acabados de lujo y garantía de 51 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-72-gy87x871608</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY87X871608_1.jpg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY87X871608_2.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>549930 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
+      <g:product_type>Cuadros</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>AH60160050GD</g:id>
       <g:title>Espejos  AH60160050GD</g:title>
       <g:description>Pieza de autor Espejos y cuadros AH60160050GD referencia SKU AH60160050GD. Acabados de lujo y garantía de 67 años.</g:description>
@@ -1983,18 +1998,18 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>GY-87X87-1608</g:id>
-      <g:title>Cuadros GY87X871608</g:title>
-      <g:description>Pieza de autor Espejos y cuadros GY87X871608 referencia SKU GY87X871608. Acabados de lujo y garantía de 51 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-72-gy87x871608</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY87X871608_1.jpg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY87X871608_2.jpg</g:additional_image_link>
+      <g:id>005-60-45</g:id>
+      <g:title>Lavamanos en Piedra 005-60-45</g:title>
+      <g:description>Lavamanos en Piedra 005-60-45 (Ref. SKU: 005-60-45). Acabado Piedra Río Texturizada. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-005-60-45</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>549930 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
-      <g:product_type>Cuadros</g:product_type>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -2045,6 +2060,21 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>068-60-01</g:id>
+      <g:title>Lavamanos en Piedra 068-60-01</g:title>
+      <g:description>Lavamanos en Piedra 068-60-01 (Ref. SKU: 068-60-01). Acabado Piedra Mármol Gris. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-068-60-01</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>5911</g:id>
       <g:title>Espejos modernos 5911</g:title>
       <g:description>Espejo</g:description>
@@ -2072,51 +2102,6 @@
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
       <g:product_type>Cuadros</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>005-60-45</g:id>
-      <g:title>Lavamanos en Piedra 005-60-45</g:title>
-      <g:description>Lavamanos en Piedra 005-60-45 (Ref. SKU: 005-60-45). Acabado Piedra Río Texturizada. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-005-60-45</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
-      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>890000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
-      <g:product_type>Lavamanos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>068-60-01</g:id>
-      <g:title>Lavamanos en Piedra 068-60-01</g:title>
-      <g:description>Lavamanos en Piedra 068-60-01 (Ref. SKU: 068-60-01). Acabado Piedra Mármol Gris. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-068-60-01</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
-      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>890000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
-      <g:product_type>Lavamanos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>400A-ROSE</g:id>
-      <g:title>Lavamanos 400A-ROSE</g:title>
-      <g:description>Lavamanos 400A-ROSE (Ref. SKU: 400A-ROSE). Acabado Oro Rosa / Cobre. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-400a-rose</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787P45M_1.jpg</g:image_link>
-      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>890000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
-      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -2193,6 +2178,21 @@
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
       <g:product_type>Cuadros</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>400A-ROSE</g:id>
+      <g:title>Lavamanos 400A-ROSE</g:title>
+      <g:description>Lavamanos 400A-ROSE (Ref. SKU: 400A-ROSE). Acabado Oro Rosa / Cobre. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-400a-rose</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787P45M_1.jpg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -2500,23 +2500,6 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>A787-CDGR-M</g:id>
-      <g:title>Lavamanos A787-CDGR-M</g:title>
-      <g:description>Pieza de autor Lavamanos A787CDGRM referencia SKU A787CDGRM. Acabados de lujo y garantía de 17 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-37-a787cdgrm</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787CDGRM_1.jpg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787CDGRM_2.jpg</g:additional_image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787CDGRM_3.jpg</g:additional_image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787CDGRM_4.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>654607 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
-      <g:product_type>Lavamanos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
       <g:id>HP-120X90-0963</g:id>
       <g:title>Cuadros HP120X900963</g:title>
       <g:description>Pieza de autor Espejos y cuadros HP120X900963 referencia SKU HP120X900963. Acabados de lujo y garantía de 40 años.</g:description>
@@ -2544,6 +2527,23 @@
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
       <g:product_type>Papel de Colgadura</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>A787-CDGR-M</g:id>
+      <g:title>Lavamanos A787-CDGR-M</g:title>
+      <g:description>Pieza de autor Lavamanos A787CDGRM referencia SKU A787CDGRM. Acabados de lujo y garantía de 17 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-37-a787cdgrm</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787CDGRM_1.jpg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787CDGRM_2.jpg</g:additional_image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787CDGRM_3.jpg</g:additional_image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787CDGRM_4.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>654607 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -2666,20 +2666,6 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>GJ-0531</g:id>
-      <g:title>Espejo con marco GJ-0531</g:title>
-      <g:description>Espejo con marco GJ-0531</g:description>
-      <g:link>https://disenotuespacio.com/product/espejo-con-marco-gj-0531</g:link>
-      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>750000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
       <g:id>A712-CA52M</g:id>
       <g:title>Lavamanos A712-CA52M</g:title>
       <g:description>Pieza de autor Lavamanos A712CA52M referencia SKU A712CA52M. Acabados de lujo y garantía de 18 años.</g:description>
@@ -2694,6 +2680,20 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
       <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>GJ-0531</g:id>
+      <g:title>Espejo con marco GJ-0531</g:title>
+      <g:description>Espejo con marco GJ-0531</g:description>
+      <g:link>https://disenotuespacio.com/product/espejo-con-marco-gj-0531</g:link>
+      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>750000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>

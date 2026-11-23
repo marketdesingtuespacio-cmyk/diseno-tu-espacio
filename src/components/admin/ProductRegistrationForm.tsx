@@ -68,13 +68,9 @@ export const ProductRegistrationForm: React.FC<ProductRegistrationFormProps> = (
   );
   const [newImageUrl, setNewImageUrl] = useState('');
 
-  // Color Swatches State
+  // Color Swatches State (inicia vacío por defecto hasta que se agreguen variables)
   const [colors, setColors] = useState<{ name: string; hex: string }[]>(
-    initialProduct?.colors || [
-      { name: 'Latón Dorado', hex: '#CDB375' },
-      { name: 'Plata Níquel', hex: '#D4D4D2' },
-      { name: 'Negro Mate', hex: '#1C1C1C' }
-    ]
+    initialProduct?.colors || []
   );
   const [newColorName, setNewColorName] = useState('');
   const [newColorHex, setNewColorHex] = useState('#000000');
