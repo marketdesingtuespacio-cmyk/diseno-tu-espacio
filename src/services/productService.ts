@@ -135,13 +135,39 @@ const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Produ
   };
 };
 
-let memoryProductsCache: Product[] | null = null;
+const SESSION_PRODUCTS_CACHE_KEY = 'dte_products_session_cache_v1';
+
+const loadSessionCache = (): Product[] | null => {
+  try {
+    const raw = sessionStorage.getItem(SESSION_PRODUCTS_CACHE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) && parsed.length > 0 ? parsed : null;
+  } catch {
+    return null;
+  }
+};
+
+const saveSessionCache = (items: Product[]) => {
+  try {
+    sessionStorage.setItem(SESSION_PRODUCTS_CACHE_KEY, JSON.stringify(items));
+  } catch {
+    // ignore storage quota errors in sessionStorage
+  }
+};
+
+let memoryProductsCache: Product[] | null = loadSessionCache();
 let productsFetchPromise: Promise<Product[]> | null = null;
 let isProductRealtimeSubscribed = false;
 
 export const clearProductCache = () => {
   memoryProductsCache = null;
   productsFetchPromise = null;
+  try {
+    sessionStorage.removeItem(SESSION_PRODUCTS_CACHE_KEY);
+  } catch {
+    // ignore
+  }
 };
 
 export const notifyProductsUpdated = () => {
@@ -242,6 +268,11 @@ export const productService = {
   },
 
   async getProducts(filters?: Partial<ProductFilterState>, includePrivate: boolean = false, forceRefresh: boolean = false): Promise<Product[]> {
+    // Respuesta instantánea (0ms) si la caché en memoria ya está hidratada
+    if (memoryProductsCache && memoryProductsCache.length > 0 && !forceRefresh) {
+      return applyProductFilters(memoryProductsCache, filters, includePrivate);
+    }
+
     if (productsFetchPromise && !forceRefresh) {
       const fetched = await productsFetchPromise;
       return applyProductFilters(fetched, filters, includePrivate);
@@ -267,6 +298,8 @@ export const productService = {
 
       if (fetchedProducts.length === 0) {
         fetchedProducts = memoryProductsCache || [];
+      } else {
+        saveSessionCache(fetchedProducts);
       }
 
       memoryProductsCache = fetchedProducts;
@@ -279,7 +312,10 @@ export const productService = {
   },
 
   async getProductBySlug(slug: string, includePrivate: boolean = true): Promise<Product | null> {
-    const products = await this.getProducts(undefined, includePrivate, true);
+    const syncFound = this.getProductBySlugSync(slug, includePrivate);
+    if (syncFound) return syncFound;
+
+    const products = await this.getProducts(undefined, includePrivate, false);
     const target = (slug || '').toLowerCase().trim();
     const found = products.find(p => 
       (p.slug && p.slug.toLowerCase().trim() === target) || 

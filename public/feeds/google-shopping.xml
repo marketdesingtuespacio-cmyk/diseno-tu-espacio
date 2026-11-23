@@ -19,20 +19,6 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>A723-P04M</g:id>
-      <g:title>Lavamanos A723P04M</g:title>
-      <g:description>A723 - P04M</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-a723p04m</g:link>
-      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>890000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
-      <g:product_type>Lavamanos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
       <g:id>MD681511</g:id>
       <g:title>Papel de colgadura MD681511</g:title>
       <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
@@ -77,6 +63,20 @@
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>A723-P04M</g:id>
+      <g:title>Lavamanos A723P04M</g:title>
+      <g:description>A723 - P04M</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-a723p04m</g:link>
+      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1080,21 +1080,6 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>011-80-03</g:id>
-      <g:title>Lavamanos en Piedra 011-80-03</g:title>
-      <g:description>Lavamanos en Piedra 011-80-03 (Ref. SKU: 011-80-03). Acabado Piedra Natural Gris. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-011-80-03</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
-      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>890000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
-      <g:product_type>Lavamanos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
       <g:id>8550A-BLACK</g:id>
       <g:title>Lavaplatos 8550A-BLACK</g:title>
       <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 8550A-BLACK (Ref. SKU: 8550A-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
@@ -1107,6 +1092,21 @@
       <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
       <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
       <g:product_type>Lavaplatos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>011-80-03</g:id>
+      <g:title>Lavamanos en Piedra 011-80-03</g:title>
+      <g:description>Lavamanos en Piedra 011-80-03 (Ref. SKU: 011-80-03). Acabado Piedra Natural Gris. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-011-80-03</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1677,36 +1677,6 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>M06-80</g:id>
-      <g:title>Lavamanos en Piedra M06-80</g:title>
-      <g:description>Lavamanos en Piedra M06-80 (Ref. SKU: M06-80). Acabado Mármol Natural Pulido. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-m06-80</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
-      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>890000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
-      <g:product_type>Lavamanos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>M13-80</g:id>
-      <g:title>Lavamanos en Piedra M13-80</g:title>
-      <g:description>Lavamanos en Piedra M13-80 (Ref. SKU: M13-80). Acabado Mármol Negro Veteado. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-m13-80</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
-      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>890000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
-      <g:product_type>Lavamanos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
       <g:id>AH60120040</g:id>
       <g:title>Espejos AH60120040</g:title>
       <g:description>Pieza de autor Espejos y cuadros AH60120040 referencia SKU AH60120040. Acabados de lujo y garantía de 60 años.</g:description>
@@ -1753,10 +1723,40 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>089-60-63</g:id>
-      <g:title>Lavamanos en Piedra 089-60-63</g:title>
-      <g:description>Lavamanos en Piedra 089-60-63 (Ref. SKU: 089-60-63). Acabado Piedra Basalto Natural. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-089-60-63</g:link>
+      <g:id>M06-80</g:id>
+      <g:title>Lavamanos en Piedra M06-80</g:title>
+      <g:description>Lavamanos en Piedra M06-80 (Ref. SKU: M06-80). Acabado Mármol Natural Pulido. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-m06-80</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>M13-80</g:id>
+      <g:title>Lavamanos en Piedra M13-80</g:title>
+      <g:description>Lavamanos en Piedra M13-80 (Ref. SKU: M13-80). Acabado Mármol Negro Veteado. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-m13-80</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>026-80-08+90</g:id>
+      <g:title>Lavamanos en Piedra 026-80-08+90</g:title>
+      <g:description>Lavamanos en Piedra 026-80-08+90 (Ref. SKU: 026-80-08+90). Acabado Piedra Texturizada. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-026-80-08-90</g:link>
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
@@ -1799,25 +1799,10 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>026-80-08+90</g:id>
-      <g:title>Lavamanos en Piedra 026-80-08+90</g:title>
-      <g:description>Lavamanos en Piedra 026-80-08+90 (Ref. SKU: 026-80-08+90). Acabado Piedra Texturizada. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-026-80-08-90</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
-      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>890000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
-      <g:product_type>Lavamanos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>041-60-83</g:id>
-      <g:title>Lavamanos en Piedra 041-60-83</g:title>
-      <g:description>Lavamanos en Piedra 041-60-83 (Ref. SKU: 041-60-83). Acabado Piedra Natural Crema. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-041-60-83</g:link>
+      <g:id>089-60-63</g:id>
+      <g:title>Lavamanos en Piedra 089-60-63</g:title>
+      <g:description>Lavamanos en Piedra 089-60-63 (Ref. SKU: 089-60-63). Acabado Piedra Basalto Natural. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-089-60-63</g:link>
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
@@ -1891,21 +1876,6 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>064-60-102</g:id>
-      <g:title>Lavamanos en Piedra 064-60-102</g:title>
-      <g:description>Lavamanos en Piedra 064-60-102 (Ref. SKU: 064-60-102). Acabado Piedra Grafito Esculpida. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-064-60-102</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
-      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>890000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
-      <g:product_type>Lavamanos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
       <g:id>AHR80001</g:id>
       <g:title>Espejos AHR80001</g:title>
       <g:description>Pieza de autor Espejos y cuadros AHR80001 referencia SKU AHR80001. Acabados de lujo y garantía de 68 años.</g:description>
@@ -1918,6 +1888,21 @@
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>064-60-102</g:id>
+      <g:title>Lavamanos en Piedra 064-60-102</g:title>
+      <g:description>Lavamanos en Piedra 064-60-102 (Ref. SKU: 064-60-102). Acabado Piedra Grafito Esculpida. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-064-60-102</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -2060,21 +2045,6 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>005-60-45</g:id>
-      <g:title>Lavamanos en Piedra 005-60-45</g:title>
-      <g:description>Lavamanos en Piedra 005-60-45 (Ref. SKU: 005-60-45). Acabado Piedra Río Texturizada. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-005-60-45</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
-      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>890000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
-      <g:product_type>Lavamanos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
       <g:id>5911</g:id>
       <g:title>Espejos modernos 5911</g:title>
       <g:description>Espejo</g:description>
@@ -2102,6 +2072,21 @@
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
       <g:product_type>Cuadros</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>005-60-45</g:id>
+      <g:title>Lavamanos en Piedra 005-60-45</g:title>
+      <g:description>Lavamanos en Piedra 005-60-45 (Ref. SKU: 005-60-45). Acabado Piedra Río Texturizada. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-005-60-45</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -2181,21 +2166,6 @@
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>006-60-01</g:id>
-      <g:title>Lavamanos en Piedra 006-60-01</g:title>
-      <g:description>Lavamanos en Piedra 006-60-01 (Ref. SKU: 006-60-01). Acabado Piedra Caliza Blanca. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavamanos-006-60-01</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
-      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>890000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
-      <g:product_type>Lavamanos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
       <g:id>AHR80006GD</g:id>
       <g:title>Espejos  AHR80006GD</g:title>
       <g:description>Pieza de autor Espejos y cuadros AHR80006GD referencia SKU AHR80006GD. Acabados de lujo y garantía de 69 años.</g:description>
@@ -2223,6 +2193,21 @@
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
       <g:product_type>Cuadros</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>006-60-01</g:id>
+      <g:title>Lavamanos en Piedra 006-60-01</g:title>
+      <g:description>Lavamanos en Piedra 006-60-01 (Ref. SKU: 006-60-01). Acabado Piedra Caliza Blanca. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-006-60-01</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -2322,6 +2307,21 @@
       <g:description>Lavamanos 400A-GOLD (Ref. SKU: 400A-GOLD). Acabado Dorado Cepillado. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
       <g:link>https://disenotuespacio.com/product/lavamanos-400a-gold</g:link>
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A544GGCBK18_1.jpg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>041-60-83</g:id>
+      <g:title>Lavamanos en Piedra 041-60-83</g:title>
+      <g:description>Lavamanos en Piedra 041-60-83 (Ref. SKU: 041-60-83). Acabado Piedra Natural Crema. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-041-60-83</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>

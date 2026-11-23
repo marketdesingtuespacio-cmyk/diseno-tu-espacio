@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { 
   Menu, 
   X, 
@@ -24,8 +24,6 @@ export const Header: React.FC = () => {
   const { currency, setCurrency, language, setLanguage } = useCurrency();
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
-  const isHomePage = location.pathname === '/';
 
   // Navigation Drawer State
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,29 +34,11 @@ export const Header: React.FC = () => {
   // Search input state
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Sticky / Scrolled state for Header
-  const [isScrolled, setIsScrolled] = useState(false);
-
   // Desktop Hover MegaMenu
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
 
-  // Transparent overlay is ONLY applied on the Home page when at the very top (over the hero video).
-  // All other pages (Single Product, Catalog, Booking, Checkout, etc.) always have a crisp white, clean header.
-  const isTransparent = isHomePage && !isScrolled;
-
-  // Scroll listener
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 40) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  // Header siempre con fondo blanco limpio para máxima legibilidad en todas las vistas
+  const isTransparent = false;
 
   // Prevent background scrolling when Drawer is open
   useEffect(() => {

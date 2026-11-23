@@ -6,17 +6,16 @@ import { productService } from '../services/productService';
 import { ProductCard } from '../components/ProductCard';
 import { ProductCardSkeleton } from '../components/ProductCardSkeleton';
 import { CategoryCarousel } from '../components/CategoryCarousel';
-import { AnimatedHeroHeader } from '../components/AnimatedHeroHeader';
 import { EditorialBestsellersGrid } from '../components/EditorialBestsellersGrid';
 import { GrandOpeningEditorialGrid } from '../components/GrandOpeningEditorialGrid';
 
 export const HomePage: React.FC = () => {
-  const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [featuredProducts, setFeaturedProducts] = useState<Product[]>(() =>
+    productService.getProductsSync(undefined, false).filter(p => p.is_featured).slice(0, 4)
+  );
+  const [loading, setLoading] = useState<boolean>(() => featuredProducts.length === 0);
 
   useEffect(() => {
-    setLoading(true);
-
     productService.getProducts().then(products => {
       setFeaturedProducts(products.filter(p => p.is_featured).slice(0, 4));
       setLoading(false);
@@ -26,9 +25,6 @@ export const HomePage: React.FC = () => {
   return (
     <div className="space-y-12 pb-16">
       
-      {/* Animated Christmas & Holiday Hero Banner */}
-      <AnimatedHeroHeader />
-
       {/* Westwing-Style Category Carousel */}
       <CategoryCarousel />
 

@@ -199,7 +199,7 @@ export const CategoryCarousel: React.FC = () => {
         className="flex gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none pb-2 snap-x snap-mandatory"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
-        {visibleCategories.map((item) => (
+        {visibleCategories.map((item, idx) => (
           <div 
             key={item.id}
             onClick={() => handleCategoryClick(item.categoryFilter)}
@@ -225,6 +225,10 @@ export const CategoryCarousel: React.FC = () => {
                 <img 
                   src={item.image} 
                   alt={item.name}
+                  width={185}
+                  height={246}
+                  decoding="async"
+                  {...(idx <= 2 ? ({ fetchpriority: 'high' } as any) : { loading: 'lazy' })}
                   className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-300"
                 />
               ) : (

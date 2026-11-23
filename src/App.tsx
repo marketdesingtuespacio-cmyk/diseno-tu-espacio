@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import { CurrencyProvider } from './context/CurrencyContext';
@@ -7,16 +7,31 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { CartDrawer } from './components/CartDrawer';
 import { HomePage } from './pages/HomePage';
-import { CatalogPage } from './pages/CatalogPage';
-import { ProductDetailPage } from './pages/ProductDetailPage';
-import { BookingPage } from './pages/BookingPage';
-import { CheckoutPage } from './pages/CheckoutPage';
-import { LoginPage } from './pages/LoginPage';
-import { AdminDashboardPage } from './pages/AdminDashboardPage';
-import { MaintenancePage } from './pages/MaintenancePage';
 import { WhatsAppButton } from './components/WhatsAppButton';
 import { ProtectedRoute } from './components/ProtectedRoute';
-import { ChristmasDecorations } from './components/ChristmasDecorations';
+
+// Code-split secondary and heavy routes so initial homepage load is ultra-fast
+const CatalogPage = lazy(() =>
+  import('./pages/CatalogPage').then((m) => ({ default: m.CatalogPage }))
+);
+const ProductDetailPage = lazy(() =>
+  import('./pages/ProductDetailPage').then((m) => ({ default: m.ProductDetailPage }))
+);
+const BookingPage = lazy(() =>
+  import('./pages/BookingPage').then((m) => ({ default: m.BookingPage }))
+);
+const CheckoutPage = lazy(() =>
+  import('./pages/CheckoutPage').then((m) => ({ default: m.CheckoutPage }))
+);
+const LoginPage = lazy(() =>
+  import('./pages/LoginPage').then((m) => ({ default: m.LoginPage }))
+);
+const AdminDashboardPage = lazy(() =>
+  import('./pages/AdminDashboardPage').then((m) => ({ default: m.AdminDashboardPage }))
+);
+const MaintenancePage = lazy(() =>
+  import('./pages/MaintenancePage').then((m) => ({ default: m.MaintenancePage }))
+);
 
 // ----------------------------------------------------------------------
 // INTERRUPTOR DE MANTENIMIENTO GLOBAL
@@ -31,9 +46,12 @@ const MaintenanceGuard: React.FC<{ children: React.ReactNode }> = ({ children })
   const isAdmin = user?.role === 'admin';
   const isLoginPage = location.pathname === '/login';
 
-  // Si está en mantenimiento, bloquear a todos los usuarios EXCEPTO administradores autenticados o la página de login
   if (IS_MAINTENANCE_MODE && !isAdmin && !isLoginPage) {
-    return <MaintenancePage />;
+    return (
+      <Suspense fallback={null}>
+        <MaintenancePage />
+      </Suspense>
+    );
   }
 
   return (
@@ -50,17 +68,14 @@ const MaintenanceGuard: React.FC<{ children: React.ReactNode }> = ({ children })
 
 const MainContent: React.FC = () => {
   const location = useLocation();
-  const isHome = location.pathname === '/';
 
-  // Automatically track page views in Google Analytics and Meta Pixel on route changes,
-  // and ensure scroll position immediately resets to the very top of the page (0, 0)
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
 
     if (typeof window !== 'undefined') {
       if ((window as any).gtag) {
         (window as any).gtag('config', 'G-GCG3E204JM', {
-          page_path: location.pathname + location.search
+          page_path: location.pathname + location.search,
         });
       }
       if ((window as any).fbq) {
@@ -72,24 +87,32 @@ const MainContent: React.FC = () => {
   const isAdmin = location.pathname.startsWith('/admin');
 
   return (
-    <main className={`flex-1 ${isHome ? 'pt-0' : isAdmin ? 'pt-0 lg:pt-[140px]' : 'pt-[116px] md:pt-[130px] lg:pt-[140px]'}`}>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/catalog" element={<CatalogPage />} />
-        <Route path="/product/:slug" element={<ProductDetailPage />} />
-        <Route path="/p/:slug" element={<ProductDetailPage />} />
-        <Route path="/booking" element={<BookingPage />} />
-        <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route 
-          path="/admin" 
-          element={
-            <ProtectedRoute allowedRoles={['admin', 'collaborator']}>
-              <AdminDashboardPage />
-            </ProtectedRoute>
-          } 
-        />
-      </Routes>
+    <main className={`flex-1 ${isAdmin ? 'pt-0 lg:pt-[140px]' : 'pt-[116px] md:pt-[130px] lg:pt-[140px]'}`}>
+      <Suspense
+        fallback={
+          <div className="min-h-[55vh] flex items-center justify-center">
+            <div className="w-6 h-6 border-2 border-neutral-900 border-t-transparent rounded-full animate-spin" />
+          </div>
+        }
+      >
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/catalog" element={<CatalogPage />} />
+          <Route path="/product/:slug" element={<ProductDetailPage />} />
+          <Route path="/p/:slug" element={<ProductDetailPage />} />
+          <Route path="/booking" element={<BookingPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute allowedRoles={['admin', 'collaborator']}>
+                <AdminDashboardPage />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </Suspense>
     </main>
   );
 };
@@ -97,14 +120,12 @@ const MainContent: React.FC = () => {
 const AppShell: React.FC = () => {
   const location = useLocation();
   const isAdmin = location.pathname.startsWith('/admin');
-  // En el panel interno, la barra pública, el footer y WhatsApp se ocultan en móvil/tablet
   const publicChromeClass = isAdmin ? 'hidden lg:block' : '';
 
   return (
     <div className="min-h-screen flex flex-col bg-brand-white text-brand-black selection:bg-brand-black selection:text-white">
       <div className={publicChromeClass}>
         <Header />
-        <ChristmasDecorations />
       </div>
       <CartDrawer />
 

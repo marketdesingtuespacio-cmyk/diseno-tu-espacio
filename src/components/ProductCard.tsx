@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, ShoppingBag, Eye, QrCode } from 'lucide-react';
 import { Product } from '../types';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { useAuth } from '../context/AuthContext';
-import { ProductQRModal } from './admin/ProductQRModal';
+
+const ProductQRModal = lazy(() =>
+  import('./admin/ProductQRModal').then((m) => ({ default: m.ProductQRModal }))
+);
 
 interface ProductCardProps {
   product: Product;
@@ -160,12 +163,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         )}
       </div>
 
-      {/* Product Physical Routing QR Modal */}
-      <ProductQRModal
-        isOpen={isQRModalOpen}
-        onClose={() => setIsQRModalOpen(false)}
-        product={product}
-      />
+      {/* Product Physical Routing QR Modal (loaded only on demand) */}
+      {isQRModalOpen && (
+        <Suspense fallback={null}>
+          <ProductQRModal
+            isOpen={isQRModalOpen}
+            onClose={() => setIsQRModalOpen(false)}
+            product={product}
+          />
+        </Suspense>
+      )}
 
     </div>
   );
