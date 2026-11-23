@@ -97,3 +97,39 @@
   transform: translateY(-1px);
 }
 
+/* Animaciones Navideñas en Compositor (solo opacity y transform, respetando prefers-reduced-motion) */
+@keyframes christmasTwinkle {
+  0%, 100% {
+    opacity: 0.72;
+    transform: scale(0.94);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes ornamentSway {
+  0%, 100% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
+
+.christmas-bulb-glow {
+  opacity: 0.92;
+  @media (prefers-reduced-motion: no-preference) {
+    animation: christmasTwinkle 2.6s ease-in-out infinite;
+  }
+}
+
+.christmas-ornament-sway {
+  transform-origin: top center;
+  @media (prefers-reduced-motion: no-preference) {
+    animation: ornamentSway 4.2s ease-in-out infinite;
+  }
+}
+
+

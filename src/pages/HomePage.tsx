@@ -9,6 +9,7 @@ import { CategoryCarousel } from '../components/CategoryCarousel';
 import { AnimatedHeroHeader } from '../components/AnimatedHeroHeader';
 import { EditorialBestsellersGrid } from '../components/EditorialBestsellersGrid';
 import { GrandOpeningEditorialGrid } from '../components/GrandOpeningEditorialGrid';
+import { ChristmasSeasonShowcase } from '../components/ChristmasSeasonShowcase';
 
 export const HomePage: React.FC = () => {
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
@@ -26,11 +27,14 @@ export const HomePage: React.FC = () => {
   return (
     <div className="space-y-12 pb-16">
       
-      {/* Animated Black Friday Hero Banner (Reemplaza el video anterior con la estética Black Friday animada) */}
+      {/* Animated Christmas & Holiday Hero Banner */}
       <AnimatedHeroHeader />
 
       {/* Westwing-Style Category Carousel */}
       <CategoryCarousel />
+
+      {/* Festive Christmas Season Showcase: Regalos & Renovación de Navidad */}
+      <ChristmasSeasonShowcase />
 
       {/* Editorial Bestsellers Grid: NUESTROS MÁS VENDIDOS - Las piezas más populares de esta temporada */}
       <EditorialBestsellersGrid />

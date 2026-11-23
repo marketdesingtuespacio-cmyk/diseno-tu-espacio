@@ -12,7 +12,8 @@ import {
   LogOut,
   ChevronDown,
   Sparkles,
-  ScanLine
+  ScanLine,
+  Gift
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
@@ -115,20 +116,19 @@ export const Header: React.FC = () => {
             : 'bg-gradient-to-b from-black/85 via-black/45 to-transparent text-white border-b border-white/10'
         }`}
       >
-        {/* Top Utility Announcement Bar */}
+        {/* Top Utility Announcement Bar - Christmas Festive Edition */}
         <div 
-          className={`text-[11px] font-light py-1.5 px-4 sm:px-8 flex justify-between items-center tracking-widest uppercase transition-colors duration-300 ${
-            !isTransparent 
-              ? 'bg-brand-black text-white' 
-              : 'bg-black/50 text-neutral-200 border-b border-white/10 backdrop-blur-xs'
-          }`}
+          className="text-[11px] font-light py-1.5 px-4 sm:px-8 flex justify-between items-center tracking-widest uppercase transition-colors duration-300 bg-gradient-to-r from-[#5e0b15] via-[#0e3822] to-[#5e0b15] text-amber-50 border-b border-amber-400/40"
         >
-          <div className="hidden md:flex items-center gap-2 text-[10px] tracking-[0.2em] font-medium text-neutral-300">
-            <Sparkles className="w-3 h-3 text-amber-300" />
-            <span>Mobiliario, Arquitectura de Interiores & Asesoría Especializada • Colombia</span>
+          <div className="hidden md:flex items-center gap-2 text-[10px] tracking-[0.18em] font-semibold text-amber-200">
+            <Sparkles className="w-3.5 h-3.5 text-amber-300" aria-hidden="true" />
+            <span>🎄 Especial de Navidad en Diseño Tu Espacio • Regala Diseño &amp; Renueva tu Hogar 🎁</span>
           </div>
 
           <div className="mx-auto md:mx-0 flex items-center space-x-6 text-[10px]">
+            <span className="md:hidden text-[9.5px] font-bold tracking-wider text-amber-200">
+              🎄 Especial de Navidad • Colombia 🎁
+            </span>
             {/* Currency Switcher */}
             <div className="flex items-center space-x-1.5 bg-black/40 border border-white/15 px-2 py-0.5">
               <DollarSign className="w-3 h-3 text-amber-300" />
@@ -188,17 +188,33 @@ export const Header: React.FC = () => {
             </button>
           </div>
 
-          {/* CENTER: Official Logo */}
-          <Link to="/" className="flex items-center group py-2">
-            <img 
-              src="/images/logo_black.png" 
-              alt="Diseña Tu Espacio - Mobiliario & Diseño de Interiores"
-              className={`h-14 sm:h-16 md:h-20 w-auto object-contain transition-all duration-500 drop-shadow-sm ${
-                !isTransparent 
-                  ? 'brightness-100' 
-                  : 'brightness-0 invert'
-              }`}
-            />
+          {/* CENTER: Official Logo with Festive Christmas Wreath & Holly Badge */}
+          <Link to="/" className="flex items-center gap-2.5 group py-2 relative">
+            <div className="relative">
+              <img 
+                src="/images/logo_black.png" 
+                alt="Diseña Tu Espacio - Mobiliario & Diseño de Interiores"
+                className={`h-14 sm:h-16 md:h-20 w-auto object-contain transition-all duration-500 drop-shadow-sm ${
+                  !isTransparent 
+                    ? 'brightness-100' 
+                    : 'brightness-0 invert'
+                }`}
+              />
+              {/* Decorative Santa Hat / Holly SVG Accent */}
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 36 36"
+                className="w-6 h-6 sm:w-7 sm:h-7 absolute -top-1.5 -right-3 drop-shadow-md christmas-ornament-sway pointer-events-none"
+              >
+                <path d="M6 26 C10 10, 24 8, 30 22 Z" fill="#b91c1c" />
+                <circle cx="30" cy="22" r="4" fill="#ffffff" />
+                <rect x="4" y="24" width="24" height="5" rx="2.5" fill="#ffffff" />
+                <circle cx="16" cy="26" r="2" fill="#f59e0b" />
+              </svg>
+            </div>
+            <span className="hidden xl:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-gradient-to-r from-[#8b0d18] to-[#0f3823] text-amber-200 border border-amber-400/50 text-[9px] font-bold uppercase tracking-widest shadow-sm">
+              🎄 Navidad
+            </span>
           </Link>
 
           {/* RIGHT: Search Bar + Back-office / Account + Cart */}
@@ -227,6 +243,15 @@ export const Header: React.FC = () => {
                 <Search className="w-4 h-4" />
               </button>
             </form>
+
+            {/* Quick Christmas Special Desktop Link */}
+            <a
+              href="/#especial-navidad"
+              className="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-[#8b0d18] to-[#b91c1c] hover:from-[#a3101d] hover:to-[#dc2626] text-amber-100 border border-amber-400/50 text-[10px] font-bold uppercase tracking-widest shadow-sm transition-transform hover:scale-105"
+            >
+              <Gift className="w-3.5 h-3.5 text-amber-300" aria-hidden="true" />
+              <span>Especial Navidad</span>
+            </a>
 
             {/* Quick Catalog Desktop Link */}
             <div 

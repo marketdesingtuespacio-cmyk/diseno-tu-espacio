@@ -5,35 +5,6 @@
     <link>https://disenotuespacio.com</link>
     <description>Catálogo de Mobiliario, Espejos de Autor, Cuadros, Lavamanos y Diseño de Interiores</description>
     <item>
-      <g:id>MD681511</g:id>
-      <g:title>Papel de colgadura MD681511</g:title>
-      <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
-
-El modelo  cuenta demás con garantía de 1 año, un respaldo que acompaña la elección de esta pieza para proyectos de decoración.
-
-Especificaciones técnicas
-Tipo: Papel de colgadura
-Acabado: Acabados de lujo
-Garantía: 1 año
-Beneficios
-Pieza de autor: Aporta un carácter distintivo a la propuesta de decoración.
-Acabados de lujo: Refuerzan una estética sofisticada y cuidada.
-Valor decorativo: Puede convertirse en un elemento protagonista dentro del interiorismo.
-Diseño con presencia: Contribuye a crear espacios con una identidad visual más definida.
-Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-17-md681511</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681511_2.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681511_1.jpeg</g:additional_image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD681511_ecommerce.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>800000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
-      <g:product_type>Papel de Colgadura</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
       <g:id>GJ-2025-L</g:id>
       <g:title>Espejo con marco GJ-2025-L</g:title>
       <g:description>GJ-2025-L</g:description>
@@ -48,18 +19,33 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>AH60160022GD</g:id>
-      <g:title>Espejos AH60160022GD</g:title>
-      <g:description>Pieza de autor Espejos y cuadros AH60160022GD referencia SKU AH60160022GD. Acabados de lujo y garantía de 72 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-93-ah60160022gd</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60160022GD_1792100952999.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60160022GD_1792100953864.jpeg</g:additional_image_link>
+      <g:id>A723-P04M</g:id>
+      <g:title>Lavamanos A723P04M</g:title>
+      <g:description>A723 - P04M</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-a723p04m</g:link>
+      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>935821 COP</g:price>
+      <g:price>890000 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>MD681511</g:id>
+      <g:title>Papel de colgadura MD681511</g:title>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-17-md681511</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681511_2.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681511_1.jpeg</g:additional_image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD681511_ecommerce.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>600000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
+      <g:product_type>Papel de Colgadura</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -79,18 +65,18 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>GY-78X78-1606</g:id>
-      <g:title>Cuadros GY78X781606</g:title>
-      <g:description>Pieza de autor Espejos y cuadros GY78X781606 referencia SKU GY78X781606. Acabados de lujo y garantía de 50 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-71-gy78x781606</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY78X781606_1.jpg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY78X781606_2.jpg</g:additional_image_link>
+      <g:id>AH60160022GD</g:id>
+      <g:title>Espejos AH60160022GD</g:title>
+      <g:description>Pieza de autor Espejos y cuadros AH60160022GD referencia SKU AH60160022GD. Acabados de lujo y garantía de 72 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-93-ah60160022gd</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60160022GD_1792100952999.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60160022GD_1792100953864.jpeg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>495175 COP</g:price>
+      <g:price>935821 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
-      <g:product_type>Cuadros</g:product_type>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -105,6 +91,21 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>GY-78X78-1606</g:id>
+      <g:title>Cuadros GY78X781606</g:title>
+      <g:description>Pieza de autor Espejos y cuadros GY78X781606 referencia SKU GY78X781606. Acabados de lujo y garantía de 50 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-71-gy78x781606</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY78X781606_1.jpg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY78X781606_2.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>495175 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
+      <g:product_type>Cuadros</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -125,6 +126,50 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>A734-CLKA-M1840</g:id>
+      <g:title>Lavamanos A734-CLKA-M 1840</g:title>
+      <g:description>A734-CLKA-M 1840</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-a734-clka-m-1840</g:link>
+      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
+      <g:product_type>Papel de Colgadura</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>400A-BLACK</g:id>
+      <g:title>Lavamanos 400A-BLACK</g:title>
+      <g:description>Lavamanos 400A-BLACK (Ref. SKU: 400A-BLACK). Acabado Negro Mate. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-400a-black</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A691CBKUG04M_1.jpg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>400B-GOLD</g:id>
+      <g:title>Lavamanos 400B-GOLD</g:title>
+      <g:description>Lavamanos 400B-GOLD (Ref. SKU: 400B-GOLD). Acabado Dorado Cepillado. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-400b-gold</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A544GGCBK18_1.jpg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>KAS04 Travertine-Flexible-Stone-Panel-(Travertine)-3</g:id>
       <g:title>Travertine Flexible Stone Panel（Travertine)-3 Travertine-Flexible-Stone-Panel-(Travertine)-3</g:title>
       <g:description>Pieza de autor Travertine Flexible Stone Panel（Travertine)-3 Travertine-Flexible-Stone-Panel-(Travertine)-3 referencia SKU Travertine-Flexible-Stone-Panel-(Travertine)-3. Acabados de lujo y garantía de 73 años.</g:description>
@@ -140,29 +185,92 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>400C-BLACK</g:id>
+      <g:title>Lavamanos 400C-BLACK</g:title>
+      <g:description>Lavamanos 400C-BLACK (Ref. SKU: 400C-BLACK). Acabado Negro Mate. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-400c-black</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A691CBKUG04M_1.jpg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>MD680313</g:id>
       <g:title>Papel de colgadura MD680313</g:title>
-      <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
-
-El modelo  cuenta demás con garantía de 1 año, un respaldo que acompaña la elección de esta pieza para proyectos de decoración.
-
-Especificaciones técnicas
-Tipo: Papel de colgadura
-Acabado: Acabados de lujo
-Garantía: 1 año
-Beneficios
-Pieza de autor: Aporta un carácter distintivo a la propuesta de decoración.
-Acabados de lujo: Refuerzan una estética sofisticada y cuidada.
-Valor decorativo: Puede convertirse en un elemento protagonista dentro del interiorismo.
-Diseño con presencia: Contribuye a crear espacios con una identidad visual más definida.
-Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:description>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
       <g:link>https://disenotuespacio.com/product/prod-4-md680313</g:link>
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680313_2.jpeg</g:image_link>
       <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680313_1.jpeg</g:additional_image_link>
       <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680313_ecommerce.jpg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>800000 COP</g:price>
+      <g:price>600000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
+      <g:product_type>Papel de Colgadura</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>400B-BLACK</g:id>
+      <g:title>Lavamanos 400B-BLACK</g:title>
+      <g:description>Lavamanos 400B-BLACK (Ref. SKU: 400B-BLACK). Acabado Negro Mate. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-400b-black</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A691CBKUG04M_1.jpg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>400B-ROSE</g:id>
+      <g:title>Lavamanos 400B-ROSE</g:title>
+      <g:description>Lavamanos 400B-ROSE (Ref. SKU: 400B-ROSE). Acabado Oro Rosa / Cobre. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-400b-rose</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787P45M_1.jpg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>5519</g:id>
+      <g:title>Espejos modernos 5519</g:title>
+      <g:description>Pieza de autor Espejos modernos 5519 referencia SKU 5519. Acabados de lujo y garantía de 34 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-54-5519</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5519_1792097900172.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5519_1792098045462.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>612640 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>MD680510-B</g:id>
+      <g:title>Papel de colgadura MD680510-B</g:title>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-7-md680510b</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680510B_2.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680510B_1.jpeg</g:additional_image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680510B_ecommerce.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>600000 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
       <g:product_type>Papel de Colgadura</g:product_type>
@@ -171,27 +279,14 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
     <item>
       <g:id>MD681706</g:id>
       <g:title>Papel de colgadura MD681706</g:title>
-      <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
-
-El modelo  cuenta demás con garantía de 1 año, un respaldo que acompaña la elección de esta pieza para proyectos de decoración.
-
-Especificaciones técnicas
-Tipo: Papel de colgadura
-Acabado: Acabados de lujo
-Garantía: 1 año
-Beneficios
-Pieza de autor: Aporta un carácter distintivo a la propuesta de decoración.
-Acabados de lujo: Refuerzan una estética sofisticada y cuidada.
-Valor decorativo: Puede convertirse en un elemento protagonista dentro del interiorismo.
-Diseño con presencia: Contribuye a crear espacios con una identidad visual más definida.
-Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:description>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
       <g:link>https://disenotuespacio.com/product/prod-18-md681706</g:link>
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681706_2.jpeg</g:image_link>
       <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681706_1.jpeg</g:additional_image_link>
       <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD681706_ecommerce.jpg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>800000 COP</g:price>
+      <g:price>600000 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
       <g:product_type>Papel de Colgadura</g:product_type>
@@ -213,76 +308,18 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>MD680510-B</g:id>
-      <g:title>Papel de colgadura MD680510-B</g:title>
-      <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
-
-El modelo  cuenta demás con garantía de 1 año, un respaldo que acompaña la elección de esta pieza para proyectos de decoración.
-
-Especificaciones técnicas
-Tipo: Papel de colgadura
-Acabado: Acabados de lujo
-Garantía: 1 año
-Beneficios
-Pieza de autor: Aporta un carácter distintivo a la propuesta de decoración.
-Acabados de lujo: Refuerzan una estética sofisticada y cuidada.
-Valor decorativo: Puede convertirse en un elemento protagonista dentro del interiorismo.
-Diseño con presencia: Contribuye a crear espacios con una identidad visual más definida.
-Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-7-md680510b</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680510B_2.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680510B_1.jpeg</g:additional_image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680510B_ecommerce.jpg</g:additional_image_link>
+      <g:id>400C-ROSE</g:id>
+      <g:title>Lavamanos 400C-ROSE</g:title>
+      <g:description>Lavamanos 400C-ROSE (Ref. SKU: 400C-ROSE). Acabado Oro Rosa / Cobre. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-400c-rose</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787P45M_1.jpg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>800000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
-      <g:product_type>Papel de Colgadura</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>5519</g:id>
-      <g:title>Espejos modernos 5519</g:title>
-      <g:description>Pieza de autor Espejos modernos 5519 referencia SKU 5519. Acabados de lujo y garantía de 34 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-54-5519</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5519_1792097900172.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5519_1792098045462.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>612640 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>MD680103</g:id>
-      <g:title>Papel de colgadura MD680103</g:title>
-      <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
-
-El modelo  cuenta demás con garantía de 1 año, un respaldo que acompaña la elección de esta pieza para proyectos de decoración.
-
-Especificaciones técnicas
-Tipo: Papel de colgadura
-Acabado: Acabados de lujo
-Garantía: 1 año
-Beneficios
-Pieza de autor: Aporta un carácter distintivo a la propuesta de decoración.
-Acabados de lujo: Refuerzan una estética sofisticada y cuidada.
-Valor decorativo: Puede convertirse en un elemento protagonista dentro del interiorismo.
-Diseño con presencia: Contribuye a crear espacios con una identidad visual más definida.
-Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-19-md680103</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680103_1.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680103_2.jpeg</g:additional_image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680103_ecommerce.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>800000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
-      <g:product_type>Papel de Colgadura</g:product_type>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -316,29 +353,32 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>MD680103</g:id>
+      <g:title>Papel de colgadura MD680103</g:title>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-19-md680103</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680103_1.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680103_2.jpeg</g:additional_image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680103_ecommerce.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>600000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
+      <g:product_type>Papel de Colgadura</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>MD680904</g:id>
       <g:title>Papel de colgadura MD680904</g:title>
-      <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
-
-El modelo  cuenta demás con garantía de 1 año, un respaldo que acompaña la elección de esta pieza para proyectos de decoración.
-
-Especificaciones técnicas
-Tipo: Papel de colgadura
-Acabado: Acabados de lujo
-Garantía: 1 año
-Beneficios
-Pieza de autor: Aporta un carácter distintivo a la propuesta de decoración.
-Acabados de lujo: Refuerzan una estética sofisticada y cuidada.
-Valor decorativo: Puede convertirse en un elemento protagonista dentro del interiorismo.
-Diseño con presencia: Contribuye a crear espacios con una identidad visual más definida.
-Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:description>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
       <g:link>https://disenotuespacio.com/product/prod-11-md680904</g:link>
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680904_1.jpeg</g:image_link>
       <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680904_2.jpeg</g:additional_image_link>
       <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680904_ecommerce.jpg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>800000 COP</g:price>
+      <g:price>600000 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
       <g:product_type>Papel de Colgadura</g:product_type>
@@ -437,16 +477,14 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
     <item>
       <g:id>MD681309</g:id>
       <g:title>Papel de colgadura MD681309</g:title>
-      <g:description>Transforma tus espacios con nuestra exclusiva colección de papeles de colgadura en PVC. Diseños modernos, elegantes y sofisticados, con variedad de colores, texturas y acabados que aportan lujo, personalidad y distinción a cada ambiente.
-
-Ideales para salas, habitaciones, oficinas y espacios comerciales.</g:description>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
       <g:link>https://disenotuespacio.com/product/prod-15-md681309</g:link>
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681309_2.jpeg</g:image_link>
       <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681309_1.jpeg</g:additional_image_link>
       <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD681309_ecommerce.jpg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>800000 COP</g:price>
+      <g:price>600000 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
       <g:product_type>Papel de Colgadura</g:product_type>
@@ -510,6 +548,21 @@ Ideales para salas, habitaciones, oficinas y espacios comerciales.</g:descriptio
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Furniture &gt; Tables</g:google_product_category>
       <g:product_type>Mesas con Base</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>MD681113</g:id>
+      <g:title>Papel de colgadura MD681113</g:title>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-13-md681113</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681113_1.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681113_2.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>600000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
+      <g:product_type>Papel de Colgadura</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -588,34 +641,6 @@ Ideales para salas, habitaciones, oficinas y espacios comerciales.</g:descriptio
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>MD681113</g:id>
-      <g:title>Papel de colgadura MD681113</g:title>
-      <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
-
-El modelo  cuenta demás con garantía de 1 año, un respaldo que acompaña la elección de esta pieza para proyectos de decoración.
-
-Especificaciones técnicas
-Tipo: Papel de colgadura
-Acabado: Acabados de lujo
-Garantía: 1 año
-Beneficios
-Pieza de autor: Aporta un carácter distintivo a la propuesta de decoración.
-Acabados de lujo: Refuerzan una estética sofisticada y cuidada.
-Valor decorativo: Puede convertirse en un elemento protagonista dentro del interiorismo.
-Diseño con presencia: Contribuye a crear espacios con una identidad visual más definida.
-Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-13-md681113</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681113_1.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681113_2.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>800000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
-      <g:product_type>Papel de Colgadura</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
       <g:id>11</g:id>
       <g:title>Mesa 0011</g:title>
       <g:description>Mesa de diseño arquitectónico Mesa 11 (Ref. SKU: 11). Acabados de lujo, estructura robusta y estilo contemporáneo.</g:description>
@@ -646,6 +671,51 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>400C-GOLD</g:id>
+      <g:title>Lavamanos 400C-GOLD</g:title>
+      <g:description>Lavamanos 400C-GOLD (Ref. SKU: 400C-GOLD). Acabado Dorado Cepillado. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-400c-gold</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A544GGCBK18_1.jpg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>4085A-GOLD</g:id>
+      <g:title>Lavamanos 4085A-GOLD</g:title>
+      <g:description>Lavamanos 4085A-GOLD (Ref. SKU: 4085A-GOLD). Acabado Dorado Cepillado. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-4085a-gold</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A544GGCBK18_1.jpg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>4736A-BLACK</g:id>
+      <g:title>Lavamanos 4736A-BLACK</g:title>
+      <g:description>Lavamanos 4736A-BLACK (Ref. SKU: 4736A-BLACK). Acabado Negro Mate. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-4736a-black</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A691CBKUG04M_1.jpg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>5812</g:id>
       <g:title>Espejos modernos 5812</g:title>
       <g:description>Pieza de autor Espejos modernos 5812 referencia SKU 5812. Acabados de lujo y garantía de 24 años.</g:description>
@@ -661,47 +731,49 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>4736A-ROSE</g:id>
+      <g:title>Lavamanos 4736A-ROSE</g:title>
+      <g:description>Lavamanos 4736A-ROSE (Ref. SKU: 4736A-ROSE). Acabado Oro Rosa / Cobre. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-4736a-rose</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787P45M_1.jpg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>4085A-ROSE</g:id>
+      <g:title>Lavamanos 4085A-ROSE</g:title>
+      <g:description>Lavamanos 4085A-ROSE (Ref. SKU: 4085A-ROSE). Acabado Oro Rosa / Cobre. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-4085a-rose</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787P45M_1.jpg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>MD681901</g:id>
       <g:title>Papel de colgadura MD681901</g:title>
-      <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
-
-El modelo  cuenta demás con garantía de 1 año, un respaldo que acompaña la elección de esta pieza para proyectos de decoración.
-
-Especificaciones técnicas
-Tipo: Papel de colgadura
-Acabado: Acabados de lujo
-Garantía: 1 año
-Beneficios
-Pieza de autor: Aporta un carácter distintivo a la propuesta de decoración.
-Acabados de lujo: Refuerzan una estética sofisticada y cuidada.
-Valor decorativo: Puede convertirse en un elemento protagonista dentro del interiorismo.
-Diseño con presencia: Contribuye a crear espacios con una identidad visual más definida.
-Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:description>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
       <g:link>https://disenotuespacio.com/product/prod-20-md681901</g:link>
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681901_1.jpeg</g:image_link>
       <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681901_2.jpeg</g:additional_image_link>
       <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD681901_ecommerce.jpg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>800000 COP</g:price>
+      <g:price>600000 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
       <g:product_type>Papel de Colgadura</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>5512</g:id>
-      <g:title>Espejos modernos 5512</g:title>
-      <g:description>Pieza de autor Espejos modernos 5512 referencia SKU 5512. Acabados de lujo y garantía de 32 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-52-5512</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5512_1792096566830.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5512_1792096601764.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>597402 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -720,32 +792,49 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>5512</g:id>
+      <g:title>Espejos modernos 5512</g:title>
+      <g:description>Pieza de autor Espejos modernos 5512 referencia SKU 5512. Acabados de lujo y garantía de 32 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-52-5512</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5512_1792096566830.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5512_1792096601764.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>597402 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>MD680402B</g:id>
       <g:title>Papel de colgadura MD680402B</g:title>
-      <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
-
-El modelo  cuenta demás con garantía de 1 año, un respaldo que acompaña la elección de esta pieza para proyectos de decoración.
-
-Especificaciones técnicas
-Tipo: Papel de colgadura
-Acabado: Acabados de lujo
-Garantía: 1 año
-Beneficios
-Pieza de autor: Aporta un carácter distintivo a la propuesta de decoración.
-Acabados de lujo: Refuerzan una estética sofisticada y cuidada.
-Valor decorativo: Puede convertirse en un elemento protagonista dentro del interiorismo.
-Diseño con presencia: Contribuye a crear espacios con una identidad visual más definida.
-Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:description>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
       <g:link>https://disenotuespacio.com/product/prod-6-md680402b</g:link>
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680402B_1.jpeg</g:image_link>
       <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680402B_2.jpeg</g:additional_image_link>
       <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680402B_ecommerce.jpg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>800000 COP</g:price>
+      <g:price>600000 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
       <g:product_type>Papel de Colgadura</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>AH60160022BK</g:id>
+      <g:title>Espejos AH60160022BK</g:title>
+      <g:description>Pieza de autor Espejos y cuadros AH60160022BK referencia SKU AH60160022BK. Acabados de lujo y garantía de 71 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-92-ah60160022bk</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60160022BK_1792009236314.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60160022BK_1792009283171.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>935821 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -809,15 +898,15 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>7046A-BLACK</g:id>
-      <g:title>Lavaplatos 7046A-BLACK</g:title>
-      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 7046A-BLACK (Ref. SKU: 7046A-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavaplatos-7046a-black</g:link>
+      <g:id>10046-BLACK</g:id>
+      <g:title>Lavaplatos 10046-BLACK</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 10046-BLACK (Ref. SKU: 10046-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-10046-black</g:link>
       <g:image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>714000 COP</g:price>
+      <g:price>1011500 COP</g:price>
       <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
       <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
       <g:product_type>Lavaplatos</g:product_type>
@@ -839,51 +928,18 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>AH60160022BK</g:id>
-      <g:title>Espejos AH60160022BK</g:title>
-      <g:description>Pieza de autor Espejos y cuadros AH60160022BK referencia SKU AH60160022BK. Acabados de lujo y garantía de 71 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-92-ah60160022bk</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60160022BK_1792009236314.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60160022BK_1792009283171.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>935821 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>10046-BLACK</g:id>
-      <g:title>Lavaplatos 10046-BLACK</g:title>
-      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 10046-BLACK (Ref. SKU: 10046-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavaplatos-10046-black</g:link>
+      <g:id>7046A-BLACK</g:id>
+      <g:title>Lavaplatos 7046A-BLACK</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 7046A-BLACK (Ref. SKU: 7046A-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-7046a-black</g:link>
       <g:image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>1011500 COP</g:price>
+      <g:price>714000 COP</g:price>
       <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
       <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
       <g:product_type>Lavaplatos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>MD680101</g:id>
-      <g:title>Papel de colgadura MD680101</g:title>
-      <g:description>Transforma tus espacios con nuestra exclusiva colección de papeles de colgadura en PVC. Diseños modernos, elegantes y sofisticados, con variedad de colores, texturas y acabados que aportan lujo, personalidad y distinción a cada ambiente.
-
-Ideales para salas, habitaciones, oficinas y espacios comerciales.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-1-md680101</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680101_2.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680101_1.jpeg</g:additional_image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680101_ecommerce.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>800000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
-      <g:product_type>Papel de Colgadura</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -899,6 +955,22 @@ Ideales para salas, habitaciones, oficinas y espacios comerciales.</g:descriptio
       <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
       <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
       <g:product_type>Lavaplatos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>MD680101</g:id>
+      <g:title>Papel de colgadura MD680101</g:title>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-1-md680101</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680101_2.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680101_1.jpeg</g:additional_image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680101_ecommerce.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>600000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
+      <g:product_type>Papel de Colgadura</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -947,21 +1019,6 @@ Ideales para salas, habitaciones, oficinas y espacios comerciales.</g:descriptio
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>5045A-BLACK</g:id>
-      <g:title>Lavaplatos 5045A-BLACK</g:title>
-      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 5045A-BLACK (Ref. SKU: 5045A-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavaplatos-5045a-black</g:link>
-      <g:image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
-      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>595000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
-      <g:product_type>Lavaplatos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
       <g:id>9045A-BLACK</g:id>
       <g:title>Lavaplatos 9045A-BLACK</g:title>
       <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 9045A-BLACK (Ref. SKU: 9045A-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
@@ -977,18 +1034,19 @@ Ideales para salas, habitaciones, oficinas y espacios comerciales.</g:descriptio
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>8550A-BLACK</g:id>
-      <g:title>Lavaplatos 8550A-BLACK</g:title>
-      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 8550A-BLACK (Ref. SKU: 8550A-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavaplatos-8550a-black</g:link>
-      <g:image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
-      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:id>MD680209</g:id>
+      <g:title>Papel de colgadura MD680512-B</g:title>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-8-md680512-b</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680209_1.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680209_2.jpeg</g:additional_image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680209_ecommerce.jpg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>892500 COP</g:price>
-      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
-      <g:product_type>Lavaplatos</g:product_type>
+      <g:price>600000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
+      <g:product_type>Papel de colgadura</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1007,69 +1065,11 @@ Ideales para salas, habitaciones, oficinas y espacios comerciales.</g:descriptio
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>MD680209</g:id>
-      <g:title>Papel de colgadura MD680512-B</g:title>
-      <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
-
-El modelo  cuenta demás con garantía de 1 año, un respaldo que acompaña la elección de esta pieza para proyectos de decoración.
-
-Especificaciones técnicas
-Tipo: Papel de colgadura
-Acabado: Acabados de lujo
-Garantía: 1 año
-Beneficios
-Pieza de autor: Aporta un carácter distintivo a la propuesta de decoración.
-Acabados de lujo: Refuerzan una estética sofisticada y cuidada.
-Valor decorativo: Puede convertirse en un elemento protagonista dentro del interiorismo.
-Diseño con presencia: Contribuye a crear espacios con una identidad visual más definida.
-Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-8-md680512-b</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680209_1.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680209_2.jpeg</g:additional_image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680209_ecommerce.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>800000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
-      <g:product_type>Papel de colgadura</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>MD681412</g:id>
-      <g:title>Papel de colgadura MD681412</g:title>
-      <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
-
-El modelo  cuenta demás con garantía de 1 año, un respaldo que acompaña la elección de esta pieza para proyectos de decoración.
-
-Especificaciones técnicas
-Tipo: Papel de colgadura
-Acabado: Acabados de lujo
-Garantía: 1 año
-Beneficios
-Pieza de autor: Aporta un carácter distintivo a la propuesta de decoración.
-Acabados de lujo: Refuerzan una estética sofisticada y cuidada.
-Valor decorativo: Puede convertirse en un elemento protagonista dentro del interiorismo.
-Diseño con presencia: Contribuye a crear espacios con una identidad visual más definida.
-Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-16-md681412</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681412_2.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681412_1.jpeg</g:additional_image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD681412_ecommerce.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>800000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
-      <g:product_type>Papel de Colgadura</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>6045B-GOLD</g:id>
-      <g:title>Lavaplatos 6045B-GOLD</g:title>
-      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 6045B-GOLD (Ref. SKU: 6045B-GOLD). Acabado Dorado Cepillado, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavaplatos-6045b-gold</g:link>
-      <g:image_link>https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:id>5045A-BLACK</g:id>
+      <g:title>Lavaplatos 5045A-BLACK</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 5045A-BLACK (Ref. SKU: 5045A-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-5045a-black</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
@@ -1080,15 +1080,30 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>5051A-GOLD</g:id>
-      <g:title>Lavaplatos 5051A-GOLD</g:title>
-      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 5051A-GOLD (Ref. SKU: 5051A-GOLD). Acabado Dorado Cepillado, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
-      <g:link>https://disenotuespacio.com/product/lavaplatos-5051a-gold</g:link>
-      <g:image_link>https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:id>011-80-03</g:id>
+      <g:title>Lavamanos en Piedra 011-80-03</g:title>
+      <g:description>Lavamanos en Piedra 011-80-03 (Ref. SKU: 011-80-03). Acabado Piedra Natural Gris. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-011-80-03</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
       <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>773500 COP</g:price>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>8550A-BLACK</g:id>
+      <g:title>Lavaplatos 8550A-BLACK</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 8550A-BLACK (Ref. SKU: 8550A-BLACK). Acabado Negro Mate, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-8550a-black</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>892500 COP</g:price>
       <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
       <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
       <g:product_type>Lavaplatos</g:product_type>
@@ -1110,6 +1125,37 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>MD681412</g:id>
+      <g:title>Papel de colgadura MD681412</g:title>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-16-md681412</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681412_2.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681412_1.jpeg</g:additional_image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD681412_ecommerce.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>600000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
+      <g:product_type>Papel de Colgadura</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>6045B-GOLD</g:id>
+      <g:title>Lavaplatos 6045B-GOLD</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 6045B-GOLD (Ref. SKU: 6045B-GOLD). Acabado Dorado Cepillado, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-6045b-gold</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>595000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>HP-120X90-0948</g:id>
       <g:title>Cuadros HP120X900948</g:title>
       <g:description>Pieza de autor Espejos y cuadros HP120X900948 referencia SKU HP120X900948. Acabados de lujo y garantía de 39 años.</g:description>
@@ -1119,6 +1165,51 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>747523 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
+      <g:product_type>Cuadros</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>5051A-GOLD</g:id>
+      <g:title>Lavaplatos 5051A-GOLD</g:title>
+      <g:description>Lavaplatos de cocina arquitectónico Lavaplatos 5051A-GOLD (Ref. SKU: 5051A-GOLD). Acabado Dorado Cepillado, acero inoxidable de alta resistencia, recubrimiento antirruido y diseño de vanguardia.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavaplatos-5051a-gold</g:link>
+      <g:image_link>https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>773500 COP</g:price>
+      <g:brand>Diseño Tu Espacio Kitchen Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Kitchen &amp; Utility Sinks</g:google_product_category>
+      <g:product_type>Lavaplatos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>011-80-01</g:id>
+      <g:title>Lavamanos en Piedra 011-80-01</g:title>
+      <g:description>Lavamanos en Piedra 011-80-01 (Ref. SKU: 011-80-01). Acabado Piedra Natural Mármol Blanco. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-011-80-01</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>GY-77X117-1593</g:id>
+      <g:title>Cuadros GY77X1171593</g:title>
+      <g:description>Pieza de autor Espejos y cuadros GY77X1171593 referencia SKU GY77X1171593. Acabados de lujo y garantía de 55 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-76-gy77x1171593</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY77X1171593_1.jpg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY77X1171593_2.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>604685 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
       <g:product_type>Cuadros</g:product_type>
@@ -1140,21 +1231,6 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>5822</g:id>
-      <g:title>Espejos modernos 5822</g:title>
-      <g:description>Pieza de autor Espejos modernos 5822 referencia SKU 5822. Acabados de lujo y garantía de 23 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-43-5822</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5822_1792101588709.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5822_1792101589571.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>662910 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
       <g:id>5523</g:id>
       <g:title>Espejos modernos 5523</g:title>
       <g:description>Pieza de autor Espejos modernos 5523 referencia SKU 5523. Acabados de lujo y garantía de 19 años.</g:description>
@@ -1164,6 +1240,21 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>983423 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>5822</g:id>
+      <g:title>Espejos modernos 5822</g:title>
+      <g:description>Pieza de autor Espejos modernos 5822 referencia SKU 5822. Acabados de lujo y garantía de 23 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-43-5822</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5822_1792101588709.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5822_1792101589571.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>662910 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
@@ -1187,48 +1278,18 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>GY-77X117-1593</g:id>
-      <g:title>Cuadros GY77X1171593</g:title>
-      <g:description>Pieza de autor Espejos y cuadros GY77X1171593 referencia SKU GY77X1171593. Acabados de lujo y garantía de 55 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-76-gy77x1171593</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY77X1171593_1.jpg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY77X1171593_2.jpg</g:additional_image_link>
+      <g:id>010-60--03</g:id>
+      <g:title>Lavamanos en Piedra 010-60--03</g:title>
+      <g:description>Lavamanos en Piedra 010-60--03 (Ref. SKU: 010-60--03). Acabado Piedra Natural Antracita. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-010-60--03</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>604685 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
-      <g:product_type>Cuadros</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>HP-70X140-1465</g:id>
-      <g:title>Cuadros HP70X1401465</g:title>
-      <g:description>Pieza de autor Espejos y cuadros HP70X1401465 referencia SKU HP70X1401465. Acabados de lujo y garantía de 42 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-63-hp70x1401465</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP70X1401465_1.jpg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP70X1401465_2.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>607303 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
-      <g:product_type>Cuadros</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>KAS02 Flexible-Stone-Panel-(Weaving)</g:id>
-      <g:title>Flexible Stone Panel (Weaving) Flexible-Stone-Panel-(Weaving)</g:title>
-      <g:description>Pieza de autor Flexible Stone Panel (Weaving) Flexible-Stone-Panel-(Weaving) referencia SKU Flexible-Stone-Panel-(Weaving). Acabados de lujo y garantía de 71 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-95-flexiblestonepanelweaving</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Flexible_Stone_Panel__Weaving__Flexible-Stone-Panel-_Weaving__1791490348218.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Flexible_Stone_Panel__Weaving__Flexible-Stone-Panel-_Weaving__1791490347347.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>290100 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
-      <g:product_type>Revestimientos</g:product_type>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1254,7 +1315,7 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Flexible_Stone_Panel_Travertine_-2_Flexible-Stone_Panel-_Travertine_-2_1791490084415.jpeg</g:image_link>
       <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Flexible_Stone_Panel_Travertine_-2_Flexible-Stone_Panel-_Travertine_-2_1791490083719.jpeg</g:additional_image_link>
       <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
+      <g:availability>out_of_stock</g:availability>
       <g:price>290100 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
@@ -1277,18 +1338,94 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>5351</g:id>
-      <g:title>Espejos modernos 5351</g:title>
-      <g:description>Pieza de autor Espejos modernos 5351 referencia SKU 5351. Acabados de lujo y garantía de 38 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-58-5351</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5351_1792008862871.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5351_1792008878290.jpeg</g:additional_image_link>
+      <g:id>008-60-70</g:id>
+      <g:title>Lavamanos en Piedra 008-60-70</g:title>
+      <g:description>Lavamanos en Piedra 008-60-70 (Ref. SKU: 008-60-70). Acabado Piedra Natural Travertino. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-008-60-70</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>864749 COP</g:price>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>HP-70X140-1465</g:id>
+      <g:title>Cuadros HP70X1401465</g:title>
+      <g:description>Pieza de autor Espejos y cuadros HP70X1401465 referencia SKU HP70X1401465. Acabados de lujo y garantía de 42 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-63-hp70x1401465</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP70X1401465_1.jpg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP70X1401465_2.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>607303 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
+      <g:product_type>Cuadros</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>KAS02 Flexible-Stone-Panel-(Weaving)</g:id>
+      <g:title>Flexible Stone Panel (Weaving) Flexible-Stone-Panel-(Weaving)</g:title>
+      <g:description>Pieza de autor Flexible Stone Panel (Weaving) Flexible-Stone-Panel-(Weaving) referencia SKU Flexible-Stone-Panel-(Weaving). Acabados de lujo y garantía de 71 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-95-flexiblestonepanelweaving</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Flexible_Stone_Panel__Weaving__Flexible-Stone-Panel-_Weaving__1791490348218.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Flexible_Stone_Panel__Weaving__Flexible-Stone-Panel-_Weaving__1791490347347.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>out_of_stock</g:availability>
+      <g:price>290100 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
+      <g:product_type>Revestimientos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>077-60-112</g:id>
+      <g:title>Lavamanos en Piedra 077-60-112</g:title>
+      <g:description>Lavamanos en Piedra 077-60-112 (Ref. SKU: 077-60-112). Acabado Piedra Esculpida Gris Oxford. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-077-60-112</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>008-100-70</g:id>
+      <g:title>Lavamanos en Piedra 008-100-70</g:title>
+      <g:description>Lavamanos en Piedra 008-100-70 (Ref. SKU: 008-100-70). Acabado Piedra Natural Travertino. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-008-100-70</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>A707-CUG20-M</g:id>
+      <g:title>Lavamanos A707-CUG20-M</g:title>
+      <g:description>Pieza de autor Lavamanos A707CUG20M referencia SKU A707CUG20M. Acabados de lujo y garantía de 6 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-26-a707cug20m</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A707CUG20M_1.jpg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A707CUG20M_2.jpg</g:additional_image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A707CUG20M_3.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>628937 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1301,6 +1438,21 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>944126 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>5351</g:id>
+      <g:title>Espejos modernos 5351</g:title>
+      <g:description>Pieza de autor Espejos modernos 5351 referencia SKU 5351. Acabados de lujo y garantía de 38 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-58-5351</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5351_1792008862871.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5351_1792008878290.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>864749 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
@@ -1325,34 +1477,78 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>A707-CUG20-M</g:id>
-      <g:title>Lavamanos A707-CUG20-M</g:title>
-      <g:description>Pieza de autor Lavamanos A707CUG20M referencia SKU A707CUG20M. Acabados de lujo y garantía de 6 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-26-a707cug20m</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A707CUG20M_1.jpg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A707CUG20M_2.jpg</g:additional_image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A707CUG20M_3.jpg</g:additional_image_link>
+      <g:id>A01-80</g:id>
+      <g:title>Lavamanos en Piedra A01-80</g:title>
+      <g:description>Lavamanos en Piedra A01-80 (Ref. SKU: A01-80). Acabado Piedra Natural Caliza. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-a01-80</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>628937 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
       <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
       <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>HP-80X80-1103</g:id>
-      <g:title>Cuadros HP80X801103</g:title>
-      <g:description>Pieza de autor Espejos y cuadros HP80X801103 referencia SKU HP80X801103. Acabados de lujo y garantía de 46 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-67-hp80x801103</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP80X801103_1.jpg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP80X801103_2.jpg</g:additional_image_link>
+      <g:id>M11-60</g:id>
+      <g:title>Lavamanos en Piedra M11-60</g:title>
+      <g:description>Lavamanos en Piedra M11-60 (Ref. SKU: M11-60). Acabado Mármol Escultural. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-m11-60</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>597543 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
-      <g:product_type>Cuadros</g:product_type>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>077-80-112</g:id>
+      <g:title>Lavamanos en Piedra 077-80-112</g:title>
+      <g:description>Lavamanos en Piedra 077-80-112 (Ref. SKU: 077-80-112). Acabado Piedra Esculpida Gris Oxford. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-077-80-112</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>090-60-72</g:id>
+      <g:title>Lavamanos en Piedra 090-60-72</g:title>
+      <g:description>Lavamanos en Piedra 090-60-72 (Ref. SKU: 090-60-72). Acabado Piedra Natural Ébano. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-090-60-72</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>A17-80</g:id>
+      <g:title>Lavamanos en Piedra A17-80</g:title>
+      <g:description>Lavamanos en Piedra A17-80 (Ref. SKU: A17-80). Acabado Piedra Arenisca Natural. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-a17-80</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1373,15 +1569,15 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>AH60160051BK</g:id>
-      <g:title>Espejos  AH60160051BK</g:title>
-      <g:description>Pieza de autor Espejos y cuadros AH60160051BK referencia SKU AH60160051BK. Acabados de lujo y garantía de 64 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-85-ah60160051bk</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60160051BK_1792009655524.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60160051BK_1792009656585.jpeg</g:additional_image_link>
+      <g:id>6411</g:id>
+      <g:title>Espejos modernos 6411</g:title>
+      <g:description>Pieza de autor Espejos modernos 6411 referencia SKU 6411. Acabados de lujo y garantía de 29 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-49-6411</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_6411_1792009998729.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_6411_1792010001658.jpeg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>982612 COP</g:price>
+      <g:price>950084 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
@@ -1403,30 +1599,15 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>5343</g:id>
-      <g:title>Espejos modernos 5343</g:title>
-      <g:description>Pieza de autor Espejos modernos 5343 referencia SKU 5343. Acabados de lujo y garantía de 26 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-46-5343</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5343_1792009823989.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5343_1792009824818.jpeg</g:additional_image_link>
+      <g:id>AH60160051BK</g:id>
+      <g:title>Espejos  AH60160051BK</g:title>
+      <g:description>Pieza de autor Espejos y cuadros AH60160051BK referencia SKU AH60160051BK. Acabados de lujo y garantía de 64 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-85-ah60160051bk</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60160051BK_1792009655524.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60160051BK_1792009656585.jpeg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>670529 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>AH60120037BK</g:id>
-      <g:title>Espejos  AH60120037BK</g:title>
-      <g:description>Pieza de autor Espejos y cuadros AH60120037BK referencia SKU AH60120037BK. Acabados de lujo y garantía de 62 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-83-ah60120037bk</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60120037BK_1792159353786.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60120037BK_1792159354317.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>920000 COP</g:price>
+      <g:price>982612 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
@@ -1450,30 +1631,91 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>HP-120X90-0963</g:id>
-      <g:title>Cuadros HP120X900963</g:title>
-      <g:description>Pieza de autor Espejos y cuadros HP120X900963 referencia SKU HP120X900963. Acabados de lujo y garantía de 40 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-61-hp120x900963</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP120X900963_1.jpg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP120X900963_2.jpg</g:additional_image_link>
+      <g:id>5343</g:id>
+      <g:title>Espejos modernos 5343</g:title>
+      <g:description>Pieza de autor Espejos modernos 5343 referencia SKU 5343. Acabados de lujo y garantía de 26 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-46-5343</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5343_1792009823989.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5343_1792009824818.jpeg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>760617 COP</g:price>
+      <g:price>670529 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
-      <g:product_type>Cuadros</g:product_type>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>6411</g:id>
-      <g:title>Espejos modernos 6411</g:title>
-      <g:description>Pieza de autor Espejos modernos 6411 referencia SKU 6411. Acabados de lujo y garantía de 29 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-49-6411</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_6411_1792009998729.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_6411_1792010001658.jpeg</g:additional_image_link>
+      <g:id>A22-80</g:id>
+      <g:title>Lavamanos en Piedra A22-80</g:title>
+      <g:description>Lavamanos en Piedra A22-80 (Ref. SKU: A22-80). Acabado Mármol y Piedra Arquitectónica. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-a22-80</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>950084 COP</g:price>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>MD680209</g:id>
+      <g:title>Papel de colgadura MD680209</g:title>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-2-md680209</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680209_2.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680209_1.jpeg</g:additional_image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680209_ecommerce.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>600000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
+      <g:product_type>Papel de Colgadura</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>M06-80</g:id>
+      <g:title>Lavamanos en Piedra M06-80</g:title>
+      <g:description>Lavamanos en Piedra M06-80 (Ref. SKU: M06-80). Acabado Mármol Natural Pulido. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-m06-80</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>M13-80</g:id>
+      <g:title>Lavamanos en Piedra M13-80</g:title>
+      <g:description>Lavamanos en Piedra M13-80 (Ref. SKU: M13-80). Acabado Mármol Negro Veteado. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-m13-80</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>AH60120040</g:id>
+      <g:title>Espejos AH60120040</g:title>
+      <g:description>Pieza de autor Espejos y cuadros AH60120040 referencia SKU AH60120040. Acabados de lujo y garantía de 60 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-81-ah60120040</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60120040_1792093847404.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60120040_1792093847981.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>920000 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
@@ -1486,21 +1728,6 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:link>https://disenotuespacio.com/product/prod-82-ah60120043</g:link>
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60120043_1792094023949.jpeg</g:image_link>
       <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60120043_1792094025019.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>920000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>AH60120040</g:id>
-      <g:title>Espejos AH60120040</g:title>
-      <g:description>Pieza de autor Espejos y cuadros AH60120040 referencia SKU AH60120040. Acabados de lujo y garantía de 60 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-81-ah60120040</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60120040_1792093847404.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60120040_1792093847981.jpeg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>920000 COP</g:price>
@@ -1526,32 +1753,18 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>MD680209</g:id>
-      <g:title>Papel de colgadura MD680209</g:title>
-      <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
-
-El modelo  cuenta demás con garantía de 1 año, un respaldo que acompaña la elección de esta pieza para proyectos de decoración.
-
-Especificaciones técnicas
-Tipo: Papel de colgadura
-Acabado: Acabados de lujo
-Garantía: 1 año
-Beneficios
-Pieza de autor: Aporta un carácter distintivo a la propuesta de decoración.
-Acabados de lujo: Refuerzan una estética sofisticada y cuidada.
-Valor decorativo: Puede convertirse en un elemento protagonista dentro del interiorismo.
-Diseño con presencia: Contribuye a crear espacios con una identidad visual más definida.
-Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-2-md680209</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680209_2.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680209_1.jpeg</g:additional_image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680209_ecommerce.jpg</g:additional_image_link>
+      <g:id>089-60-63</g:id>
+      <g:title>Lavamanos en Piedra 089-60-63</g:title>
+      <g:description>Lavamanos en Piedra 089-60-63 (Ref. SKU: 089-60-63). Acabado Piedra Basalto Natural. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-089-60-63</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>600000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
-      <g:product_type>Papel de Colgadura</g:product_type>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1572,30 +1785,77 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
     <item>
       <g:id>MD680301</g:id>
       <g:title>Papel de colgadura MD680301</g:title>
-      <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
-
-El modelo  cuenta demás con garantía de 1 año, un respaldo que acompaña la elección de esta pieza para proyectos de decoración.
-
-Especificaciones técnicas
-Tipo: Papel de colgadura
-Acabado: Acabados de lujo
-Garantía: 1 año
-Beneficios
-Pieza de autor: Aporta un carácter distintivo a la propuesta de decoración.
-Acabados de lujo: Refuerzan una estética sofisticada y cuidada.
-Valor decorativo: Puede convertirse en un elemento protagonista dentro del interiorismo.
-Diseño con presencia: Contribuye a crear espacios con una identidad visual más definida.
-Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:description>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
       <g:link>https://disenotuespacio.com/product/prod-3-md680301</g:link>
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680301_lifestyle.jpg</g:image_link>
       <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680301_design.jpg</g:additional_image_link>
       <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680301_ecommerce.jpg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>800000 COP</g:price>
+      <g:price>600000 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
       <g:product_type>Papel de Colgadura</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>026-80-08+90</g:id>
+      <g:title>Lavamanos en Piedra 026-80-08+90</g:title>
+      <g:description>Lavamanos en Piedra 026-80-08+90 (Ref. SKU: 026-80-08+90). Acabado Piedra Texturizada. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-026-80-08-90</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>041-60-83</g:id>
+      <g:title>Lavamanos en Piedra 041-60-83</g:title>
+      <g:description>Lavamanos en Piedra 041-60-83 (Ref. SKU: 041-60-83). Acabado Piedra Natural Crema. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-041-60-83</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>HP-80X80-1098</g:id>
+      <g:title>Cuadros HP80X801098</g:title>
+      <g:description>Pieza de autor Espejos y cuadros HP80X801098 referencia SKU HP80X801098. Acabados de lujo y garantía de 45 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-66-hp80x801098</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP80X801098_1.jpg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP80X801098_2.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>502317 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
+      <g:product_type>Cuadros</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>HP-80X80-1097</g:id>
+      <g:title>Cuadros HP80X801097</g:title>
+      <g:description>Pieza de autor Espejos y cuadros HP80X801097 referencia SKU HP80X801097. Acabados de lujo y garantía de 44 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-65-hp80x801097</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP80X801097_1.jpg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP80X801097_2.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>502317 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
+      <g:product_type>Cuadros</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1617,60 +1877,32 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
     <item>
       <g:id>MD680312</g:id>
       <g:title>Papel de colgadura MD680312</g:title>
-      <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
-
-El modelo  cuenta demás con garantía de 1 año, un respaldo que acompaña la elección de esta pieza para proyectos de decoración.
-
-Especificaciones técnicas
-Tipo: Papel de colgadura
-Acabado: Acabados de lujo
-Garantía: 1 año
-Beneficios
-Pieza de autor: Aporta un carácter distintivo a la propuesta de decoración.
-Acabados de lujo: Refuerzan una estética sofisticada y cuidada.
-Valor decorativo: Puede convertirse en un elemento protagonista dentro del interiorismo.
-Diseño con presencia: Contribuye a crear espacios con una identidad visual más definida.
-Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:description>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
       <g:link>https://disenotuespacio.com/product/prod-5-md680312</g:link>
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680312_design.jpg</g:image_link>
       <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680312_ecommerce.jpg</g:additional_image_link>
       <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680312_lifestyle.jpg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>800000 COP</g:price>
+      <g:price>600000 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
       <g:product_type>Papel de Colgadura</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>HP-80X80-1097</g:id>
-      <g:title>Cuadros HP80X801097</g:title>
-      <g:description>Pieza de autor Espejos y cuadros HP80X801097 referencia SKU HP80X801097. Acabados de lujo y garantía de 44 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-65-hp80x801097</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP80X801097_1.jpg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP80X801097_2.jpg</g:additional_image_link>
+      <g:id>064-60-102</g:id>
+      <g:title>Lavamanos en Piedra 064-60-102</g:title>
+      <g:description>Lavamanos en Piedra 064-60-102 (Ref. SKU: 064-60-102). Acabado Piedra Grafito Esculpida. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-064-60-102</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>502317 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
-      <g:product_type>Cuadros</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>HP-80X80-1098</g:id>
-      <g:title>Cuadros HP80X801098</g:title>
-      <g:description>Pieza de autor Espejos y cuadros HP80X801098 referencia SKU HP80X801098. Acabados de lujo y garantía de 45 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-66-hp80x801098</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP80X801098_1.jpg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP80X801098_2.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>502317 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
-      <g:product_type>Cuadros</g:product_type>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1737,27 +1969,14 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
     <item>
       <g:id>MD680603</g:id>
       <g:title>Papel de colgadura MD680603</g:title>
-      <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
-
-El modelo  cuenta demás con garantía de 1 año, un respaldo que acompaña la elección de esta pieza para proyectos de decoración.
-
-Especificaciones técnicas
-Tipo: Papel de colgadura
-Acabado: Acabados de lujo
-Garantía: 1 año
-Beneficios
-Pieza de autor: Aporta un carácter distintivo a la propuesta de decoración.
-Acabados de lujo: Refuerzan una estética sofisticada y cuidada.
-Valor decorativo: Puede convertirse en un elemento protagonista dentro del interiorismo.
-Diseño con presencia: Contribuye a crear espacios con una identidad visual más definida.
-Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:description>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
       <g:link>https://disenotuespacio.com/product/prod-9-md680603</g:link>
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680603_1.jpeg</g:image_link>
       <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680603_2.jpeg</g:additional_image_link>
       <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680603_ecommerce.jpg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>800000 COP</g:price>
+      <g:price>600000 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
       <g:product_type>Papel de Colgadura</g:product_type>
@@ -1779,21 +1998,6 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>KAS03 Flexible-Stone-Panel-(Line stone board)</g:id>
-      <g:title>Flexible Stone Panel (Line stone board) Flexible-Stone-Panel-(Line stone board)</g:title>
-      <g:description>Pieza de autor Flexible Stone Panel (Line stone board) Flexible-Stone-Panel-(Line stone board) referencia SKU Flexible-Stone-Panel-(Line stone board). Acabados de lujo y garantía de 72 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-96-flexiblestonepanellinestoneboard</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Flexible_Stone_Panel__Line_stone_board__Flexible-Stone-Panel-_Line_stone_board__1791488991336.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Flexible_Stone_Panel__Line_stone_board__Flexible-Stone-Panel-_Line_stone_board__1791488990718.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>290100 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
-      <g:product_type>Revestimientos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
       <g:id>GY-87X87-1608</g:id>
       <g:title>Cuadros GY87X871608</g:title>
       <g:description>Pieza de autor Espejos y cuadros GY87X871608 referencia SKU GY87X871608. Acabados de lujo y garantía de 51 años.</g:description>
@@ -1803,55 +2007,6 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>549930 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
-      <g:product_type>Cuadros</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>A712-CA52M</g:id>
-      <g:title>Lavamanos A712-CA52M</g:title>
-      <g:description>Pieza de autor Lavamanos A712CA52M referencia SKU A712CA52M. Acabados de lujo y garantía de 18 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-38-a712ca52m</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A712CA52M_1.jpg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A712CA52M_2.jpg</g:additional_image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A712CA52M_3.jpg</g:additional_image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A712CA52M_4.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>662309 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
-      <g:product_type>Lavamanos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>A787-CMC-M</g:id>
-      <g:title>Lavamanos A787-CMC-M</g:title>
-      <g:description>Pieza de autor Lavamanos A787CMCM referencia SKU A787CMCM. Acabados de lujo y garantía de 15 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-35-a787cmcm</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787CMCM_1.jpg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787CMCM_2.jpg</g:additional_image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787CMCM_3.jpg</g:additional_image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787CMCM_4.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>641772 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
-      <g:product_type>Lavamanos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>GY-50X150-1601</g:id>
-      <g:title>Cuadros GY50X1501601</g:title>
-      <g:description>Pieza de autor Espejos y cuadros GY50X1501601 referencia SKU GY50X1501601. Acabados de lujo y garantía de 52 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-73-gy50x1501601</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY50X1501601_1.jpg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY50X1501601_2.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>590401 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
       <g:product_type>Cuadros</g:product_type>
@@ -1873,18 +2028,20 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>5911</g:id>
-      <g:title>Espejos modernos 5911</g:title>
-      <g:description>Espejo</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-47-5911</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5911_1792160398563.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5911_1792160434851.jpeg</g:additional_image_link>
+      <g:id>A787-CMC-M</g:id>
+      <g:title>Lavamanos A787-CMC-M</g:title>
+      <g:description>Pieza de autor Lavamanos A787CMCM referencia SKU A787CMCM. Acabados de lujo y garantía de 15 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-35-a787cmcm</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787CMCM_1.jpg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787CMCM_2.jpg</g:additional_image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787CMCM_3.jpg</g:additional_image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787CMCM_4.jpg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>588138 COP</g:price>
+      <g:price>641772 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1903,6 +2060,81 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>005-60-45</g:id>
+      <g:title>Lavamanos en Piedra 005-60-45</g:title>
+      <g:description>Lavamanos en Piedra 005-60-45 (Ref. SKU: 005-60-45). Acabado Piedra Río Texturizada. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-005-60-45</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>5911</g:id>
+      <g:title>Espejos modernos 5911</g:title>
+      <g:description>Espejo</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-47-5911</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5911_1792160398563.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5911_1792160434851.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>588138 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>GY-50X150-1601</g:id>
+      <g:title>Cuadros GY50X1501601</g:title>
+      <g:description>Pieza de autor Espejos y cuadros GY50X1501601 referencia SKU GY50X1501601. Acabados de lujo y garantía de 52 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-73-gy50x1501601</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY50X1501601_1.jpg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY50X1501601_2.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>590401 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
+      <g:product_type>Cuadros</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>068-60-01</g:id>
+      <g:title>Lavamanos en Piedra 068-60-01</g:title>
+      <g:description>Lavamanos en Piedra 068-60-01 (Ref. SKU: 068-60-01). Acabado Piedra Mármol Gris. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-068-60-01</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>400A-ROSE</g:id>
+      <g:title>Lavamanos 400A-ROSE</g:title>
+      <g:description>Lavamanos 400A-ROSE (Ref. SKU: 400A-ROSE). Acabado Oro Rosa / Cobre. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-400a-rose</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787P45M_1.jpg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>HP-120X90-0964</g:id>
       <g:title>Cuadros HP120X900964</g:title>
       <g:description>Pieza de autor Espejos y cuadros HP120X900964 referencia SKU HP120X900964. Acabados de lujo y garantía de 41 años.</g:description>
@@ -1918,18 +2150,19 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>AHR80006GD</g:id>
-      <g:title>Espejos  AHR80006GD</g:title>
-      <g:description>Pieza de autor Espejos y cuadros AHR80006GD referencia SKU AHR80006GD. Acabados de lujo y garantía de 69 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-90-ahr80006gd</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AHR80006GD_1792100214224.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AHR80006GD_1792100666334.jpeg</g:additional_image_link>
+      <g:id>MD680704</g:id>
+      <g:title>Papel de colgadura MD680704</g:title>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-10-md680704</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680704_1.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680704_2.jpeg</g:additional_image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680704_ecommerce.jpg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>697287 COP</g:price>
+      <g:price>600000 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
+      <g:product_type>Papel de Colgadura</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -1942,6 +2175,36 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>662910 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>006-60-01</g:id>
+      <g:title>Lavamanos en Piedra 006-60-01</g:title>
+      <g:description>Lavamanos en Piedra 006-60-01 (Ref. SKU: 006-60-01). Acabado Piedra Caliza Blanca. Pieza escultórica tallada en piedra arquitectónica con alta durabilidad y textura táctil exclusiva.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-006-60-01</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Travertine_Flexible_Stone_Panel_Travertine_-3_Travertine-Flexible-Stone-Panel-_Travertine_-3_1791489832647.jpeg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>AHR80006GD</g:id>
+      <g:title>Espejos  AHR80006GD</g:title>
+      <g:description>Pieza de autor Espejos y cuadros AHR80006GD referencia SKU AHR80006GD. Acabados de lujo y garantía de 69 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-90-ahr80006gd</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AHR80006GD_1792100214224.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AHR80006GD_1792100666334.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>697287 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
@@ -1963,29 +2226,46 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>MD680704</g:id>
-      <g:title>Papel de colgadura MD680704</g:title>
-      <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
-
-El modelo  cuenta demás con garantía de 1 año, un respaldo que acompaña la elección de esta pieza para proyectos de decoración.
-
-Especificaciones técnicas
-Tipo: Papel de colgadura
-Acabado: Acabados de lujo
-Garantía: 1 año
-Beneficios
-Pieza de autor: Aporta un carácter distintivo a la propuesta de decoración.
-Acabados de lujo: Refuerzan una estética sofisticada y cuidada.
-Valor decorativo: Puede convertirse en un elemento protagonista dentro del interiorismo.
-Diseño con presencia: Contribuye a crear espacios con una identidad visual más definida.
-Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-10-md680704</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680704_1.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD680704_2.jpeg</g:additional_image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD680704_ecommerce.jpg</g:additional_image_link>
+      <g:id>AH60160045BK</g:id>
+      <g:title>Espejos AH60160045BK</g:title>
+      <g:description>Pieza de autor Espejos y cuadros AH60160045BK referencia SKU AH60160045BK. Acabados de lujo y garantía de 58 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-79-ah60160045bk</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60160045BK_1792159219367.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60160045BK_1792159220263.jpeg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>800000 COP</g:price>
+      <g:price>842239 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>GY-77X117-1594</g:id>
+      <g:title>Cuadros GY77X1171594</g:title>
+      <g:description>Pieza de autor Espejos y cuadros GY77X1171594 referencia SKU GY77X1171594. Acabados de lujo y garantía de 56 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-77-gy77x1171594</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY77X1171594_1.jpg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY77X1171594_2.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>604685 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
+      <g:product_type>Cuadros</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>MD681014</g:id>
+      <g:title>Papel de colgadura MD681014</g:title>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-12-md681014</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681014_1.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681014_2.jpeg</g:additional_image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD681014_ecommerce.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>600000 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
       <g:product_type>Papel de Colgadura</g:product_type>
@@ -2007,6 +2287,21 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>KAS08 Flexible-Stone-Panel-(Slate)</g:id>
+      <g:title>Flexible Stone Panel（Slate) Flexible-Stone-Panel-(Slate)</g:title>
+      <g:description>Pieza de autor Flexible Stone Panel（Slate) Flexible-Stone-Panel-(Slate) referencia SKU Flexible-Stone-Panel-(Slate). Acabados de lujo y garantía de 77 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-101-flexiblestonepanelslate</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Flexible_Stone_Panel_Slate__Flexible-Stone-Panel-_Slate__1791489259167.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Flexible_Stone_Panel_Slate__Flexible-Stone-Panel-_Slate__1791489258261.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>out_of_stock</g:availability>
+      <g:price>291000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
+      <g:product_type>Revestimientos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>HP-100X140-0921</g:id>
       <g:title>Cuadros HP100X1400921</g:title>
       <g:description>Pieza de autor Espejos y cuadros HP100X1400921 referencia SKU HP100X1400921. Acabados de lujo y garantía de 48 años.</g:description>
@@ -2022,89 +2317,30 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>KAS08 Flexible-Stone-Panel-(Slate)</g:id>
-      <g:title>Flexible Stone Panel（Slate) Flexible-Stone-Panel-(Slate)</g:title>
-      <g:description>Pieza de autor Flexible Stone Panel（Slate) Flexible-Stone-Panel-(Slate) referencia SKU Flexible-Stone-Panel-(Slate). Acabados de lujo y garantía de 77 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-101-flexiblestonepanelslate</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Flexible_Stone_Panel_Slate__Flexible-Stone-Panel-_Slate__1791489259167.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Flexible_Stone_Panel_Slate__Flexible-Stone-Panel-_Slate__1791489258261.jpeg</g:additional_image_link>
+      <g:id>400A-GOLD</g:id>
+      <g:title>Lavamanos 400A-GOLD</g:title>
+      <g:description>Lavamanos 400A-GOLD (Ref. SKU: 400A-GOLD). Acabado Dorado Cepillado. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-400a-gold</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A544GGCBK18_1.jpg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>291000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
-      <g:product_type>Revestimientos</g:product_type>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>MD681014</g:id>
-      <g:title>Papel de colgadura MD681014</g:title>
-      <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
-
-El modelo  cuenta demás con garantía de 1 año, un respaldo que acompaña la elección de esta pieza para proyectos de decoración.
-
-Especificaciones técnicas
-Tipo: Papel de colgadura
-Acabado: Acabados de lujo
-Garantía: 1 año
-Beneficios
-Pieza de autor: Aporta un carácter distintivo a la propuesta de decoración.
-Acabados de lujo: Refuerzan una estética sofisticada y cuidada.
-Valor decorativo: Puede convertirse en un elemento protagonista dentro del interiorismo.
-Diseño con presencia: Contribuye a crear espacios con una identidad visual más definida.
-Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-12-md681014</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681014_1.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681014_2.jpeg</g:additional_image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_MD681014_ecommerce.jpg</g:additional_image_link>
+      <g:id>5521</g:id>
+      <g:title>Espejos modernos 5521</g:title>
+      <g:description>Pieza de autor Espejos modernos 5521 referencia SKU 5521. Acabados de lujo y garantía de 37 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-57-5521</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5521_1792101345881.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5521_1792101346482.jpeg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>800000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
-      <g:product_type>Papel de Colgadura</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>GY-77X117-1594</g:id>
-      <g:title>Cuadros GY77X1171594</g:title>
-      <g:description>Pieza de autor Espejos y cuadros GY77X1171594 referencia SKU GY77X1171594. Acabados de lujo y garantía de 56 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-77-gy77x1171594</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY77X1171594_1.jpg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY77X1171594_2.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>604685 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
-      <g:product_type>Cuadros</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>AH60160045BK</g:id>
-      <g:title>Espejos AH60160045BK</g:title>
-      <g:description>Pieza de autor Espejos y cuadros AH60160045BK referencia SKU AH60160045BK. Acabados de lujo y garantía de 58 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-79-ah60160045bk</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60160045BK_1792159219367.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60160045BK_1792159220263.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>842239 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>5814</g:id>
-      <g:title>Espejos modernos 5814</g:title>
-      <g:description>Pieza de autor Espejos modernos 5814 referencia SKU 5814. Acabados de lujo y garantía de 21 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-41-5814</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5814_1792101121657.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5814_1792101188419.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>998133 COP</g:price>
+      <g:price>678995 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
@@ -2128,34 +2364,18 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>A787-GGCBK09</g:id>
-      <g:title>Lavamanos A787-GGCBK09</g:title>
-      <g:description>Pieza de autor Lavamanos A787GGCBK09 referencia SKU A787GGCBK09. Acabados de lujo y garantía de 14 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-34-a787ggcbk09</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787GGCBK09_1.jpg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787GGCBK09_2.jpg</g:additional_image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787GGCBK09_3.jpg</g:additional_image_link>
+      <g:id>4736A-GOLD</g:id>
+      <g:title>Lavamanos 4736A-GOLD</g:title>
+      <g:description>Lavamanos 4736A-GOLD (Ref. SKU: 4736A-GOLD). Acabado Dorado Cepillado. Lavamanos de sobreponer en cerámica vitrificada de alta densidad y acabado contemporáneo.</g:description>
+      <g:link>https://disenotuespacio.com/product/lavamanos-4736a-gold</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A544GGCBK18_1.jpg</g:image_link>
+      <g:additional_image_link>https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=1000</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>790663 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:price>890000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Bath Collection</g:brand>
       <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
       <g:product_type>Lavamanos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>GY-50X150-1604</g:id>
-      <g:title>Cuadros GY50X1501604</g:title>
-      <g:description>Pieza de autor Espejos y cuadros GY50X1501604 referencia SKU GY50X1501604. Acabados de lujo y garantía de 53 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-74-gy50x1501604</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY50X1501604_1.jpg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY50X1501604_2.jpg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>450000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
-      <g:product_type>Cuadros</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -2174,18 +2394,49 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>5521</g:id>
-      <g:title>Espejos modernos 5521</g:title>
-      <g:description>Pieza de autor Espejos modernos 5521 referencia SKU 5521. Acabados de lujo y garantía de 37 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-57-5521</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5521_1792101345881.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5521_1792101346482.jpeg</g:additional_image_link>
+      <g:id>GY-50X150-1604</g:id>
+      <g:title>Cuadros GY50X1501604</g:title>
+      <g:description>Pieza de autor Espejos y cuadros GY50X1501604 referencia SKU GY50X1501604. Acabados de lujo y garantía de 53 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-74-gy50x1501604</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY50X1501604_1.jpg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_GY50X1501604_2.jpg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>678995 COP</g:price>
+      <g:price>450000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
+      <g:product_type>Cuadros</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>5814</g:id>
+      <g:title>Espejos modernos 5814</g:title>
+      <g:description>Pieza de autor Espejos modernos 5814 referencia SKU 5814. Acabados de lujo y garantía de 21 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-41-5814</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5814_1792101121657.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_modernos_5814_1792101188419.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>998133 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>A787-GGCBK09</g:id>
+      <g:title>Lavamanos A787-GGCBK09</g:title>
+      <g:description>Pieza de autor Lavamanos A787GGCBK09 referencia SKU A787GGCBK09. Acabados de lujo y garantía de 14 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-34-a787ggcbk09</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787GGCBK09_1.jpg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787GGCBK09_2.jpg</g:additional_image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A787GGCBK09_3.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>790663 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -2216,6 +2467,21 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
       <g:product_type>Revestimientos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>HP-80X80-1103</g:id>
+      <g:title>Cuadros HP80X801103</g:title>
+      <g:description>Pieza de autor Espejos y cuadros HP80X801103 referencia SKU HP80X801103. Acabados de lujo y garantía de 46 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-67-hp80x801103</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP80X801103_1.jpg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP80X801103_2.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>597543 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
+      <g:product_type>Cuadros</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -2251,31 +2517,48 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>HP-120X90-0963</g:id>
+      <g:title>Cuadros HP120X900963</g:title>
+      <g:description>Pieza de autor Espejos y cuadros HP120X900963 referencia SKU HP120X900963. Acabados de lujo y garantía de 40 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-61-hp120x900963</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP120X900963_1.jpg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_HP120X900963_2.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>760617 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Artwork &gt; Posters, Prints, &amp; Visual Artwork</g:google_product_category>
+      <g:product_type>Cuadros</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>MD681209</g:id>
       <g:title>Papel de colgadura MD681209</g:title>
-      <g:description>El papel de colgadura es una pieza de autor concebida para quienes buscan incorporar diseño y sofisticación a sus espacios. Su propuesta se distingue por sus acabados de lujo, convirtiéndolo en un elemento con presencia dentro de proyectos de decoración e interiorismo.
-
-El modelo  cuenta demás con garantía de 1 año, un respaldo que acompaña la elección de esta pieza para proyectos de decoración.
-
-Especificaciones técnicas
-Tipo: Papel de colgadura
-Acabado: Acabados de lujo
-Garantía: 1 año
-Beneficios
-Pieza de autor: Aporta un carácter distintivo a la propuesta de decoración.
-Acabados de lujo: Refuerzan una estética sofisticada y cuidada.
-Valor decorativo: Puede convertirse en un elemento protagonista dentro del interiorismo.
-Diseño con presencia: Contribuye a crear espacios con una identidad visual más definida.
-Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:description>
+      <g:description>Exclusivo papel de colgadura en PVC, con delicados relieves ornamentales y acabado en tonos plateados y grises perlados. Su diseño sofisticado aporta textura, elegancia y lujo a cualquier espacio</g:description>
       <g:link>https://disenotuespacio.com/product/prod-14-md681209</g:link>
       <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681209_1.jpeg</g:image_link>
       <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/papel_oficial_MD681209_2.jpeg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
-      <g:price>800000 COP</g:price>
+      <g:price>600000 COP</g:price>
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
       <g:product_type>Papel de Colgadura</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>kas01 Flexible-Stone-Panel -(Startmoon stone)</g:id>
+      <g:title>Flexible Stone Panel (Startmoon stone) Flexible-Stone-Panel -(Startmoon stone)</g:title>
+      <g:description>Pieza de autor Flexible Stone Panel (Startmoon stone) Flexible-Stone-Panel -(Startmoon stone) referencia SKU Flexible-Stone-Panel -(Startmoon stone). Acabados de lujo y garantía de 70 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-94-flexiblestonepanelstartmoonstone</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Flexible_Stone_Panel__Startmoon_stone__Flexible-Stone-Panel_-_Startmoon_stone__1791488789573.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Flexible_Stone_Panel__Startmoon_stone__Flexible-Stone-Panel_-_Startmoon_stone__1791488788873.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>out_of_stock</g:availability>
+      <g:price>290100 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
+      <g:product_type>Revestimientos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -2294,27 +2577,12 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
-      <g:id>kas01 Flexible-Stone-Panel -(Startmoon stone)</g:id>
-      <g:title>Flexible Stone Panel (Startmoon stone) Flexible-Stone-Panel -(Startmoon stone)</g:title>
-      <g:description>Pieza de autor Flexible Stone Panel (Startmoon stone) Flexible-Stone-Panel -(Startmoon stone) referencia SKU Flexible-Stone-Panel -(Startmoon stone). Acabados de lujo y garantía de 70 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-94-flexiblestonepanelstartmoonstone</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Flexible_Stone_Panel__Startmoon_stone__Flexible-Stone-Panel_-_Startmoon_stone__1791488789573.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Flexible_Stone_Panel__Startmoon_stone__Flexible-Stone-Panel_-_Startmoon_stone__1791488788873.jpeg</g:additional_image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>290100 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
-      <g:product_type>Revestimientos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>AH60120037GD</g:id>
-      <g:title>Espejos AH60120037GD</g:title>
-      <g:description>Pieza de autor Espejos y cuadros AH60120037GD referencia SKU AH60120037GD. Acabados de lujo y garantía de 63 años.</g:description>
-      <g:link>https://disenotuespacio.com/product/prod-84-ah60120037gd</g:link>
-      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60120037GD_1792099773765.jpeg</g:image_link>
-      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60120037GD_1792099774398.jpeg</g:additional_image_link>
+      <g:id>AH60120037BK</g:id>
+      <g:title>Espejos  AH60120037BK</g:title>
+      <g:description>Pieza de autor Espejos y cuadros AH60120037BK referencia SKU AH60120037BK. Acabados de lujo y garantía de 62 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-83-ah60120037bk</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60120037BK_1792159353786.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos__AH60120037BK_1792159354317.jpeg</g:additional_image_link>
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>920000 COP</g:price>
@@ -2353,6 +2621,36 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
+      <g:id>AH60120037GD</g:id>
+      <g:title>Espejos AH60120037GD</g:title>
+      <g:description>Pieza de autor Espejos y cuadros AH60120037GD referencia SKU AH60120037GD. Acabados de lujo y garantía de 63 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-84-ah60120037gd</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60120037GD_1792099773765.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Espejos_AH60120037GD_1792099774398.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>920000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>KAS03 Flexible-Stone-Panel-(Line stone board)</g:id>
+      <g:title>Flexible Stone Panel (Line stone board) Flexible-Stone-Panel-(Line stone board)</g:title>
+      <g:description>Pieza de autor Flexible Stone Panel (Line stone board) Flexible-Stone-Panel-(Line stone board) referencia SKU Flexible-Stone-Panel-(Line stone board). Acabados de lujo y garantía de 72 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-96-flexiblestonepanellinestoneboard</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Flexible_Stone_Panel__Line_stone_board__Flexible-Stone-Panel-_Line_stone_board__1791488991336.jpeg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/products/Flexible_Stone_Panel__Line_stone_board__Flexible-Stone-Panel-_Line_stone_board__1791488990718.jpeg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>290100 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Wallpaper</g:google_product_category>
+      <g:product_type>Revestimientos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
       <g:id>AH60160045GD</g:id>
       <g:title>Espejos  AH60160045GD</g:title>
       <g:description>Pieza de autor Espejos y cuadros AH60160045GD referencia SKU AH60160045GD. Acabados de lujo y garantía de 57 años.</g:description>
@@ -2365,6 +2663,37 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
       <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>GJ-0531</g:id>
+      <g:title>Espejo con marco GJ-0531</g:title>
+      <g:description>Espejo con marco GJ-0531</g:description>
+      <g:link>https://disenotuespacio.com/product/espejo-con-marco-gj-0531</g:link>
+      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>750000 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
+      <g:product_type>Espejos</g:product_type>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
+    <item>
+      <g:id>A712-CA52M</g:id>
+      <g:title>Lavamanos A712-CA52M</g:title>
+      <g:description>Pieza de autor Lavamanos A712CA52M referencia SKU A712CA52M. Acabados de lujo y garantía de 18 años.</g:description>
+      <g:link>https://disenotuespacio.com/product/prod-38-a712ca52m</g:link>
+      <g:image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A712CA52M_1.jpg</g:image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A712CA52M_2.jpg</g:additional_image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A712CA52M_3.jpg</g:additional_image_link>
+      <g:additional_image_link>https://ukvoqxsmrpicnpelkhex.supabase.co/storage/v1/object/public/product-images/sync_A712CA52M_4.jpg</g:additional_image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in_stock</g:availability>
+      <g:price>662309 COP</g:price>
+      <g:brand>Diseño Tu Espacio Collection</g:brand>
+      <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
+      <g:product_type>Lavamanos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
     <item>
@@ -2381,20 +2710,6 @@ Garantía de 1 año: Ofrece respaldo durante el primer año de compra.</g:descri
       <g:brand>Diseño Tu Espacio Collection</g:brand>
       <g:google_product_category>Hardware &gt; Plumbing &gt; Plumbing Fixtures &gt; Sinks &gt; Bathroom Sinks</g:google_product_category>
       <g:product_type>Lavamanos</g:product_type>
-      <g:identifier_exists>no</g:identifier_exists>
-    </item>
-    <item>
-      <g:id>GJ-0531</g:id>
-      <g:title>Espejo con marco GJ-0531</g:title>
-      <g:description>Espejo con marco GJ-0531</g:description>
-      <g:link>https://disenotuespacio.com/product/espejo-con-marco-gj-0531</g:link>
-      <g:image_link>https://disenotuespacio.com/images/cat_mesa_1787548081162.jpg</g:image_link>
-      <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
-      <g:price>750000 COP</g:price>
-      <g:brand>Diseño Tu Espacio Collection</g:brand>
-      <g:google_product_category>Home &amp; Garden &gt; Decor &gt; Mirrors</g:google_product_category>
-      <g:product_type>Espejos</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
     </item>
   </channel>

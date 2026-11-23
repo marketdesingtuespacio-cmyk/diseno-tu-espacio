@@ -163,11 +163,17 @@ export const CategoryCarousel: React.FC = () => {
   return (
     <section className="py-8 max-w-[1400px] mx-auto px-4 sm:px-6 font-sans select-none">
       
-      {/* Header with Westwing Serif Typography & Controls */}
+      {/* Header with Westwing Serif Typography & Festive Christmas Accent */}
       <div className="flex justify-between items-end mb-5">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-light text-brand-black tracking-tight">
-          Explora nuestras categorías
-        </h2>
+        <div>
+          <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-[#8b0d18] mb-1">
+            <span aria-hidden="true">🎄</span>
+            <span>Colecciones de Temporada Navideña</span>
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-light text-brand-black tracking-tight">
+            Explora nuestras categorías
+          </h2>
+        </div>
 
         <div className="flex items-center gap-1.5">
           <button 
@@ -199,11 +205,21 @@ export const CategoryCarousel: React.FC = () => {
             onClick={() => handleCategoryClick(item.categoryFilter)}
             className="group cursor-pointer shrink-0 w-[140px] sm:w-[155px] md:w-[170px] lg:w-[185px] snap-start"
           >
-            {/* 3:4 Portrait Studio Card Container (Westwing Off-White Studio Canvas #FAF9F6) */}
-            <div className="aspect-[3/4] bg-[#FAF9F6] border border-neutral-200/40 flex items-center justify-center p-4 transition-all duration-300 group-hover:bg-[#F4F2EB] relative overflow-hidden">
+            {/* 3:4 Portrait Studio Card Container (Westwing Off-White Studio Canvas #FAF9F6 with Festive Christmas Trim) */}
+            <div className={`aspect-[3/4] border flex items-center justify-center p-4 transition-all duration-300 relative overflow-hidden ${
+              item.isNewCard
+                ? 'bg-gradient-to-br from-[#6e0d18] via-[#8b0d18] to-[#0b2919] border-amber-400/70 shadow-md'
+                : 'bg-[#FAF9F6] border-amber-500/25 group-hover:border-amber-500/60 group-hover:bg-[#F4F2EB]'
+            }`}>
               {item.isNewCard ? (
-                <div className="text-center font-sans tracking-[0.25em] text-3xl sm:text-4xl font-light text-brand-black group-hover:scale-105 transition-transform duration-300">
-                  NEW
+                <div className="text-center space-y-2 group-hover:scale-105 transition-transform duration-300">
+                  <div className="text-2xl" aria-hidden="true">🎄</div>
+                  <div className="font-sans tracking-[0.22em] text-2xl sm:text-3xl font-bold text-amber-200">
+                    NAVIDAD
+                  </div>
+                  <div className="text-[9px] uppercase tracking-[0.2em] text-amber-100/90 font-semibold border-t border-amber-300/40 pt-1">
+                    Edición Festiva
+                  </div>
                 </div>
               ) : item.image ? (
                 <img 

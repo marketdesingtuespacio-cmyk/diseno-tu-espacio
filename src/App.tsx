@@ -16,6 +16,7 @@ import { AdminDashboardPage } from './pages/AdminDashboardPage';
 import { MaintenancePage } from './pages/MaintenancePage';
 import { WhatsAppButton } from './components/WhatsAppButton';
 import { ProtectedRoute } from './components/ProtectedRoute';
+import { ChristmasDecorations } from './components/ChristmasDecorations';
 
 // ----------------------------------------------------------------------
 // INTERRUPTOR DE MANTENIMIENTO GLOBAL
@@ -103,6 +104,7 @@ const AppShell: React.FC = () => {
     <div className="min-h-screen flex flex-col bg-brand-white text-brand-black selection:bg-brand-black selection:text-white">
       <div className={publicChromeClass}>
         <Header />
+        <ChristmasDecorations />
       </div>
       <CartDrawer />
 
