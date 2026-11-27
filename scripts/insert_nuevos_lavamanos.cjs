@@ -97,10 +97,7 @@ async function main() {
       warranty: '5 años',
       inventory_status: 'Privado', // COMO PRIVADOS (SOLICITUD EXPRESA)
       is_featured: false,
-      images: [
-        mainImg,
-        'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000'
-      ],
+      images: [],
       colors: [
         { 
           name: item.finish, 

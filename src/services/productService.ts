@@ -175,7 +175,7 @@ const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Produ
   };
 };
 
-const SESSION_PRODUCTS_CACHE_KEY = 'dte_products_session_cache_v4';
+const SESSION_PRODUCTS_CACHE_KEY = 'dte_products_session_cache_v5';
 
 const loadSessionCache = (): Product[] | null => {
   try {
