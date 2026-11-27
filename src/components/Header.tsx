@@ -29,7 +29,7 @@ export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Active Category Tab in Drawer
-  const [activeTab, setActiveTab] = useState<'PRODUCTOS' | 'INSPIRACIÓN' | 'NOVEDADES' | 'NAVIDAD' | 'OFERTAS' | 'PROFESIONALES'>('PRODUCTOS');
+  const [activeTab, setActiveTab] = useState<'PRODUCTOS' | 'INSPIRACIÓN' | 'NOVEDADES' | 'OFERTAS' | 'PROFESIONALES'>('PRODUCTOS');
 
   // Search input state
   const [searchQuery, setSearchQuery] = useState('');
@@ -63,11 +63,10 @@ export const Header: React.FC = () => {
   };
 
   // Primary Horizontal Navigation Tabs
-  const primaryTabs: Array<'PRODUCTOS' | 'INSPIRACIÓN' | 'NOVEDADES' | 'NAVIDAD' | 'OFERTAS' | 'PROFESIONALES'> = [
+  const primaryTabs: Array<'PRODUCTOS' | 'INSPIRACIÓN' | 'NOVEDADES' | 'OFERTAS' | 'PROFESIONALES'> = [
     'PRODUCTOS',
     'INSPIRACIÓN',
     'NOVEDADES',
-    'NAVIDAD',
     'OFERTAS',
     'PROFESIONALES'
   ];
@@ -95,19 +94,20 @@ export const Header: React.FC = () => {
             : 'bg-gradient-to-b from-black/85 via-black/45 to-transparent text-white border-b border-white/10'
         }`}
       >
-        {/* Top Utility Announcement Bar - Christmas Festive Edition */}
+        {/* Top Utility Announcement Bar */}
         <div 
-          className="text-[11px] font-light py-1.5 px-4 sm:px-8 flex justify-between items-center tracking-widest uppercase transition-colors duration-300 bg-gradient-to-r from-[#5e0b15] via-[#0e3822] to-[#5e0b15] text-amber-50 border-b border-amber-400/40"
+          className={`text-[11px] font-light py-1.5 px-4 sm:px-8 flex justify-between items-center tracking-widest uppercase transition-colors duration-300 ${
+            !isTransparent 
+              ? 'bg-brand-black text-white' 
+              : 'bg-black/50 text-neutral-200 border-b border-white/10 backdrop-blur-xs'
+          }`}
         >
-          <div className="hidden md:flex items-center gap-2 text-[10px] tracking-[0.18em] font-semibold text-amber-200">
-            <Sparkles className="w-3.5 h-3.5 text-amber-300" aria-hidden="true" />
-            <span>🎄 Especial de Navidad en Diseño Tu Espacio • Regala Diseño &amp; Renueva tu Hogar 🎁</span>
+          <div className="hidden md:flex items-center gap-2 text-[10px] tracking-[0.2em] font-medium text-neutral-300">
+            <Sparkles className="w-3 h-3 text-amber-300" />
+            <span>Mobiliario, Arquitectura de Interiores & Asesoría Especializada • Colombia</span>
           </div>
 
           <div className="mx-auto md:mx-0 flex items-center space-x-6 text-[10px]">
-            <span className="md:hidden text-[9.5px] font-bold tracking-wider text-amber-200">
-              🎄 Especial de Navidad • Colombia 🎁
-            </span>
             {/* Currency Switcher */}
             <div className="flex items-center space-x-1.5 bg-black/40 border border-white/15 px-2 py-0.5">
               <DollarSign className="w-3 h-3 text-amber-300" />
@@ -467,17 +467,6 @@ export const Header: React.FC = () => {
                 </Link>
                 <Link to="/catalog?filter=destacados" onClick={() => setIsMenuOpen(false)} className="hover:text-black">
                   Colección de Autor By Alexis Madrigal
-                </Link>
-              </div>
-            )}
-
-            {activeTab === 'NAVIDAD' && (
-              <div className="flex flex-col gap-5 text-sm uppercase tracking-wide text-stone-800">
-                <Link to="/catalog?filter=navidad" onClick={() => setIsMenuOpen(false)} className="hover:text-black text-emerald-800">
-                  Edición Especial Festiva & Regalos
-                </Link>
-                <Link to="/catalog?filter=ambientacion" onClick={() => setIsMenuOpen(false)} className="hover:text-black">
-                  Iluminación Cálida Festiva
                 </Link>
               </div>
             )}

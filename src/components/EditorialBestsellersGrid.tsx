@@ -98,19 +98,18 @@ export const EditorialBestsellersGrid: React.FC<EditorialBestsellersGridProps> =
       className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-white"
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-        {/* Left Editorial Header Column - Christmas Edition */}
+        {/* Left Editorial Header Column */}
         <div className="lg:col-span-3 flex flex-col justify-center space-y-4 text-left">
-          <span className="inline-flex items-center gap-1.5 w-fit px-3 py-1 rounded-full bg-[#8b0d18]/10 border border-[#8b0d18]/25 text-[10px] font-bold uppercase tracking-[0.22em] text-[#8b0d18] font-mono">
-            <span aria-hidden="true">🎁</span>
-            <span>Favoritos de Navidad</span>
+          <span className="text-[11px] font-bold uppercase tracking-[0.28em] text-neutral-400 block font-mono">
+            Nuestros Más Vendidos
           </span>
 
           <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-serif font-light text-neutral-900 leading-[1.15] tracking-tight">
-            Las piezas más populares para regalar y renovar
+            Las piezas más populares de esta temporada
           </h2>
 
-          <p className="text-xs text-neutral-600 font-light leading-relaxed max-w-sm pt-1">
-            Una curaduría especial de Navidad con nuestros diseños más solicitados en espejos dorados, lavamanos de autor y arte mural para lucir en estas fiestas.
+          <p className="text-xs text-neutral-500 font-light leading-relaxed max-w-sm pt-1">
+            Una selección atemporal de espejos con retroiluminación perimetral, revestimientos de alta densidad y lavamanos escultóricos concebidos para transformar cualquier espacio.
           </p>
 
           <div className="pt-2">
@@ -136,12 +135,7 @@ export const EditorialBestsellersGrid: React.FC<EditorialBestsellersGridProps> =
                 to={`/product/${product.id}`}
                 className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 rounded-xl"
               >
-                <article className="relative bg-[#fafafa] hover:bg-[#fcf8f2] transition-all duration-300 rounded-xl overflow-hidden border border-amber-500/25 hover:border-amber-500/70 flex flex-col justify-between p-4 sm:p-5 aspect-[4/5] sm:aspect-square group-hover:shadow-md">
-                  {/* Festive Corner Ribbon Badge */}
-                  <span className="absolute top-2.5 right-2.5 z-10 px-2 py-0.5 rounded-full bg-gradient-to-r from-[#8b0d18] to-[#0f3823] text-amber-200 text-[8.5px] font-bold uppercase tracking-wider border border-amber-400/40 shadow-2xs">
-                    🎄 Navidad
-                  </span>
-
+                <article className="relative bg-[#fafafa] hover:bg-[#f5f5f5] transition-colors rounded-xl overflow-hidden border border-neutral-200/50 flex flex-col justify-between p-4 sm:p-5 aspect-[4/5] sm:aspect-square">
                   {/* Centered Isolated Product Cutout */}
                   <div className="relative flex-1 flex items-center justify-center overflow-hidden w-full">
                     <img
