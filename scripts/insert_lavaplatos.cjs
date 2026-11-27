@@ -37,18 +37,10 @@ const RAW_LAVAPLATOS = [
 async function main() {
   console.log('📦 Iniciando carga de 18 lavaplatos al inventario de Diseño Tu Espacio...');
 
-  // 1. Preparar objetos para Supabase
+  // 1. Preparar objetos para Supabase (REGLA: Productos sin fotos oficiales se crean sin imagenes)
   const productsToInsert = RAW_LAVAPLATOS.map(item => {
     const cleanSku = item.sku.trim();
     const cleanSlug = `lavaplatos-${cleanSku.toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
-    
-    // Asignar imagen acorde al acabado
-    let mainImg = 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000';
-    if (cleanSku.includes('GOLD')) {
-      mainImg = 'https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&fit=crop&q=80&w=1000';
-    } else if (cleanSku.includes('ROSE') || cleanSku.includes('SATIN') || cleanSku.includes('GRAY')) {
-      mainImg = 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=1000';
-    }
 
     return {
       name: item.name,
@@ -69,10 +61,7 @@ async function main() {
       warranty: '5 años',
       inventory_status: item.stock > 0 ? 'Disponible' : 'Bajo Pedido',
       is_featured: false,
-      images: [
-        mainImg,
-        'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000'
-      ],
+      images: [],
       colors: [
         { name: item.finish, hex: cleanSku.includes('GOLD') ? '#D4AF37' : (cleanSku.includes('ROSE') ? '#B76E79' : '#1C1C1C') }
       ],

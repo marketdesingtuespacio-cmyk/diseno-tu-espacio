@@ -1,6 +1,6 @@
 import React, { useState, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, ShoppingBag, Eye, QrCode } from 'lucide-react';
+import { Heart, ShoppingBag, Eye, QrCode, Camera } from 'lucide-react';
 import { Product } from '../types';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
@@ -66,16 +66,26 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
         {/* High Resolution Product Photograph */}
         <Link to={`/product/${product.slug}`} className="w-full h-full block relative bg-neutral-100">
-          <img 
-            src={product.images[0]} 
-            alt={product.name} 
-            loading="lazy"
-            decoding="async"
-            onLoad={(e) => (e.currentTarget.style.opacity = '1')}
-            className={`w-full h-full object-cover object-center group-hover:scale-105 opacity-0 transition-all duration-500 ease-out ${
-              isAgotado ? 'grayscale-[20%]' : ''
-            }`}
-          />
+          {product.images && product.images[0] ? (
+            <img 
+              src={product.images[0]} 
+              alt={product.name} 
+              loading="lazy"
+              decoding="async"
+              onLoad={(e) => (e.currentTarget.style.opacity = '1')}
+              className={`w-full h-full object-cover object-center group-hover:scale-105 opacity-0 transition-all duration-500 ease-out ${
+                isAgotado ? 'grayscale-[20%]' : ''
+              }`}
+            />
+          ) : (
+            <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-[#F7F6F3] text-neutral-400 group-hover:bg-neutral-100 transition-colors">
+              <div className="w-12 h-12 rounded-full bg-neutral-200/60 flex items-center justify-center text-neutral-400 mb-2">
+                <Camera className="w-5 h-5 stroke-[1.5]" />
+              </div>
+              <span className="text-[10px] uppercase font-mono tracking-widest text-neutral-500">Fotografía</span>
+              <span className="text-[9px] text-neutral-400 mt-0.5">En preparación</span>
+            </div>
+          )}
         </Link>
 
         {/* Floating Quick Action Overlay */}

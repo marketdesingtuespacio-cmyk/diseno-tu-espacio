@@ -20,7 +20,9 @@ import {
   Box,
   Eye,
   Lock,
-  QrCode
+  QrCode,
+  Camera,
+  MessageCircle
 } from 'lucide-react';
 import { Product, ProductReviewStats } from '../types';
 import { productService, isWallpaperProduct, isWallpaperBlackFridayActive } from '../services/productService';
@@ -155,7 +157,7 @@ export const ProductDetailPage: React.FC = () => {
 
   const imagesList = product.images && product.images.length > 0 
     ? product.images 
-    : ['/images/lampara_bowie_1786563431628.jpg'];
+    : [];
 
   const topTwoImages = imagesList.slice(0, 2);
   const remainingImages = imagesList.slice(2);
@@ -229,144 +231,167 @@ export const ProductDetailPage: React.FC = () => {
         {/* ==================== LEFT COLUMN: EDITORIAL PHOTO GALLERY ==================== */}
         <div className="lg:col-span-7 xl:col-span-8 space-y-3">
           
-          {/* MOBILE TOUCH CAROUSEL (< md) */}
-          <div className="md:hidden relative">
-            <div 
-              className="flex overflow-x-auto snap-x snap-mandatory scrollbar-none rounded-2xl"
-              onScroll={(e) => {
-                const el = e.currentTarget;
-                if (el.clientWidth > 0) {
-                  const idx = Math.round(el.scrollLeft / el.clientWidth);
-                  setCurrentSlideIndex(Math.min(Math.max(0, idx), imagesList.length - 1));
-                }
-              }}
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-            >
-              {imagesList.map((img, idx) => (
-                <div 
-                  key={idx} 
-                  onClick={() => setLightboxIndex(idx)}
-                  className="shrink-0 w-full aspect-[4/5] bg-[#F7F6F3] overflow-hidden snap-center relative cursor-pointer"
-                >
-                  <img 
-                    src={img} 
-                    alt={`${product.name} ${idx + 1}`} 
-                    className="w-full h-full object-cover object-center" 
-                  />
-                  
-                  {/* Kave Home Floating Badges on Mobile */}
-                  <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
-                    <span className="bg-black/85 text-white text-[9px] font-mono uppercase tracking-widest px-2.5 py-1 backdrop-blur-xs">
-                      DISEÑO EXCLUSIVO
-                    </span>
-                    {idx === 0 && (
-                      <span className="bg-emerald-950/80 text-emerald-200 text-[8.5px] font-mono uppercase tracking-wider px-2 py-0.5 backdrop-blur-xs flex items-center gap-1">
-                        <Sparkles className="w-2.5 h-2.5" /> MATERIALES NOBLES
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="absolute bottom-3 right-3 bg-black/75 text-white text-[9px] font-mono px-2.5 py-1 rounded-sm">
-                    {idx + 1} / {imagesList.length}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Mobile Dots */}
-            {imagesList.length > 1 && (
-              <div className="flex justify-center items-center gap-1.5 pt-3">
-                {imagesList.map((_, idx) => (
-                  <span 
-                    key={idx}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      currentSlideIndex === idx ? 'w-6 bg-black' : 'w-1.5 bg-neutral-300'
-                    }`}
-                  />
-                ))}
+          {imagesList.length === 0 ? (
+            <div className="aspect-[4/3] md:aspect-[16/10] bg-[#FAF9F6] rounded-2xl border border-neutral-200/80 p-8 flex flex-col items-center justify-center text-center shadow-2xs">
+              <div className="w-16 h-16 rounded-full bg-neutral-200/60 flex items-center justify-center text-neutral-400 mb-4">
+                <Camera className="w-8 h-8 stroke-[1.5]" />
               </div>
-            )}
-          </div>
-
-          {/* DESKTOP FULL-BLEED EDITORIAL GALLERY (>= md) */}
-          <div className="hidden md:block space-y-3">
-            
-            {/* Top Large Editorial Cards (Room Scene & Detail) */}
-            <div className={`grid ${topTwoImages.length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-3`}>
-              {topTwoImages.map((img, idx) => (
-                <div 
-                  key={idx}
-                  onClick={() => setLightboxIndex(idx)}
-                  className="aspect-[4/5] bg-[#FAF9F6] rounded-2xl overflow-hidden cursor-zoom-in group relative shadow-2xs border border-neutral-100/60"
-                >
-                  <img 
-                    src={img} 
-                    alt={`${product.name} ${idx + 1}`}
-                    className="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-700 ease-out"
-                  />
-                  
-                  {/* Kave Home Floating Editorial Badges */}
-                  <div className="absolute top-4 left-4 flex flex-col gap-1.5 z-10 pointer-events-none">
-                    {idx === 0 && (
-                      <span className="bg-neutral-950 text-white text-[9px] font-mono uppercase tracking-[0.2em] px-3 py-1 shadow-sm">
-                        DISEÑO EXCLUSIVO
-                      </span>
-                    )}
-                    {idx === 1 && (
-                      <span className="bg-emerald-950/90 text-emerald-200 text-[8.5px] font-mono uppercase tracking-widest px-2.5 py-0.5 shadow-sm flex items-center gap-1 backdrop-blur-xs">
-                        <Sparkles className="w-2.5 h-2.5 text-emerald-300" /> MATERIALES NOBLES
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Hover Quick Zoom Pill */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors flex items-end justify-end p-4">
-                    <span className="bg-neutral-900/90 text-white text-[10px] font-mono px-3 py-1.5 opacity-0 group-hover:opacity-100 transition-all uppercase tracking-wider backdrop-blur-sm flex items-center gap-1.5 rounded-sm">
-                      <Eye className="w-3.5 h-3.5" /> AMPLIAR DETALLE
-                    </span>
-                  </div>
-                </div>
-              ))}
+              <span className="text-xs font-mono uppercase tracking-[0.2em] text-neutral-600 font-bold mb-2">
+                Fotografía Oficial en Preparación
+              </span>
+              <p className="text-xs text-neutral-500 max-w-md leading-relaxed mb-5">
+                Esta pieza se encuentra disponible en nuestro inventario. Si deseas ver detalles reales del producto, acabados y especificaciones técnicas, comunícate con un asesor por WhatsApp.
+              </p>
+              <a 
+                href={whatsappAdvisorLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-neutral-900 text-white text-xs font-medium px-5 py-2.5 rounded-full hover:bg-neutral-800 transition-colors shadow-xs"
+              >
+                <MessageCircle className="w-4 h-4 text-emerald-400" /> Solicitar información y fotos por WhatsApp
+              </a>
             </div>
-
-            {/* Macro Detail Grid (3 or 2 Columns) for Material Texture & Craftsmanship */}
-            {remainingImages.length > 0 && (
-              <div className={`grid ${remainingImages.length >= 3 ? 'grid-cols-3' : 'grid-cols-2'} gap-3`}>
-                {remainingImages.map((img, idx) => {
-                  const actualIdx = idx + 2;
-                  return (
+          ) : (
+            <>
+              {/* MOBILE TOUCH CAROUSEL (< md) */}
+              <div className="md:hidden relative">
+                <div 
+                  className="flex overflow-x-auto snap-x snap-mandatory scrollbar-none rounded-2xl"
+                  onScroll={(e) => {
+                    const el = e.currentTarget;
+                    if (el.clientWidth > 0) {
+                      const idx = Math.round(el.scrollLeft / el.clientWidth);
+                      setCurrentSlideIndex(Math.min(Math.max(0, idx), imagesList.length - 1));
+                    }
+                  }}
+                  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                >
+                  {imagesList.map((img, idx) => (
                     <div 
-                      key={actualIdx}
-                      onClick={() => setLightboxIndex(actualIdx)}
+                      key={idx} 
+                      onClick={() => setLightboxIndex(idx)}
+                      className="shrink-0 w-full aspect-[4/5] bg-[#F7F6F3] overflow-hidden snap-center relative cursor-pointer"
+                    >
+                      <img 
+                        src={img} 
+                        alt={`${product.name} ${idx + 1}`} 
+                        className="w-full h-full object-cover object-center" 
+                      />
+                      
+                      {/* Kave Home Floating Badges on Mobile */}
+                      <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
+                        <span className="bg-black/85 text-white text-[9px] font-mono uppercase tracking-widest px-2.5 py-1 backdrop-blur-xs">
+                          DISEÑO EXCLUSIVO
+                        </span>
+                        {idx === 0 && (
+                          <span className="bg-emerald-950/80 text-emerald-200 text-[8.5px] font-mono uppercase tracking-wider px-2 py-0.5 backdrop-blur-xs flex items-center gap-1">
+                            <Sparkles className="w-2.5 h-2.5" /> MATERIALES NOBLES
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="absolute bottom-3 right-3 bg-black/75 text-white text-[9px] font-mono px-2.5 py-1 rounded-sm">
+                        {idx + 1} / {imagesList.length}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Mobile Dots */}
+                {imagesList.length > 1 && (
+                  <div className="flex justify-center items-center gap-1.5 pt-3">
+                    {imagesList.map((_, idx) => (
+                      <span 
+                        key={idx}
+                        className={`h-1.5 rounded-full transition-all duration-300 ${
+                          currentSlideIndex === idx ? 'w-6 bg-black' : 'w-1.5 bg-neutral-300'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* DESKTOP FULL-BLEED EDITORIAL GALLERY (>= md) */}
+              <div className="hidden md:block space-y-3">
+                
+                {/* Top Large Editorial Cards (Room Scene & Detail) */}
+                <div className={`grid ${topTwoImages.length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-3`}>
+                  {topTwoImages.map((img, idx) => (
+                    <div 
+                      key={idx}
+                      onClick={() => setLightboxIndex(idx)}
                       className="aspect-[4/5] bg-[#FAF9F6] rounded-2xl overflow-hidden cursor-zoom-in group relative shadow-2xs border border-neutral-100/60"
                     >
                       <img 
                         src={img} 
-                        alt={`${product.name} Textura ${idx + 1}`}
-                        className="w-full h-full object-cover object-center group-hover:scale-[1.04] transition-transform duration-700 ease-out"
+                        alt={`${product.name} ${idx + 1}`}
+                        className="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                       />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors flex items-end justify-end p-3">
-                        <span className="bg-neutral-900/90 text-white text-[9px] font-mono px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-wider rounded-sm">
-                          VISTA #{actualIdx + 1} 🔍
+                      
+                      {/* Kave Home Floating Editorial Badges */}
+                      <div className="absolute top-4 left-4 flex flex-col gap-1.5 z-10 pointer-events-none">
+                        {idx === 0 && (
+                          <span className="bg-neutral-950 text-white text-[9px] font-mono uppercase tracking-[0.2em] px-3 py-1 shadow-sm">
+                            DISEÑO EXCLUSIVO
+                          </span>
+                        )}
+                        {idx === 1 && (
+                          <span className="bg-emerald-950/90 text-emerald-200 text-[8.5px] font-mono uppercase tracking-widest px-2.5 py-0.5 shadow-sm flex items-center gap-1 backdrop-blur-xs">
+                            <Sparkles className="w-2.5 h-2.5 text-emerald-300" /> MATERIALES NOBLES
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Hover Quick Zoom Pill */}
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors flex items-end justify-end p-4">
+                        <span className="bg-neutral-900/90 text-white text-[10px] font-mono px-3 py-1.5 opacity-0 group-hover:opacity-100 transition-all uppercase tracking-wider backdrop-blur-sm flex items-center gap-1.5 rounded-sm">
+                          <Eye className="w-3.5 h-3.5" /> AMPLIAR DETALLE
                         </span>
                       </div>
                     </div>
-                  );
-                })}
-              </div>
-            )}
+                  ))}
+                </div>
 
-            {/* Guaranteed Safe Packaging & Studio Callout */}
-            <div className="bg-[#FAF9F6] border border-neutral-200/60 rounded-2xl p-4 flex items-center justify-between text-xs text-neutral-600">
-              <div className="flex items-center gap-2.5">
-                <Box className="w-4 h-4 text-neutral-800" />
-                <span className="font-medium text-neutral-800">Embalaje de Seguridad & Protección Anti-impacto Reforzado</span>
+                {/* Macro Detail Grid (3 or 2 Columns) for Material Texture & Craftsmanship */}
+                {remainingImages.length > 0 && (
+                  <div className={`grid ${remainingImages.length >= 3 ? 'grid-cols-3' : 'grid-cols-2'} gap-3`}>
+                    {remainingImages.map((img, idx) => {
+                      const actualIdx = idx + 2;
+                      return (
+                        <div 
+                          key={actualIdx}
+                          onClick={() => setLightboxIndex(actualIdx)}
+                          className="aspect-[4/5] bg-[#FAF9F6] rounded-2xl overflow-hidden cursor-zoom-in group relative shadow-2xs border border-neutral-100/60"
+                        >
+                          <img 
+                            src={img} 
+                            alt={`${product.name} Textura ${idx + 1}`}
+                            className="w-full h-full object-cover object-center group-hover:scale-[1.04] transition-transform duration-700 ease-out"
+                          />
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors flex items-end justify-end p-3">
+                            <span className="bg-neutral-900/90 text-white text-[9px] font-mono px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-wider rounded-sm">
+                              VISTA #{actualIdx + 1} 🔍
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
-              <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-wider hidden sm:inline">
-                Certificación Transporte Seguro
-              </span>
+            </>
+          )}
+
+          {/* Guaranteed Safe Packaging & Studio Callout */}
+          <div className="bg-[#FAF9F6] border border-neutral-200/60 rounded-2xl p-4 flex items-center justify-between text-xs text-neutral-600">
+            <div className="flex items-center gap-2.5">
+              <Box className="w-4 h-4 text-neutral-800" />
+              <span className="font-medium text-neutral-800">Embalaje de Seguridad & Protección Anti-impacto Reforzado</span>
             </div>
-
+            <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-wider hidden sm:inline">
+              Certificación Transporte Seguro
+            </span>
           </div>
 
         </div>
@@ -895,7 +920,7 @@ export const ProductDetailPage: React.FC = () => {
       )}
 
       {/* 5. LIGHTBOX HIGH-RES FULLSCREEN VIEWER MODAL */}
-      {lightboxIndex !== null && (
+      {lightboxIndex !== null && imagesList.length > 0 && imagesList[lightboxIndex] && (
         <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 backdrop-blur-md font-sans animate-fadeIn">
           <button 
             onClick={() => setLightboxIndex(null)}
@@ -942,11 +967,17 @@ export const ProductDetailPage: React.FC = () => {
       {showStickyBar && (
         <div className="fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur-md border-t border-neutral-200 p-3 z-40 md:hidden flex items-center justify-between shadow-2xl animate-fadeIn">
           <div className="flex items-center gap-2.5 min-w-0 pr-2">
-            <img 
-              src={imagesList[0]} 
-              alt={product.name} 
-              className="w-11 h-11 object-cover rounded-lg border border-neutral-200 shrink-0" 
-            />
+            {imagesList[0] ? (
+              <img 
+                src={imagesList[0]} 
+                alt={product.name} 
+                className="w-11 h-11 object-cover rounded-lg border border-neutral-200 shrink-0" 
+              />
+            ) : (
+              <div className="w-11 h-11 bg-neutral-100 rounded-lg border border-neutral-200 shrink-0 flex items-center justify-center text-neutral-400">
+                <Camera className="w-4 h-4" />
+              </div>
+            )}
             <div className="min-w-0">
               <p className="text-xs font-bold text-neutral-900 truncate">{product.name}</p>
               <p className="text-xs font-extrabold text-neutral-900">{formatPrice(product.price)}</p>
