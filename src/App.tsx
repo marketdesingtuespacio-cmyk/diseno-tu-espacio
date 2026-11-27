@@ -66,11 +66,29 @@ const MaintenanceGuard: React.FC<{ children: React.ReactNode }> = ({ children })
   );
 };
 
+// Forzar scroll al inicio en cada cambio de ruta y deshabilitar auto scroll restoration del navegador
+const ScrollToTop: React.FC = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, [pathname]);
+
+  return null;
+};
+
 const MainContent: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
 
     if (typeof window !== 'undefined') {
       if ((window as any).gtag) {
@@ -147,6 +165,7 @@ export const App: React.FC = () => {
       <CurrencyProvider>
         <CartProvider>
           <Router>
+            <ScrollToTop />
             <MaintenanceGuard>
               <AppShell />
             </MaintenanceGuard>

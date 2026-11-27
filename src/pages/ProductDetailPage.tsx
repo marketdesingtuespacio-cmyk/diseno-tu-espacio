@@ -102,6 +102,8 @@ export const ProductDetailPage: React.FC = () => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
 
     if (slug) {
       // 1. Instant synchronous lookup from memory/local storage (0ms delay)
@@ -127,6 +129,15 @@ export const ProductDetailPage: React.FC = () => {
       });
     }
   }, [slug]);
+
+  // Garantizar que la vista inicie en el encabezado exacto del producto apenas finalice la hidratación
+  useEffect(() => {
+    if (!loading && product) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
+  }, [loading, product?.id]);
 
   // Track Meta Pixel ViewContent & Google Analytics view_item
   useEffect(() => {
