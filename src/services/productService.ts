@@ -61,6 +61,21 @@ export const isCategoryMatch = (prodCat?: string, filterCat?: string): boolean =
   return false;
 };
 
+// Fecha límite oficial de Black Friday para Papeles de Colgadura:
+// 30 de noviembre de 2026 a las 23:59:59 (Hora Colombia UTC-05:00)
+export const WALLPAPER_BLACK_FRIDAY_DEADLINE_MS = new Date('2026-11-30T23:59:59-05:00').getTime();
+export const WALLPAPER_BLACK_FRIDAY_PRICE = 480000;
+
+export const isWallpaperBlackFridayActive = (nowMs: number = Date.now()): boolean => {
+  return nowMs <= WALLPAPER_BLACK_FRIDAY_DEADLINE_MS;
+};
+
+export const isWallpaperProduct = (p: { category?: string; name?: string }): boolean => {
+  const cat = (p.category || '').toLowerCase().trim();
+  const name = (p.name || '').toLowerCase().trim();
+  return cat.includes('papel') && name.includes('papel');
+};
+
 const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Product => {
   let fallback: Product | undefined;
   if (localLookupMap) {
@@ -93,9 +108,36 @@ const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Produ
   const activeUserLabel = activeUser ? `${activeUser.name} (${activeUser.email})` : 'Administración';
   const resolvedUpdatedBy = p.updated_by || fallback?.updated_by || activeUserLabel;
 
+  // Regla automática Black Friday para Papeles de Colgadura:
+  // Hasta el 30 de noviembre 23:59:59 valen $480.000; después vuelven automáticamente a su precio normal.
+  let resolvedPrice = Number(p.price) || 0;
+  let resolvedOriginalPrice: number | undefined =
+    p.original_price !== undefined && p.original_price !== null && Number(p.original_price) > 0
+      ? Number(p.original_price)
+      : undefined;
+
+  if (isWallpaperProduct(p)) {
+    const normalWallpaperPrice =
+      resolvedOriginalPrice && resolvedOriginalPrice > WALLPAPER_BLACK_FRIDAY_PRICE
+        ? resolvedOriginalPrice
+        : resolvedPrice > WALLPAPER_BLACK_FRIDAY_PRICE
+        ? resolvedPrice
+        : 600000;
+
+    if (isWallpaperBlackFridayActive()) {
+      resolvedPrice = WALLPAPER_BLACK_FRIDAY_PRICE;
+      resolvedOriginalPrice = normalWallpaperPrice;
+    } else {
+      resolvedPrice = normalWallpaperPrice;
+      resolvedOriginalPrice = undefined;
+    }
+  }
+
   return {
     ...(fallback || {}),
     ...p,
+    price: resolvedPrice,
+    original_price: resolvedOriginalPrice,
     images: resolvedImages,
     colors: resolvedColors,
     sku: (p.sku && p.sku.trim().length > 0) ? p.sku : (fallback?.sku || ''),
@@ -133,7 +175,7 @@ const enrichProduct = (p: Product, localLookupMap?: Map<string, Product>): Produ
   };
 };
 
-const SESSION_PRODUCTS_CACHE_KEY = 'dte_products_session_cache_v2';
+const SESSION_PRODUCTS_CACHE_KEY = 'dte_products_session_cache_v3';
 
 const loadSessionCache = (): Product[] | null => {
   try {
@@ -283,9 +325,31 @@ export const productService = {
         try {
           const { data, error } = await supabase.from('products').select('*').order('created_at', { ascending: false });
           if (!error && data && data.length > 0) {
+            const expiredWallpapersToRestore: { id: string; normalPrice: number }[] = [];
+            const bfActive = isWallpaperBlackFridayActive();
+
             (data as Product[]).forEach(sp => {
+              if (!bfActive && isWallpaperProduct(sp) && Number(sp.price) === WALLPAPER_BLACK_FRIDAY_PRICE) {
+                const normalPrice =
+                  sp.original_price && Number(sp.original_price) > WALLPAPER_BLACK_FRIDAY_PRICE
+                    ? Number(sp.original_price)
+                    : 600000;
+                expiredWallpapersToRestore.push({ id: sp.id, normalPrice });
+              }
               fetchedProducts.push(enrichProduct(sp));
             });
+
+            // Si ya pasó el 30 de noviembre 23:59:59, restaurar automáticamente el precio normal en Supabase
+            if (expiredWallpapersToRestore.length > 0) {
+              Promise.all(
+                expiredWallpapersToRestore.map(item =>
+                  supabase
+                    .from('products')
+                    .update({ price: item.normalPrice, original_price: null })
+                    .eq('id', item.id)
+                )
+              ).catch(() => {});
+            }
           } else if (error) {
             console.warn('Supabase fetch products error:', error.message);
           }

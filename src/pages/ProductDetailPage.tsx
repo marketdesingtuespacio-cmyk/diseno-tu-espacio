@@ -23,7 +23,7 @@ import {
   QrCode
 } from 'lucide-react';
 import { Product, ProductReviewStats } from '../types';
-import { productService } from '../services/productService';
+import { productService, isWallpaperProduct, isWallpaperBlackFridayActive } from '../services/productService';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { useAuth } from '../context/AuthContext';
@@ -457,13 +457,18 @@ export const ProductDetailPage: React.FC = () => {
                 {formatPrice(product.price)}
               </span>
               {product.original_price && product.original_price > product.price && (
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 flex-wrap">
                   <span className="line-through text-neutral-400 text-base">
                     {formatPrice(product.original_price)}
                   </span>
                   <span className="bg-red-50 text-red-700 text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase">
                     -{Math.round(((product.original_price - product.price) / product.original_price) * 100)}%
                   </span>
+                  {isWallpaperProduct(product) && isWallpaperBlackFridayActive() && (
+                    <span className="bg-red-600 text-white text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                      Black Friday • Hasta el 30 de Nov
+                    </span>
+                  )}
                 </div>
               )}
             </div>

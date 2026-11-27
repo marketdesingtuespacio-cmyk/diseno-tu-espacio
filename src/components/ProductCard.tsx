@@ -5,6 +5,7 @@ import { Product } from '../types';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { useAuth } from '../context/AuthContext';
+import { isWallpaperProduct, isWallpaperBlackFridayActive } from '../services/productService';
 
 const ProductQRModal = lazy(() =>
   import('./admin/ProductQRModal').then((m) => ({ default: m.ProductQRModal }))
@@ -25,6 +26,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const colorSwatches = (product.colors && product.colors.length > 0) ? product.colors : [];
 
   const isAgotado = product.stock <= 0 || product.inventory_status === 'Agotado';
+  const hasBlackFridayOffer = !isAgotado && isWallpaperProduct(product) && isWallpaperBlackFridayActive();
 
   return (
     <div className="group relative flex flex-col font-sans transition-all duration-300">
@@ -36,6 +38,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {isAgotado && (
           <span className="absolute top-3 left-3 z-10 bg-neutral-900/90 text-white text-[9.5px] uppercase font-bold tracking-wider px-2.5 py-1 shadow-xs">
             Agotado
+          </span>
+        )}
+
+        {/* Black Friday Wallpaper Offer Badge (active until Nov 30) */}
+        {hasBlackFridayOffer && (
+          <span className="absolute top-3 left-3 z-10 bg-red-600 text-white text-[9.5px] uppercase font-extrabold tracking-wider px-2.5 py-1 shadow-sm">
+            Black Friday • $480.000
           </span>
         )}
 
@@ -142,13 +151,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       {/* Price & Offer Display with Dynamic Currency Formatting */}
       <div className="mt-1 text-[13px] space-y-0.5">
         {product.original_price && product.original_price > product.price ? (
-          <div className="flex items-center gap-2">
-            <span className="line-through text-neutral-400 text-xs font-normal">
-              {formatPrice(product.original_price)}
-            </span>
-            <span className="font-bold text-red-600">
-              {formatPrice(product.price)}
-            </span>
+          <div className="space-y-0.5">
+            <div className="flex items-center gap-2">
+              <span className="line-through text-neutral-400 text-xs font-normal">
+                {formatPrice(product.original_price)}
+              </span>
+              <span className="font-bold text-red-600">
+                {formatPrice(product.price)}
+              </span>
+            </div>
+            {hasBlackFridayOffer && (
+              <span className="block text-[10px] font-bold uppercase tracking-wider text-red-600">
+                Oferta Black Friday hasta el 30 de nov
+              </span>
+            )}
           </div>
         ) : (
           <span className="font-bold text-neutral-900 block">
